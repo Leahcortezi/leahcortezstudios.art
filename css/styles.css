@@ -189,7 +189,7 @@ nav {
   filter: brightness(0) invert(1); /* Makes the logo white */
 }
 
-.flower-icon {
+.hamburger img {
   width: 60px; /* Make it bigger */
   height: auto;
   display: block;
@@ -268,6 +268,18 @@ nav {
 .social-links a {
   /* Sets the font size for the icons (if using a font icon) or text */
   font-size: 1.5rem;
+  /* Applies a light pink filter to icons/images inside links */
+  filter: invert(86%) sepia(10%) saturate(500%) hue-rotate(310deg) brightness(1.1);
+  /* For SVG icons, also set color */
+  color: var(--color-primary-accent);
+  transition: filter 0.3s, color 0.3s;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  /* Slightly darken on hover/focus for feedback */
+  filter: invert(36%) sepia(80%) saturate(800%) hue-rotate(330deg) brightness(0.9);
+  color: var(--color-secondary-accent);
 }
 
 /* --------------------

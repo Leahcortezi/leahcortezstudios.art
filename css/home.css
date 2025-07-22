@@ -58,47 +58,61 @@
    -------------------- */
 
 .hero-section {
-  /*
-    Sets the height of the hero section to be the full viewport height
-    minus the height of the navigation bar.
-  */
-  height: calc(100vh - var(--nav-height));
-  /* Uses flexbox to perfectly center the content */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Adds padding to the section */
-  padding: 0 2rem;
-  /* Aligns the text to the center */
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+  min-height: 100vh;
   text-align: center;
-  /* A subtle background pattern could be added here later */
-  /* background-image: url('../images/hero-background.jpg'); */
   background-size: cover;
   background-position: center;
 }
 
-.hero-content h1 {
-  /* Sets the font size for the main headline */
-  font-size: 4rem;
-  /* Overrides the default bottom margin for a tighter layout */
-  margin-bottom: 0.5rem;
-  /* Adds a text shadow for a subtle "glow" effect */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+.lace-logo {
+  width: 400px;
+  max-width: 95%;
+  margin-bottom: 2.5rem;
+  transition: transform 0.4s ease-in-out;
 }
 
-.hero-content .tagline {
-  /* Sets the font to the accent font */
-  font-family: var(--font-accent);
-  /* Sets the font size for the tagline */
-  font-size: 1.2rem;
-  /* Sets the text color to the primary accent */
-  color: var(--color-primary-accent);
-  /* Adds spacing between letters */
-  letter-spacing: 2px;
-  /* Uppercase for style */
-  text-transform: uppercase;
-  /* Adds space below the tagline */
-  margin-bottom: 2rem;
+.lace-logo:hover {
+  transform: scale(1.08);
+}
+
+.hero-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 3rem;
+  margin-bottom: 0.3rem; /* Less space below title */
+  line-height: 1.2;
+  text-shadow: 0 0 2px #fff;
+}
+
+.hero-poetic {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem; /* More space below the poetic line */
+  color: #e8e8e8;
+}
+
+.btn {
+  margin-top: 0; /* Remove top margin if any */
+  padding: 0.75rem 1.5rem;
+  background-color: #f5c6d6;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #7e1c2e;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* --------------------
