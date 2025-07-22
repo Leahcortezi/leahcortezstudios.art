@@ -182,15 +182,19 @@ nav {
   height: 100%;
 }
 
-.logo a {
-  /* Sets the font for the logo text */
-  font-family: var(--font-headings);
-  /* Sets the font size for the logo */
-  font-size: 2rem;
-  /* Removes any text decoration */
-  text-decoration: none;
-  /* Sets the color of the logo text */
-  color: var(--color-text);
+.main-logo {
+  width: 80px; /* Adjust as needed */
+  display: block;
+  margin: 0 auto;
+  filter: brightness(0) invert(1); /* Makes the logo white */
+}
+
+.flower-icon {
+  width: 60px; /* Make it bigger */
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  filter: brightness(0) invert(1); /* Makes the icon white */
 }
 
 .nav-links {
