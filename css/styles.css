@@ -1,0 +1,320 @@
+/*
+  Leah Cortez Studio Art - Global Stylesheet
+  ---
+  This file contains all the global styles that are applied across the entire website.
+  This includes font imports, color variables, base element styling (body, headings, paragraphs),
+  and styles for reusable components like the navigation and footer.
+*/
+
+/* --------------------
+   1. FONT IMPORTS
+   -------------------- */
+
+/*
+  We are importing the three fonts specified in the project brief from Google Fonts.
+  - 'Pirata One' for headings
+  - 'IM Fell English' for body text
+  - 'IBM Plex Mono' for accent text
+*/
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Mono:ital@0;1&family=Pirata+One&display=swap');
+
+/* --------------------
+   2. CSS VARIABLES (CUSTOM PROPERTIES)
+   -------------------- */
+
+/*
+  Using CSS variables allows us to define our color palette and fonts in one central place.
+  This makes it easy to maintain and update the site's design consistently.
+  The ':root' selector applies these variables globally to the entire document.
+*/
+:root {
+  /* --variable-name: value; */
+
+  /* Color Palette */
+  --color-background: #000000; /* Black for the site background */
+  --color-text: #ffffff;       /* White for the main body text */
+  --color-primary-accent: #f8c8d0; /* Soft pink for primary interactive elements */
+  --color-secondary-accent: #7e1c2e; /* Deep red for secondary elements and highlights */
+
+  /* Typography */
+  --font-headings: 'Pirata One', cursive;      /* Themed, gothic-style font for all headings */
+  --font-body: 'IM Fell English', serif;    /* Classic, readable serif for all paragraph text */
+  --font-accent: 'IBM Plex Mono', monospace;  /* Monospaced font for captions or special text */
+
+  /* Other Layout Variables */
+  --nav-height: 80px; /* Standard height for the navigation bar */
+  --footer-height: 60px; /* Standard height for the footer */
+}
+
+/* --------------------
+   3. GENERAL BODY & RESET STYLES
+   -------------------- */
+
+/*
+  These are foundational styles that reset default browser styling and set
+  the base look and feel for the entire site.
+*/
+
+* {
+  /*
+    The 'box-sizing' property changes how the box model is calculated.
+    'border-box' includes padding and border in the element's total width and height,
+    which makes creating layouts much more intuitive.
+  */
+  box-sizing: border-box;
+
+  /* Resetting default margin and padding for all elements */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /*
+    Enables smooth scrolling for anchor links and accessibility features.
+  */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Sets the background color for the entire site */
+  background-color: var(--color-background);
+
+  /* Sets the default text color */
+  color: var(--color-text);
+
+  /* Sets the default font for the body text */
+  font-family: var(--font-body);
+
+  /* A line height of 1.6 is generally good for readability */
+  line-height: 1.6;
+
+  /* Ensures the body takes up at least the full height of the viewport */
+  min-height: 100vh;
+
+  /*
+    Uses a flexbox layout to push the footer to the bottom of the page,
+    even on pages with little content.
+  */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  /*
+    The 'flex-grow: 1' property makes the main content area expand
+    to fill any available space between the header and footer.
+  */
+  flex-grow: 1;
+}
+
+/* --------------------
+   4. TYPOGRAPHY
+   -------------------- */
+
+/*
+  Defining consistent styles for all headings (h1-h6).
+*/
+h1, h2, h3, h4, h5, h6 {
+  /* Applies the custom heading font */
+  font-family: var(--font-headings);
+
+  /* Letter spacing can improve the readability of stylized fonts */
+  letter-spacing: 1.5px;
+
+  /* A slightly increased line height for headings */
+  line-height: 1.3;
+
+  /* A standard margin below headings to create space */
+  margin-bottom: 1rem; /* 1rem = 16px by default */
+}
+
+p {
+  /* Standard margin below paragraphs for spacing */
+  margin-bottom: 1rem;
+}
+
+a {
+  /* Sets the link color to the primary accent color */
+  color: var(--color-primary-accent);
+
+  /* Removes the default underline from links */
+  text-decoration: none;
+
+  /* Adds a smooth transition effect for hover states */
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  /* Darkens the link color on hover/focus for visual feedback */
+  color: var(--color-secondary-accent);
+}
+
+/* --------------------
+   5. GLOBAL NAVIGATION
+   -------------------- */
+
+.main-header {
+  /* Sets the height of the header area */
+  height: var(--nav-height);
+  /* Ensures the header has a solid background color */
+  background-color: var(--color-background);
+  /* A subtle bottom border to separate it from the main content */
+  border-bottom: 1px solid var(--color-secondary-accent);
+  /* Makes the header stay at the top of the viewport when scrolling */
+  position: sticky;
+  top: 0;
+  /* A high z-index ensures it stays above other content */
+  z-index: 1000;
+}
+
+nav {
+  /*
+    Flexbox is used here for a powerful and simple alignment of nav items.
+  */
+  display: flex;
+  /* Pushes the logo and the nav links to opposite ends of the container */
+  justify-content: space-between;
+  /* Vertically centers the items within the nav bar */
+  align-items: center;
+  /* Adds padding inside the nav bar */
+  padding: 0 2rem;
+  /* Ensures the nav takes the full height of its parent header */
+  height: 100%;
+}
+
+.logo a {
+  /* Sets the font for the logo text */
+  font-family: var(--font-headings);
+  /* Sets the font size for the logo */
+  font-size: 2rem;
+  /* Removes any text decoration */
+  text-decoration: none;
+  /* Sets the color of the logo text */
+  color: var(--color-text);
+}
+
+.nav-links {
+  /* Removes default list styling (bullets) */
+  list-style: none;
+  /* Uses flexbox to lay out the list items horizontally */
+  display: flex;
+}
+
+.nav-links li {
+  /* Adds space between the navigation links */
+  margin-left: 2rem;
+}
+
+.nav-links a {
+  /* Sets the font for the navigation links */
+  font-family: var(--font-accent);
+  /* Converts the text to uppercase for a stylized look */
+  text-transform: uppercase;
+  /* Adds a transition for the hover effect */
+  transition: color 0.3s ease;
+}
+
+/* Styles for the mobile hamburger menu icon */
+.hamburger {
+  /* Initially hidden on desktop screens */
+  display: none;
+  /* Sets the cursor to a pointer to indicate it's clickable */
+  cursor: pointer;
+  /* Padding around the icon to make it easier to click */
+  padding: 10px;
+}
+
+.hamburger img {
+    /* Sets the size of the custom flower icon */
+    width: 30px;
+    height: 30px;
+}
+
+/* --------------------
+   6. GLOBAL FOOTER
+   -------------------- */
+
+.main-footer {
+  /* Sets the height of the footer */
+  height: var(--footer-height);
+  /* Sets the background color of the footer */
+  background-color: var(--color-background);
+  /* A top border to separate it from the main content */
+  border-top: 1px solid var(--color-secondary-accent);
+  /* Uses flexbox to center the content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Adds padding inside the footer */
+  padding: 0 2rem;
+}
+
+.social-links {
+  /* Removes default list styling */
+  list-style: none;
+  /* Uses flexbox for horizontal layout */
+  display: flex;
+}
+
+.social-links li {
+  /* Adds space between the social media icons */
+  margin: 0 1rem;
+}
+
+.social-links a {
+  /* Sets the font size for the icons (if using a font icon) or text */
+  font-size: 1.5rem;
+}
+
+/* --------------------
+   7. MEDIA QUERIES (for Responsive Design)
+   -------------------- */
+
+/*
+  This media query targets screens with a maximum width of 768px (common for tablets and mobile).
+*/
+@media (max-width: 768px) {
+  .nav-links {
+    /*
+      On mobile, the nav links are initially hidden.
+      They will be displayed when the hamburger menu is clicked.
+    */
+    display: none;
+    /* Positions the menu absolutely relative to the header */
+    position: absolute;
+    top: var(--nav-height); /* Positions it right below the nav bar */
+    right: 0;
+    /* Takes the full width of the screen */
+    width: 100%;
+    /* Sets the background to black */
+    background-color: var(--color-background);
+    /* Changes the flex direction to vertical for a mobile menu */
+    flex-direction: column;
+    /* Centers the links within the menu */
+    align-items: center;
+    /* A subtle border on top */
+    border-top: 1px solid var(--color-secondary-accent);
+  }
+
+  /*
+    This class will be toggled with JavaScript to show the menu.
+  */
+  .nav-links.active {
+    /* When active, the menu is displayed as a flex container */
+    display: flex;
+  }
+
+  .nav-links li {
+    /* Removes the horizontal margin */
+    margin-left: 0;
+    /* Adds vertical margin for spacing between links */
+    margin: 1rem 0;
+  }
+
+  .hamburger {
+    /*
+      The hamburger icon is displayed on screens 768px or less.
+    */
+    display: block;
+  }
+}

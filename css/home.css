@@ -1,0 +1,308 @@
+/*
+  Leah Cortez Studio Art - Homepage Stylesheet
+  ---
+  This file contains the specific styles for the layout and elements
+  on the homepage (index.html). It is loaded after styles.css,
+  so these rules can override the global styles if necessary.
+*/
+
+/* --------------------
+   1. UTILITY & CONTAINER
+   -------------------- */
+
+/*
+  A general-purpose container to center content and provide consistent padding.
+  This is used within several sections of the homepage.
+*/
+.container {
+  /* Sets a maximum width for the content area */
+  max-width: 1200px;
+  /* Centers the container horizontally */
+  margin: 0 auto;
+  /* Adds padding on the left and right */
+  padding: 0 2rem;
+}
+
+/*
+  A general-purpose call-to-action button style.
+*/
+.cta-button {
+    /* Display as an inline block to respect padding and margins */
+    display: inline-block;
+    /* Padding inside the button */
+    padding: 12px 28px;
+    /* Background color using the primary accent color */
+    background-color: var(--color-primary-accent);
+    /* Text color for the button */
+    color: var(--color-background);
+    /* Font family for the button text */
+    font-family: var(--font-accent);
+    /* Removes the underline */
+    text-decoration: none;
+    /* Uppercase text for style */
+    text-transform: uppercase;
+    /* A subtle border */
+    border: 1px solid var(--color-primary-accent);
+    /* A transition for smooth hover effects */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    /* Inverts the colors on hover for a clear visual feedback */
+    background-color: transparent;
+    color: var(--color-primary-accent);
+}
+
+/* --------------------
+   2. HERO SECTION
+   -------------------- */
+
+.hero-section {
+  /*
+    Sets the height of the hero section to be the full viewport height
+    minus the height of the navigation bar.
+  */
+  height: calc(100vh - var(--nav-height));
+  /* Uses flexbox to perfectly center the content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Adds padding to the section */
+  padding: 0 2rem;
+  /* Aligns the text to the center */
+  text-align: center;
+  /* A subtle background pattern could be added here later */
+  /* background-image: url('../images/hero-background.jpg'); */
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content h1 {
+  /* Sets the font size for the main headline */
+  font-size: 4rem;
+  /* Overrides the default bottom margin for a tighter layout */
+  margin-bottom: 0.5rem;
+  /* Adds a text shadow for a subtle "glow" effect */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content .tagline {
+  /* Sets the font to the accent font */
+  font-family: var(--font-accent);
+  /* Sets the font size for the tagline */
+  font-size: 1.2rem;
+  /* Sets the text color to the primary accent */
+  color: var(--color-primary-accent);
+  /* Adds spacing between letters */
+  letter-spacing: 2px;
+  /* Uppercase for style */
+  text-transform: uppercase;
+  /* Adds space below the tagline */
+  margin-bottom: 2rem;
+}
+
+/* --------------------
+   3. BIO PREVIEW SECTION
+   -------------------- */
+
+.bio-preview-section {
+  /* Adds vertical padding to the section */
+  padding: 4rem 0;
+}
+
+.bio-preview-section h2 {
+    /* Centers the heading text */
+    text-align: center;
+    /* Sets the font size */
+    font-size: 2.5rem;
+    /* Adds space below the heading */
+    margin-bottom: 3rem;
+}
+
+.bio-content {
+  /* Uses flexbox to create a two-column layout */
+  display: flex;
+  /* Aligns items to the center vertically */
+  align-items: center;
+  /* Adds a gap between the columns */
+  gap: 3rem;
+}
+
+.bio-image {
+  /* Sets the width of the image */
+  width: 40%;
+  /* Ensures the image doesn't exceed its container's width */
+  max-width: 400px;
+  /* Maintains the aspect ratio of the image */
+  object-fit: cover;
+  /* A subtle border to frame the image */
+  border: 4px solid var(--color-secondary-accent);
+}
+
+.bio-text {
+  /* The text container takes up the remaining space */
+  flex: 1;
+}
+
+.text-link {
+    /* Sets the font to the accent font */
+    font-family: var(--font-accent);
+    /* Makes the font bold */
+    font-weight: bold;
+    /* Adds space above the link */
+    margin-top: 1rem;
+    /* Displays as a block to take its own line */
+    display: inline-block;
+}
+
+/* --------------------
+   4. FEATURED ART SECTION
+   -------------------- */
+
+.featured-art-section {
+  /* Adds vertical padding */
+  padding: 4rem 0;
+  /* A slightly different background to separate it from other sections */
+  background-color: #080808;
+}
+
+.featured-art-section h2 {
+    /* Centers the heading */
+    text-align: center;
+    /* Sets the font size */
+    font-size: 2.5rem;
+    /* Adds space below the heading */
+    margin-bottom: 3rem;
+}
+
+.gallery-grid {
+  /*
+    Uses CSS Grid for a flexible and responsive gallery layout.
+  */
+  display: grid;
+  /* Creates three columns of equal width */
+  grid-template-columns: repeat(3, 1fr);
+  /* Sets the gap between grid items */
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  /* Positions the item relatively to act as a container for the overlay */
+  position: relative;
+  /* Hides any part of the overlay that might overflow */
+  overflow: hidden;
+}
+
+.gallery-item img {
+  /* Makes the image fill its container */
+  width: 100%;
+  /* Displays the image as a block element to remove bottom space */
+  display: block;
+  /* Adds a transition for a subtle zoom effect on hover */
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  /* Scales the image up slightly on hover */
+  transform: scale(1.05);
+}
+
+.gallery-item .overlay {
+  /* Positions the overlay absolutely within the gallery item */
+  position: absolute;
+  /* Places the overlay at the bottom of the item */
+  bottom: 0;
+  left: 0;
+  /* Takes the full width of the item */
+  width: 100%;
+  /* Adds padding inside the overlay */
+  padding: 1rem;
+  /* A semi-transparent background to make text readable */
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  /* Sets the text color */
+  color: var(--color-text);
+  /* Moves the overlay off-screen initially */
+  transform: translateY(100%);
+  /* A transition for a smooth slide-in effect */
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+  /* Slides the overlay into view on hover */
+  transform: translateY(0);
+}
+
+.overlay h3 {
+  /* Overrides the default heading margin */
+  margin: 0;
+}
+
+.view-all-link {
+    /* Centers the button below the gallery */
+    text-align: center;
+    /* Adds space above the button */
+    margin-top: 3rem;
+}
+
+/* --------------------
+   5. CONTACT PREVIEW SECTION
+   -------------------- */
+
+.contact-preview-section {
+  /* Adds vertical padding */
+  padding: 5rem 0;
+  /* Centers the content */
+  text-align: center;
+}
+
+.contact-preview-section h2 {
+  /* Sets the font size */
+  font-size: 2.5rem;
+}
+
+.contact-preview-section p {
+  /* Sets the font to the accent font */
+  font-family: var(--font-accent);
+  /* Adds space below the paragraph */
+  margin-bottom: 2rem;
+  /* Sets the font size */
+  font-size: 1.1rem;
+}
+
+/* --------------------
+   6. MEDIA QUERIES (for Responsiveness)
+   -------------------- */
+
+/* For tablets and smaller devices */
+@media (max-width: 992px) {
+    .gallery-grid {
+      /* Switches to a two-column layout on medium-sized screens */
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+    .hero-content h1 {
+      /* Reduces the headline font size on mobile */
+      font-size: 3rem;
+    }
+
+    .bio-content {
+      /* Stacks the bio image and text vertically on mobile */
+      flex-direction: column;
+      /* Centers the content */
+      text-align: center;
+    }
+
+    .bio-image {
+      /* Adjusts the width for a stacked layout */
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .gallery-grid {
+      /* Switches to a single-column layout on small screens */
+      grid-template-columns: 1fr;
+    }
+}

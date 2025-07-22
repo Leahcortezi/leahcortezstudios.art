@@ -1,0 +1,146 @@
+/*
+  Leah Cortez Studio Art - Bio Page Stylesheet
+  ---
+  This file contains the specific styles for the Bio page (bio/index.html),
+  primarily focusing on the two-column layout for the artist's photo and statement.
+*/
+
+/* --------------------
+   1. BIO PAGE CONTAINER
+   -------------------- */
+
+.bio-page {
+  /*
+    Adds padding to the top and bottom of the main content area to give it space
+    from the header and footer.
+  */
+  padding: 4rem 0;
+}
+
+.bio-container {
+  /*
+    This container uses CSS Flexbox to create the side-by-side layout.
+  */
+  display: flex;
+  /*
+    'align-items: flex-start' ensures that the top of the image and the top of the text
+    are aligned, which is useful if their content heights differ.
+  */
+  align-items: flex-start;
+  /*
+    Sets the gap between the flex items (the image and text columns).
+  */
+  gap: 3rem;
+  /*
+    Limits the maximum width of the container to maintain readability on large screens.
+  */
+  max-width: 1200px;
+  /*
+    Centers the container horizontally within the page.
+  */
+  margin: 0 auto;
+  /*
+    Adds padding on the left and right, which is especially important on smaller screens.
+  */
+  padding: 0 2rem;
+}
+
+/* --------------------
+   2. BIO COLUMNS
+   -------------------- */
+
+.bio-image-column {
+  /*
+    The 'flex' property is a shorthand. 'flex: 1' would make each column
+    take up equal space. Here, we are defining a specific width for the image column.
+    It will take up 40% of the available width in the flex container.
+  */
+  flex: 0 0 40%; /* flex-grow, flex-shrink, flex-basis */
+}
+
+.bio-image-column img {
+  /*
+    Ensures the image scales to fill the entire width of its container.
+  */
+  width: 100%;
+  /*
+    'display: block' removes any extra space below the image that can sometimes
+    be added by the browser for inline elements.
+  */
+  display: block;
+  /*
+    Adds a decorative border using one of the site's accent colors.
+  */
+  border: 4px solid var(--color-secondary-accent);
+}
+
+.bio-text-column {
+  /*
+    This column will take up 60% of the available width.
+  */
+  flex: 0 0 60%;
+}
+
+.bio-text-column h1 {
+  /*
+    Sets a specific font size for the main heading on this page.
+  */
+  font-size: 3rem;
+  /*
+    Adds a bottom border to the heading for a stylistic underline effect.
+  */
+  border-bottom: 2px solid var(--color-primary-accent);
+  /*
+    Adds some padding below the border to create space before the text.
+  */
+  padding-bottom: 1rem;
+  /*
+    Adds margin below the heading to push the paragraph text down.
+  */
+  margin-bottom: 2rem;
+}
+
+.bio-text-column p {
+  /*
+    Sets the font size for the artist statement paragraphs for readability.
+  */
+  font-size: 1.1rem;
+  /*
+    Adds extra vertical space between paragraphs.
+  */
+  margin-bottom: 1.5rem;
+}
+
+
+/* --------------------
+   3. MEDIA QUERIES (for Responsiveness)
+   -------------------- */
+
+/*
+  This media query targets tablet and mobile screen sizes (768px and below).
+*/
+@media (max-width: 768px) {
+  .bio-container {
+    /*
+      Changes the flex direction from horizontal ('row') to vertical ('column').
+      This stacks the image on top of the text on smaller screens.
+    */
+    flex-direction: column;
+  }
+
+  .bio-image-column,
+  .bio-text-column {
+    /*
+      Resets the flex-basis for both columns. By default, they will now take up
+      the full width of the container.
+    */
+    flex-basis: 100%;
+  }
+
+  .bio-text-column h1 {
+    /*
+      Reduces the font size of the heading on smaller screens to save space.
+    */
+    font-size: 2.5rem;
+  }
+}

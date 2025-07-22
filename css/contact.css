@@ -1,0 +1,209 @@
+/*
+  Leah Cortez Studio Art - Contact Page Stylesheet
+  ---
+  This file contains the specific styles for the contact form and layout
+  on the contact page (contact/index.html).
+*/
+
+/* --------------------
+   1. CONTACT PAGE CONTAINER
+   -------------------- */
+
+.contact-page {
+  /* Adds vertical padding to the main content area */
+  padding: 4rem 0;
+}
+
+.contact-container {
+  /* Constrains the width of the contact form area */
+  max-width: 800px;
+  /* Centers the content on the page */
+  margin: 0 auto;
+  /* Adds horizontal padding */
+  padding: 0 2rem;
+  /* Centers all text inside the container */
+  text-align: center;
+}
+
+.contact-container h1 {
+  /* Sets the font size for the main page title */
+  font-size: 3.5rem;
+  /* Adds space below the title */
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  /* Sets the font to the accent font for the intro paragraph */
+  font-family: var(--font-accent);
+  /* Sets a maximum width to keep the line length readable */
+  max-width: 600px;
+  /* Centers the paragraph block */
+  margin: 0 auto 3rem auto;
+}
+
+/* --------------------
+   2. CONTACT FORM STYLES
+   -------------------- */
+
+.contact-form {
+  /* Aligns the form content to the left for a standard form layout */
+  text-align: left;
+}
+
+.form-group {
+  /* Adds space below each form group (label + input) */
+  margin-bottom: 1.5rem;
+}
+
+/*
+  Styles for the form labels (Name, Email, etc.)
+*/
+.form-group label {
+  /* Displays the label as a block to put it on its own line */
+  display: block;
+  /* Adds a small space below the label */
+  margin-bottom: 0.5rem;
+  /* Uses the accent font */
+  font-family: var(--font-accent);
+  /* Uppercase for style */
+  text-transform: uppercase;
+  /* Letter spacing for readability */
+  letter-spacing: 1px;
+  /* A smaller font size for the labels */
+  font-size: 0.9rem;
+}
+
+/*
+  General styles for all text inputs and the textarea.
+  The attribute selector '[type="text"], [type="email"]' targets multiple input types.
+*/
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group textarea {
+  /* Makes the input fields take up the full width of their container */
+  width: 100%;
+  /* Adds padding inside the input fields */
+  padding: 12px;
+  /* Sets the background color to be very dark but not pure black */
+  background-color: #1a1a1a;
+  /* A subtle border with the secondary accent color */
+  border: 1px solid var(--color-secondary-accent);
+  /* Sets the text color inside the input fields */
+  color: var(--color-text);
+  /* Sets the font to the body font */
+  font-family: var(--font-body);
+  /* Sets the font size */
+  font-size: 1rem;
+  /* Adds a transition for a smooth focus effect */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*
+  Removes the default spinners from the number input for the CAPTCHA.
+*/
+.form-group input[type="number"]::-webkit-outer-spin-button,
+.form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.form-group input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+/*
+  Styles for when an input field is focused (clicked into).
+*/
+.form-group input:focus,
+.form-group textarea:focus {
+  /* Removes the default browser outline */
+  outline: none;
+  /* Changes the border color to the primary accent color */
+  border-color: var(--color-primary-accent);
+  /* Adds a subtle glow effect to indicate focus */
+  box-shadow: 0 0 8px rgba(248, 200, 208, 0.3);
+}
+
+/*
+  The 'resize' property allows or disallows the user from resizing a textarea.
+  'vertical' means they can only resize it up and down.
+*/
+.form-group textarea {
+  resize: vertical;
+}
+
+/* --------------------
+   3. SPAM PROTECTION STYLES
+   -------------------- */
+
+/*
+  The honeypot field is a trap for bots. It should be hidden from human users.
+  We hide it visually and from screen readers, but keep it available for bots to fill out.
+*/
+.honeypot {
+  position: absolute;
+  left: -5000px; /* Moves it way off-screen */
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/*
+  Styling for the simple math CAPTCHA.
+*/
+.captcha label {
+  /* Makes the label and input sit side-by-side */
+  display: inline-block;
+  /* Aligns them vertically */
+  vertical-align: middle;
+  /* Adds space between the question and the answer box */
+  margin-right: 1rem;
+}
+
+.captcha input {
+  /* Makes the input box smaller */
+  width: 80px;
+  /* Makes it sit side-by-side with the label */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* --------------------
+   4. SUBMIT BUTTON
+   -------------------- */
+
+.submit-btn {
+  /* Makes the button take up the full width */
+  width: 100%;
+  /* Adds padding inside the button */
+  padding: 15px;
+  /* Sets the background color */
+  background-color: var(--color-primary-accent);
+  /* Sets the text color */
+  color: var(--color-background);
+  /* Removes the border */
+  border: none;
+  /* Sets the font to the accent font */
+  font-family: var(--font-accent);
+  /* Uppercase text */
+  text-transform: uppercase;
+  /* Letter spacing */
+  letter-spacing: 2px;
+  /* Font size */
+  font-size: 1rem;
+  /* Pointer cursor on hover */
+  cursor: pointer;
+  /* Transition for hover effect */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  border: 1px solid var(--color-primary-accent);
+}
+
+.submit-btn:hover {
+  /* Inverts the colors on hover */
+  background-color: transparent;
+  color: var(--color-primary-accent);
+  /* A slight upward shift on hover for a "lifting" effect */
+  transform: translateY(-2px);
+}

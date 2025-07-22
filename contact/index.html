@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Contact | Leah Cortez Studio</title>
+    <meta name="description" content="Send a message to Leah Cortez for commissions, collaborations, or inquiries.">
+    <meta name="keywords" content="contact artist, art commissions, graphic design inquiry, Leah Cortez, Corpus Christi artist">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Contact | Leah Cortez Studio">
+    <meta property="og:description" content="Send a message to Leah Cortez for commissions, collaborations, or inquiries.">
+    <meta property="og:image" content="../images/logo/logo2.png">
+    <meta property="og:url" content="https://leahcortezstudio.art/contact/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Leah Cortez Studio">
+    <meta name="twitter:description" content="Send a message to Leah Cortez for commissions or inquiries.">
+    <meta name="twitter:image" content="../images/logo/logo2.png">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/contact.css">
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <a href="../index.html">Leah Cortez</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../bio/">Bio</a></li>
+                <li><a href="../collections/">Portfolio</a></li>
+                <li><a href="../cv/">CV</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Menu">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-page">
+        <div class="contact-container">
+            <h1>Contact</h1>
+            <p class="contact-intro">For commissions, collaborations, or any other inquiries, please use the form below or email directly at <a href="mailto:lcortez14@islander.tamucc.edu">lcortez14@islander.tamucc.edu</a>.</p>
+
+            <!-- Contact Form -->
+            <form id="contact-form" class="contact-form" action="#" method="POST">
+
+                <!-- Standard Form Fields -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <!-- Honeypot Field for Spam Protection (hidden from users) -->
+                <div class="form-group honeypot">
+                    <label for="honeypot">Do not fill this out</label>
+                    <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Simple Math CAPTCHA -->
+                <div class="form-group captcha">
+                    <label for="captcha-answer" id="captcha-question">What is 5 + 3?</label>
+                    <input type="number" id="captcha-answer" name="captcha-answer" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <ul class="social-links">
+            <li><a href="https://pin.it/P7sLCI6r5" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">Pin</a></li>
+            <li><a href="https://www.behance.net/leahcortez" target="_blank" rel="noopener noreferrer" aria-label="Behance">Be</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">In</a></li>
+        </ul>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+
+</body>
+</html>
