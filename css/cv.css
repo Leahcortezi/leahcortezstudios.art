@@ -1,0 +1,164 @@
+/*
+  Leah Cortez Studio Art - CV Page Stylesheet
+  ---
+  This file contains the specific styles for the CV page (cv/index.html).
+  It focuses on formatting the different sections of the curriculum vitae
+  for clarity and readability.
+*/
+
+/* --------------------
+   1. CV PAGE CONTAINER
+   -------------------- */
+
+.cv-page {
+  /* Adds vertical padding to the main content area */
+  padding: 4rem 0;
+}
+
+.cv-container {
+  /* Constrains the width of the CV content */
+  max-width: 900px;
+  /* Centers the content on the page */
+  margin: 0 auto;
+  /* Adds horizontal padding */
+  padding: 0 2rem;
+}
+
+.cv-container h1 {
+  /* Sets the font size for the main page title */
+  font-size: 3.5rem;
+  /* Centers the title */
+  text-align: center;
+  /* Adds space below the title */
+  margin-bottom: 3rem;
+  /* A decorative underline */
+  border-bottom: 2px solid var(--color-primary-accent);
+  /* Padding to create space between the text and the underline */
+  padding-bottom: 1rem;
+}
+
+/* --------------------
+   2. CV SECTIONS
+   -------------------- */
+
+.cv-section {
+  /* Adds space between the major sections (Education, Exhibitions, etc.) */
+  margin-bottom: 2.5rem;
+}
+
+.cv-section h2 {
+  /* Sets the font size for section titles */
+  font-size: 2rem;
+  /* Uses the secondary accent color for section titles */
+  color: var(--color-primary-accent);
+  /* Adds space below the section title */
+  margin-bottom: 1.5rem;
+  /* Positions the heading to allow for a decorative pseudo-element */
+  position: relative;
+  /* Adds padding to the left to make room for the pseudo-element */
+  padding-left: 1.5rem;
+}
+
+/*
+  This :before pseudo-element adds a decorative vertical line to the left
+  of each section heading, giving it a bit of visual flair.
+*/
+.cv-section h2:before {
+  /* The content of the pseudo-element (it's empty because it's purely decorative) */
+  content: '';
+  /* Positions it absolutely relative to the h2 */
+  position: absolute;
+  /* Aligns it to the left */
+  left: 0;
+  /* Aligns it to the top */
+  top: 5px; /* Small offset for vertical alignment */
+  /* Sets the height of the line */
+  height: 80%;
+  /* Sets the width (thickness) of the line */
+  width: 4px;
+  /* Sets the color of the line */
+  background-color: var(--color-secondary-accent);
+}
+
+
+/* --------------------
+   3. CV ENTRIES & LISTS
+   -------------------- */
+
+.cv-entry {
+  /* Adds space below each individual entry within a section */
+  margin-bottom: 1.25rem;
+}
+
+.cv-entry h3 {
+  /* Sets the font size for the title of an entry (e.g., degree or exhibition title) */
+  font-size: 1.4rem;
+  /* Removes the default bottom margin to keep it close to the paragraph below */
+  margin-bottom: 0.25rem;
+  /* Sets the font to the body font for a slightly less stylized feel than section heads */
+  font-family: var(--font-body);
+  /* Makes the font bold */
+  font-weight: bold;
+}
+
+.cv-entry p {
+  /* Removes the bottom margin from the paragraph within an entry */
+  margin-bottom: 0;
+  /* Uses the accent font for details like university or gallery names */
+  font-family: var(--font-accent);
+  /* A slightly smaller font size for the details */
+  font-size: 1rem;
+}
+
+/*
+  Styling for the Skills and Tools lists.
+*/
+.skills-list, .tools-list {
+  /* Removes the default list bullets */
+  list-style: none;
+  /* Removes the default padding on the list */
+  padding: 0;
+  /* Uses CSS Grid to create a multi-column layout for the list items */
+  display: grid;
+  /* Defines two columns of equal width */
+  grid-template-columns: repeat(2, 1fr);
+  /* Sets the gap between the grid cells */
+  gap: 0.75rem 1.5rem; /* row-gap, column-gap */
+}
+
+.skills-list li, .tools-list li {
+  /* Adds a custom list marker (a dash) for a clean look */
+  padding-left: 1.5rem;
+  /* Positions the list item to place the pseudo-element */
+  position: relative;
+}
+
+/*
+  This :before pseudo-element creates a custom "bullet" for each list item.
+*/
+.skills-list li:before, .tools-list li:before {
+  /* The content is a dash, representing a list item */
+  content: '—';
+  /* Positions the dash absolutely within the list item */
+  position: absolute;
+  /* Aligns it to the left */
+  left: 0;
+  /* Sets the color of the dash to the accent color */
+  color: var(--color-primary-accent);
+}
+
+
+/* --------------------
+   4. MEDIA QUERIES
+   -------------------- */
+
+/*
+  For screens smaller than 600px, the two-column list layout
+  might become too cramped.
+*/
+@media (max-width: 600px) {
+  .skills-list, .tools-list {
+    /* Switches the grid to a single column layout */
+    grid-template-columns: 1fr;
+  }
+}

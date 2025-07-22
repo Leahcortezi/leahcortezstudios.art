@@ -1,0 +1,103 @@
+/*
+  Leah Cortez Studio Art - 404 Page Stylesheet
+  ---
+  This file contains the specific styles for the 404 "Not Found" error page.
+  The goal is a simple, clean, on-brand message.
+*/
+
+/* --------------------
+   1. 404 PAGE CONTAINER
+   -------------------- */
+
+/*
+  The main 'body' is overridden to be a flex container that centers its content
+  both vertically and horizontally. This is perfect for a simple page like this.
+*/
+body.page-404 {
+    /* Ensures the body takes up the full viewport height */
+    height: 100vh;
+    /* Uses flexbox to center the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Removes the flex-direction from the global styles */
+    flex-direction: column;
+}
+
+.not-found-page {
+  /*
+    The main content area will be centered on the page.
+  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*
+    Ensures it takes up the full height of the viewport so the centering works perfectly.
+  */
+  height: 100vh;
+  width: 100%;
+  /*
+    Centers the text within the container.
+  */
+  text-align: center;
+}
+
+.not-found-container h1 {
+  /*
+    A very large font size for the "404" text to make it impactful.
+  */
+  font-size: 10rem;
+  /*
+    Uses the secondary accent color for a dramatic effect.
+  */
+  color: var(--color-secondary-accent);
+  /*
+    Removes the bottom margin to bring the message text closer.
+  */
+  margin-bottom: 0;
+  /*
+    Adjusts the line height to be tight.
+  */
+  line-height: 1;
+}
+
+.not-found-container .message {
+  /*
+    The message "You wandered into the void." uses the accent font.
+  */
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  /*
+    Adds space below the message before the button.
+  */
+  margin-bottom: 2.5rem;
+  /*
+    Adds letter spacing for a more stylized look.
+  */
+  letter-spacing: 2px;
+}
+
+/* --------------------
+   2. HOME BUTTON
+   -------------------- */
+
+.home-button {
+  /*
+    This reuses the .cta-button style defined in home.css, but we define it
+    here again to ensure this page can be standalone if needed.
+  */
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--color-primary-accent);
+  color: var(--color-background);
+  font-family: var(--font-accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--color-primary-accent);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: transparent;
+  color: var(--color-primary-accent);
+}

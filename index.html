@@ -1,24 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- The head contains all the metadata for the page -->
     <meta charset="UTF-8">
+    <!-- This tag ensures the content is encoded correctly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #f5f5f5;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+    <!-- This tag makes the site responsive to different screen sizes -->
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Leah Cortez Studio | Multimedia Artist & Graphic Designer</title>
+    <!-- The title of the page, crucial for SEO and browser tabs -->
+    <meta name="description" content="Leah Cortez is a Chicana graphic designer and multimedia artist creating bold, symbolic work rooted in gothic and conceptual storytelling.">
+    <!-- A brief description of the page content for search engines -->
+    <meta name="keywords" content="Chicana graphic designer, multimedia surreal artist, gothic visual storytelling, Corpus Christi artist, feminine conceptual design">
+    <!-- Keywords for search engines to understand the page's topics -->
+    <meta name="author" content="Leah Cortez">
+    <!-- The author of the page -->
+
+    <!-- Open Graph (Facebook, Pinterest) and Twitter Card Tags -->
+    <meta property="og:title" content="Leah Cortez Studio">
+    <meta property="og:description" content="Chicana graphic designer and multimedia artist creating bold, symbolic work.">
+    <meta property="og:image" content="images/logo/logo2.png">
+    <!-- Note: This path should be absolute for social sharing, e.g., https://leahcortezstudio.art/images/logo/logo2.png -->
+    <meta property="og:url" content="https://leahcortezstudio.art">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Leah Cortez Studio">
+    <meta name="twitter:description" content="Chicana graphic designer and multimedia artist creating bold, symbolic work.">
+    <meta name="twitter:image" content="images/logo/logo2.png">
+    <!-- Note: This path should also be absolute for Twitter cards -->
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    <!-- The 'rel' attribute specifies the relationship, 'href' is the path to the icon -->
+
+    <!-- Stylesheet Links -->
+    <!-- The global stylesheet is linked first -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- The page-specific stylesheet is linked second to override global styles if needed -->
+    <link rel="stylesheet" href="css/home.css">
+
 </head>
 <body>
-    <h1>Hello, World!</h1>
+
+    <!-- The header contains the site logo and main navigation -->
+    <header class="main-header">
+        <nav>
+            <!-- The logo links back to the homepage -->
+            <div class="logo">
+                <a href="index.html">Leah Cortez</a>
+            </div>
+            <!-- The navigation links -->
+            <ul class="nav-links">
+                <li><a href="bio/">Bio</a></li>
+                <li><a href="collections/">Portfolio</a></li>
+                <li><a href="cv/">CV</a></li>
+                <li><a href="contact/">Contact</a></li>
+            </ul>
+            <!-- The hamburger icon for mobile navigation -->
+            <div class="hamburger">
+                <!-- The custom flower icon will be placed here -->
+                <img src="icons/flower.svg" alt="Menu">
+            </div>
+        </nav>
+    </header>
+
+    <!-- The main content of the homepage -->
+    <main>
+
+        <!-- Hero Section: A full-screen introductory section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Multimedia Artist &amp; Graphic Designer</h1>
+                <p class="tagline">Gothic, Conceptual, Dreamy, Editorial, Chicana</p>
+                <!-- A call-to-action button -->
+                <a href="collections/" class="cta-button">View Work</a>
+            </div>
+        </section>
+
+        <!-- Bio Preview Section: A brief introduction to the artist -->
+        <section id="bio-preview" class="bio-preview-section">
+            <div class="container">
+                <h2>About the Artist</h2>
+                <div class="bio-content">
+                    <img src="https://placehold.co/400x500/000000/FFFFFF?text=Leah" alt="A portrait of Leah Cortez" class="bio-image" loading="lazy">
+                    <div class="bio-text">
+                        <p>Leah Cortez is a Chicana graphic designer and multimedia artist creating bold, symbolic work rooted in gothic and conceptual storytelling. Her practice explores themes of identity, femininity, and the surreal.</p>
+                        <a href="bio/" class="text-link">Read Full Bio &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Art Section: A gallery of selected works -->
+        <section id="featured-art" class="featured-art-section">
+            <div class="container">
+                <h2>Featured Work</h2>
+                <div class="gallery-grid">
+                    <!-- Placeholder images for the gallery -->
+                    <div class="gallery-item">
+                        <a href="collections/collection-name/work-name/">
+                            <img src="https://placehold.co/600x800/000000/FFFFFF?text=Artwork+1" alt="Description of featured artwork 1" loading="lazy">
+                            <div class="overlay"><h3>Artwork Title 1</h3></div>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <a href="collections/collection-name/work-name/">
+                            <img src="https://placehold.co/600x800/000000/FFFFFF?text=Artwork+2" alt="Description of featured artwork 2" loading="lazy">
+                            <div class="overlay"><h3>Artwork Title 2</h3></div>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <a href="collections/collection-name/work-name/">
+                            <img src="https://placehold.co/600x800/000000/FFFFFF?text=Artwork+3" alt="Description of featured artwork 3" loading="lazy">
+                            <div class="overlay"><h3>Artwork Title 3</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="view-all-link">
+                    <a href="collections/" class="cta-button">Explore Full Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Preview Section: A simple contact call-to-action -->
+        <section id="contact-preview" class="contact-preview-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Available for commissions and collaborations.</p>
+                <a href="contact/" class="cta-button">Contact Me</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- The footer contains social media links and copyright info -->
+    <footer class="main-footer">
+        <ul class="social-links">
+            <!-- Links to social media profiles -->
+            <li><a href="https://pin.it/P7sLCI6r5" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">Pin</a></li>
+            <li><a href="https://www.behance.net/leahcortez" target="_blank" rel="noopener noreferrer" aria-label="Behance">Be</a></li>
+            <!-- Instagram link is a placeholder for now -->
+            <li><a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">In</a></li>
+        </ul>
+    </footer>
+
+    <!-- The 'defer' attribute ensures the script is executed after the document has been parsed -->
+    <script src="scripts/main.js" defer></script>
+
 </body>
 </html>

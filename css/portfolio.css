@@ -1,0 +1,253 @@
+/*
+  Leah Cortez Studio Art - Portfolio Gallery Stylesheet
+  ---
+  This file contains the specific styles for the full-screen carousel
+  on the main portfolio page (collections/index.html).
+*/
+
+/* --------------------
+   1. MAIN GALLERY STYLES
+   -------------------- */
+
+/*
+  The main element is styled to create the full-screen container for the carousel.
+*/
+.portfolio-gallery {
+  /*
+    Sets the gallery height to fill the viewport, subtracting the nav and footer heights
+    to ensure it fits perfectly in the available space.
+  */
+  height: calc(100vh - var(--nav-height) - var(--footer-height));
+  /*
+    Hides any overflow, which is important for the carousel's sliding mechanism.
+  */
+  overflow: hidden;
+  /*
+    Sets the position to relative so that absolutely positioned child elements
+    (like the controls) are positioned relative to this container.
+  */
+  position: relative;
+}
+
+/* --------------------
+   2. CAROUSEL STYLES
+   -------------------- */
+
+.carousel {
+  /* The carousel itself takes up the full height and width of its parent. */
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-inner {
+  /*
+    The inner container also takes up the full dimensions and uses flexbox
+    to lay out the carousel items (the slides) in a single row.
+  */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /*
+    A transition on the 'transform' property will create the smooth sliding
+    effect when we change the 'translateX' value with JavaScript.
+  */
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  /*
+    Each item in the carousel must not shrink, so it maintains its full width.
+  */
+  flex-shrink: 0;
+  /*
+    Each item takes up the full width and height of the carousel container.
+  */
+  width: 100%;
+  height: 100%;
+  /*
+    Positioned relatively to allow for the caption to be positioned within it.
+  */
+  position: relative;
+  /*
+    Initially, all carousel items are hidden. The 'active' class will make one visible.
+    This prevents a "flash" of all images on page load.
+  */
+  display: none;
+}
+
+/*
+  The 'active' class is added by JavaScript to the currently displayed slide.
+*/
+.carousel-item.active {
+  display: block; /* Makes the active slide visible */
+}
+
+.carousel-item img {
+  /*
+    The image should cover the entire area of the carousel item without being distorted.
+    'object-fit: cover' achieves this by scaling the image to fill the space,
+    cropping it if necessary to maintain aspect ratio.
+  */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /*
+    'object-position: center' ensures the image is centered within its container.
+  */
+  object-position: center;
+}
+
+/* --------------------
+   3. CAROUSEL CAPTION
+   -------------------- */
+
+.carousel-caption {
+  /*
+    Positions the caption at the bottom of the carousel item.
+  */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /*
+    Takes the full width of the item.
+  */
+  width: 100%;
+  /*
+    Adds padding for spacing around the text.
+  */
+  padding: 1.5rem 2rem;
+  /*
+    A semi-transparent gradient background makes the text readable over the image.
+  */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  /*
+    Sets the text color to white.
+  */
+  color: var(--color-text);
+}
+
+.carousel-caption h3 {
+  /*
+    Removes the default margin from the heading.
+  */
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.carousel-caption a {
+    /* The link should inherit the color of the caption text */
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.carousel-caption a:hover {
+    /* On hover, the link color changes to the primary accent color */
+    color: var(--color-primary-accent);
+}
+
+.carousel-caption p {
+  /*
+    Removes the default margin from the paragraph.
+  */
+  margin: 0;
+  font-family: var(--font-accent);
+}
+
+/* --------------------
+   4. CAROUSEL CONTROLS (PREV/NEXT BUTTONS)
+   -------------------- */
+
+.carousel-control {
+  /*
+    Positions the buttons absolutely within the main carousel container.
+  */
+  position: absolute;
+  /*
+    Vertically centers the buttons. 'top: 50%' places the top of the button
+    at the midpoint, and 'transform: translateY(-50%)' shifts it up by half
+    of its own height to achieve perfect centering.
+  */
+  top: 50%;
+  transform: translateY(-50%);
+  /*
+    Sets the background color to be semi-transparent.
+  */
+  background-color: rgba(0, 0, 0, 0.4);
+  /*
+    Removes the default button border.
+  */
+  border: none;
+  /*
+    Sets the text color.
+  */
+  color: var(--color-text);
+  /*
+    Sets the font size for the arrow characters.
+  */
+  font-size: 2rem;
+  /*
+    Adds padding to increase the clickable area.
+  */
+  padding: 0.5rem 1rem;
+  /*
+    Sets the cursor to a pointer to indicate interactivity.
+  */
+  cursor: pointer;
+  /*
+    A high z-index ensures the controls are on top of the images.
+  */
+  z-index: 10;
+  /*
+    A transition for the hover effect.
+  */
+  transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+  /*
+    Makes the background slightly more opaque on hover.
+  */
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/*
+  Specific positioning for the 'previous' and 'next' buttons.
+*/
+.carousel-control.prev {
+  left: 1rem;
+}
+
+.carousel-control.next {
+  right: 1rem;
+}
+
+/* --------------------
+   5. CAROUSEL INDICATORS (DOTS)
+   -------------------- */
+.carousel-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator-dot.active {
+    background-color: var(--color-primary-accent);
+}
