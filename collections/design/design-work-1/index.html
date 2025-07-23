@@ -52,69 +52,53 @@
         </nav>
     </header>
 
-    <main class="work-main">
+    <!-- Main Content -->
+    <main class="work-page">
         <div class="work-container">
-            <button onclick="history.back()" class="back-btn">← Back</button>
-            
-            <div class="work-content">
-                <div class="work-image-section">
-                    <div class="main-image-container">
-                        <img src="../../../images/design/Design1.jpg" alt="Design Work 1" class="main-work-image">
-                    </div>
-                    
-                    <!-- Additional Images Gallery -->
-                    <div class="image-gallery">
-                        <h3>Project Applications</h3>
-                        <div class="gallery-grid">
-                            <img src="images/application1.jpg" alt="Design Work 1 Application 1" class="gallery-image">
-                            <img src="images/application2.jpg" alt="Design Work 1 Application 2" class="gallery-image">
-                            <img src="images/mockup1.jpg" alt="Design Work 1 Mockup" class="gallery-image">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="work-details">
-                    <h1>Design Work 1</h1>
-                    
-                    <div class="work-meta">
-                        <p><strong>Medium:</strong> Digital design, print applications</p>
-                        <p><strong>Project Type:</strong> Visual identity system</p>
-                        <p><strong>Year:</strong> 2024</p>
-                        <p><strong>Category:</strong> Design Work</p>
-                        <p><strong>Client:</strong> Cultural arts organization</p>
-                    </div>
-
-                    <div class="work-description">
-                        <h2>Project Overview</h2>
-                        <p>This comprehensive visual identity system was developed for a cultural arts organization dedicated to preserving and celebrating Chicana heritage. The design approach balances traditional cultural elements with contemporary design principles.</p>
-                        
-                        <p>The identity system encompasses logo design, color palette development, typography selection, and application guidelines across both digital and print mediums. Special attention was given to cultural sensitivity and authentic representation.</p>
-                        
-                        <p>The final system successfully bridges generational perspectives, creating a visual language that resonates with both traditional community members and younger audiences seeking cultural connection.</p>
-                    </div>
-
-                    <div class="work-process">
-                        <h2>Design Process</h2>
-                        <p>The project began with extensive community research and stakeholder interviews to understand cultural values and visual preferences. Mood boards were developed incorporating traditional motifs, contemporary design trends, and symbolic elements.</p>
-                        
-                        <p>Multiple concept directions were explored, with iterative feedback sessions ensuring cultural authenticity. The final design integrates botanical elements inspired by traditional artwork with clean, modern typography.</p>
-                        
-                        <p>Applications were tested across various mediums to ensure consistency and impact, from large-scale banners to small digital icons.</p>
-                    </div>
-
-                    <div class="design-specs">
-                        <h2>Technical Specifications</h2>
-                        <p><strong>Color Palette:</strong> Deep burgundy, warm terracotta, sage green, cream</p>
-                        <p><strong>Typography:</strong> Custom modified serif for headings, clean sans-serif for body text</p>
-                        <p><strong>Applications:</strong> Business cards, letterhead, website, social media, event materials</p>
-                        <p><strong>File Formats:</strong> Vector (AI, EPS), raster (PNG, JPG), web-optimized</p>
-                    </div>
+            <!-- Left Column: Artwork Image -->
+            <div class="work-image-column">
+                <img src="../../../images/design/Design1.jpg" alt="Design Work 1 - A comprehensive visual identity system exploring cultural heritage" loading="lazy">
+                <!-- Optional: Gallery for more images -->
+                <div class="image-gallery">
+                    <img src="../../../images/design/Design1.jpg" alt="Design Work 1 - Full view" loading="lazy">
+                    <img src="images/application1.jpg" alt="Design Work 1 - Application" loading="lazy">
+                    <img src="images/mockup1.jpg" alt="Design Work 1 - Mockup" loading="lazy">
                 </div>
             </div>
 
-            <!-- Navigation to Other Works -->
-            <div class="work-navigation">
-                <a href="../design-work-2/index.html" class="nav-work next">Next Work →</a>
+            <!-- Right Column: Artwork Details -->
+            <div class="work-details-column">
+                <h1>Design Work 1</h1>
+                <div class="work-meta">
+                    <span class="meta-item"><strong>Medium:</strong> Digital design, print applications</span>
+                    <span class="meta-item"><strong>Year:</strong> 2024</span>
+                    <span class="meta-item"><strong>Project Type:</strong> Visual identity system</span>
+                    <span class="meta-item"><strong>Client:</strong> Cultural arts organization</span>
+                </div>
+                <div class="work-description">
+                    <h2>Project Overview</h2>
+                    <p>This comprehensive visual identity system was developed for a cultural arts organization dedicated to preserving and celebrating Chicana heritage. The design approach balances traditional cultural elements with contemporary design principles.</p>
+                    
+                    <p>The identity system encompasses logo design, color palette development, typography selection, and application guidelines across both digital and print mediums. Special attention was given to cultural sensitivity and authentic representation.</p>
+                    
+                    <p>The final system successfully bridges generational perspectives, creating a visual language that resonates with both traditional community members and younger audiences seeking cultural connection.</p>
+
+                    <h2>Design Process</h2>
+                    <p>The project began with extensive community research and stakeholder interviews to understand cultural values and visual preferences. Mood boards were developed incorporating traditional motifs, contemporary design trends, and symbolic elements.</p>
+                    
+                    <p>Multiple concept directions were explored, with iterative feedback sessions ensuring cultural authenticity. The final design integrates botanical elements inspired by traditional artwork with clean, modern typography.</p>
+
+                    <h2>Technical Specifications</h2>
+                    <p><strong>Color Palette:</strong> Deep burgundy, warm terracotta, sage green, cream</p>
+                    <p><strong>Typography:</strong> Custom modified serif for headings, clean sans-serif for body text</p>
+                    <p><strong>Applications:</strong> Business cards, letterhead, website, social media, event materials</p>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="work-navigation">
+                    <button onclick="history.back()" class="back-btn">← Back to Portfolio</button>
+                    <a href="../Letter-as-Form/index.html" class="next-btn">Next Work →</a>
+                </div>
             </div>
         </div>
     </main>

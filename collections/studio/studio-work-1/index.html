@@ -52,58 +52,48 @@
         </nav>
     </header>
 
-    <main class="work-main">
+    <!-- Main Content -->
+    <main class="work-page">
         <div class="work-container">
-            <button onclick="history.back()" class="back-btn">← Back</button>
-            
-            <div class="work-content">
-                <div class="work-image-section">
-                    <div class="main-image-container">
-                        <img src="../../../images/studio/Studio1.jpg" alt="Studio Work 1" class="main-work-image">
-                    </div>
-                    
-                    <!-- Additional Images Gallery -->
-                    <div class="image-gallery">
-                        <h3>Additional Views</h3>
-                        <div class="gallery-grid">
-                            <img src="images/detail1.jpg" alt="Studio Work 1 Detail 1" class="gallery-image">
-                            <img src="images/detail2.jpg" alt="Studio Work 1 Detail 2" class="gallery-image">
-                            <img src="images/process1.jpg" alt="Studio Work 1 Process" class="gallery-image">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="work-details">
-                    <h1>Studio Work 1</h1>
-                    
-                    <div class="work-meta">
-                        <p><strong>Medium:</strong> Mixed media on canvas</p>
-                        <p><strong>Dimensions:</strong> 24" × 36"</p>
-                        <p><strong>Year:</strong> 2024</p>
-                        <p><strong>Category:</strong> Studio Work</p>
-                    </div>
-
-                    <div class="work-description">
-                        <h2>Artist Statement</h2>
-                        <p>This piece explores the intersection of memory and identity through layered visual narratives. Using a combination of traditional painting techniques and collage elements, I create a dialogue between past and present experiences.</p>
-                        
-                        <p>The composition draws from personal archives and found imagery, creating a palimpsest of meaning that invites viewers to consider their own relationship with memory and transformation. The work challenges conventional boundaries between representation and abstraction.</p>
-                        
-                        <p>Through careful attention to color relationships and textural contrasts, the piece evolves into a meditation on the complexity of human experience and the fluid nature of identity in contemporary society.</p>
-                    </div>
-
-                    <div class="work-process">
-                        <h2>Process</h2>
-                        <p>The work began with a series of gestural marks in charcoal, establishing the underlying energy and movement. Layers of acrylic paint were then applied, with careful attention to color temperature and opacity.</p>
-                        
-                        <p>Collage elements were introduced midway through the process, incorporating fragments of personal photographs and text. The final layers involved selective removal and addition of materials, creating areas of transparency and depth.</p>
-                    </div>
+            <!-- Left Column: Artwork Image -->
+            <div class="work-image-column">
+                <img src="../../../images/studio/Studio1.jpg" alt="Studio Work 1 - A mixed media piece exploring themes of identity and transformation" loading="lazy">
+                <!-- Optional: Gallery for more images -->
+                <div class="image-gallery">
+                    <img src="../../../images/studio/Studio1.jpg" alt="Studio Work 1 - Full view" loading="lazy">
+                    <img src="images/detail1.jpg" alt="Studio Work 1 - Detail view" loading="lazy">
+                    <img src="images/process1.jpg" alt="Studio Work 1 - Artistic process" loading="lazy">
                 </div>
             </div>
 
-            <!-- Navigation to Other Works -->
-            <div class="work-navigation">
-                <a href="../studio-work-2/index.html" class="nav-work next">Next Work →</a>
+            <!-- Right Column: Artwork Details -->
+            <div class="work-details-column">
+                <h1>Studio Work 1</h1>
+                <div class="work-meta">
+                    <span class="meta-item"><strong>Medium:</strong> Mixed media on canvas</span>
+                    <span class="meta-item"><strong>Year:</strong> 2024</span>
+                    <span class="meta-item"><strong>Dimensions:</strong> 24" × 36"</span>
+                    <span class="meta-item"><strong>Category:</strong> Studio Work</span>
+                </div>
+                <div class="work-description">
+                    <h2>Artist Statement</h2>
+                    <p>This piece explores the intersection of memory and identity through layered visual narratives. Using a combination of traditional painting techniques and collage elements, I create a dialogue between past and present experiences.</p>
+                    
+                    <p>The composition draws from personal archives and found imagery, creating a palimpsest of meaning that invites viewers to consider their own relationship with memory and transformation. The work challenges conventional boundaries between representation and abstraction.</p>
+                    
+                    <p>Through careful attention to color relationships and textural contrasts, the piece evolves into a meditation on the complexity of human experience and the fluid nature of identity in contemporary society.</p>
+
+                    <h2>Process</h2>
+                    <p>The work began with a series of gestural marks in charcoal, establishing the underlying energy and movement. Layers of acrylic paint were then applied, with careful attention to color temperature and opacity.</p>
+                    
+                    <p>Collage elements were introduced midway through the process, incorporating fragments of personal photographs and text. The final layers involved selective removal and addition of materials, creating areas of transparency and depth.</p>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="work-navigation">
+                    <button onclick="history.back()" class="back-btn">← Back to Portfolio</button>
+                    <a href="../studio-work-2/index.html" class="next-btn">Next Work →</a>
+                </div>
             </div>
         </div>
     </main>

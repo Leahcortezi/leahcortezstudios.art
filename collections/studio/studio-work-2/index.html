@@ -52,59 +52,49 @@
         </nav>
     </header>
 
-    <main class="work-main">
+    <!-- Main Content -->
+    <main class="work-page">
         <div class="work-container">
-            <button onclick="history.back()" class="back-btn">← Back</button>
-            
-            <div class="work-content">
-                <div class="work-image-section">
-                    <div class="main-image-container">
-                        <img src="../../../images/studio/studio2.jpg" alt="Studio Work 2" class="main-work-image">
-                    </div>
-                    
-                    <!-- Additional Images Gallery -->
-                    <div class="image-gallery">
-                        <h3>Additional Views</h3>
-                        <div class="gallery-grid">
-                            <img src="images/detail1.jpg" alt="Studio Work 2 Detail 1" class="gallery-image">
-                            <img src="images/detail2.jpg" alt="Studio Work 2 Detail 2" class="gallery-image">
-                            <img src="images/process1.jpg" alt="Studio Work 2 Process" class="gallery-image">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="work-details">
-                    <h1>Studio Work 2</h1>
-                    
-                    <div class="work-meta">
-                        <p><strong>Medium:</strong> Acrylic and charcoal on canvas</p>
-                        <p><strong>Dimensions:</strong> 30" × 40"</p>
-                        <p><strong>Year:</strong> 2024</p>
-                        <p><strong>Category:</strong> Studio Work</p>
-                    </div>
-
-                    <div class="work-description">
-                        <h2>Artist Statement</h2>
-                        <p>This vertical composition explores the relationship between urban environments and emotional landscapes. Through gestural mark-making and atmospheric color fields, I investigate how physical spaces influence our internal experiences.</p>
-                        
-                        <p>The work draws inspiration from early morning walks through the city, capturing the interplay of light and shadow, movement and stillness. Layers of transparent and opaque paint create depth that mirrors the complexity of urban experience.</p>
-                        
-                        <p>By abstracting architectural forms and natural elements, the piece invites contemplation on the boundary between constructed and organic environments, questioning how we navigate both external and internal geographies.</p>
-                    </div>
-
-                    <div class="work-process">
-                        <h2>Process</h2>
-                        <p>The composition began with loose charcoal drawings, establishing vertical rhythms that echo urban architecture. Multiple thin glazes of acrylic paint were built up gradually, allowing each layer to inform the next.</p>
-                        
-                        <p>The work evolved through a process of addition and subtraction, with areas scraped back to reveal underlying layers. This archaeological approach to painting reflects the layered history of urban spaces.</p>
-                    </div>
+            <!-- Left Column: Artwork Image -->
+            <div class="work-image-column">
+                <img src="../../../images/studio/studio2.jpg" alt="Studio Work 2 - An exploration of urban landscapes and emotional geography" loading="lazy">
+                <!-- Optional: Gallery for more images -->
+                <div class="image-gallery">
+                    <img src="../../../images/studio/studio2.jpg" alt="Studio Work 2 - Full view" loading="lazy">
+                    <img src="images/detail1.jpg" alt="Studio Work 2 - Detail view" loading="lazy">
+                    <img src="images/process1.jpg" alt="Studio Work 2 - Artistic process" loading="lazy">
                 </div>
             </div>
 
-            <!-- Navigation to Other Works -->
-            <div class="work-navigation">
-                <a href="../studio-work-1/index.html" class="nav-work prev">← Previous Work</a>
-                <a href="../studio-work-3/index.html" class="nav-work next">Next Work →</a>
+            <!-- Right Column: Artwork Details -->
+            <div class="work-details-column">
+                <h1>Studio Work 2</h1>
+                <div class="work-meta">
+                    <span class="meta-item"><strong>Medium:</strong> Acrylic and charcoal on canvas</span>
+                    <span class="meta-item"><strong>Year:</strong> 2024</span>
+                    <span class="meta-item"><strong>Dimensions:</strong> 30" × 40"</span>
+                    <span class="meta-item"><strong>Category:</strong> Studio Work</span>
+                </div>
+                <div class="work-description">
+                    <h2>Artist Statement</h2>
+                    <p>This vertical composition explores the relationship between urban environments and emotional landscapes. Through gestural mark-making and atmospheric color fields, I investigate how physical spaces influence our internal experiences.</p>
+                    
+                    <p>The work draws inspiration from early morning walks through the city, capturing the interplay of light and shadow, movement and stillness. Layers of transparent and opaque paint create depth that mirrors the complexity of urban experience.</p>
+                    
+                    <p>By abstracting architectural forms and natural elements, the piece invites contemplation on the boundary between constructed and organic environments, questioning how we navigate both external and internal geographies.</p>
+
+                    <h2>Process</h2>
+                    <p>The composition began with loose charcoal drawings, establishing vertical rhythms that echo urban architecture. Multiple thin glazes of acrylic paint were built up gradually, allowing each layer to inform the next.</p>
+                    
+                    <p>The work evolved through a process of addition and subtraction, with areas scraped back to reveal underlying layers. This archaeological approach to painting reflects the layered history of urban spaces.</p>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="work-navigation">
+                    <a href="../studio-work-1/index.html" class="prev-btn">← Previous Work</a>
+                    <button onclick="history.back()" class="back-btn">Back to Portfolio</button>
+                    <a href="../studio-work-3/index.html" class="next-btn">Next Work →</a>
+                </div>
             </div>
         </div>
     </main>

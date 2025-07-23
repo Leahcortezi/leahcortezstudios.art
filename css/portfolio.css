@@ -16,7 +16,7 @@
 }
 
 .portfolio-hero h1 {
-  font-family: var(--accent-font);
+  font-family: "Pirata One", sans-serif;
   font-size: 3.5rem;
   color: var(--primary-color);
   margin: 0;
@@ -165,14 +165,13 @@
 }
 
 /* --------------------
-   4. LACE WRAPPER & BORDERS
+   4. IMAGE WRAPPER & STYLING
    -------------------- */
 
 .lace-wrapper {
   position: relative;
   overflow: hidden;
   margin-bottom: 0.5rem;
-  padding: 15px; /* Add padding to create space inside the border */
   box-sizing: border-box;
 }
 
@@ -182,39 +181,12 @@
   display: block;
   transition: transform 0.3s ease;
   object-fit: cover;
-  border-radius: 8px; /* Slight rounding to soften edges */
+  border-radius: 12px; /* Rounded corners for clean look */
   position: relative;
-  z-index: 1; /* Ensure image is below the border */
-}
-
-/* Default positioning for images without specific aspect ratio classes */
-.masonry-item:not(.square):not(.vertical):not(.horizontal) .project-image {
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  position: absolute;
-  top: 15px;
-  left: 15px;
 }
 
 .masonry-item:hover .project-image {
-  transform: scale(1.02); /* Reduced scale to prevent overflow */
-}
-
-.lace-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-  z-index: 2; /* Ensure border is above the image */
-}
-
-.masonry-item:hover .lace-border {
-  opacity: 1;
+  transform: scale(1.05); /* Slightly increased hover effect */
 }
 
 /* --------------------
@@ -227,26 +199,19 @@
 }
 
 .masonry-item.square .project-image {
-  width: calc(100% - 30px); /* Account for padding */
-  height: calc(100% - 30px); /* Account for padding */
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 /* Vertical 3:4 images */
 .masonry-item.vertical .lace-wrapper {
   aspect-ratio: 3/4;
-  padding: 20px 15px; /* Balanced vertical padding for top/bottom borders */
 }
 
 .masonry-item.vertical .project-image {
-  width: calc(100% - 30px); /* Account for horizontal padding */
-  height: calc(100% - 40px); /* Account for vertical padding */
-  position: absolute;
-  top: 20px; /* Balanced top offset */
-  left: 15px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -256,11 +221,8 @@
 }
 
 .masonry-item.horizontal .project-image {
-  width: calc(100% - 30px); /* Account for padding */
-  height: calc(100% - 30px); /* Account for padding */
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -328,35 +290,8 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Adjust border padding for mobile */
-  .lace-wrapper {
-    padding: 12px;
-  }
-
-  /* Mobile adjustments for vertical images */
-  .masonry-item.vertical .lace-wrapper {
-    padding: 20px 12px; /* Balanced vertical padding for mobile */
-  }
-
-  .masonry-item.square .project-image,
-  .masonry-item.horizontal .project-image {
-    width: calc(100% - 24px);
-    height: calc(100% - 24px);
-    top: 12px;
-    left: 12px;
-  }
-
-  .masonry-item.vertical .project-image {
-    width: calc(100% - 24px);
-    height: calc(100% - 40px); /* Account for balanced vertical padding */
-    top: 20px; /* Balanced top offset for mobile */
-    left: 12px;
-  }
-
-  .masonry-item:not(.square):not(.vertical):not(.horizontal) .project-image {
-    width: calc(100% - 24px);
-    height: calc(100% - 24px);
-    top: 12px;
-    left: 12px;
+  /* Maintain image styling on mobile */
+  .project-image {
+    border-radius: 10px; /* Slightly smaller radius for mobile */
   }
 }
