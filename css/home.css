@@ -62,7 +62,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 4rem;
+  padding-top: 5px;
   padding-bottom: 6rem;
   min-height: 100vh;
   text-align: center;
@@ -74,18 +74,35 @@
   width: 400px;
   max-width: 95%;
   margin-bottom: 2.5rem;
+  margin-top: 20px;
+  line-height: 1.4;
   transition: transform 0.4s ease-in-out;
 }
 
 .lace-logo:hover {
   transform: scale(1.08);
 }
+/* Start hidden and down */
+.animate-logo {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* Keyframes for fade in + up */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .hero-title {
   font-family: 'Pirata One', cursive;
   font-size: 3rem;
-  margin-bottom: 0.3rem; /* Less space below title */
-  line-height: 1.2;
+  margin-bottom: 20px; /* Less space below title */
+  margin-top: 10px;
+  line-height: 1.4;
   text-shadow: 0 0 2px #fff;
 }
 
@@ -158,6 +175,36 @@
   flex: 1;
 }
 
+/* Info styles for bio section */
+.bio-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 3rem;
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.bio-poetic {
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+  color: #e8e8e8;
+}
+
+.bio-btn {
+  margin-top: 0;
+}
+
+.about-heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-description {
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
 .text-link {
     /* Sets the font to the accent font */
     font-family: var(--font-accent);
@@ -168,7 +215,15 @@
     /* Displays as a block to take its own line */
     display: inline-block;
 }
-
+@media screen and (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-img {
+    margin-bottom: 20px;
+  }
+}
 /* --------------------
    4. FEATURED ART SECTION
    -------------------- */
@@ -191,13 +246,17 @@
 
 .gallery-grid {
   /*
-    Uses CSS Grid for a flexible and responsive gallery layout.
+    Uses flexbox for horizontal alignment of featured work.
   */
-  display: grid;
-  /* Creates three columns of equal width */
-  grid-template-columns: repeat(3, 1fr);
-  /* Sets the gap between grid items */
-  gap: 1.5rem;
+  display: flex;
+  /* Aligns items horizontally */
+  justify-content: center;
+  /* Aligns items vertically in the center */
+  align-items: flex-start;
+  /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
+  /* Sets the gap between items */
+  gap: 2rem;
 }
 
 .gallery-item {
@@ -205,6 +264,10 @@
   position: relative;
   /* Hides any part of the overlay that might overflow */
   overflow: hidden;
+  /* Sets a consistent width for horizontal alignment */
+  width: 300px;
+  /* Prevents items from shrinking */
+  flex-shrink: 0;
 }
 
 .gallery-item img {
@@ -258,6 +321,75 @@
     margin-top: 3rem;
 }
 
+/* --- Added styles for featured cards --- */
+.featured-card {
+  width: 250px;
+  flex-shrink: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.lace-wrapper {
+  position: relative;
+  width: 250px;
+  height: 330px;
+  margin: 0 auto;
+}
+
+.lace-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.project-image {
+  position: absolute;
+  top: 25px;     /* Adjust based on padding of your border PNG */
+  left: 25px;
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+  z-index: 1;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.featured-artwork-wrapper {
+  display: flex;
+  justify-content: center; /* centers the row horizontally */
+  align-items: flex-start;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  gap: 30px; /* spacing between cards */
+  margin-top: 30px;
+}
+
+.artwork {
+  text-align: center;
+}
+
+.project-title {
+  color: white;
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+.featured-card:hover img {
+  transform: scale(1.05);
+}
+
 /* --------------------
    5. CONTACT PREVIEW SECTION
    -------------------- */
@@ -290,8 +422,13 @@
 /* For tablets and smaller devices */
 @media (max-width: 992px) {
     .gallery-grid {
-      /* Switches to a two-column layout on medium-sized screens */
-      grid-template-columns: repeat(2, 1fr);
+      /* Maintains horizontal layout but allows more wrapping */
+      gap: 1.5rem;
+    }
+    
+    .gallery-item {
+      /* Slightly smaller width on tablets */
+      width: 250px;
     }
 }
 
@@ -316,7 +453,13 @@
     }
 
     .gallery-grid {
-      /* Switches to a single-column layout on small screens */
-      grid-template-columns: 1fr;
+      /* Maintains horizontal layout but centers single column on mobile */
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .gallery-item {
+      /* Smaller width on mobile devices */
+      width: 280px;
     }
 }
