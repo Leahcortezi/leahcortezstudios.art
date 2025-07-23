@@ -6,6 +6,36 @@
 */
 
 /* --------------------
+   0. PORTFOLIO HERO
+   -------------------- */
+
+.portfolio-hero {
+  text-align: center;
+  padding: 3rem 2rem 1rem;
+  background: linear-gradient(135deg, rgba(126, 28, 46, 0.05) 0%, rgba(126, 28, 46, 0.02) 100%);
+}
+
+.portfolio-hero h1 {
+  font-family: var(--accent-font);
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero {
+    padding: 2rem 1rem 1rem;
+  }
+  
+  .portfolio-hero h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* --------------------
    1. FILTER BUTTONS
    -------------------- */
 
@@ -27,12 +57,51 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.filter-buttons button:hover,
-.filter-buttons button.active {
+.filter-buttons button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
   background: var(--primary-color);
-  color: var(--bg-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.filter-buttons button:hover {
+  color: #7e1c2e;
+  border-color: #7e1c2e;
+  transform: translateY(-2px);
+}
+
+.filter-buttons button:hover::after {
+  width: 80%;
+  background: #7e1c2e;
+}
+
+.filter-buttons button.active {
+  color: #7e1c2e;
+  border-color: #7e1c2e;
+  transform: translateY(-1px);
+}
+
+.filter-buttons button.active::after {
+  width: 80%;
+  background: #7e1c2e;
+}
+
+.filter-buttons button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.filter-buttons button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* --------------------
@@ -103,17 +172,32 @@
   position: relative;
   overflow: hidden;
   margin-bottom: 0.5rem;
+  padding: 15px; /* Add padding to create space inside the border */
+  box-sizing: border-box;
 }
 
 .project-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   transition: transform 0.3s ease;
+  object-fit: cover;
+  border-radius: 8px; /* Slight rounding to soften edges */
+  position: relative;
+  z-index: 1; /* Ensure image is below the border */
+}
+
+/* Default positioning for images without specific aspect ratio classes */
+.masonry-item:not(.square):not(.vertical):not(.horizontal) .project-image {
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
 
 .masonry-item:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.02); /* Reduced scale to prevent overflow */
 }
 
 .lace-border {
@@ -124,8 +208,9 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
+  z-index: 2; /* Ensure border is above the image */
 }
 
 .masonry-item:hover .lace-border {
@@ -142,19 +227,26 @@
 }
 
 .masonry-item.square .project-image {
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 30px); /* Account for padding */
+  height: calc(100% - 30px); /* Account for padding */
+  position: absolute;
+  top: 15px;
+  left: 15px;
   object-fit: cover;
 }
 
 /* Vertical 3:4 images */
 .masonry-item.vertical .lace-wrapper {
   aspect-ratio: 3/4;
+  padding: 20px 15px; /* Balanced vertical padding for top/bottom borders */
 }
 
 .masonry-item.vertical .project-image {
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 30px); /* Account for horizontal padding */
+  height: calc(100% - 40px); /* Account for vertical padding */
+  position: absolute;
+  top: 20px; /* Balanced top offset */
+  left: 15px;
   object-fit: cover;
 }
 
@@ -164,8 +256,11 @@
 }
 
 .masonry-item.horizontal .project-image {
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 30px); /* Account for padding */
+  height: calc(100% - 30px); /* Account for padding */
+  position: absolute;
+  top: 15px;
+  left: 15px;
   object-fit: cover;
 }
 
@@ -231,5 +326,37 @@
   
   .masonry-item {
     margin-bottom: 1.5rem;
+  }
+
+  /* Adjust border padding for mobile */
+  .lace-wrapper {
+    padding: 12px;
+  }
+
+  /* Mobile adjustments for vertical images */
+  .masonry-item.vertical .lace-wrapper {
+    padding: 20px 12px; /* Balanced vertical padding for mobile */
+  }
+
+  .masonry-item.square .project-image,
+  .masonry-item.horizontal .project-image {
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    top: 12px;
+    left: 12px;
+  }
+
+  .masonry-item.vertical .project-image {
+    width: calc(100% - 24px);
+    height: calc(100% - 40px); /* Account for balanced vertical padding */
+    top: 20px; /* Balanced top offset for mobile */
+    left: 12px;
+  }
+
+  .masonry-item:not(.square):not(.vertical):not(.horizontal) .project-image {
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    top: 12px;
+    left: 12px;
   }
 }
