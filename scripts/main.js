@@ -198,6 +198,30 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+
+  /* --------------------
+     6. MAGNIFYING GLASS EFFECT FOR WORK PAGES
+     -------------------- */
+
+  const imageZoomContainers = document.querySelectorAll('.image-zoom-container');
+  
+  imageZoomContainers.forEach(container => {
+    const img = container.querySelector('img');
+    
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      img.style.setProperty('--zoom-x', x + '%');
+      img.style.setProperty('--zoom-y', y + '%');
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      img.style.setProperty('--zoom-x', '50%');
+      img.style.setProperty('--zoom-y', '50%');
+    });
+  });
 }
 
 // Throttle function for scroll events
