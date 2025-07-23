@@ -228,6 +228,22 @@
    4. FEATURED ART SECTION
    -------------------- */
 
+.featured {
+  /* Adds vertical padding */
+  padding: 4rem 0;
+  /* A slightly different background to separate it from other sections */
+  background-color: #080808;
+}
+
+.featured-title {
+    /* Centers the heading */
+    text-align: center;
+    /* Sets the font size */
+    font-size: 2.5rem;
+    /* Adds space below the heading */
+    margin-bottom: 3rem;
+}
+
 .featured-art-section {
   /* Adds vertical padding */
   padding: 4rem 0;
@@ -329,6 +345,16 @@
   margin-bottom: 20px;
 }
 
+.featured-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.featured-card a:hover {
+  text-decoration: none;
+}
+
 .lace-wrapper {
   position: relative;
   width: 250px;
@@ -384,6 +410,14 @@
   margin-top: 10px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 14px;
+}
+
+.caption {
+  color: white;
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  text-align: center;
 }
 
 .featured-card:hover img {
