@@ -204,11 +204,9 @@ function debounce(func, wait) {
      -------------------- */
 
   const imageZoomContainers = document.querySelectorAll('.image-zoom-container');
-  console.log('Found zoom containers:', imageZoomContainers.length);
   
   imageZoomContainers.forEach((container, index) => {
     const img = container.querySelector('img');
-    console.log(`Container ${index}:`, container, 'Image:', img);
     
     if (img) {
       // Create magnifying glass element
@@ -218,7 +216,6 @@ function debounce(func, wait) {
       
       const setupMagnifier = () => {
         magnifier.style.backgroundImage = `url("${img.src}")`;
-        console.log('Magnifier setup with image:', img.src);
       };
       
       // Setup when image loads
@@ -227,10 +224,6 @@ function debounce(func, wait) {
       } else {
         img.addEventListener('load', setupMagnifier);
       }
-      
-      container.addEventListener('mouseenter', (e) => {
-        console.log('Mouse entered container', index);
-      });
       
       container.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
@@ -245,17 +238,7 @@ function debounce(func, wait) {
         const bgX = (x / rect.width) * 100;
         const bgY = (y / rect.height) * 100;
         magnifier.style.backgroundPosition = `${bgX}% ${bgY}%`;
-        
-        console.log('Magnifier at:', x, y, 'BG pos:', bgX + '%', bgY + '%');
       });
-      
-      container.addEventListener('mouseleave', () => {
-        console.log('Mouse left container', index);
-      });
-      
-      console.log('Magnifying glass created for container', index);
-    } else {
-      console.log('No image found in container', index);
     }
   });
 }
