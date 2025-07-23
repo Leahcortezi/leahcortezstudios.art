@@ -2,8 +2,8 @@
   Leah Cortez Studio Art - Main JavaScript File
   ---
   This file contains all the global JavaScript functionality for the website,
-  such as the mobile navigation (hamburger menu), portfolio masonry layout,
-  and other interactive elements.
+  such as the mobile navigation (hamburger menu) and potentially other
+  interactive elements like carousels or form validation.
 */
 
 // The 'DOMContentLoaded' event fires when the initial HTML document has been
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize masonry layout
     function initMasonry() {
       // The CSS handles the masonry layout using CSS columns
-      // Add staggered animation delays for a nice entrance effect
+      // This function can be extended for more complex masonry needs
       masonryItems.forEach((item, index) => {
         item.style.animationDelay = `${index * 0.1}s`;
       });
@@ -115,101 +115,44 @@ document.addEventListener('DOMContentLoaded', () => {
     initMasonry();
   }
 
-  /* --------------------
-     4. SMOOTH SCROLLING FOR NAVIGATION LINKS
-     -------------------- */
-
-  // Add smooth scrolling to anchor links
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  
-  anchorLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      const targetId = link.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-
-  /* --------------------
-     5. IMAGE LAZY LOADING ENHANCEMENT
-     -------------------- */
-
-  // Add additional loading states for images
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  
-  lazyImages.forEach(img => {
-    img.addEventListener('load', () => {
-      img.classList.add('loaded');
-    });
-    
-    img.addEventListener('error', () => {
-      img.classList.add('error');
-      // Optionally replace with placeholder image
-      console.warn(`Failed to load image: ${img.src}`);
-    });
-  });
-
-  /* --------------------
-     6. KEYBOARD NAVIGATION SUPPORT
-     -------------------- */
-
-  // Add keyboard support for filter buttons
-  filterButtons.forEach(button => {
-    button.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        button.click();
-      }
-    });
-  });
-
-  // Add keyboard support for hamburger menu
-  if (hamburger) {
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        hamburger.click();
-      }
-    });
-  }
-
-});
-
 /* --------------------
-   7. UTILITY FUNCTIONS
+   4. GALLERY FILTERING (Legacy - kept for compatibility)
    -------------------- */
 
-// Debounce function for performance optimization
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
+// TODO: Add JavaScript for gallery filtering here if needed.
 
-// Throttle function for scroll events
-function throttle(func, limit) {
-  let inThrottle;
-  return function() {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  }
-}
+  // --- Event Listeners ---
+  // Add a click event listener to the 'next' button.
+  nextButton.addEventListener('click', () => {
+      // Calculate the next index. If we're at the last slide, loop back to the first (index 0).
+      const newIndex = (currentIndex + 1) % totalItems;
+      updateCarousel(newIndex);
+  });
+
+  // Add a click event listener to the 'previous' button.
+  prevButton.addEventListener('click', () => {
+      // Calculate the previous index. If we're at the first slide, loop to the last one.
+      const newIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel(newIndex);
+  });
+
+  // Add a click event listener to the indicators container.
+  // This uses event delegation to handle clicks on any dot.
+  indicatorsContainer.addEventListener('click', (e) => {
+      // Check if the clicked element is actually a dot.
+      if (e.target.classList.contains('indicator-dot')) {
+          // Get the index from the dot's data attribute.
+          const newIndex = parseInt(e.target.dataset.index, 10);
+          updateCarousel(newIndex);
+      }
+  });
+
+  // --- Initialization ---
+  // As soon as the script runs, create the indicators and set the first slide.
+  createIndicators();
+  // We need to manually re-set the first item to active after the indicators are created.
+  // This is a bit of a hack to make sure the transform style is applied correctly.
+  carouselItems.forEach(item => item.classList.remove('active'));
+updateCarousel(0)
+
+});

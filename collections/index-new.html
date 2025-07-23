@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Portfolio | Leah Cortez Studio</title>
+    <meta name="description" content="The main portfolio gallery of Leah Cortez, showcasing her multimedia and graphic design work.">
+    <meta name="keywords" content="art portfolio, graphic design gallery, multimedia artist, conceptual art, surrealism, Chicana artist">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Portfolio | Leah Cortez Studio">
+    <meta property="og:description" content="The main portfolio gallery of Leah Cortez.">
+    <meta property="og:image" content="../images/logo/logo2.png">
+    <meta property="og:url" content="https://leahcortezstudio.art/collections/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio | Leah Cortez Studio">
+    <meta name="twitter:description" content="The main portfolio gallery of Leah Cortez.">
+    <meta name="twitter:image" content="../images/logo/logo2.png">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/portfolio.css">
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo/logo2.png" alt="Leah Cortez Logo" class="main-logo" />
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="../cv/index.html">CV</a></li>
+                <li><a href="../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Menu">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button data-filter="all" class="active">All Work</button>
+        <button data-filter="studio">Studio Work</button>
+        <button data-filter="design">Design Work</button>
+        <button data-filter="personal">Personal Work</button>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-container">
+        <div class="masonry-item studio" data-category="studio">
+            <a href="../collections/personal/abuelas-altar/index.html">
+                <div class="lace-wrapper">
+                    <img src="../collections/personal/abuelas-altar/images/Studio10.jpg" alt="Abuela's Altar artwork" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Abuela's Altar</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item design" data-category="design">
+            <a href="../collections/personal/heaven-on-fire/index.html">
+                <div class="lace-wrapper">
+                    <img src="../collections/personal/heaven-on-fire/images/personal7.jpg" alt="Heaven on Fire" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Heaven on Fire</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item personal" data-category="personal">
+            <a href="../collections/personal/inheritance/index.html">
+                <div class="lace-wrapper">
+                    <img src="../collections/personal/inheritance/images/Personal1.jpg" alt="Inheritance" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Inheritance</p>
+            </a>
+        </div>
+        
+        <!-- Placeholder items with different aspect ratios -->
+        <div class="masonry-item studio square" data-category="studio">
+            <a href="#">
+                <div class="lace-wrapper">
+                    <img src="../images/placeholder-square.jpg" alt="Studio Work" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Studio Piece 1</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item design vertical" data-category="design">
+            <a href="#">
+                <div class="lace-wrapper">
+                    <img src="../images/placeholder-vertical.jpg" alt="Design Work" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Design Project 1</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item personal square" data-category="personal">
+            <a href="#">
+                <div class="lace-wrapper">
+                    <img src="../images/placeholder-square.jpg" alt="Personal Work" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Personal Piece 2</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item studio vertical" data-category="studio">
+            <a href="#">
+                <div class="lace-wrapper">
+                    <img src="../images/placeholder-vertical.jpg" alt="Studio Work" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Studio Piece 2</p>
+            </a>
+        </div>
+        
+        <div class="masonry-item design horizontal" data-category="design">
+            <a href="#">
+                <div class="lace-wrapper">
+                    <img src="../images/placeholder-horizontal.jpg" alt="Design Work" class="project-image">
+                    <img src="../icons/border1.png" class="lace-border" alt="lace border">
+                </div>
+                <p class="caption">Design Project 2</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <ul class="social-links">
+            <li>
+                <a href="https://pin.it/P7sLCI6r5" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                    <img src="../icons/pinterest.svg" alt="Pinterest" width="24" height="24">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.behance.net/leahcortez" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+                    <img src="../icons/behance.svg" alt="Behance" width="24" height="24">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../icons/instagram.svg" alt="Instagram" width="24" height="24">
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+
+</body>
+</html>
