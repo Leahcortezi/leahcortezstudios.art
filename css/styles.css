@@ -229,9 +229,9 @@ nav {
 }
 
 .hamburger img {
-    /* Sets the size of the custom flower icon */
-    width: 30px;
-    height: 30px;
+    /* Sets the size of the custom flower icon - made bigger */
+    width: 40px;
+    height: 40px;
 }
 
 /* --------------------
@@ -263,8 +263,8 @@ nav {
 }
 
 .footer-logo {
-  /* Logo styling in footer */
-  height: 40px;
+  /* Logo styling in footer - made bigger */
+  height: 60px;
   width: auto;
   opacity: 0.8;
 }
