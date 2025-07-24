@@ -201,7 +201,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const setupMagnifier = () => {
         magnifier.style.backgroundImage = `url("${img.src}")`;
+        
+        // Calculate proper background size to maintain aspect ratio
+        const containerRect = container.getBoundingClientRect();
+        const zoomFactor = 5; // 5x zoom
+        
+        // Set background size to be 5x the container size
+        const bgWidth = containerRect.width * zoomFactor;
+        const bgHeight = containerRect.height * zoomFactor;
+        
+        magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
+        
         console.log('Setup magnifier with image:', img.src);
+        console.log('Container size:', containerRect.width, 'x', containerRect.height);
+        console.log('Background size:', bgWidth, 'x', bgHeight);
       };
       
       // Setup when image loads
