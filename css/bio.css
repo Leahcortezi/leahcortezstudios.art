@@ -100,14 +100,6 @@
   */
   font-size: 2.5rem;
   /*
-    Adds a bottom border to the heading for a stylistic underline effect.
-  */
-  border-bottom: 2px solid var(--color-primary-accent);
-  /*
-    Adds some padding below the border to create space before the text.
-  */
-  padding-bottom: 0.8rem;
-  /*
     Adds margin below the heading to push the paragraph text down.
   */
   margin-bottom: 1.5rem;
@@ -130,7 +122,154 @@
 
 
 /* --------------------
-   3. MEDIA QUERIES (for Responsiveness)
+   3. BIO BUTTONS SECTION
+   -------------------- */
+
+.bio-buttons-section {
+  /*
+    Creates a horizontal centered layout for the three buttons
+  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 4rem;
+  padding: 3rem 2rem 0 2rem;
+  border-top: 1px solid #7e1c2e 
+}
+
+.bio-button {
+  /*
+    Individual button styling with flex column layout
+  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.bio-button:hover {
+  /*
+    Subtle hover effect
+  */
+  transform: translateY(-5px);
+}
+
+.bio-button-icon {
+  /*
+    Icon styling - white flower icon
+  */
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1); /* Makes the icon white */
+  transition: filter 0.3s ease;
+}
+
+.bio-button-text {
+  /*
+    Text styling for button labels
+  */
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+}
+
+
+/* --------------------
+   4. MODAL LIGHTBOX STYLES
+   -------------------- */
+
+.modal {
+  /*
+    Modal overlay styling
+  */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  /*
+    Modal content box styling
+  */
+  background-color: var(--color-background);
+  margin: 10% auto;
+  padding: 2rem;
+  border: 2px solid var(--color-primary-accent);
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.modal-content h2 {
+  /*
+    Modal heading styling
+  */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary-accent);
+}
+
+.modal-content p {
+  /*
+    Modal text styling
+  */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.close {
+  /*
+    Close button styling
+  */
+  color: var(--color-text);
+  float: right;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--color-primary-accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* --------------------
+   5. MEDIA QUERIES (for Responsiveness)
    -------------------- */
 
 /*
@@ -159,5 +298,38 @@
       Reduces the font size of the heading on smaller screens to save space.
     */
     font-size: 2.5rem;
+  }
+  
+  .bio-buttons-section {
+    /*
+      Stack buttons vertically on mobile and reduce spacing
+    */
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .bio-button-icon {
+    /*
+      Slightly smaller icons on mobile
+    */
+    width: 50px;
+    height: 50px;
+  }
+  
+  .modal-content {
+    /*
+      Adjust modal for mobile screens
+    */
+    width: 90%;
+    margin: 20% auto;
+    padding: 1.5rem;
+  }
+  
+  .modal-content h2 {
+    /*
+      Smaller heading on mobile
+    */
+    font-size: 1.5rem;
   }
 }

@@ -65,17 +65,15 @@
 
             <!-- Right Column: Text (Artist Statement) -->
             <div class="bio-text-column">
-                <h1>Bio</h1>
+                <h1>About Me</h1>
                 <p>
-                    Leah Cortez is a Chicana graphic designer and multimedia artist based in Corpus Christi, Texas. Currently studying Graphic Design at Texas A&M University–Corpus Christi, she explores themes of identity, spirituality, and the body through a gothic, symbolic, and surreal lens.
+                    Leah Cortez is a Chicana artist and designer from Corpus Christi, Texas, currently studying Graphic Design at Texas A&M University–Corpus Christi. Blending intuition with intention, her creative work spans traditional and digital media, with a growing focus on digital storytelling, visual symbolism, and experimental design.
                 </p>
                 <p>
-                    With a background in both traditional and digital media, Leah’s work blends intuitive mark-making, layered textures, and bold storytelling rooted in cultural memory and emotional truth. Her practice spans illustration, zines, web design, sculpture, and experimental mixed media—often combining elements like lace, anatomical motifs, religious iconography, and body horror.
+                    Leah is passionate about pursuing a career in digital media—where she can combine her love for narrative, emotional impact, and cultural identity into meaningful creative experiences. Whether through design, illustration, or mixed media, she’s drawn to work that challenges norms, evokes feeling, and leaves a lasting impression.
                 </p>
-                <p>
-                    Leah draws inspiration from her community, personal rituals, and the dreamlike space between decay and divinity. Through her art, she invites viewers to reflect on the intersections of heritage, emotion, and transformation.
                 </p>
-                <h1>Artist Statement</h1>
+                <h2>Artist Statement</h2>
                 <p>
                     I create what I don't yet understand. My art is a way of reaching toward the unseen, toward emotions, memories, and questions that resist language. Each piece begins as an experiment: a visual problem to solve, a feeling to translate, or a memory to reconstruct. I work across digital and traditional media to explore the tension between clarity and ambiguity, using symbolic imagery and layered textures to express what cannot be said directly.
                 </p>
@@ -85,6 +83,47 @@
                 <p>
                     In the end, my art is not about making clear statements. It is about creating a visual language for what haunts, heals, and hides beneath the surface.
                 </p>
+            </div>
+        </div>
+        
+        <!-- Three Icon Buttons Section -->
+        <div class="bio-buttons-section">
+            <div class="bio-button" data-modal="mediums">
+                <img src="../icons/flower.svg" alt="Mediums Icon" class="bio-button-icon">
+                <span class="bio-button-text">Mediums</span>
+            </div>
+            <div class="bio-button" data-modal="influences">
+                <img src="../icons/flower.svg" alt="Influences Icon" class="bio-button-icon">
+                <span class="bio-button-text">Influences</span>
+            </div>
+            <div class="bio-button" data-modal="themes">
+                <img src="../icons/flower.svg" alt="Themes Icon" class="bio-button-icon">
+                <span class="bio-button-text">Themes</span>
+            </div>
+        </div>
+        
+        <!-- Modal Lightboxes -->
+        <div id="mediums-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="mediums">&times;</span>
+                <h2>Mediums</h2>
+                <p>Digital illustration, mixed media, traditional drawing, acrylic painting, collage, photography, web design, and experimental printmaking.</p>
+            </div>
+        </div>
+        
+        <div id="influences-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="influences">&times;</span>
+                <h2>Influences</h2>
+                <p>Chicana identity, gothic aesthetics, religious iconography, body horror, anatomical studies, cultural memory, and the intersection of decay and divinity.</p>
+            </div>
+        </div>
+        
+        <div id="themes-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="themes">&times;</span>
+                <h2>Themes</h2>
+                <p>Religion, identity, spirituality, childhood trauma, existence, the sacred and grotesque, forgotten memories, and emotional truth.</p>
             </div>
         </div>
     </main>
@@ -99,6 +138,7 @@
     </footer>
 
     <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/bio-modals.js" defer></script>
 
 </body>
 </html>
