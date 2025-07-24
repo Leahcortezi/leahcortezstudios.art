@@ -23,10 +23,10 @@
   */
   display: flex;
   /*
-    'align-items: flex-start' ensures that the top of the image and the top of the text
-    are aligned, which is useful if their content heights differ.
+    'align-items: stretch' makes both columns have the same height,
+    stretching them to match the tallest column.
   */
-  align-items: flex-start;
+  align-items: stretch;
   /*
     Sets the gap between the flex items (the image and text columns).
   */
@@ -56,6 +56,11 @@
     It will take up 40% of the available width in the flex container.
   */
   flex: 0 0 40%; /* flex-grow, flex-shrink, flex-basis */
+  /*
+    Ensures the column takes the full height available (matches the text column height)
+  */
+  display: flex;
+  flex-direction: column;
 }
 
 .bio-image-column img {
@@ -63,6 +68,14 @@
     Ensures the image scales to fill the entire width of its container.
   */
   width: 100%;
+  /*
+    Makes the image fill the full height of its container to match the text column
+  */
+  height: 100%;
+  /*
+    Maintains aspect ratio while filling the container completely
+  */
+  object-fit: cover;
   /*
     'display: block' removes any extra space below the image that can sometimes
     be added by the browser for inline elements.
