@@ -172,7 +172,7 @@ nav {
     Flexbox is used here for a powerful and simple alignment of nav items.
   */
   display: flex;
-  /* Pushes the logo and the nav links to opposite ends of the container */
+  /* Pushes the logo to the left, hamburger to the right */
   justify-content: space-between;
   /* Vertically centers the items within the nav bar */
   align-items: center;
@@ -226,6 +226,8 @@ nav {
   cursor: pointer;
   /* Padding around the icon to make it easier to click */
   padding: 10px;
+  /* Ensure it stays on the right side */
+  margin-left: auto;
 }
 
 .hamburger img {
@@ -325,16 +327,19 @@ nav {
     position: absolute;
     top: var(--nav-height); /* Positions it right below the nav bar */
     right: 0;
-    /* Takes the full width of the screen */
-    width: 100%;
+    /* Takes portion of screen width, right-aligned */
+    width: 250px;
     /* Sets the background to black */
     background-color: var(--color-background);
     /* Changes the flex direction to vertical for a mobile menu */
     flex-direction: column;
-    /* Centers the links within the menu */
-    align-items: center;
-    /* A subtle border on top */
+    /* Right-aligns the links within the menu */
+    align-items: flex-end;
+    /* A subtle border on top and left */
     border-top: 1px solid var(--color-secondary-accent);
+    border-left: 1px solid var(--color-secondary-accent);
+    /* Add padding for better spacing */
+    padding: 1rem;
   }
 
   /*
