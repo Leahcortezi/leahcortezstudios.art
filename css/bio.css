@@ -69,11 +69,11 @@
   */
   width: 100%;
   /*
-    Makes the image fill the full height of its container to match the text column
+    Sets a maximum height to prevent the image from becoming too tall
   */
-  height: 100%;
+  max-height: 600px;
   /*
-    Maintains aspect ratio while filling the container completely
+    Maintains aspect ratio while filling the container, but won't stretch beyond natural proportions
   */
   object-fit: cover;
   /*
@@ -98,7 +98,7 @@
   /*
     Sets a specific font size for the main heading on this page.
   */
-  font-size: 3rem;
+  font-size: 2.5rem;
   /*
     Adds a bottom border to the heading for a stylistic underline effect.
   */
@@ -106,22 +106,26 @@
   /*
     Adds some padding below the border to create space before the text.
   */
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
   /*
     Adds margin below the heading to push the paragraph text down.
   */
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .bio-text-column p {
   /*
     Sets the font size for the artist statement paragraphs for readability.
   */
-  font-size: 1.1rem;
+  font-size: 1rem;
   /*
-    Adds extra vertical space between paragraphs.
+    Improved line height for better readability and more compact text.
   */
-  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  /*
+    Reduced vertical space between paragraphs for more compact layout.
+  */
+  margin-bottom: 1.2rem;
 }
 
 
