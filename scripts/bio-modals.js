@@ -2,6 +2,7 @@
   Bio Page Modal Functionality
   ---
   This script handles the modal lightbox functionality for the bio page buttons
+  and the accordion functionality for the mediums modal
 */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Get all close buttons
     const closeButtons = document.querySelectorAll('.close');
+    
+    // Get all accordion headers
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
     
     // Add click event listeners to bio buttons
     bioButtons.forEach(button => {
@@ -62,5 +66,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+    });
+    
+    // Accordion functionality
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const isActive = accordionItem.classList.contains('active');
+            
+            // Close all accordion items
+            const allAccordionItems = document.querySelectorAll('.accordion-item');
+            allAccordionItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // If this item wasn't active, open it
+            if (!isActive) {
+                accordionItem.classList.add('active');
+            }
+        });
     });
 });

@@ -251,6 +251,87 @@
   color: var(--color-primary-accent);
 }
 
+/* Accordion Styling */
+.accordion-container {
+  margin-top: 1.5rem;
+}
+
+.accordion-item {
+  border: 1px solid var(--color-primary-accent);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: rgba(126, 28, 46, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: rgba(126, 28, 46, 0.2);
+}
+
+.accordion-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary-accent);
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: var(--color-background);
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 300px;
+}
+
+.accordion-content ul {
+  margin: 0;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  list-style: none;
+}
+
+.accordion-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.accordion-content li::before {
+  content: "•";
+  color: var(--color-primary-accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.accordion-content li:last-child {
+  margin-bottom: 0;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -331,5 +412,34 @@
       Smaller heading on mobile
     */
     font-size: 1.5rem;
+  }
+  
+  .accordion-header {
+    /*
+      Adjust accordion header padding for mobile
+    */
+    padding: 0.8rem 1rem;
+  }
+  
+  .accordion-header h3 {
+    /*
+      Smaller accordion titles on mobile
+    */
+    font-size: 1rem;
+  }
+  
+  .accordion-content ul {
+    /*
+      Adjust padding for mobile
+    */
+    padding: 1rem;
+  }
+  
+  .accordion-content li {
+    /*
+      Smaller text on mobile
+    */
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
   }
 }
