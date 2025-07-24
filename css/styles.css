@@ -226,8 +226,9 @@ nav {
   cursor: pointer;
   /* Padding around the icon to make it easier to click */
   padding: 10px;
-  /* Ensure it stays on the right side */
+  /* Align with dropdown - position relative to right edge */
   margin-left: auto;
+  margin-right: 0;
 }
 
 .hamburger img {
@@ -329,15 +330,12 @@ nav {
     right: 0;
     /* Takes portion of screen width, right-aligned */
     width: 250px;
-    /* Sets the background to black */
-    background-color: var(--color-background);
+    /* Sets the background to black with lower opacity */
+    background-color: rgba(0, 0, 0, 0.7);
     /* Changes the flex direction to vertical for a mobile menu */
     flex-direction: column;
     /* Right-aligns the links within the menu */
     align-items: flex-end;
-    /* A subtle border on top and left */
-    border-top: 1px solid var(--color-secondary-accent);
-    border-left: 1px solid var(--color-secondary-accent);
     /* Add padding for better spacing */
     padding: 1rem;
   }
