@@ -204,9 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Calculate proper background size to maintain aspect ratio
         const containerRect = container.getBoundingClientRect();
-        const zoomFactor = 5; // 5x zoom
+        const zoomFactor = 3; // 3x zoom (reduced from 5x)
         
-        // Set background size to be 5x the container size
+        // Set background size to be 3x the container size
         const bgWidth = containerRect.width * zoomFactor;
         const bgHeight = containerRect.height * zoomFactor;
         
