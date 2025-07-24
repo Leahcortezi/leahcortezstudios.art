@@ -99,12 +99,26 @@
     </main>
 
     <!-- Footer -->
-        <footer class="main-footer">
-        <div class="footer-content">
-            <img src="../../../images/logo/logo4.png" alt="Leah Cortez Logo" class="footer-logo">
-            <p class="copyright">Leah Cortez © 2025</p>
-        </div>
+    <footer class="main-footer">
+        <ul class="social-links">
+            <li>
+                <a href="https://pin.it/P7sLCI6r5" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                    <img src="../../../icons/pinterest.svg" alt="Pinterest" width="24" height="24">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.behance.net/leahcortez" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+                    <img src="../../../icons/behance.svg" alt="Behance" width="24" height="24">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../../../icons/instagram.svg" alt="Instagram" width="24" height="24">
+                </a>
+            </li>
+        </ul>
     </footer>
+
     <script src="../../../scripts/main.js" defer></script>
 
 </body>
