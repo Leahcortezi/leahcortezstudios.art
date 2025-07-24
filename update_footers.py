@@ -45,3 +45,13 @@ for file_path in files:
         print(f"  ✗ Error processing {file_path}: {e}")
 
 print("Footer update complete!")
+print("Checking one file...")
+
+# Check if the update worked
+test_file = "collections/personal/inheritance/index.html"
+with open(test_file, 'r') as f:
+    content = f.read()
+    if 'footer-content' in content:
+        print(f"✓ Footer successfully updated in {test_file}")
+    else:
+        print(f"✗ Footer update failed in {test_file}")
