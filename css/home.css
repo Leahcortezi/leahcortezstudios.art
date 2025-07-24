@@ -514,19 +514,23 @@
    -------------------- */
 
 .contact-preview-section {
-  /* Adds vertical padding */
-  padding: 5rem 0;
+  /* Further reduced vertical padding for skinnier appearance */
+  padding: 1.5rem 0 1rem 0;
+  /* Light background for visual separation */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%);
   /* Centers the content */
   text-align: center;
+  position: relative;
 }
 
 .contact-content {
-  /* Two-column layout for contact section */
+  /* Two-column layout for contact section - wider for more horizontal space */
   display: flex;
   align-items: center;
-  gap: 4rem;
-  max-width: 1000px;
+  gap: 3rem;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .contact-text-column {
@@ -536,85 +540,102 @@
 }
 
 .contact-social-column {
-  /* Right column with social icons */
+  /* Right column with button and social icons */
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .contact-preview-section h2 {
-  /* Sets the font size */
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  /* Sets the font size with better hierarchy */
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary-accent);
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .contact-preview-section p {
   /* Sets the font to the accent font */
   font-family: var(--font-accent);
   /* Adds space below the paragraph */
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   /* Sets the font size */
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   /* Improves line height for readability */
-  line-height: 1.6;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-subtext {
-  /* Smaller text above social icons */
+  /* Smaller text above social icons - left aligned */
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: var(--color-text);
-  opacity: 0.8;
+  opacity: 0.7;
+  font-style: italic;
+  text-align: left;
+  align-self: flex-start;
 }
 
 .contact-social-icons {
-  /* Arranges social icons vertically */
+  /* Arranges social icons horizontally */
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-direction: row;
+  gap: 2rem;
   align-items: center;
+  justify-content: center;
+  margin-top: 0.2rem;
 }
 
 .social-icon {
-  /* Individual social icon styling */
+  /* Social icon styling with hover effects */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   text-decoration: none;
-  /* Transition for hover effects */
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 200px;
-  justify-content: flex-start;
-  gap: 1rem;
+  padding: 0.8rem;
+  gap: 0.6rem;
+  /* Add transition for hover effects */
+  transition: transform 0.3s ease;
+}
+
+.social-icon::before {
+  /* Remove shimmer effect */
+  display: none;
 }
 
 .social-icon img {
-  /* Make icons white */
-  filter: brightness(0) invert(1);
+  /* Make icons pink by default */
+  filter: brightness(0) saturate(100%) invert(89%) sepia(15%) saturate(1040%) hue-rotate(298deg) brightness(102%) contrast(94%);
   transition: filter 0.3s ease;
 }
 
 .social-icon:hover {
-  /* Hover effects */
+  /* Add hover transform */
   transform: translateY(-3px);
-  background-color: rgba(255, 182, 193, 0.2);
 }
 
 .social-icon:hover img {
-  /* Light pink tint on hover */
-  filter: brightness(0) saturate(100%) invert(89%) sepia(15%) saturate(1040%) hue-rotate(298deg) brightness(102%) contrast(94%);
+  /* Dark red on hover */
+  filter: brightness(0) saturate(100%) invert(20%) sepia(87%) saturate(6498%) hue-rotate(341deg) brightness(87%) contrast(129%);
 }
 
 .social-label {
-  /* Label text next to icons */
-  font-size: 1rem;
-  color: white;
-  font-weight: 500;
+  /* Label text with hover transition */
+  font-size: 0.85rem;
+  color: #f5c6d6;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover .social-label {
+  /* Dark red color on hover */
+  color: #8b0000;
 }
 
 /* --------------------
@@ -668,7 +689,8 @@
     .contact-content {
       /* Stack contact columns vertically on mobile */
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
+      padding: 0 1rem;
       text-align: center;
     }
     
@@ -677,24 +699,31 @@
       text-align: center;
     }
     
+    .contact-preview-section h2 {
+      /* Smaller heading on mobile */
+      font-size: 2.2rem;
+    }
+    
+    .contact-social-column {
+      /* Center button and social icons on mobile */
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
     .contact-social-icons {
-      /* Horizontal layout on mobile */
-      flex-direction: row;
-      gap: 1rem;
+      /* Keep horizontal layout but with smaller gaps */
+      gap: 1.5rem;
       flex-wrap: wrap;
-      justify-content: center;
     }
     
     .social-icon {
-      /* Smaller social icons on mobile */
-      width: auto;
-      padding: 0.8rem 1rem;
-      flex-direction: column;
+      /* Smaller icons on mobile */
+      padding: 0.8rem 0.5rem;
       gap: 0.5rem;
     }
     
     .social-label {
       /* Smaller text on mobile */
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 }
