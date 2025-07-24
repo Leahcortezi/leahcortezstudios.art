@@ -181,41 +181,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-});
-
-/* --------------------
-   7. UTILITY FUNCTIONS
-   -------------------- */
-
-// Debounce function for performance optimization
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-
   /* --------------------
      6. MAGNIFYING GLASS EFFECT FOR WORK PAGES
      -------------------- */
 
   const imageZoomContainers = document.querySelectorAll('.image-zoom-container');
+  console.log('Found image zoom containers:', imageZoomContainers.length);
   
   imageZoomContainers.forEach((container, index) => {
     const img = container.querySelector('img');
+    console.log('Processing container', index, 'with image:', img);
     
     if (img) {
       // Create magnifying glass element
       const magnifier = document.createElement('div');
       magnifier.className = 'magnifying-glass';
       container.appendChild(magnifier);
+      console.log('Created magnifier for container', index);
       
       const setupMagnifier = () => {
         magnifier.style.backgroundImage = `url("${img.src}")`;
+        console.log('Setup magnifier with image:', img.src);
       };
       
       // Setup when image loads
@@ -239,8 +225,36 @@ function debounce(func, wait) {
         const bgY = (y / rect.height) * 100;
         magnifier.style.backgroundPosition = `${bgX}% ${bgY}%`;
       });
+
+      container.addEventListener('mouseenter', () => {
+        magnifier.style.opacity = '1';
+        console.log('Mouse entered container');
+      });
+
+      container.addEventListener('mouseleave', () => {
+        magnifier.style.opacity = '0';
+        console.log('Mouse left container');
+      });
     }
   });
+
+}); // End of DOMContentLoaded event listener
+
+/* --------------------
+   7. UTILITY FUNCTIONS
+   -------------------- */
+
+// Debounce function for performance optimization
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
 // Throttle function for scroll events
