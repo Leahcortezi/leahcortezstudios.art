@@ -220,17 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
         magnifier.style.left = x + 'px';
         magnifier.style.top = y + 'px';
         
-        // Calculate background position for 5x zoom with proper offset
-        const bgX = ((x / rect.width) * 100);
-        const bgY = ((y / rect.height) * 100);
+        // Calculate background position for perfect alignment
+        // Since background-size is 500%, we need to adjust the position accordingly
+        const bgX = (x / rect.width) * 500;
+        const bgY = (y / rect.height) * 500;
         
-        // Adjust for magnifier size and zoom level
-        const magnifierRadius = 75; // Half of 150px magnifier size
-        const zoomLevel = 5;
-        const offsetX = (magnifierRadius / rect.width) * 100 * (zoomLevel - 1);
-        const offsetY = (magnifierRadius / rect.height) * 100 * (zoomLevel - 1);
+        // Center the zoomed area on the cursor position
+        const centerX = bgX - 75; // Half of magnifier width (150px / 2)
+        const centerY = bgY - 75; // Half of magnifier height (150px / 2)
         
-        magnifier.style.backgroundPosition = `${bgX + offsetX}% ${bgY + offsetY}%`;
+        magnifier.style.backgroundPosition = `${centerX}px ${centerY}px`;
       });
 
       container.addEventListener('mouseenter', () => {
