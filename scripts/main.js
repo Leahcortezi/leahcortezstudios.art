@@ -220,16 +220,12 @@ document.addEventListener('DOMContentLoaded', () => {
         magnifier.style.left = x + 'px';
         magnifier.style.top = y + 'px';
         
-        // Calculate background position for perfect alignment
-        // Since background-size is 500%, we need to adjust the position accordingly
-        const bgX = (x / rect.width) * 500;
-        const bgY = (y / rect.height) * 500;
+        // Simple percentage calculation that works correctly
+        const xPercent = (x / rect.width) * 100;
+        const yPercent = (y / rect.height) * 100;
         
-        // Center the zoomed area on the cursor position
-        const centerX = bgX - 75; // Half of magnifier width (150px / 2)
-        const centerY = bgY - 75; // Half of magnifier height (150px / 2)
-        
-        magnifier.style.backgroundPosition = `${centerX}px ${centerY}px`;
+        // Set background position - this should show exactly what's under the cursor
+        magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
       });
 
       container.addEventListener('mouseenter', () => {
