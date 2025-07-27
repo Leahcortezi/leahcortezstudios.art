@@ -445,12 +445,95 @@
 }
 
 /* --------------------
-   CV DOWNLOAD SECTION
+   CV SECTION
    -------------------- */
 
-.cv-download {
-  margin-top: 2rem;
-  text-align: left;
+.cv-section-container {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 0 2rem;
+}
+
+.cv-content {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-content h1 {
+  font-family: var(--font-accent);
+  font-size: 2.5rem;
+  color: var(--color-primary-accent);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cv-download-top, .cv-download-bottom {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.cv-download-bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-section {
+  margin-bottom: 2.5rem;
+}
+
+.cv-section h2 {
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primary-accent);
+}
+
+.cv-entry {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(214, 51, 132, 0.3);
+}
+
+.cv-entry h3 {
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.cv-entry p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.skills-list, .tools-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list li, .tools-list li {
+  background: rgba(214, 51, 132, 0.1);
+  color: var(--color-text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primary-accent);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skills-list li:hover, .tools-list li:hover {
+  background: rgba(214, 51, 132, 0.2);
+  transform: translateX(5px);
 }
 
 .cv-download-btn {
@@ -501,11 +584,27 @@
   font-size: 1.1rem;
 }
 
-/* Mobile responsiveness for CV download */
+/* Mobile responsiveness for CV section */
 @media (max-width: 768px) {
-  .cv-download {
-    text-align: center;
-    margin-top: 1.5rem;
+  .cv-section-container {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .cv-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cv-content h1 {
+    font-size: 2rem;
+  }
+  
+  .cv-section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .skills-list, .tools-list {
+    grid-template-columns: 1fr;
   }
   
   .cv-download-btn {
