@@ -619,26 +619,6 @@ img.lace-logo:hover {
   transform: translateY(-3px);
 }
 
-.social-icon:hover img {
-  /* Dark red on hover */
-  filter: brightness(0) saturate(100%) invert(20%) sepia(87%) saturate(6498%) hue-rotate(341deg) brightness(87%) contrast(129%);
-}
-
-.social-label {
-  /* Label text with hover transition */
-  font-size: 0.85rem;
-  color: #f5c6d6;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover .social-label {
-  /* Dark red color on hover */
-  color: #8b0000;
-}
-
 /* --------------------
    6. MEDIA QUERIES (for Responsiveness)
    -------------------- */
