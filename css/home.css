@@ -456,6 +456,7 @@ img.lace-logo:hover {
   height: 100%;
   z-index: 2;
   pointer-events: none;
+  transition: transform 0.4s ease;
 }
 
 .project-image {
@@ -468,6 +469,7 @@ img.lace-logo:hover {
   z-index: 1;
   background: #fff;
   border-radius: 6px;
+  transition: transform 0.4s ease;
 }
 
 .image-gallery {
@@ -507,6 +509,10 @@ img.lace-logo:hover {
 }
 
 .featured-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.featured-card:hover .lace-border {
   transform: scale(1.05);
 }
 
