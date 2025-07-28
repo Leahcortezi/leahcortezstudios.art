@@ -87,18 +87,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 5px;
-  padding-bottom: 6rem;
+  padding: 0 2rem;
   min-height: 100vh;
   text-align: center;
   background-size: cover;
   background-position: center;
+  /* Center the entire content block */
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .lace-logo {
   width: 400px;
   max-width: 95%;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   margin-top: 20px;
   line-height: 1.4;
   cursor: pointer;
@@ -123,8 +125,8 @@
 .hero-title {
   font-family: 'Pirata One', cursive;
   font-size: 3rem;
-  margin-bottom: 20px; /* Less space below title */
-  margin-top: 10px;
+  margin-bottom: 10px; /* Less space below title */
+  margin-top: 0;
   line-height: 1.4;
   text-shadow: 0 0 2px #fff;
 }
@@ -133,7 +135,7 @@
   font-style: italic;
   font-size: 1rem;
   margin-top: 0;
-  margin-bottom: 2rem; /* More space below the poetic line */
+  margin-bottom: 1.5rem; /* Less space below the poetic line */
   color: #e8e8e8;
 }
 
@@ -636,32 +638,39 @@
     }
     
     .featured-artwork-wrapper {
-      /* Reduce gap on tablets */
+      /* Keep horizontal layout on tablets but allow wrapping */
       gap: 20px;
     }
     
     .featured-card {
-      /* Slightly smaller on tablets */
-      width: 220px;
+      /* Keep same size on tablets */
+      width: 250px;
     }
     
     .lace-wrapper {
-      /* Match featured card width */
-      width: 220px;
-      height: 290px;
+      /* Keep same wrapper size */
+      width: 250px;
+      height: 330px;
     }
     
     .project-image {
-      /* Adjust image size proportionally */
-      width: 170px;
-      height: 240px;
-      top: 22px;
-      left: 22px;
+      /* Keep same image proportions */
+      width: 200px;
+      height: 280px;
+      top: 25px;
+      left: 25px;
     }
 }
 
 /* For mobile phones */
 @media (max-width: 768px) {
+    .hero-section {
+      /* Ensure hero stays centered on mobile */
+      max-width: 100%;
+      padding: 0 1rem;
+      margin: 0 auto;
+    }
+
     .hero-content h1 {
       /* Reduces the headline font size on mobile */
       font-size: 3rem;
@@ -692,27 +701,26 @@
     }
     
     .featured-artwork-wrapper {
-      /* Single column layout on mobile */
-      flex-direction: column;
-      align-items: center;
+      /* Keep horizontal layout on mobile but center */
+      justify-content: center;
       gap: 30px;
     }
     
     .featured-card {
-      /* Larger cards for mobile touch interaction */
-      width: 280px;
+      /* Keep same size as desktop */
+      width: 250px;
     }
     
     .lace-wrapper {
-      /* Match featured card width */
-      width: 280px;
-      height: 370px;
+      /* Keep same wrapper size */
+      width: 250px;
+      height: 330px;
     }
     
     .project-image {
-      /* Larger image for mobile viewing */
-      width: 230px;
-      height: 320px;
+      /* Keep same image proportions */
+      width: 200px;
+      height: 280px;
       top: 25px;
       left: 25px;
     }
@@ -767,31 +775,31 @@
 /* For small tablets and large phones */
 @media (max-width: 480px) {
     .featured-card {
-      /* Even more compact for very small screens */
-      width: 240px;
+      /* Keep same size even on very small screens */
+      width: 250px;
     }
     
     .lace-wrapper {
-      /* Match featured card width */
-      width: 240px;
-      height: 320px;
+      /* Keep same wrapper size */
+      width: 250px;
+      height: 330px;
     }
     
     .project-image {
-      /* Smaller but still visible image */
-      width: 190px;
-      height: 270px;
-      top: 22px;
-      left: 22px;
+      /* Keep same image proportions */
+      width: 200px;
+      height: 280px;
+      top: 25px;
+      left: 25px;
     }
     
     .featured-title {
-      /* Even smaller title */
+      /* Smaller title */
       font-size: 1.8rem;
     }
     
     .caption {
-      /* Smaller caption text */
-      font-size: 12px;
+      /* Keep same caption size */
+      font-size: 14px;
     }
 }
