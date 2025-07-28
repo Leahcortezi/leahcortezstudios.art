@@ -218,6 +218,17 @@ nav {
   text-transform: uppercase;
   /* Adds a transition for the hover effect */
   transition: color 0.3s ease;
+  /* Remove default underline */
+  text-decoration: none;
+  /* Add border-bottom for underline effect */
+  border-bottom: 2px solid transparent;
+  /* Add transition for border */
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  /* Add underline on hover */
+  border-bottom-color: var(--color-primary-accent);
 }
 
 /* Styles for the mobile hamburger menu icon */
