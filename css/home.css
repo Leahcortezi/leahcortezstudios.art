@@ -514,6 +514,13 @@
   gap: 1rem;
 }
 
+/* Ensure contact button has proper hover effect */
+.contact-social-column .cta-button:hover {
+  background-color: #7e1c2e !important;
+  color: #f5c6d6 !important;
+  border-color: #7e1c2e !important;
+}
+
 .contact-preview-section h2 {
   /* Sets the font size with better hierarchy */
   font-size: 3rem;

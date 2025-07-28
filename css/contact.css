@@ -201,9 +201,10 @@
 }
 
 .submit-btn:hover {
-  /* Inverts the colors on hover */
-  background-color: transparent;
-  color: var(--color-primary-accent);
-  /* A slight upward shift on hover for a "lifting" effect */
-  transform: translateY(-2px);
+  /* Background color on hover - matches other buttons */
+  background-color: #7e1c2e;
+  /* Text color on hover - matches other buttons */
+  color: #f5c6d6;
+  /* Border color matches background */
+  border-color: #7e1c2e;
 }
