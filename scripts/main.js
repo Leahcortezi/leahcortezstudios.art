@@ -296,11 +296,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); // End of DOMContentLoaded event listener
 
-/* --------------------
-   7. UTILITY FUNCTIONS
-   -------------------- */
+  /* --------------------
+     6. THUMBNAIL GALLERY FUNCTIONALITY
+     -------------------- */
 
-// Debounce function for performance optimization
+  const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+  const mainImage = document.querySelector('#mainImage');
+
+  if (thumbnailItems.length > 0 && mainImage) {
+    thumbnailItems.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        // Remove active class from all thumbnails
+        thumbnailItems.forEach(item => item.classList.remove('active'));
+        
+        // Add active class to clicked thumbnail
+        thumbnail.classList.add('active');
+        
+        // Update main image
+        const newSrc = thumbnail.dataset.src;
+        const newAlt = thumbnail.dataset.alt;
+        
+        mainImage.src = newSrc;
+        mainImage.alt = newAlt;
+      });
+    });
+  }
+
+  /* --------------------
+   7. UTILITY FUNCTIONS
+   -------------------- */// Debounce function for performance optimization
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {

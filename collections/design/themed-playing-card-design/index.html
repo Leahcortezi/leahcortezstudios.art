@@ -33,19 +33,27 @@
     <main class="work-page">
         <div class="work-container">
             <div class="work-image-column">
-                <div class="image-zoom-container">
-                    <img src="bio.jpg" alt="Biology King Card - Scientific Revolution Playing Cards" loading="lazy">
+                <!-- Main Image Display -->
+                <div class="image-zoom-container main-image">
+                    <img id="mainImage" src="design1.jpg" alt="Scientific Revolution Playing Cards - Complete Design Layout" loading="lazy">
                 </div>
-                <!-- Additional Card Images -->
-                <div class="additional-images">
-                    <div class="image-zoom-container">
-                        <img src="chem.jpg" alt="Chemistry King Card - Scientific Revolution Playing Cards" loading="lazy">
+                
+                <!-- Thumbnail Gallery -->
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail-item active" data-src="design1.jpg" data-alt="Scientific Revolution Playing Cards - Complete Design Layout">
+                        <img src="design1.jpg" alt="Complete Design Layout" loading="lazy">
                     </div>
-                    <div class="image-zoom-container">
-                        <img src="physics.jpg" alt="Physics King Card - Scientific Revolution Playing Cards" loading="lazy">
+                    <div class="thumbnail-item" data-src="bio.jpg" data-alt="Biology King Card - Scientific Revolution Playing Cards">
+                        <img src="bio.jpg" alt="Biology King Card" loading="lazy">
                     </div>
-                    <div class="image-zoom-container">
-                        <img src="tech.jpg" alt="Technology King Card - Scientific Revolution Playing Cards" loading="lazy">
+                    <div class="thumbnail-item" data-src="chem.jpg" data-alt="Chemistry King Card - Scientific Revolution Playing Cards">
+                        <img src="chem.jpg" alt="Chemistry King Card" loading="lazy">
+                    </div>
+                    <div class="thumbnail-item" data-src="physics.jpg" data-alt="Physics King Card - Scientific Revolution Playing Cards">
+                        <img src="physics.jpg" alt="Physics King Card" loading="lazy">
+                    </div>
+                    <div class="thumbnail-item" data-src="tech.jpg" data-alt="Technology King Card - Scientific Revolution Playing Cards">
+                        <img src="tech.jpg" alt="Technology King Card" loading="lazy">
                     </div>
                 </div>
             </div>
