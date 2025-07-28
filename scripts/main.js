@@ -253,6 +253,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* --------------------
+     7. PDF MODAL FUNCTIONALITY
+     -------------------- */
+
+  const viewCvBtn = document.querySelector('#viewCvBtn');
+  const pdfModal = document.querySelector('#pdfModal');
+  const closePdfBtn = document.querySelector('#closePdfBtn');
+  const pdfViewer = document.querySelector('#pdfViewer');
+
+  if (viewCvBtn && pdfModal && closePdfBtn && pdfViewer) {
+    // Open PDF modal
+    viewCvBtn.addEventListener('click', () => {
+      pdfViewer.src = '../documents/LeahCortez_CV.pdf';
+      pdfModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+
+    // Close PDF modal
+    const closePdfModal = () => {
+      pdfModal.style.display = 'none';
+      pdfViewer.src = ''; // Clear the iframe source
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    };
+
+    closePdfBtn.addEventListener('click', closePdfModal);
+
+    // Close modal when clicking outside the content
+    pdfModal.addEventListener('click', (event) => {
+      if (event.target === pdfModal) {
+        closePdfModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && pdfModal.style.display === 'block') {
+        closePdfModal();
+      }
+    });
+  }
+
 }); // End of DOMContentLoaded event listener
 
 /* --------------------

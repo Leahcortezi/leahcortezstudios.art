@@ -125,6 +125,9 @@
 
             <!-- Download CV Button -->
             <div class="cv-download">
+                <button id="viewCvBtn" class="cv-download-btn" aria-label="View Leah Cortez CV as PDF">
+                    View Full CV (PDF)
+                </button>
                 <a href="../documents/LeahCortez_CV.pdf" download="LeahCortez_CV.pdf" class="cv-download-btn" aria-label="Download Leah Cortez CV as PDF">
                     Download Full CV (PDF)
                 </a>
@@ -132,6 +135,33 @@
 
         </div>
     </main>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3>Curriculum Vitae</h3>
+                <div class="pdf-modal-controls">
+                    <a href="../documents/LeahCortez_CV.pdf" download="LeahCortez_CV.pdf" class="pdf-download-btn" title="Download PDF">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </a>
+                    <button class="pdf-close-btn" id="closePdfBtn" title="Close">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-viewer-container">
+                <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="main-footer">
