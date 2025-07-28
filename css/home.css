@@ -111,6 +111,15 @@ img.lace-logo:hover {
   transform: translateY(0) scale(1.1) !important;
   animation-play-state: paused;
 }
+
+.lace-logo {
+  animation-fill-mode: forwards;
+}
+
+.lace-logo.animate-logo:hover {
+  transform: translateY(0) scale(1.1) !important;
+  animation-play-state: paused;
+}
 /* Start hidden and down */
 .animate-logo {
   opacity: 0;
