@@ -228,7 +228,7 @@ nav {
 
 .nav-links a:hover {
   /* Add underline on hover */
-  border-bottom-color: var(--color-primary-accent);
+  border-bottom-color: #7e1c2e;
 }
 
 /* Styles for the mobile hamburger menu icon */
