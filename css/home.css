@@ -101,30 +101,24 @@
   margin-bottom: 2.5rem;
   margin-top: 20px;
   line-height: 1.4;
-  transition: all 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   transform: scale(1);
   cursor: pointer;
 }
 
-.lace-logo:hover,
-img.lace-logo:hover {
-  transform: translateY(0) scale(1.1) !important;
-  animation-play-state: paused;
+.lace-logo:hover {
+  transform: scale(1.1) !important;
 }
 
-.lace-logo {
-  animation-fill-mode: forwards;
-}
-
-.lace-logo.animate-logo:hover {
-  transform: translateY(0) scale(1.1) !important;
-  animation-play-state: paused;
-}
 /* Start hidden and down */
 .animate-logo {
   opacity: 0;
   transform: translateY(20px) scale(1);
   animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-logo:hover {
+  transform: translateY(0) scale(1.1) !important;
 }
 
 /* Keyframes for fade in + up */
