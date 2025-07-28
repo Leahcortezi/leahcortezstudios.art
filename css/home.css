@@ -101,13 +101,8 @@
   margin-bottom: 2.5rem;
   margin-top: 20px;
   line-height: 1.4;
-  transition: transform 0.4s ease-in-out;
-  transform: scale(1);
   cursor: pointer;
-}
-
-.lace-logo:hover {
-  transform: scale(1.1) !important;
+  /* Remove transition from here to avoid conflicts */
 }
 
 /* Start hidden and down */
@@ -115,10 +110,6 @@
   opacity: 0;
   transform: translateY(20px) scale(1);
   animation: fadeInUp 1.2s ease-out forwards;
-}
-
-.animate-logo:hover {
-  transform: translateY(0) scale(1.1) !important;
 }
 
 /* Keyframes for fade in + up */
