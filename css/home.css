@@ -75,49 +75,6 @@
   /* Center the entire content block */
   max-width: 800px;
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Parallax Background Text */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg-text {
-  position: absolute;
-  font-family: 'Pirata One', cursive;
-  font-size: 18vw;
-  font-weight: bold;
-  color: #2a2a2a;
-  opacity: 0.6;
-  user-select: none;
-  white-space: nowrap;
-  top: 50%;
-  transform: translateY(-50%);
-  letter-spacing: 0.1em;
-}
-
-.bg-text-left {
-  left: 60%;
-  transform: translateY(-50%) translateX(-50%);
-}
-
-.bg-text-right {
-  right: -5%;
-  transform: translateY(-50%) translateX(50%);
-}
-
-/* Ensure hero content is above background text */
-.hero-section > *:not(.parallax-bg) {
-  position: relative;
-  z-index: 1;
 }
 
 .lace-logo {
@@ -815,37 +772,4 @@
       /* Keep same caption size */
       font-size: 14px;
     }
-}
-
-/* Responsive adjustments for parallax background */
-@media (max-width: 768px) {
-  .bg-text {
-    font-size: 22vw;
-    opacity: 0.5;
-    letter-spacing: 0.08em;
-  }
-  
-  .bg-text-left {
-    left: 55%;
-  }
-  
-  .bg-text-right {
-    right: -10%;
-  }
-}
-
-@media (max-width: 480px) {
-  .bg-text {
-    font-size: 26vw;
-    opacity: 0.45;
-    letter-spacing: 0.06em;
-  }
-  
-  .bg-text-left {
-    left: 50%;
-  }
-  
-  .bg-text-right {
-    right: -15%;
-  }
 }
