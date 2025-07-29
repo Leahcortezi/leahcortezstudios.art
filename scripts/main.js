@@ -341,14 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Only apply parallax effect when hero section is visible
         if (scrolled < heroBottom) {
           bgTextElements.forEach(element => {
-            const speed = parseFloat(element.dataset.speed) || 0.5;
+            // Move entire name left together as you scroll
+            const moveAmount = scrolled * 0.15;
             
             if (element.classList.contains('bg-text-left')) {
-              // Move CORT to the left as you scroll
-              element.style.transform = `translateY(-50%) translateX(${-50 - (scrolled * 0.12)}%)`;
+              element.style.transform = `translateY(-50%) translateX(${-50 - moveAmount}%)`;
             } else if (element.classList.contains('bg-text-right')) {
-              // Move EZ from right into better view as you scroll
-              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.12)}%)`;
+              element.style.transform = `translateY(-50%) translateX(${50 - moveAmount}%)`;
             }
           });
         }

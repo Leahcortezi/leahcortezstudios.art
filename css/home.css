@@ -93,24 +93,24 @@
 .bg-text {
   position: absolute;
   font-family: 'Pirata One', cursive;
-  font-size: 12vw;
+  font-size: 18vw;
   font-weight: bold;
   color: #2a2a2a;
-  opacity: 0.5;
+  opacity: 0.6;
   user-select: none;
   white-space: nowrap;
   top: 50%;
   transform: translateY(-50%);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .bg-text-left {
-  left: 25%;
+  left: 60%;
   transform: translateY(-50%) translateX(-50%);
 }
 
 .bg-text-right {
-  right: 40%;
+  right: -5%;
   transform: translateY(-50%) translateX(50%);
 }
 
@@ -820,32 +820,32 @@
 /* Responsive adjustments for parallax background */
 @media (max-width: 768px) {
   .bg-text {
-    font-size: 16vw;
-    opacity: 0.4;
-    letter-spacing: 0.03em;
+    font-size: 22vw;
+    opacity: 0.5;
+    letter-spacing: 0.08em;
   }
   
   .bg-text-left {
-    left: 20%;
+    left: 55%;
   }
   
   .bg-text-right {
-    right: 35%;
+    right: -10%;
   }
 }
 
 @media (max-width: 480px) {
   .bg-text {
-    font-size: 18vw;
-    opacity: 0.35;
-    letter-spacing: 0.02em;
+    font-size: 26vw;
+    opacity: 0.45;
+    letter-spacing: 0.06em;
   }
   
   .bg-text-left {
-    left: 15%;
+    left: 50%;
   }
   
   .bg-text-right {
-    right: 30%;
+    right: -15%;
   }
 }
