@@ -344,13 +344,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const speed = parseFloat(element.dataset.speed) || 0.5;
             
             if (element.classList.contains('bg-text-left')) {
-              // Move CORT to the left as you scroll
-              element.style.transform = `translateY(-50%) translateX(${-50 - (scrolled * 0.2)}%)`;
+              // Move CORT to the left as you scroll to make room for EZ
+              element.style.transform = `translateY(-50%) translateX(${-50 - (scrolled * 0.15)}%)`;
             } else if (element.classList.contains('bg-text-right')) {
-              // Fade in and move EZ into position as you scroll
-              const progress = Math.min(scrolled / 300, 1); // Fade in over first 300px of scroll
-              element.style.opacity = progress;
-              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.2)}%)`;
+              // Move EZ from off-screen right into view as you scroll
+              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.15)}%)`;
             }
           });
         }

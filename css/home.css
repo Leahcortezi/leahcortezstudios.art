@@ -104,14 +104,13 @@
 }
 
 .bg-text-left {
-  left: 50%;
+  left: 20%;
   transform: translateY(-50%) translateX(-50%);
 }
 
 .bg-text-right {
-  right: 50%;
+  right: -20%;
   transform: translateY(-50%) translateX(50%);
-  opacity: 0;
 }
 
 /* Ensure hero content is above background text */
@@ -825,11 +824,11 @@
   }
   
   .bg-text-left {
-    left: 50%;
+    left: 20%;
   }
   
   .bg-text-right {
-    right: 50%;
+    right: -25%;
   }
 }
 
@@ -840,10 +839,10 @@
   }
   
   .bg-text-left {
-    left: 50%;
+    left: 15%;
   }
   
   .bg-text-right {
-    right: 50%;
+    right: -30%;
   }
 }
