@@ -7,23 +7,7 @@
 */
 
 /* --------------------
-   1. PARTICLES BACKGROUND
-   -------------------- */
-
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 1;
-  background: transparent;
-}
-
-/* --------------------
-   2. UTILITY & CONTAINER
+   1. UTILITY & CONTAINER
    -------------------- */
 
 /*
@@ -73,7 +57,7 @@
 }
 
 /* --------------------
-   3. HERO SECTION
+   2. HERO SECTION
    -------------------- */
 
 .hero-section {
@@ -155,7 +139,7 @@
 }
 
 /* --------------------
-   4. BIO PREVIEW SECTION
+   3. BIO PREVIEW SECTION
    -------------------- */
 
 .bio-preview-section {
@@ -286,7 +270,7 @@
   }
 }
 /* --------------------
-   5. FEATURED ART SECTION
+   4. FEATURED ART SECTION
    -------------------- */
 
 .featured {
@@ -497,7 +481,7 @@
 }
 
 /* --------------------
-   6. CONTACT PREVIEW SECTION
+   5. CONTACT PREVIEW SECTION
    -------------------- */
 
 .contact-preview-section {
@@ -613,7 +597,7 @@
 }
 
 /* --------------------
-   7. MEDIA QUERIES (for Responsiveness)
+   6. MEDIA QUERIES (for Responsiveness)
    -------------------- */
 
 /* For tablets and smaller devices */
