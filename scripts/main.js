@@ -332,35 +332,35 @@ document.addEventListener('DOMContentLoaded', () => {
       particlesJS('particles-js', {
         particles: {
           number: {
-            value: 50,
+            value: 80,
             density: {
               enable: true,
-              value_area: 800
+              value_area: 600
             }
           },
           color: {
-            value: ["#8b4a6b", "#7e1c2e", "#666666", "#999999"]
+            value: ["#8b4a6b", "#7e1c2e", "#b8860b", "#cd853f", "#a0a0a0"]
           },
           shape: {
             type: "circle"
           },
           opacity: {
-            value: 0.4,
+            value: 0.7,
             random: true,
             anim: {
               enable: true,
               speed: 1,
-              opacity_min: 0.1,
+              opacity_min: 0.3,
               sync: false
             }
           },
           size: {
-            value: 3,
+            value: 5,
             random: true,
             anim: {
               enable: true,
               speed: 2,
-              size_min: 0.5,
+              size_min: 2,
               sync: false
             }
           },
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           move: {
             enable: true,
-            speed: 1,
+            speed: 2,
             direction: "bottom",
             random: true,
             straight: false,
@@ -403,8 +403,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Move particles based on scroll
             particlesCanvas.style.transform = `translateY(${scrollSpeed}px)`;
             
-            // Adjust opacity based on scroll
-            const opacity = Math.max(0.2, 0.6 - (scrolled * 0.0003));
+            // Adjust opacity based on scroll - keep particles more visible
+            const opacity = Math.max(0.5, 0.9 - (scrolled * 0.0002));
             particlesCanvas.style.opacity = opacity;
           }, 16); // ~60fps
           
