@@ -344,11 +344,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const speed = parseFloat(element.dataset.speed) || 0.5;
             
             if (element.classList.contains('bg-text-left')) {
-              // Move CORT to the left as you scroll to make room for EZ
-              element.style.transform = `translateY(-50%) translateX(${-50 - (scrolled * 0.15)}%)`;
+              // Move CORT to the left as you scroll
+              element.style.transform = `translateY(-50%) translateX(${-50 - (scrolled * 0.12)}%)`;
             } else if (element.classList.contains('bg-text-right')) {
-              // Move EZ from off-screen right into view as you scroll
-              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.15)}%)`;
+              // Move EZ from right into better view as you scroll
+              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.12)}%)`;
             }
           });
         }
