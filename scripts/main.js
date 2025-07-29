@@ -328,7 +328,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize particles.js with error handling
   function initParticles() {
+    console.log('Attempting to initialize particles...');
+    console.log('particlesJS available:', typeof particlesJS !== 'undefined');
+    console.log('particles-js element found:', !!document.getElementById('particles-js'));
+    
     if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+      console.log('Initializing particles...');
       particlesJS('particles-js', {
         particles: {
           number: {
@@ -339,23 +344,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           },
           color: {
-            value: ["#8b4a6b", "#7e1c2e", "#f5c6d6", "#d4a5b8", "#a0a0a0"]
+            value: "#8b4a6b"
           },
           shape: {
-            type: ["circle", "image"],
-            image: {
-              src: "icons/heart.svg",
-              width: 20,
-              height: 20
-            }
+            type: "circle"
           },
           opacity: {
-            value: 0.4,
+            value: 0.8,
             random: true,
             anim: {
               enable: true,
               speed: 1,
-              opacity_min: 0.1,
+              opacity_min: 0.4,
               sync: false
             }
           },
