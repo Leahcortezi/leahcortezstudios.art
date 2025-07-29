@@ -342,12 +342,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (scrolled < heroBottom) {
           bgTextElements.forEach(element => {
             const speed = parseFloat(element.dataset.speed) || 0.5;
-            const yPos = scrolled * speed;
             
             if (element.classList.contains('bg-text-left')) {
-              element.style.transform = `translateY(-50%) translateX(${-100 + (scrolled * 0.1)}%)`;
+              element.style.transform = `translateY(-50%) translateX(${-50 + (scrolled * 0.15)}%)`;
             } else if (element.classList.contains('bg-text-right')) {
-              element.style.transform = `translateY(-50%) translateX(${100 - (scrolled * 0.1)}%)`;
+              element.style.transform = `translateY(-50%) translateX(${50 - (scrolled * 0.15)}%)`;
             }
           });
         }

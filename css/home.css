@@ -96,7 +96,7 @@
   font-size: 15vw;
   font-weight: bold;
   color: #2a2a2a;
-  opacity: 0.3;
+  opacity: 0.4;
   user-select: none;
   white-space: nowrap;
   top: 50%;
@@ -104,13 +104,13 @@
 }
 
 .bg-text-left {
-  left: -20%;
-  transform: translateY(-50%) translateX(-100%);
+  left: -10%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 .bg-text-right {
-  right: -20%;
-  transform: translateY(-50%) translateX(100%);
+  right: -10%;
+  transform: translateY(-50%) translateX(50%);
 }
 
 /* Ensure hero content is above background text */
@@ -820,29 +820,29 @@
 @media (max-width: 768px) {
   .bg-text {
     font-size: 20vw;
-    opacity: 0.2;
+    opacity: 0.3;
   }
   
   .bg-text-left {
-    left: -30%;
+    left: -15%;
   }
   
   .bg-text-right {
-    right: -30%;
+    right: -15%;
   }
 }
 
 @media (max-width: 480px) {
   .bg-text {
     font-size: 25vw;
-    opacity: 0.15;
+    opacity: 0.25;
   }
   
   .bg-text-left {
-    left: -40%;
+    left: -20%;
   }
   
   .bg-text-right {
-    right: -40%;
+    right: -20%;
   }
 }
