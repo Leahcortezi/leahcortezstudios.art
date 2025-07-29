@@ -109,11 +109,11 @@
             const fromHome = urlParams.get('from') === 'home';
             
             if (fromHome) {
-                // Came from homepage featured section
+                // Came from homepage featured section - go back to featured section
                 backLink.textContent = 'Back Home';
-                backLink.href = '../../../index.html';
+                backLink.href = '../../../index.html#featured';
             } else {
-                // Came from portfolio or direct access
+                // Came from portfolio or direct access - go to portfolio
                 backLink.textContent = 'Back to Portfolio';
                 backLink.href = '../../index.html';
             }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Inheritance | Leah Cortez Studio</title>
+    <meta name="description" content="A surreal self-portrait revealing the quiet weight of inherited wounds, sacred feminine power, and ancestral memory.">
+    <meta name="keywords" content="Inheritance, Digital Art, Surreal Art, Self-Portrait, Leah Cortez, Ancestral Memory">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Inheritance | Leah Cortez Studio">
+    <meta property="og:description" content="A surreal self-portrait revealing the quiet weight of inherited wounds, sacred feminine power, and ancestral memory.">
+    <meta property="og:image" content="../../../collections/personal/inheritance/images/Personal1.jpg">
+    <meta property="og:url" content="https://leahcortezstudio.art/collections/personal/inheritance/">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inheritance | Leah Cortez Studio">
+    <meta name="twitter:description" content="A surreal self-portrait revealing inherited wounds and ancestral memory.">
+    <meta name="twitter:image" content="../../../collections/personal/inheritance/images/Personal1.jpg">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../../../icons/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/work.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="../../../index.html">
+                <div class="logo-container">
+                    <img src="../../../images/logo/logo2.png" alt="Leah Cortez Logo" class="main-logo" />
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../bio/index.html">Bio</a></li>
+                <li><a href="../../../collections/index.html">Portfolio</a></li>
+                <li><a href="../../../cv/index.html">CV</a></li>
+                <li><a href="../../../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../../../icons/flower.svg" alt="Menu">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="work-page">
+        <div class="work-container">
+            <!-- Left Column: Artwork Image -->
+            <div class="work-image-column">
+                <div class="image-zoom-container">
+                    <img src="images/JPEG/Personal1.jpg" alt="Inheritance - A surreal self-portrait revealing inherited wounds and ancestral memory" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Right Column: Artwork Details -->
+            <div class="work-details-column">
+                <h1>Inheritance</h1>
+                <div class="work-meta">
+                    <span class="meta-item"><strong>Medium:</strong> Digital Art</span>
+                    <span class="meta-item"><strong>Year:</strong> 2025</span>
+                    <span class="meta-item"><strong>Dimensions:</strong> 12" x 16"</span>
+                </div>
+                <div class="work-description">
+                    <h2>About The Piece</h2>
+                    <p>
+                        Inheritance explores cultural identity, generational shame, and the quiet scars of assimilation. Inspired by the self-portraits of Frida Kahlo, the figure appears stripped of traditional markers like tattoos, piercings, and the iconic unibrow—not out of rejection, but reflection. Surrounded by thorned vines and native flora, she exists in a tense stillness—caught between survival and softness.
+                    </p>
+                    <p>
+                        The piece is rooted in my experience as a "no sabo" kid, raised between cultures. It reflects the emotional weight of being "not enough" on either side and the silence passed down through generations. Through visual symbolism and restraint, Inheritance asks:<br>
+                        If we've inherited erasure—can we still claim belonging?
+                    </p>
+                </div>
+                <div class="work-navigation">
+                    <a href="../anointed-gaze/index.html" class="prev-work">&larr; Previous Work</a>
+                    <a href="../../index.html" class="all-work" id="back-link">Back to Portfolio</a>
+                    <a href="../heaven-on-fire/index.html" class="next-work">Next Work &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="../../../images/logo/logo4.png" alt="Leah Cortez Logo" class="footer-logo">
+            <p class="copyright">Leah Cortez © 2025</p>
+        </div>
+    </footer>
+    <script src="../../../scripts/main.js" defer></script>
+    <script>
+        // Dynamic navigation for featured works
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.getElementById('back-link');
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromHome = urlParams.get('from') === 'home';
+            
+            if (fromHome) {
+                // Came from homepage featured section - go back to featured section
+                backLink.textContent = 'Back Home';
+                backLink.href = '../../../index.html#featured';
+            } else {
+                // Came from portfolio or direct access - go to portfolio
+                backLink.textContent = 'Back to Portfolio';
+                backLink.href = '../../index.html';
+            }
+        });
+    </script>
+
+</body>
+</html>
