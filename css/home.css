@@ -11,7 +11,7 @@
    -------------------- */
 
 #particles-js {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -79,6 +79,7 @@
    -------------------- */
 
 .hero-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,6 +92,7 @@
   /* Center the entire content block */
   max-width: 800px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .lace-logo {

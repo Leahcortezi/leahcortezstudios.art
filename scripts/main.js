@@ -392,23 +392,39 @@ document.addEventListener('DOMContentLoaded', () => {
         retina_detect: true
       });
 
-      // Add scroll interaction after particles are initialized
+      // Add parallax scroll interaction after particles are initialized
       setTimeout(() => {
         const particlesCanvas = document.querySelector('#particles-js canvas');
-        if (particlesCanvas) {
-          const handleParticleScroll = throttle(() => {
-            const scrolled = window.pageYOffset;
-            const scrollSpeed = scrolled * 0.2;
+        const heroSection = document.querySelector('#hero');
+        
+        if (particlesCanvas && heroSection) {
+          const handleParticleParallax = throttle(() => {
+            const heroRect = heroSection.getBoundingClientRect();
+            const heroTop = heroRect.top;
+            const heroHeight = heroRect.height;
+            const windowHeight = window.innerHeight;
             
-            // Move particles based on scroll
-            particlesCanvas.style.transform = `translateY(${scrollSpeed}px)`;
-            
-            // Adjust opacity based on scroll - keep particles more visible
-            const opacity = Math.max(0.5, 0.9 - (scrolled * 0.0002));
-            particlesCanvas.style.opacity = opacity;
+            // Calculate parallax movement based on hero section position
+            if (heroTop < windowHeight && heroTop + heroHeight > 0) {
+              // Hero is visible, apply parallax effect
+              const scrollProgress = Math.max(0, -heroTop / (heroHeight + windowHeight));
+              const parallaxY = scrollProgress * 200; // Parallax movement distance
+              
+              particlesCanvas.style.transform = `translateY(${parallaxY}px)`;
+              
+              // Fade out particles as hero leaves viewport
+              const opacity = Math.max(0.2, 1 - scrollProgress * 1.5);
+              particlesCanvas.style.opacity = opacity;
+            } else if (heroTop >= windowHeight) {
+              // Hero is below viewport, hide particles
+              particlesCanvas.style.opacity = 0;
+            }
           }, 16); // ~60fps
           
-          window.addEventListener('scroll', handleParticleScroll);
+          window.addEventListener('scroll', handleParticleParallax);
+          
+          // Initial call to set correct state
+          handleParticleParallax();
         }
       }, 1000);
     } else {
