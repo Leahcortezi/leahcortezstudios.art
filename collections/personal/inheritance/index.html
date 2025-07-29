@@ -89,8 +89,8 @@
                 </div>
                 <div class="work-navigation">
                     <a href="../anointed-gaze/index.html" class="prev-work">&larr; Previous Work</a>
-                    <a href="../../../index.html" class="all-work">Back Home</a>
-                    <a href="../abuelas-altar/index.html" class="next-work">Next Work &rarr;</a>
+                    <a href="#" class="all-work" id="back-link">Back</a>
+                    <a href="../heaven-on-fire/index.html" class="next-work">Next Work &rarr;</a>
                 </div>
             </div>
         </div>
@@ -110,16 +110,21 @@
             const backLink = document.getElementById('back-link');
             const referrer = document.referrer;
             
-            // Check if user came from homepage or portfolio
-            if (referrer.includes('index.html') && !referrer.includes('collections')) {
-                // Came from homepage - show "Back Home"
-                backLink.textContent = 'Back Home';
-                backLink.href = '../../../index.html';
-            } else {
-                // Came from portfolio or direct access - show "Back to Portfolio"
-                backLink.textContent = 'Back to Portfolio';
-                backLink.href = '../../index.html';
+            // Default to "Back to Portfolio"
+            let linkText = 'Back to Portfolio';
+            let linkHref = '../../index.html';
+            
+            // Check if user came from homepage (main index.html)
+            if (referrer && (referrer.endsWith('/index.html') || referrer.endsWith('/'))) {
+                // If the referrer is the main site homepage, show "Back Home"
+                if (!referrer.includes('/collections/')) {
+                    linkText = 'Back Home';
+                    linkHref = '../../../index.html';
+                }
             }
+            
+            backLink.textContent = linkText;
+            backLink.href = linkHref;
         });
     </script>
 
