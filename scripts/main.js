@@ -323,6 +323,101 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------
+     7. PARTICLES BACKGROUND WITH SCROLL INTERACTION
+     -------------------- */
+
+  // Initialize particles.js
+  if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 60,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ['#8b4a6b', '#7e1c2e', '#5a5a5a', '#4a4a4a']
+        },
+        shape: {
+          type: 'circle',
+          stroke: {
+            width: 0,
+            color: '#000000'
+          }
+        },
+        opacity: {
+          value: 0.3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 0.5,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: false
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: 'bottom',
+          random: true,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: {
+            enable: false
+          }
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: {
+            enable: false
+          },
+          onclick: {
+            enable: false
+          },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+
+    // Add scroll interaction to particles
+    let particlesContainer = document.querySelector('#particles-js canvas');
+    if (particlesContainer) {
+      const handleParticleScroll = throttle(() => {
+        const scrolled = window.pageYOffset;
+        const scrollSpeed = scrolled * 0.3;
+        
+        // Move particles based on scroll
+        particlesContainer.style.transform = `translateY(${scrollSpeed}px)`;
+        
+        // Adjust opacity based on scroll
+        const opacity = Math.max(0.3, 0.7 - (scrolled * 0.0005));
+        particlesContainer.style.opacity = opacity;
+      }, 16); // ~60fps
+      
+      window.addEventListener('scroll', handleParticleScroll);
+    }
+  }
+
+  /* --------------------
    8. UTILITY FUNCTIONS
    -------------------- */// Debounce function for performance optimization
 function debounce(func, wait) {
