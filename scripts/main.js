@@ -323,7 +323,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------
-   7. UTILITY FUNCTIONS
+     7. PARALLAX HERO BACKGROUND
+     -------------------- */
+
+  const bgTextElements = document.querySelectorAll('.bg-text');
+  
+  if (bgTextElements.length > 0) {
+    const handleParallax = throttle(() => {
+      const scrolled = window.pageYOffset;
+      const heroSection = document.querySelector('.hero-section');
+      
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        const heroTop = heroSection.offsetTop;
+        const heroBottom = heroTop + heroHeight;
+        
+        // Only apply parallax effect when hero section is visible
+        if (scrolled < heroBottom) {
+          bgTextElements.forEach(element => {
+            const speed = parseFloat(element.dataset.speed) || 0.5;
+            const yPos = scrolled * speed;
+            
+            if (element.classList.contains('bg-text-left')) {
+              element.style.transform = `translateY(-50%) translateX(${-100 + (scrolled * 0.1)}%)`;
+            } else if (element.classList.contains('bg-text-right')) {
+              element.style.transform = `translateY(-50%) translateX(${100 - (scrolled * 0.1)}%)`;
+            }
+          });
+        }
+      }
+    }, 16); // ~60fps
+    
+    window.addEventListener('scroll', handleParallax);
+  }
+
+  /* --------------------
+   8. UTILITY FUNCTIONS
    -------------------- */// Debounce function for performance optimization
 function debounce(func, wait) {
   let timeout;
