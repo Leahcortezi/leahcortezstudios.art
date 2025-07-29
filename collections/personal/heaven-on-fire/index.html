@@ -103,23 +103,18 @@
         // Dynamic navigation for featured works
         document.addEventListener('DOMContentLoaded', function() {
             const backLink = document.getElementById('back-link');
-            const referrer = document.referrer;
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromHome = urlParams.get('from') === 'home';
             
-            // Default to "Back to Portfolio"
-            let linkText = 'Back to Portfolio';
-            let linkHref = '../../index.html';
-            
-            // Check if user came from homepage (main index.html)
-            if (referrer && (referrer.endsWith('/index.html') || referrer.endsWith('/'))) {
-                // If the referrer is the main site homepage, show "Back Home"
-                if (!referrer.includes('/collections/')) {
-                    linkText = 'Back Home';
-                    linkHref = '../../../index.html';
-                }
+            if (fromHome) {
+                // Came from homepage featured section
+                backLink.textContent = 'Back Home';
+                backLink.href = '../../../index.html';
+            } else {
+                // Came from portfolio or direct access
+                backLink.textContent = 'Back to Portfolio';
+                backLink.href = '../../index.html';
             }
-            
-            backLink.textContent = linkText;
-            backLink.href = linkHref;
         });
     </script>
 
