@@ -445,6 +445,11 @@
   background: #fff;
   border-radius: 6px;
   transition: transform 0.4s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .image-gallery {
@@ -484,11 +489,11 @@
 }
 
 .featured-card:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.02) translateZ(0);
 }
 
 .featured-card:hover .lace-border {
-  transform: scale(1.05);
+  transform: scale(1.02) translateZ(0);
 }
 
 /* --------------------

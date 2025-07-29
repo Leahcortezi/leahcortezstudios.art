@@ -180,10 +180,12 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .masonry-item a:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) translateZ(0);
   transition: transform 0.3s ease;
 }
 
@@ -206,10 +208,15 @@
   object-fit: cover;
   border-radius: 12px; /* Rounded corners for clean look */
   position: relative;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .masonry-item:hover .project-image {
-  transform: scale(1.05); /* Slightly increased hover effect */
+  transform: scale(1.03); /* Reduced scale to prevent pixelation */
 }
 
 /* --------------------
@@ -225,6 +232,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* Vertical 3:4 images */
@@ -236,6 +244,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* Horizontal 4:3 images */
@@ -247,6 +256,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* --------------------
@@ -315,8 +325,16 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Maintain image styling on mobile */
+  /* Maintain image styling on mobile and prevent pixelation */
   .project-image {
     border-radius: 10px; /* Slightly smaller radius for mobile */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+  }
+  
+  /* Reduce hover effects on mobile to prevent pixelation */
+  .masonry-item:hover .project-image {
+    transform: scale(1.01) translateZ(0);
   }
 }

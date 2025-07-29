@@ -99,6 +99,38 @@ body {
   flex-direction: column;
 }
 
+/* --------------------
+   4. GLOBAL IMAGE OPTIMIZATION
+   -------------------- */
+
+img {
+  /* Prevent images from being pixelated when scaled */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  -ms-interpolation-mode: bicubic;
+  
+  /* Enable hardware acceleration for smoother transforms */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  
+  /* Ensure images are responsive by default */
+  max-width: 100%;
+  height: auto;
+  
+  /* Improve image loading performance */
+  will-change: transform;
+}
+
+/* High-DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
 main {
   /*
     The 'flex-grow: 1' property makes the main content area expand

@@ -48,6 +48,13 @@
   cursor: zoom-in;
   transition: transform 0.3s ease;
   position: relative;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  max-width: 100%;
+  height: auto;
 }
 
 /* Magnifying Glass Effect */
@@ -60,6 +67,9 @@
   overflow: visible;
   border: 4px solid var(--color-secondary-accent);
   cursor: none;
+  /* Ensure container doesn't cause pixelation */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .work-image-column .image-zoom-container img {
@@ -67,6 +77,13 @@
   display: block;
   width: 100%;
   transition: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  max-width: 100%;
+  height: auto;
 }
 
 /* Magnifying glass circle */
