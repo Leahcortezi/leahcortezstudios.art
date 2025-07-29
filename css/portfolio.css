@@ -109,29 +109,50 @@
    -------------------- */
 
 .masonry-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
   column-count: 1;
   column-gap: 2rem;
+  column-fill: balance;
+  display: block;
+  text-align: center;
 }
 
 /* Responsive columns */
 @media (min-width: 576px) {
   .masonry-container {
     column-count: 2;
+    max-width: 800px;
   }
 }
 
 @media (min-width: 768px) {
   .masonry-container {
-    column-count: 3;
+    column-count: 2;
+    max-width: 900px;
+    column-gap: 2.5rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1000px) {
+  .masonry-container {
+    column-count: 3;
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .masonry-container {
+    column-count: 3;
+    max-width: 1300px;
+  }
+}
+
+@media (min-width: 1400px) {
   .masonry-container {
     column-count: 4;
+    max-width: 1400px;
   }
 }
 
@@ -144,6 +165,8 @@
   width: 100%;
   margin-bottom: 2rem;
   break-inside: avoid;
+  vertical-align: top;
+  text-align: left;
   transition: all 0.3s ease;
 }
 
@@ -274,6 +297,7 @@
   .filter-buttons {
     flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
   }
   
   .filter-buttons button {
@@ -284,6 +308,7 @@
   .masonry-container {
     padding: 1rem;
     column-gap: 1rem;
+    max-width: 95%;
   }
   
   .masonry-item {
