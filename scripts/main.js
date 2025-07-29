@@ -342,7 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
             value: ["#8b4a6b", "#7e1c2e", "#f5c6d6", "#d4a5b8", "#a0a0a0"]
           },
           shape: {
-            type: "circle"
+            type: ["circle", "image"],
+            image: {
+              src: "icons/heart.svg",
+              width: 20,
+              height: 20
+            }
           },
           opacity: {
             value: 0.4,
