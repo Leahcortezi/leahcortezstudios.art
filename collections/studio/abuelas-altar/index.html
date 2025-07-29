@@ -86,7 +86,7 @@
                 </div>
                 <div class="work-navigation">
                     <a href="../gnaw/index.html" class="prev-work">&larr; Previous Work</a>
-                    <a href="../../../index.html" class="all-work">Back Home</a>
+                    <a href="#" class="all-work" id="back-link">Back</a>
                     <a href="../feathers-along-the-bend/index.html" class="next-work">Next Work &rarr;</a>
                 </div>
             </div>
@@ -101,6 +101,24 @@
         </div>
     </footer>
     <script src="../../../scripts/main.js" defer></script>
+    <script>
+        // Dynamic navigation for featured works
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.getElementById('back-link');
+            const referrer = document.referrer;
+            
+            // Check if user came from homepage or portfolio
+            if (referrer.includes('index.html') && !referrer.includes('collections')) {
+                // Came from homepage - show "Back Home"
+                backLink.textContent = 'Back Home';
+                backLink.href = '../../../index.html';
+            } else {
+                // Came from portfolio or direct access - show "Back to Portfolio"
+                backLink.textContent = 'Back to Portfolio';
+                backLink.href = '../../index.html';
+            }
+        });
+    </script>
 
 </body>
 </html>
