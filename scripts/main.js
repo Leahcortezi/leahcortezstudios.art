@@ -339,18 +339,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           },
           color: {
-            value: ["#8b4a6b", "#7e1c2e", "#b8860b", "#cd853f", "#a0a0a0"]
+            value: ["#8b4a6b", "#7e1c2e", "#f5c6d6", "#d4a5b8", "#a0a0a0"]
           },
           shape: {
             type: "circle"
           },
           opacity: {
-            value: 0.7,
+            value: 0.4,
             random: true,
             anim: {
               enable: true,
               speed: 1,
-              opacity_min: 0.3,
+              opacity_min: 0.1,
               sync: false
             }
           },
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
               particlesCanvas.style.transform = `translateY(${parallaxY}px)`;
               
               // Fade out particles as hero leaves viewport
-              const opacity = Math.max(0.2, 1 - scrollProgress * 1.5);
+              const opacity = Math.max(0.1, 0.6 - scrollProgress * 1.2);
               particlesCanvas.style.opacity = opacity;
             } else if (heroTop >= windowHeight) {
               // Hero is below viewport, hide particles
