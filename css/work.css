@@ -135,6 +135,7 @@
     remaining 45% of the container's width.
   */
   flex: 0 1 45%;
+  margin-top: 120px;
 }
 
 /* --------------------
