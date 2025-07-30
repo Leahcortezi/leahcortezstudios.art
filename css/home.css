@@ -6,9 +6,18 @@
   so these rules can override the global styles if necessary.
 */
 
+
 /* --------------------
    1. UTILITY & CONTAINER
    -------------------- */
+
+/* Global header color for homepage */
+h1, h2 {
+  color: #f5c6d6;
+}
+
+/* Section header classes for specificity */
+
 
 /*
   A general-purpose container to center content and provide consistent padding.
@@ -109,6 +118,7 @@
   margin-top: 0;
   line-height: 1.4;
   text-shadow: 0 0 2px #fff;
+  color: #7e1c2e;
 }
 
 .hero-poetic {
@@ -149,12 +159,10 @@
 }
 
 .bio-preview-section h2 {
-    /* Centers the heading text */
     text-align: center;
-    /* Sets the font size */
     font-size: 2.5rem;
-    /* Adds space below the heading */
     margin-bottom: 3rem;
+    color: #7e1c2e;
 }
 
 .bio-content {
@@ -190,6 +198,7 @@
   margin-bottom: 0.3rem;
   text-align: left;
   align-self: flex-start;
+  color: #7e1c2e;
 }
 
 .bio-poetic {
@@ -282,12 +291,10 @@
 }
 
 .featured-title {
-    /* Centers the heading */
     text-align: center;
-    /* Sets the font size */
     font-size: 2.5rem;
-    /* Adds space below the heading */
     margin-bottom: 3rem;
+    color: #7e1c2e;
 }
 
 .featured-art-section {
@@ -296,12 +303,10 @@
 }
 
 .featured-art-section h2 {
-    /* Centers the heading */
     text-align: center;
-    /* Sets the font size */
     font-size: 2.5rem;
-    /* Adds space below the heading */
     margin-bottom: 3rem;
+    color: #7e1c2e;
 }
 
 .gallery-grid {
@@ -526,10 +531,9 @@
 }
 
 .contact-preview-section h2 {
-  /* Sets the font size with better hierarchy */
   font-size: 3rem;
   margin-bottom: 2rem;
-  color: var(--color-primary-accent);
+  color: #7e1c2e;
   font-weight: 300;
   letter-spacing: 1px;
 }
