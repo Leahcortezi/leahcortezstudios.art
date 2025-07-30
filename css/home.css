@@ -143,8 +143,9 @@
    -------------------- */
 
 .bio-preview-section {
-  /* Adds vertical padding to the section */
+  /* Adds vertical padding to the section and extra space above */
   padding: 4rem 0;
+  margin-top: 4rem; /* extra space between hero and bio preview */
 }
 
 .bio-preview-section h2 {
@@ -157,28 +158,28 @@
 }
 
 .bio-content {
-  /* Uses flexbox to create a two-column layout */
   display: flex;
-  /* Aligns items to the center vertically */
-  align-items: center;
-  /* Adds a gap between the columns */
+  align-items: center; /* center bio-text vertically with image */
   gap: 3rem;
+  text-align: left;
 }
 
 .bio-image {
-  /* Sets the width of the image */
   width: 40%;
-  /* Ensures the image doesn't exceed its container's width */
   max-width: 400px;
-  /* Maintains the aspect ratio of the image */
   object-fit: cover;
-  /* A subtle border to frame the image */
   border: 4px solid var(--color-secondary-accent);
+  margin-top: 0.3rem; /* aligns image top with bio-title and paragraph */
 }
 
 .bio-text {
-  /* The text container takes up the remaining space */
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  /* Remove margin-top so text is centered vertically with image */
 }
 
 /* Info styles for bio section */
@@ -187,6 +188,8 @@
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0.3rem;
+  text-align: left;
+  align-self: flex-start;
 }
 
 .bio-poetic {
