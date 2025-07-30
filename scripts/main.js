@@ -365,7 +365,9 @@ function throttle(func, limit) {
    -------------------- */
 
 function createFloatingIcons() {
-  console.log('Creating floating icons...');
+  // Detect if we're in a subdirectory
+  const isSubdirectory = window.location.pathname.includes('/') && window.location.pathname !== '/';
+  const iconPath = isSubdirectory ? '../icons/' : 'icons/';
   
   // Create container for floating icons
   const floatingContainer = document.createElement('div');
@@ -390,7 +392,7 @@ function createFloatingIcons() {
     
     // Create img element
     const img = document.createElement('img');
-    img.src = `icons/${randomIcon}`;
+    img.src = `${iconPath}${randomIcon}`;
     img.alt = '';
     img.loading = 'lazy';
     iconElement.appendChild(img);
@@ -400,8 +402,6 @@ function createFloatingIcons() {
     iconElement.style.top = Math.random() * 100 + '%';
     
     floatingContainer.appendChild(iconElement);
-    console.log(`Created icon ${i + 1}: ${randomIcon} at ${iconElement.style.left}, ${iconElement.style.top}`);
-  }
   }
   
   // Scroll-based movement
