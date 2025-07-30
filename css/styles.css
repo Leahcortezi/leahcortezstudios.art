@@ -311,9 +311,10 @@ nav {
 }
 
 .footer-logo {
-  /* Logo styling in footer - balanced size */
-  height: 65px;
-  width: auto;
+  /* Logo styling in footer - sized to match text width */
+  height: auto;
+  width: 200px; /* Width approximately matches "Leah Cortez © 2025" text */
+  max-width: 90%; /* Responsive safety for small screens */
   opacity: 0.8;
   filter: invert(1);
 }
