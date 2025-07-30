@@ -365,11 +365,13 @@ function throttle(func, limit) {
    -------------------- */
 
 function createFloatingIcons() {
-  console.log('Creating floating icons...');
-  
-  // Use absolute paths to work from any page
-  const iconPath = '/icons/';
-  console.log('Icon path:', iconPath);
+  // Try multiple path approaches to work from any setup
+  const possiblePaths = [
+    '/icons/',           // Absolute path from root
+    './icons/',          // Relative to current page
+    '../icons/',         // One level up
+    'icons/'             // Direct relative
+  ];
   
   // Create container for floating icons
   const floatingContainer = document.createElement('div');
@@ -396,6 +398,23 @@ function createFloatingIcons() {
     { left: 90, top: 80 }
   ];
   
+  // Function to try loading SVG from different paths
+  const tryLoadSVG = async (iconName, pathIndex = 0) => {
+    if (pathIndex >= possiblePaths.length) {
+      throw new Error('All paths failed');
+    }
+    
+    const fullPath = possiblePaths[pathIndex] + iconName;
+    
+    try {
+      const response = await fetch(fullPath);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.text();
+    } catch (error) {
+      return tryLoadSVG(iconName, pathIndex + 1);
+    }
+  };
+  
   // Create 12 floating icons with predefined positions
   for (let i = 0; i < 12; i++) {
     const iconElement = document.createElement('div');
@@ -408,9 +427,8 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomRotation);
     
-    // Create SVG element directly for better Safari compatibility
-    fetch(`${iconPath}${randomIcon}`)
-      .then(response => response.text())
+    // Try to load SVG with fallback
+    tryLoadSVG(randomIcon)
       .then(svgContent => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = svgContent;
@@ -424,16 +442,14 @@ function createFloatingIcons() {
         }
       })
       .catch(() => {
-        // Fallback to background image if fetch fails
-        const iconDiv = document.createElement('div');
-        iconDiv.style.width = '100%';
-        iconDiv.style.height = '100%';
-        iconDiv.style.backgroundImage = `url('${iconPath}${randomIcon}')`;
-        iconDiv.style.backgroundSize = 'contain';
-        iconDiv.style.backgroundRepeat = 'no-repeat';
-        iconDiv.style.backgroundPosition = 'center';
-        iconDiv.style.filter = 'invert(1)';
-        iconElement.appendChild(iconDiv);
+        // Final fallback: create a simple CSS-based icon
+        const fallbackIcon = document.createElement('div');
+        fallbackIcon.style.width = '100%';
+        fallbackIcon.style.height = '100%';
+        fallbackIcon.style.borderRadius = randomIcon.includes('star') ? '50%' : '20%';
+        fallbackIcon.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        fallbackIcon.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+        iconElement.appendChild(fallbackIcon);
       });
     
     // Use predefined positions
@@ -442,7 +458,6 @@ function createFloatingIcons() {
     iconElement.style.top = position.top + '%';
     
     floatingContainer.appendChild(iconElement);
-    console.log(`Created icon ${i + 1}: ${randomIcon} at ${position.left}%, ${position.top}%`);
   }
   
   // Scroll-based movement - optimized for smoothness

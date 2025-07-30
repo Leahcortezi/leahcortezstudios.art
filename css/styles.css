@@ -426,7 +426,7 @@ nav {
 
 .floating-icon {
   position: absolute;
-  opacity: 0.3;
+  opacity: 0.12; /* More subtle opacity for background effect */
   pointer-events: none;
   will-change: transform;
   transition: transform 0.1s ease-out;
