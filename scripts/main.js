@@ -408,16 +408,16 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomRotation);
     
-    // Create img element with your actual SVG icons
-    const img = document.createElement('img');
-    img.src = `${iconPath}${randomIcon}`;
-    img.alt = '';
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.display = 'block';
-    img.onload = () => console.log(`Icon loaded: ${img.src}`);
-    img.onerror = () => console.error(`Icon failed to load: ${img.src}`);
-    iconElement.appendChild(img);
+    // Create div with SVG as background image instead of img tag
+    const iconDiv = document.createElement('div');
+    iconDiv.style.width = '100%';
+    iconDiv.style.height = '100%';
+    iconDiv.style.backgroundImage = `url('${iconPath}${randomIcon}')`;
+    iconDiv.style.backgroundSize = 'contain';
+    iconDiv.style.backgroundRepeat = 'no-repeat';
+    iconDiv.style.backgroundPosition = 'center';
+    iconDiv.style.filter = 'brightness(0) invert(1)';
+    iconElement.appendChild(iconDiv);
     
     // Use predefined positions
     const position = positions[i];
