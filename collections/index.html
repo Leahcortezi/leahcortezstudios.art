@@ -266,7 +266,7 @@
         </div>
         
     </div>
-    <button id="viewMoreBtn" style="display:block;margin:2rem auto;padding:1rem 2rem;font-size:1.2rem;cursor:pointer;">View More</button>
+    <a id="viewMoreLink" class="view-more-link" href="#" style="display:block;margin:2rem auto;text-align:center;font-family:var(--font-accent);font-size:1.2rem;color:var(--color-primary-accent);border:2px solid var(--color-primary-accent);padding:0.75rem 2rem;border-radius:0.5rem;background:rgba(126,28,46,0.07);transition:all 0.2s;max-width:fit-content;">View More</a>
     </main>
 
     <!-- Footer -->
@@ -281,16 +281,17 @@
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
-  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  const viewMoreLink = document.getElementById('viewMoreLink');
   // Only apply for All Work view
-  if (viewMoreBtn && masonryItems.length > 0) {
-    const half = Math.ceil(masonryItems.length / 2);
+  if (viewMoreLink && masonryItems.length > 0) {
+    const initialCount = 6; // Show first 2-3 rows (6 items for desktop)
     masonryItems.forEach((item, i) => {
-      if (i >= half) item.style.display = 'none';
+      if (i >= initialCount) item.style.display = 'none';
     });
-    viewMoreBtn.addEventListener('click', function() {
+    viewMoreLink.addEventListener('click', function(e) {
+      e.preventDefault();
       masonryItems.forEach(item => item.style.display = 'inline-block');
-      viewMoreBtn.style.display = 'none';
+      viewMoreLink.style.display = 'none';
     });
   }
 });
