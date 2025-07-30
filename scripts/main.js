@@ -365,9 +365,12 @@ function throttle(func, limit) {
    -------------------- */
 
 function createFloatingIcons() {
+  console.log('Creating floating icons...');
+  
   // Detect if we're in a subdirectory
   const isSubdirectory = window.location.pathname.includes('/') && window.location.pathname !== '/';
   const iconPath = isSubdirectory ? '../icons/' : 'icons/';
+  console.log('Icon path:', iconPath);
   
   // Create container for floating icons
   const floatingContainer = document.createElement('div');
@@ -378,7 +381,23 @@ function createFloatingIcons() {
   const sizes = ['small', 'medium', 'large'];
   const animations = ['animate-1', 'animate-2', 'animate-3'];
   
-  // Create 12 floating icons randomly distributed
+  // Predefined positions to ensure visibility
+  const positions = [
+    { left: 10, top: 20 },
+    { left: 80, top: 15 },
+    { left: 20, top: 60 },
+    { left: 70, top: 70 },
+    { left: 30, top: 30 },
+    { left: 85, top: 50 },
+    { left: 15, top: 80 },
+    { left: 60, top: 25 },
+    { left: 40, top: 75 },
+    { left: 75, top: 40 },
+    { left: 25, top: 50 },
+    { left: 90, top: 80 }
+  ];
+  
+  // Create 12 floating icons with predefined positions
   for (let i = 0; i < 12; i++) {
     const iconElement = document.createElement('div');
     iconElement.className = 'floating-icon';
@@ -397,11 +416,13 @@ function createFloatingIcons() {
     img.loading = 'lazy';
     iconElement.appendChild(img);
     
-    // Random positioning
-    iconElement.style.left = Math.random() * 100 + '%';
-    iconElement.style.top = Math.random() * 100 + '%';
+    // Use predefined positions
+    const position = positions[i];
+    iconElement.style.left = position.left + '%';
+    iconElement.style.top = position.top + '%';
     
     floatingContainer.appendChild(iconElement);
+    console.log(`Created icon ${i + 1}: ${randomIcon} at ${position.left}%, ${position.top}%`);
   }
   
   // Scroll-based movement

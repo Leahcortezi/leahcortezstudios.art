@@ -312,9 +312,10 @@ nav {
 
 .footer-logo {
   /* Logo styling in footer - balanced size */
-  height: 45px;
+  height: 65px;
   width: auto;
   opacity: 0.8;
+  filter: invert(1);
 }
 
 .copyright {
@@ -419,16 +420,17 @@ nav {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
 }
 
 .floating-icon {
   position: absolute;
-  opacity: 0.1;
+  opacity: 0.5;
   pointer-events: none;
   will-change: transform;
   transition: transform 0.1s ease-out;
+  border: 1px solid blue;
 }
 
 .floating-icon img {
