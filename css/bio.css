@@ -103,6 +103,7 @@
     Adds margin below the heading to push the paragraph text down.
   */
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .bio-text-column p {
