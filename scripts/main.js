@@ -365,9 +365,11 @@ function throttle(func, limit) {
    -------------------- */
 
 function createFloatingIcons() {
-  // Detect if we're in a subdirectory
-  const isSubdirectory = window.location.pathname.includes('/') && window.location.pathname !== '/';
-  const iconPath = isSubdirectory ? '../icons/' : 'icons/';
+  console.log('Creating floating icons...');
+  
+  // Use absolute paths to work from any page
+  const iconPath = '/icons/';
+  console.log('Icon path:', iconPath);
   
   // Create container for floating icons
   const floatingContainer = document.createElement('div');
@@ -413,6 +415,8 @@ function createFloatingIcons() {
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.display = 'block';
+    img.onload = () => console.log(`Icon loaded: ${img.src}`);
+    img.onerror = () => console.error(`Icon failed to load: ${img.src}`);
     iconElement.appendChild(img);
     
     // Use predefined positions
@@ -421,6 +425,7 @@ function createFloatingIcons() {
     iconElement.style.top = position.top + '%';
     
     floatingContainer.appendChild(iconElement);
+    console.log(`Created icon ${i + 1}: ${randomIcon} at ${position.left}%, ${position.top}%`);
   }
   
   // Scroll-based movement - optimized for smoothness
