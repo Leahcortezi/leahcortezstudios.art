@@ -409,16 +409,22 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomAnimation);
     
-    // Create img element
-    const img = document.createElement('img');
-    img.src = `${iconPath}${randomIcon}`;
-    img.alt = 'floating icon';
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.display = 'block';
-    img.onload = () => console.log(`Icon loaded: ${img.src}`);
-    img.onerror = () => console.error(`Icon failed to load: ${img.src}`);
-    iconElement.appendChild(img);
+    // Create simple CSS shape instead of SVG for testing
+    const shape = document.createElement('div');
+    if (randomIcon === 'flower.svg') {
+      shape.style.background = 'radial-gradient(circle, #fff 30%, transparent 30%)';
+      shape.style.borderRadius = '50%';
+    } else if (randomIcon === 'star.svg') {
+      shape.style.background = '#fff';
+      shape.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+    } else {
+      shape.style.background = '#fff';
+      shape.style.borderRadius = '50%';
+      shape.style.border = '3px solid #fff';
+    }
+    shape.style.width = '100%';
+    shape.style.height = '100%';
+    iconElement.appendChild(shape);
     
     // Add debug text
     const debugText = document.createElement('div');
@@ -439,20 +445,33 @@ function createFloatingIcons() {
     console.log(`Created icon ${i + 1}: ${randomIcon} at ${position.left}%, ${position.top}%`);
   }
   
-  // Scroll-based movement
+  // Scroll-based movement - optimized for smoothness
   let scrollY = 0;
-  const handleScroll = throttle(() => {
-    scrollY = window.scrollY;
+  let ticking = false;
+  
+  const updateIconPositions = () => {
     const icons = document.querySelectorAll('.floating-icon');
     
     icons.forEach((icon, index) => {
-      const speed = 0.2 + (index % 3) * 0.1; // Different speeds for variety
+      const speed = 0.1 + (index % 3) * 0.05; // Slower, gentler movement
       const direction = index % 2 === 0 ? 1 : -1; // Alternate directions
       const movement = scrollY * speed * direction;
       
-      icon.style.transform = `translateY(${movement}px)`;
+      // Use translate3d for better performance
+      icon.style.transform = `translate3d(0, ${movement}px, 0)`;
     });
-  }, 16); // ~60fps
+    
+    ticking = false;
+  };
   
-  window.addEventListener('scroll', handleScroll);
+  const handleScroll = () => {
+    scrollY = window.scrollY;
+    
+    if (!ticking) {
+      requestAnimationFrame(updateIconPositions);
+      ticking = true;
+    }
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
 }
