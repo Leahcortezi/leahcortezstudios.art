@@ -311,8 +311,8 @@ nav {
 }
 
 .footer-logo {
-  /* Logo styling in footer - made bigger */
-  height: 60px;
+  /* Logo styling in footer - smaller size */
+  height: 40px;
   width: auto;
   opacity: 0.8;
 }
