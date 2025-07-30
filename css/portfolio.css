@@ -349,95 +349,83 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(126, 28, 46, 0.92);
+  background: rgba(126, 28, 46, 0.95);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  padding: 1.2rem;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  padding: 1.5rem;
   text-align: center;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(4px);
   border-radius: inherit;
-  transform: translateY(10px);
 }
 
 .hover-description p {
   font-family: var(--accent-font);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.6;
   margin: 0;
-  font-weight: 500;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  transform: translateY(0);
-  transition: transform 0.3s ease;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-style: italic;
 }
 
 .lace-wrapper:hover .hover-description {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
 }
 
-.lace-wrapper:hover .hover-description p {
-  transform: translateY(0);
-}
-
-/* Ensure proper positioning and z-index */
+/* Ensure smooth performance */
 .lace-wrapper {
   position: relative;
   overflow: hidden;
-  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .project-image {
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 .lace-wrapper:hover .project-image {
-  transform: scale(1.05);
-  filter: brightness(0.8);
+  transform: scale(1.02);
 }
 
 .hover-description {
   z-index: 2;
 }
 
-/* Mobile adjustments for hover descriptions */
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .hover-description {
     padding: 1rem;
-    transform: translateY(5px);
   }
   
   .hover-description p {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
 
-/* Touch device support - better implementation */
+/* Touch device support */
 @media (hover: none) and (pointer: coarse) {
   .hover-description {
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
   }
   
-  .masonry-item:active .hover-description,
   .lace-wrapper:active .hover-description {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
   }
   
-  .masonry-item:active .project-image,
   .lace-wrapper:active .project-image {
     transform: scale(1.02);
-    filter: brightness(0.8);
   }
 }
