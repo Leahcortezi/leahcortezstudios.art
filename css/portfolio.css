@@ -228,7 +228,8 @@
   aspect-ratio: 1;
 }
 
-.masonry-item.square .project-image {
+.masonry-item.square .project-image,
+.masonry-item.square img {
   width: 100%;
   height: 100%;
   object-fit: cover;
