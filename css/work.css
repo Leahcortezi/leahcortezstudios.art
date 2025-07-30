@@ -122,7 +122,6 @@
   background-position: center;
   will-change: left, top, background-position;
 }
-}
 
 .work-image-column .image-zoom-container:hover .magnifying-glass {
   opacity: 1;

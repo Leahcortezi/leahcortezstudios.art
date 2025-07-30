@@ -282,15 +282,36 @@
 document.addEventListener('DOMContentLoaded', function() {
   const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
   const viewMoreLink = document.getElementById('viewMoreLink');
-  // Only apply for All Work view
   if (viewMoreLink && masonryItems.length > 0) {
-    const initialCount = 6; // Show first 2-3 rows (6 items for desktop)
-    masonryItems.forEach((item, i) => {
-      if (i >= initialCount) item.style.display = 'none';
+    // Select a mix of squares and verticals for initial view
+    const squares = masonryItems.filter(item => item.classList.contains('square'));
+    const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
+    // Show 3 squares and 3 verticals if available, else fallback to first 6
+    let initialItems = [];
+    initialItems = initialItems.concat(squares.slice(0,3));
+    initialItems = initialItems.concat(verticals.slice(0,3));
+    if (initialItems.length < 6) {
+      // Fill up to 6 with remaining items
+      const alreadyIncluded = new Set(initialItems);
+      masonryItems.forEach(item => {
+        if (initialItems.length < 6 && !alreadyIncluded.has(item)) {
+          initialItems.push(item);
+        }
+      });
+    }
+    masonryItems.forEach(item => {
+      if (!initialItems.includes(item)) {
+        item.style.display = 'none';
+        item.style.opacity = 0;
+        item.style.transition = 'opacity 0.6s';
+      }
     });
     viewMoreLink.addEventListener('click', function(e) {
       e.preventDefault();
-      masonryItems.forEach(item => item.style.display = 'inline-block');
+      masonryItems.forEach(item => {
+        item.style.display = 'inline-block';
+        setTimeout(() => { item.style.opacity = 1; }, 50);
+      });
       viewMoreLink.style.display = 'none';
     });
   }
