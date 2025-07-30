@@ -114,10 +114,12 @@
   opacity: 0;
   transition: opacity 0.2s ease;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  z-index: 10;
+  z-index: 100;
   transform: translate(-50%, -50%);
-  /* Adjust background size for smaller zoom area */
-  background-size: 300% 300%;
+  background-size: cover;
+  background-position: center;
+  will-change: left, top, background-position;
+}
 }
 
 .work-image-column .image-zoom-container:hover .magnifying-glass {
