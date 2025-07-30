@@ -286,15 +286,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select a mix of squares and verticals for initial view
     const squares = masonryItems.filter(item => item.classList.contains('square'));
     const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
-    // Show 3 squares and 3 verticals if available, else fallback to first 6
+    // Show 4 squares and 4 verticals if available, else fallback to first 8
     let initialItems = [];
-    initialItems = initialItems.concat(squares.slice(0,3));
-    initialItems = initialItems.concat(verticals.slice(0,3));
-    if (initialItems.length < 6) {
-      // Fill up to 6 with remaining items
+    initialItems = initialItems.concat(squares.slice(0,4));
+    initialItems = initialItems.concat(verticals.slice(0,4));
+    if (initialItems.length < 8) {
+      // Fill up to 8 with remaining items
       const alreadyIncluded = new Set(initialItems);
       masonryItems.forEach(item => {
-        if (initialItems.length < 6 && !alreadyIncluded.has(item)) {
+        if (initialItems.length < 8 && !alreadyIncluded.has(item)) {
           initialItems.push(item);
         }
       });
