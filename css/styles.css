@@ -420,17 +420,16 @@ nav {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
 }
 
 .floating-icon {
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.1;
   pointer-events: none;
   will-change: transform;
   transition: transform 0.1s ease-out;
-  border: 1px solid blue;
 }
 
 .floating-icon img {
@@ -455,35 +454,32 @@ nav {
   height: 50px;
 }
 
-/* Floating animations */
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
+/* Subtle floating rotation animations on child elements */
+@keyframes subtleFloat1 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes floatMedium {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(-180deg); }
+@keyframes subtleFloat2 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
 }
 
-@keyframes floatFast {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(360deg); }
+@keyframes subtleFloat3 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.floating-icon.animate-1 {
-  animation: floatSlow 8s ease-in-out infinite;
-  animation-delay: 0s;
+.floating-icon.rotate-1 > * {
+  animation: subtleFloat1 20s linear infinite;
 }
 
-.floating-icon.animate-2 {
-  animation: floatMedium 6s ease-in-out infinite;
-  animation-delay: 2s;
+.floating-icon.rotate-2 > * {
+  animation: subtleFloat2 25s linear infinite;
 }
 
-.floating-icon.animate-3 {
-  animation: floatFast 4s ease-in-out infinite;
-  animation-delay: 4s;
+.floating-icon.rotate-3 > * {
+  animation: subtleFloat3 30s linear infinite;
 }
 
 /* Responsive adjustments */

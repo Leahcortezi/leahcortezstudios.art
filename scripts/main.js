@@ -365,12 +365,9 @@ function throttle(func, limit) {
    -------------------- */
 
 function createFloatingIcons() {
-  console.log('Creating floating icons...');
-  
   // Detect if we're in a subdirectory
   const isSubdirectory = window.location.pathname.includes('/') && window.location.pathname !== '/';
   const iconPath = isSubdirectory ? '../icons/' : 'icons/';
-  console.log('Icon path:', iconPath);
   
   // Create container for floating icons
   const floatingContainer = document.createElement('div');
@@ -379,7 +376,7 @@ function createFloatingIcons() {
 
   const icons = ['flower.svg', 'star.svg', 'starburst.svg'];
   const sizes = ['small', 'medium', 'large'];
-  const animations = ['animate-1', 'animate-2', 'animate-3'];
+  const rotations = ['rotate-1', 'rotate-2', 'rotate-3'];
   
   // Predefined positions to ensure visibility
   const positions = [
@@ -402,39 +399,21 @@ function createFloatingIcons() {
     const iconElement = document.createElement('div');
     iconElement.className = 'floating-icon';
     
-    // Random icon, size, and animation
+    // Random icon, size, and rotation
     const randomIcon = icons[Math.floor(Math.random() * icons.length)];
     const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    const randomRotation = rotations[Math.floor(Math.random() * rotations.length)];
     
-    iconElement.classList.add(randomSize, randomAnimation);
+    iconElement.classList.add(randomSize, randomRotation);
     
-    // Create simple CSS shape instead of SVG for testing
-    const shape = document.createElement('div');
-    if (randomIcon === 'flower.svg') {
-      shape.style.background = 'radial-gradient(circle, #fff 30%, transparent 30%)';
-      shape.style.borderRadius = '50%';
-    } else if (randomIcon === 'star.svg') {
-      shape.style.background = '#fff';
-      shape.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-    } else {
-      shape.style.background = '#fff';
-      shape.style.borderRadius = '50%';
-      shape.style.border = '3px solid #fff';
-    }
-    shape.style.width = '100%';
-    shape.style.height = '100%';
-    iconElement.appendChild(shape);
-    
-    // Add debug text
-    const debugText = document.createElement('div');
-    debugText.innerHTML = randomIcon;
-    debugText.style.position = 'absolute';
-    debugText.style.fontSize = '10px';
-    debugText.style.color = 'red';
-    debugText.style.top = '0';
-    debugText.style.left = '0';
-    iconElement.appendChild(debugText);
+    // Create img element with your actual SVG icons
+    const img = document.createElement('img');
+    img.src = `${iconPath}${randomIcon}`;
+    img.alt = '';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.display = 'block';
+    iconElement.appendChild(img);
     
     // Use predefined positions
     const position = positions[i];
@@ -442,7 +421,6 @@ function createFloatingIcons() {
     iconElement.style.top = position.top + '%';
     
     floatingContainer.appendChild(iconElement);
-    console.log(`Created icon ${i + 1}: ${randomIcon} at ${position.left}%, ${position.top}%`);
   }
   
   // Scroll-based movement - optimized for smoothness
@@ -454,10 +432,9 @@ function createFloatingIcons() {
     
     icons.forEach((icon, index) => {
       const speed = 0.1 + (index % 3) * 0.05; // Slower, gentler movement
-      const direction = index % 2 === 0 ? 1 : -1; // Alternate directions
-      const movement = scrollY * speed * direction;
+      const movement = scrollY * speed; // All move in same direction (down when scrolling down)
       
-      // Use translate3d for better performance
+      // Use translate3d for better performance, keeping CSS rotation intact
       icon.style.transform = `translate3d(0, ${movement}px, 0)`;
     });
     
