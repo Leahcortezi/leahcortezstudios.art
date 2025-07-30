@@ -235,9 +235,10 @@
   transform: translateZ(0);
 }
 
-.masonry-item:hover .project-image,
-.masonry-item:hover .lace-wrapper img {
-  transform: scale(1.03); /* Reduced scale to prevent pixelation */
+
+.masonry-item:hover .lace-wrapper {
+  transform: scale(1.03); /* Scale wrapper for zoom effect, prevents image stretching */
+  transition: transform 0.3s ease;
 }
 
 /* --------------------
