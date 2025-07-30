@@ -57,7 +57,7 @@ PROJECT BRIEF: Leah Cortez Portfolio Website
 - Portfolio (Main Gallery): Full-screen carousel view
 - Individual Work Pages: Split screen layout (image left, details right)
 - Contact Page:
-  - Email: lcortez14@islander.tamucc.edu
+  - Email: contact@leahcortezstudios.art
   - Fields: Name, Email, Subject, Message
   - Submit Button: “Send Message”
   - Spam Protection: Honeypot + simple math CAPTCHA
