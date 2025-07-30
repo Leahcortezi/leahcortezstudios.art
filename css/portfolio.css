@@ -113,7 +113,7 @@
   margin: 0 auto;
   padding: 2rem;
   column-count: 1;
-  column-gap: 2rem;
+  column-gap: 1.5rem; /* Reduced from 2rem for tighter spacing */
   column-fill: balance;
   display: block;
   text-align: center;
@@ -131,7 +131,7 @@
   .masonry-container {
     column-count: 2;
     max-width: 900px;
-    column-gap: 2.5rem;
+    column-gap: 2rem; /* Reduced from 2.5rem for tighter spacing */
   }
 }
 
@@ -163,7 +163,7 @@
 .masonry-item {
   display: inline-block;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* Reduced from 2rem to make grid tighter */
   break-inside: avoid;
   vertical-align: top;
   text-align: left;
