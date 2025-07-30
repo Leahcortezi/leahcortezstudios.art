@@ -408,7 +408,7 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomRotation);
     
-    // Create div with SVG as background image instead of img tag
+    // Create div with SVG as background image
     const iconDiv = document.createElement('div');
     iconDiv.style.width = '100%';
     iconDiv.style.height = '100%';
@@ -416,7 +416,6 @@ function createFloatingIcons() {
     iconDiv.style.backgroundSize = 'contain';
     iconDiv.style.backgroundRepeat = 'no-repeat';
     iconDiv.style.backgroundPosition = 'center';
-    iconDiv.style.filter = 'brightness(0) invert(1)';
     iconElement.appendChild(iconDiv);
     
     // Use predefined positions
