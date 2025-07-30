@@ -323,7 +323,7 @@ nav {
 .copyright {
   /* Copyright text styling */
   margin: 0;
-  margin-top: -10px; /* Negative margin to pull text up and counteract PNG whitespace */
+  margin-top: -50px; /* Even more negative margin to pull text closer */
   padding: 0; /* Remove any padding */
   font-family: var(--font-accent);
   font-size: 0.9rem;
