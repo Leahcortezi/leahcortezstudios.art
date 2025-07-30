@@ -60,6 +60,11 @@
   object-fit: contain;
 }
 
+/* For images not in zoom containers, wrap border tightly */
+.work-image-column > img {
+  max-width: fit-content;
+}
+
 /* Magnifying Glass Effect */
 .work-image-column img:hover {
   cursor: zoom-in;
@@ -73,6 +78,9 @@
   /* Ensure container doesn't cause pixelation */
   transform: translateZ(0);
   backface-visibility: hidden;
+  /* Make border wrap tightly around image */
+  display: inline-block;
+  line-height: 0;
 }
 
 .work-image-column .image-zoom-container img {
@@ -95,8 +103,8 @@
 /* Magnifying glass circle */
 .magnifying-glass {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border: 3px solid #fff;
   border-radius: 50%;
   background-repeat: no-repeat;
@@ -106,6 +114,8 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   z-index: 10;
   transform: translate(-50%, -50%);
+  /* Adjust background size for smaller zoom area */
+  background-size: 300% 300%;
 }
 
 .work-image-column .image-zoom-container:hover .magnifying-glass {
