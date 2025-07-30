@@ -302,20 +302,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainImage = document.querySelector('#mainImage');
 
   if (thumbnailItems.length > 0 && mainImage) {
+    // Find the magnifier in the same container as mainImage
+    const mainImageContainer = mainImage.closest('.image-zoom-container');
+    const magnifier = mainImageContainer ? mainImageContainer.querySelector('.magnifying-glass') : null;
+
     thumbnailItems.forEach(thumbnail => {
       thumbnail.addEventListener('click', () => {
         // Remove active class from all thumbnails
         thumbnailItems.forEach(item => item.classList.remove('active'));
-        
         // Add active class to clicked thumbnail
         thumbnail.classList.add('active');
-        
         // Update main image
         const newSrc = thumbnail.dataset.src;
         const newAlt = thumbnail.dataset.alt;
-        
         mainImage.src = newSrc;
         mainImage.alt = newAlt;
+        // Update magnifier background image if present
+        if (magnifier) {
+          magnifier.style.backgroundImage = `url("${newSrc}")`;
+        }
       });
     });
   }
