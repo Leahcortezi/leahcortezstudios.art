@@ -527,7 +527,7 @@ nav {
   background: rgba(126,28,46,0.07);
   border: 2px solid var(--color-primary-accent);
   padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   box-shadow: 0 2px 8px rgba(126,28,46,0.08);
@@ -536,9 +536,9 @@ nav {
 
 .view-more-btn:hover,
 .view-more-btn:focus {
-  background: var(--color-primary-accent);
-  color: var(--color-secondary-accent);
-  border-color: var(--color-secondary-accent);
+  background: #7e1c2e;
+  color: #fff;
+  border-color: #7e1c2e;
   box-shadow: 0 4px 16px rgba(126,28,46,0.15);
   transform: translateY(-2px) scale(1.04);
 }
