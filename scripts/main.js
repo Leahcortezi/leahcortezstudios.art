@@ -416,6 +416,7 @@ function createFloatingIcons() {
     iconDiv.style.backgroundSize = 'contain';
     iconDiv.style.backgroundRepeat = 'no-repeat';
     iconDiv.style.backgroundPosition = 'center';
+    iconDiv.style.filter = 'invert(1)';
     iconElement.appendChild(iconDiv);
     
     // Use predefined positions
