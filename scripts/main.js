@@ -408,16 +408,33 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomRotation);
     
-    // Create div with SVG as background image
-    const iconDiv = document.createElement('div');
-    iconDiv.style.width = '100%';
-    iconDiv.style.height = '100%';
-    iconDiv.style.backgroundImage = `url('${iconPath}${randomIcon}')`;
-    iconDiv.style.backgroundSize = 'contain';
-    iconDiv.style.backgroundRepeat = 'no-repeat';
-    iconDiv.style.backgroundPosition = 'center';
-    iconDiv.style.filter = 'invert(1)';
-    iconElement.appendChild(iconDiv);
+    // Create SVG element directly for better Safari compatibility
+    fetch(`${iconPath}${randomIcon}`)
+      .then(response => response.text())
+      .then(svgContent => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = svgContent;
+        const svgElement = tempDiv.querySelector('svg');
+        
+        if (svgElement) {
+          svgElement.style.width = '100%';
+          svgElement.style.height = '100%';
+          svgElement.style.filter = 'invert(1)';
+          iconElement.appendChild(svgElement);
+        }
+      })
+      .catch(() => {
+        // Fallback to background image if fetch fails
+        const iconDiv = document.createElement('div');
+        iconDiv.style.width = '100%';
+        iconDiv.style.height = '100%';
+        iconDiv.style.backgroundImage = `url('${iconPath}${randomIcon}')`;
+        iconDiv.style.backgroundSize = 'contain';
+        iconDiv.style.backgroundRepeat = 'no-repeat';
+        iconDiv.style.backgroundPosition = 'center';
+        iconDiv.style.filter = 'invert(1)';
+        iconElement.appendChild(iconDiv);
+      });
     
     // Use predefined positions
     const position = positions[i];
