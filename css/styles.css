@@ -175,6 +175,7 @@ nav {
   justify-content: space-between;
 }
 
+a {
   /* Adds a smooth transition effect for hover states */
   transition: color 0.3s ease;
 }
@@ -227,10 +228,10 @@ nav {
 }
 
 .hamburger img {
-  width: 60px; /* Make it bigger */
-  height: auto;
+  width: 40px;
+  height: 40px;
   display: block;
-  margin: 20px auto;
+  margin: 0;
   filter: brightness(0) invert(1); /* Makes the icon white */
 }
 
@@ -247,32 +248,28 @@ nav {
 }
 
 .nav-links a {
-  /* Sets the font for the navigation links */
   font-family: var(--font-accent);
-  /* Converts the text to uppercase for a stylized look */
   text-transform: uppercase;
-  /* Adds a transition for the hover effect */
-  transition: color 0.3s ease;
-  /* Remove default underline */
-  text-decoration: none;
-  /* Add border-bottom for underline effect */
-  border-bottom: 2px solid transparent;
-  /* Add transition for border */
+  color: #f5c6d6;
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover {
-  /* Add underline on hover */
+  color: #7e1c2e;
   border-bottom-color: #7e1c2e;
+  /* Remove text-decoration to prevent double underline */
+  text-decoration: none;
 }
 
 /* Styles for the mobile hamburger menu icon */
 .hamburger {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: flex-end;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 0 10px 0; /* Remove extra right padding */
   margin-left: auto;
   margin-right: 0;
 }
@@ -325,7 +322,7 @@ nav {
   /* Copyright text styling */
   margin: 0;
   margin-top: -50px; /* Even more negative margin to pull text closer */
-  padding: 0; /* Remove any padding */
+  padding: 0; /* Remove any paddinnavigg */
   font-family: var(--font-accent);
   font-size: 0.9rem;
   color: var(--color-text);
@@ -407,10 +404,12 @@ nav {
   }
 
   .hamburger {
-    /*
-      The hamburger icon is displayed on screens 768px or less.
-    */
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 0; /* Ensure no extra space on right */
   }
 }
 
