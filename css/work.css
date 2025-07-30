@@ -58,8 +58,10 @@
   max-height: 70vh;
   object-fit: contain;
 }
-.main-image:hover {
-  transform: scale(1.015); /* Subtle zoom for main image */
+
+.image-zoom-container:hover .main-image img,
+.image-zoom-container:hover #mainImage {
+  transform: scale(1.015); /* Subtle zoom for main image only when magnifier is active */
   transition: transform 0.3s ease;
 }
 
