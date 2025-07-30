@@ -269,7 +269,7 @@
   font-family: var(--accent-font);
   font-size: 1.1rem;
   color: var(--primary-color);
-  margin: 0.5rem 0 0 0;
+  margin: 0.2rem 0 0 0; /* Reduced from 0.5rem to bring titles closer to thumbnails */
   padding: 0 0.5rem;
 }
 
