@@ -412,9 +412,23 @@ function createFloatingIcons() {
     // Create img element
     const img = document.createElement('img');
     img.src = `${iconPath}${randomIcon}`;
-    img.alt = '';
-    img.loading = 'lazy';
+    img.alt = 'floating icon';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.display = 'block';
+    img.onload = () => console.log(`Icon loaded: ${img.src}`);
+    img.onerror = () => console.error(`Icon failed to load: ${img.src}`);
     iconElement.appendChild(img);
+    
+    // Add debug text
+    const debugText = document.createElement('div');
+    debugText.innerHTML = randomIcon;
+    debugText.style.position = 'absolute';
+    debugText.style.fontSize = '10px';
+    debugText.style.color = 'red';
+    debugText.style.top = '0';
+    debugText.style.left = '0';
+    iconElement.appendChild(debugText);
     
     // Use predefined positions
     const position = positions[i];
