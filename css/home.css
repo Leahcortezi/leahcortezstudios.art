@@ -12,8 +12,8 @@
    -------------------- */
 
 /* Global header color for homepage */
-h1, h2 {
-  color: #f5c6d6;
+h1, h2, h3, h4, h5, h6 {
+  color: #f5c6d6 !important;
 }
 
 /* Section header classes for specificity */
@@ -117,8 +117,6 @@ h1, h2 {
   margin-bottom: 10px; /* Less space below title */
   margin-top: 0;
   line-height: 1.4;
-  text-shadow: 0 0 2px #fff;
-  color: #7e1c2e;
 }
 
 .hero-poetic {
@@ -162,7 +160,6 @@ h1, h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #7e1c2e;
 }
 
 .bio-content {
@@ -294,7 +291,7 @@ h1, h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #7e1c2e;
+    color: #f5c6d6;
 }
 
 .featured-art-section {

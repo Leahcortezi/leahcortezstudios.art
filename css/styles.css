@@ -1,3 +1,7 @@
+/* Global header color for all pages */
+h1, h2, h3, h4, h5, h6 {
+  color: #f5c6d6 !important;
+}
 /*
   Leah Cortez Studio Art - Global Stylesheet
   ---
