@@ -266,7 +266,7 @@
         </div>
         
     </div>
-    <a id="viewMoreLink" class="view-more-link" href="#" style="display:block;margin:2rem auto;text-align:center;font-family:var(--font-accent);font-size:1.2rem;color:var(--color-primary-accent);border:2px solid var(--color-primary-accent);padding:0.75rem 2rem;border-radius:0.5rem;background:rgba(126,28,46,0.07);transition:all 0.2s;max-width:fit-content;">View More</a>
+    <button id="viewMoreBtn" class="view-more-btn">View More</button>
     </main>
 
     <!-- Footer -->
@@ -281,8 +281,8 @@
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
-  const viewMoreLink = document.getElementById('viewMoreLink');
-  if (viewMoreLink && masonryItems.length > 0) {
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  if (viewMoreBtn && masonryItems.length > 0) {
     // Select a mix of squares and verticals for initial view
     const squares = masonryItems.filter(item => item.classList.contains('square'));
     const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
@@ -303,16 +303,20 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!initialItems.includes(item)) {
         item.style.display = 'none';
         item.style.opacity = 0;
-        item.style.transition = 'opacity 0.6s';
+        item.style.transform = 'scale(0.96)';
+        item.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
       }
     });
-    viewMoreLink.addEventListener('click', function(e) {
+    viewMoreBtn.addEventListener('click', function(e) {
       e.preventDefault();
       masonryItems.forEach(item => {
         item.style.display = 'inline-block';
-        setTimeout(() => { item.style.opacity = 1; }, 50);
+        setTimeout(() => {
+          item.style.opacity = 1;
+          item.style.transform = 'scale(1)';
+        }, 50);
       });
-      viewMoreLink.style.display = 'none';
+      viewMoreBtn.style.display = 'none';
     });
   }
 });
