@@ -415,16 +415,37 @@ function createFloatingIcons() {
     
     iconElement.classList.add(randomSize, randomRotation);
     
-    // Create SVG element directly from embedded content
-    const svgContainer = document.createElement('div');
-    svgContainer.innerHTML = svgContent[randomIcon];
-    const svgElement = svgContainer.querySelector('svg');
-    
-    if (svgElement) {
-      svgElement.style.width = '100%';
-      svgElement.style.height = '100%';
-      // No filter needed - using dark semi-transparent fill
-      iconElement.appendChild(svgElement);
+    // Try to load original star.svg for star icons, use embedded for others
+    if (randomIcon === 'star') {
+      // Create an img element for the original star.svg
+      const imgElement = document.createElement('img');
+      imgElement.src = '/icons/star.svg';
+      imgElement.style.width = '100%';
+      imgElement.style.height = '100%';
+      imgElement.style.filter = 'opacity(0.8)';
+      imgElement.onerror = function() {
+        // Fallback to embedded star if loading fails
+        const svgContainer = document.createElement('div');
+        svgContainer.innerHTML = svgContent['star'];
+        const svgElement = svgContainer.querySelector('svg');
+        if (svgElement) {
+          svgElement.style.width = '100%';
+          svgElement.style.height = '100%';
+          iconElement.appendChild(svgElement);
+        }
+      };
+      iconElement.appendChild(imgElement);
+    } else {
+      // Use embedded SVG for flower and starburst
+      const svgContainer = document.createElement('div');
+      svgContainer.innerHTML = svgContent[randomIcon];
+      const svgElement = svgContainer.querySelector('svg');
+      
+      if (svgElement) {
+        svgElement.style.width = '100%';
+        svgElement.style.height = '100%';
+        iconElement.appendChild(svgElement);
+      }
     }
     
     // Use predefined positions
