@@ -169,12 +169,11 @@ p {
   margin-bottom: 1rem;
 }
 
-a {
-  /* Sets the link color to the primary accent color */
-  color: var(--color-primary-accent);
-
-  /* Removes the default underline from links */
-  text-decoration: none;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
   /* Adds a smooth transition effect for hover states */
   transition: color 0.3s ease;
@@ -269,13 +268,11 @@ nav {
 
 /* Styles for the mobile hamburger menu icon */
 .hamburger {
-  /* Initially hidden on desktop screens */
-  display: none;
-  /* Sets the cursor to a pointer to indicate it's clickable */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
-  /* Padding around the icon to make it easier to click */
   padding: 10px;
-  /* Align with dropdown - position relative to right edge */
   margin-left: auto;
   margin-right: 0;
 }
