@@ -294,8 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-}); // End of DOMContentLoaded event listener
-
   /* --------------------
      6. THUMBNAIL GALLERY FUNCTIONALITY
      -------------------- */
@@ -323,8 +321,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------
-   7. UTILITY FUNCTIONS
-   -------------------- */// Debounce function for performance optimization
+     7. FLOATING BACKGROUND ICONS
+     -------------------- */
+
+  // Initialize floating icons with a small delay
+  setTimeout(createFloatingIcons, 100);
+
+}); // End of DOMContentLoaded event listener
+
+/* --------------------
+   UTILITY FUNCTIONS
+   -------------------- */
+
+// Debounce function for performance optimization
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -349,4 +358,66 @@ function throttle(func, limit) {
       setTimeout(() => inThrottle = false, limit);
     }
   }
+}
+
+/* --------------------
+   FLOATING BACKGROUND ICONS
+   -------------------- */
+
+function createFloatingIcons() {
+  console.log('Creating floating icons...');
+  
+  // Create container for floating icons
+  const floatingContainer = document.createElement('div');
+  floatingContainer.className = 'floating-icons';
+  document.body.appendChild(floatingContainer);
+
+  const icons = ['flower.svg', 'star.svg', 'starburst.svg'];
+  const sizes = ['small', 'medium', 'large'];
+  const animations = ['animate-1', 'animate-2', 'animate-3'];
+  
+  // Create 12 floating icons randomly distributed
+  for (let i = 0; i < 12; i++) {
+    const iconElement = document.createElement('div');
+    iconElement.className = 'floating-icon';
+    
+    // Random icon, size, and animation
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+    const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    
+    iconElement.classList.add(randomSize, randomAnimation);
+    
+    // Create img element
+    const img = document.createElement('img');
+    img.src = `icons/${randomIcon}`;
+    img.alt = '';
+    img.loading = 'lazy';
+    iconElement.appendChild(img);
+    
+    // Random positioning
+    iconElement.style.left = Math.random() * 100 + '%';
+    iconElement.style.top = Math.random() * 100 + '%';
+    
+    floatingContainer.appendChild(iconElement);
+    console.log(`Created icon ${i + 1}: ${randomIcon} at ${iconElement.style.left}, ${iconElement.style.top}`);
+  }
+  }
+  
+  // Scroll-based movement
+  let scrollY = 0;
+  const handleScroll = throttle(() => {
+    scrollY = window.scrollY;
+    const icons = document.querySelectorAll('.floating-icon');
+    
+    icons.forEach((icon, index) => {
+      const speed = 0.2 + (index % 3) * 0.1; // Different speeds for variety
+      const direction = index % 2 === 0 ? 1 : -1; // Alternate directions
+      const movement = scrollY * speed * direction;
+      
+      icon.style.transform = `translateY(${movement}px)`;
+    });
+  }, 16); // ~60fps
+  
+  window.addEventListener('scroll', handleScroll);
 }

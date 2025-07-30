@@ -407,3 +407,101 @@ nav {
     display: block;
   }
 }
+
+/* --------------------
+   FLOATING BACKGROUND ICONS
+   -------------------- */
+
+.floating-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.floating-icon {
+  position: absolute;
+  opacity: 0.3;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.floating-icon img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+}
+
+/* Icon sizes */
+.floating-icon.small {
+  width: 20px;
+  height: 20px;
+}
+
+.floating-icon.medium {
+  width: 35px;
+  height: 35px;
+}
+
+.floating-icon.large {
+  width: 50px;
+  height: 50px;
+}
+
+/* Floating animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-180deg); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(360deg); }
+}
+
+.floating-icon.animate-1 {
+  animation: floatSlow 8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.floating-icon.animate-2 {
+  animation: floatMedium 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.floating-icon.animate-3 {
+  animation: floatFast 4s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floating-icon {
+    opacity: 0.05;
+  }
+  
+  .floating-icon.large {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .floating-icon.medium {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .floating-icon.small {
+    width: 15px;
+    height: 15px;
+  }
+}
