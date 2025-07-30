@@ -279,8 +279,6 @@
 .featured {
   /* Adds vertical padding */
   padding: 4rem 0;
-  /* A slightly different background to separate it from other sections */
-  background-color: #080808;
 }
 
 .featured-title {
@@ -295,8 +293,6 @@
 .featured-art-section {
   /* Adds vertical padding */
   padding: 4rem 0;
-  /* A slightly different background to separate it from other sections */
-  background-color: #080808;
 }
 
 .featured-art-section h2 {
