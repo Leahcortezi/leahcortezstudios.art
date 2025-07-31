@@ -13,35 +13,56 @@ document.addEventListener('DOMContentLoaded', () => {
   // Masonry.js initialization
   const grid = document.querySelector('.masonry-container');
   let msnry;
-  if (grid) {
-    imagesLoaded(grid, function () {
-      msnry = new Masonry(grid, {
-        itemSelector: '.masonry-item:not(.hidden)',
-        columnWidth: '.grid-sizer',
-        gutter: 35,
-        percentPosition: true,
-        horizontalOrder: true,
-        transitionDuration: '0.4s',
-        fitWidth: false,
-        resize: true
-      });
-      
-      // Initialize filtering after Masonry is ready
-      initializeFiltering();
-      
-      // Add resize listener to maintain layout and handle mobile breakpoints
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
+  
+  function initializeMasonry() {
+    const isMobile = window.innerWidth <= 768;
+    
+    if (grid) {
+      if (!isMobile) {
+        // Desktop/tablet: use Masonry
+        imagesLoaded(grid, function () {
           if (msnry) {
-            msnry.reloadItems();
-            msnry.layout();
+            msnry.destroy();
           }
-        }, 250);
-      });
-    });
+          
+          msnry = new Masonry(grid, {
+            itemSelector: '.masonry-item:not(.hidden)',
+            columnWidth: '.grid-sizer',
+            gutter: 35,
+            percentPosition: true,
+            horizontalOrder: true,
+            transitionDuration: '0.4s',
+            fitWidth: false,
+            resize: true
+          });
+          
+          // Initialize filtering after Masonry is ready
+          initializeFiltering();
+        });
+      } else {
+        // Mobile: destroy Masonry and use flexbox
+        if (msnry) {
+          msnry.destroy();
+          msnry = null;
+        }
+        
+        // Initialize filtering for mobile
+        initializeFiltering();
+      }
+    }
   }
+  
+  // Initial setup
+  initializeMasonry();
+  
+  // Add resize listener to handle layout changes
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      initializeMasonry();
+    }, 250);
+  });
   
   // Portfolio filtering logic
   function initializeFiltering() {
@@ -51,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterItems(category) {
       console.log('Filtering by category:', category);
       let visibleCount = 0;
+      const isMobile = window.innerWidth <= 768;
       
       // Apply filtering immediately
       masonryItems.forEach(item => {
@@ -65,21 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
       
       console.log('Visible items:', visibleCount);
       
-      // Update Masonry layout with multiple methods to ensure proper alignment
-      if (msnry) {
+      // Update layout - only use Masonry on desktop/tablet
+      if (msnry && !isMobile) {
         setTimeout(() => {
           // First, reloadItems to refresh Masonry's item cache
           msnry.reloadItems();
           // Then layout to recalculate positions
           msnry.layout();
           console.log('Masonry layout updated');
-        }, 320);
+        }, 100);
         
         // Additional layout call after a longer delay to ensure stability
         setTimeout(() => {
           msnry.layout();
-        }, 600);
+        }, 300);
       }
+      // On mobile, the CSS flexbox handles the layout automatically
     }
 
     filterButtons.forEach(button => {
@@ -191,13 +214,16 @@ document.addEventListener('DOMContentLoaded', () => {
      6. KEYBOARD NAVIGATION SUPPORT
      -------------------- */
 
-  // Add keyboard support for filter buttons
-  filterButtons.forEach(button => {
-    button.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        button.click();
-      }
+  // Add keyboard support for filter buttons (moved inside DOMContentLoaded)
+  document.addEventListener('click', () => {
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    filterButtons.forEach(button => {
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          button.click();
+        }
+      });
     });
   });
 
