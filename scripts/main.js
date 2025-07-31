@@ -23,15 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
         item.classList.add('hidden');
       }
     });
+    
+    // Force Masonry to recalculate layout
+    if (typeof msnry !== 'undefined' && msnry) {
+      msnry.layout();
+    }
   }
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       filterButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
+      button.focus(); // Ensure focus for accessibility and style
       const filterCategory = button.getAttribute('data-filter');
       filterItems(filterCategory);
     });
+    // Ensure correct style on page load
+    if (button.classList.contains('active')) {
+      button.focus();
+    }
   });
 
   /* --------------------
