@@ -205,18 +205,15 @@
   pointer-events: none;
 }
 
-.masonry-item a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.masonry-item a:hover {
-  transform: translateY(-5px) translateZ(0);
-  transition: transform 0.3s ease;
-}
+/* Removed stray transform and transition properties that were outside any selector block */
 
 /* --------------------
    4. IMAGE WRAPPER & STYLING
