@@ -434,6 +434,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   pointer-events: none;
   transition: transform 0.4s ease;
+  opacity: 1;
+  filter: brightness(1.2) contrast(1.1);
 }
 
 .project-image {
