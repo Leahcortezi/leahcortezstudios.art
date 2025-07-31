@@ -445,6 +445,13 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateZ(0);
 }
 
+/* Make background icons more visible */
+.background-icon {
+  opacity: 0.85;
+  filter: brightness(1.2) drop-shadow(0 2px 8px rgba(126,28,46,0.25));
+  transition: opacity 0.3s, filter 0.3s;
+}
+
 .image-gallery {
   display: flex;
   justify-content: center;
