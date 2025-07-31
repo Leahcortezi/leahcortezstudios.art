@@ -204,9 +204,9 @@
   animation: fadeInUp 0.6s ease forwards;
 }
 
-.masonry-item:nth-child(even) {
-/* This file has been deprecated. Please use portfolio.css for all portfolio styles. */
-}
+/*
+This file has been deprecated. Please use portfolio.css for all portfolio styles.
+*/
 
 .masonry-item:nth-child(3n) {
   animation-delay: 0.2s;
