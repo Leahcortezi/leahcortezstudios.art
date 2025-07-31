@@ -225,7 +225,6 @@
   margin-bottom: 0.5rem;
   box-sizing: border-box;
   width: 100%;
-  aspect-ratio: 1/1;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -238,7 +237,6 @@
   object-fit: cover;
   border-radius: 12px;
   position: relative;
-  aspect-ratio: 1/1;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   image-rendering: optimizeQuality;
@@ -254,7 +252,10 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  aspect-ratio: 1/1;
+/* Vertical 3:4 images */
+.masonry-item.vertical .lace-wrapper {
+  aspect-ratio: 3/4;
+}
 }
 
 
