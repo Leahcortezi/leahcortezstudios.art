@@ -64,56 +64,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterButtons = document.querySelectorAll('.filter-buttons button');
   const masonryItems = document.querySelectorAll('.masonry-item');
+  const viewMoreBtn = document.getElementById('view-more-btn');
 
-  if (filterButtons.length > 0 && masonryItems.length > 0) {
-    
-    // Initialize masonry layout
-    function initMasonry() {
-      // The CSS handles the masonry layout using CSS columns
-      // Add staggered animation delays for a nice entrance effect
-      masonryItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
+  // Show only first 9 items initially
+  const initialVisibleCount = 9;
+  if (masonryItems.length > 0) {
+    masonryItems.forEach((item, idx) => {
+      if (idx < initialVisibleCount) {
+        item.classList.remove('hidden');
+        item.style.display = 'flex';
+      } else {
+        item.classList.add('hidden');
+        item.style.display = 'none';
+      }
+      item.style.animationDelay = `${idx * 0.1}s`;
+    });
+    if (viewMoreBtn) {
+      viewMoreBtn.style.display = masonryItems.length > initialVisibleCount ? 'block' : 'none';
+      viewMoreBtn.addEventListener('click', () => {
+        masonryItems.forEach(item => {
+          item.classList.remove('hidden');
+          item.style.display = 'flex';
+        });
+        viewMoreBtn.style.display = 'none';
       });
     }
+  }
 
-    // Filter functionality
-    function filterItems(category) {
-      masonryItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        
-        if (category === 'all' || itemCategory === category) {
+  // Filter functionality (works with partial grid)
+  function filterItems(category) {
+    masonryItems.forEach((item, idx) => {
+      const itemCategory = item.getAttribute('data-category');
+      if (category === 'all' || itemCategory === category) {
+        if (idx < initialVisibleCount || viewMoreBtn.style.display === 'none') {
           item.classList.remove('hidden');
-          item.style.display = 'inline-block';
+          item.style.display = 'flex';
         } else {
           item.classList.add('hidden');
-          // Small delay before hiding to allow transition
-          setTimeout(() => {
-            if (item.classList.contains('hidden')) {
-              item.style.display = 'none';
-            }
-          }, 300);
+          item.style.display = 'none';
         }
-      });
-    }
-
-    // Add click event listeners to filter buttons
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        // Get filter category and apply filter
-        const filterCategory = button.getAttribute('data-filter');
-        filterItems(filterCategory);
-      });
+      } else {
+        item.classList.add('hidden');
+        item.style.display = 'none';
+      }
     });
-
-    // Initialize masonry on page load
-    initMasonry();
+    // Show view more button only if filtered items > initialVisibleCount
+    if (viewMoreBtn) {
+      const visibleCount = Array.from(masonryItems).filter(item => {
+        const itemCategory = item.getAttribute('data-category');
+        return (category === 'all' || itemCategory === category);
+      }).length;
+      viewMoreBtn.style.display = (visibleCount > initialVisibleCount) ? 'block' : 'none';
+    }
   }
+
+  // Add click event listeners to filter buttons
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const filterCategory = button.getAttribute('data-filter');
+      filterItems(filterCategory);
+    });
+  });
 
   /* --------------------
      4. SMOOTH SCROLLING FOR NAVIGATION LINKS
