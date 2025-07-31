@@ -493,5 +493,104 @@ function createFloatingIcons() {
   window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
+// Generate random floating icon animations on page load
+function generateRandomFloatingIcons() {
+  const icons = ['flower.svg', 'star.svg', 'starburst.svg'];
+  const sizes = [20, 35, 50];
+  const numIcons = 6;
+  
+  // Generate random positions
+  const positions = [];
+  for (let i = 0; i < numIcons; i++) {
+    positions.push({
+      x: Math.random() * 85 + 5, // 5% to 90% from left
+      y: Math.random() * 85 + 5, // 5% to 90% from top
+      icon: icons[Math.floor(Math.random() * icons.length)],
+      size: sizes[Math.floor(Math.random() * sizes.length)],
+      duration: Math.random() * 5 + 5, // 5-10 seconds
+      delay: Math.random() * 5, // 0-5 second delay
+      rotation: Math.random() * 10 - 5, // -5 to +5 degrees
+      float: Math.random() * 5 + 2 // 2-7 pixels
+    });
+  }
+  
+  // Create CSS for random animations
+  let css = `
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background-image: `;
+  
+  // Add background images
+  for (let i = 0; i < positions.length; i++) {
+    css += `url('../icons/${positions[i].icon}')`;
+    if (i < positions.length - 1) css += ', ';
+  }
+  
+  css += `;
+      background-size: `;
+  
+  // Add background sizes
+  for (let i = 0; i < positions.length; i++) {
+    css += `${positions[i].size}px ${positions[i].size}px`;
+    if (i < positions.length - 1) css += ', ';
+  }
+  
+  css += `;
+      background-position: `;
+  
+  // Add background positions
+  for (let i = 0; i < positions.length; i++) {
+    css += `${positions[i].x}% ${positions[i].y}%`;
+    if (i < positions.length - 1) css += ', ';
+  }
+  
+  css += `;
+      background-repeat: no-repeat;
+      filter: brightness(3) invert(0.8) opacity(0.4);
+      animation: `;
+  
+  // Add animations
+  for (let i = 0; i < positions.length; i++) {
+    css += `randomFloat${i} ${positions[i].duration}s ease-in-out infinite ${positions[i].delay}s`;
+    if (i < positions.length - 1) css += ', ';
+  }
+  
+  css += `;
+    }`;
+  
+  // Create keyframes for each icon
+  for (let i = 0; i < positions.length; i++) {
+    const pos = positions[i];
+    css += `
+    @keyframes randomFloat${i} {
+      0% { transform: rotate(0deg) translateY(0px); }
+      25% { transform: rotate(${pos.rotation * 0.7}deg) translateY(-${pos.float * 0.6}px); }
+      50% { transform: rotate(0deg) translateY(-${pos.float}px); }
+      75% { transform: rotate(${-pos.rotation * 0.7}deg) translateY(-${pos.float * 0.6}px); }
+      100% { transform: rotate(0deg) translateY(0px); }
+    }`;
+  }
+  
+  // Inject the CSS
+  const styleElement = document.createElement('style');
+  styleElement.textContent = css;
+  document.head.appendChild(styleElement);
+}
+
+// Initialize floating icons immediately and on page load
+generateRandomFloatingIcons();
+
+// Also initialize on DOMContentLoaded in case the script loads early
+document.addEventListener('DOMContentLoaded', () => {
+  generateRandomFloatingIcons();
+});
+
 // ...existing code...
 
