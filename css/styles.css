@@ -141,12 +141,12 @@ body::before {
     85% 80%;
   background-repeat: no-repeat;
   filter: brightness(3) invert(0.8) opacity(0.4);
-  animation: floatingBackground 60s linear infinite;
+  animation: floatingBackground 120s ease-in-out infinite alternate;
 }
 
 @keyframes floatingBackground {
   0% { transform: rotate(0deg); }
-  100% { transform: rotate(1deg); }
+  100% { transform: rotate(0.5deg); }
 }
 
 /* --------------------
