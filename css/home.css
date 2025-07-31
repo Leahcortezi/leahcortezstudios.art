@@ -648,110 +648,121 @@ h1, h2, h3, h4, h5, h6 {
 /* For mobile phones */
 @media (max-width: 768px) {
     .hero-section {
-      /* Ensure hero stays centered on mobile */
       max-width: 100%;
       padding: 0 1rem;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    .hero-content h1 {
-      /* Reduces the headline font size on mobile */
-      font-size: 3rem;
+    .hero-title,
+    .hero-poetic,
+    .btn {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
 
     .bio-content {
-      /* Stacks the bio image and text vertically on mobile */
       flex-direction: column;
-      /* Centers the content */
+      align-items: center;
+      text-align: center;
+    }
+
+    .bio-text {
+      align-items: center;
       text-align: center;
     }
 
     .bio-image {
-      /* Adjusts the width for a stacked layout */
       width: 80%;
       max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
 
     .gallery-grid {
-      /* Maintains horizontal layout but centers single column on mobile */
       justify-content: center;
       gap: 1rem;
+      align-items: center;
     }
-    
-    .gallery-item {
-      /* Smaller width on mobile devices */
-      width: 280px;
-    }
-    
+
     .featured-artwork-wrapper {
-      /* Keep horizontal layout on mobile but center */
       justify-content: center;
+      align-items: center;
       gap: 30px;
     }
-    
-    .featured-card {
-      /* Keep same size as desktop */
-      width: 250px;
-    }
-    
-    .lace-wrapper {
-      /* Keep same wrapper size */
-      width: 250px;
-      height: 330px;
-    }
-    
-    .project-image {
-      /* Keep same image proportions */
-      width: 200px;
-      height: 280px;
-      top: 25px;
-      left: 25px;
-    }
-    
+
     .featured-title {
-      /* Smaller title on mobile */
       font-size: 2.2rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
-    
+
+    .view-all-link {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
     .contact-content {
-      /* Stack contact columns vertically on mobile */
       flex-direction: column;
       gap: 2.5rem;
       padding: 0 1rem;
+      align-items: center;
       text-align: center;
     }
-    
+
     .contact-text-column {
-      /* Center text on mobile */
       text-align: center;
+      align-items: center;
     }
-    
+
     .contact-preview-section h2 {
-      /* Smaller heading on mobile */
       font-size: 2.2rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
-    
+
     .contact-social-column {
-      /* Center button and social icons on mobile */
       align-items: center;
       gap: 1.5rem;
+      text-align: center;
     }
-    
+
     .contact-social-icons {
-      /* Keep horizontal layout but with smaller gaps */
       gap: 1.5rem;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
-    
+
     .social-icon {
-      /* Smaller icons on mobile */
       padding: 0.8rem 0.5rem;
       gap: 0.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    
+
     .social-label {
-      /* Smaller text on mobile */
       font-size: 0.75rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
 }
 
