@@ -10,6 +10,29 @@
 // completely loaded and parsed, without waiting for stylesheets, images, and
 // subframes to finish loading. This is the perfect time to run our setup code.
 document.addEventListener('DOMContentLoaded', () => {
+  // Portfolio filtering logic
+  const filterButtons = document.querySelectorAll('.filter-buttons button');
+  const masonryItems = document.querySelectorAll('.masonry-item');
+
+  function filterItems(category) {
+    masonryItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      if (category === 'all' || itemCategory === category) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const filterCategory = button.getAttribute('data-filter');
+      filterItems(filterCategory);
+    });
+  });
 
   /* --------------------
      1. MOBILE NAVIGATION (HAMBURGER MENU)
@@ -62,71 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
      3. PORTFOLIO MASONRY & FILTERING
      -------------------- */
 
-  const filterButtons = document.querySelectorAll('.filter-buttons button');
-  const masonryItems = document.querySelectorAll('.masonry-item');
-  const viewMoreBtn = document.getElementById('view-more-btn');
-
-  // Show only first 9 items initially
-  const initialVisibleCount = 9;
-  if (masonryItems.length > 0) {
-    masonryItems.forEach((item, idx) => {
-      if (idx < initialVisibleCount) {
-        item.classList.remove('hidden');
-        item.style.display = 'flex';
-      } else {
-        item.classList.add('hidden');
-        item.style.display = 'none';
-      }
-      item.style.animationDelay = `${idx * 0.1}s`;
-    });
-    if (viewMoreBtn) {
-      viewMoreBtn.style.display = masonryItems.length > initialVisibleCount ? 'block' : 'none';
-      viewMoreBtn.addEventListener('click', () => {
-        masonryItems.forEach(item => {
-          item.classList.remove('hidden');
-          item.style.display = 'flex';
-        });
-        viewMoreBtn.style.display = 'none';
-      });
-    }
-  }
-
-  // Filter functionality (works with partial grid)
-  function filterItems(category) {
-    masonryItems.forEach((item, idx) => {
-      const itemCategory = item.getAttribute('data-category');
-      if (category === 'all' || itemCategory === category) {
-        if (idx < initialVisibleCount || viewMoreBtn.style.display === 'none') {
-          item.classList.remove('hidden');
-          item.style.display = 'flex';
-        } else {
-          item.classList.add('hidden');
-          item.style.display = 'none';
-        }
-      } else {
-        item.classList.add('hidden');
-        item.style.display = 'none';
-      }
-    });
-    // Show view more button only if filtered items > initialVisibleCount
-    if (viewMoreBtn) {
-      const visibleCount = Array.from(masonryItems).filter(item => {
-        const itemCategory = item.getAttribute('data-category');
-        return (category === 'all' || itemCategory === category);
-      }).length;
-      viewMoreBtn.style.display = (visibleCount > initialVisibleCount) ? 'block' : 'none';
-    }
-  }
-
-  // Add click event listeners to filter buttons
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      const filterCategory = button.getAttribute('data-filter');
-      filterItems(filterCategory);
-    });
-  });
+  // ...existing code...
 
   /* --------------------
      4. SMOOTH SCROLLING FOR NAVIGATION LINKS
