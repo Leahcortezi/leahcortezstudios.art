@@ -18,44 +18,53 @@ document.addEventListener('DOMContentLoaded', () => {
       msnry = new Masonry(grid, {
         itemSelector: '.masonry-item',
         columnWidth: '.grid-sizer',
-        gutter: 20,
-        percentPosition: true
+        gutter: 30,
+        percentPosition: true,
+        horizontalOrder: true
+      });
+      
+      // Initialize filtering after Masonry is ready
+      initializeFiltering();
+    });
+  }
+  
+  // Portfolio filtering logic
+  function initializeFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const masonryItems = document.querySelectorAll('.masonry-item');
+
+    function filterItems(category) {
+      console.log('Filtering by category:', category);
+      let visibleCount = 0;
+      masonryItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all' || itemCategory === category) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      console.log('Visible items:', visibleCount);
+      
+      // Force Masonry to recalculate layout after filtering
+      if (msnry) {
+        setTimeout(() => {
+          msnry.layout();
+          console.log('Masonry layout updated');
+        }, 100);
+      }
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filterCategory = button.getAttribute('data-filter');
+        filterItems(filterCategory);
       });
     });
   }
-  // Portfolio filtering logic
-  const filterButtons = document.querySelectorAll('.filter-buttons button');
-  const masonryItems = document.querySelectorAll('.masonry-item');
-
-  function filterItems(category) {
-    masonryItems.forEach(item => {
-      const itemCategory = item.getAttribute('data-category');
-      if (category === 'all' || itemCategory === category) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
-    });
-    
-    // Force Masonry to recalculate layout
-    if (typeof msnry !== 'undefined' && msnry) {
-      msnry.layout();
-    }
-  }
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      button.focus(); // Ensure focus for accessibility and style
-      const filterCategory = button.getAttribute('data-filter');
-      filterItems(filterCategory);
-    });
-    // Ensure correct style on page load
-    if (button.classList.contains('active')) {
-      button.focus();
-    }
-  });
 
   /* --------------------
      1. MOBILE NAVIGATION (HAMBURGER MENU)

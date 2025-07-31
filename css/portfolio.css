@@ -166,7 +166,7 @@
    -------------------- */
 /* Masonry.js grid sizer for column width */
 .grid-sizer {
-  width: 33.333%;
+  width: 32%;
 }
 
 .masonry-container {
@@ -174,19 +174,17 @@
   margin: auto;
   position: relative;
   max-width: 1400px;
-  padding: 1rem 0.5rem;
+  padding: 2rem 1rem;
 }
 
 .masonry-item {
-  width: 33.333%;
-  float: left;
+  width: 32%;
+  margin-bottom: 2rem;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .masonry-item.hidden {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute !important;
+  display: none !important;
 }
 
 /* --------------------
@@ -209,12 +207,20 @@
 .lace-wrapper {
   position: relative;
   overflow: hidden;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(126, 28, 46, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lace-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(126, 28, 46, 0.15);
 }
 
 .project-image {
@@ -309,7 +315,12 @@ text-decoration: underline;
     max-width: 95%;
   }
   
+  .grid-sizer {
+    width: 48%;
+  }
+  
   .masonry-item {
+    width: 48%;
     margin-bottom: 1.5rem;
   }
 
