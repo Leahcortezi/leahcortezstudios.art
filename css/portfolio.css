@@ -191,7 +191,6 @@
    3. MASONRY ITEMS
    -------------------- */
 
-
 .masonry-item img {
   width: 100%;
   height: auto;
@@ -271,14 +270,8 @@
 }
 
 .caption a {
-  color: #fff;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+color: #fff;
+text-decoration: underline;
 }
 
 .masonry-item {
@@ -325,9 +318,9 @@
     image-rendering: crisp-edges;
     transform: translateZ(0);
   }
-  
-    /* Reduce hover effects on mobile to prevent pixelation */
-    .masonry-item:hover .project-image {
-      transform: scale(1.01) translateZ(0);
-    } 
+
+  /* Reduce hover effects on mobile to prevent pixelation */
+  .masonry-item:hover .project-image {
+    transform: scale(1.01) translateZ(0);
   }
+} 
