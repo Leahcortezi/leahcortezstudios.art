@@ -206,6 +206,13 @@
 
 /* Square images */
 /* Square images */
+
+.masonry-item.square {
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 .masonry-item.square .lace-wrapper {
   aspect-ratio: 1;
 }
@@ -213,9 +220,29 @@
 .masonry-item.square .project-image,
 .masonry-item.square img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 350px;
+  max-height: 350px;
   object-fit: cover;
   object-position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Special crop for flag-design to force 1:1 aspect ratio */
+.masonry-item.square[data-category="design"] .project-image[src*="flag-design"] {
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 350px;
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Vertical 3:4 images */
