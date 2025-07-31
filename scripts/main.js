@@ -495,9 +495,16 @@ function createFloatingIcons() {
 
 // Generate random floating icon animations on page load
 function generateRandomFloatingIcons() {
+  console.log('Generating random floating icons...');
+  
   const icons = ['flower.svg', 'star.svg', 'starburst.svg'];
   const sizes = [20, 35, 50];
   const numIcons = 6;
+  
+  // Determine the correct path to icons based on current page location
+  const currentPath = window.location.pathname;
+  const iconPath = currentPath.includes('/bio/') || currentPath.includes('/collections/') || 
+                   currentPath.includes('/cv/') || currentPath.includes('/contact/') ? '../icons/' : 'icons/';
   
   // Generate random positions
   const positions = [];
@@ -529,7 +536,7 @@ function generateRandomFloatingIcons() {
   
   // Add background images
   for (let i = 0; i < positions.length; i++) {
-    css += `url('../icons/${positions[i].icon}')`;
+    css += `url('${iconPath}${positions[i].icon}')`;
     if (i < positions.length - 1) css += ', ';
   }
   
@@ -578,19 +585,22 @@ function generateRandomFloatingIcons() {
     }`;
   }
   
+  console.log('Generated CSS:', css);
+  
   // Inject the CSS
   const styleElement = document.createElement('style');
   styleElement.textContent = css;
   document.head.appendChild(styleElement);
+  
+  console.log('Floating icons CSS injected successfully');
 }
 
-// Initialize floating icons immediately and on page load
-generateRandomFloatingIcons();
-
-// Also initialize on DOMContentLoaded in case the script loads early
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize floating icons when document is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', generateRandomFloatingIcons);
+} else {
   generateRandomFloatingIcons();
-});
+}
 
 // ...existing code...
 
