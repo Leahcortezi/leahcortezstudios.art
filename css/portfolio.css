@@ -208,10 +208,11 @@
 /* Square images */
 
 .masonry-item.square {
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  display: inline-block;
 }
 .masonry-item.square .lace-wrapper {
   aspect-ratio: 1;
