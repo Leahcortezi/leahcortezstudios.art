@@ -36,11 +36,11 @@
 
     <!-- Header -->
         <div class="masonry-sizer"></div>
-        <!-- Move Themed Playing Card Design to top 6 -->
+        <!-- Themed Playing Card Design (ensure present and correct) -->
         <div class="masonry-item design square" data-category="design">
             <a href="design/themed-playing-card-design/index.html">
                 <div class="lace-wrapper">
-                    <img class="project-image" src="design/themed-playing-card-design/images/JPEG/design7.jpg" alt="Themed Playing Card Design - Custom card deck with conceptual themes" loading="lazy">
+                    <img class="project-image" src="design/themed-playing-card-design/images/JPEG/design1.jpg" alt="Themed Playing Card Design - Custom card deck with conceptual themes" loading="lazy">
                 </div>
                 <p class="caption">Themed Playing Card Design</p>
             </a>
@@ -49,7 +49,7 @@
         <div class="masonry-item personal vertical" data-category="personal">
             <a href="personal/inheritance/index.html">
                 <div class="lace-wrapper">
-                    <img class="project-image" src="personal/inheritance/images/JPEG/Personal1.jpg" alt="Inheritance - Digital art exploring generational legacy" loading="lazy">
+                    <img class="project-image" src="personal/inheritance/images/JPEG/personal1.jpg" alt="Inheritance - Digital art exploring generational legacy" loading="lazy">
                 </div>
                 <p class="caption">Inheritance</p>
             </a>
@@ -277,19 +277,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select a mix of squares and verticals for initial view
     const squares = masonryItems.filter(item => item.classList.contains('square'));
     const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
-    // Show 4 squares and 4 verticals if available, else fallback to first 8
+    // Always include Themed Playing Card Design in initial view
     let initialItems = [];
-    initialItems = initialItems.concat(squares.slice(0,4));
-    initialItems = initialItems.concat(verticals.slice(0,4));
-    if (initialItems.length < 8) {
-      // Fill up to 8 with remaining items
-      const alreadyIncluded = new Set(initialItems);
-      masonryItems.forEach(item => {
-        if (initialItems.length < 8 && !alreadyIncluded.has(item)) {
-          initialItems.push(item);
-        }
-      });
+    const themedCard = masonryItems.find(item => {
+      const caption = item.querySelector('.caption');
+      return caption && caption.textContent.trim().toLowerCase().includes('themed playing card');
+    });
+    if (themedCard) {
+      initialItems.push(themedCard);
     }
+    // Fill remaining slots with squares and verticals, avoiding duplicates
+    squares.forEach(item => {
+      if (initialItems.length < 8 && !initialItems.includes(item)) initialItems.push(item);
+    });
+    verticals.forEach(item => {
+      if (initialItems.length < 8 && !initialItems.includes(item)) initialItems.push(item);
+    });
+    // Fill up to 8 with any remaining items
+    masonryItems.forEach(item => {
+      if (initialItems.length < 8 && !initialItems.includes(item)) initialItems.push(item);
+    });
     masonryItems.forEach(item => {
       if (!initialItems.includes(item)) {
         item.style.display = 'none';
