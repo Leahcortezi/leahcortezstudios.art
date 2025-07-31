@@ -71,6 +71,7 @@
 
     <!-- Masonry Grid -->
     <div class="masonry-container">
+        <div class="masonry-sizer"></div>
         <!-- Personal Work - Keep existing linked pieces -->
         <div class="masonry-item personal vertical" data-category="personal">
             <a href="personal/inheritance/index.html">
@@ -263,13 +264,12 @@
 
     <script src="../scripts/main.js" defer></script>
     <script src="../scripts/masonry.pkgd.min.js"></script>
-    <script src="../scripts/masonry.pkgd.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       var grid = document.querySelector('.masonry-container');
       var msnry = new Masonry(grid, {
         itemSelector: '.masonry-item',
-        columnWidth: '.masonry-item',
+        columnWidth: '.masonry-sizer',
         percentPosition: true,
         gutter: 20,
         fitWidth: true

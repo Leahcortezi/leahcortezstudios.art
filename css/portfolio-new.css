@@ -40,30 +40,33 @@
    -------------------- */
 
 .masonry-container {
+  width: calc(33.333% - 0.5rem);
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  column-count: 1;
-  column-gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.masonry-sizer {
+  width: calc(33.333% - 0.5rem);
 }
 
 /* Responsive columns */
 @media (min-width: 576px) {
-  .masonry-container {
-    column-count: 2;
-  }
+  /* removed column-count for flex layout */
 }
 
 @media (min-width: 768px) {
-  .masonry-container {
-    column-count: 3;
-  }
+  /* removed column-count for flex layout */
 }
 
 @media (min-width: 1024px) {
-  .masonry-container {
-    column-count: 4;
-  }
+  /* removed column-count for flex layout */
 }
 
 /* --------------------
@@ -71,7 +74,7 @@
    -------------------- */
 
 .masonry-item {
-  display: inline-block;
+  position: absolute;
   width: 100%;
   margin-bottom: 2rem;
   break-inside: avoid;
@@ -202,7 +205,7 @@
 }
 
 .masonry-item:nth-child(even) {
-  animation-delay: 0.1s;
+/* This file has been deprecated. Please use portfolio.css for all portfolio styles. */
 }
 
 .masonry-item:nth-child(3n) {
@@ -226,7 +229,6 @@
   
   .masonry-container {
     padding: 1rem;
-    column-gap: 1rem;
   }
   
   .masonry-item {
