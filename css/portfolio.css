@@ -222,8 +222,8 @@
 .masonry-item.square .project-image,
 .masonry-item.square img {
   width: 100%;
+  aspect-ratio: 1/1;
   height: auto;
-  max-height: 420px;
   object-fit: cover;
   object-position: center;
   display: block;
