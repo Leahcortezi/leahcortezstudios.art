@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Filtering by category:', category);
       let visibleCount = 0;
       
-      // First, hide items that don't match
+      // Apply filtering immediately
       masonryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
         if (category === 'all' || itemCategory === category) {
@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       console.log('Visible items:', visibleCount);
       
-      // Wait for CSS transitions to complete, then update Masonry layout
+      // Update Masonry layout after a brief delay for CSS transitions
       if (msnry) {
         setTimeout(() => {
           msnry.layout();
           console.log('Masonry layout updated');
-        }, 350); // Slightly longer than CSS transition duration
+        }, 320);
       }
     }
 
