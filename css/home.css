@@ -208,7 +208,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .bio-btn {
   margin-top: 0;
-  color: #f5c6d6;
 }
 
 .about-heading {
@@ -230,6 +229,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1rem;
     /* Displays as a block to take its own line */
     display: inline-block;
+    color: #f5c6d6 !important;
 }
 @media screen and (max-width: 768px) {
   .about-section {
