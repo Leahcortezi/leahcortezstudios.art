@@ -230,6 +230,14 @@ h1, h2, h3, h4, h5, h6 {
     /* Displays as a block to take its own line */
     display: inline-block;
     color: #f5c6d6 !important;
+    text-decoration: none !important;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.text-link:hover, .text-link:focus {
+    color: #7e1c2e !important;
+    text-decoration: underline !important;
+}
 }
 @media screen and (max-width: 768px) {
   .about-section {
