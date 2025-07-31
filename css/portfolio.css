@@ -171,6 +171,11 @@
   text-align: center;
 }
 
+/* Ensure 3 columns for masonry grid */
+.masonry-item {
+  width: calc(33.333% - 1.34rem) !important;
+}
+
 /* Responsive columns */
 
 /* --------------------

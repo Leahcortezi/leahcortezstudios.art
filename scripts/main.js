@@ -484,6 +484,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var grid = document.querySelector('.masonry-container');
   var items = Array.from(grid.querySelectorAll('.masonry-item'));
   var viewMoreBtn = document.getElementById('view-more-btn');
+  // Set masonry-sizer width to 33.333% for 3 columns
+  var sizer = grid.querySelector('.masonry-sizer');
+  if (sizer) {
+    sizer.style.width = '33.333%';
+  }
   var msnry = new Masonry(grid, {
     itemSelector: '.masonry-item',
     columnWidth: '.masonry-sizer',
