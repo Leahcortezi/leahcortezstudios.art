@@ -99,8 +99,8 @@
   font-family: var(--font-body);
   /* Makes the font bold */
   font-weight: bold;
-  /* Makes the text white */
-  color: #ffffff;
+  /* Makes the text white - using !important to override global heading color */
+  color: #ffffff !important;
 }
 
 .cv-entry p {
