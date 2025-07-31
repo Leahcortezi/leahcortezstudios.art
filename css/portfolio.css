@@ -192,6 +192,8 @@
   transform: scale(0.95) !important;
   pointer-events: none;
   transition: all 0.3s ease !important;
+  position: absolute !important;
+  z-index: -1;
 }
 
 /* --------------------

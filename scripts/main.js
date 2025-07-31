@@ -16,16 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (grid) {
     imagesLoaded(grid, function () {
       msnry = new Masonry(grid, {
-        itemSelector: '.masonry-item',
+        itemSelector: '.masonry-item:not(.hidden)',
         columnWidth: '.grid-sizer',
         gutter: 35,
         percentPosition: true,
         horizontalOrder: true,
-        transitionDuration: '0.4s'
+        transitionDuration: '0.4s',
+        fitWidth: false
       });
       
       // Initialize filtering after Masonry is ready
       initializeFiltering();
+      
+      // Add resize listener to maintain layout
+      window.addEventListener('resize', () => {
+        if (msnry) {
+          msnry.layout();
+        }
+      });
     });
   }
   
@@ -51,12 +59,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
       console.log('Visible items:', visibleCount);
       
-      // Update Masonry layout after a brief delay for CSS transitions
+      // Update Masonry layout with multiple methods to ensure proper alignment
       if (msnry) {
         setTimeout(() => {
+          // First, reloadItems to refresh Masonry's item cache
+          msnry.reloadItems();
+          // Then layout to recalculate positions
           msnry.layout();
           console.log('Masonry layout updated');
         }, 320);
+        
+        // Additional layout call after a longer delay to ensure stability
+        setTimeout(() => {
+          msnry.layout();
+        }, 600);
       }
     }
 
