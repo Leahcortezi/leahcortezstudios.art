@@ -238,7 +238,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #7e1c2e !important;
     text-decoration: underline !important;
 }
-}
 @media screen and (max-width: 768px) {
   .about-section {
     flex-direction: column;
