@@ -163,25 +163,30 @@
 /* --------------------
    2. MASONRY CONTAINER
    -------------------- */
+/* Masonry.js grid sizer for column width */
+.grid-sizer {
+  width: 33.333%;
+}
 
 .masonry-container {
+  display: block;
+  margin: auto;
+  position: relative;
   max-width: 1400px;
-  margin: 0 auto;
   padding: 1rem 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: center;
 }
 
-/* Ensure 3 columns for masonry grid */
 .masonry-item {
-  width: calc(33.333% - 1.34rem) !important;
+  width: 33.333%;
+  float: left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Responsive columns */
+.masonry-item.hidden {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute !important;
+}
 
 /* --------------------
    3. MASONRY ITEMS
@@ -197,17 +202,7 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: 0 1px 6px rgba(126,28,46,0.06);
   background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-.masonry-item.hidden {
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
+  overflow: hidden !important;
 }
 
 .masonry-item img {
@@ -218,7 +213,6 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-/* Removed stray transform and transition properties that were outside any selector block */
 
 /* --------------------
    4. IMAGE WRAPPER & STYLING
@@ -257,14 +251,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
 /* Vertical 3:4 images */
 .masonry-item.vertical .lace-wrapper {
   aspect-ratio: 3/4;
 }
-}
-
-
-/* Remove aspect ratio overrides for square, vertical, horizontal */
 
 /* Horizontal 4:3 images */
 .masonry-item.horizontal .lace-wrapper {
@@ -304,15 +296,9 @@
    -------------------- */
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+  opacity: 0;
+  pointer-events: none;
+  position: absolute !important;
 
 .masonry-item {
   animation: fadeInUp 0.6s ease forwards;
