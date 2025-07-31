@@ -174,8 +174,15 @@
   margin: auto;
   position: relative;
   max-width: 1400px;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   width: 100%;
+}
+
+/* Ensure no extra spacing after masonry grid */
+.masonry-container::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .masonry-item {
@@ -290,6 +297,15 @@
 .caption a {
 color: #fff;
 text-decoration: underline;
+}
+
+/* --------------------
+   7. FOOTER ADJUSTMENTS
+   -------------------- */
+
+.main-footer {
+  margin-top: 0;
+  padding: 1rem 2rem 1.5rem 2rem;
 }
 
 /* --------------------
