@@ -315,18 +315,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-grid {
-  /*
-    Uses flexbox for horizontal alignment of featured work.
-  */
   display: flex;
-  /* Aligns items horizontally */
-  justify-content: center;
-  /* Aligns items vertically in the center */
-  align-items: flex-start;
-  /* Allows wrapping on smaller screens */
   flex-wrap: wrap;
-  /* Sets the gap between items */
+  justify-content: flex-start;
+  align-items: stretch;
   gap: 2rem;
+}
+
+.masonry-item {
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  flex: 0 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lace-wrapper {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  position: relative;
 }
 
 .gallery-item {
@@ -446,12 +455,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Make flag design image smaller in gallery */
 .masonry-item.design.square a[href*="flag-design"] .project-image {
-  width: 140px;
-  height: 180px;
-  top: 40px;
-  left: 55px;
+  position: static;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  margin: 0 auto;
 }
 
+/* Ensure Letter as Form uses masonry grid layout */
+.masonry-item.design.square a[href*="letter-as-form"] .project-image {
+  position: static;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  margin: 0 auto;
+}
 /* Make background icons more visible */
 .background-icon {
   opacity: 0.6;
