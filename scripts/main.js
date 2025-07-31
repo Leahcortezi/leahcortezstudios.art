@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
       msnry = new Masonry(grid, {
         itemSelector: '.masonry-item',
         columnWidth: '.grid-sizer',
-        gutter: 30,
+        gutter: 35,
         percentPosition: true,
-        horizontalOrder: true
+        horizontalOrder: true,
+        transitionDuration: '0.4s'
       });
       
       // Initialize filtering after Masonry is ready
@@ -36,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterItems(category) {
       console.log('Filtering by category:', category);
       let visibleCount = 0;
+      
+      // First, hide items that don't match
       masonryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
         if (category === 'all' || itemCategory === category) {
@@ -45,14 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
           item.classList.add('hidden');
         }
       });
+      
       console.log('Visible items:', visibleCount);
       
-      // Force Masonry to recalculate layout after filtering
+      // Wait for CSS transitions to complete, then update Masonry layout
       if (msnry) {
         setTimeout(() => {
           msnry.layout();
           console.log('Masonry layout updated');
-        }, 100);
+        }, 350); // Slightly longer than CSS transition duration
       }
     }
 
