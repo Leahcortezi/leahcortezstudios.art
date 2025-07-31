@@ -10,6 +10,19 @@
 // completely loaded and parsed, without waiting for stylesheets, images, and
 // subframes to finish loading. This is the perfect time to run our setup code.
 document.addEventListener('DOMContentLoaded', () => {
+  // Masonry.js initialization
+  const grid = document.querySelector('.masonry-container');
+  let msnry;
+  if (grid) {
+    imagesLoaded(grid, function () {
+      msnry = new Masonry(grid, {
+        itemSelector: '.masonry-item',
+        columnWidth: '.grid-sizer',
+        gutter: 20,
+        percentPosition: true
+      });
+    });
+  }
   // Portfolio filtering logic
   const filterButtons = document.querySelectorAll('.filter-buttons button');
   const masonryItems = document.querySelectorAll('.masonry-item');
@@ -447,7 +460,7 @@ function createFloatingIcons() {
       ticking = true;
     }
   };
-  
+
   window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
