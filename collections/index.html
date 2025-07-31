@@ -262,48 +262,33 @@
     </footer>
 
     <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/masonry.pkgd.min.js"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
-  const viewMoreBtn = document.getElementById('viewMoreBtn');
-  if (viewMoreBtn && masonryItems.length > 0) {
-    // Select a mix of squares and verticals for initial view
-    const squares = masonryItems.filter(item => item.classList.contains('square'));
-    const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
-    // Show 4 squares and 4 verticals if available, else fallback to first 8
-    let initialItems = [];
-    initialItems = initialItems.concat(squares.slice(0,4));
-    initialItems = initialItems.concat(verticals.slice(0,4));
-    if (initialItems.length < 8) {
-      // Fill up to 8 with remaining items
-      const alreadyIncluded = new Set(initialItems);
-      masonryItems.forEach(item => {
-        if (initialItems.length < 8 && !alreadyIncluded.has(item)) {
-          initialItems.push(item);
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+      var grid = document.querySelector('.masonry-container');
+      var msnry = new Masonry(grid, {
+        itemSelector: '.masonry-item',
+        columnWidth: '.masonry-item',
+        percentPosition: true,
+        gutter: 20,
+        fitWidth: true
       });
-    }
-    masonryItems.forEach(item => {
-      if (!initialItems.includes(item)) {
-        item.style.display = 'none';
-        item.style.opacity = 0;
-        item.style.transform = 'scale(0.96)';
-        item.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
+      // Optional: View More button logic (if you want to keep it)
+      const viewMoreBtn = document.getElementById('viewMoreBtn');
+      if (viewMoreBtn) {
+        viewMoreBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelectorAll('.masonry-item').forEach(item => {
+            item.style.display = 'block';
+            item.style.opacity = 1;
+            item.style.transform = 'scale(1)';
+          });
+          msnry.layout();
+          viewMoreBtn.style.display = 'none';
+        });
       }
     });
-    viewMoreBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      masonryItems.forEach(item => {
-        item.style.display = 'inline-block';
-        setTimeout(() => {
-          item.style.opacity = 1;
-          item.style.transform = 'scale(1)';
-        }, 50);
-      });
-      viewMoreBtn.style.display = 'none';
-    });
-  }
-});
+    </script>
 </script>
 
 </body>

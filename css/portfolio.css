@@ -112,10 +112,11 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  column-count: 3;
-  column-gap: 2rem;
-  column-fill: balance;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
   text-align: center;
 }
 
@@ -126,9 +127,9 @@
    -------------------- */
 
 .masonry-item {
-  display: inline-block;
-  width: 100%;
+  width: calc(33.333% - 1.34rem);
   margin-bottom: 2rem;
+  box-sizing: border-box;
   break-inside: avoid;
   vertical-align: top;
   text-align: left;
@@ -209,26 +210,23 @@
 
 .masonry-item.square {
   width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  display: inline-block;
+  margin: 0;
+  display: block;
 }
 .masonry-item.square .lace-wrapper {
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: auto;
 }
 
 .masonry-item.square .project-image,
 .masonry-item.square img {
   width: 100%;
   height: auto;
-  max-width: 350px;
-  max-height: 350px;
   object-fit: cover;
   object-position: center;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
 }
 
 /* Special crop for flag-design to force 1:1 aspect ratio */
@@ -249,13 +247,17 @@
 /* Vertical 3:4 images */
 .masonry-item.vertical .lace-wrapper {
   aspect-ratio: 3/4;
+  width: 100%;
+  height: auto;
 }
 
 .masonry-item.vertical .project-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   object-position: center;
+  display: block;
+  margin: 0;
 }
 
 /* Horizontal 4:3 images */
