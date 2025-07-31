@@ -101,6 +101,8 @@
 }
 
 .filter-buttons button:focus:not(:focus-visible) {
+  outline: none;
+}
 
 /* --------------------
    VIEW MORE BUTTON
@@ -152,8 +154,6 @@
 #view-more-btn:focus:not(:focus-visible) {
   outline: none;
 }
-  outline: none;
-}
 
 /* --------------------
    2. MASONRY CONTAINER
@@ -188,6 +188,10 @@
   box-shadow: 0 2px 12px rgba(126,28,46,0.08);
   background: rgba(255,255,255,0.03);
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 
 .masonry-item.hidden {
@@ -219,7 +223,10 @@
   margin-bottom: 0.5rem;
   box-sizing: border-box;
   width: 100%;
-  display: block;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
 }
 
 .project-image {
@@ -229,6 +236,7 @@
   object-fit: cover;
   border-radius: 12px;
   position: relative;
+  aspect-ratio: 1/1;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   image-rendering: optimizeQuality;
@@ -244,83 +252,11 @@
   object-fit: cover;
   object-position: center;
   display: block;
-}
-
-/* Enforce aspect ratio for images inside wrappers */
-.masonry-item.square .lace-wrapper img {
   aspect-ratio: 1/1;
 }
-.masonry-item.vertical .lace-wrapper img {
-  aspect-ratio: 3/4;
-}
 
 
-
-.masonry-item:hover .lace-wrapper {
-  transform: scale(1.03);
-  box-shadow: 0 4px 18px rgba(126,28,46,0.13);
-}
-
-/* --------------------
-   5. ASPECT RATIO CLASSES
-   -------------------- */
-
-/* Square images */
-/* Square images */
-
-.masonry-item.square {
-  width: 100%;
-  margin: 0;
-  display: block;
-}
-.masonry-item.square .lace-wrapper {
-  aspect-ratio: 1/1;
-  width: 100%;
-  height: auto;
-}
-
-.masonry-item.square .project-image,
-.masonry-item.square img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin: 0;
-}
-
-/* Special crop for flag-design to force 1:1 aspect ratio */
-.masonry-item.square[data-category="design"] .project-image[src*="flag-design"] {
-  aspect-ratio: 1/1;
-  width: 100%;
-  height: 350px;
-  max-width: 350px;
-  max-height: 350px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 12px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Vertical 3:4 images */
-.masonry-item.vertical .lace-wrapper {
-  aspect-ratio: 3/4;
-  width: 100%;
-  height: auto;
-}
-
-.masonry-item.vertical .project-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin: 0;
-}
+/* Remove aspect ratio overrides for square, vertical, horizontal */
 
 /* Horizontal 4:3 images */
 .masonry-item.horizontal .lace-wrapper {
@@ -407,10 +343,8 @@
     transform: translateZ(0);
   }
   
-  /* Reduce hover effects on mobile to prevent pixelation */
-  .masonry-item:hover .project-image {
-    transform: scale(1.01) translateZ(0);
+    /* Reduce hover effects on mobile to prevent pixelation */
+    .masonry-item:hover .project-image {
+      transform: scale(1.01) translateZ(0);
+    } 
   }
-}
-
-
