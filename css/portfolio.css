@@ -223,6 +223,7 @@
 .masonry-item.square img {
   width: 100%;
   height: auto;
+  max-height: 420px;
   object-fit: cover;
   object-position: center;
   display: block;
