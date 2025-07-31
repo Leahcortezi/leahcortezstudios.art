@@ -71,7 +71,6 @@
 
     <!-- Masonry Grid -->
     <div class="masonry-container">
-        <div class="masonry-sizer"></div>
         <!-- Personal Work - Keep existing linked pieces -->
         <div class="masonry-item personal vertical" data-category="personal">
             <a href="personal/inheritance/index.html">
@@ -213,6 +212,14 @@
             </a>
         </div>
         
+        <div class="masonry-item design square" data-category="design">
+            <a href="design/letter-as-form/index.html">
+                <div class="lace-wrapper">
+                    <img class="project-image" src="design/letter-as-form/images/JPEG/design3.jpg" alt="Letter as Form - Typography exploration" loading="lazy">
+                </div>
+                <p class="caption">Letter as Form</p>
+            </a>
+        </div>
         
         <div class="masonry-item design square" data-category="design">
             <a href="design/reductive-symbols/index.html">
@@ -263,39 +270,48 @@
     </footer>
 
     <script src="../scripts/main.js" defer></script>
-    <script src="../scripts/masonry.pkgd.min.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var grid = document.querySelector('.masonry-container');
-      var msnry = new Masonry(grid, {
-        itemSelector: '.masonry-item',
-        columnWidth: '.masonry-sizer',
-        percentPosition: true,
-        gutter: 20,
-        fitWidth: true
-      });
-      // Show only 8 items initially
-      var masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
-      masonryItems.forEach((item, idx) => {
-        if (idx >= 8) {
-          item.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+  const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  if (viewMoreBtn && masonryItems.length > 0) {
+    // Select a mix of squares and verticals for initial view
+    const squares = masonryItems.filter(item => item.classList.contains('square'));
+    const verticals = masonryItems.filter(item => item.classList.contains('vertical'));
+    // Show 4 squares and 4 verticals if available, else fallback to first 8
+    let initialItems = [];
+    initialItems = initialItems.concat(squares.slice(0,4));
+    initialItems = initialItems.concat(verticals.slice(0,4));
+    if (initialItems.length < 8) {
+      // Fill up to 8 with remaining items
+      const alreadyIncluded = new Set(initialItems);
+      masonryItems.forEach(item => {
+        if (initialItems.length < 8 && !alreadyIncluded.has(item)) {
+          initialItems.push(item);
         }
       });
-      msnry.layout();
-      // View More button logic
-      const viewMoreBtn = document.getElementById('viewMoreBtn');
-      if (viewMoreBtn) {
-        viewMoreBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          masonryItems.forEach(item => {
-            item.style.display = 'block';
-          });
-          msnry.layout();
-          viewMoreBtn.style.display = 'none';
-        });
+    }
+    masonryItems.forEach(item => {
+      if (!initialItems.includes(item)) {
+        item.style.display = 'none';
+        item.style.opacity = 0;
+        item.style.transform = 'scale(0.96)';
+        item.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
       }
     });
-    </script>
+    viewMoreBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      masonryItems.forEach(item => {
+        item.style.display = 'inline-block';
+        setTimeout(() => {
+          item.style.opacity = 1;
+          item.style.transform = 'scale(1)';
+        }, 50);
+      });
+      viewMoreBtn.style.display = 'none';
+    });
+  }
+});
 </script>
 
 </body>
