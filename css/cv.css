@@ -99,6 +99,8 @@
   font-family: var(--font-body);
   /* Makes the font bold */
   font-weight: bold;
+  /* Makes the text white */
+  color: #ffffff;
 }
 
 .cv-entry p {
