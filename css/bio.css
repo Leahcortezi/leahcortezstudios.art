@@ -117,6 +117,7 @@
   /*
     Sets the font size for the artist statement paragraphs for readability.
   */
+  font-family: var(--font-body), 'IM Fell English', serif;
   font-size: 1rem;
   /*
     Improved line height for better readability and more compact text.
@@ -126,6 +127,7 @@
     Reduced vertical space between paragraphs for more compact layout.
   */
   margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 
 
@@ -234,9 +236,11 @@
   /*
     Modal text styling
   */
+  font-family: var(--font-body), 'IM Fell English', serif;
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-text);
+  font-weight: 400;
 }
 
 .close {
@@ -680,6 +684,8 @@
   padding: 0.25rem 0;
   color: var(--color-text);
   border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+  font-family: var(--font-body), 'IM Fell English', serif;
+  font-weight: 400;
 }
 
 .service-category li:last-child {
@@ -702,6 +708,8 @@
 .process-step p {
   color: var(--color-text);
   line-height: 1.6;
+  font-family: var(--font-body), 'IM Fell English', serif;
+  font-weight: 400;
 }
 
 .working-info {
@@ -720,6 +728,8 @@
 .working-section p {
   color: var(--color-text);
   line-height: 1.6;
+  font-family: var(--font-body), 'IM Fell English', serif;
+  font-weight: 400;
 }
 
 .working-section a {
@@ -766,137 +776,5 @@
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-}
-
-/* --------------------
-   7. RECOGNITION SECTION
-   -------------------- */
-
-.recognition-section {
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.05) 0%, rgba(126, 28, 46, 0.08) 50%, rgba(248, 200, 208, 0.05) 100%);
-  padding: 80px 0;
-  position: relative;
-}
-
-.recognition-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.recognition-section h2 {
-  font-family: var(--font-headings);
-  font-size: 2.5rem;
-  color: var(--color-primary-accent);
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.bio-testimonial {
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.1) 0%, rgba(126, 28, 46, 0.1) 100%);
-  border: 1px solid rgba(248, 200, 208, 0.3);
-  border-radius: 15px;
-  padding: 40px 35px;
-  margin: 0 auto;
-  position: relative;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 700px;
-}
-
-.bio-testimonial:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-}
-
-.bio-testimonial::before {
-  content: '"';
-  position: absolute;
-  top: -5px;
-  left: 15px;
-  font-family: var(--font-headings);
-  font-size: 4rem;
-  color: rgba(248, 200, 208, 0.4);
-  line-height: 1;
-}
-
-.bio-testimonial::after {
-  content: '"';
-  position: absolute;
-  bottom: -25px;
-  right: 15px;
-  font-family: var(--font-headings);
-  font-size: 4rem;
-  color: rgba(248, 200, 208, 0.4);
-  line-height: 1;
-}
-
-.bio-testimonial p {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--color-text);
-  margin-bottom: 25px;
-  font-style: italic;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.bio-testimonial cite {
-  font-family: var(--font-accent);
-  font-size: 1rem;
-  color: var(--color-primary-accent);
-  font-style: normal;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: block;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* Mobile responsiveness for bio testimonial */
-@media (max-width: 768px) {
-  .recognition-section {
-    padding: 60px 0;
-  }
-  
-  .recognition-section h2 {
-    font-size: 2rem;
-  }
-  
-  .recognition-content {
-    padding: 0 20px;
-  }
-  
-  .bio-testimonial {
-    padding: 30px 25px;
-  }
-  
-  .bio-testimonial::before,
-  .bio-testimonial::after {
-    font-size: 3rem;
-  }
-  
-  .bio-testimonial::before {
-    top: -3px;
-    left: 12px;
-  }
-  
-  .bio-testimonial::after {
-    bottom: -18px;
-    right: 12px;
-  }
-  
-  .bio-testimonial p {
-    font-size: 1.1rem;
-  }
-  
-  .bio-testimonial cite {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
   }
 }

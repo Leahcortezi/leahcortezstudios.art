@@ -855,73 +855,116 @@ h1, h2, h3, h4, h5, h6 {
    -------------------- */
 
 .testimonial-section {
+  background: transparent;
   padding: 80px 0;
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.08) 0%, rgba(126, 28, 46, 0.12) 50%, rgba(248, 200, 208, 0.08) 100%);
   position: relative;
+  width: 100%;
+  clear: both;
+  display: block;
 }
 
 .testimonial-section .section-title {
   font-family: var(--font-headings);
   font-size: 2.5rem;
   color: var(--color-primary-accent);
-  margin-bottom: 50px;
   text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  letter-spacing: 1px;
+  width: 100%;
+  display: block;
+  font-weight: 400;
+}
+
+.testimonial-section .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--color-primary-accent);
+  border-radius: 1px;
 }
 
 .testimonial-content {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .testimonial {
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.15) 0%, rgba(126, 28, 46, 0.1) 100%);
-  border: 1px solid rgba(248, 200, 208, 0.3);
-  border-radius: 15px;
-  padding: 50px 40px;
-  margin: 0;
+  background: rgba(248, 200, 208, 0.08);
+  border: 2px solid rgba(248, 200, 208, 0.3);
+  border-left: 6px solid var(--color-primary-accent);
+  border-radius: 12px;
+  padding: 40px 35px;
+  margin: 0 auto;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  clear: both;
 }
 
 .testimonial:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-color: rgba(248, 200, 208, 0.5);
+  border-left-color: var(--color-secondary-accent);
 }
 
 .testimonial::before {
-  content: '"';
+  content: '❝';
   position: absolute;
-  top: -8px;
+  top: -15px;
   left: 20px;
   font-family: var(--font-headings);
-  font-size: 5rem;
-  color: rgba(248, 200, 208, 0.4);
+  font-size: 4rem;
+  color: var(--color-primary-accent);
   line-height: 1;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial::after {
-  content: '"';
+  content: '❞';
   position: absolute;
-  bottom: -30px;
+  bottom: -25px;
   right: 20px;
   font-family: var(--font-headings);
-  font-size: 5rem;
-  color: rgba(248, 200, 208, 0.4);
+  font-size: 4rem;
+  color: var(--color-primary-accent);
   line-height: 1;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial p {
-  font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-family: var(--font-body), 'IM Fell English', serif;
+  font-size: 1.2rem;
   line-height: 1.7;
   color: var(--color-text);
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-style: italic;
-  text-align: center;
+  text-align: left;
   position: relative;
   z-index: 2;
+  font-weight: 400;
+  padding-left: 20px;
+  border-left: 3px solid rgba(248, 200, 208, 0.3);
 }
 
 .testimonial cite {
@@ -929,13 +972,22 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   color: var(--color-primary-accent);
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
   display: block;
-  text-align: center;
+  text-align: right;
   position: relative;
   z-index: 2;
+  margin-top: 15px;
+  padding-right: 20px;
+}
+
+.testimonial cite::before {
+  content: '— ';
+  color: var(--color-secondary-accent);
+  margin-right: 5px;
+  font-size: 1rem;
 }
 
 /* Mobile responsiveness for testimonial */
@@ -946,6 +998,7 @@ h1, h2, h3, h4, h5, h6 {
   
   .testimonial-section .section-title {
     font-size: 2rem;
+    margin-bottom: 35px;
   }
   
   .testimonial-content {
@@ -953,27 +1006,128 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .testimonial {
-    padding: 40px 30px;
-    border-radius: 12px;
+    padding: 30px 25px;
+    border-radius: 10px;
+    max-width: 100%;
   }
   
   .testimonial::before,
   .testimonial::after {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   
   .testimonial::before {
-    top: -5px;
+    top: -12px;
     left: 15px;
   }
   
   .testimonial::after {
-    bottom: -20px;
+    bottom: -18px;
     right: 15px;
   }
   
   .testimonial p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 15px;
+  }
+  
+  .testimonial cite {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-section {
+    padding: 50px 0;
+  }
+  
+  .testimonial-section .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .testimonial {
+    padding: 25px 20px;
+    border-radius: 8px;
+  }
+  
+  .testimonial::before,
+  .testimonial::after {
+    font-size: 2.5rem;
+  }
+  
+  .testimonial::before {
+    top: -8px;
+    left: 12px;
+  }
+  
+  .testimonial::after {
+    bottom: -12px;
+    right: 12px;
+  }
+  
+  .testimonial p {
+    font-size: 1rem;
+    padding-left: 12px;
+  }
+  
+  .testimonial cite {
+    font-size: 0.85rem;
+    padding-right: 12px;
+  }
+}
+  
+  .testimonial::after {
+    bottom: -25px;
+    right: 20px;
+  }
+  
+  .testimonial p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+  
+  .testimonial cite {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-section {
+    padding: 60px 0;
+  }
+  
+  .testimonial-section .section-title {
+    font-size: 2rem;
+  }
+  
+  .testimonial {
+    padding: 35px 25px;
+    border-radius: 15px;
+  }
+  
+  .testimonial::before,
+  .testimonial::after {
+    font-size: 3rem;
+  }
+  
+  .testimonial::before {
+    top: -8px;
+    left: 15px;
+  }
+  
+  .testimonial::after {
+    bottom: -18px;
+    right: 15px;
+  }
+  
+  .testimonial p {
+    font-size: 1.15rem;
   }
   
   .testimonial cite {
