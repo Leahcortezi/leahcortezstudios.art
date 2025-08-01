@@ -267,9 +267,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .marquee-content span {
   display: inline-block;
-  font-family: 'Pirata One', cursive;
+  font-family: 'IBM Plex Mono', monospace;
   color: #7e1c2e; /* Your hot pink/red tone */
   font-size: 1.25rem; /* larger */
+  font-weight: 500;
   margin-right: 3rem; /* space between repeats */
 }
 
@@ -855,8 +856,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .testimonial-section {
   padding: 80px 0;
-  background-color: var(--color-background);
-  text-align: center;
+  background: linear-gradient(135deg, rgba(248, 200, 208, 0.08) 0%, rgba(126, 28, 46, 0.12) 50%, rgba(248, 200, 208, 0.08) 100%);
+  position: relative;
 }
 
 .testimonial-section .section-title {
@@ -870,35 +871,71 @@ h1, h2, h3, h4, h5, h6 {
 .testimonial-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .testimonial {
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.1), rgba(126, 28, 46, 0.1));
-  border-left: 4px solid var(--color-primary-accent);
-  padding: 40px 30px;
+  background: linear-gradient(135deg, rgba(248, 200, 208, 0.15) 0%, rgba(126, 28, 46, 0.1) 100%);
+  border: 1px solid rgba(248, 200, 208, 0.3);
+  border-radius: 15px;
+  padding: 50px 40px;
   margin: 0;
-  border-radius: 8px;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  font-family: var(--font-headings);
+  font-size: 5rem;
+  color: rgba(248, 200, 208, 0.4);
+  line-height: 1;
+}
+
+.testimonial::after {
+  content: '"';
+  position: absolute;
+  bottom: -30px;
+  right: 20px;
+  font-family: var(--font-headings);
+  font-size: 5rem;
+  color: rgba(248, 200, 208, 0.4);
+  line-height: 1;
 }
 
 .testimonial p {
   font-family: var(--font-body);
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.3rem;
+  line-height: 1.7;
   color: var(--color-text);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-style: italic;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .testimonial cite {
   font-family: var(--font-accent);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--color-primary-accent);
   font-style: normal;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 /* Mobile responsiveness for testimonial */
@@ -911,11 +948,36 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
   }
   
+  .testimonial-content {
+    padding: 0 20px;
+  }
+  
   .testimonial {
-    padding: 30px 20px;
+    padding: 40px 30px;
+    border-radius: 12px;
+  }
+  
+  .testimonial::before,
+  .testimonial::after {
+    font-size: 3.5rem;
+  }
+  
+  .testimonial::before {
+    top: -5px;
+    left: 15px;
+  }
+  
+  .testimonial::after {
+    bottom: -20px;
+    right: 15px;
   }
   
   .testimonial p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+  
+  .testimonial cite {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
   }
 }
