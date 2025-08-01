@@ -1025,7 +1025,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.95);
+  background: transparent;
   border: 2px solid var(--color-primary-accent);
   border-radius: 50%;
   width: 55px;
@@ -1041,10 +1041,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-arrow:hover {
-  background: var(--color-primary-accent);
+  background: var(--color-secondary-accent);
   border-color: var(--color-secondary-accent);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(248, 200, 208, 0.4);
+  box-shadow: 0 6px 20px rgba(126, 28, 46, 0.4);
 }
 
 .carousel-arrow svg {
@@ -1056,7 +1056,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-arrow:hover svg {
-  stroke: white;
+  stroke: var(--color-primary-accent);
 }
 
 .carousel-arrow-left {
