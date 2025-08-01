@@ -913,8 +913,10 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
-  display: block;
-  clear: both;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
 }
 
 .testimonial:hover {
@@ -996,6 +998,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 30px;
   padding: 0 60px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
 }
 
 .testimonial-slide {
