@@ -431,8 +431,10 @@ nav {
   height: auto;
   width: 200px; /* Width approximately matches "Leah Cortez © 2025" text */
   max-width: 90%; /* Responsive safety for small screens */
-  opacity: 0.8;
+  opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
+  /* Ensure logo is bright and visible on dark background */
+  filter: brightness(1.2) contrast(1.1);
 }
 
 .copyright {
