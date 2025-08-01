@@ -915,8 +915,8 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 200px;
+  justify-content: space-between;
+  min-height: 240px;
 }
 
 .testimonial:hover {
@@ -998,7 +998,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 30px;
   padding: 0 60px;
-  min-height: 280px;
+  min-height: 320px;
   display: flex;
   align-items: center;
 }
