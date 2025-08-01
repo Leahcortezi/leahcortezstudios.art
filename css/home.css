@@ -1025,11 +1025,11 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(248, 200, 208, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border: 2px solid var(--color-primary-accent);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1037,20 +1037,22 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
   z-index: 3;
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-arrow:hover {
   background: var(--color-primary-accent);
   border-color: var(--color-secondary-accent);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 15px rgba(248, 200, 208, 0.4);
+  box-shadow: 0 6px 20px rgba(248, 200, 208, 0.4);
 }
 
 .carousel-arrow svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   stroke: var(--color-primary-accent);
   transition: stroke 0.3s ease;
+  stroke-width: 2.5;
 }
 
 .carousel-arrow:hover svg {
@@ -1196,8 +1198,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .carousel-arrow {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   }
   
   .carousel-arrow-left {
@@ -1209,8 +1212,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .carousel-arrow svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    stroke-width: 3;
   }
   
   .testimonials-carousel {
@@ -1257,8 +1261,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .carousel-arrow {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
   
   .carousel-arrow-left {
@@ -1270,8 +1275,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .carousel-arrow svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
+    stroke-width: 3.5;
   }
   
   .testimonials-carousel {
