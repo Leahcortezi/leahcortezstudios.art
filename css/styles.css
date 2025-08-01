@@ -318,7 +318,7 @@ nav {
 }
 
 .main-logo {
-  height: 50px; /* Fits well within nav height */
+  height: 35px; /* Smaller size to fit better with navigation */
   width: auto; /* Maintains aspect ratio */
   display: block;
   filter: brightness(0) invert(1); /* Makes the logo white */
