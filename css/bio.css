@@ -768,3 +768,68 @@
     gap: 1rem;
   }
 }
+
+/* --------------------
+   7. RECOGNITION SECTION
+   -------------------- */
+
+.recognition-section {
+  padding: 60px 0;
+  background-color: var(--color-background);
+}
+
+.recognition-section h2 {
+  font-family: var(--font-headings);
+  font-size: 2.2rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.bio-testimonial {
+  background: linear-gradient(135deg, rgba(248, 200, 208, 0.08), rgba(126, 28, 46, 0.08));
+  border-left: 4px solid var(--color-primary-accent);
+  padding: 30px 25px;
+  margin: 0;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.bio-testimonial p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.bio-testimonial cite {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  color: var(--color-primary-accent);
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Mobile responsiveness for bio testimonial */
+@media (max-width: 768px) {
+  .recognition-section {
+    padding: 40px 0;
+  }
+  
+  .recognition-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .bio-testimonial {
+    padding: 25px 20px;
+  }
+  
+  .bio-testimonial p {
+    font-size: 1rem;
+  }
+}
