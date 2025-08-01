@@ -318,9 +318,9 @@ nav {
 }
 
 .main-logo {
-  width: 80px; /* Adjust as needed */
+  height: 50px; /* Fits well within nav height */
+  width: auto; /* Maintains aspect ratio */
   display: block;
-  margin: 0 auto;
   filter: brightness(0) invert(1); /* Makes the logo white */
   transition: transform 0.4s ease-in-out;
   cursor: pointer;
