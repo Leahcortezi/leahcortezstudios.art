@@ -1,13 +1,5 @@
-/* White text for subtitle or tagline */
-.white-title {
-  color: #fff !important;
-}
-/* Global header color for all pages */
-h1, h2, h3, h4, h5, h6 {
-  color: #f5c6d6 !important;
-}
 /*
-  Leah Cortez Studio Art - Global Stylesheet
+  Rachel Anduja Real Estate - Global Stylesheet
   ---
   This file contains all the global styles that are applied across the entire website.
   This includes font imports, color variables, base element styling (body, headings, paragraphs),
@@ -15,387 +7,283 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 /* --------------------
-   1. FONT IMPORTS
+   1. CSS VARIABLES (CUSTOM PROPERTIES)
    -------------------- */
 
 /*
-  We are importing the three fonts specified in the project brief from Google Fonts.
-  - 'Pirata One' for headings
-  - 'IM Fell English' for body text
-  - 'IBM Plex Mono' for accent text
-*/
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Mono:ital@0;1&family=Pirata+One&display=swap');
-
-/* --------------------
-   2. CSS VARIABLES (CUSTOM PROPERTIES)
-   -------------------- */
-
-/*
-  Using CSS variables allows us to define our color palette and fonts in one central place.
-  This makes it easy to maintain and update the site's design consistently.
-  The ':root' selector applies these variables globally to the entire document.
+  Using CSS variables allows us to define our color palette and fonts in one central place,
+  making it easy to maintain and update the site's design consistently.
 */
 :root {
-  /* --variable-name: value; */
-
   /* Color Palette */
-  --color-background: #000000; /* Black for the site background */
-  --color-text: #ffffff;       /* White for the main body text */
-  --color-primary-accent: #f8c8d0; /* Soft pink for primary interactive elements */
-  --color-secondary-accent: #7e1c2e; /* Deep red for secondary elements and highlights */
+  --color-primary: #5B2C2F; /* BHHS Maroon */
+  --color-secondary: #F0F0F0; /* Light Gray for backgrounds */
+  --color-accent: #C0A172; /* Gold/Tan accent */
+  --color-text-dark: #333333; /* Dark gray for text */
+  --color-text-light: #FFFFFF; /* White for text on dark backgrounds */
+  --color-background: #FFFFFF; /* White site background */
 
   /* Typography */
-  --font-headings: 'Pirata One', cursive;      /* Themed, gothic-style font for all headings */
-  --font-body: 'IM Fell English', serif;    /* Classic, readable serif for all paragraph text */
-  --font-accent: 'IBM Plex Mono', monospace;  /* Monospaced font for captions or special text */
+  --font-headings: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
 
-  /* Other Layout Variables */
-  --nav-height: 80px; /* Standard height for the navigation bar */
-  --footer-height: 60px; /* Standard height for the footer */
+  /* Layout */
+  --nav-height: 80px;
+  --container-width: 1200px;
+  --container-padding: 2rem;
 }
 
 /* --------------------
-   3. GENERAL BODY & RESET STYLES
+   2. GENERAL BODY & RESET STYLES
    -------------------- */
 
 /*
   These are foundational styles that reset default browser styling and set
   the base look and feel for the entire site.
 */
-
 * {
-  /*
-    The 'box-sizing' property changes how the box model is calculated.
-    'border-box' includes padding and border in the element's total width and height,
-    which makes creating layouts much more intuitive.
-  */
   box-sizing: border-box;
-
-  /* Resetting default margin and padding for all elements */
   margin: 0;
   padding: 0;
 }
 
 html {
-  /*
-    Enables smooth scrolling for anchor links and accessibility features.
-  */
   scroll-behavior: smooth;
+  font-size: 16px; /* Sets the base font size for rem units */
 }
 
 body {
-  /* Sets the background color for the entire site */
-  background-color: var(--color-background);
-
-  /* Sets the default text color */
-  color: var(--color-text);
-
-  /* Sets the default font for the body text */
   font-family: var(--font-body);
-
-  /* A line height of 1.6 is generally good for readability */
+  color: var(--color-text-dark);
+  background-color: var(--color-background);
   line-height: 1.6;
-
-  /* Ensures the body takes up at least the full height of the viewport */
-  min-height: 100vh;
-
-  /*
-    Uses a flexbox layout to push the footer to the bottom of the page,
-    even on pages with little content.
-  */
   display: flex;
   flex-direction: column;
-  position: relative;
-}
-
-/* Add floating icons to all pages - Now handled by JavaScript for random generation */
-/*
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  background-image: 
-    url('../icons/flower.svg'),
-    url('../icons/star.svg'),
-    url('../icons/starburst.svg'),
-    url('../icons/flower.svg'),
-    url('../icons/star.svg'),
-    url('../icons/starburst.svg');
-  background-size: 
-    20px 20px,
-    35px 35px,
-    50px 50px,
-    20px 20px,
-    35px 35px,
-    20px 20px;
-  background-position:
-    15% 15%,
-    88% 30%,
-    10% 75%,
-    92% 60%,
-    15% 55%,
-    85% 80%;
-  background-repeat: no-repeat;
-  filter: brightness(3) invert(0.8) opacity(0.4);
-  animation: 
-    floatingIcon1 6s ease-in-out infinite,
-    floatingIcon2 8s ease-in-out infinite 1s,
-    floatingIcon3 10s ease-in-out infinite 2s,
-    floatingIcon4 7s ease-in-out infinite 3s,
-    floatingIcon5 9s ease-in-out infinite 4s,
-    floatingIcon6 5s ease-in-out infinite 2.5s;
-}
-
-@keyframes floatingIcon1 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  25% { transform: rotate(3deg) translateY(-4px); }
-  50% { transform: rotate(0deg) translateY(-6px); }
-  75% { transform: rotate(-3deg) translateY(-4px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-
-@keyframes floatingIcon2 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  30% { transform: rotate(-2deg) translateY(-3px); }
-  60% { transform: rotate(4deg) translateY(-5px); }
-  90% { transform: rotate(-1deg) translateY(-2px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-
-@keyframes floatingIcon3 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  20% { transform: rotate(5deg) translateY(-2px); }
-  40% { transform: rotate(-3deg) translateY(-7px); }
-  70% { transform: rotate(2deg) translateY(-4px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-
-@keyframes floatingIcon4 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  35% { transform: rotate(-4deg) translateY(-5px); }
-  65% { transform: rotate(2deg) translateY(-3px); }
-  85% { transform: rotate(-1deg) translateY(-6px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-
-@keyframes floatingIcon5 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  25% { transform: rotate(1deg) translateY(-4px); }
-  50% { transform: rotate(-5deg) translateY(-2px); }
-  75% { transform: rotate(3deg) translateY(-5px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-
-@keyframes floatingIcon6 {
-  0% { transform: rotate(0deg) translateY(0px); }
-  40% { transform: rotate(-2deg) translateY(-6px); }
-  70% { transform: rotate(4deg) translateY(-3px); }
-  90% { transform: rotate(-3deg) translateY(-4px); }
-  100% { transform: rotate(0deg) translateY(0px); }
-}
-*/
-
-/* --------------------
-   4. GLOBAL IMAGE OPTIMIZATION
-   -------------------- */
-
-img {
-  /* Prevent images from being pixelated when scaled */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: optimizeQuality;
-  -ms-interpolation-mode: bicubic;
-  
-  /* Enable hardware acceleration for smoother transforms */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  
-  /* Ensure images are responsive by default */
-  max-width: 100%;
-  height: auto;
-  
-  /* Improve image loading performance */
-  will-change: transform;
-}
-
-/* High-DPI display optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  img {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: optimize-contrast;
-    image-rendering: crisp-edges;
-  }
+  min-height: 100vh;
 }
 
 main {
-  /*
-    This makes the main content area expand to fill the available space,
-    pushing the footer to the bottom.
-  */
+  /* This makes the main content area expand to fill the available space,
+     pushing the footer to the bottom. */
   flex: 1;
-  position: relative;
-  z-index: 10;
 }
+
+/* --------------------
+   3. REUSABLE COMPONENTS & UTILITIES
+   -------------------- */
+
+/* Container class to center content and limit its width */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--container-padding);
+}
+
+/* General button styling */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+/* Primary button style (maroon background) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: #4a2325; /* Darker maroon */
+  transform: translateY(-2px);
+}
+
+/* Secondary button style (outline) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+/* Text link for things like "Read More ->" */
+.text-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+    color: #4a2325;
+}
+
+/* Section title styling */
+.section-title {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Reusable Listing Card Styles */
+.listing-grid {
+  display: grid;
+  /* Creates 3 equal-width columns on larger screens */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Space between cards */
+}
+
+.listing-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the image corners are rounded */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.listing-image {
+  width: 100%;
+  height: 250px; /* Fixed height for uniform card size */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  display: block;
+}
+
+.listing-details {
+  padding: 1.5rem;
+}
+
+.listing-address {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.listing-price {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+}
+
 
 /* --------------------
    4. TYPOGRAPHY
    -------------------- */
 
-/*
-  Defining consistent styles for all headings (h1-h6).
-*/
 h1, h2, h3, h4, h5, h6 {
-  /* Applies the custom heading font */
   font-family: var(--font-headings);
-
-  /* Letter spacing can improve the readability of stylized fonts */
-  letter-spacing: 1.5px;
-
-  /* A slightly increased line height for headings */
+  color: var(--color-primary);
   line-height: 1.3;
-
-  /* A standard margin below headings to create space */
-  margin-bottom: 1rem; /* 1rem = 16px by default */
-}
-
-p {
-  /* Standard margin below paragraphs for spacing */
   margin-bottom: 1rem;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+p {
+  margin-bottom: 1rem;
 }
 
 a {
-  /* Adds a smooth transition effect for hover states */
-  transition: color 0.3s ease;
-}
-
-a:hover, a:focus {
-  /* Darkens the link color on hover/focus for visual feedback */
-  color: var(--color-secondary-accent);
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
 /* --------------------
-   5. GLOBAL NAVIGATION
+   5. GLOBAL HEADER
    -------------------- */
 
 .main-header {
-  /* Sets the height of the header area */
   height: var(--nav-height);
-  /* Ensures the header has a solid background color */
   background-color: var(--color-background);
-  /* A subtle bottom border to separate it from the main content */
-  border-bottom: 1px solid var(--color-secondary-accent);
-  /* Makes the header stay at the top of the viewport when scrolling */
-  position: sticky;
-  top: 0;
-  /* A high z-index ensures it stays above other content */
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  position: relative;
   z-index: 1000;
 }
 
-nav {
-  /*
-    Flexbox is used here for a powerful and simple alignment of nav items.
-  */
+.main-header.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.main-header nav {
   display: flex;
-  /* Pushes the logo to the left, hamburger to the right */
   justify-content: space-between;
-  /* Vertically centers the items within the nav bar */
   align-items: center;
-  /* Adds padding inside the nav bar */
-  padding: 0 2rem;
-  /* Ensures the nav takes the full height of its parent header */
   height: 100%;
 }
 
-.main-logo {
-  height: 35px; /* Smaller size to fit better with navigation */
-  width: auto; /* Maintains aspect ratio */
-  display: block;
-  filter: brightness(0) invert(1); /* Makes the logo white */
-  transition: transform 0.4s ease-in-out;
-  cursor: pointer;
-}
-
-.hamburger img {
-  width: 40px;
-  height: 40px;
-  display: block;
-  margin: 0;
-  filter: brightness(0) invert(1); /* Makes the icon white */
+.logo img {
+  height: 40px; /* Adjust as needed */
+  width: auto;
 }
 
 .nav-links {
-  /* Removes default list styling (bullets) */
   list-style: none;
-  /* Uses flexbox to lay out the list items horizontally */
   display: flex;
+  align-items: center;
 }
 
 .nav-links li {
-  /* Adds space between the navigation links */
-  margin-left: 2rem;
+  margin: 0 1rem;
 }
 
 .nav-links a {
-  font-family: var(--font-accent);
+  color: var(--color-text-dark);
+  font-weight: 500;
   text-transform: uppercase;
-  color: #f5c6d6;
-  transition: color 0.3s ease, border-bottom-color 0.3s ease;
-  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 0.5rem 0;
   border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #7e1c2e;
-  border-bottom-color: #7e1c2e;
-  /* Remove text-decoration to prevent double underline */
-  text-decoration: none;
+.nav-links a:hover, .nav-links a.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
-/* Styles for the mobile hamburger menu icon */
+.header-cta {
+    display: block; /* Shown on desktop */
+}
+
+/* Hamburger Menu for Mobile */
 .hamburger {
-  display: none;
-  align-items: center;
-  justify-content: flex-end;
+  display: none; /* Hidden on desktop */
   cursor: pointer;
-  padding: 10px 0 10px 0;
-  margin-left: auto;
-  margin-right: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: var(--nav-height);
-  /* Remove all extra right space, make it flush with right edge */
 }
 
-.hamburger img {
-    /* Sets the size of the custom flower icon - made bigger */
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
-}
-/* Hamburger bounce animation for dropdown hint */
-.hamburger:hover img,
-.hamburger:focus img {
-  animation: hamburgerBounce 0.6s;
-}
-
-@keyframes hamburgerBounce {
-  0% { transform: scale(1) translateY(0); }
-  30% { transform: scale(1.15) translateY(-8px); }
-  50% { transform: scale(0.95) translateY(2px); }
-  70% { transform: scale(1.05) translateY(-4px); }
-  100% { transform: scale(1) translateY(0); }
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: var(--color-primary);
+  transition: all 0.3s ease-in-out;
 }
 
 /* --------------------
@@ -403,261 +291,93 @@ nav {
    -------------------- */
 
 .main-footer {
-  /* Sets the height of the footer */
-  height: auto;
-  /* Sets the background color of the footer */
-  background-color: var(--color-background);
-  /* A top border to separate it from the main content */
-  border-top: 1px solid var(--color-secondary-accent);
-  /* Uses flexbox to center the content */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Reduced padding inside the footer */
-  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 3rem 0;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-content {
-  /* Centers the logo and copyright text */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0; /* No gap between logo and text */
-}
-
-.footer-logo {
-  /* Logo styling in footer - sized to match text width */
-  height: auto;
-  width: 180px; /* Slightly smaller width */
-  max-width: 90%; /* Responsive safety for small screens */
-  opacity: 1.0; /* Full opacity for maximum visibility */
-  margin-bottom: 0; /* Ensure no bottom margin */
-  /* Ensure logo is bright and visible on dark background */
-  filter: brightness(1.2) contrast(1.1);
-}
-
-.copyright {
-  /* Copyright text styling */
-  margin: 0;
-  margin-top: -40px; /* Reduced negative margin */
-  padding: 0; /* Remove any padding */
-  font-family: var(--font-accent);
-  font-size: 0.9rem;
-  color: var(--color-text);
-  opacity: 0.7;
-}
-
-.social-links {
-  /* Removes default list styling */
-  list-style: none;
-  /* Uses flexbox for horizontal layout */
-  display: flex;
-}
-
-.social-links li {
-  /* Adds space between the social media icons */
-  margin: 0 1rem;
-}
-
-.social-links a {
-  /* Sets the font size for the icons (if using a font icon) or text */
-  font-size: 1.5rem;
-  /* Applies a light pink filter to icons/images inside links */
-  filter: invert(86%) sepia(10%) saturate(500%) hue-rotate(310deg) brightness(1.1);
-  /* For SVG icons, also set color */
-  color: var(--color-primary-accent);
-  transition: filter 0.3s, color 0.3s;
-}
-
-.social-links a:hover,
-.social-links a:focus {
-  /* Slightly darken on hover/focus for feedback */
-  filter: invert(36%) sepia(80%) saturate(800%) hue-rotate(330deg) brightness(0.9);
-  color: var(--color-secondary-accent);
-}
-
-/* --------------------
-   7. MEDIA QUERIES (for Responsive Design)
-   -------------------- */
-
-/*
-  This media query targets screens with a maximum width of 768px (common for tablets and mobile).
-*/
-@media (max-width: 768px) {
-  .nav-links {
-    /*
-      On mobile, the nav links are initially hidden.
-      They will be displayed when the hamburger menu is clicked.
-    */
-    display: none;
-    /* Positions the menu absolutely relative to the header */
-    position: absolute;
-    top: var(--nav-height); /* Positions it right below the nav bar */
-    right: 0;
-    /* Takes portion of screen width, right-aligned */
-    width: 250px;
-    /* Sets the background to black with lower opacity */
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Changes the flex direction to vertical for a mobile menu */
+    display: flex;
     flex-direction: column;
-    /* Right-aligns the links within the menu */
-    align-items: flex-end;
-    /* Add padding for better spacing */
-    padding: 1rem;
-  }
-
-  /*
-    This class will be toggled with JavaScript to show the menu.
-  */
-  .nav-links.active {
-    /* When active, the menu is displayed as a flex container */
-    display: flex;
-  }
-
-  .nav-links li {
-    /* Removes the horizontal margin */
-    margin-left: 0;
-    /* Adds vertical margin for spacing between links */
-    margin: 1rem 0;
-  }
-
-  .hamburger {
-    display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-left: auto;
-    margin-right: 0;
-    padding-right: 0; /* Ensure no extra space on right */
-  }
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo img {
+    filter: brightness(0) invert(1); /* Make logo white */
+    height: 50px;
+}
+
+.footer-info p {
+    margin: 0.25rem 0;
+    opacity: 0.9;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+    width: 100%;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 /* --------------------
-   FLOATING BACKGROUND ICONS
+   7. MEDIA QUERIES (Responsive Design)
    -------------------- */
 
-.floating-icons {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
+@media (max-width: 992px) {
+    .nav-links, .header-cta {
+        display: none; /* Hide nav links and cta on tablet/mobile */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger icon */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
+        background-color: white;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: none; /* Initially hidden */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
 }
 
-.floating-icon {
-  position: absolute;
-  opacity: 0.3;
-  pointer-events: none;
-  will-change: transform;
-  transition: transform 0.1s ease-out;
+@media (max-width: 992px) {
+    .listing-grid, .neighborhood-grid {
+        /* Switch to 2 columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.floating-icon img {
-  width: 100%;
-  height: 100%;
-  filter: brightness(5) invert(1) opacity(1);
-}
-
-/* Icon sizes */
-.floating-icon.small {
-  width: 20px;
-  height: 20px;
-}
-
-.floating-icon.medium {
-  width: 35px;
-  height: 35px;
-}
-
-.floating-icon.large {
-  width: 50px;
-  height: 50px;
-}
-
-/* Subtle floating rotation animations on child elements */
-@keyframes subtleFloat1 {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes subtleFloat2 {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-360deg); }
-}
-
-@keyframes subtleFloat3 {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.floating-icon.rotate-1 > * {
-  animation: subtleFloat1 20s linear infinite;
-}
-
-.floating-icon.rotate-2 > * {
-  animation: subtleFloat2 25s linear infinite;
-}
-
-.floating-icon.rotate-3 > * {
-  animation: subtleFloat3 30s linear infinite;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-  .floating-icon {
-    opacity: 0.05;
-  }
-  
-  .floating-icon.large {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .floating-icon.medium {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .floating-icon.small {
-    width: 15px;
-    height: 15px;
-  }
-}
+    .section-title {
+        font-size: 2rem;
+    }
 
-/* --------------------
-   ACCENT BUTTON STYLES
-   -------------------- */
-
-/*
-  These styles are for buttons that need to stand out as primary actions,
-  such as "View More" buttons.
-*/
-
-/* Accent button style for View More */
-.view-more-btn {
-  display: block;
-  margin: 2rem auto;
-  text-align: center;
-  font-family: var(--font-accent);
-  font-size: 1.2rem;
-  color: var(--color-primary-accent);
-  background: rgba(126,28,46,0.07);
-  border: 2px solid var(--color-primary-accent);
-  padding: 0.75rem 2rem;
-  border-radius: 2rem;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(126,28,46,0.08);
-  max-width: fit-content;
-}
-
-.view-more-btn:hover,
-.view-more-btn:focus {
-  background: #7e1c2e;
-  color: #f8c8d0;
-  border-color: #7e1c2e;
-  box-shadow: 0 4px 16px rgba(126,28,46,0.15);
-  transform: translateY(-2px) scale(1.04);
+    .listing-grid, .neighborhood-grid {
+        /* Stack to a single column on mobile */
+        grid-template-columns: 1fr;
+    }
 }

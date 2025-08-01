@@ -1,387 +1,126 @@
 /*
-  Leah Cortez Studio Art - Contact Page Stylesheet
+  Rachel Anduja Real Estate - Contact Page Styles
   ---
-  This file contains the specific styles for the contact form and layout
-  on the contact page (contact/index.html).
+  This file contains styles specific to the Contact page (contact.html).
 */
 
 /* --------------------
-   1. CONTACT PAGE CONTAINER
+   1. CONTACT SECTION LAYOUT
    -------------------- */
 
-.contact-page {
-  /* Adds vertical padding to the main content area */
+.contact-section {
   padding: 4rem 0;
 }
 
-.contact-container {
-  /* Constrains the width of the contact form area */
-  max-width: 800px;
-  /* Centers the content on the page */
-  margin: 0 auto;
-  /* Adds horizontal padding */
-  padding: 0 2rem;
-  /* Centers all text inside the container */
-  text-align: center;
+.section-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: -1.5rem auto 3rem auto;
+    font-size: 1.1rem;
+    color: #666;
 }
 
-.contact-container h1 {
-  /* Sets the font size for the main page title */
-  font-size: 3.5rem;
-  /* Adds space below the title */
-  margin-bottom: 1rem;
-}
-
-.contact-intro {
-  /* Sets the font to the accent font for the intro paragraph */
-  font-family: var(--font-accent);
-  /* Sets a maximum width to keep the line length readable */
-  max-width: 600px;
-  /* Centers the paragraph block */
-  margin: 0 auto 3rem auto;
+.contact-content {
+  display: grid;
+  /* Creates a 2-column grid. The form takes up slightly more space. */
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
 }
 
 /* --------------------
    2. CONTACT FORM STYLES
    -------------------- */
 
-.contact-form {
-  /* Aligns the form content to the left for a standard form layout */
-  text-align: left;
+.contact-form-container {
+  /* This container holds the form */
+  width: 100%;
 }
 
 .form-group {
-  /* Adds space below each form group (label + input) */
+  /* Each form group contains a label and an input */
   margin-bottom: 1.5rem;
 }
 
-/*
-  Styles for the form labels (Name, Email, etc.)
-*/
 .form-group label {
-  /* Displays the label as a block to put it on its own line */
   display: block;
-  /* Adds a small space below the label */
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  /* Uses the accent font */
-  font-family: var(--font-accent);
-  /* Uppercase for style */
-  text-transform: uppercase;
-  /* Letter spacing for readability */
-  letter-spacing: 1px;
-  /* A smaller font size for the labels */
-  font-size: 0.9rem;
+  color: var(--color-text-dark);
 }
 
-/*
-  General styles for all text inputs and the textarea.
-  The attribute selector '[type="text"], [type="email"]' targets multiple input types.
-*/
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
+.form-group input,
 .form-group textarea {
-  /* Makes the input fields take up the full width of their container */
   width: 100%;
-  /* Adds padding inside the input fields */
-  padding: 12px;
-  /* Sets the background color to be very dark but not pure black */
-  background-color: #1a1a1a;
-  /* A subtle border with the secondary accent color */
-  border: 1px solid var(--color-secondary-accent);
-  /* Sets the text color inside the input fields */
-  color: var(--color-text);
-  /* Sets the font to the body font */
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-family: var(--font-body);
-  /* Sets the font size */
   font-size: 1rem;
-  /* Adds a transition for a smooth focus effect */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*
-  Removes the default spinners from the number input for the CAPTCHA.
-*/
-.form-group input[type="number"]::-webkit-outer-spin-button,
-.form-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-.form-group input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-
-/*
-  Styles for when an input field is focused (clicked into).
-*/
+/* Style for when a user clicks into a form field */
 .form-group input:focus,
 .form-group textarea:focus {
-  /* Removes the default browser outline */
   outline: none;
-  /* Changes the border color to the primary accent color */
-  border-color: var(--color-primary-accent);
-  /* Adds a subtle glow effect to indicate focus */
-  box-shadow: 0 0 8px rgba(248, 200, 208, 0.3);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(91, 44, 47, 0.1);
 }
 
-/*
-  The 'resize' property allows or disallows the user from resizing a textarea.
-  'vertical' means they can only resize it up and down.
-*/
 .form-group textarea {
-  resize: vertical;
+    /* Allows vertical resizing but not horizontal */
+    resize: vertical;
 }
+
+/* Overrides the global button style for full width */
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
 
 /* --------------------
-   3. SPAM PROTECTION STYLES
+   3. CONTACT INFO & MAP
    -------------------- */
 
-/*
-  The honeypot field is a trap for bots. It should be hidden from human users.
-  We hide it visually and from screen readers, but keep it available for bots to fill out.
-*/
-.honeypot {
-  position: absolute;
-  left: -5000px; /* Moves it way off-screen */
-  top: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.contact-info-container {
+  /* This container holds the text info and map */
 }
 
-/*
-  Styling for the simple math CAPTCHA.
-*/
-.captcha label {
-  /* Makes the label and input sit side-by-side */
-  display: inline-block;
-  /* Aligns them vertically */
-  vertical-align: middle;
-  /* Adds space between the question and the answer box */
-  margin-right: 1rem;
+.contact-info-block {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--color-primary);
 }
 
-.captcha input {
-  /* Makes the input box smaller */
-  width: 80px;
-  /* Makes it sit side-by-side with the label */
-  display: inline-block;
-  vertical-align: middle;
+.contact-info-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
-/* --------------------
-   4. SUBMIT BUTTON
-   -------------------- */
+.contact-info-block p {
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
 
-.submit-btn {
-  /* Makes the button take up the full width */
+.map-placeholder img {
   width: 100%;
-  /* Adds padding inside the button */
-  padding: 15px;
-  /* Sets the background color */
-  background-color: var(--color-primary-accent);
-  /* Sets the text color */
-  color: var(--color-background);
-  /* Removes the border */
-  border: none;
-  /* Sets the font to the accent font */
-  font-family: var(--font-accent);
-  /* Uppercase text */
-  text-transform: uppercase;
-  /* Letter spacing */
-  letter-spacing: 2px;
-  /* Font size */
-  font-size: 1rem;
-  /* Pointer cursor on hover */
-  cursor: pointer;
-  /* Transition for hover effect */
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  border: 1px solid var(--color-primary-accent);
-  /* Rounded corners to match other buttons */
-  border-radius: 20px;
-}
-
-.submit-btn:hover {
-  /* Background color on hover - matches other buttons */
-  background-color: #7e1c2e;
-  /* Text color on hover - matches other buttons */
-  color: #f5c6d6;
-  /* Border color matches background */
-  border-color: #7e1c2e;
-  /* Slight scale effect on hover */
-  transform: translateY(-2px);
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 /* --------------------
-   5. RESPONSIVE STYLES
+   4. RESPONSIVE ADJUSTMENTS
    -------------------- */
 
-@media (max-width: 768px) {
-  .contact-page {
-    /* Reduced padding on mobile */
-    padding: 2rem 0;
+@media (max-width: 992px) {
+  .contact-content {
+    /* Stacks the columns on mobile */
+    grid-template-columns: 1fr;
+    gap: 4rem; /* Increase gap for stacked layout */
   }
-
-  .contact-container {
-    /* Reduced horizontal padding on mobile */
-    padding: 0 1rem;
-  }
-
-  .contact-container h1 {
-    /* Smaller title font size on mobile */
-    font-size: 2.5rem;
-    /* Reduced margin */
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-intro {
-    /* Reduced bottom margin on mobile */
-    margin-bottom: 2rem;
-    /* Slightly smaller text */
-    font-size: 0.95rem;
-  }
-
-  .contact-form {
-    /* Reduced padding on mobile */
-    padding: 1.5rem;
-    /* Reduced border radius on mobile */
-    border-radius: 8px;
-  }
-
-  .form-group {
-    /* Reduced spacing between form groups on mobile */
-    margin-bottom: 1.25rem;
-  }
-
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="number"],
-  .form-group textarea {
-    /* Slightly reduced padding on mobile */
-    padding: 10px;
-    /* Adjusted font size for better mobile readability */
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-
-  .submit-btn {
-    /* Slightly reduced padding on mobile */
-    padding: 12px;
-    /* Adjusted font size */
-    font-size: 0.9rem;
-    /* Reduced letter spacing on mobile */
-    letter-spacing: 1px;
-  }
-
-  .captcha {
-    /* Stack the captcha elements on mobile for better usability */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .captcha label {
-    /* Remove inline display on mobile */
-    display: block;
-    /* Remove right margin */
-    margin-right: 0;
-    /* Add bottom margin */
-    margin-bottom: 0.5rem;
-  }
-
-  .captcha input {
-    /* Full width on mobile for easier tapping */
-    width: 120px;
-    /* Remove inline display */
-    display: block;
-  }
-}
-
-/* --------------------
-   6. ENHANCED VISUAL STYLES
-   -------------------- */
-
-/* Add subtle animations to form elements */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
-.form-group textarea {
-  /* Add a subtle border radius */
-  border-radius: 4px;
-}
-
-/* Enhanced focus state with better visual feedback */
-.form-group input:focus,
-.form-group textarea:focus {
-  /* Slightly increase the glow */
-  box-shadow: 0 0 12px rgba(248, 200, 208, 0.4);
-  /* Add a slight scale effect */
-  transform: scale(1.01);
-}
-
-/* Add visual feedback for valid inputs */
-.form-group input:valid:not(:placeholder-shown),
-.form-group textarea:valid:not(:placeholder-shown) {
-  /* Subtle green border for valid inputs */
-  border-color: #4a9b4a;
-}
-
-/* Improve the visual hierarchy with better spacing */
-.contact-container h1 {
-  /* Add some visual weight */
-  font-weight: 300;
-  /* Better letter spacing */
-  letter-spacing: 2px;
-  /* Add text shadow for depth */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Style the intro paragraph for better readability */
-.contact-intro {
-  /* Improved line height */
-  line-height: 1.6;
-  /* Subtle color variation */
-  color: #e0e0e0;
-  /* Increased font size for better readability */
-  font-size: 1.1rem;
-}
-
-/* Add a subtle decorative element */
-.contact-container::before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-primary-accent), var(--color-secondary-accent));
-  margin: 0 auto 2rem auto;
-  border-radius: 1px;
-}
-
-/* Add form container styling for better visual separation */
-.contact-form {
-  /* Add subtle background */
-  background: rgba(26, 26, 26, 0.6);
-  /* Add padding */
-  padding: 2.5rem;
-  /* Add border radius */
-  border-radius: 12px;
-  /* Add subtle border */
-  border: 1px solid rgba(248, 200, 208, 0.1);
-  /* Add subtle shadow */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* Add loading state styling for better UX */
-.submit-btn:disabled {
-  background-color: #666;
-  color: #999;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.submit-btn:disabled:hover {
-  background-color: #666;
-  color: #999;
-  transform: none;
 }

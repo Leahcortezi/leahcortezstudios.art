@@ -2,214 +2,184 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- This tag ensures the content is encoded correctly -->
+    <!-- Ensures content is encoded correctly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This tag makes the site responsive to different screen sizes -->
+    <!-- Makes the site responsive -->
 
     <!-- SEO and Social Sharing Tags -->
-    <title>Leah Cortez Studio | Multimedia Artist & Graphic Designer</title>
-    <!-- The title of the page, crucial for SEO and browser tabs -->
-    <meta name="description" content="Leah Cortez is a Chicana graphic designer and multimedia artist creating bold, symbolic work rooted in gothic and conceptual storytelling.">
-    <!-- A brief description of the page content for search engines -->
-    <meta name="keywords" content="Chicana graphic designer, multimedia surreal artist, gothic visual storytelling, Corpus Christi artist, studio art minor, conceptual design">
-    <!-- Keywords for search engines to understand the page's topics -->
-    <meta name="author" content="Leah Cortez">
-    <!-- The author of the page -->
+    <title>Rachel Anduja | BHHS City By The Sea Realty | Corpus Christi, TX</title>
+    <meta name="description" content="Your expert real estate agent for buying and selling homes in Corpus Christi, TX. Specializing in coastal and luxury properties with Berkshire Hathaway HomeServices City By The Sea Realty.">
+    <meta name="keywords" content="Corpus Christi real estate, Rachel Anduja realtor, buy home Corpus Christi, sell home Corpus Christi, BHHS, Berkshire Hathaway, luxury homes, coastal properties">
+    <meta name="author" content="Rachel Anduja">
 
-    <!-- Open Graph (Facebook, Pinterest) and Twitter Card Tags -->
-    <meta property="og:title" content="Leah Cortez Studio">
-    <meta property="og:description" content="Chicana graphic designer and multimedia artist creating bold, symbolic work.">
-    <meta property="og:image" content="images/logo/logo2.png">
-    <!-- Note: This path should be absolute for social sharing, e.g., https://leahcortezstudio.art/images/logo/logo2.png -->
-    <meta property="og:url" content="https://leahcortezstudio.art">
+    <!-- Open Graph (Facebook, Pinterest) & Twitter Card Tags -->
+    <meta property="og:title" content="Rachel Anduja | Corpus Christi Real Estate">
+    <meta property="og:description" content="Find your dream home in Corpus Christi with expert guidance.">
+    <meta property="og:image" content="https://placehold.co/1200x630/5B2C2F/FFFFFF/png?text=Rachel+Anduja+Realtor">
+    <!-- Using a placeholder image for social sharing -->
+    <meta property="og:url" content="[YOUR_DOMAIN_HERE]">
+    <!-- The future domain of the website -->
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Leah Cortez Studio">
-    <meta name="twitter:description" content="Chicana graphic designer and multimedia artist creating bold, symbolic work.">
-    <meta name="twitter:image" content="images/logo/logo2.png">
-    <!-- Note: This path should also be absolute for Twitter cards -->
+    <meta name="twitter:title" content="Rachel Anduja | Corpus Christi Real Estate">
+    <meta name="twitter:description" content="Find your dream home in Corpus Christi with expert guidance.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/5B2C2F/FFFFFF/png?text=Rachel+Anduja+Realtor">
 
-    <!-- Favicon Links -->
+    <!-- Favicon -->
     <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
-    <!-- The 'rel' attribute specifies the relationship, 'href' is the path to the icon -->
+    <!-- Placeholder, assuming a favicon might be added -->
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Stylesheet Links -->
-    <!-- The global stylesheet is linked first -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- The page-specific stylesheet is linked second to override global styles if needed -->
+    <!-- Global stylesheet -->
     <link rel="stylesheet" href="css/home.css">
+    <!-- Homepage-specific stylesheet -->
 
 </head>
 <body>
-    <!-- The header contains the site logo and main navigation -->
-    <header class="main-header">
-        <nav>
-            <!-- The logo links back to the homepage -->
+
+    <!-- Header: Contains the logo, navigation, and CTA -->
+    <header class="main-header sticky">
+        <nav class="container">
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logo/logo2.png" alt="Leah Cortez Logo" class="main-logo" loading="lazy">
+                    <!-- Placeholder for BHHS Logo -->
+                    <img src="https://placehold.co/200x50/FFFFFF/5B2C2F/png?text=BHHS+Logo" alt="BHHS City By The Sea Realty Logo">
                 </a>
             </div>
-            <!-- The navigation links -->
+
+            <!-- Navigation Links -->
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="bio/index.html">Bio</a></li>
-                <li><a href="collections/index.html">Portfolio</a></li>
-                <li><a href="cv/index.html">CV</a></li>
-                <li><a href="contact/index.html">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="listings.html">Listings</a></li>
+                <li><a href="neighborhoods.html">Neighborhoods</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <!-- The hamburger icon for mobile navigation -->
+
+            <!-- CTA Button -->
+            <div class="header-cta">
+                <a href="listings.html" class="btn btn-primary">View Listings</a>
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
             <div class="hamburger">
-                <!-- The custom flower icon will be placed here -->
-                <img src="icons/flower.svg" alt="Menu" loading="lazy">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
 
-    <!-- The main content of the homepage -->
     <main>
 
-        <!-- Hero Section: A full-screen introductory section -->
+        <!-- Hero Section: Full-width image with overlay text -->
         <section id="hero" class="hero-section">
-            
-            <img src="images/logo/logo1.png" alt="Leah Cortez Lace Logo" class="logo animate-logo lace-logo" loading="lazy">
-
-            <h1 class="hero-title">Multimedia Artist &<br>Graphic Designer</h1>
-            <p class="hero-poetic">Crafted in blood, stitched with lace.</p>
-            <a href="#bio-preview" class="btn">VIEW PORTFOLIO</a>
+            <div class="hero-bg"></div>
+            <div class="hero-content container">
+                <h1 class="hero-title">City By The Sea Realty – Your Corpus Christi Home Expert</h1>
+                <p class="hero-subtitle">Discover exceptional properties and unparalleled service with Rachel Anduja.</p>
+                <a href="listings.html" class="btn btn-primary">View Listings</a>
+            </div>
         </section>
 
-         
-
-        <!-- Bio Preview Section: A brief introduction to the artist -->
-        <section id="bio-preview" class="bio-preview-section">
+        <!-- Featured Listings Section -->
+        <section id="featured-listings" class="featured-listings-section">
             <div class="container">
-                <div class="bio-content">
-                    <img src="images/me.jpg" alt="Leah Cortez smiling warmly at the camera, seated in a softly lit studio with art supplies and colorful paintings in the background, conveying a welcoming and creative atmosphere" class="bio-image" loading="lazy">
-                    <div class="bio-text">
-                 <h2>About the Artist</h2>
-                        <p>I'm Leah Cortez, a Chicana graphic designer and visual artist based in Corpus Christi, Texas. I create bold, expressive visuals that explore memory, identity, and emotion through a blend of graphic design and fine art. My work is rooted in storytelling — using design as a tool to communicate what words often can't.</p>
-                        <a href="bio/index.html" class="text-link">Read Full Bio &rarr;</a>
+                <h2 class="section-title">Featured Listings</h2>
+                <div class="listing-grid">
+                    <!-- Placeholder Listing Card 1 -->
+                    <div class="listing-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Coastal+Home" alt="Featured Property 1" class="listing-image">
+                        <div class="listing-details">
+                            <h3 class="listing-address">123 Ocean Drive, Corpus Christi, TX</h3>
+                            <p class="listing-price">$750,000</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <!-- Placeholder Listing Card 2 -->
+                    <div class="listing-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Modern+Villa" alt="Featured Property 2" class="listing-image">
+                        <div class="listing-details">
+                            <h3 class="listing-address">456 Palm Blvd, Padre Island, TX</h3>
+                            <p class="listing-price">$1,200,000</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <!-- Placeholder Listing Card 3 -->
+                    <div class="listing-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Downtown+Condo" alt="Featured Property 3" class="listing-image">
+                        <div class="listing-details">
+                            <h3 class="listing-address">789 Shoreline Dr, Corpus Christi, TX</h3>
+                            <p class="listing-price">$450,000</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="marquee">
-  <div class="marquee-content">
-    <span>• sacred chaos • made in corpus • sacred chaos • made in corpus • sacred chaos • made in corpus • sacred chaos • made in corpus • sacred chaos • made in corpus • sacred chaos • made in corpus • sacred chaos • made in corpus •</span>
-  </div>
-</div>
-        </section>
-
-        <!-- Featured Art Section: A gallery of selected works -->
-        <section class="featured" id="featured">
-            <h2 class="featured-title">Featured Works</h2>
-            <div class="featured-artwork-wrapper">
-                                <div class="featured-card">
-                    <a href="collections/personal/inheritance/index.html?from=home">
-                        <div class="lace-wrapper lightbox-trigger"
-                            data-title="Inheritance"
-                            data-medium="Digital Art"
-                            data-year="2025"
-                            data-desc="A surreal self-portrait revealing the quiet weight of inherited wounds, sacred feminine power, and ancestral memory.">
-                            <img src="collections/personal/inheritance/images/JPEG/Personal1.jpg" alt="Art 1" class="project-image" loading="lazy">
-                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
-                        </div>
-                        <p class="caption">Inheritance</p>
-                    </a>
-                </div>
-                <div class="featured-card">
-                    <a href="collections/studio/abuelas-altar/index.html?from=home">
-                        <div class="lace-wrapper lightbox-trigger"
-                            data-title="Abuela's Altar"
-                            data-medium="Charcoal"
-                            data-year="2025"
-                            data-desc="A devotional altar blending Catholic and bruja traditions. Though she's gone, she lingers in rosaries, candles, and the quiet corners of memory. This altar blends belief and grief—a prayer for her to reach heaven, and a reminder that love survives in every sacred piece she left behind.">
-                            <img src="collections/studio/abuelas-altar/images/JPEG/Studio10.jpg" alt="Art 2" class="project-image" loading="lazy">
-                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
-                        </div>
-                        <p class="caption">Abuela's Altar</p>
-                    </a>
-                </div>
-                <div class="featured-card">
-                    <a href="collections/personal/heaven-on-fire/index.html?from=home">
-                        <div class="lace-wrapper lightbox-trigger"
-                            data-title="Heaven on Fire"
-                            data-medium="Mixed Media"
-                            data-year="2021"
-                            data-desc="An abstract vision of paradise unraveling—flames licking the clouds, chaos blooming in sacred ground. A reflection on disillusionment, transformation, and spiritual reckoning.">
-                            <img src="collections/personal/heaven-on-fire/images/JPEG/personal7.jpg" alt="Art 3" class="project-image" loading="lazy">
-                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
-                        </div>
-                        <p class="caption">Heaven on Fire</p>
-                    </a>
-                </div>
-            </div>
-            <div class="view-all-link">
-                <a href="collections/index.html" class="cta-button">Explore Full Portfolio</a>
             </div>
         </section>
 
         <!-- Testimonial Section -->
-        <section class="testimonial-section">
+        <section id="testimonials" class="testimonial-section">
             <div class="container">
-                <h2 class="section-title">Recognition</h2>
-                <div class="testimonial-content">
-                    <div class="testimonials-carousel">
-                        <button class="carousel-arrow carousel-arrow-left" aria-label="Previous testimonial">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="15,18 9,12 15,6"></polyline>
-                            </svg>
-                        </button>
-                        <div class="testimonial-slide active">
-                            <blockquote class="testimonial">
-                                <p>"Leah's work throughout the semester was excellent—each project was well-executed, thoughtful, and beautifully presented. I especially admired how she incorporated her Hispanic roots and Catholic faith into her color choices and visual storytelling. Her western scene was brilliant, and her complementary color triptych's subject matter was unnerving in the best possible way."</p>
-                                <cite>— Joe Peña, Professor of Art<br>Texas A&M University–Corpus Christi</cite>
-                            </blockquote>
-                        </div>
-                        <div class="testimonial-slide">
-                            <blockquote class="testimonial">
-                                <p>"Leah's sketching and digital iteration process stood out as both rare and valuable. The visual development from our back-and-forth was not only well-executed, but worth showcasing as part of the final presentation."</p>
-                                <cite>— David Shields, Professor of Graphic Design</cite>
-                            </blockquote>
-                        </div>
-                        <button class="carousel-arrow carousel-arrow-right" aria-label="Next testimonial">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9,18 15,12 9,6"></polyline>
-                            </svg>
-                        </button>
+                <h2 class="section-title">What Clients Are Saying</h2>
+                <div class="testimonial-slider">
+                    <!-- Placeholder Testimonial 1 -->
+                    <div class="testimonial-slide active">
+                        <blockquote>
+                            <p>"Rachel was incredible to work with. Her knowledge of the Corpus Christi market is unmatched, and she made the entire process seamless and stress-free."</p>
+                            <cite>— The Johnson Family</cite>
+                        </blockquote>
                     </div>
-                    <div class="carousel-dots">
-                        <button class="dot active" data-slide="0" aria-label="Testimonial 1"></button>
-                        <button class="dot" data-slide="1" aria-label="Testimonial 2"></button>
+                    <!-- Placeholder Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <blockquote>
+                            <p>"As first-time homebuyers, we were nervous, but Rachel guided us with patience and expertise. We found our dream home thanks to her!"</p>
+                            <cite>— M. & D. Rodriguez</cite>
+                        </blockquote>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Preview Section: A simple contact call-to-action -->
-        <section id="contact-preview" class="contact-preview-section">
+        <!-- Neighborhood Spotlight Section -->
+        <section id="neighborhoods" class="neighborhood-section">
             <div class="container">
-                <div class="contact-content">
-                    <div class="contact-text-column">
-                        <h2>Get In Touch</h2>
-                        <p>Connect with me on social media or send a direct message:</p>
-                    </div>
-                    <div class="contact-social-column">
-                        <div class="contact-social-icons">
-                            <a href="https://pin.it/P7sLCI6r5" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="social-icon">
-                                <img src="icons/pinterest.svg" alt="Pinterest" width="40" height="40" loading="lazy">
-                            </a>
-                            <a href="https://www.behance.net/leahcortez" target="_blank" rel="noopener noreferrer" aria-label="Behance" class="social-icon">
-                                <img src="icons/behance.svg" alt="Behance" width="40" height="40" loading="lazy">
-                            </a>
-                            <a href="https://www.instagram.com/leahcortez.art?igsh=ZG16Z291ZXJzNDl4&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
-                                <img src="icons/instagram.svg" alt="Instagram" width="40" height="40" loading="lazy">
-                            </a>
+                <h2 class="section-title">Explore Corpus Christi Neighborhoods</h2>
+                <div class="neighborhood-grid">
+                    <!-- Neighborhood 1 -->
+                    <div class="neighborhood-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Padre+Island" alt="Padre Island neighborhood">
+                        <div class="neighborhood-info">
+                            <h3>Padre Island</h3>
+                            <p>Coastal living at its finest, with beautiful beaches and a relaxed lifestyle.</p>
+                            <a href="#" class="text-link">Learn More &rarr;</a>
                         </div>
-                        <a href="contact/index.html" class="cta-button">Send Me a Message</a>
+                    </div>
+                    <!-- Neighborhood 2 -->
+                    <div class="neighborhood-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Flour+Bluff" alt="Flour Bluff neighborhood">
+                        <div class="neighborhood-info">
+                            <h3>Flour Bluff</h3>
+                            <p>A family-friendly community known for great schools and parks.</p>
+                            <a href="#" class="text-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Neighborhood 3 -->
+                    <div class="neighborhood-card">
+                        <img src="https://placehold.co/600x400/cccccc/333333/png?text=Downtown" alt="Downtown Corpus Christi">
+                        <div class="neighborhood-info">
+                            <h3>Downtown</h3>
+                            <p>Vibrant city life with stunning bay views and cultural attractions.</p>
+                            <a href="#" class="text-link">Learn More &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,16 +187,30 @@
 
     </main>
 
-    <!-- The footer contains logo and copyright info -->
+    <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <img src="images/logo/logo4white.png" alt="Leah Cortez Logo" class="footer-logo" loading="lazy">
-            <p class="copyright">Leah Cortez © 2025</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://placehold.co/200x50/FFFFFF/5B2C2F/png?text=BHHS+Logo" alt="BHHS City By The Sea Realty Logo">
+                </div>
+                <div class="footer-info">
+                    <p><strong>Rachel Anduja, Realtor</strong></p>
+                    <p>Berkshire Hathaway HomeServices City By The Sea Realty</p>
+                    <p>[Office Address], Corpus Christi, TX [ZIP]</p>
+                    <p>Direct: [Phone Number] | Email: [Email Address]</p>
+                </div>
+                <div class="footer-social">
+                    <!-- Social media links can go here -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rachel Anduja. All rights reserved. Licensed in Texas.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- The 'defer' attribute ensures the script is executed after the document has been parsed -->
+    <!-- JavaScript for interactivity -->
     <script src="scripts/main.js" defer></script>
-
 </body>
 </html>

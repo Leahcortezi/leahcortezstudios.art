@@ -1,0 +1,82 @@
+/*
+  Rachel Anduja Real Estate - Listings Page Styles
+  ---
+  This file contains styles specific to the Listings page (listings.html).
+*/
+
+/* --------------------
+   1. LISTINGS PAGE LAYOUT
+   -------------------- */
+
+.listings-page-section {
+  padding: 4rem 0;
+}
+
+/* --------------------
+   2. FILTER BAR
+   -------------------- */
+
+.filter-bar {
+  background-color: var(--color-secondary); /* Light gray background */
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  border: 1px solid #e0e0e0;
+}
+
+.filter-form {
+  /* Use Flexbox to lay out the filter groups */
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom */
+  flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
+  gap: 1.5rem;
+}
+
+.filter-group {
+  /* Each group contains a label and an input */
+  flex-grow: 1; /* Allow groups to grow and fill available space */
+}
+
+.filter-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+/* Make the button in the filter bar not grow */
+.filter-group button {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+
+/* --------------------
+   3. RESPONSIVE ADJUSTMENTS
+   -------------------- */
+@media (max-width: 992px) {
+    .filter-form {
+        /* On tablets, create a 2x2 grid for filters */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-form {
+        /* On mobile, stack all filters in a single column */
+        grid-template-columns: 1fr;
+    }
+}

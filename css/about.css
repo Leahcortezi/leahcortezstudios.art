@@ -1,0 +1,115 @@
+/*
+  Rachel Anduja Real Estate - About Page Styles
+  ---
+  This file contains styles specific to the About page (about.html).
+*/
+
+/* --------------------
+   1. ABOUT SECTION LAYOUT
+   -------------------- */
+
+.about-section {
+  /* Adds vertical padding to give the content space from the header and footer */
+  padding: 4rem 0;
+}
+
+.about-content {
+  /* Uses Flexbox to create the two-column layout */
+  display: flex;
+  /* Aligns items to the top of the container */
+  align-items: flex-start;
+  /* Provides space between the columns */
+  gap: 3rem;
+}
+
+/* --------------------
+   2. ABOUT PAGE COMPONENTS
+   -------------------- */
+
+/* The left column containing the headshot */
+.about-image {
+  /* The image column will take up 1 part of the available space */
+  flex: 1;
+  /* Ensures the column doesn't shrink below its content size */
+  flex-shrink: 0;
+}
+
+.about-image img {
+  /* Makes the image fill its container */
+  width: 100%;
+  height: auto;
+  /* Adds rounded corners for a softer look */
+  border-radius: 8px;
+  /* A subtle shadow to lift the image off the page */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* The right column containing the text bio */
+.about-text {
+  /* The text column will take up 1.5 parts of the space, making it wider */
+  flex: 1.5;
+}
+
+.about-text h2 {
+  /* Overrides the default h2 margin for tighter spacing */
+  margin-top: 0;
+  font-size: 2.2rem;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Styling for the credentials list */
+.about-text ul {
+  /* Removes default bullet points */
+  list-style: none;
+  /* Removes default padding */
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.about-text ul li {
+  /* Adds spacing between list items */
+  margin-bottom: 0.75rem;
+  /* Places a custom icon before each list item */
+  position: relative;
+  padding-left: 25px;
+}
+
+/* Custom bullet point using a pseudo-element for a more branded feel */
+.about-text ul li::before {
+  content: '✓'; /* Checkmark character */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-primary); /* BHHS Maroon */
+  font-weight: bold;
+}
+
+/* Adds space above the CTA button */
+.about-text .btn {
+    margin-top: 2rem;
+}
+
+
+/* --------------------
+   3. RESPONSIVE ADJUSTMENTS
+   -------------------- */
+
+@media (max-width: 992px) {
+  .about-content {
+    /* Stacks the columns on top of each other for tablets and smaller screens */
+    flex-direction: column;
+  }
+
+  .about-image {
+    /* On smaller screens, limit the width of the image to prevent it from being too large */
+    max-width: 400px;
+    margin: 0 auto 2rem auto; /* Center the image and add margin at the bottom */
+  }
+}
