@@ -587,6 +587,18 @@ function initializeTestimonialsCarousel() {
     dot.addEventListener('click', () => showSlide(index));
   });
   
+  // Handle arrow clicks
+  const prevButton = document.querySelector('.carousel-arrow-left');
+  const nextButton = document.querySelector('.carousel-arrow-right');
+  
+  if (prevButton) {
+    prevButton.addEventListener('click', prevSlide);
+  }
+  
+  if (nextButton) {
+    nextButton.addEventListener('click', nextSlide);
+  }
+  
   // Touch/swipe support
   carousel.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
