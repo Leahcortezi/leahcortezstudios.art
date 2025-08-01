@@ -109,6 +109,7 @@
 }
 .form-group input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 
@@ -209,4 +210,178 @@
   color: #f5c6d6;
   /* Border color matches background */
   border-color: #7e1c2e;
+  /* Slight scale effect on hover */
+  transform: translateY(-2px);
+}
+
+/* --------------------
+   5. RESPONSIVE STYLES
+   -------------------- */
+
+@media (max-width: 768px) {
+  .contact-page {
+    /* Reduced padding on mobile */
+    padding: 2rem 0;
+  }
+
+  .contact-container {
+    /* Reduced horizontal padding on mobile */
+    padding: 0 1rem;
+  }
+
+  .contact-container h1 {
+    /* Smaller title font size on mobile */
+    font-size: 2.5rem;
+    /* Reduced margin */
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-intro {
+    /* Reduced bottom margin on mobile */
+    margin-bottom: 2rem;
+    /* Slightly smaller text */
+    font-size: 0.95rem;
+  }
+
+  .contact-form {
+    /* Reduced padding on mobile */
+    padding: 1.5rem;
+    /* Reduced border radius on mobile */
+    border-radius: 8px;
+  }
+
+  .form-group {
+    /* Reduced spacing between form groups on mobile */
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="number"],
+  .form-group textarea {
+    /* Slightly reduced padding on mobile */
+    padding: 10px;
+    /* Adjusted font size for better mobile readability */
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .submit-btn {
+    /* Slightly reduced padding on mobile */
+    padding: 12px;
+    /* Adjusted font size */
+    font-size: 0.9rem;
+    /* Reduced letter spacing on mobile */
+    letter-spacing: 1px;
+  }
+
+  .captcha {
+    /* Stack the captcha elements on mobile for better usability */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .captcha label {
+    /* Remove inline display on mobile */
+    display: block;
+    /* Remove right margin */
+    margin-right: 0;
+    /* Add bottom margin */
+    margin-bottom: 0.5rem;
+  }
+
+  .captcha input {
+    /* Full width on mobile for easier tapping */
+    width: 120px;
+    /* Remove inline display */
+    display: block;
+  }
+}
+
+/* --------------------
+   6. ENHANCED VISUAL STYLES
+   -------------------- */
+
+/* Add subtle animations to form elements */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group textarea {
+  /* Add a subtle border radius */
+  border-radius: 4px;
+}
+
+/* Enhanced focus state with better visual feedback */
+.form-group input:focus,
+.form-group textarea:focus {
+  /* Slightly increase the glow */
+  box-shadow: 0 0 12px rgba(248, 200, 208, 0.4);
+  /* Add a slight scale effect */
+  transform: scale(1.01);
+}
+
+/* Add visual feedback for valid inputs */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  /* Subtle green border for valid inputs */
+  border-color: #4a9b4a;
+}
+
+/* Improve the visual hierarchy with better spacing */
+.contact-container h1 {
+  /* Add some visual weight */
+  font-weight: 300;
+  /* Better letter spacing */
+  letter-spacing: 2px;
+  /* Add text shadow for depth */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the intro paragraph for better readability */
+.contact-intro {
+  /* Improved line height */
+  line-height: 1.6;
+  /* Subtle color variation */
+  color: #e0e0e0;
+  /* Increased font size for better readability */
+  font-size: 1.1rem;
+}
+
+/* Add a subtle decorative element */
+.contact-container::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary-accent), var(--color-secondary-accent));
+  margin: 0 auto 2rem auto;
+  border-radius: 1px;
+}
+
+/* Add form container styling for better visual separation */
+.contact-form {
+  /* Add subtle background */
+  background: rgba(26, 26, 26, 0.6);
+  /* Add padding */
+  padding: 2.5rem;
+  /* Add border radius */
+  border-radius: 12px;
+  /* Add subtle border */
+  border: 1px solid rgba(248, 200, 208, 0.1);
+  /* Add subtle shadow */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Add loading state styling for better UX */
+.submit-btn:disabled {
+  background-color: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn:disabled:hover {
+  background-color: #666;
+  color: #999;
+  transform: none;
 }
