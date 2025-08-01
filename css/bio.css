@@ -15,13 +15,16 @@
     from the header and footer.
   */
   padding: 4rem 0;
+  min-height: 60vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .bio-container {
   /*
     This container uses CSS Flexbox to create the side-by-side layout.
   */
-  display: flex;
+  display: flex !important;
   position: relative;
   z-index: 10;
   /*
@@ -45,6 +48,8 @@
     Adds padding on the left and right, which is especially important on smaller screens.
   */
   padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* --------------------
