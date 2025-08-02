@@ -1094,12 +1094,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile responsiveness for testimonial */
 @media (max-width: 768px) {
   .testimonial-section {
-    padding: 60px 0;
+    padding: 80px 0; /* Increased from 60px for better breathing room */
   }
   
   .testimonial-section .section-title {
     font-size: 2rem;
-    margin-bottom: 35px;
+    margin-bottom: 45px; /* Increased from 35px */
   }
   
   .testimonial-content {
@@ -1107,9 +1107,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .testimonial {
-    padding: 30px 25px;
+    padding: 35px 25px; /* Increased from 30px */
     border-radius: 10px;
     max-width: 100%;
+    margin-bottom: 20px; /* Added margin for better spacing */
   }
   
   .testimonial::before,
@@ -1130,7 +1131,7 @@ h1, h2, h3, h4, h5, h6 {
   .testimonial p {
     font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased from 20px */
     padding-left: 15px;
   }
   
@@ -1139,21 +1140,27 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
     padding-right: 15px;
   }
+  
+  /* Add spacing for carousel dots */
+  .carousel-dots {
+    margin-top: 30px; /* Increased spacing */
+  }
 }
 
 @media (max-width: 480px) {
   .testimonial-section {
-    padding: 50px 0;
+    padding: 70px 0; /* Increased from 60px for better breathing room */
   }
   
   .testimonial-section .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+    font-size: 1.8rem; /* Slightly smaller than 768px but still readable */
+    margin-bottom: 40px; /* Increased spacing */
   }
   
   .testimonial {
-    padding: 25px 20px;
+    padding: 30px 20px; /* Better padding for small screens */
     border-radius: 8px;
+    margin-bottom: 20px; /* Added margin for better spacing */
   }
   
   .testimonial::before,
@@ -1173,91 +1180,14 @@ h1, h2, h3, h4, h5, h6 {
   
   .testimonial p {
     font-size: 1rem;
+    line-height: 1.6; /* Improved line height */
+    margin-bottom: 20px; /* Added spacing */
     padding-left: 12px;
   }
   
   .testimonial cite {
     font-size: 0.85rem;
     padding-right: 12px;
-  }
-}
-  
-  .testimonial::after {
-    bottom: -25px;
-    right: 20px;
-  }
-  
-  .testimonial p {
-    font-size: 1.25rem;
-    line-height: 1.7;
-  }
-  
-  .testimonial cite {
-    font-size: 1rem;
-    letter-spacing: 2px;
-  }
-  
-  .carousel-arrow {
-    width: 45px;
-    height: 45px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .carousel-arrow-left {
-    left: 5px;
-  }
-  
-  .carousel-arrow-right {
-    right: 5px;
-  }
-  
-  .carousel-arrow svg {
-    width: 18px;
-    height: 18px;
-    stroke-width: 3;
-  }
-  
-  .testimonials-carousel {
-    padding: 0 50px;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-section {
-    padding: 60px 0;
-  }
-  
-  .testimonial-section .section-title {
-    font-size: 2rem;
-  }
-  
-  .testimonial {
-    padding: 35px 25px;
-    border-radius: 15px;
-  }
-  
-  .testimonial::before,
-  .testimonial::after {
-    font-size: 3rem;
-  }
-  
-  .testimonial::before {
-    top: -8px;
-    left: 15px;
-  }
-  
-  .testimonial::after {
-    bottom: -18px;
-    right: 15px;
-  }
-  
-  .testimonial p {
-    font-size: 1.15rem;
-  }
-  
-  .testimonial cite {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
   }
   
   .carousel-arrow {
@@ -1282,5 +1212,10 @@ h1, h2, h3, h4, h5, h6 {
   
   .testimonials-carousel {
     padding: 0 45px;
+  }
+  
+  /* Add spacing for carousel dots on mobile */
+  .carousel-dots {
+    margin-top: 25px;
   }
 }
