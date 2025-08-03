@@ -322,9 +322,11 @@
 
 .step-images.horizontal img {
   flex: 0 0 auto;
-  width: 280px;
+  width: 400px;
   height: auto;
   max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .step-images img {
@@ -349,6 +351,35 @@
 
 .step-images:has(img:only-child) img {
   max-width: 400px;
+}
+
+/* Phases grid layout for aligned steps */
+.phases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.phases-grid .process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.phases-grid .step-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.phases-grid .step-images img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* New layout for text with side image */
@@ -926,7 +957,7 @@
 
   .step-images.horizontal img {
     width: 100%;
-    max-width: 320px;
+    max-width: 400px;
   }
 
   .step-images img {
@@ -935,6 +966,22 @@
 
   .step-images:has(img:only-child) img {
     max-width: 350px;
+  }
+
+  .phases-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .phases-grid .process-step {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .phases-grid .step-images img {
+    width: 180px;
+    height: 180px;
   }
 
   .step-text-image {
