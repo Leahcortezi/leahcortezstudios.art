@@ -199,6 +199,20 @@
   margin-bottom: 1rem;
 }
 
+.work-subtitle {
+  margin-bottom: 1.5rem;
+}
+
+.work-subtitle h2 {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  font-weight: 400;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.3;
+}
+
 .work-meta {
   /*
     This container holds the meta-data (Medium, Year, Dimensions).
@@ -227,10 +241,63 @@
   margin-bottom: 1.5rem;
 }
 
+.work-description h3 {
+  font-size: 1.4rem;
+  color: var(--color-primary-accent);
+  margin: 2rem 0 1rem 0;
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.work-description h4 {
+  font-size: 1.1rem;
+  color: var(--color-primary-accent);
+  margin: 1.5rem 0 0.75rem 0;
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .work-description p {
   /* Sets the font size for the description text */
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
+}
+
+.work-description ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+  padding: 0;
+  list-style: decimal;
+}
+
+.work-description ol li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.work-description ul {
+  margin: 1rem 0 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-description ul li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.work-description ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+  font-weight: bold;
 }
 
 /* --------------------

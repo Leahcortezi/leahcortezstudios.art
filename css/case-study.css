@@ -591,6 +591,7 @@
   border: 1px solid rgba(248, 200, 208, 0.2);
   background: rgba(248, 200, 208, 0.05);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-link:hover {
@@ -603,8 +604,38 @@
   text-align: left;
 }
 
+.nav-link.prev::before {
+  content: "←";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  font-weight: bold;
+}
+
+.nav-link.prev .nav-content {
+  margin-left: 2rem;
+}
+
 .nav-link.next {
   text-align: right;
+}
+
+.nav-link.next::after {
+  content: "→";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  font-weight: bold;
+}
+
+.nav-link.next .nav-content {
+  margin-right: 2rem;
 }
 
 .nav-link.center {
@@ -924,6 +955,22 @@
   .nav-link.prev,
   .nav-link.next {
     text-align: center;
+  }
+  
+  .nav-link.prev::before,
+  .nav-link.next::after {
+    position: relative;
+    display: inline;
+    margin: 0 0.5rem;
+    transform: none;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+  
+  .nav-link.prev .nav-content,
+  .nav-link.next .nav-content {
+    margin: 0;
   }
   
   .case-study-section {
