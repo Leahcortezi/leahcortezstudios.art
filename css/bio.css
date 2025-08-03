@@ -189,12 +189,12 @@
 
 
 /* --------------------
-   3. BIO BUTTONS SECTION
+   3. BIO LINKS SECTION
    -------------------- */
 
-.bio-buttons {
+.bio-links {
   /*
-    Creates a horizontal centered layout for the buttons under the image
+    Creates a horizontal centered layout for the links under the image
   */
   display: flex;
   flex-direction: row;
@@ -205,48 +205,32 @@
   padding: 0;
 }
 
-/* Hide mobile buttons on desktop */
-.bio-buttons-mobile {
+/* Hide mobile links on desktop */
+.bio-links-mobile {
   display: none !important;
 }
 
-.bio-button {
+.bio-link {
   /*
-    Individual button styling with flex column layout
+    Individual link styling with simple text appearance
   */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.bio-button:hover {
-  /*
-    Subtle hover effect
-  */
-  transform: translateY(-5px);
-}
-
-.bio-button-icon {
-  /*
-    Icon styling - white flower icon
-  */
-  width: 60px;
-  height: 60px;
-  filter: brightness(0) invert(1); /* Makes the icon white */
-  transition: filter 0.3s ease;
-}
-
-.bio-button-text {
-  /*
-    Text styling for button labels
-  */
-  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
   text-align: center;
+}
+
+.bio-link:hover {
+  /*
+    Underline hover effect
+  */
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 
@@ -668,210 +652,8 @@
 }
 
 /* --------------------
-   BIO BUTTONS STYLING
+   MODAL CONTENT STYLING
    -------------------- */
-
-/* Super specific override to eliminate any inherited button styling */
-.bio-buttons .bio-button,
-.bio-image-column .bio-buttons .bio-button,
-.bio-container .bio-image-column .bio-buttons .bio-button {
-  /* Complete reset of all possible styling */
-  all: unset !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-style: none !important;
-  border-width: 0 !important;
-  border-color: transparent !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  outline-style: none !important;
-  outline-color: transparent !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none;
-  backdrop-filter: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  
-  /* Positive styling */
-  color: var(--color-primary-accent);
-  padding: 0.5rem;
-  font-family: var(--font-accent);
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  text-align: center;
-  width: auto;
-  min-height: auto;
-  line-height: 1.2;
-  border-radius: 0 !important;
-  white-space: normal;
-  overflow: visible;
-}
-
-.bio-buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem auto 0 auto;
-  padding: 1rem 0;
-  width: 100%;
-  position: relative;
-}
-
-/* Set button width to match text width */
-.bio-buttons .bio-button {
-  max-width: 140px;
-  text-align: center !important;
-  align-items: center !important;
-}
-
-.button-text {
-  display: block;
-  text-align: center;
-  line-height: 1.4;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-.bio-button {
-  /* Complete reset of all possible styling */
-  all: unset !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-style: none !important;
-  border-width: 0 !important;
-  border-color: transparent !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  outline-style: none !important;
-  outline-color: transparent !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none;
-  backdrop-filter: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  
-  /* Positive styling */
-  color: var(--color-primary-accent);
-  padding: 0.5rem;
-  font-family: var(--font-accent);
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  text-align: center;
-  width: auto;
-  min-height: auto;
-  line-height: 1.2;
-  border-radius: 0 !important;
-  white-space: normal;
-  overflow: visible;
-}
-
-.bio-button:hover {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-style: none !important;
-  border-width: 0 !important;
-  border-color: transparent !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  outline-style: none !important;
-  outline-color: transparent !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none;
-  backdrop-filter: none !important;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.bio-button:focus {
-  all: unset !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  border-style: none !important;
-  border-width: 0 !important;
-  border-color: transparent !important;
-  outline: none !important;
-  outline-width: 0 !important;
-  outline-style: none !important;
-  outline-color: transparent !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none;
-  backdrop-filter: none !important;
-  border-radius: 0 !important;
-}
-
-.button-icon {
-  width: 40px;
-  height: 40px;
-  /* Make SVG pink using your site's primary accent color */
-  filter: brightness(0) saturate(100%) invert(78%) sepia(29%) saturate(390%) hue-rotate(299deg) brightness(97%) contrast(95%);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
-  /* Keep proper aspect ratio */
-  object-fit: none;
-  object-position: center;
-  /* Square icons that look good */
-  max-width: 40px;
-  max-height: 40px;
-  /* Remove any potential borders or outlines from the SVG itself */
-  border: none !important;
-  outline: none !important;
-  stroke: none !important;
-  stroke-width: 0 !important;
-  box-shadow: none !important;
-}
-
-.bio-button:hover .button-icon {
-  filter: brightness(0) invert(1);
-  transform: rotate(15deg) scale(1.15);
-  border: none !important;
-  outline: none !important;
-  stroke: none !important;
-  stroke-width: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Add text span styling */
-.button-text {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.button-icon {
-  display: block;
-  margin: 0 auto;
-}
 
 /* Modal content styling for new modals */
 .services-grid {
@@ -956,114 +738,44 @@
 }
 
 @media (max-width: 768px) {
-  /* Remove bottom padding since buttons aren't fixed anymore */
+  /* Remove bottom padding since links aren't fixed anymore */
   .bio-page {
     padding-bottom: 4rem;
   }
   
-  /* Hide the desktop buttons (in image column) on mobile */
-  .bio-image-column .bio-buttons {
+  /* Hide the desktop links (in image column) on mobile */
+  .bio-image-column .bio-links {
     display: none !important;
   }
   
-  /* Show and style the mobile buttons (in text column) */
-  .bio-buttons-mobile {
+  /* Show and style the mobile links (in text column) */
+  .bio-links-mobile {
     display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     margin-top: 2rem;
     padding: 1.5rem 0.25rem;
     background: transparent;
   }
   
-  .bio-buttons-mobile .bio-button {
-    /* Complete reset and inherit desktop styles */
-    all: unset !important;
-    background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
-    border: 0 !important;
-    border-style: none !important;
-    border-width: 0 !important;
-    border-color: transparent !important;
-    outline: none !important;
-    outline-width: 0 !important;
-    outline-style: none !important;
-    outline-color: transparent !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    filter: none;
-    backdrop-filter: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
-    
-    /* Positive styling matching desktop */
+  .bio-links-mobile .bio-link {
+    /* Mobile link styling */
     color: var(--color-primary-accent);
-    padding: 0.5rem 0.25rem;
     font-family: var(--font-accent);
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 500;
+    text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.6rem;
+    transition: all 0.3s ease;
     text-align: center;
-    width: auto;
-    min-width: 110px;
-    min-height: auto;
-    line-height: 1.2;
-    border-radius: 0 !important;
-    white-space: normal;
-    overflow: visible;
-    max-width: 140px;
-    flex: 1;
+    padding: 0.5rem 0;
   }
   
-  .bio-buttons-mobile .bio-button:hover {
-    background: transparent !important;
+  .bio-links-mobile .bio-link:hover {
     color: #ffffff;
-    transform: translateY(-2px);
-  }
-  
-  .bio-buttons-mobile .button-icon {
-    width: 36px;
-    height: 36px;
-    /* Keep SVG white for clean look */
-    filter: brightness(0) invert(1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-    object-fit: contain;
-    object-position: center;
-    max-width: 36px;
-    max-height: 36px;
-    border: none !important;
-    outline: none !important;
-    margin: 0 auto;
-    display: block;
-  }
-  
-  .bio-buttons-mobile .bio-button:hover .button-icon {
-    filter: brightness(0) invert(1);
-    transform: rotate(15deg) scale(1.15);
-  }
-  
-  .bio-buttons-mobile .button-text {
-    font-size: 0.7rem;
-    line-height: 1.2;
-    text-align: center;
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    word-wrap: break-word;
-    hyphens: none;
-    white-space: normal;
-    overflow-wrap: break-word;
+    text-decoration: underline;
   }
   
   .services-grid {

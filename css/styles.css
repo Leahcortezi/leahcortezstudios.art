@@ -501,8 +501,8 @@ body.menu-open {
     backdrop-filter: blur(15px);
     /* Vertical layout */
     flex-direction: column;
-    /* Center content */
-    align-items: center;
+    /* Right-align content */
+    align-items: flex-end;
     justify-content: center;
     /* Generous padding */
     padding: 2rem;
@@ -536,11 +536,11 @@ body.menu-open {
   }
 
   .nav-links a {
-    /* Full-width, centered links */
+    /* Full-width, right-aligned links */
     display: block;
     width: 100%;
     padding: 1.2rem 2rem;
-    text-align: center;
+    text-align: right;
     /* Larger font for mobile */
     font-size: 1.2rem;
     letter-spacing: 2px;
