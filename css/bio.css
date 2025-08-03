@@ -233,23 +233,23 @@
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   
-  /* Text styling - larger and pink */
+  /* Text styling - better sizing for mobile */
   color: var(--color-primary-accent) !important;
   font-family: var(--font-accent) !important;
-  font-size: 1rem !important;
+  font-size: 0.85rem !important;
   font-weight: 500 !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
-  letter-spacing: 1.5px !important;
+  letter-spacing: 1px !important;
 }
 
 .bio-link::before {
-  /* Use actual flower SVG - larger size */
+  /* Use actual flower SVG - larger size with pink color */
   content: '' !important;
   display: block !important;
   width: 32px !important;
   height: 32px !important;
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
   background-image: url('../icons/flower.svg') !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
@@ -802,23 +802,23 @@
     padding: 0.75rem !important;
     min-width: auto !important;
     
-    /* Text styling - larger and pink */
+    /* Text styling - better sizing for mobile */
     color: var(--color-primary-accent) !important;
     font-family: var(--font-accent) !important;
-    font-size: 1rem !important;
+    font-size: 0.8rem !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     text-transform: uppercase !important;
-    letter-spacing: 1.5px !important;
+    letter-spacing: 1px !important;
   }
   
   .bio-links-mobile .bio-link::before {
-    /* Use actual flower SVG - larger size */
+    /* Use actual flower SVG - pink color, good size for mobile */
     content: '' !important;
     display: block !important;
-    width: 32px !important;
-    height: 32px !important;
-    margin-bottom: 0.75rem !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin-bottom: 0.5rem !important;
     background-image: url('../icons/flower.svg') !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
