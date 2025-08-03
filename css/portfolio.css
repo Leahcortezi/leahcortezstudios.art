@@ -269,25 +269,34 @@
    CASE STUDY BADGE
    -------------------- */
 
+
 .case-study-badge {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: linear-gradient(135deg, #7E1C2E 0%, #A91E3C 100%);
-  color: white;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.8rem;
-  font-family: var(--accent-font);
-  font-weight: 800;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.85);
+  color: #7E1C2E;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.82rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  border-radius: 25px;
-  box-shadow: 0 6px 20px rgba(126, 28, 46, 0.8), 0 3px 6px rgba(0, 0, 0, 0.4);
-  border: 3px solid rgba(255, 255, 255, 0.9);
+  letter-spacing: 1.1px;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(126, 28, 46, 0.13), 0 1px 2px rgba(0,0,0,0.08);
+  border: 1.5px solid #E5B6C2;
   z-index: 100;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  backdrop-filter: blur(2.5px);
+  text-shadow: none;
+  opacity: 0.96;
+}
+
+.masonry-item:hover .case-study-badge {
+  transform: scale(1.07);
+  box-shadow: 0 6px 18px rgba(126, 28, 46, 0.18), 0 2px 6px rgba(0,0,0,0.13);
+  border-color: #C97A8B;
+  opacity: 1;
 }
 
 .masonry-item:hover .case-study-badge {
