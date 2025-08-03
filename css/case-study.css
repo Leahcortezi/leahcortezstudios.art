@@ -450,6 +450,49 @@
   margin: 0;
 }
 
+/* Process Content with Side Image */
+.process-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.process-image {
+  position: sticky;
+  top: 2rem;
+}
+
+.process-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.process-image .image-caption {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .process-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .process-image {
+    position: static;
+    order: -1;
+  }
+}
+
 /* --------------------
    7. SOLUTION SECTION
    -------------------- */
