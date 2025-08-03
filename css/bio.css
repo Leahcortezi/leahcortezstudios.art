@@ -192,17 +192,22 @@
    3. BIO BUTTONS SECTION
    -------------------- */
 
-.bio-buttons-section {
+.bio-buttons {
   /*
-    Creates a horizontal centered layout for the three buttons
+    Creates a horizontal centered layout for the buttons under the image
   */
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-  margin-top: 4rem;
-  padding: 3rem 2rem 0 2rem;
-  border-top: 1px solid #7e1c2e 
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0;
+}
+
+/* Hide mobile buttons on desktop */
+.bio-buttons-mobile {
+  display: none !important;
 }
 
 .bio-button {
@@ -448,6 +453,7 @@
       Reduces the font size of the heading on smaller screens to save space.
     */
     font-size: 2.5rem;
+    text-align: center;
   }
   
   .bio-buttons-section {
@@ -721,12 +727,22 @@
   margin: 2rem auto 0 auto;
   padding: 1rem 0;
   width: 100%;
+  position: relative;
 }
 
 /* Set button width to match text width */
 .bio-buttons .bio-button {
-  max-width: 120px;
+  max-width: 140px;
   text-align: center !important;
+  align-items: center !important;
+}
+
+.button-text {
+  display: block;
+  text-align: center;
+  line-height: 1.4;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .bio-button {
@@ -844,15 +860,17 @@
   box-shadow: none !important;
 }
 
-/* Additional specific overrides for img elements inside buttons */
-.bio-button img,
-.bio-buttons .bio-button img,
-.bio-image-column .bio-buttons .bio-button img {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: none !important;
-  background-color: transparent !important;
+/* Add text span styling */
+.button-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button-icon {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Modal content styling for new modals */
@@ -938,54 +956,113 @@
 }
 
 @media (max-width: 768px) {
-  .bio-buttons {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem auto 0 auto;
-    padding: 1rem 0;
-    flex-wrap: nowrap;
-    max-width: 100%;
+  /* Remove bottom padding since buttons aren't fixed anymore */
+  .bio-page {
+    padding-bottom: 4rem;
   }
   
-  .bio-button {
-    flex-direction: column;
+  /* Hide the desktop buttons (in image column) on mobile */
+  .bio-image-column .bio-buttons {
+    display: none !important;
+  }
+  
+  /* Show and style the mobile buttons (in text column) */
+  .bio-buttons-mobile {
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
-    width: auto;
-    min-height: auto;
-    padding: 0.5rem;
-    font-size: 0.75rem;
-    gap: 0.7rem;
-    text-align: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1.5rem 0.5rem;
+    border-top: 2px solid var(--color-primary-accent);
+    background: transparent;
+  }
+  
+  .bio-buttons-mobile .bio-button {
+    /* Complete reset and inherit desktop styles */
+    all: unset !important;
     background: transparent !important;
-    border-radius: 0 !important;
-    border: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-style: none !important;
+    border-width: 0 !important;
+    border-color: transparent !important;
     outline: none !important;
+    outline-width: 0 !important;
+    outline-style: none !important;
+    outline-color: transparent !important;
     box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none;
+    backdrop-filter: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    
+    /* Positive styling matching desktop */
+    color: var(--color-primary-accent);
+    padding: 0.5rem 0.5rem;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    text-align: center;
+    width: auto;
+    min-width: 100px;
+    min-height: auto;
+    line-height: 1.2;
+    border-radius: 0 !important;
     white-space: normal;
     overflow: visible;
-    backdrop-filter: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    max-width: 120px;
   }
   
-  .bio-buttons .bio-button {
-    max-width: 110px;
-    text-align: center !important;
+  .bio-buttons-mobile .bio-button:hover {
+    background: transparent !important;
+    color: #ffffff;
+    transform: translateY(-2px);
   }
   
-  .button-icon {
+  .bio-buttons-mobile .button-icon {
     width: 36px;
     height: 36px;
-    margin-bottom: 0;
+    /* Keep SVG white for clean look */
+    filter: brightness(0) invert(1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
-    object-fit: none;
+    object-fit: contain;
     object-position: center;
     max-width: 36px;
     max-height: 36px;
+    border: none !important;
+    outline: none !important;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .bio-buttons-mobile .bio-button:hover .button-icon {
+    filter: brightness(0) invert(1);
+    transform: rotate(15deg) scale(1.15);
+  }
+  
+  .bio-buttons-mobile .button-text {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    word-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
   }
   
   .services-grid {
