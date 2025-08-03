@@ -48,6 +48,32 @@
   line-height: 1.1;
 }
 
+.case-study-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%);
+  color: var(--color-background);
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(126, 28, 46, 0.3);
+  position: relative;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(126, 28, 46, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(126, 28, 46, 0.5);
+  }
+}
+
 .hero-subtitle {
   font-family: var(--font-body);
   font-size: 1.4rem;
@@ -314,7 +340,7 @@
 
 .step-images.horizontal {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 2rem;
   justify-content: center;
   flex-wrap: wrap;
@@ -322,7 +348,7 @@
 
 .step-images.horizontal img {
   flex: 0 0 auto;
-  width: 400px;
+  width: 320px;
   height: auto;
   max-width: 100%;
   border-radius: 8px;
@@ -917,6 +943,12 @@
     font-size: 2.5rem;
   }
   
+  .case-study-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1rem;
+  }
+  
   .hero-subtitle {
     font-size: 1.2rem;
   }
@@ -957,7 +989,7 @@
 
   .step-images.horizontal img {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
   }
 
   .step-images img {
