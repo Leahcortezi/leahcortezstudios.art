@@ -375,9 +375,9 @@ body.menu-open {
 .hamburger {
   display: none;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   cursor: pointer;
-  padding: 10px 0 10px 0;
+  padding: 15px;
   margin-left: auto;
   margin-right: 0;
   position: absolute;
@@ -389,26 +389,14 @@ body.menu-open {
 
 .hamburger img {
     /* Sets the size of the custom flower icon - made bigger */
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
     /* Prevent SVG stretching and maintain aspect ratio */
     object-fit: contain;
     object-position: center;
 }
-/* Hamburger bounce animation for dropdown hint */
-.hamburger:hover img,
-.hamburger:focus img {
-  animation: hamburgerBounce 0.6s;
-}
-
-@keyframes hamburgerBounce {
-  0% { transform: scale(1) translateY(0); }
-  30% { transform: scale(1.15) translateY(-8px); }
-  50% { transform: scale(0.95) translateY(2px); }
-  70% { transform: scale(1.05) translateY(-4px); }
-  100% { transform: scale(1) translateY(0); }
-}
+/* Remove hover effects on hamburger */
 
 /* --------------------
    6. GLOBAL FOOTER
@@ -590,24 +578,23 @@ body.menu-open {
   .hamburger {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin-left: auto;
     margin-right: 0;
-    padding: 0.8rem;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 0;
     transition: all 0.3s ease;
     cursor: pointer;
+    background: transparent;
     position: relative;
     z-index: 1001; /* Above the menu */
   }
 
-  .hamburger:hover {
-    background-color: rgba(248, 200, 208, 0.15);
-  }
+  /* Remove hover background */
 
   .hamburger img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     transition: transform 0.3s ease;
     /* Prevent SVG stretching and maintain aspect ratio */
     object-fit: contain;
