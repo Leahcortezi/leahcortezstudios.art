@@ -212,41 +212,67 @@
 
 .bio-link {
   /*
-    Individual link styling with simple text appearance
+    Individual link styling with flower SVG on top and text below
   */
   /* Complete reset of any button-like styling */
   all: unset !important;
   background: none !important;
   background-color: transparent !important;
   border: none !important;
-  padding: 0 !important;
+  padding: 0.75rem !important;
   margin: 0 !important;
   box-shadow: none !important;
   outline: none !important;
   
-  /* Simple text link styling */
-  color: var(--color-primary-accent) !important;
-  font-family: var(--font-accent) !important;
-  font-size: 0.9rem !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
+  /* Clean design with flower icon */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
-  position: relative !important;
-  text-align: center !important;
-  display: inline !important;
+  
+  /* Text styling - larger and pink */
+  color: var(--color-primary-accent) !important;
+  font-family: var(--font-accent) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+}
+
+.bio-link::before {
+  /* Use actual flower SVG - larger size */
+  content: '' !important;
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  margin-bottom: 0.75rem !important;
+  background-image: url('../icons/flower.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  filter: brightness(0) invert(86%) sepia(10%) saturate(500%) hue-rotate(310deg) brightness(1.1) !important;
+  transition: all 0.3s ease !important;
 }
 
 .bio-link:hover {
   /*
-    Underline hover effect
+    Hover effects
   */
   color: #ffffff !important;
-  text-decoration: underline !important;
+  text-decoration: none !important;
   background: none !important;
-  background-color: transparent !important;
   border: none !important;
+  transform: translateY(-2px) !important;
   box-shadow: none !important;
+}
+
+.bio-link:hover::before {
+  filter: brightness(0) invert(100%) !important;
+  transform: scale(1.15) !important;
 }
 
 
@@ -750,46 +776,69 @@
   /* Show and style the mobile links (in text column) */
   .bio-links-mobile {
     display: flex !important;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 2rem;
     padding: 1.5rem 0.25rem;
     background: transparent;
   }
   
   .bio-links-mobile .bio-link {
-    /* Mobile link styling - complete reset */
+    /* Mobile styling with flower SVG on top and text below - inherit from desktop but ensure mobile layout */
     all: unset !important;
-    background: none !important;
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0.5rem 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    outline: none !important;
-    
-    /* Simple text styling */
-    color: var(--color-primary-accent) !important;
-    font-family: var(--font-accent) !important;
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
-    text-decoration: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    text-align: center !important;
+    
+    /* No button styling - clean design */
+    background: none !important;
+    border: none !important;
+    padding: 0.75rem !important;
+    min-width: auto !important;
+    
+    /* Text styling - larger and pink */
+    color: var(--color-primary-accent) !important;
+    font-family: var(--font-accent) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+  }
+  
+  .bio-links-mobile .bio-link::before {
+    /* Use actual flower SVG - larger size */
+    content: '' !important;
     display: block !important;
-    width: auto !important;
+    width: 32px !important;
+    height: 32px !important;
+    margin-bottom: 0.75rem !important;
+    background-image: url('../icons/flower.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    filter: brightness(0) invert(86%) sepia(10%) saturate(500%) hue-rotate(310deg) brightness(1.1) !important;
+    transition: all 0.3s ease !important;
   }
   
   .bio-links-mobile .bio-link:hover {
     color: #ffffff !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
     background: none !important;
-    background-color: transparent !important;
     border: none !important;
+    transform: translateY(-2px) !important;
     box-shadow: none !important;
+  }
+  
+  .bio-links-mobile .bio-link:hover::before {
+    filter: brightness(0) invert(100%) !important;
+    transform: scale(1.15) !important;
   }
   
   .services-grid {

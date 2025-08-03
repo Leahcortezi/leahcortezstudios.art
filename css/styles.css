@@ -536,7 +536,7 @@ body.menu-open {
   }
 
   .nav-links a {
-    /* Full-width, right-aligned links */
+    /* Simple text links - no button styling */
     display: block;
     width: 100%;
     padding: 1.2rem 2rem;
@@ -544,23 +544,23 @@ body.menu-open {
     /* Larger font for mobile */
     font-size: 1.2rem;
     letter-spacing: 2px;
-    /* Remove border, use background */
+    /* Simple text styling */
+    color: var(--color-primary-accent);
+    text-decoration: none;
+    background: none;
     border: none;
-    border-radius: 12px;
-    /* Colors and transitions */
-    color: #f5c6d6;
-    background-color: rgba(248, 200, 208, 0.08);
-    border: 1px solid rgba(248, 200, 208, 0.15);
+    border-radius: 0;
     transition: all 0.3s ease;
     text-transform: uppercase;
   }
 
   .nav-links a:hover,
   .nav-links a:focus {
-    background-color: rgba(248, 200, 208, 0.2);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(248, 200, 208, 0.15);
+    color: #7e1c2e;
+    text-decoration: underline;
+    background: none;
+    transform: none;
+    box-shadow: none;
   }
 
   /* Backdrop overlay when menu is open */
