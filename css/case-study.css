@@ -640,6 +640,49 @@
 }
 
 /* --------------------
+   10. CHARACTER STUDY SECTION
+   -------------------- */
+
+.character-study-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.character-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.character-item:hover {
+  transform: translateY(-5px);
+}
+
+.character-item img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.character-item img:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.character-item h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --------------------
    11. RESPONSIVE DESIGN
    -------------------- */
 
@@ -731,5 +774,14 @@
   
   .section-header h2 {
     font-size: 2rem;
+  }
+  
+  .character-study-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .character-item img {
+    max-width: 150px;
   }
 }
