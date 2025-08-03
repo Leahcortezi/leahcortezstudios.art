@@ -126,7 +126,7 @@
   /*
     Reduced vertical space between paragraphs for more compact layout.
   */
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   font-weight: 400;
 }
 
@@ -138,8 +138,8 @@
   /*
     Individual bio section styling for better organization
   */
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(248, 200, 208, 0.15);
 }
 
@@ -148,7 +148,7 @@
     Remove border from last section
   */
   border-bottom: none;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .bio-section h2 {
@@ -160,7 +160,7 @@
   color: var(--color-primary-accent);
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
   position: relative;
 }
@@ -665,66 +665,194 @@
    BIO BUTTONS STYLING
    -------------------- */
 
-.bio-buttons {
+/* Super specific override to eliminate any inherited button styling */
+.bio-buttons .bio-button,
+.bio-image-column .bio-buttons .bio-button,
+.bio-container .bio-image-column .bio-buttons .bio-button {
+  /* Complete reset of all possible styling */
+  all: unset !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none;
+  backdrop-filter: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  
+  /* Positive styling */
+  color: var(--color-primary-accent);
+  padding: 0.5rem;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  margin-top: 2rem;
-  padding: 1.5rem 0;
-  width: 100%;
+  justify-content: center;
+  gap: 0.8rem;
+  text-align: center;
+  width: auto;
+  min-height: auto;
+  line-height: 1.2;
+  border-radius: 0 !important;
+  white-space: normal;
+  overflow: visible;
 }
 
-.bio-button {
-  background: rgba(248, 200, 208, 0.08);
-  border: 1px solid rgba(248, 200, 208, 0.25);
-  color: var(--color-primary-accent);
-  padding: 1rem 1.5rem;
-  font-family: var(--font-accent);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.bio-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.75rem;
-  text-align: left;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto 0 auto;
+  padding: 1rem 0;
   width: 100%;
-  max-width: 280px;
-  line-height: 1.3;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Set button width to match text width */
+.bio-buttons .bio-button {
+  max-width: 120px;
+  text-align: center !important;
+}
+
+.bio-button {
+  /* Complete reset of all possible styling */
+  all: unset !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none;
+  backdrop-filter: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  
+  /* Positive styling */
+  color: var(--color-primary-accent);
+  padding: 0.5rem;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-align: center;
+  width: auto;
+  min-height: auto;
+  line-height: 1.2;
+  border-radius: 0 !important;
+  white-space: normal;
+  overflow: visible;
 }
 
 .bio-button:hover {
-  background: rgba(248, 200, 208, 0.15);
-  border-color: var(--color-primary-accent);
-  color: var(--color-secondary-accent);
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none;
+  backdrop-filter: none !important;
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(248, 200, 208, 0.2);
 }
 
 .bio-button:focus {
-  outline: 2px solid var(--color-primary-accent);
-  outline-offset: 2px;
-  border-radius: 8px;
+  all: unset !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
 }
 
 .button-icon {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  /* Make SVG pink using your site's primary accent color */
   filter: brightness(0) saturate(100%) invert(78%) sepia(29%) saturate(390%) hue-rotate(299deg) brightness(97%) contrast(95%);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
-  /* Prevent SVG stretching and maintain aspect ratio */
-  object-fit: contain;
+  /* Keep proper aspect ratio */
+  object-fit: none;
   object-position: center;
+  /* Square icons that look good */
+  max-width: 40px;
+  max-height: 40px;
+  /* Remove any potential borders or outlines from the SVG itself */
+  border: none !important;
+  outline: none !important;
+  stroke: none !important;
+  stroke-width: 0 !important;
+  box-shadow: none !important;
 }
 
 .bio-button:hover .button-icon {
-  filter: brightness(0) saturate(100%) invert(14%) sepia(71%) saturate(1685%) hue-rotate(333deg) brightness(85%) contrast(93%);
-  transform: rotate(12deg) scale(1.1);
+  filter: brightness(0) invert(1);
+  transform: rotate(15deg) scale(1.15);
+  border: none !important;
+  outline: none !important;
+  stroke: none !important;
+  stroke-width: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Additional specific overrides for img elements inside buttons */
+.bio-button img,
+.bio-buttons .bio-button img,
+.bio-image-column .bio-buttons .bio-button img {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+  background-color: transparent !important;
 }
 
 /* Modal content styling for new modals */
@@ -813,24 +941,40 @@
   .bio-buttons {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.5rem 0;
+    margin: 2rem auto 0 auto;
+    padding: 1rem 0;
+    flex-wrap: nowrap;
+    max-width: 100%;
   }
   
   .bio-button {
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    max-width: 280px;
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    gap: 1rem;
-    text-align: left;
-    background: rgba(248, 200, 208, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(248, 200, 208, 0.2);
+    width: auto;
+    min-height: auto;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    gap: 0.7rem;
+    text-align: center;
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    white-space: normal;
+    overflow: visible;
+    backdrop-filter: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .bio-buttons .bio-button {
+    max-width: 110px;
+    text-align: center !important;
   }
   
   .button-icon {
@@ -838,6 +982,10 @@
     height: 36px;
     margin-bottom: 0;
     flex-shrink: 0;
+    object-fit: none;
+    object-position: center;
+    max-width: 36px;
+    max-height: 36px;
   }
   
   .services-grid {
