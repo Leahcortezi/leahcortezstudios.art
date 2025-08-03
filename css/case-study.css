@@ -1,0 +1,626 @@
+/*
+  Leah Cortez Studio Art - Case Study Page Stylesheet
+  ---
+  This file contains the styles for case study pages, featuring a comprehensive
+  layout that showcases design process, thinking, and outcomes.
+*/
+
+/* --------------------
+   1. CASE STUDY PAGE FOUNDATION
+   -------------------- */
+
+.case-study-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --------------------
+   2. HERO SECTION
+   -------------------- */
+
+.case-study-hero {
+  padding: 6rem 0 4rem;
+  background: linear-gradient(135deg, rgba(126, 28, 46, 0.05) 0%, rgba(248, 200, 208, 0.05) 100%);
+  border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-family: var(--font-headings);
+  font-size: 3.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.project-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  background: rgba(248, 200, 208, 0.1);
+  color: var(--color-primary-accent);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.02);
+}
+
+/* --------------------
+   3. CASE STUDY SECTIONS
+   -------------------- */
+
+.case-study-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.case-study-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-family: var(--font-headings);
+  font-size: 2.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* --------------------
+   4. OVERVIEW SECTION
+   -------------------- */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.overview-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.detail-item h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.detail-item p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.overview-impact {
+  background: rgba(248, 200, 208, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.overview-impact h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.overview-impact p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+/* --------------------
+   5. RESEARCH SECTION
+   -------------------- */
+
+.research-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.research-insights h3 {
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.research-insights ul {
+  list-style: none;
+  padding: 0;
+}
+
+.research-insights li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.research-insights li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+  font-weight: bold;
+}
+
+.research-insights strong {
+  color: var(--color-primary-accent);
+}
+
+/* Suggested Content Styling */
+.suggested-content {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(248, 200, 208, 0.08);
+  border-left: 3px solid var(--color-primary-accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.suggested-content h4 {
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.suggested-content p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* --------------------
+   6. PROCESS SECTION
+   -------------------- */
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.step-number {
+  font-family: var(--font-headings);
+  font-size: 3rem;
+  color: var(--color-primary-accent);
+  opacity: 0.3;
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+
+.step-content h3 {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.step-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.step-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* --------------------
+   7. SOLUTION SECTION
+   -------------------- */
+
+.solution-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.solution-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.solution-details h3 {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.solution-details h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  margin: 1.5rem 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.solution-details p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.solution-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.solution-details li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.solution-details li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+.solution-details strong {
+  color: var(--color-primary-accent);
+}
+
+/* --------------------
+   8. RESULTS SECTION
+   -------------------- */
+
+.results-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.results-outcomes h3,
+.results-learning h3 {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.results-learning h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  margin: 1.5rem 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.results-outcomes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.results-outcomes li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.results-outcomes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+  font-weight: bold;
+}
+
+.results-learning p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.results-outcomes strong,
+.results-learning strong {
+  color: var(--color-primary-accent);
+}
+
+/* --------------------
+   9. IMAGE PLACEHOLDERS
+   -------------------- */
+
+.image-placeholder {
+  background: rgba(248, 200, 208, 0.1);
+  border: 2px dashed rgba(248, 200, 208, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-primary-accent);
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.image-placeholder:hover {
+  background: rgba(248, 200, 208, 0.15);
+  border-color: rgba(248, 200, 208, 0.5);
+}
+
+.image-placeholder.small {
+  min-height: 120px;
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+.research-images .image-placeholder {
+  min-height: 300px;
+}
+
+/* --------------------
+   10. NAVIGATION
+   -------------------- */
+
+.case-study-navigation {
+  background: rgba(248, 200, 208, 0.05);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(248, 200, 208, 0.2);
+  background: rgba(248, 200, 208, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(248, 200, 208, 0.1);
+  border-color: rgba(248, 200, 208, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-link.prev {
+  text-align: left;
+}
+
+.nav-link.next {
+  text-align: right;
+}
+
+.nav-link.center {
+  text-align: center;
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  border-color: var(--color-primary-accent);
+}
+
+.nav-link.center:hover {
+  background: var(--color-secondary-accent);
+  border-color: var(--color-secondary-accent);
+}
+
+.nav-label {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.nav-title {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-accent);
+}
+
+.nav-link.center .nav-title {
+  color: var(--color-background);
+}
+
+/* --------------------
+   11. RESPONSIVE DESIGN
+   -------------------- */
+
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .overview-grid,
+  .research-content,
+  .solution-content,
+  .results-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .overview-details {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .process-step {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .step-number {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+  
+  .step-images {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .nav-link.prev,
+  .nav-link.next {
+    text-align: center;
+  }
+  
+  .case-study-section {
+    padding: 3rem 0;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
