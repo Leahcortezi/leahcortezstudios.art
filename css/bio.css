@@ -214,23 +214,39 @@
   /*
     Individual link styling with simple text appearance
   */
-  color: var(--color-primary-accent);
-  font-family: var(--font-accent);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  text-align: center;
+  /* Complete reset of any button-like styling */
+  all: unset !important;
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  
+  /* Simple text link styling */
+  color: var(--color-primary-accent) !important;
+  font-family: var(--font-accent) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  text-align: center !important;
+  display: inline !important;
 }
 
 .bio-link:hover {
   /*
     Underline hover effect
   */
-  color: #ffffff;
-  text-decoration: underline;
+  color: #ffffff !important;
+  text-decoration: underline !important;
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 
@@ -744,21 +760,36 @@
   }
   
   .bio-links-mobile .bio-link {
-    /* Mobile link styling */
-    color: var(--color-primary-accent);
-    font-family: var(--font-accent);
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    padding: 0.5rem 0;
+    /* Mobile link styling - complete reset */
+    all: unset !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0.5rem 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    
+    /* Simple text styling */
+    color: var(--color-primary-accent) !important;
+    font-family: var(--font-accent) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    display: block !important;
+    width: auto !important;
   }
   
   .bio-links-mobile .bio-link:hover {
-    color: #ffffff;
-    text-decoration: underline;
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
   
   .services-grid {
