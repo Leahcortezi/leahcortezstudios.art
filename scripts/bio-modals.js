@@ -6,8 +6,8 @@
 */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all bio buttons
-    const bioButtons = document.querySelectorAll('.bio-button');
+    // Get all bio links
+    const bioLinks = document.querySelectorAll('.bio-link');
     
     // Get all modals
     const modals = document.querySelectorAll('.modal');
@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get all accordion headers
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     
-    // Add click event listeners to bio buttons
-    bioButtons.forEach(button => {
-        button.addEventListener('click', function() {
+    // Add click event listeners to bio links
+    bioLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
             const modalId = this.getAttribute('data-modal') + '-modal';
             const modal = document.getElementById(modalId);
             if (modal) {
