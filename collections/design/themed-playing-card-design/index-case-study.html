@@ -183,20 +183,48 @@
                 </div>
                 <div class="character-study-grid">
                     <div class="character-item" data-modal="biology">
-                        <img src="images/bio.jpg" alt="Biology King" loading="lazy">
-                        <h4>Biology</h4>
+                        <div class="card-flip-container">
+                            <div class="card-front">
+                                <img src="images/bio.jpg" alt="Biology King" loading="lazy">
+                                <h4>Biology</h4>
+                            </div>
+                            <div class="card-back">
+                                <img src="images/back.jpg" alt="Card Back" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                     <div class="character-item" data-modal="chemistry">
-                        <img src="images/chem.jpg" alt="Chemistry King" loading="lazy">
-                        <h4>Chemistry</h4>
+                        <div class="card-flip-container">
+                            <div class="card-front">
+                                <img src="images/chem.jpg" alt="Chemistry King" loading="lazy">
+                                <h4>Chemistry</h4>
+                            </div>
+                            <div class="card-back">
+                                <img src="images/back.jpg" alt="Card Back" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                     <div class="character-item" data-modal="physics">
-                        <img src="images/physics.jpg" alt="Physics King" loading="lazy">
-                        <h4>Physics</h4>
+                        <div class="card-flip-container">
+                            <div class="card-front">
+                                <img src="images/physics.jpg" alt="Physics King" loading="lazy">
+                                <h4>Physics</h4>
+                            </div>
+                            <div class="card-back">
+                                <img src="images/back.jpg" alt="Card Back" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                     <div class="character-item" data-modal="technology">
-                        <img src="images/tech.jpg" alt="Technology King" loading="lazy">
-                        <h4>Technology</h4>
+                        <div class="card-flip-container">
+                            <div class="card-front">
+                                <img src="images/tech.jpg" alt="Technology King" loading="lazy">
+                                <h4>Technology</h4>
+                            </div>
+                            <div class="card-back">
+                                <img src="images/back.jpg" alt="Card Back" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -347,7 +375,7 @@
     <script src="../../../scripts/main.js" defer></script>
     
     <script>
-    // Character Modal Functionality
+    // Character Modal Functionality with Card Flip Animation
     document.addEventListener('DOMContentLoaded', function() {
         const characterItems = document.querySelectorAll('.character-item[data-modal]');
         const modals = document.querySelectorAll('.character-modal');
@@ -358,9 +386,22 @@
             item.addEventListener('click', function() {
                 const modalId = this.getAttribute('data-modal') + '-modal';
                 const modal = document.getElementById(modalId);
+                
                 if (modal) {
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    // Step 1: Flip the card
+                    this.classList.add('flipped');
+                    
+                    // Step 2: After flip animation completes, open modal
+                    setTimeout(() => {
+                        modal.classList.add('show');
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                        
+                        // Step 3: Flip card back after a short delay
+                        setTimeout(() => {
+                            this.classList.remove('flipped');
+                        }, 200);
+                    }, 400); // Wait for flip animation to complete
                 }
             });
         });
@@ -369,8 +410,11 @@
         closeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const modal = this.closest('.character-modal');
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }, 300);
             });
         });
         
@@ -378,8 +422,11 @@
         modals.forEach(modal => {
             modal.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    this.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Restore scrolling
+                    this.classList.remove('show');
+                    setTimeout(() => {
+                        this.style.display = 'none';
+                        document.body.style.overflow = 'auto'; // Restore scrolling
+                    }, 300);
                 }
             });
         });
@@ -388,9 +435,14 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 modals.forEach(modal => {
-                    modal.style.display = 'none';
+                    if (modal.style.display === 'block') {
+                        modal.classList.remove('show');
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto'; // Restore scrolling
+                        }, 300);
+                    }
                 });
-                document.body.style.overflow = 'auto'; // Restore scrolling
             }
         });
     });
