@@ -334,6 +334,12 @@ nav {
   filter: brightness(0) invert(1); /* Makes the icon white */
 }
 
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Base navigation styles */
 .nav-links {
   /* Removes default list styling (bullets) */
   list-style: none;
@@ -486,39 +492,93 @@ nav {
 @media (max-width: 768px) {
   .nav-links {
     /*
-      On mobile, the nav links are initially hidden.
-      They will be displayed when the hamburger menu is clicked.
+      Right-side sliding menu panel for mobile
     */
     display: none;
-    /* Positions the menu absolutely relative to the header */
-    position: absolute;
-    top: var(--nav-height); /* Positions it right below the nav bar */
+    /* Fixed positioning to cover screen */
+    position: fixed;
+    top: 0;
     right: 0;
-    /* Takes portion of screen width, right-aligned */
-    width: 250px;
-    /* Sets the background to black with lower opacity */
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Changes the flex direction to vertical for a mobile menu */
+    /* Full height, partial width */
+    width: 280px;
+    height: 100vh;
+    /* Dark background with backdrop blur */
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    /* Vertical layout */
     flex-direction: column;
-    /* Right-aligns the links within the menu */
-    align-items: flex-end;
-    /* Add padding for better spacing */
-    padding: 1rem;
+    /* Center content */
+    align-items: center;
+    justify-content: center;
+    /* Generous padding */
+    padding: 2rem;
+    /* Subtle border */
+    border-left: 1px solid rgba(248, 200, 208, 0.2);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+    /* Slide animation - start off-screen */
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Ensure it appears above everything */
+    z-index: 1000;
   }
 
   /*
-    This class will be toggled with JavaScript to show the menu.
+    When active, slide the menu in from the right
   */
   .nav-links.active {
-    /* When active, the menu is displayed as a flex container */
     display: flex;
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .nav-links li {
-    /* Removes the horizontal margin */
-    margin-left: 0;
-    /* Adds vertical margin for spacing between links */
-    margin: 1rem 0;
+    /* Remove default margins */
+    margin: 0;
+    /* Full width for touch targets */
+    width: 100%;
+    /* Vertical spacing between links */
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-links a {
+    /* Full-width, centered links */
+    display: block;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    /* Larger font for mobile */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    /* Remove border, use background */
+    border: none;
+    border-radius: 12px;
+    /* Colors and transitions */
+    color: #f5c6d6;
+    background-color: rgba(248, 200, 208, 0.08);
+    border: 1px solid rgba(248, 200, 208, 0.15);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: rgba(248, 200, 208, 0.2);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(248, 200, 208, 0.15);
+  }
+
+  /* Backdrop overlay when menu is open */
+  .nav-links.active::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
   }
 
   .hamburger {
@@ -527,7 +587,27 @@ nav {
     justify-content: flex-end;
     margin-left: auto;
     margin-right: 0;
-    padding-right: 0; /* Ensure no extra space on right */
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001; /* Above the menu */
+  }
+
+  .hamburger:hover {
+    background-color: rgba(248, 200, 208, 0.15);
+  }
+
+  .hamburger img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Rotate hamburger icon when menu is open */
+  .nav-links.active ~ .hamburger img {
+    transform: rotate(180deg);
   }
 }
 
