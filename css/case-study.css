@@ -1167,6 +1167,7 @@
 .character-item {
   perspective: 1000px;
   cursor: pointer;
+  height: 300px; /* Fixed height to prevent layout shifts */
 }
 
 .card-flip-container {
@@ -1174,37 +1175,46 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1.2s ease-in-out;
   transform-style: preserve-3d;
+  will-change: transform; /* Optimize for animation */
 }
 
-.character-item.flipped .card-flip-container {
-  transform: rotateY(180deg);
+/* Toggle flip on hover - first hover flips to back, second hover flips to front */
+.character-study .character-item.flip-toggled .card-flip-container {
+  transform: rotateY(180deg) !important;
 }
 
 .card-front,
 .card-back {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
 }
 
 .card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
   transform: rotateY(180deg);
+  z-index: 1;
 }
 
 .card-front img,
 .card-back img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   border-radius: 12px;
 }
@@ -1228,11 +1238,29 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
+.character-item .card-front {
+  transform: rotateY(0deg);
+}
+
+.character-item .card-back {
+  transform: rotateY(180deg);
+}
+
+/* When flip is toggled, show back side */
+.character-item.flip-toggled .card-front {
+  transform: rotateY(180deg);
+}
+
+.character-item.flip-toggled .card-back {
+  transform: rotateY(0deg);
+}
+
 /* Modal animations */
 .character-modal {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  backdrop-filter: blur(5px);
 }
 
 .character-modal.show {
@@ -1241,10 +1269,27 @@
 }
 
 .character-modal .modal-content {
-  transform: scale(0.8) translateY(30px);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.7) translateY(50px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .character-modal.show .modal-content {
   transform: scale(1) translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .character-item {
+    height: 250px;
+  }
+  
+  .card-front h4 {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  
+  /* On mobile, use touch for flip since hover doesn't work well */
+  .character-item:active .card-flip-container {
+    transform: rotateY(180deg);
+  }
 }

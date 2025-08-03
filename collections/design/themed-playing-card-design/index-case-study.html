@@ -186,45 +186,45 @@
                         <div class="card-flip-container">
                             <div class="card-front">
                                 <img src="images/bio.jpg" alt="Biology King" loading="lazy">
-                                <h4>Biology</h4>
                             </div>
                             <div class="card-back">
                                 <img src="images/back.jpg" alt="Card Back" loading="lazy">
                             </div>
                         </div>
+                        <h4>Biology</h4>
                     </div>
                     <div class="character-item" data-modal="chemistry">
                         <div class="card-flip-container">
                             <div class="card-front">
                                 <img src="images/chem.jpg" alt="Chemistry King" loading="lazy">
-                                <h4>Chemistry</h4>
                             </div>
                             <div class="card-back">
                                 <img src="images/back.jpg" alt="Card Back" loading="lazy">
                             </div>
                         </div>
+                        <h4>Chemistry</h4>
                     </div>
                     <div class="character-item" data-modal="physics">
                         <div class="card-flip-container">
                             <div class="card-front">
                                 <img src="images/physics.jpg" alt="Physics King" loading="lazy">
-                                <h4>Physics</h4>
                             </div>
                             <div class="card-back">
                                 <img src="images/back.jpg" alt="Card Back" loading="lazy">
                             </div>
                         </div>
+                        <h4>Physics</h4>
                     </div>
                     <div class="character-item" data-modal="technology">
                         <div class="card-flip-container">
                             <div class="card-front">
                                 <img src="images/tech.jpg" alt="Technology King" loading="lazy">
-                                <h4>Technology</h4>
                             </div>
                             <div class="card-back">
                                 <img src="images/back.jpg" alt="Card Back" loading="lazy">
                             </div>
                         </div>
+                        <h4>Technology</h4>
                     </div>
                 </div>
             </div>
@@ -375,33 +375,43 @@
     <script src="../../../scripts/main.js" defer></script>
     
     <script>
-    // Character Modal Functionality with Card Flip Animation
+    // Character Modal Functionality - Hover to Toggle Flip, Click to Open Modal
     document.addEventListener('DOMContentLoaded', function() {
         const characterItems = document.querySelectorAll('.character-item[data-modal]');
         const modals = document.querySelectorAll('.character-modal');
         const closeButtons = document.querySelectorAll('.modal-close');
         
-        // Open modal when character item is clicked
+        // Handle card flip toggle on hover - stays flipped until next hover
         characterItems.forEach(item => {
-            item.addEventListener('click', function() {
+            let hasBeenHovered = false;
+            
+            item.addEventListener('mouseenter', function() {
+                console.log('Mouse entered. hasBeenHovered:', hasBeenHovered);
+                if (!hasBeenHovered) {
+                    // First time hovering or returning after mouse left - toggle flip state
+                    this.classList.toggle('flip-toggled');
+                    console.log('Toggled flip. Now has class:', this.classList.contains('flip-toggled'));
+                    hasBeenHovered = true;
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                console.log('Mouse left. Resetting hasBeenHovered flag');
+                // Reset hover flag so next mouseenter will trigger flip
+                hasBeenHovered = false;
+            });
+            
+            // Handle modal opening on click
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
                 const modalId = this.getAttribute('data-modal') + '-modal';
                 const modal = document.getElementById(modalId);
                 
                 if (modal) {
-                    // Step 1: Flip the card
-                    this.classList.add('flipped');
-                    
-                    // Step 2: After flip animation completes, open modal
-                    setTimeout(() => {
-                        modal.classList.add('show');
-                        modal.style.display = 'block';
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                        
-                        // Step 3: Flip card back after a short delay
-                        setTimeout(() => {
-                            this.classList.remove('flipped');
-                        }, 200);
-                    }, 400); // Wait for flip animation to complete
+                    modal.classList.add('show');
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
                 }
             });
         });
@@ -413,8 +423,8 @@
                 modal.classList.remove('show');
                 setTimeout(() => {
                     modal.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Restore scrolling
-                }, 300);
+                    document.body.style.overflow = 'auto';
+                }, 400);
             });
         });
         
@@ -425,8 +435,8 @@
                     this.classList.remove('show');
                     setTimeout(() => {
                         this.style.display = 'none';
-                        document.body.style.overflow = 'auto'; // Restore scrolling
-                    }, 300);
+                        document.body.style.overflow = 'auto';
+                    }, 400);
                 }
             });
         });
@@ -439,8 +449,8 @@
                         modal.classList.remove('show');
                         setTimeout(() => {
                             modal.style.display = 'none';
-                            document.body.style.overflow = 'auto'; // Restore scrolling
-                        }, 300);
+                            document.body.style.overflow = 'auto';
+                        }, 400);
                     }
                 });
             }
