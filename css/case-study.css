@@ -704,12 +704,13 @@
 
 .modal-content {
   background-color: var(--color-background);
-  margin: 3% auto;
+  margin: 5% auto;
   padding: 0;
   border: 1px solid rgba(248, 200, 208, 0.2);
   border-radius: 12px;
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
+  max-height: 85vh;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   position: relative;
   animation: modalSlideIn 0.3s ease-out;
@@ -728,7 +729,7 @@
 }
 
 .modal-close {
-  color: var(--color-text);
+  color: var(--color-primary-accent);
   float: right;
   font-size: 2rem;
   font-weight: bold;
@@ -736,12 +737,10 @@
   position: absolute;
   top: 1rem;
   right: 1.5rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.9);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -749,14 +748,15 @@
 }
 
 .modal-close:hover {
-  color: var(--color-primary-accent);
-  background: rgba(248, 200, 208, 0.2);
+  color: var(--color-secondary-accent);
+  transform: scale(1.1);
 }
 
 .modal-layout {
   display: grid;
   grid-template-columns: 350px 1fr;
-  min-height: 400px;
+  min-height: 500px;
+  max-height: 80vh;
 }
 
 .modal-image {
@@ -784,7 +784,7 @@
 .modal-details {
   padding: 2rem;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: calc(80vh - 4rem);
 }
 
 .modal-details h3 {
@@ -948,11 +948,13 @@
     padding: 0;
     width: 95%;
     max-width: 500px;
+    max-height: 85vh;
   }
   
   .modal-layout {
     grid-template-columns: 1fr;
     min-height: auto;
+    max-height: 80vh;
   }
   
   .modal-image {
@@ -968,7 +970,7 @@
   
   .modal-details {
     padding: 1.5rem;
-    max-height: 400px;
+    max-height: calc(80vh - 200px);
   }
   
   .modal-details h3 {
