@@ -971,10 +971,10 @@
     display: flex !important;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
     margin-top: 2rem;
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 0.25rem;
     background: transparent;
   }
   
@@ -1002,7 +1002,7 @@
     
     /* Positive styling matching desktop */
     color: var(--color-primary-accent);
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.25rem;
     font-family: var(--font-accent);
     font-size: 0.75rem;
     font-weight: 500;
@@ -1015,13 +1015,14 @@
     gap: 0.6rem;
     text-align: center;
     width: auto;
-    min-width: 100px;
+    min-width: 110px;
     min-height: auto;
     line-height: 1.2;
     border-radius: 0 !important;
     white-space: normal;
     overflow: visible;
-    max-width: 120px;
+    max-width: 140px;
+    flex: 1;
   }
   
   .bio-buttons-mobile .bio-button:hover {
@@ -1060,8 +1061,9 @@
     width: 100%;
     margin: 0 auto;
     word-wrap: break-word;
-    hyphens: auto;
+    hyphens: none;
     white-space: normal;
+    overflow-wrap: break-word;
   }
   
   .services-grid {
