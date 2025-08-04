@@ -705,7 +705,7 @@
 
 .nav-link:hover {
   color: var(--color-background);
-  background: linear-gradient(135deg, var(--color-primary-accent) 0%, #8B1538 100%);
+  background: var(--color-primary-accent);
   border-color: var(--color-primary-accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(126, 28, 46, 0.3);
@@ -714,12 +714,12 @@
 .nav-link.center {
   text-align: center;
   font-weight: 600;
-  background: linear-gradient(135deg, rgba(248, 200, 208, 0.1) 0%, rgba(126, 28, 46, 0.1) 100%);
+  background: rgba(248, 200, 208, 0.1);
   border: 2px solid rgba(248, 200, 208, 0.2);
 }
 
 .nav-link.center:hover {
-  background: linear-gradient(135deg, var(--color-primary-accent) 0%, #8B1538 100%);
+  background: var(--color-primary-accent);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(126, 28, 46, 0.4);
 }
@@ -820,13 +820,13 @@
 
 .modal-content {
   background-color: var(--color-background);
-  margin: 5% auto;
+  margin: 8vh auto;
   padding: 0;
   border: 1px solid rgba(248, 200, 208, 0.2);
   border-radius: 12px;
   width: 90%;
   max-width: 900px;
-  max-height: 85vh;
+  max-height: 80vh;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   position: relative;
   animation: modalSlideIn 0.3s ease-out;
@@ -851,7 +851,7 @@
   font-weight: bold;
   cursor: pointer;
   position: absolute;
-  top: 1rem;
+  top: 1.2rem;
   right: 1.5rem;
   transition: all 0.3s ease;
   z-index: 10;
@@ -861,6 +861,10 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
+  background: rgba(248, 200, 208, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .modal-close:hover {

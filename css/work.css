@@ -322,11 +322,38 @@
   font-family: var(--font-accent);
   color: var(--color-primary-accent);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background: rgba(248, 200, 208, 0.05);
+  border: 1px solid rgba(248, 200, 208, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .work-navigation a:hover {
-  color: var(--color-text);
+  color: var(--color-background);
+  background: var(--color-primary-accent);
+  border-color: var(--color-primary-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(126, 28, 46, 0.3);
+}
+
+.work-navigation .all-work {
+  text-align: center;
+  font-weight: 600;
+  background: rgba(248, 200, 208, 0.1);
+  border: 2px solid rgba(248, 200, 208, 0.2);
+}
+
+.work-navigation .all-work:hover {
+  background: var(--color-primary-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(126, 28, 46, 0.4);
 }
 
 /* --------------------
