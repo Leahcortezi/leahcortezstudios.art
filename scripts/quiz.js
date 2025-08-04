@@ -374,118 +374,182 @@ class PortfolioQuiz {
     shareResult() {
         const result = this.results[this.topResult];
         
-        // Create Instagram story-style image
-        this.generateShareImage(result).then(imageDataUrl => {
-            if (navigator.share && navigator.canShare) {
-                // Try to share with image for supported platforms
-                fetch(imageDataUrl)
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const file = new File([blob], 'leah-cortez-quiz-result.png', { type: 'image/png' });
-                        
-                        if (navigator.canShare({ files: [file] })) {
-                            navigator.share({
-                                title: `I got "${result.title}" - ${result.subtitle}`,
-                                text: `I just took Leah Cortez's Portfolio Soul Quiz and discovered I'm "${result.subtitle}"! 🎨✨ Take the quiz and find your creative match.`,
-                                url: window.location.href,
-                                files: [file]
-                            });
-                        } else {
-                            // Fall back to text sharing
-                            this.fallbackShare(result, imageDataUrl);
-                        }
-                    })
-                    .catch(() => this.fallbackShare(result, imageDataUrl));
-            } else {
-                this.fallbackShare(result, imageDataUrl);
-            }
-        });
+        // Create Spotify-style share modal with multiple story templates
+        this.createSpotifyStyleShareModal(result);
     }
 
-    fallbackShare(result, imageDataUrl) {
-        // Create a download link for the image
-        const link = document.createElement('a');
-        link.download = 'leah-cortez-quiz-result.png';
-        link.href = imageDataUrl;
-        
-        // Create share modal
-        const modal = this.createShareModal(result, imageDataUrl);
-        document.body.appendChild(modal);
-        
-        // Show modal
-        setTimeout(() => modal.classList.add('active'), 10);
-    }
-
-    createShareModal(result, imageDataUrl) {
+    createSpotifyStyleShareModal(result) {
         const modal = document.createElement('div');
-        modal.className = 'share-modal';
+        modal.className = 'spotify-share-modal';
         modal.innerHTML = `
-            <div class="share-modal-content">
-                <div class="share-modal-header">
-                    <h3>Share Your Result</h3>
-                    <button class="share-modal-close">&times;</button>
+            <div class="spotify-share-content">
+                <div class="spotify-share-header">
+                    <h3>Share Your Creative Match</h3>
+                    <button class="spotify-share-close">&times;</button>
                 </div>
-                <div class="share-modal-body">
-                    <div class="share-preview">
-                        <img src="${imageDataUrl}" alt="Your quiz result" class="share-image-preview">
+                <div class="spotify-share-body">
+                    <div class="story-templates">
+                        <div class="template-selector">
+                            <button class="template-btn active" data-template="minimal">Minimal</button>
+                            <button class="template-btn" data-template="artistic">Artistic</button>
+                            <button class="template-btn" data-template="bold">Bold</button>
+                            <button class="template-btn" data-template="elegant">Elegant</button>
+                        </div>
+                        <div class="template-preview">
+                            <canvas id="story-canvas" width="1080" height="1920"></canvas>
+                        </div>
                     </div>
-                    <p class="share-caption">I got "${result.title}" - ${result.subtitle}! 🎨✨<br>
-                    Take Leah Cortez's Portfolio Soul Quiz: ${window.location.href}</p>
-                    <div class="share-actions">
-                        <button class="share-btn download-btn">
+                    <div class="share-options">
+                        <button class="spotify-btn download-story">
                             <span class="btn-icon">⬇️</span>
-                            Download Image
+                            Save to Camera Roll
                         </button>
-                        <button class="share-btn copy-btn">
-                            <span class="btn-icon">📋</span>
-                            Copy Text
+                        <button class="spotify-btn share-instagram">
+                            <span class="btn-icon">📸</span>
+                            Share to Instagram
                         </button>
-                        <div class="share-social">
-                            <a href="https://www.instagram.com/stories/camera/" target="_blank" class="social-share-btn instagram">
-                                <span class="btn-icon">📸</span>
-                                Instagram Story
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="social-share-btn facebook">
-                                <span class="btn-icon">📘</span>
-                                Facebook
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(`I got "${result.title}" - ${result.subtitle}! Take Leah Cortez's Portfolio Soul Quiz:`)}&url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-share-btn twitter">
-                                <span class="btn-icon">🐦</span>
-                                Twitter
-                            </a>
+                        <div class="more-options">
+                            <button class="spotify-btn copy-text">
+                                <span class="btn-icon">📋</span>
+                                Copy Link
+                            </button>
+                            <button class="spotify-btn share-more">
+                                <span class="btn-icon">📤</span>
+                                More Options
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         `;
 
-        // Add event listeners
-        const closeBtn = modal.querySelector('.share-modal-close');
-        const downloadBtn = modal.querySelector('.download-btn');
-        const copyBtn = modal.querySelector('.copy-btn');
+        // Add to page
+        document.body.appendChild(modal);
 
+        // Initialize templates
+        this.initializeStoryTemplates(modal, result);
+
+        // Add event listeners
+        this.addSpotifyShareEventListeners(modal, result);
+
+        // Show modal
+        setTimeout(() => modal.classList.add('active'), 10);
+    }
+
+    initializeStoryTemplates(modal, result) {
+        this.currentTemplate = 'minimal';
+        this.templates = {
+            minimal: {
+                bgColor: '#111111',
+                accentColor: '#f5c6d6',
+                textColor: '#ffffff',
+                layout: 'centered'
+            },
+            artistic: {
+                bgColor: '#2d1b25',
+                accentColor: '#7e1c2e',
+                textColor: '#f5c6d6',
+                layout: 'artistic'
+            },
+            bold: {
+                bgColor: '#000000',
+                accentColor: '#f5c6d6',
+                textColor: '#ffffff',
+                layout: 'bold'
+            },
+            elegant: {
+                bgColor: '#faf8f6',
+                accentColor: '#7e1c2e',
+                textColor: '#2d1b25',
+                layout: 'elegant'
+            }
+        };
+
+        // Generate initial template
+        this.generateStoryTemplate(result, this.currentTemplate);
+    }
+
+    addSpotifyShareEventListeners(modal, result) {
+        const closeBtn = modal.querySelector('.spotify-share-close');
+        const templateBtns = modal.querySelectorAll('.template-btn');
+        const downloadBtn = modal.querySelector('.download-story');
+        const instagramBtn = modal.querySelector('.share-instagram');
+        const copyBtn = modal.querySelector('.copy-text');
+        const moreBtn = modal.querySelector('.share-more');
+
+        // Close modal
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('active');
             setTimeout(() => document.body.removeChild(modal), 300);
         });
 
-        downloadBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.download = 'leah-cortez-quiz-result.png';
-            link.href = imageDataUrl;
-            link.click();
+        // Template selection
+        templateBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                templateBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentTemplate = btn.dataset.template;
+                this.generateStoryTemplate(result, this.currentTemplate);
+            });
         });
 
-        copyBtn.addEventListener('click', () => {
-            const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz and find your creative match: ${window.location.href}`;
+        // Download story
+        downloadBtn.addEventListener('click', () => {
+            const canvas = modal.querySelector('#story-canvas');
+            const link = document.createElement('a');
+            link.download = `leah-cortez-${result.title.toLowerCase().replace(/\s+/g, '-')}-story.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
             
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(shareText);
+            // Show feedback
+            downloadBtn.innerHTML = '<span class="btn-icon">✅</span>Saved!';
+            setTimeout(() => {
+                downloadBtn.innerHTML = '<span class="btn-icon">⬇️</span>Save to Camera Roll';
+            }, 2000);
+        });
+
+        // Instagram share
+        instagramBtn.addEventListener('click', () => {
+            const canvas = modal.querySelector('#story-canvas');
+            canvas.toBlob(blob => {
+                if (navigator.share && navigator.canShare({ files: [new File([blob], 'story.png', { type: 'image/png' })] })) {
+                    navigator.share({
+                        files: [new File([blob], 'story.png', { type: 'image/png' })],
+                        title: 'My Creative Match',
+                        text: `I got "${result.title}"! Take the quiz at leahcortezstudios.art`
+                    });
+                } else {
+                    // Fallback: open Instagram
+                    window.open('https://www.instagram.com/stories/camera/', '_blank');
+                }
+            });
+        });
+
+        // Copy link
+        copyBtn.addEventListener('click', () => {
+            const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz: ${window.location.href}`;
+            navigator.clipboard.writeText(shareText).then(() => {
                 copyBtn.innerHTML = '<span class="btn-icon">✅</span>Copied!';
                 setTimeout(() => {
-                    copyBtn.innerHTML = '<span class="btn-icon">📋</span>Copy Text';
+                    copyBtn.innerHTML = '<span class="btn-icon">📋</span>Copy Link';
                 }, 2000);
-            }
+            });
+        });
+
+        // More options
+        moreBtn.addEventListener('click', () => {
+            const canvas = modal.querySelector('#story-canvas');
+            canvas.toBlob(blob => {
+                const file = new File([blob], 'story.png', { type: 'image/png' });
+                if (navigator.share) {
+                    navigator.share({
+                        title: `My Creative Match: ${result.title}`,
+                        text: `I discovered I'm "${result.subtitle}"! Take the quiz and find your creative match.`,
+                        url: window.location.href,
+                        files: [file]
+                    });
+                }
+            });
         });
 
         // Close on backdrop click
@@ -494,100 +558,424 @@ class PortfolioQuiz {
                 closeBtn.click();
             }
         });
-
-        return modal;
     }
 
-    async generateShareImage(result) {
-        return new Promise((resolve) => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Instagram story dimensions (9:16 aspect ratio)
-            canvas.width = 1080;
-            canvas.height = 1920;
-            
-            // Create gradient background
-            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, '#1a1a1a');
-            gradient.addColorStop(0.5, '#2d1b25');
-            gradient.addColorStop(1, '#1a1a1a');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Add subtle pattern overlay
-            ctx.fillStyle = 'rgba(126, 28, 46, 0.03)';
-            for (let i = 0; i < 20; i++) {
-                ctx.beginPath();
-                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100 + 50, 0, Math.PI * 2);
-                ctx.fill();
-            }
-            
-            // Load and draw the result image
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => {
-                // Draw artwork image (centered, maintaining aspect ratio)
-                const imageSize = 400;
-                const imageX = (canvas.width - imageSize) / 2;
-                const imageY = 300;
-                
-                // Add border around image
-                ctx.fillStyle = '#7e1c2e';
-                ctx.fillRect(imageX - 10, imageY - 10, imageSize + 20, imageSize + 20);
-                
-                // Draw image
-                ctx.drawImage(img, imageX, imageY, imageSize, imageSize);
-                
-                // Add text content
-                this.addTextToCanvas(ctx, result, canvas.width, canvas.height);
-                
-                resolve(canvas.toDataURL('image/png'));
-            };
-            
-            img.onerror = () => {
-                // If image fails to load, create without it
-                this.addTextToCanvas(ctx, result, canvas.width, canvas.height);
-                resolve(canvas.toDataURL('image/png'));
-            };
-            
-            img.src = result.image;
-        });
-    }
-
-    addTextToCanvas(ctx, result, width, height) {
-        // Set text properties
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#f5c6d6';
+    async generateStoryTemplate(result, templateName) {
+        const template = this.templates[templateName];
+        const canvas = document.getElementById('story-canvas');
+        const ctx = canvas.getContext('2d');
         
-        // Main title
-        ctx.font = 'bold 72px serif';
-        this.wrapText(ctx, result.title, width / 2, 200, width - 100, 80);
+        // Clear canvas first
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = template.bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Helper function to load images with proper error handling
+        const loadImage = (src) => {
+            return new Promise((resolve) => {
+                const image = new Image();
+                image.crossOrigin = 'anonymous';
+                image.onload = () => {
+                    console.log(`Successfully loaded: ${src}`);
+                    resolve(image);
+                };
+                image.onerror = (e) => {
+                    console.log(`Failed to load: ${src}`, e);
+                    resolve(null);
+                };
+                // Use absolute path for images
+                if (src.startsWith('images/') || src.startsWith('collections/')) {
+                    image.src = window.location.origin + window.location.pathname.replace('index.html', '') + src;
+                } else {
+                    image.src = src;
+                }
+            });
+        };
+        
+        // Load both images concurrently
+        const [resultImage, logoImage] = await Promise.all([
+            loadImage(result.image),
+            loadImage('images/logo/logo1.png')
+        ]);
+        
+        console.log('Images loaded:', { resultImage: !!resultImage, logoImage: !!logoImage });
+        
+        // Draw the template
+        this.drawTemplate(ctx, result, template, resultImage, logoImage, canvas.width, canvas.height);
+    }
+
+    drawTemplate(ctx, result, template, img, logo, width, height) {
+        switch (template.layout) {
+            case 'minimal':
+                this.drawMinimalTemplate(ctx, result, template, img, logo, width, height);
+                break;
+            case 'artistic':
+                this.drawArtisticTemplate(ctx, result, template, img, logo, width, height);
+                break;
+            case 'bold':
+                this.drawBoldTemplate(ctx, result, template, img, logo, width, height);
+                break;
+            case 'elegant':
+                this.drawElegantTemplate(ctx, result, template, img, logo, width, height);
+                break;
+        }
+    }
+
+    drawMinimalTemplate(ctx, result, template, img, logo, width, height) {
+        console.log('Drawing minimal template with:', { img: !!img, logo: !!logo, width, height });
+        
+        // Background gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, template.bgColor);
+        gradient.addColorStop(1, '#0a0a0a');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Add some texture/pattern
+        ctx.fillStyle = template.accentColor + '08';
+        for (let i = 0; i < 20; i++) {
+            ctx.beginPath();
+            ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 80 + 20, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Logo at top - always draw even if image fails
+        if (logo) {
+            const logoSize = 100;
+            const logoX = (width - logoSize) / 2;
+            const logoY = 60;
+            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+        } else {
+            // Fallback logo text
+            ctx.fillStyle = template.accentColor;
+            ctx.font = 'bold 32px serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('LEAH CORTEZ', width / 2, 100);
+            ctx.font = '24px serif';
+            ctx.fillText('STUDIO', width / 2, 130);
+        }
+        
+        // Title
+        ctx.textAlign = 'center';
+        ctx.fillStyle = template.textColor;
+        ctx.font = 'bold 48px serif';
+        this.wrapText(ctx, result.title, width / 2, 220, width - 100, 55);
         
         // Subtitle
-        ctx.font = 'italic 48px serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText(result.subtitle, width / 2, 260);
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'italic 32px serif';
+        ctx.fillText(result.subtitle, width / 2, 320);
+        
+        // Main artwork image in center - always draw something
+        const imgSize = 380;
+        const imgX = (width - imgSize) / 2;
+        const imgY = 380;
+        
+        if (img) {
+            // Draw the actual artwork image
+            ctx.save();
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.clip();
+            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+            ctx.restore();
+            
+            // Image border
+            ctx.strokeStyle = template.accentColor;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.stroke();
+        } else {
+            // Fallback placeholder with border
+            ctx.fillStyle = template.bgColor;
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.fill();
+            
+            ctx.strokeStyle = template.accentColor;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.stroke();
+            
+            // Placeholder text
+            ctx.fillStyle = template.accentColor;
+            ctx.font = '28px serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 - 10);
+            ctx.font = '24px serif';
+            ctx.fillText('IMAGE', width / 2, imgY + imgSize/2 + 20);
+        }
+        
+        // Description below image
+        ctx.fillStyle = template.textColor;
+        ctx.font = '24px serif';
+        this.wrapText(ctx, result.description, width / 2, 820, width - 120, 30);
         
         // Quote
-        ctx.font = '36px serif';
-        ctx.fillStyle = '#f5c6d6';
-        this.wrapText(ctx, `"${result.quote}"`, width / 2, 800, width - 120, 50);
+        ctx.fillStyle = template.accentColor + 'CC';
+        ctx.font = 'italic 22px serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1000, width - 140, 28);
         
-        // Site branding
-        ctx.font = 'bold 42px serif';
-        ctx.fillStyle = '#7e1c2e';
+        // Bottom branding section
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'bold 32px monospace';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 180);
+        
+        ctx.fillStyle = template.textColor;
+        ctx.font = '24px monospace';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 140);
+        
+        ctx.fillStyle = template.textColor + '80';
+        ctx.font = '20px monospace';
+        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 100);
+        
+        console.log('Minimal template drawing complete');
+    }
+
+    drawArtisticTemplate(ctx, result, template, img, logo, width, height) {
+        // Background with pattern
+        ctx.fillStyle = template.bgColor;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Add artistic elements
+        ctx.fillStyle = template.accentColor + '15';
+        for (let i = 0; i < 25; i++) {
+            ctx.beginPath();
+            ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 120 + 40, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Logo at top corner with fallback
+        if (logo) {
+            const logoSize = 80;
+            ctx.drawImage(logo, width - logoSize - 40, 40, logoSize, logoSize);
+        } else {
+            ctx.fillStyle = template.accentColor;
+            ctx.font = 'bold 24px serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('LC', width - 50, 70);
+        }
+        
+        // Title and subtitle at top
+        ctx.textAlign = 'center';
+        ctx.fillStyle = template.textColor;
+        ctx.font = 'bold 56px serif';
+        this.wrapText(ctx, result.title, width / 2, 160, width - 80, 65);
+        
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'italic 38px serif';
+        ctx.fillText(result.subtitle, width / 2, 280);
+        
+        // Main artwork image with artistic frame
+        const imgSize = 360;
+        const imgX = (width - imgSize) / 2;
+        const imgY = 340;
+        
+        // Artistic multi-layered frame
+        ctx.fillStyle = template.accentColor;
+        ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
+        
+        ctx.fillStyle = template.textColor + '30';
+        ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+        
+        ctx.fillStyle = template.accentColor;
+        ctx.fillRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
+        
+        if (img) {
+            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+        } else {
+            // Artistic placeholder
+            ctx.fillStyle = template.bgColor;
+            ctx.fillRect(imgX, imgY, imgSize, imgSize);
+            ctx.fillStyle = template.accentColor;
+            ctx.font = '24px serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2);
+        }
+        
+        // Description
+        ctx.fillStyle = template.textColor;
+        ctx.font = '26px serif';
+        this.wrapText(ctx, result.description, width / 2, 760, width - 100, 32);
+        
+        // Quote with artistic styling
+        ctx.fillStyle = template.accentColor + 'CC';
+        ctx.font = 'italic 24px serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 950, width - 120, 30);
+        
+        // Branding
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'bold 34px serif';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 140);
+        
+        ctx.fillStyle = template.textColor;
+        ctx.font = '24px serif';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 100);
+    }
+
+    drawBoldTemplate(ctx, result, template, img, logo, width, height) {
+        // Bold black background
+        ctx.fillStyle = template.bgColor;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Bold accent stripe
+        ctx.fillStyle = template.accentColor;
+        ctx.fillRect(0, 150, width, 120);
+        
+        // Logo in the accent stripe with fallback
+        if (logo) {
+            const logoSize = 80;
+            const logoX = 50;
+            const logoY = 180;
+            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+        } else {
+            ctx.fillStyle = template.textColor;
+            ctx.font = 'bold 32px serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('LC STUDIO', 60, 220);
+        }
+        
+        // Large bold title
+        ctx.textAlign = 'center';
+        ctx.fillStyle = template.textColor;
+        ctx.font = 'bold 70px serif';
+        this.wrapText(ctx, result.title.toUpperCase(), width / 2, 400, width - 60, 80);
+        
+        // Subtitle
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'bold 44px serif';
+        ctx.fillText(result.subtitle.toUpperCase(), width / 2, 520);
+        
+        // Main artwork image with image fallback
+        const imgSize = 380;
+        const imgX = (width - imgSize) / 2;
+        const imgY = 600;
+        
+        // Bold square frame
+        ctx.fillStyle = template.accentColor;
+        ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+        
+        if (img) {
+            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+            
+            // Bold border
+            ctx.strokeStyle = template.textColor;
+            ctx.lineWidth = 6;
+            ctx.strokeRect(imgX, imgY, imgSize, imgSize);
+        } else {
+            // Bold placeholder
+            ctx.fillStyle = template.bgColor;
+            ctx.fillRect(imgX, imgY, imgSize, imgSize);
+            ctx.fillStyle = template.accentColor;
+            ctx.font = 'bold 28px serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2);
+        }
+        
+        // Description in bold style
+        ctx.fillStyle = template.textColor;
+        ctx.font = 'bold 26px serif';
+        this.wrapText(ctx, result.description, width / 2, 1050, width - 100, 32);
+        
+        // Quote
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'bold italic 24px serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1250, width - 120, 30);
+        
+        // Bold branding
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'bold 44px serif';
+        ctx.fillText('LEAH CORTEZ', width / 2, height - 180);
+        
+        ctx.fillStyle = template.textColor;
+        ctx.font = 'bold 28px serif';
+        ctx.fillText('PORTFOLIO QUIZ', width / 2, height - 130);
+        
+        ctx.font = 'bold 24px serif';
+        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, height - 90);
+    }
+
+    drawElegantTemplate(ctx, result, template, img, logo, width, height) {
+        // Elegant light background
+        ctx.fillStyle = template.bgColor;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Elegant outer border
+        ctx.strokeStyle = template.accentColor;
+        ctx.lineWidth = 8;
+        ctx.strokeRect(60, 60, width - 120, height - 120);
+        
+        // Inner decorative border
+        ctx.strokeStyle = template.accentColor + '60';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(100, 100, width - 200, height - 200);
+        
+        // Logo at top center with fallback
+        if (logo) {
+            const logoSize = 100;
+            const logoX = (width - logoSize) / 2;
+            const logoY = 120;
+            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+        } else {
+            ctx.fillStyle = template.accentColor;
+            ctx.font = 'bold 28px serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('LC', width / 2, 150);
+        }
+        
+        // Elegant typography
+        ctx.textAlign = 'center';
+        ctx.fillStyle = template.textColor;
+        ctx.font = '52px serif';
+        this.wrapText(ctx, result.title, width / 2, 280, width - 200, 60);
+        
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'italic 36px serif';
+        ctx.fillText(result.subtitle, width / 2, 380);
+        
+        // Main artwork image with elegant frame
+        if (img) {
+            const imgSize = 380;
+            const imgX = (width - imgSize) / 2;
+            const imgY = 450;
+            
+            // Elegant multi-layered frame
+            ctx.strokeStyle = template.accentColor;
+            ctx.lineWidth = 8;
+            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            
+            ctx.strokeStyle = template.accentColor + '80';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            
+            ctx.strokeStyle = template.accentColor + '40';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
+            
+            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+        }
+        
+        // Description in elegant typography
+        ctx.fillStyle = template.textColor;
+        ctx.font = '28px serif';
+        this.wrapText(ctx, result.description, width / 2, 900, width - 160, 34);
+        
+        // Quote in elegant italic style
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'italic 24px serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1150, width - 180, 30);
+        
+        // Elegant branding
+        ctx.fillStyle = template.textColor;
+        ctx.font = '34px serif';
         ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 200);
         
-        // URL
-        ctx.font = '32px monospace';
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillText('leahcortezstudios.art', width / 2, height - 150);
+        ctx.fillStyle = template.accentColor;
+        ctx.font = 'italic 24px serif';
+        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 160);
         
-        // Call to action
-        ctx.font = 'italic 36px serif';
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText('Take the quiz and find your creative match', width / 2, height - 80);
+        ctx.fillStyle = template.textColor + '80';
+        ctx.font = '22px serif';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 120);
     }
 
     wrapText(ctx, text, x, y, maxWidth, lineHeight) {
