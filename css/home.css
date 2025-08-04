@@ -1211,3 +1211,439 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 25px;
   }
 }
+
+/* --------------------
+   PORTFOLIO SOUL QUIZ
+   -------------------- */
+
+.portfolio-quiz-section {
+  padding: 80px 20px;
+  background: var(--dark-charcoal);
+  border-top: 3px solid var(--burgundy);
+  border-bottom: 3px solid var(--burgundy);
+  position: relative;
+}
+
+.portfolio-quiz-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../icons/starburst.svg') repeat;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.quiz-header h2 {
+  font-family: 'Pirata One', cursive;
+  font-size: 3.2rem;
+  color: var(--cream);
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  letter-spacing: 2px;
+}
+
+.quiz-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.3rem;
+  color: var(--light-gray);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(17, 17, 17, 0.95);
+  border-radius: 15px;
+  border: 2px solid var(--burgundy);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+/* Quiz Start Screen */
+.quiz-start {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.quiz-intro {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.quiz-intro h3 {
+  font-family: 'Pirata One', cursive;
+  font-size: 2.5rem;
+  color: var(--cream);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.quiz-intro p {
+  font-family: 'IM Fell English', serif;
+  color: var(--light-gray);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* Progress Bar */
+.progress-container {
+  padding: 30px 40px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(126, 28, 46, 0.3);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(126, 28, 46, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 1px solid var(--burgundy);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--burgundy), var(--cream));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.progress-text {
+  color: var(--light-gray);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+}
+
+/* Questions */
+.quiz-questions {
+  min-height: 400px;
+}
+
+.question-container {
+  padding: 40px;
+}
+
+.question-text {
+  font-family: 'Pirata One', cursive;
+  font-size: 2rem;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+}
+
+.answer-options {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.answer-option {
+  background: rgba(17, 17, 17, 0.8);
+  border: 2px solid var(--burgundy);
+  border-radius: 10px;
+  padding: 20px 25px;
+  color: var(--light-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'IM Fell English', serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+}
+
+.answer-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.answer-option:hover {
+  border-color: var(--cream);
+  background: rgba(126, 28, 46, 0.2);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.answer-option:hover::before {
+  left: 100%;
+}
+
+.answer-option.selected {
+  border-color: var(--cream);
+  background: rgba(126, 28, 46, 0.3);
+  color: var(--cream);
+  box-shadow: 0 0 20px rgba(126, 28, 46, 0.4);
+}
+
+/* Quiz Results */
+.quiz-results {
+  padding: 0;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.result-image {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.result-image .lace-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid var(--burgundy);
+}
+
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.result-text {
+  text-align: center;
+  width: 100%;
+}
+
+.result-text h3 {
+  font-family: 'Pirata One', cursive;
+  font-size: 2.5rem;
+  color: var(--cream);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.result-text h4 {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.4rem;
+  color: var(--burgundy);
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.result-text p {
+  font-family: 'IM Fell English', serif;
+  color: var(--light-gray);
+  line-height: 1.7;
+  margin-bottom: 25px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+.result-quote {
+  background: rgba(126, 28, 46, 0.2);
+  border-left: 4px solid var(--burgundy);
+  padding: 20px;
+  margin: 25px 0;
+  border-radius: 0 10px 10px 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.result-quote p {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: var(--cream);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.result-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+/* Quiz Buttons */
+.quiz-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  border: 2px solid var(--burgundy);
+  border-radius: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.quiz-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.quiz-btn:hover::before {
+  left: 100%;
+}
+
+.quiz-btn.primary {
+  background: var(--burgundy);
+  color: var(--cream);
+  box-shadow: 0 4px 15px rgba(126, 28, 46, 0.4);
+}
+
+.quiz-btn.primary:hover {
+  background: var(--cream);
+  color: var(--burgundy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(126, 28, 46, 0.6);
+}
+
+.quiz-btn.secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 2px solid var(--cream);
+}
+
+.quiz-btn.secondary:hover {
+  background: var(--cream);
+  color: var(--dark-charcoal);
+}
+
+.quiz-btn.tertiary {
+  background: transparent;
+  color: var(--light-gray);
+  border: 2px solid var(--light-gray);
+}
+
+.quiz-btn.tertiary:hover {
+  background: var(--light-gray);
+  color: var(--dark-charcoal);
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.active {
+  display: block !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-quiz-section {
+    padding: 60px 15px;
+  }
+  
+  .quiz-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .quiz-container {
+    margin: 0 10px;
+  }
+  
+  .quiz-start {
+    padding: 40px 25px;
+  }
+  
+  .question-container {
+    padding: 30px 25px;
+  }
+  
+  .question-text {
+    font-size: 1.5rem;
+  }
+  
+  .result-content {
+    padding: 30px 25px;
+  }
+  
+  .result-image {
+    max-width: 300px;
+    margin-bottom: 25px;
+  }
+  
+  .result-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .quiz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .quiz-subtitle {
+    font-size: 1rem;
+  }
+  
+  .question-text {
+    font-size: 1.3rem;
+  }
+  
+  .answer-option {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  .result-text h3 {
+    font-size: 1.8rem;
+  }
+}

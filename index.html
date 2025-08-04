@@ -197,6 +197,67 @@
             </div>
         </section>
 
+        <!-- Portfolio Soul Quiz Section -->
+        <section id="portfolio-quiz" class="portfolio-quiz-section">
+            <div class="container">
+                <div class="quiz-header">
+                    <h2>Which Piece of My Portfolio Matches Your Creative Spirit?</h2>
+                    <p class="quiz-subtitle">Take this quick quiz to discover which of my projects resonates with your artistic perspective.</p>
+                </div>
+                
+                <div class="quiz-container">
+                    <!-- Quiz Start Screen -->
+                    <div class="quiz-start active">
+                        <div class="quiz-intro">
+                            <h3>Your Creative Match</h3>
+                            <p>Answer a few thoughtful questions about your creative preferences and values. I'll match you with the project from my portfolio that speaks your language.</p>
+                            <button id="start-quiz-btn" class="quiz-btn primary">Start Quiz</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Questions -->
+                    <div class="quiz-questions hidden">
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="progress-text">Question <span id="current-question">1</span> of <span id="total-questions">5</span></span>
+                        </div>
+
+                        <div class="question-container">
+                            <h3 id="question-text" class="question-text"></h3>
+                            <div id="answer-options" class="answer-options"></div>
+                            <button id="next-question-btn" class="quiz-btn secondary hidden">Next Question</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Results -->
+                    <div class="quiz-results hidden">
+                        <div class="result-content">
+                            <div class="result-image">
+                                <div class="lace-wrapper">
+                                    <img id="result-project-image" src="" alt="" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="result-text">
+                                <h3 id="result-title"></h3>
+                                <h4 id="result-subtitle"></h4>
+                                <p id="result-description"></p>
+                                <div class="result-quote">
+                                    <p id="result-quote-text"></p>
+                                </div>
+                                <div class="result-actions">
+                                    <a id="view-project-btn" href="" class="quiz-btn primary">Explore This Piece</a>
+                                    <button id="share-result-btn" class="quiz-btn secondary">Share Your Result</button>
+                                    <button id="retake-quiz-btn" class="quiz-btn tertiary">Take Again</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Preview Section: A simple contact call-to-action -->
         <section id="contact-preview" class="contact-preview-section">
             <div class="container">
@@ -235,6 +296,7 @@
 
     <!-- The 'defer' attribute ensures the script is executed after the document has been parsed -->
     <script src="scripts/main.js" defer></script>
+    <script src="scripts/quiz.js" defer></script>
 
 </body>
 </html>
