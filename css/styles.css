@@ -323,6 +323,8 @@ nav {
   display: flex;
   align-items: center;
   text-decoration: none;
+  /* Ensure logo stays on the left */
+  margin-right: auto;
 }
 
 .logo-img {
@@ -375,6 +377,8 @@ nav {
   cursor: pointer;
   padding: 10px;
   transition: transform 0.3s ease;
+  /* Ensure hamburger stays on the right */
+  margin-left: auto;
 }
 
 .hamburger-icon {
