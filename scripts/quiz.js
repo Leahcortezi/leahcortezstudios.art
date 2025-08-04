@@ -13,52 +13,52 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "Your ideal Friday night vibe?",
+                text: "The thing that lives rent-free in your mind:",
                 answers: [
-                    { text: "Lost in a documentary rabbit hole", weights: { cards: 3, bookCover: 2, poster: 2, remains: 1 }},
-                    { text: "FaceTiming family until 2 AM", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
-                    { text: "Rearranging your entire room at midnight", weights: { bloom: 3, gnaw: 2, unraveling: 2, symbols: 1 }},
-                    { text: "Writing angry poetry about everything", weights: { poster: 2, heaven: 3, hunch: 2, reductive: 1 }}
+                    { text: "Random facts you learned at 2 AM", weights: { cards: 3, bookCover: 2, remains: 2, flag: 1 }},
+                    { text: "Something your abuela used to say", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
+                    { text: "A song that makes you want to create", weights: { bloom: 3, gnaw: 2, unraveling: 2, heaven: 1 }},
+                    { text: "Questions nobody else seems to be asking", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 1 }}
                 ]
             },
             {
                 id: 2,
-                text: "What makes you feel most like yourself?",
+                text: "Your happy place looks like:",
                 answers: [
-                    { text: "When I'm explaining something I'm passionate about", weights: { cards: 3, bookCover: 2, flag: 1, hunch: 1 }},
-                    { text: "Surrounded by things that tell my story", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
-                    { text: "Making something with my hands until they're dirty", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
-                    { text: "Calling out bullshit when I see it", weights: { poster: 3, heaven: 2, reductive: 2, symbols: 1 }}
+                    { text: "Surrounded by books with sticky notes everywhere", weights: { cards: 3, bookCover: 2, flag: 1, symbols: 1 }},
+                    { text: "Your childhood bedroom, but grown-up", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
+                    { text: "Chaos that somehow makes perfect sense to you", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
+                    { text: "Anywhere you can think without interruption", weights: { poster: 2, heaven: 2, hunch: 3, anointed: 2 }}
                 ]
             },
             {
                 id: 3,
-                text: "Your biggest creative block usually comes from...",
+                text: "The compliment that would actually make you cry:",
                 answers: [
-                    { text: "Getting too caught up in making it perfect", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
-                    { text: "Worrying people won't understand what it means to me", weights: { inheritance: 3, entre: 2, altar: 1, anointed: 2 }},
-                    { text: "Feeling like I'm not allowed to be this angry", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 1 }},
-                    { text: "Not knowing how to put feelings into form", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
+                    { text: "You taught me something I'll never forget", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
+                    { text: "You remind me so much of your family", weights: { inheritance: 3, entre: 2, altar: 2, anointed: 1 }},
+                    { text: "You made me see the world differently", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 2 }},
+                    { text: "You help me feel less alone", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
                 ]
             },
             {
                 id: 4,
-                text: "People always tell you...",
+                text: "Your superpower would be:",
                 answers: [
-                    { text: "You remember the weirdest details about everything", weights: { cards: 3, remains: 2, bookCover: 1, flag: 1 }},
-                    { text: "You're so close with your family", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
-                    { text: "You should write a book about your thoughts", weights: { poster: 2, heaven: 2, hunch: 3, reductive: 1 }},
-                    { text: "You feel everything so deeply", weights: { inheritance: 2, anointed: 3, gnaw: 3, unraveling: 2 }}
+                    { text: "Remembering every story someone tells you", weights: { cards: 2, remains: 3, bookCover: 1, inheritance: 2 }},
+                    { text: "Making people feel seen and understood", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
+                    { text: "Turning pain into something beautiful", weights: { bloom: 3, unraveling: 2, hunch: 2, symbols: 1 }},
+                    { text: "Asking the one question that changes everything", weights: { poster: 2, heaven: 2, reductive: 1, flag: 2 }}
                 ]
             },
             {
                 id: 5,
-                text: "When you're stressed, you...",
+                text: "When you leave this world, you want people to say:",
                 answers: [
-                    { text: "Organize everything until it makes sense", weights: { bookCover: 3, cards: 2, symbols: 2, flag: 1 }},
-                    { text: "Call someone who gets your whole story", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
-                    { text: "Make something until your hands are tired", weights: { bloom: 3, unraveling: 2, gnaw: 2, altar: 1 }},
-                    { text: "Write or vent until it's all out", weights: { poster: 2, heaven: 2, hunch: 2, anointed: 3 }}
+                    { text: "She never stopped learning new things", weights: { bookCover: 3, cards: 2, symbols: 1, flag: 1 }},
+                    { text: "She loved her people fiercely", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
+                    { text: "She felt everything and wasn't afraid to show it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 2 }},
+                    { text: "She made us think about things we'd never considered", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 2 }}
                 ]
             }
         ];
