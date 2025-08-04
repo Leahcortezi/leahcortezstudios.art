@@ -288,76 +288,52 @@ a:hover, a:focus {
    5. GLOBAL NAVIGATION
    -------------------- */
 
-.main-header {
-  /* Sets the height of the header area */
-  height: var(--nav-height);
-  /* Ensures the header has a solid background color */
-  background-color: var(--color-background);
-  /* A subtle bottom border to separate it from the main content */
-  border-bottom: 1px solid var(--color-secondary-accent);
-  /* Makes the header stay at the top of the viewport when scrolling */
+nav {
+  /* Makes the nav stay at the top of the viewport when scrolling */
   position: sticky;
   top: 0;
   /* A high z-index ensures it stays above other content */
   z-index: 1000;
+  /* Sets the height of the nav area */
+  height: var(--nav-height);
+  /* Ensures the nav has a solid background color */
+  background-color: var(--color-background);
+  /* A subtle bottom border to separate it from the main content */
+  border-bottom: 1px solid var(--color-secondary-accent);
 }
 
-/* Logo-only header styling */
-.logo-only {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 0 2rem;
-}
-
-.logo-only .logo {
-  display: flex;
-  align-items: center;
-}
-
-nav {
+.nav-container {
   /*
     Flexbox is used here for a powerful and simple alignment of nav items.
   */
   display: flex;
-  /* Pushes the logo to the left, hamburger to the right */
+  /* Pushes the logo to the left, menu to the right */
   justify-content: space-between;
   /* Vertically centers the items within the nav bar */
   align-items: center;
   /* Adds padding inside the nav bar */
   padding: 0 2rem;
-  /* Ensures the nav takes the full height of its parent header */
+  /* Ensures the nav takes the full height */
   height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.main-logo {
-  height: 45px; /* Larger size since it's now the focal point */
-  width: auto; /* Maintains aspect ratio */
-  display: block;
-  filter: brightness(0) invert(1); /* Makes the logo white */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  filter: brightness(0) invert(1);
   transition: transform 0.4s ease-in-out;
-  cursor: pointer;
 }
 
-.main-logo:hover {
+.logo-img:hover {
   transform: scale(1.05);
-}
-
-.hamburger img {
-  width: 40px;
-  height: 40px;
-  display: block;
-  margin: 0;
-  filter: brightness(0) invert(1); /* Makes the icon white */
-  /* Prevent SVG stretching and maintain aspect ratio */
-  object-fit: contain;
-  object-position: center;
-}
-
-/* Prevent body scroll when mobile menu is open */
-body.menu-open {
-  overflow: hidden;
 }
 
 /* Base navigation styles */
@@ -366,6 +342,8 @@ body.menu-open {
   list-style: none;
   /* Uses flexbox to lay out the list items horizontally */
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
@@ -395,26 +373,29 @@ body.menu-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 15px;
-  margin-left: auto;
-  margin-right: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: var(--nav-height);
-  /* Remove all extra right space, make it flush with right edge */
+  padding: 10px;
+  transition: transform 0.3s ease;
 }
 
-.hamburger img {
-    /* Sets the size of the custom flower icon - made bigger */
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease;
-    /* Prevent SVG stretching and maintain aspect ratio */
-    object-fit: contain;
-    object-position: center;
+.hamburger-icon {
+  /* Sets the size of the custom flower icon */
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+  /* Prevent SVG stretching and maintain aspect ratio */
+  object-fit: contain;
+  object-position: center;
 }
-/* Remove hover effects on hamburger */
+
+.hamburger:hover .hamburger-icon {
+  transform: scale(1.1);
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
 
 /* --------------------
    6. GLOBAL FOOTER
@@ -597,10 +578,7 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: 0;
-    padding: 15px;
-    border-radius: 0;
+    padding: 10px;
     transition: all 0.3s ease;
     cursor: pointer;
     background: transparent;
@@ -608,19 +586,18 @@ body.menu-open {
     z-index: 1001; /* Above the menu */
   }
 
-  /* Remove hover background */
-
-  .hamburger img {
-    width: 32px;
-    height: 32px;
+  .hamburger-icon {
+    width: 28px;
+    height: 28px;
     transition: transform 0.3s ease;
+    filter: brightness(0) invert(1);
     /* Prevent SVG stretching and maintain aspect ratio */
     object-fit: contain;
     object-position: center;
   }
 
   /* Rotate hamburger icon when menu is open */
-  .nav-links.active ~ .hamburger img {
+  .nav-links.active ~ .hamburger .hamburger-icon {
     transform: rotate(180deg);
   }
 }

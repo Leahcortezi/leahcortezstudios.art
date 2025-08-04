@@ -116,10 +116,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------
-     1. MOBILE NAVIGATION (REMOVED)
+     1. MOBILE NAVIGATION
      -------------------- */
   
-  // Mobile navigation removed - logo only header
+  // Hamburger menu functionality
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const body = document.body;
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      body.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu when clicking on nav links
+    const navLinksItems = navLinks.querySelectorAll('a');
+    navLinksItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      });
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+  }
 
   /* --------------------
      2. CONTACT FORM VALIDATION & SUBMISSION
