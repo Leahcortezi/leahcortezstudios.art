@@ -13,52 +13,52 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "What draws you to a piece of art first?",
+                text: "It's 2 AM and you're still up. What are you most likely doing?",
                 answers: [
-                    { text: "The story it tells about social issues", weights: { poster: 3, hunch: 2, flag: 1, reductive: 1 }},
-                    { text: "How it connects to cultural identity", weights: { altar: 3, inheritance: 2, entre: 2, remains: 1 }},
-                    { text: "The technical skill and craftsmanship", weights: { bookCover: 3, cards: 2, reductive: 1, symbols: 2 }},
-                    { text: "The emotional impact it creates", weights: { heaven: 3, inheritance: 2, altar: 1, anointed: 3, gnaw: 2 }}
+                    { text: "Diving deep into research rabbit holes", weights: { cards: 3, bookCover: 2, poster: 1, remains: 2 }},
+                    { text: "Creating something from your deepest feelings", weights: { inheritance: 3, altar: 2, anointed: 3, heaven: 2 }},
+                    { text: "Questioning everything you thought you knew", weights: { poster: 3, heaven: 2, hunch: 1, unraveling: 2 }},
+                    { text: "Getting lost in textures and materials", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }}
                 ]
             },
             {
                 id: 2,
-                text: "How do you approach creative challenges?",
+                text: "Your ideal creative space would have...",
                 answers: [
-                    { text: "Research thoroughly, then push boundaries", weights: { cards: 3, bookCover: 2, flag: 1, remains: 2 }},
-                    { text: "Trust my instincts and personal experience", weights: { inheritance: 3, altar: 2, anointed: 1, bloom: 2 }},
-                    { text: "Question assumptions and challenge norms", weights: { poster: 3, heaven: 2, hunch: 1, unraveling: 2 }},
-                    { text: "Find the essential core of the problem", weights: { reductive: 3, hunch: 2, symbols: 3, gnaw: 1 }}
+                    { text: "Books, journals, and organized chaos", weights: { cards: 3, bookCover: 2, flag: 1, remains: 2 }},
+                    { text: "Family photos and meaningful objects", weights: { inheritance: 3, altar: 2, entre: 2, anointed: 1 }},
+                    { text: "Bold statements and conversation starters", weights: { poster: 3, heaven: 2, hunch: 1, reductive: 1 }},
+                    { text: "Raw materials and room to get messy", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }}
                 ]
             },
             {
                 id: 3,
-                text: "What role should design play in society?",
+                text: "When someone asks about your work, you're most excited to talk about...",
                 answers: [
-                    { text: "Challenge misinformation and educate", weights: { poster: 3, bookCover: 2, cards: 1, heaven: 1 }},
-                    { text: "Preserve and honor cultural traditions", weights: { altar: 3, inheritance: 2, entre: 2, remains: 3 }},
-                    { text: "Create beauty and inspire emotion", weights: { heaven: 3, bloom: 2, altar: 1, unraveling: 2 }},
-                    { text: "Solve problems with clear communication", weights: { reductive: 3, bookCover: 2, symbols: 3, flag: 1 }}
+                    { text: "The wild story behind how you discovered it", weights: { cards: 3, poster: 2, heaven: 1, remains: 1 }},
+                    { text: "What it means to your family and heritage", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
+                    { text: "The message you're trying to get across", weights: { poster: 3, heaven: 2, reductive: 1, symbols: 2 }},
+                    { text: "The emotions it pulls out of people", weights: { inheritance: 3, anointed: 3, gnaw: 3, unraveling: 2 }}
                 ]
             },
             {
                 id: 4,
-                text: "What inspires your best work?",
+                text: "Your friends would describe you as someone who...",
                 answers: [
-                    { text: "Personal experiences and family history", weights: { inheritance: 3, altar: 2, entre: 2, anointed: 1 }},
-                    { text: "Current events and social justice", weights: { poster: 3, flag: 2, heaven: 1, reductive: 1 }},
-                    { text: "Learning something new and sharing it", weights: { cards: 3, bookCover: 2, hunch: 1, symbols: 1 }},
-                    { text: "Exploring inner landscapes and emotions", weights: { anointed: 3, unraveling: 2, gnaw: 3, bloom: 1 }}
+                    { text: "Always has the most fascinating facts to share", weights: { cards: 3, bookCover: 2, hunch: 1, symbols: 1 }},
+                    { text: "Remembers everyone's stories and connections", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
+                    { text: "Isn't afraid to call out what's wrong", weights: { poster: 3, heaven: 2, flag: 1, reductive: 1 }},
+                    { text: "Feels everything deeply and isn't ashamed of it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 1 }}
                 ]
             },
             {
                 id: 5,
-                text: "Which creative process appeals to you most?",
+                text: "If you could only save one thing from a fire, it would be...",
                 answers: [
-                    { text: "Detailed research and systematic development", weights: { cards: 3, bookCover: 2, flag: 1, remains: 1 }},
-                    { text: "Intuitive exploration and emotional expression", weights: { inheritance: 3, heaven: 2, anointed: 2, bloom: 3 }},
-                    { text: "Conceptual thinking and message craft", weights: { poster: 3, hunch: 2, symbols: 2, reductive: 1 }},
-                    { text: "Physical transformation and material exploration", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }}
+                    { text: "Your collection of books or research", weights: { cards: 3, bookCover: 2, flag: 1, remains: 1 }},
+                    { text: "A family heirloom or photo", weights: { inheritance: 3, altar: 2, entre: 2, anointed: 1 }},
+                    { text: "Something that represents your values", weights: { poster: 3, hunch: 2, symbols: 2, reductive: 1 }},
+                    { text: "The piece you made when you were hurting most", weights: { anointed: 3, gnaw: 3, bloom: 2, unraveling: 3 }}
                 ]
             }
         ];
