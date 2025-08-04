@@ -288,7 +288,7 @@ class PortfolioQuiz {
         this.showSection('quiz-start');
     }
 
-    showSection(sectionClass) {
+    async showSection(sectionClass) {
         
         try {
             const canvas = document.createElement('canvas');
