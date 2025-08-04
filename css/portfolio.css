@@ -4,6 +4,12 @@
   object-fit: cover;
 }
 
+/* Force Letter as Form to display as a square */
+.masonry-item[data-category="design"] .lace-wrapper img[alt*="Letter as Form"] {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
 /*
   Leah Cortez Studio Art - Portfolio Gallery Stylesheet
   ---
