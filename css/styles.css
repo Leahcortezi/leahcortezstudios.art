@@ -315,16 +315,14 @@ nav {
   padding: 0 2rem;
   /* Ensures the nav takes the full height */
   height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  /* Remove max-width and margin to allow full width */
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  /* Ensure logo stays on the left */
-  margin-right: auto;
 }
 
 .logo-img {
@@ -377,8 +375,6 @@ nav {
   cursor: pointer;
   padding: 10px;
   transition: transform 0.3s ease;
-  /* Ensure hamburger stays on the right */
-  margin-left: auto;
 }
 
 .hamburger-icon {
