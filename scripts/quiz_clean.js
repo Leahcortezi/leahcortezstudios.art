@@ -910,55 +910,98 @@ class PortfolioQuiz {
     }
 
     showShareOptions(canvas, result) {
-        console.log('📱 Showing share options with social media icons');
+        console.log('📱 Showing user-friendly share options');
         
-        // Create modal with share options
+        // Create modal with improved share options
         const modal = document.createElement('div');
         modal.className = 'share-modal';
         modal.innerHTML = `
             <div class="share-modal-content">
-                <h3>Share Your Creative Soul Match</h3>
-                <div class="canvas-preview">
-                    <img src="${canvas.toDataURL()}" alt="Result Preview" />
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                <div class="share-header">
+                    <h3>Share Your Creative Match!</h3>
+                    <p>Share your "${result.title}" result and inspire others to discover their creative soul.</p>
                 </div>
-                <div class="share-buttons">
-                    <button class="share-facebook-btn social-share-btn">
-                        <img src="icons/facebook.svg" alt="Facebook" width="24" height="24" />
-                        <span>Share on Facebook</span>
-                    </button>
-                    <button class="share-instagram-btn social-share-btn">
-                        <img src="icons/instagram.svg" alt="Instagram" width="24" height="24" />
-                        <span>Share to Instagram Stories</span>
-                    </button>
-                    <button class="copy-link-btn">
-                        <img src="icons/link.svg" alt="Link" width="20" height="20" />
-                        <span>Copy Link</span>
-                    </button>
+                
+                <div class="share-preview">
+                    <img src="${canvas.toDataURL()}" alt="Your quiz result preview" class="result-preview-img" />
                 </div>
-                <button class="close-modal-btn">×</button>
+                
+                <div class="share-options">
+                    <div class="share-section">
+                        <h4>📱 Social Media</h4>
+                        <div class="social-buttons">
+                            <button class="share-btn instagram-btn">
+                                <img src="icons/instagram.svg" alt="" width="20" height="20" />
+                                <span>Instagram Stories</span>
+                            </button>
+                            <button class="share-btn facebook-btn">
+                                <img src="icons/facebook.svg" alt="" width="20" height="20" />
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="share-section">
+                        <h4>🔗 Quick Share</h4>
+                        <div class="quick-share">
+                            <button class="share-btn copy-link-btn">
+                                <img src="icons/link.svg" alt="" width="18" height="18" />
+                                <span>Copy Link</span>
+                            </button>
+                            <button class="share-btn save-image-btn">
+                                <img src="icons/download.svg" alt="" width="18" height="18" />
+                                <span>Save Image</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="share-section">
+                        <h4>✨ Share Text</h4>
+                        <div class="share-text">
+                            <textarea readonly class="share-message" rows="3">I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!</textarea>
+                            <button class="copy-text-btn">Copy Text</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
         
         document.body.appendChild(modal);
         
-        // Bind share button events
-        modal.querySelector('.share-facebook-btn').addEventListener('click', () => {
-            this.shareToFacebook(canvas, result);
+        // Bind event listeners with improved UX
+        modal.querySelector('.instagram-btn').addEventListener('click', () => {
+            this.shareToInstagram(canvas, result);
         });
         
-        modal.querySelector('.share-instagram-btn').addEventListener('click', () => {
-            this.shareToInstagram(canvas, result);
+        modal.querySelector('.facebook-btn').addEventListener('click', () => {
+            this.shareToFacebook(canvas, result);
         });
         
         modal.querySelector('.copy-link-btn').addEventListener('click', () => {
             this.copyShareLink(result);
         });
         
+        modal.querySelector('.save-image-btn').addEventListener('click', () => {
+            this.saveImage(canvas, result);
+        });
+        
+        modal.querySelector('.copy-text-btn').addEventListener('click', () => {
+            this.copyShareText(result);
+        });
+        
         modal.querySelector('.close-modal-btn').addEventListener('click', () => {
             document.body.removeChild(modal);
         });
         
-        // Show modal
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+        
+        // Show modal with animation
         setTimeout(() => modal.classList.add('active'), 100);
     }
 
@@ -966,27 +1009,43 @@ class PortfolioQuiz {
         // Save the image first
         canvas.toBlob((blob) => {
             const link = document.createElement('a');
-            link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+            link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
             link.href = canvas.toDataURL();
             link.click();
             
-            // Show Facebook sharing instructions
+            // Show user-friendly instructions
             setTimeout(() => {
-                const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+                const shareText = encodeURIComponent(`I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`);
                 const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
                 
-                // Open Facebook share dialog in a new window
-                const fbWindow = window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+                // Try to open Facebook share dialog
+                const fbWindow = window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
                 
-                // Show instructions for adding the image
+                // Show simple, clear instructions
                 if (fbWindow) {
                     setTimeout(() => {
-                        alert(`Image saved! 📖 To share on Facebook:\n\n1. The image has been downloaded to your device\n2. In the Facebook share window that opened, click "Add Photo"\n3. Upload the downloaded gothic quiz image\n4. Add your personal message and share! 🖤`);
+                        const modal = document.createElement('div');
+                        modal.className = 'instruction-modal';
+                        modal.innerHTML = `
+                            <div class="instruction-content">
+                                <h3>🎉 Image Downloaded!</h3>
+                                <p><strong>Facebook sharing made easy:</strong></p>
+                                <ol>
+                                    <li>In the Facebook window that opened, click <strong>"Add Photo"</strong></li>
+                                    <li>Upload your downloaded quiz result image</li>
+                                    <li>Add your personal message and share!</li>
+                                </ol>
+                                <button class="got-it-btn">Got it! ✓</button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                        modal.querySelector('.got-it-btn').addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                        setTimeout(() => modal.classList.add('active'), 100);
                     }, 1000);
-                } else {
-                    alert(`Image saved! 📖 To share on Facebook:\n\n1. Go to Facebook.com\n2. Create a new post\n3. Upload the downloaded gothic quiz image\n4. Add this text: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n5. Share your result! 🖤`);
                 }
-            }, 500);
+            }, 300);
         }, 'image/png');
     }
 
@@ -1034,7 +1093,20 @@ class PortfolioQuiz {
     copyShareLink(result) {
         const shareUrl = `https://leahcortezstudios.art/?result=${result.category.toLowerCase().replace(' work', '')}`;
         navigator.clipboard.writeText(shareUrl).then(() => {
-            alert('Share link copied to clipboard!');
+            // Show success feedback
+            const button = document.querySelector('.copy-link-btn');
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<img src="icons/link.svg" alt="" width="18" height="18" /><span>Copied! ✓</span>';
+            button.style.background = '#28a745';
+            button.style.borderColor = '#28a745';
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+                button.style.borderColor = '';
+            }, 2000);
+        }).catch(() => {
+            // Fallback
+            alert('Quiz link: ' + shareUrl);
         });
     }
 
@@ -1052,6 +1124,44 @@ class PortfolioQuiz {
                 alert('Result text copied to clipboard!');
             });
         }
+    }
+
+    copyShareText(result) {
+        const shareText = `I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`;
+        navigator.clipboard.writeText(shareText).then(() => {
+            // Show success feedback
+            const button = document.querySelector('.copy-text-btn');
+            const originalText = button.textContent;
+            button.textContent = 'Copied! ✓';
+            button.style.background = '#28a745';
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const textArea = document.querySelector('.share-message');
+            textArea.select();
+            document.execCommand('copy');
+            alert('Share text copied to clipboard!');
+        });
+    }
+
+    saveImage(canvas, result) {
+        const link = document.createElement('a');
+        link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        // Show success feedback
+        const button = document.querySelector('.save-image-btn');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<span>Saved! ✓</span>';
+        button.style.background = '#28a745';
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.style.background = '';
+        }, 2000);
     }
 
     resetQuiz() {
