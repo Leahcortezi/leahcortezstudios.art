@@ -374,30 +374,241 @@ class PortfolioQuiz {
     shareResult() {
         const result = this.results[this.topResult];
         
-        if (navigator.share) {
-            navigator.share({
-                title: `I got "${result.title}" - ${result.subtitle}`,
-                text: `I just took Leah Cortez's Portfolio Soul Quiz and discovered I'm "${result.subtitle}"! Take the quiz and find your artistic twin.`,
-                url: window.location.href
-            });
-        } else {
-            // Fallback for browsers that don't support Web Share API
-            const shareText = `I got "${result.title}" - ${result.subtitle}! Take Leah Cortez's Portfolio Soul Quiz to find your artistic twin: ${window.location.href}`;
+        // Create Instagram story-style image
+        this.generateShareImage(result).then(imageDataUrl => {
+            if (navigator.share && navigator.canShare) {
+                // Try to share with image for supported platforms
+                fetch(imageDataUrl)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], 'leah-cortez-quiz-result.png', { type: 'image/png' });
+                        
+                        if (navigator.canShare({ files: [file] })) {
+                            navigator.share({
+                                title: `I got "${result.title}" - ${result.subtitle}`,
+                                text: `I just took Leah Cortez's Portfolio Soul Quiz and discovered I'm "${result.subtitle}"! 🎨✨ Take the quiz and find your creative match.`,
+                                url: window.location.href,
+                                files: [file]
+                            });
+                        } else {
+                            // Fall back to text sharing
+                            this.fallbackShare(result, imageDataUrl);
+                        }
+                    })
+                    .catch(() => this.fallbackShare(result, imageDataUrl));
+            } else {
+                this.fallbackShare(result, imageDataUrl);
+            }
+        });
+    }
+
+    fallbackShare(result, imageDataUrl) {
+        // Create a download link for the image
+        const link = document.createElement('a');
+        link.download = 'leah-cortez-quiz-result.png';
+        link.href = imageDataUrl;
+        
+        // Create share modal
+        const modal = this.createShareModal(result, imageDataUrl);
+        document.body.appendChild(modal);
+        
+        // Show modal
+        setTimeout(() => modal.classList.add('active'), 10);
+    }
+
+    createShareModal(result, imageDataUrl) {
+        const modal = document.createElement('div');
+        modal.className = 'share-modal';
+        modal.innerHTML = `
+            <div class="share-modal-content">
+                <div class="share-modal-header">
+                    <h3>Share Your Result</h3>
+                    <button class="share-modal-close">&times;</button>
+                </div>
+                <div class="share-modal-body">
+                    <div class="share-preview">
+                        <img src="${imageDataUrl}" alt="Your quiz result" class="share-image-preview">
+                    </div>
+                    <p class="share-caption">I got "${result.title}" - ${result.subtitle}! 🎨✨<br>
+                    Take Leah Cortez's Portfolio Soul Quiz: ${window.location.href}</p>
+                    <div class="share-actions">
+                        <button class="share-btn download-btn">
+                            <span class="btn-icon">⬇️</span>
+                            Download Image
+                        </button>
+                        <button class="share-btn copy-btn">
+                            <span class="btn-icon">📋</span>
+                            Copy Text
+                        </button>
+                        <div class="share-social">
+                            <a href="https://www.instagram.com/stories/camera/" target="_blank" class="social-share-btn instagram">
+                                <span class="btn-icon">📸</span>
+                                Instagram Story
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="social-share-btn facebook">
+                                <span class="btn-icon">📘</span>
+                                Facebook
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(`I got "${result.title}" - ${result.subtitle}! Take Leah Cortez's Portfolio Soul Quiz:`)}&url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-share-btn twitter">
+                                <span class="btn-icon">🐦</span>
+                                Twitter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add event listeners
+        const closeBtn = modal.querySelector('.share-modal-close');
+        const downloadBtn = modal.querySelector('.download-btn');
+        const copyBtn = modal.querySelector('.copy-btn');
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            setTimeout(() => document.body.removeChild(modal), 300);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'leah-cortez-quiz-result.png';
+            link.href = imageDataUrl;
+            link.click();
+        });
+
+        copyBtn.addEventListener('click', () => {
+            const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz and find your creative match: ${window.location.href}`;
             
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(shareText);
-                alert('Result copied to clipboard! Share it on your favorite social platform.');
+                copyBtn.innerHTML = '<span class="btn-icon">✅</span>Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<span class="btn-icon">📋</span>Copy Text';
+                }, 2000);
+            }
+        });
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeBtn.click();
+            }
+        });
+
+        return modal;
+    }
+
+    async generateShareImage(result) {
+        return new Promise((resolve) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Instagram story dimensions (9:16 aspect ratio)
+            canvas.width = 1080;
+            canvas.height = 1920;
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#1a1a1a');
+            gradient.addColorStop(0.5, '#2d1b25');
+            gradient.addColorStop(1, '#1a1a1a');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add subtle pattern overlay
+            ctx.fillStyle = 'rgba(126, 28, 46, 0.03)';
+            for (let i = 0; i < 20; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100 + 50, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // Load and draw the result image
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+                // Draw artwork image (centered, maintaining aspect ratio)
+                const imageSize = 400;
+                const imageX = (canvas.width - imageSize) / 2;
+                const imageY = 300;
+                
+                // Add border around image
+                ctx.fillStyle = '#7e1c2e';
+                ctx.fillRect(imageX - 10, imageY - 10, imageSize + 20, imageSize + 20);
+                
+                // Draw image
+                ctx.drawImage(img, imageX, imageY, imageSize, imageSize);
+                
+                // Add text content
+                this.addTextToCanvas(ctx, result, canvas.width, canvas.height);
+                
+                resolve(canvas.toDataURL('image/png'));
+            };
+            
+            img.onerror = () => {
+                // If image fails to load, create without it
+                this.addTextToCanvas(ctx, result, canvas.width, canvas.height);
+                resolve(canvas.toDataURL('image/png'));
+            };
+            
+            img.src = result.image;
+        });
+    }
+
+    addTextToCanvas(ctx, result, width, height) {
+        // Set text properties
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#f5c6d6';
+        
+        // Main title
+        ctx.font = 'bold 72px serif';
+        this.wrapText(ctx, result.title, width / 2, 200, width - 100, 80);
+        
+        // Subtitle
+        ctx.font = 'italic 48px serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText(result.subtitle, width / 2, 260);
+        
+        // Quote
+        ctx.font = '36px serif';
+        ctx.fillStyle = '#f5c6d6';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 800, width - 120, 50);
+        
+        // Site branding
+        ctx.font = 'bold 42px serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 200);
+        
+        // URL
+        ctx.font = '32px monospace';
+        ctx.fillStyle = '#f5c6d6';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 150);
+        
+        // Call to action
+        ctx.font = 'italic 36px serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('Take the quiz and find your creative match', width / 2, height - 80);
+    }
+
+    wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+        const words = text.split(' ');
+        let line = '';
+        let currentY = y;
+
+        for (let n = 0; n < words.length; n++) {
+            const testLine = line + words[n] + ' ';
+            const metrics = ctx.measureText(testLine);
+            const testWidth = metrics.width;
+            
+            if (testWidth > maxWidth && n > 0) {
+                ctx.fillText(line, x, currentY);
+                line = words[n] + ' ';
+                currentY += lineHeight;
             } else {
-                // Final fallback
-                const textArea = document.createElement('textarea');
-                textArea.value = shareText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert('Result copied to clipboard! Share it on your favorite social platform.');
+                line = testLine;
             }
         }
+        ctx.fillText(line, x, currentY);
     }
 
     showSection(sectionClass) {
