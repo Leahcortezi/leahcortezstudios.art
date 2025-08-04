@@ -807,8 +807,8 @@
 
 .character-modal {
   display: none;
-  position: fixed;
-  z-index: 10000;
+  position: fixed !important;
+  z-index: 99999 !important;
   left: 0;
   top: 0;
   width: 100vw;
@@ -820,13 +820,13 @@
 
 .modal-content {
   background-color: var(--color-background);
-  margin: 15vh auto 5vh;
+  margin: 20vh auto 5vh !important;
   padding: 0;
   border: 1px solid rgba(248, 200, 208, 0.2);
   border-radius: 12px;
   width: 90%;
   max-width: 900px;
-  max-height: 70vh;
+  max-height: 65vh;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   position: relative;
   animation: modalSlideIn 0.3s ease-out;
@@ -850,11 +850,11 @@
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1.5rem !important;
   transition: color 0.3s ease;
-  z-index: 10;
+  z-index: 99999 !important;
   width: 40px;
   height: 40px;
   display: flex;
@@ -872,7 +872,7 @@
   display: grid;
   grid-template-columns: 350px 1fr;
   min-height: 500px;
-  max-height: 70vh;
+  max-height: 65vh;
 }
 
 .modal-image {
@@ -900,7 +900,7 @@
 .modal-details {
   padding: 2rem;
   overflow-y: auto;
-  max-height: calc(70vh - 4rem);
+  max-height: calc(65vh - 4rem);
 }
 
 .modal-details h3 {
