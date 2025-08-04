@@ -131,19 +131,19 @@ class PortfolioQuiz {
 
     bindEvents() {
         // Start quiz button
-        const startButton = document.querySelector('.start-quiz-btn');
+        const startButton = document.querySelector('#start-quiz-btn');
         if (startButton) {
             startButton.addEventListener('click', () => this.startQuiz());
         }
 
         // Next question button
-        const nextButton = document.querySelector('.next-question-btn');
+        const nextButton = document.querySelector('#next-question-btn');
         if (nextButton) {
             nextButton.addEventListener('click', () => this.nextQuestion());
         }
 
         // Retake quiz button
-        const retakeButton = document.querySelector('.retake-quiz-btn');
+        const retakeButton = document.querySelector('#retake-quiz-btn');
         if (retakeButton) {
             retakeButton.addEventListener('click', () => this.resetQuiz());
         }
@@ -157,28 +157,39 @@ class PortfolioQuiz {
 
     displayQuestion() {
         const question = this.questions[this.currentQuestion];
-        const questionContainer = document.querySelector('.question-container');
         
-        if (questionContainer) {
-            questionContainer.innerHTML = `
-                <div class="question-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${((this.currentQuestion + 1) / this.questions.length) * 100}%"></div>
-                    </div>
-                    <span class="progress-text">Question ${this.currentQuestion + 1} of ${this.questions.length}</span>
-                </div>
-                <h2 class="question-text">${question.text}</h2>
-                <div class="options-container">
-                    ${question.options.map((option, index) => `
-                        <button class="option-btn" data-category="${option.category}" data-weight="${option.weight}" data-index="${index}">
-                            ${option.text}
-                        </button>
-                    `).join('')}
-                </div>
-            `;
+        // Update progress
+        const progressFill = document.querySelector('.progress-fill');
+        const currentQuestionSpan = document.querySelector('#current-question');
+        const totalQuestionsSpan = document.querySelector('#total-questions');
+        
+        if (progressFill) {
+            progressFill.style.width = `${((this.currentQuestion + 1) / this.questions.length) * 100}%`;
+        }
+        if (currentQuestionSpan) {
+            currentQuestionSpan.textContent = this.currentQuestion + 1;
+        }
+        if (totalQuestionsSpan) {
+            totalQuestionsSpan.textContent = this.questions.length;
+        }
+        
+        // Update question text
+        const questionText = document.querySelector('#question-text');
+        if (questionText) {
+            questionText.textContent = question.text;
+        }
+        
+        // Update answer options
+        const answerOptions = document.querySelector('#answer-options');
+        if (answerOptions) {
+            answerOptions.innerHTML = question.options.map((option, index) => `
+                <button class="option-btn quiz-btn" data-category="${option.category}" data-weight="${option.weight}" data-index="${index}">
+                    ${option.text}
+                </button>
+            `).join('');
 
             // Bind option buttons
-            const optionButtons = questionContainer.querySelectorAll('.option-btn');
+            const optionButtons = answerOptions.querySelectorAll('.option-btn');
             optionButtons.forEach(button => {
                 button.addEventListener('click', (e) => this.selectAnswer(e));
             });
@@ -236,53 +247,40 @@ class PortfolioQuiz {
     displayResult(result) {
         this.showSection('quiz-results');
         
-        const resultContainer = document.querySelector('.result-container');
-        if (resultContainer) {
-            resultContainer.innerHTML = `
-                <div class="result-header">
-                    <h2 class="result-title">${result.title}</h2>
-                    <p class="result-subtitle">${result.subtitle}</p>
-                </div>
-                <div class="result-content">
-                    <div class="result-image">
-                        <img src="${result.image}" alt="${result.title}" />
-                    </div>
-                    <div class="result-description">
-                        <p>${result.description}</p>
-                        <blockquote>"${result.quote}"</blockquote>
-                    </div>
-                </div>
-                <div class="result-actions">
-                    <button class="share-result-btn">Share Your Result</button>
-                    <button class="explore-collection-btn" data-collection="${result.category.toLowerCase().replace(' work', '')}">
-                        Explore Collection
-                    </button>
-                </div>
-                <div class="portfolio-preview">
-                    <h3>Your Recommended Works:</h3>
-                    <div class="works-grid">
-                        ${result.works.map(work => `
-                            <a href="${work.path}" class="work-card">
-                                <span>${work.name}</span>
-                            </a>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            // Bind result action buttons
-            const shareButton = resultContainer.querySelector('.share-result-btn');
-            if (shareButton) {
-                shareButton.addEventListener('click', () => this.shareResult(result));
+        // Update the existing HTML elements
+        const resultTitle = document.querySelector('#result-title');
+        const resultSubtitle = document.querySelector('#result-subtitle');
+        const resultDescription = document.querySelector('#result-description');
+        const resultQuote = document.querySelector('#result-quote-text');
+        const resultImage = document.querySelector('#result-project-image');
+        const viewProjectBtn = document.querySelector('#view-project-btn');
+        const shareResultBtn = document.querySelector('#share-result-btn');
+        const retakeQuizBtn = document.querySelector('#retake-quiz-btn');
+        
+        if (resultTitle) resultTitle.textContent = result.title;
+        if (resultSubtitle) resultSubtitle.textContent = result.subtitle;
+        if (resultDescription) resultDescription.textContent = result.description;
+        if (resultQuote) resultQuote.textContent = `"${result.quote}"`;
+        if (resultImage) {
+            resultImage.src = result.image;
+            resultImage.alt = result.title;
+        }
+        
+        if (viewProjectBtn) {
+            // Link to the first work in the collection
+            const firstWork = result.works[0];
+            if (firstWork) {
+                viewProjectBtn.href = firstWork.path;
             }
-
-            const exploreButton = resultContainer.querySelector('.explore-collection-btn');
-            if (exploreButton) {
-                exploreButton.addEventListener('click', (e) => {
-                    const collection = e.target.dataset.collection;
-                    window.location.href = `collections/${collection}/`;
-                });
-            }
+        }
+        
+        // Bind event listeners
+        if (shareResultBtn) {
+            shareResultBtn.addEventListener('click', () => this.shareResult(result));
+        }
+        
+        if (retakeQuizBtn) {
+            retakeQuizBtn.addEventListener('click', () => this.resetQuiz());
         }
     }
 
@@ -878,15 +876,23 @@ class PortfolioQuiz {
     }
 
     showSection(sectionClass) {
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
+        // Hide all quiz sections
+        const quizSections = ['quiz-start', 'quiz-questions', 'quiz-results'];
+        quizSections.forEach(section => {
+            const element = document.querySelector(`.${section}`);
+            if (element) {
+                element.style.display = 'none';
+                element.classList.remove('active');
+                element.classList.add('hidden');
+            }
         });
         
         // Show the requested section
         const targetSection = document.querySelector(`.${sectionClass}`);
         if (targetSection) {
             targetSection.style.display = 'block';
+            targetSection.classList.remove('hidden');
+            targetSection.classList.add('active');
         }
     }
 }
