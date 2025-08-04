@@ -16,49 +16,49 @@ class PortfolioQuiz {
                 text: "The thing that lives rent-free in your mind:",
                 answers: [
                     { text: "Random facts you learned at 2 AM", weights: { cards: 3, bookCover: 2, remains: 2, flag: 1 }},
-                    { text: "Something your abuela used to say", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
-                    { text: "A song that makes you want to create", weights: { bloom: 3, gnaw: 2, unraveling: 2, heaven: 1 }},
-                    { text: "Questions nobody else seems to be asking", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 1 }}
+                    { text: "Something your family always says", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
+                    { text: "A melody that makes you want to create", weights: { bloom: 3, gnaw: 2, unraveling: 2, heaven: 1 }},
+                    { text: "Questions that keep you up at night", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 1 }}
                 ]
             },
             {
                 id: 2,
                 text: "Your happy place looks like:",
                 answers: [
-                    { text: "Surrounded by books with sticky notes everywhere", weights: { cards: 3, bookCover: 2, flag: 1, symbols: 1 }},
-                    { text: "Your childhood bedroom, but grown-up", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
-                    { text: "Chaos that somehow makes perfect sense to you", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
-                    { text: "Anywhere you can think without interruption", weights: { poster: 2, heaven: 2, hunch: 3, anointed: 2 }}
+                    { text: "A cozy corner with books and good lighting", weights: { cards: 3, bookCover: 2, flag: 1, symbols: 1 }},
+                    { text: "Anywhere that smells like home cooking", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
+                    { text: "A creative mess that somehow makes sense", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
+                    { text: "A quiet space where your thoughts can wander", weights: { poster: 2, heaven: 2, hunch: 3, anointed: 2 }}
                 ]
             },
             {
                 id: 3,
                 text: "The compliment that would actually make you cry:",
                 answers: [
-                    { text: "You taught me something I'll never forget", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
-                    { text: "You remind me so much of your family", weights: { inheritance: 3, entre: 2, altar: 2, anointed: 1 }},
-                    { text: "You made me see the world differently", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 2 }},
-                    { text: "You help me feel less alone", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
+                    { text: "You helped me understand something new", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
+                    { text: "You remind me of the best parts of our family", weights: { inheritance: 3, entre: 2, altar: 2, anointed: 1 }},
+                    { text: "You changed how I see the world", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 2 }},
+                    { text: "You make me feel less alone in this", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
                 ]
             },
             {
                 id: 4,
-                text: "Your superpower would be:",
+                text: "Your friends come to you when they need:",
                 answers: [
-                    { text: "Remembering every story someone tells you", weights: { cards: 2, remains: 3, bookCover: 1, inheritance: 2 }},
-                    { text: "Making people feel seen and understood", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
-                    { text: "Turning pain into something beautiful", weights: { bloom: 3, unraveling: 2, hunch: 2, symbols: 1 }},
-                    { text: "Asking the one question that changes everything", weights: { poster: 2, heaven: 2, reductive: 1, flag: 2 }}
+                    { text: "Someone who remembers all the details", weights: { cards: 2, remains: 3, bookCover: 1, inheritance: 2 }},
+                    { text: "A warm hug and your mom's recipe", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
+                    { text: "Help turning their feelings into something real", weights: { bloom: 3, unraveling: 2, hunch: 2, symbols: 1 }},
+                    { text: "Someone who asks the right questions", weights: { poster: 2, heaven: 2, reductive: 1, flag: 2 }}
                 ]
             },
             {
                 id: 5,
                 text: "When you leave this world, you want people to say:",
                 answers: [
-                    { text: "She never stopped learning new things", weights: { bookCover: 3, cards: 2, symbols: 1, flag: 1 }},
-                    { text: "She loved her people fiercely", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
-                    { text: "She felt everything and wasn't afraid to show it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 2 }},
-                    { text: "She made us think about things we'd never considered", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 2 }}
+                    { text: "She was always learning something new", weights: { bookCover: 3, cards: 2, symbols: 1, flag: 1 }},
+                    { text: "She loved her people with everything she had", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
+                    { text: "She felt deeply and wasn't afraid to show it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 2 }},
+                    { text: "She made us think about things differently", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 2 }}
                 ]
             }
         ];
