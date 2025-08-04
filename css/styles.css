@@ -302,6 +302,20 @@ a:hover, a:focus {
   z-index: 1000;
 }
 
+/* Logo-only header styling */
+.logo-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+.logo-only .logo {
+  display: flex;
+  align-items: center;
+}
+
 nav {
   /*
     Flexbox is used here for a powerful and simple alignment of nav items.
@@ -318,12 +332,16 @@ nav {
 }
 
 .main-logo {
-  height: 35px; /* Smaller size to fit better with navigation */
+  height: 45px; /* Larger size since it's now the focal point */
   width: auto; /* Maintains aspect ratio */
   display: block;
   filter: brightness(0) invert(1); /* Makes the logo white */
   transition: transform 0.4s ease-in-out;
   cursor: pointer;
+}
+
+.main-logo:hover {
+  transform: scale(1.05);
 }
 
 .hamburger img {
@@ -902,5 +920,30 @@ body.menu-open {
   
   .social-share-btn {
     grid-column: 1;
+  }
+}
+
+/* Mobile responsive styles for logo-only header */
+@media (max-width: 768px) {
+  .logo-only {
+    padding: 0 1rem;
+  }
+  
+  .main-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    height: 60px;
+  }
+  
+  .logo-only {
+    padding: 0 0.5rem;
+  }
+  
+  .main-logo {
+    height: 35px;
   }
 }

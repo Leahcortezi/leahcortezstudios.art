@@ -116,61 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------
-     1. MOBILE NAVIGATION (HAMBURGER MENU)
+     1. MOBILE NAVIGATION (REMOVED)
      -------------------- */
-
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (hamburger && navLinks) {
-    // Toggle menu on hamburger click
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      // Prevent body scroll when menu is open
-      if (navLinks.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Close menu when clicking nav links
-    const navLinkItems = navLinks.querySelectorAll('a');
-    navLinkItems.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // Close menu when clicking backdrop (outside menu area)
-    document.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('active')) {
-        const rect = navLinks.getBoundingClientRect();
-        // If click is outside the menu panel and not on hamburger
-        if (e.clientX < rect.left && !hamburger.contains(e.target)) {
-          navLinks.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      }
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Close menu on window resize to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
+  
+  // Mobile navigation removed - logo only header
 
   /* --------------------
      2. CONTACT FORM VALIDATION & SUBMISSION
@@ -271,15 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Add keyboard support for hamburger menu
-  if (hamburger) {
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        hamburger.click();
-      }
-    });
-  }
+  // Mobile navigation removed - no hamburger menu keyboard support needed
 
   /* --------------------
      6. MAGNIFYING GLASS EFFECT FOR WORK PAGES
