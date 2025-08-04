@@ -807,33 +807,62 @@ class PortfolioQuiz {
     }
 
     shareToFacebook(canvas, result) {
-        canvas.toBlob((blob) => {
-            const formData = new FormData();
-            formData.append('image', blob, 'gothic-quiz-result.png');
-            formData.append('message', `I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
-            
-            // Open Facebook share dialog
-            const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
-            const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareText}`, '_blank', 'width=600,height=400');
-        }, 'image/png');
-    }
-
-    shareToInstagram(canvas, result) {
-        // For Instagram Stories, we'll save the image and show instructions
+        // Save the image first
         canvas.toBlob((blob) => {
             const link = document.createElement('a');
             link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
             link.href = canvas.toDataURL();
             link.click();
             
-            // Show Instagram sharing instructions
+            // Show Facebook sharing instructions
             setTimeout(() => {
-                alert(`Image saved! 📱 To share to Instagram Stories:\n\n1. Open Instagram app\n2. Tap "Your Story" or swipe right\n3. Select the downloaded image\n4. Add any additional text or stickers\n5. Share your gothic quiz result! 🖤`);
+                const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+                const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
                 
-                // Also try to open Instagram if on mobile
-                if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    window.open('instagram://story-camera', '_blank');
+                // Open Facebook share dialog in a new window
+                const fbWindow = window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+                
+                // Show instructions for adding the image
+                if (fbWindow) {
+                    setTimeout(() => {
+                        alert(`Image saved! 📖 To share on Facebook:\n\n1. The image has been downloaded to your device\n2. In the Facebook share window that opened, click "Add Photo"\n3. Upload the downloaded gothic quiz image\n4. Add your personal message and share! 🖤`);
+                    }, 1000);
+                } else {
+                    alert(`Image saved! 📖 To share on Facebook:\n\n1. Go to Facebook.com\n2. Create a new post\n3. Upload the downloaded gothic quiz image\n4. Add this text: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n5. Share your result! 🖤`);
+                }
+            }, 500);
+        }, 'image/png');
+    }
+
+    shareToInstagram(canvas, result) {
+        // For Instagram Stories, we'll save the image and provide better instructions
+        canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+            
+            // Show comprehensive Instagram sharing instructions
+            setTimeout(() => {
+                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Try to open Instagram app for mobile users
+                    const instagramUrl = 'instagram://story-camera';
+                    const fallbackUrl = 'https://www.instagram.com/';
+                    
+                    // Try to open Instagram app
+                    const now = new Date().valueOf();
+                    setTimeout(() => {
+                        if (new Date().valueOf() - now > 100) return;
+                        window.location = fallbackUrl;
+                    }, 25);
+                    window.location = instagramUrl;
+                    
+                    alert(`📱 Image saved for Instagram Stories!\n\n✨ INSTAGRAM STORIES:\n1. Open Instagram app (should open automatically)\n2. Tap "Your Story" or swipe right from feed\n3. Tap the gallery icon (bottom left)\n4. Select your downloaded gothic quiz image\n5. Add text, stickers, or music if desired\n6. Share to your story! 🖤\n\n📖 INSTAGRAM FEED:\n1. Tap "+" to create new post\n2. Select the downloaded image\n3. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n4. Share your result!`);
+                } else {
+                    // Desktop instructions
+                    alert(`💻 Image saved for Instagram!\n\n📱 TO SHARE ON MOBILE:\n1. Transfer the downloaded image to your phone\n2. Open Instagram app\n3. For Stories: Swipe right → Gallery → Select image\n4. For Feed: Tap "+" → Select image → Add caption\n\n🌐 FROM DESKTOP:\n1. Go to instagram.com\n2. Click "+" to create new post\n3. Upload the downloaded gothic quiz image\n4. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n5. Share your result! 🖤`);
                 }
             }, 500);
         }, 'image/png');
