@@ -5,52 +5,52 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "Which creative process resonates most deeply with your soul?",
+                text: "When you're feeling overwhelmed, what calls to you most?",
                 options: [
-                    { text: "Exploring raw emotions through personal narratives", category: "personal", weight: 3 },
-                    { text: "Mastering traditional design principles and techniques", category: "design", weight: 3 },
-                    { text: "Experimenting with mixed media and found objects", category: "studio", weight: 3 },
-                    { text: "Creating through digital platforms and modern tools", category: "design", weight: 2 }
+                    { text: "Creating something meaningful from my pain", category: "personal", weight: 3 },
+                    { text: "Organizing my thoughts through clear, structured design", category: "design", weight: 3 },
+                    { text: "Working with my hands, letting intuition guide me", category: "studio", weight: 3 },
+                    { text: "Finding inspiration through others' creative work", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 2,
-                text: "What inspires your creative vision most?",
+                text: "What kind of story do you feel most drawn to tell?",
                 options: [
-                    { text: "Family heritage and cultural memories", category: "personal", weight: 3 },
-                    { text: "Clean lines and purposeful functionality", category: "design", weight: 3 },
-                    { text: "Textures, decay, and the beauty in brokenness", category: "studio", weight: 3 },
-                    { text: "Contemporary trends and fresh perspectives", category: "design", weight: 2 }
+                    { text: "The untold stories of my ancestors and heritage", category: "personal", weight: 3 },
+                    { text: "Clear messages that help people understand complex ideas", category: "design", weight: 3 },
+                    { text: "The hidden beauty in forgotten or broken things", category: "studio", weight: 3 },
+                    { text: "Fresh perspectives on familiar concepts", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 3,
-                text: "How do you prefer to work through creative challenges?",
+                text: "When you create, where does your deepest satisfaction come from?",
                 options: [
-                    { text: "Deep introspection and emotional processing", category: "personal", weight: 3 },
-                    { text: "Systematic research and structured problem-solving", category: "design", weight: 3 },
-                    { text: "Intuitive experimentation with materials", category: "studio", weight: 3 },
-                    { text: "Collaborative brainstorming and feedback", category: "design", weight: 2 }
+                    { text: "Transforming personal wounds into something healing", category: "personal", weight: 3 },
+                    { text: "Solving problems elegantly through thoughtful design", category: "design", weight: 3 },
+                    { text: "Discovering unexpected beauty through experimentation", category: "studio", weight: 3 },
+                    { text: "Building skills and staying current with trends", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 4,
-                text: "Which artistic elements speak to you most?",
+                text: "What draws your eye and captures your heart?",
                 options: [
-                    { text: "Symbolic imagery and metaphorical depth", category: "personal", weight: 3 },
-                    { text: "Typography and compositional balance", category: "design", weight: 3 },
-                    { text: "Natural forms and organic textures", category: "studio", weight: 3 },
-                    { text: "Bold colors and contemporary aesthetics", category: "design", weight: 2 }
+                    { text: "Sacred objects and symbols that carry deep meaning", category: "personal", weight: 3 },
+                    { text: "Clean, intentional compositions that communicate clearly", category: "design", weight: 3 },
+                    { text: "Raw textures and the patina of time and wear", category: "studio", weight: 3 },
+                    { text: "Vibrant colors and contemporary visual language", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 5,
-                text: "What role does art play in your life?",
+                text: "How do you hope your creative work impacts others?",
                 options: [
-                    { text: "A pathway to healing and self-discovery", category: "personal", weight: 3 },
-                    { text: "A tool for communication and problem-solving", category: "design", weight: 3 },
-                    { text: "A meditation on life's transient beauty", category: "studio", weight: 3 },
-                    { text: "A way to stay current and professionally relevant", category: "design", weight: 1 }
+                    { text: "Helps them feel less alone in their struggles", category: "personal", weight: 3 },
+                    { text: "Makes their daily experiences more beautiful and functional", category: "design", weight: 3 },
+                    { text: "Opens their eyes to beauty they hadn't noticed before", category: "studio", weight: 3 },
+                    { text: "Keeps them informed about current creative directions", category: "design", weight: 1 }
                 ]
             }
         ];
@@ -60,6 +60,7 @@ class PortfolioQuiz {
                 title: "The Emotional Alchemist",
                 subtitle: "Personal Collection",
                 category: "Personal Work",
+                pieceTitle: "Inheritance", // Featured piece name
                 description: "You are drawn to art that transforms pain into beauty, exploring themes of heritage, identity, and spiritual awakening. Your creative soul finds meaning in the intimate and the sacred.",
                 quote: "Through vulnerability, we find our greatest strength.",
                 image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
@@ -74,8 +75,9 @@ class PortfolioQuiz {
             },
             design: {
                 title: "The Visual Architect",
-                subtitle: "Design Collection",
+                subtitle: "Design Collection", 
                 category: "Design Work",
+                pieceTitle: "Typographic Interpretation", // Featured piece name
                 description: "You appreciate the power of strategic design and purposeful aesthetics. Your creative mind values clarity, function, and the art of visual communication.",
                 quote: "Great design whispers while poor design shouts.",
                 image: "collections/design/typographic-interpretation/images/design5.jpg",
@@ -91,7 +93,8 @@ class PortfolioQuiz {
             studio: {
                 title: "The Material Mystic",
                 subtitle: "Studio Collection",
-                category: "Studio Work",
+                category: "Studio Work", 
+                pieceTitle: "Abyss Bloom", // Featured piece name
                 description: "You are drawn to the alchemy of materials and the poetry found in decay and transformation. Your artistic spirit finds beauty in the overlooked and discarded.",
                 quote: "In breaking, we discover what we're truly made of.",
                 image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
@@ -291,9 +294,9 @@ class PortfolioQuiz {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             
-            // Gothic template dimensions (3:4 aspect ratio for social media)
+            // Instagram Stories dimensions (9:16 aspect ratio)
             const width = 1080;
-            const height = 1440;
+            const height = 1920;
             canvas.width = width;
             canvas.height = height;
             
@@ -303,9 +306,8 @@ class PortfolioQuiz {
                 this.loadImage('images/logo/logo3.png')
             ]);
             
-            // Generate template based on category
-            const templateStyle = this.getTemplateStyle(result.category);
-            this.generateGothicTemplate(ctx, result, templateStyle, img, logo, width, height);
+            // Generate Spotify-style gothic template
+            this.generateGothicStoryTemplate(ctx, result, img, logo, width, height);
             
             // Share options
             this.showShareOptions(canvas, result);
@@ -325,22 +327,184 @@ class PortfolioQuiz {
         return styles[category] || 'minimal';
     }
 
-    generateGothicTemplate(ctx, result, template, img, logo, width, height) {
-        console.log(`🎨 Drawing Gothic ${template} template`);
+    generateGothicStoryTemplate(ctx, result, img, logo, width, height) {
+        console.log('🖤 Creating Spotify-style Gothic Story template');
         
-        switch (template) {
-            case 'minimal':
-                this.drawGothicMinimal(ctx, result, img, logo, width, height);
-                break;
-            case 'artistic':
-                this.drawGothicArtistic(ctx, result, img, logo, width, height);
-                break;
-            case 'elegant':
-                this.drawGothicElegant(ctx, result, img, logo, width, height);
-                break;
-            default:
-                this.drawGothicMinimal(ctx, result, img, logo, width, height);
+        // Deep gothic gradient background
+        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/2, height);
+        gradient.addColorStop(0, '#1a0d14');
+        gradient.addColorStop(0.3, '#2d1b25');
+        gradient.addColorStop(0.7, '#7e1c2e');
+        gradient.addColorStop(1, '#0a0508');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Add mystical texture overlay with varied opacity
+        ctx.globalAlpha = 0.08;
+        ctx.fillStyle = '#f7f3f1';
+        for (let i = 0; i < 1500; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 2 + 1;
+            const alpha = Math.random() * 0.3 + 0.1;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
         }
+        
+        // Add some burgundy accent particles
+        ctx.fillStyle = '#7e1c2e';
+        for (let i = 0; i < 300; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 1.5;
+            ctx.globalAlpha = Math.random() * 0.2 + 0.05;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        
+        // Top section: "Now Viewing" Spotify-style header
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(0, 0, width, 120);
+        
+        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        ctx.fillText('NOW VIEWING', width/2, 50);
+        
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('Leah Cortez Studios', width/2, 85);
+        
+        // Main artwork section (large, centered)
+        if (img) {
+            const imgSize = 700;
+            const imgX = (width - imgSize) / 2;
+            const imgY = 200;
+            
+            // Gothic frame with shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 40;
+            ctx.shadowOffsetY = 20;
+            
+            // Ornate frame
+            ctx.strokeStyle = '#7e1c2e';
+            ctx.lineWidth = 8;
+            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            
+            // Inner glow
+            ctx.strokeStyle = 'rgba(247, 243, 241, 0.3)';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Draw image
+            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
+            
+            // Gothic corner ornaments
+            ctx.fillStyle = '#f7f3f1';
+            this.drawGothicStar(ctx, imgX - 40, imgY - 40, 25);
+            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY - 40, 25);
+            this.drawGothicStar(ctx, imgX - 40, imgY + imgSize + 40, 25);
+            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY + imgSize + 40, 25);
+        }
+        
+        // Bottom section: Spotify-style track info
+        const bottomY = height - 400;
+        
+        // Semi-transparent background for text area
+        const textBg = ctx.createLinearGradient(0, bottomY - 50, 0, height);
+        textBg.addColorStop(0, 'transparent');
+        textBg.addColorStop(0.3, 'rgba(0, 0, 0, 0.8)');
+        textBg.addColorStop(1, 'rgba(0, 0, 0, 0.95)');
+        ctx.fillStyle = textBg;
+        ctx.fillRect(0, bottomY - 50, width, 450);
+        
+        // Quiz result type (like Spotify artist name)
+        ctx.font = 'bold 48px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.textAlign = 'center';
+        ctx.fillText('LEAH CORTEZ STUDIOS', width/2, bottomY + 40);
+        
+        // Featured piece title (like Spotify song title)
+        ctx.font = 'bold 84px "Pirata One", cursive';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
+        ctx.shadowBlur = 20;
+        
+        const pieceTitle = result.pieceTitle || result.title;
+        const wrappedPieceTitle = this.wrapText(ctx, pieceTitle, width - 120);
+        const titleStartY = bottomY + 100;
+        wrappedPieceTitle.forEach((line, index) => {
+            ctx.fillText(line, width/2, titleStartY + (index * 90));
+        });
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        
+        // Result type subtitle (like Spotify album name)
+        const subtitleY = titleStartY + (wrappedPieceTitle.length * 90) + 30;
+        ctx.font = 'italic 40px "IM Fell English", serif';
+        ctx.fillStyle = '#d4a5a5';
+        ctx.textAlign = 'center';
+        ctx.fillText(`"${result.title}"`, width/2, subtitleY);
+        
+        // Category tag
+        const categoryY = subtitleY + 50;
+        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.textAlign = 'center';
+        ctx.fillText(result.category.toUpperCase(), width/2, categoryY);
+        
+        // Quote (like Spotify album info)
+        const quoteY = categoryY + 80;
+        ctx.font = 'italic 36px "IM Fell English", serif';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        const wrappedQuote = this.wrapText(ctx, `"${result.quote}"`, width - 120);
+        wrappedQuote.forEach((line, index) => {
+            ctx.fillText(line, width/2, quoteY + (index * 42));
+        });
+        
+        // Bottom branding bar
+        ctx.fillStyle = 'rgba(126, 28, 46, 0.9)';
+        ctx.fillRect(0, height - 100, width, 100);
+        
+        // Logo and website
+        if (logo) {
+            const logoSize = 60;
+            ctx.drawImage(logo, 60, height - 80, logoSize, logoSize);
+        }
+        
+        ctx.font = 'bold 28px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'left';
+        ctx.fillText('LEAHCORTEZSTUDIOS.ART', 140, height - 45);
+        
+        // Take quiz CTA
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillStyle = '#d4a5a5';
+        ctx.textAlign = 'right';
+        ctx.fillText('Take the Portfolio Soul Quiz →', width - 60, height - 45);
+        
+        // Add decorative border
+        ctx.strokeStyle = '#7e1c2e';
+        ctx.lineWidth = 6;
+        ctx.strokeRect(30, 30, width - 60, height - 60);
+        
+        // Inner decorative border
+        ctx.strokeStyle = 'rgba(247, 243, 241, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(50, 50, width - 100, height - 100);
     }
 
     drawGothicMinimal(ctx, result, img, logo, width, height) {
@@ -753,7 +917,7 @@ class PortfolioQuiz {
         modal.className = 'share-modal';
         modal.innerHTML = `
             <div class="share-modal-content">
-                <h3>Share Your Gothic Result</h3>
+                <h3>Share Your Creative Soul Match</h3>
                 <div class="canvas-preview">
                     <img src="${canvas.toDataURL()}" alt="Result Preview" />
                 </div>
@@ -765,10 +929,6 @@ class PortfolioQuiz {
                     <button class="share-instagram-btn social-share-btn">
                         <img src="icons/instagram.svg" alt="Instagram" width="24" height="24" />
                         <span>Share to Instagram Stories</span>
-                    </button>
-                    <button class="save-image-btn">
-                        <img src="icons/download.svg" alt="Download" width="20" height="20" />
-                        <span>Save Image</span>
                     </button>
                     <button class="copy-link-btn">
                         <img src="icons/link.svg" alt="Link" width="20" height="20" />
@@ -788,10 +948,6 @@ class PortfolioQuiz {
         
         modal.querySelector('.share-instagram-btn').addEventListener('click', () => {
             this.shareToInstagram(canvas, result);
-        });
-        
-        modal.querySelector('.save-image-btn').addEventListener('click', () => {
-            this.saveImage(canvas, result);
         });
         
         modal.querySelector('.copy-link-btn').addEventListener('click', () => {
