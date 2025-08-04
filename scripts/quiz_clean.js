@@ -62,7 +62,7 @@ class PortfolioQuiz {
                 category: "Personal Work",
                 description: "You are drawn to art that transforms pain into beauty, exploring themes of heritage, identity, and spiritual awakening. Your creative soul finds meaning in the intimate and the sacred.",
                 quote: "Through vulnerability, we find our greatest strength.",
-                image: "collections/personal/abuelas-altar/images/altar-main.jpg",
+                image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
                 works: [
                     { name: "Abuela's Altar", path: "collections/personal/abuelas-altar/" },
                     { name: "Anointed Gaze", path: "collections/personal/anointed-gaze/" },
@@ -78,7 +78,7 @@ class PortfolioQuiz {
                 category: "Design Work",
                 description: "You appreciate the power of strategic design and purposeful aesthetics. Your creative mind values clarity, function, and the art of visual communication.",
                 quote: "Great design whispers while poor design shouts.",
-                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
+                image: "collections/design/typographic-interpretation/images/design5.jpg",
                 works: [
                     { name: "Typographic Interpretation", path: "collections/design/typographic-interpretation/" },
                     { name: "Elements & Principles Book", path: "collections/design/elements-and-principles-book-cover/" },
@@ -94,7 +94,7 @@ class PortfolioQuiz {
                 category: "Studio Work",
                 description: "You are drawn to the alchemy of materials and the poetry found in decay and transformation. Your artistic spirit finds beauty in the overlooked and discarded.",
                 quote: "In breaking, we discover what we're truly made of.",
-                image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
+                image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
                 works: [
                     { name: "Abyss Bloom", path: "collections/studio/abyss-bloom/" },
                     { name: "Artificial Meadow", path: "collections/studio/artificial-meadow/" },
