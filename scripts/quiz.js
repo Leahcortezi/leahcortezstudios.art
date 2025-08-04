@@ -13,52 +13,52 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "It's 2 AM and you're still up. What are you most likely doing?",
+                text: "Your ideal Friday night vibe?",
                 answers: [
-                    { text: "Diving deep into research rabbit holes", weights: { cards: 3, bookCover: 2, poster: 1, remains: 2 }},
-                    { text: "Creating something from your deepest feelings", weights: { inheritance: 3, altar: 2, anointed: 3, heaven: 2 }},
-                    { text: "Questioning everything you thought you knew", weights: { poster: 3, heaven: 2, hunch: 1, unraveling: 2 }},
-                    { text: "Getting lost in textures and materials", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }}
+                    { text: "Lost in a documentary rabbit hole", weights: { cards: 3, bookCover: 2, poster: 2, remains: 1 }},
+                    { text: "FaceTiming family until 2 AM", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
+                    { text: "Rearranging your entire room at midnight", weights: { bloom: 3, gnaw: 2, unraveling: 2, symbols: 1 }},
+                    { text: "Writing angry poetry about everything", weights: { poster: 2, heaven: 3, hunch: 2, reductive: 1 }}
                 ]
             },
             {
                 id: 2,
-                text: "Your ideal creative space would have...",
+                text: "What makes you feel most like yourself?",
                 answers: [
-                    { text: "Books, journals, and organized chaos", weights: { cards: 3, bookCover: 2, flag: 1, remains: 2 }},
-                    { text: "Family photos and meaningful objects", weights: { inheritance: 3, altar: 2, entre: 2, anointed: 1 }},
-                    { text: "Bold statements and conversation starters", weights: { poster: 3, heaven: 2, hunch: 1, reductive: 1 }},
-                    { text: "Raw materials and room to get messy", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }}
+                    { text: "When I'm explaining something I'm passionate about", weights: { cards: 3, bookCover: 2, flag: 1, hunch: 1 }},
+                    { text: "Surrounded by things that tell my story", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
+                    { text: "Making something with my hands until they're dirty", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
+                    { text: "Calling out bullshit when I see it", weights: { poster: 3, heaven: 2, reductive: 2, symbols: 1 }}
                 ]
             },
             {
                 id: 3,
-                text: "When someone asks about your work, you're most excited to talk about...",
+                text: "Your biggest creative block usually comes from...",
                 answers: [
-                    { text: "The wild story behind how you discovered it", weights: { cards: 3, poster: 2, heaven: 1, remains: 1 }},
-                    { text: "What it means to your family and heritage", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
-                    { text: "The message you're trying to get across", weights: { poster: 3, heaven: 2, reductive: 1, symbols: 2 }},
-                    { text: "The emotions it pulls out of people", weights: { inheritance: 3, anointed: 3, gnaw: 3, unraveling: 2 }}
+                    { text: "Getting too caught up in making it perfect", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
+                    { text: "Worrying people won't understand what it means to me", weights: { inheritance: 3, entre: 2, altar: 1, anointed: 2 }},
+                    { text: "Feeling like I'm not allowed to be this angry", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 1 }},
+                    { text: "Not knowing how to put feelings into form", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
                 ]
             },
             {
                 id: 4,
-                text: "Your friends would describe you as someone who...",
+                text: "People always tell you...",
                 answers: [
-                    { text: "Always has the most fascinating facts to share", weights: { cards: 3, bookCover: 2, hunch: 1, symbols: 1 }},
-                    { text: "Remembers everyone's stories and connections", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
-                    { text: "Isn't afraid to call out what's wrong", weights: { poster: 3, heaven: 2, flag: 1, reductive: 1 }},
-                    { text: "Feels everything deeply and isn't ashamed of it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 1 }}
+                    { text: "You remember the weirdest details about everything", weights: { cards: 3, remains: 2, bookCover: 1, flag: 1 }},
+                    { text: "You're so close with your family", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
+                    { text: "You should write a book about your thoughts", weights: { poster: 2, heaven: 2, hunch: 3, reductive: 1 }},
+                    { text: "You feel everything so deeply", weights: { inheritance: 2, anointed: 3, gnaw: 3, unraveling: 2 }}
                 ]
             },
             {
                 id: 5,
-                text: "If you could only save one thing from a fire, it would be...",
+                text: "When you're stressed, you...",
                 answers: [
-                    { text: "Your collection of books or research", weights: { cards: 3, bookCover: 2, flag: 1, remains: 1 }},
-                    { text: "A family heirloom or photo", weights: { inheritance: 3, altar: 2, entre: 2, anointed: 1 }},
-                    { text: "Something that represents your values", weights: { poster: 3, hunch: 2, symbols: 2, reductive: 1 }},
-                    { text: "The piece you made when you were hurting most", weights: { anointed: 3, gnaw: 3, bloom: 2, unraveling: 3 }}
+                    { text: "Organize everything until it makes sense", weights: { bookCover: 3, cards: 2, symbols: 2, flag: 1 }},
+                    { text: "Call someone who gets your whole story", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
+                    { text: "Make something until your hands are tired", weights: { bloom: 3, unraveling: 2, gnaw: 2, altar: 1 }},
+                    { text: "Write or vent until it's all out", weights: { poster: 2, heaven: 2, hunch: 2, anointed: 3 }}
                 ]
             }
         ];
