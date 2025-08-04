@@ -748,21 +748,34 @@ class PortfolioQuiz {
     }
 
     showShareOptions(canvas, result) {
-        console.log('📱 Showing share options');
+        console.log('📱 Showing share options with social media icons');
         
         // Create modal with share options
         const modal = document.createElement('div');
         modal.className = 'share-modal';
         modal.innerHTML = `
             <div class="share-modal-content">
-                <h3>Share Your Result</h3>
+                <h3>Share Your Gothic Result</h3>
                 <div class="canvas-preview">
                     <img src="${canvas.toDataURL()}" alt="Result Preview" />
                 </div>
                 <div class="share-buttons">
-                    <button class="share-facebook-btn">Post to Facebook</button>
-                    <button class="save-image-btn">Save Image</button>
-                    <button class="copy-link-btn">Copy Link</button>
+                    <button class="share-facebook-btn social-share-btn">
+                        <img src="icons/facebook.svg" alt="Facebook" width="24" height="24" />
+                        <span>Share on Facebook</span>
+                    </button>
+                    <button class="share-instagram-btn social-share-btn">
+                        <img src="icons/instagram.svg" alt="Instagram" width="24" height="24" />
+                        <span>Share to Instagram Stories</span>
+                    </button>
+                    <button class="save-image-btn">
+                        <img src="icons/download.svg" alt="Download" width="20" height="20" />
+                        <span>Save Image</span>
+                    </button>
+                    <button class="copy-link-btn">
+                        <img src="icons/link.svg" alt="Link" width="20" height="20" />
+                        <span>Copy Link</span>
+                    </button>
                 </div>
                 <button class="close-modal-btn">×</button>
             </div>
@@ -773,6 +786,10 @@ class PortfolioQuiz {
         // Bind share button events
         modal.querySelector('.share-facebook-btn').addEventListener('click', () => {
             this.shareToFacebook(canvas, result);
+        });
+        
+        modal.querySelector('.share-instagram-btn').addEventListener('click', () => {
+            this.shareToInstagram(canvas, result);
         });
         
         modal.querySelector('.save-image-btn').addEventListener('click', () => {
@@ -794,14 +811,33 @@ class PortfolioQuiz {
     shareToFacebook(canvas, result) {
         canvas.toBlob((blob) => {
             const formData = new FormData();
-            formData.append('image', blob, 'quiz-result.png');
-            formData.append('message', `I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+            formData.append('image', blob, 'gothic-quiz-result.png');
+            formData.append('message', `I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
             
-            // This would typically send to a server endpoint that handles Facebook posting
-            // For now, we'll open Facebook share dialog with text
-            const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
-            const shareUrl = encodeURIComponent('https://leahcortezstudios.art');
+            // Open Facebook share dialog
+            const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+            const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareText}`, '_blank', 'width=600,height=400');
+        }, 'image/png');
+    }
+
+    shareToInstagram(canvas, result) {
+        // For Instagram Stories, we'll save the image and show instructions
+        canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+            
+            // Show Instagram sharing instructions
+            setTimeout(() => {
+                alert(`Image saved! 📱 To share to Instagram Stories:\n\n1. Open Instagram app\n2. Tap "Your Story" or swipe right\n3. Select the downloaded image\n4. Add any additional text or stickers\n5. Share your gothic quiz result! 🖤`);
+                
+                // Also try to open Instagram if on mobile
+                if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    window.open('instagram://story-camera', '_blank');
+                }
+            }, 500);
         }, 'image/png');
     }
 
