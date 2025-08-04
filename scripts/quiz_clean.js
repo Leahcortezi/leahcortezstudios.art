@@ -257,7 +257,6 @@ class PortfolioQuiz {
         const resultQuote = document.querySelector('#result-quote-text');
         const resultImage = document.querySelector('#result-project-image');
         const viewProjectBtn = document.querySelector('#view-project-btn');
-        const shareResultBtn = document.querySelector('#share-result-btn');
         const retakeQuizBtn = document.querySelector('#retake-quiz-btn');
         
         if (resultTitle) resultTitle.textContent = result.title;
@@ -278,17 +277,18 @@ class PortfolioQuiz {
         }
         
         // Bind event listeners
-        if (shareResultBtn) {
-            shareResultBtn.addEventListener('click', () => this.shareResult(result));
-        }
-        
         if (retakeQuizBtn) {
             retakeQuizBtn.addEventListener('click', () => this.resetQuiz());
         }
     }
 
-    async shareResult(result) {
-        console.log('📱 Generating gothic share template');
+    resetQuiz() {
+        this.currentQuestion = 0;
+        this.answers = [];
+        this.showSection('quiz-start');
+    }
+
+    showSection(sectionClass) {
         
         try {
             const canvas = document.createElement('canvas');
