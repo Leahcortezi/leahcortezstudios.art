@@ -820,13 +820,13 @@
 
 .modal-content {
   background-color: var(--color-background);
-  margin: 8vh auto;
+  margin: 10vh auto;
   padding: 0;
   border: 1px solid rgba(248, 200, 208, 0.2);
   border-radius: 12px;
   width: 90%;
   max-width: 900px;
-  max-height: 80vh;
+  max-height: 75vh;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   position: relative;
   animation: modalSlideIn 0.3s ease-out;
@@ -845,15 +845,15 @@
 }
 
 .modal-close {
-  color: var(--color-primary-accent);
+  color: var(--color-text);
   float: right;
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   position: absolute;
-  top: 1.2rem;
+  top: 1rem;
   right: 1.5rem;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   z-index: 10;
   width: 40px;
   height: 40px;
@@ -861,22 +861,18 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  background: rgba(248, 200, 208, 0.1);
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
-.modal-close:hover {
-  color: var(--color-secondary-accent);
-  transform: scale(1.1);
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--color-primary-accent);
 }
 
 .modal-layout {
   display: grid;
   grid-template-columns: 350px 1fr;
   min-height: 500px;
-  max-height: 80vh;
+  max-height: 75vh;
 }
 
 .modal-image {
@@ -904,7 +900,7 @@
 .modal-details {
   padding: 2rem;
   overflow-y: auto;
-  max-height: calc(80vh - 4rem);
+  max-height: calc(75vh - 4rem);
 }
 
 .modal-details h3 {
