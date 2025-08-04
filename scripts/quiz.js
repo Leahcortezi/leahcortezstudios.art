@@ -440,27 +440,27 @@ class PortfolioQuiz {
         this.currentTemplate = 'minimal';
         this.templates = {
             minimal: {
-                bgColor: '#111111',
-                accentColor: '#f5c6d6',
+                bgColor: '#7e1c2e', // Your signature burgundy
+                accentColor: '#f5c6d6', // Your cream pink
                 textColor: '#ffffff',
-                layout: 'centered'
+                layout: 'minimal'
             },
             artistic: {
-                bgColor: '#2d1b25',
-                accentColor: '#7e1c2e',
-                textColor: '#f5c6d6',
+                bgColor: '#2d1b25', // Deep burgundy base
+                accentColor: '#f5c6d6', // Your cream pink
+                textColor: '#ffffff', // White text for contrast
                 layout: 'artistic'
             },
             bold: {
-                bgColor: '#000000',
-                accentColor: '#f5c6d6',
+                bgColor: '#1a0d12', // Very deep burgundy (not black)
+                accentColor: '#f5c6d6', // Your cream pink
                 textColor: '#ffffff',
                 layout: 'bold'
             },
             elegant: {
-                bgColor: '#faf8f6',
-                accentColor: '#7e1c2e',
-                textColor: '#2d1b25',
+                bgColor: '#faf8f6', // Light cream
+                accentColor: '#7e1c2e', // Your burgundy
+                textColor: '#2d1b25', // Deep burgundy text
                 layout: 'elegant'
             }
         };
@@ -574,31 +574,46 @@ class PortfolioQuiz {
         const loadImage = (src) => {
             return new Promise((resolve) => {
                 const image = new Image();
-                image.crossOrigin = 'anonymous';
+                // Remove crossOrigin to avoid CORS issues on localhost
+                // image.crossOrigin = 'anonymous';
+                
                 image.onload = () => {
-                    console.log(`Successfully loaded: ${src}`);
+                    console.log(`✅ Successfully loaded: ${src}`);
+                    console.log(`📐 Image dimensions: ${image.width}x${image.height}`);
                     resolve(image);
                 };
                 image.onerror = (e) => {
-                    console.log(`Failed to load: ${src}`, e);
+                    console.log(`❌ Failed to load: ${src}`, e);
+                    console.log(`🔍 Attempted URL: ${image.src}`);
                     resolve(null);
                 };
-                // Use absolute path for images
-                if (src.startsWith('images/') || src.startsWith('collections/')) {
-                    image.src = window.location.origin + window.location.pathname.replace('index.html', '') + src;
+                
+                // Construct proper URL based on current location
+                let imageUrl;
+                if (src.startsWith('http')) {
+                    imageUrl = src;
+                } else if (src.startsWith('/')) {
+                    imageUrl = window.location.origin + src;
                 } else {
-                    image.src = src;
+                    // Relative path - construct from current location
+                    const basePath = window.location.href.replace(/\/[^\/]*$/, '/');
+                    imageUrl = basePath + src;
                 }
+                
+                console.log(`🌐 Loading image from: ${imageUrl}`);
+                image.src = imageUrl;
             });
         };
         
         // Load both images concurrently
         const [resultImage, logoImage] = await Promise.all([
             loadImage(result.image),
-            loadImage('images/logo/logo1.png')
+            loadImage('images/logo/logo3.png')
         ]);
         
-        console.log('Images loaded:', { resultImage: !!resultImage, logoImage: !!logoImage });
+        console.log('🎨 Images loaded:', { resultImage: !!resultImage, logoImage: !!logoImage });
+        console.log('📍 Logo path used:', 'images/logo/logo3.png');
+        console.log('📍 Artwork path used:', result.image);
         
         // Draw the template
         this.drawTemplate(ctx, result, template, resultImage, logoImage, canvas.width, canvas.height);
@@ -618,364 +633,586 @@ class PortfolioQuiz {
             case 'elegant':
                 this.drawElegantTemplate(ctx, result, template, img, logo, width, height);
                 break;
+            default:
+                console.warn('Unknown template layout:', template.layout);
+                this.drawMinimalTemplate(ctx, result, template, img, logo, width, height);
         }
     }
 
     drawMinimalTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('Drawing minimal template with:', { img: !!img, logo: !!logo, width, height });
+        console.log('🎨✨ Drawing LEAH CORTEZ SIGNATURE minimal template with:', { img: !!img, logo: !!logo, width, height });
         
-        // Background gradient
+        // Your signature rich burgundy gradient background - NO GRAY!
         const gradient = ctx.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, template.bgColor);
-        gradient.addColorStop(1, '#0a0a0a');
+        gradient.addColorStop(0, '#7e1c2e');   // Your signature burgundy
+        gradient.addColorStop(0.4, '#a0274a'); // Richer mid-tone
+        gradient.addColorStop(0.7, '#2d1b25'); // Deep burgundy
+        gradient.addColorStop(1, '#1a0d12');   // Very deep burgundy (not gray)
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
         
-        // Add some texture/pattern
-        ctx.fillStyle = template.accentColor + '08';
-        for (let i = 0; i < 20; i++) {
+        // Add luxurious texture overlay
+        ctx.fillStyle = '#f5c6d6'; // Your cream pink
+        ctx.globalAlpha = 0.03;
+        for (let i = 0; i < 200; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 3 + 1;
             ctx.beginPath();
-            ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 80 + 20, 0, Math.PI * 2);
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        
+        // Your signature floating ornamental elements
+        ctx.fillStyle = '#f5c6d6'; // Your cream pink
+        ctx.globalAlpha = 0.12;
+        
+        // Large ornamental circles
+        for (let i = 0; i < 8; i++) {
+            ctx.beginPath();
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 80 + 40;
+            ctx.arc(x, y, size, 0, Math.PI * 2);
             ctx.fill();
         }
         
-        // Logo at top - always draw even if image fails
+        // Smaller accent elements
+        ctx.globalAlpha = 0.08;
+        for (let i = 0; i < 15; i++) {
+            ctx.beginPath();
+            const x = Math.random() * width;
+            const y = Math.random() * height * 0.3; // Top area
+            const size = Math.random() * 25 + 10;
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        
+        // Studio logo with elegant glow effect
         if (logo) {
-            const logoSize = 100;
+            const logoSize = 120;
             const logoX = (width - logoSize) / 2;
-            const logoY = 60;
+            const logoY = 80;
+            
+            // Glow effect for logo
+            ctx.shadowColor = '#f5c6d6';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
             ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            
+            console.log('✨ Logo drawn with glow effect');
         } else {
-            // Fallback logo text
-            ctx.fillStyle = template.accentColor;
-            ctx.font = 'bold 32px serif';
+            // Elegant fallback branding
+            ctx.fillStyle = '#f5c6d6';
+            ctx.font = 'bold 36px "Pirata One", serif';
             ctx.textAlign = 'center';
-            ctx.fillText('LEAH CORTEZ', width / 2, 100);
-            ctx.font = '24px serif';
-            ctx.fillText('STUDIO', width / 2, 130);
+            ctx.fillText('LEAH', width / 2, 120);
+            ctx.font = 'bold 28px "Pirata One", serif';
+            ctx.fillText('CORTEZ', width / 2, 155);
+            ctx.font = '18px "IM Fell English", serif';
+            ctx.fillText('STUDIO', width / 2, 180);
+            console.log('📝 Fallback logo text drawn');
         }
         
-        // Title
+        // Project title with your typography
         ctx.textAlign = 'center';
-        ctx.fillStyle = template.textColor;
-        ctx.font = 'bold 48px serif';
-        this.wrapText(ctx, result.title, width / 2, 220, width - 100, 55);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 52px "Pirata One", serif';
+        ctx.shadowColor = 'rgba(0,0,0,0.3)';
+        ctx.shadowBlur = 8;
+        ctx.shadowOffsetY = 2;
+        this.wrapText(ctx, result.title, width / 2, 280, width - 120, 65);
         
-        // Subtitle
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'italic 32px serif';
-        ctx.fillText(result.subtitle, width / 2, 320);
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetY = 0;
         
-        // Main artwork image in center - always draw something
-        const imgSize = 380;
+        // Subtitle with elegant styling
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'italic 34px "IM Fell English", serif';
+        ctx.fillText(result.subtitle, width / 2, 370);
+        
+        // Decorative line under subtitle
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(width / 2 - 150, 390);
+        ctx.lineTo(width / 2 + 150, 390);
+        ctx.stroke();
+        
+        // Main artwork image with ornate frame
+        const imgSize = 400;
         const imgX = (width - imgSize) / 2;
-        const imgY = 380;
+        const imgY = 430;
         
         if (img) {
-            // Draw the actual artwork image
+            // Ornate multi-layered frame
+            ctx.fillStyle = '#f5c6d6';
+            ctx.fillRect(imgX - 25, imgY - 25, imgSize + 50, imgSize + 50);
+            
+            ctx.fillStyle = '#7e1c2e';
+            ctx.fillRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            
+            ctx.fillStyle = '#f5c6d6';
+            ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
+            
+            ctx.fillStyle = '#2d1b25';
+            ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            
+            // Draw the artwork
             ctx.save();
             ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 8);
             ctx.clip();
             ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
             ctx.restore();
             
-            // Image border
-            ctx.strokeStyle = template.accentColor;
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
-            ctx.stroke();
+            console.log('🖼️ Artwork image drawn with ornate frame');
         } else {
-            // Fallback placeholder with border
-            ctx.fillStyle = template.bgColor;
+            // Elegant placeholder with same frame
+            ctx.fillStyle = '#f5c6d6';
+            ctx.fillRect(imgX - 25, imgY - 25, imgSize + 50, imgSize + 50);
+            
+            ctx.fillStyle = '#7e1c2e';
+            ctx.fillRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            
+            ctx.fillStyle = '#2d1b25';
             ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 8);
             ctx.fill();
             
-            ctx.strokeStyle = template.accentColor;
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
-            ctx.stroke();
-            
             // Placeholder text
-            ctx.fillStyle = template.accentColor;
-            ctx.font = '28px serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 - 10);
-            ctx.font = '24px serif';
-            ctx.fillText('IMAGE', width / 2, imgY + imgSize/2 + 20);
+            ctx.fillStyle = '#f5c6d6';
+            ctx.font = '32px "Pirata One", serif';
+            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 15);
+            ctx.font = '28px "IM Fell English", serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
+            
+            console.log('📷 Placeholder artwork drawn');
         }
         
-        // Description below image
-        ctx.fillStyle = template.textColor;
-        ctx.font = '24px serif';
-        this.wrapText(ctx, result.description, width / 2, 820, width - 120, 30);
+        // Description with elegant typography
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '26px "IM Fell English", serif';
+        this.wrapText(ctx, result.description, width / 2, 900, width - 140, 34);
         
-        // Quote
-        ctx.fillStyle = template.accentColor + 'CC';
-        ctx.font = 'italic 22px serif';
-        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1000, width - 140, 28);
+        // Quote with ornate styling
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'italic 24px "IM Fell English", serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1100, width - 160, 32);
         
-        // Bottom branding section
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'bold 32px monospace';
-        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 180);
+        // Bottom branding section with elegant styling
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'bold 38px "Pirata One", serif';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 200);
         
-        ctx.fillStyle = template.textColor;
-        ctx.font = '24px monospace';
-        ctx.fillText('leahcortezstudios.art', width / 2, height - 140);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '26px "IBM Plex Mono", monospace';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 160);
         
-        ctx.fillStyle = template.textColor + '80';
-        ctx.font = '20px monospace';
-        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 100);
+        ctx.fillStyle = 'rgba(245, 198, 214, 0.8)';
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 120);
         
-        console.log('Minimal template drawing complete');
+        // Final decorative elements
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(100, height - 80);
+        ctx.lineTo(width - 100, height - 80);
+        ctx.stroke();
+        
+        console.log('✨ LEAH CORTEZ STYLE minimal template complete - rich burgundy with elegant details');
     }
 
     drawArtisticTemplate(ctx, result, template, img, logo, width, height) {
-        // Background with pattern
-        ctx.fillStyle = template.bgColor;
+        // Your brand artistic background with rich burgundy gradient
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, '#2d1b25'); // Deep burgundy
+        gradient.addColorStop(0.5, '#7e1c2e'); // Your signature burgundy
+        gradient.addColorStop(1, '#2d1b25'); // Deep burgundy
+        ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
         
-        // Add artistic elements
-        ctx.fillStyle = template.accentColor + '15';
-        for (let i = 0; i < 25; i++) {
+        // Add artistic swirls and patterns with your cream pink
+        ctx.fillStyle = '#f5c6d6';
+        ctx.globalAlpha = 0.06;
+        for (let i = 0; i < 30; i++) {
             ctx.beginPath();
-            ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 120 + 40, 0, Math.PI * 2);
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 150 + 50;
+            ctx.arc(x, y, size, 0, Math.PI * 2);
             ctx.fill();
         }
         
-        // Logo at top corner with fallback
+        // Add flowing lines for artistic feel
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 0.1;
+        for (let i = 0; i < 10; i++) {
+            ctx.beginPath();
+            ctx.moveTo(0, Math.random() * height);
+            ctx.bezierCurveTo(
+                width * 0.3, Math.random() * height,
+                width * 0.7, Math.random() * height,
+                width, Math.random() * height
+            );
+            ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+        
+        // Logo with artistic glow
         if (logo) {
-            const logoSize = 80;
-            ctx.drawImage(logo, width - logoSize - 40, 40, logoSize, logoSize);
+            const logoSize = 100;
+            const logoX = width - logoSize - 60;
+            const logoY = 60;
+            
+            ctx.shadowColor = '#f5c6d6';
+            ctx.shadowBlur = 25;
+            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
         } else {
-            ctx.fillStyle = template.accentColor;
-            ctx.font = 'bold 24px serif';
+            ctx.fillStyle = '#f5c6d6';
+            ctx.font = 'bold 28px "Pirata One", serif';
             ctx.textAlign = 'right';
-            ctx.fillText('LC', width - 50, 70);
+            ctx.fillText('LC', width - 70, 90);
+            ctx.font = '16px "IM Fell English", serif';
+            ctx.fillText('STUDIO', width - 70, 115);
         }
         
-        // Title and subtitle at top
+        // Title with artistic typography
         ctx.textAlign = 'center';
-        ctx.fillStyle = template.textColor;
-        ctx.font = 'bold 56px serif';
-        this.wrapText(ctx, result.title, width / 2, 160, width - 80, 65);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 58px "Pirata One", serif';
+        ctx.shadowColor = 'rgba(45, 27, 37, 0.8)';
+        ctx.shadowBlur = 12;
+        this.wrapText(ctx, result.title, width / 2, 180, width - 100, 70);
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
         
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'italic 38px serif';
-        ctx.fillText(result.subtitle, width / 2, 280);
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'italic 36px "IM Fell English", serif';
+        ctx.fillText(result.subtitle, width / 2, 310);
         
-        // Main artwork image with artistic frame
-        const imgSize = 360;
+        // Artistic decorative elements around title
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.7;
+        
+        // Decorative flourishes
+        ctx.beginPath();
+        ctx.arc(width / 2 - 200, 250, 30, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(width / 2 + 200, 250, 30, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.globalAlpha = 1;
+        
+        // Main artwork with artistic multi-layered frame
+        const imgSize = 380;
         const imgX = (width - imgSize) / 2;
-        const imgY = 340;
+        const imgY = 370;
         
-        // Artistic multi-layered frame
-        ctx.fillStyle = template.accentColor;
+        // Create artistic frame layers
+        ctx.fillStyle = '#f5c6d6';
+        ctx.fillRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+        
+        ctx.fillStyle = 'rgba(45, 27, 37, 0.8)';
         ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
         
-        ctx.fillStyle = template.textColor + '30';
+        ctx.fillStyle = '#f5c6d6';
         ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
-        
-        ctx.fillStyle = template.accentColor;
-        ctx.fillRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
         
         if (img) {
             ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
         } else {
-            // Artistic placeholder
-            ctx.fillStyle = template.bgColor;
+            ctx.fillStyle = '#2d1b25';
             ctx.fillRect(imgX, imgY, imgSize, imgSize);
-            ctx.fillStyle = template.accentColor;
-            ctx.font = '24px serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2);
+            ctx.fillStyle = '#f5c6d6';
+            ctx.font = '30px "Pirata One", serif';
+            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 10);
+            ctx.font = '26px "IM Fell English", serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
         }
         
-        // Description
-        ctx.fillStyle = template.textColor;
-        ctx.font = '26px serif';
-        this.wrapText(ctx, result.description, width / 2, 760, width - 100, 32);
+        // Description with artistic styling
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '28px "IM Fell English", serif';
+        this.wrapText(ctx, result.description, width / 2, 810, width - 120, 36);
         
-        // Quote with artistic styling
-        ctx.fillStyle = template.accentColor + 'CC';
-        ctx.font = 'italic 24px serif';
-        this.wrapText(ctx, `"${result.quote}"`, width / 2, 950, width - 120, 30);
+        // Quote with artistic flourishes
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'italic 26px "IM Fell English", serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1000, width - 140, 34);
         
-        // Branding
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'bold 34px serif';
-        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 140);
+        // Artistic branding
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'bold 36px "Pirata One", serif';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 180);
         
-        ctx.fillStyle = template.textColor;
-        ctx.font = '24px serif';
-        ctx.fillText('leahcortezstudios.art', width / 2, height - 100);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '26px "IBM Plex Mono", monospace';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 140);
+        
+        ctx.fillStyle = 'rgba(245, 198, 214, 0.9)';
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 100);
     }
 
     drawBoldTemplate(ctx, result, template, img, logo, width, height) {
-        // Bold black background
-        ctx.fillStyle = template.bgColor;
+        // Rich deep burgundy background (not pure black)
+        ctx.fillStyle = '#1a0d12'; // Very deep burgundy
         ctx.fillRect(0, 0, width, height);
         
-        // Bold accent stripe
-        ctx.fillStyle = template.accentColor;
+        // Bold accent stripe with gradient
+        const stripeGradient = ctx.createLinearGradient(0, 150, 0, 270);
+        stripeGradient.addColorStop(0, '#f5c6d6'); // Your cream pink
+        stripeGradient.addColorStop(0.5, '#7e1c2e'); // Your burgundy
+        stripeGradient.addColorStop(1, '#f5c6d6'); // Your cream pink
+        ctx.fillStyle = stripeGradient;
         ctx.fillRect(0, 150, width, 120);
         
         // Logo in the accent stripe with fallback
         if (logo) {
-            const logoSize = 80;
-            const logoX = 50;
-            const logoY = 180;
+            const logoSize = 90;
+            const logoX = 70;
+            const logoY = 175;
+            
+            ctx.shadowColor = '#ffffff';
+            ctx.shadowBlur = 15;
             ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
         } else {
-            ctx.fillStyle = template.textColor;
-            ctx.font = 'bold 32px serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 36px "Pirata One", serif';
             ctx.textAlign = 'left';
-            ctx.fillText('LC STUDIO', 60, 220);
+            ctx.fillText('LEAH', 80, 210);
+            ctx.font = 'bold 28px "Pirata One", serif';
+            ctx.fillText('CORTEZ', 80, 240);
         }
         
-        // Large bold title
+        // Large bold title with your fonts
         ctx.textAlign = 'center';
-        ctx.fillStyle = template.textColor;
-        ctx.font = 'bold 70px serif';
-        this.wrapText(ctx, result.title.toUpperCase(), width / 2, 400, width - 60, 80);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 72px "Pirata One", serif';
+        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
+        ctx.shadowBlur = 10;
+        this.wrapText(ctx, result.title.toUpperCase(), width / 2, 420, width - 80, 85);
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
         
-        // Subtitle
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'bold 44px serif';
-        ctx.fillText(result.subtitle.toUpperCase(), width / 2, 520);
+        // Bold subtitle
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'bold 46px "Pirata One", serif';
+        ctx.fillText(result.subtitle.toUpperCase(), width / 2, 540);
         
-        // Main artwork image with image fallback
+        // Main artwork image with bold frame
         const imgSize = 380;
         const imgX = (width - imgSize) / 2;
         const imgY = 600;
         
-        // Bold square frame
-        ctx.fillStyle = template.accentColor;
+        // Bold multi-layered frame
+        ctx.fillStyle = '#f5c6d6';
+        ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
+        
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
         
         if (img) {
             ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
             
-            // Bold border
-            ctx.strokeStyle = template.textColor;
-            ctx.lineWidth = 6;
+            // Bold border overlay
+            ctx.strokeStyle = '#f5c6d6';
+            ctx.lineWidth = 8;
             ctx.strokeRect(imgX, imgY, imgSize, imgSize);
         } else {
             // Bold placeholder
-            ctx.fillStyle = template.bgColor;
+            ctx.fillStyle = '#2d1b25';
             ctx.fillRect(imgX, imgY, imgSize, imgSize);
-            ctx.fillStyle = template.accentColor;
-            ctx.font = 'bold 28px serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2);
+            ctx.fillStyle = '#f5c6d6';
+            ctx.font = 'bold 32px "Pirata One", serif';
+            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 10);
+            ctx.font = 'bold 28px "Pirata One", serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 30);
         }
         
         // Description in bold style
-        ctx.fillStyle = template.textColor;
-        ctx.font = 'bold 26px serif';
-        this.wrapText(ctx, result.description, width / 2, 1050, width - 100, 32);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 28px "IM Fell English", serif';
+        this.wrapText(ctx, result.description, width / 2, 1050, width - 120, 36);
         
-        // Quote
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'bold italic 24px serif';
-        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1250, width - 120, 30);
+        // Bold quote
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'bold italic 26px "IM Fell English", serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1250, width - 140, 34);
         
         // Bold branding
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'bold 44px serif';
-        ctx.fillText('LEAH CORTEZ', width / 2, height - 180);
+        ctx.fillStyle = '#f5c6d6';
+        ctx.font = 'bold 48px "Pirata One", serif';
+        ctx.fillText('LEAH CORTEZ', width / 2, height - 200);
         
-        ctx.fillStyle = template.textColor;
-        ctx.font = 'bold 28px serif';
-        ctx.fillText('PORTFOLIO QUIZ', width / 2, height - 130);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 32px "Pirata One", serif';
+        ctx.fillText('STUDIO', width / 2, height - 150);
         
-        ctx.font = 'bold 24px serif';
-        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, height - 90);
+        ctx.font = 'bold 26px "IBM Plex Mono", monospace';
+        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, height - 100);
     }
 
     drawElegantTemplate(ctx, result, template, img, logo, width, height) {
-        // Elegant light background
-        ctx.fillStyle = template.bgColor;
+        // Elegant light cream background
+        ctx.fillStyle = '#faf8f6';
         ctx.fillRect(0, 0, width, height);
         
-        // Elegant outer border
-        ctx.strokeStyle = template.accentColor;
-        ctx.lineWidth = 8;
-        ctx.strokeRect(60, 60, width - 120, height - 120);
+        // Elegant outer border with your burgundy
+        ctx.strokeStyle = '#7e1c2e';
+        ctx.lineWidth = 12;
+        ctx.strokeRect(80, 80, width - 160, height - 160);
         
         // Inner decorative border
-        ctx.strokeStyle = template.accentColor + '60';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(100, 100, width - 200, height - 200);
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(110, 110, width - 220, height - 220);
         
-        // Logo at top center with fallback
+        // Innermost accent line
+        ctx.strokeStyle = '#7e1c2e';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(130, 130, width - 260, height - 260);
+        
+        // Logo at top center with elegant styling
         if (logo) {
-            const logoSize = 100;
+            const logoSize = 120;
             const logoX = (width - logoSize) / 2;
-            const logoY = 120;
+            const logoY = 150;
+            
+            // Subtle shadow for elegance
+            ctx.shadowColor = 'rgba(126, 28, 46, 0.2)';
+            ctx.shadowBlur = 8;
+            ctx.shadowOffsetY = 2;
             ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
         } else {
-            ctx.fillStyle = template.accentColor;
-            ctx.font = 'bold 28px serif';
+            ctx.fillStyle = '#7e1c2e';
+            ctx.font = 'bold 32px "Pirata One", serif';
             ctx.textAlign = 'center';
-            ctx.fillText('LC', width / 2, 150);
+            ctx.fillText('LEAH CORTEZ', width / 2, 190);
+            ctx.font = '22px "IM Fell English", serif';
+            ctx.fillText('STUDIO', width / 2, 220);
         }
         
-        // Elegant typography
+        // Elegant typography with your fonts
         ctx.textAlign = 'center';
-        ctx.fillStyle = template.textColor;
-        ctx.font = '52px serif';
-        this.wrapText(ctx, result.title, width / 2, 280, width - 200, 60);
+        ctx.fillStyle = '#2d1b25';
+        ctx.font = '54px "Pirata One", serif';
+        this.wrapText(ctx, result.title, width / 2, 320, width - 240, 65);
         
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'italic 36px serif';
-        ctx.fillText(result.subtitle, width / 2, 380);
+        ctx.fillStyle = '#7e1c2e';
+        ctx.font = 'italic 38px "IM Fell English", serif';
+        ctx.fillText(result.subtitle, width / 2, 420);
         
-        // Main artwork image with elegant frame
+        // Elegant decorative flourishes
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(width / 2 - 180, 450);
+        ctx.lineTo(width / 2 + 180, 450);
+        ctx.stroke();
+        
+        // Small decorative circles
+        ctx.fillStyle = '#7e1c2e';
+        ctx.beginPath();
+        ctx.arc(width / 2 - 190, 450, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(width / 2 + 190, 450, 6, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Main artwork with elegant multi-layered frame
+        const imgSize = 380;
+        const imgX = (width - imgSize) / 2;
+        const imgY = 490;
+        
         if (img) {
-            const imgSize = 380;
-            const imgX = (width - imgSize) / 2;
-            const imgY = 450;
+            // Elegant layered frame
+            ctx.strokeStyle = '#7e1c2e';
+            ctx.lineWidth = 12;
+            ctx.strokeRect(imgX - 25, imgY - 25, imgSize + 50, imgSize + 50);
             
-            // Elegant multi-layered frame
-            ctx.strokeStyle = template.accentColor;
+            ctx.strokeStyle = '#f5c6d6';
             ctx.lineWidth = 8;
-            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            ctx.strokeRect(imgX - 18, imgY - 18, imgSize + 36, imgSize + 36);
             
-            ctx.strokeStyle = template.accentColor + '80';
+            ctx.strokeStyle = '#7e1c2e';
             ctx.lineWidth = 4;
-            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            ctx.strokeRect(imgX - 12, imgY - 12, imgSize + 24, imgSize + 24);
             
-            ctx.strokeStyle = template.accentColor + '40';
+            ctx.strokeStyle = '#2d1b25';
             ctx.lineWidth = 2;
-            ctx.strokeRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
+            ctx.strokeRect(imgX - 6, imgY - 6, imgSize + 12, imgSize + 12);
             
             ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+        } else {
+            // Elegant placeholder frame
+            ctx.strokeStyle = '#7e1c2e';
+            ctx.lineWidth = 12;
+            ctx.strokeRect(imgX - 25, imgY - 25, imgSize + 50, imgSize + 50);
+            
+            ctx.fillStyle = '#f5c6d6';
+            ctx.fillRect(imgX, imgY, imgSize, imgSize);
+            
+            ctx.fillStyle = '#7e1c2e';
+            ctx.font = '32px "Pirata One", serif';
+            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 15);
+            ctx.font = '28px "IM Fell English", serif';
+            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
         }
         
         // Description in elegant typography
-        ctx.fillStyle = template.textColor;
-        ctx.font = '28px serif';
-        this.wrapText(ctx, result.description, width / 2, 900, width - 160, 34);
+        ctx.fillStyle = '#2d1b25';
+        ctx.font = '30px "IM Fell English", serif';
+        this.wrapText(ctx, result.description, width / 2, 940, width - 200, 38);
         
         // Quote in elegant italic style
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'italic 24px serif';
-        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1150, width - 180, 30);
+        ctx.fillStyle = '#7e1c2e';
+        ctx.font = 'italic 26px "IM Fell English", serif';
+        this.wrapText(ctx, `"${result.quote}"`, width / 2, 1190, width - 220, 34);
         
-        // Elegant branding
-        ctx.fillStyle = template.textColor;
-        ctx.font = '34px serif';
-        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 200);
+        // Elegant branding section
+        ctx.fillStyle = '#2d1b25';
+        ctx.font = '38px "Pirata One", serif';
+        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 220);
         
-        ctx.fillStyle = template.accentColor;
-        ctx.font = 'italic 24px serif';
-        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 160);
+        ctx.fillStyle = '#7e1c2e';
+        ctx.font = 'italic 26px "IM Fell English", serif';
+        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 180);
         
-        ctx.fillStyle = template.textColor + '80';
-        ctx.font = '22px serif';
-        ctx.fillText('leahcortezstudios.art', width / 2, height - 120);
+        ctx.fillStyle = 'rgba(45, 27, 37, 0.8)';
+        ctx.font = '24px "IBM Plex Mono", monospace';
+        ctx.fillText('leahcortezstudios.art', width / 2, height - 140);
+        
+        // Final elegant decorative line
+        ctx.strokeStyle = '#f5c6d6';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(200, height - 110);
+        ctx.lineTo(width - 200, height - 110);
+        ctx.stroke();
     }
 
     wrapText(ctx, text, x, y, maxWidth, lineHeight) {
