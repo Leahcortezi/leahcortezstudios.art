@@ -400,9 +400,9 @@ class PortfolioQuiz {
                         </div>
                     </div>
                     <div class="share-options">
-                        <button class="spotify-btn download-story">
-                            <span class="btn-icon">⬇️</span>
-                            Save to Camera Roll
+                        <button class="spotify-btn post-facebook">
+                            <span class="btn-icon">📘</span>
+                            Post to Facebook
                         </button>
                         <button class="spotify-btn share-instagram">
                             <span class="btn-icon">📸</span>
@@ -472,7 +472,7 @@ class PortfolioQuiz {
     addSpotifyShareEventListeners(modal, result) {
         const closeBtn = modal.querySelector('.spotify-share-close');
         const templateBtns = modal.querySelectorAll('.template-btn');
-        const downloadBtn = modal.querySelector('.download-story');
+        const facebookBtn = modal.querySelector('.post-facebook');
         const instagramBtn = modal.querySelector('.share-instagram');
         const copyBtn = modal.querySelector('.copy-text');
         const moreBtn = modal.querySelector('.share-more');
@@ -493,19 +493,31 @@ class PortfolioQuiz {
             });
         });
 
-        // Download story
-        downloadBtn.addEventListener('click', () => {
+        // Post to Facebook
+        facebookBtn.addEventListener('click', () => {
             const canvas = modal.querySelector('#story-canvas');
-            const link = document.createElement('a');
-            link.download = `leah-cortez-${result.title.toLowerCase().replace(/\s+/g, '-')}-story.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-            
-            // Show feedback
-            downloadBtn.innerHTML = '<span class="btn-icon">✅</span>Saved!';
-            setTimeout(() => {
-                downloadBtn.innerHTML = '<span class="btn-icon">⬇️</span>Save to Camera Roll';
-            }, 2000);
+            canvas.toBlob(blob => {
+                // Create a temporary URL for the image
+                const imageUrl = URL.createObjectURL(blob);
+                
+                // Facebook sharing URL with image
+                const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz and discover your creative match!`;
+                const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`;
+                
+                // Open Facebook share dialog
+                const fbWindow = window.open(fbUrl, 'facebook-share-dialog', 'width=626,height=436');
+                
+                // Show feedback
+                facebookBtn.innerHTML = '<span class="btn-icon">✅</span>Posted!';
+                setTimeout(() => {
+                    facebookBtn.innerHTML = '<span class="btn-icon">📘</span>Post to Facebook';
+                }, 2000);
+                
+                // Clean up the temporary URL after a delay
+                setTimeout(() => {
+                    URL.revokeObjectURL(imageUrl);
+                }, 10000);
+            });
         });
 
         // Instagram share
