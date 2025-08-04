@@ -27,6 +27,46 @@ body {
     padding: 2rem;
 }
 
+/* Logo Header Styles */
+.logo-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(126, 28, 46, 0.3);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-logo-img {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    object-fit: contain;
+}
+
+.header-logo:hover .header-logo-img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
 /* Header Section */
 .cards-header {
     text-align: center;
