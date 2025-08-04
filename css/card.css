@@ -30,26 +30,16 @@ body {
 /* Header Section */
 .cards-header {
     text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-}
-
-.cards-header h1 {
-    font-family: 'Pirata One', serif;
-    font-size: 4rem;
-    color: #7e1c2e;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
     position: relative;
 }
 
 .subtitle {
-    font-family: 'IM Fell English', serif;
-    font-size: 1.3rem;
-    color: #2d1b25;
+    font-family: 'Pirata One', serif;
+    font-size: 2.5rem;
+    color: #7e1c2e;
     margin-bottom: 2rem;
-    font-style: italic;
-    opacity: 0.8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .decorative-line {
@@ -416,9 +406,10 @@ nav {
 }
 
 .logo-img {
-    height: 48px;
+    height: 40px;
     width: auto;
     display: block;
+    object-fit: contain;
 }
 
 nav ul {
@@ -495,22 +486,30 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(245, 198, 214, 0.1);
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background: rgba(245, 198, 214, 0.15);
+    border-radius: 12px;
     transition: all 0.3s ease;
+    border: 2px solid rgba(245, 198, 214, 0.2);
 }
 
 .social-links a:hover {
-    background: rgba(245, 198, 214, 0.2);
-    transform: translateY(-2px);
+    background: rgba(245, 198, 214, 0.25);
+    border-color: rgba(245, 198, 214, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(245, 198, 214, 0.3);
 }
 
 .social-links img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover img {
+    transform: scale(1.1);
 }
 
 .footer-section ul {
@@ -559,8 +558,8 @@ footer {
         padding: 1rem;
     }
     
-    .cards-header h1 {
-        font-size: 3rem;
+    .subtitle {
+        font-size: 2rem;
     }
     
     .main-profile-card {
@@ -608,8 +607,8 @@ footer {
         margin-top: 70px;
     }
     
-    .cards-header h1 {
-        font-size: 2.5rem;
+    .subtitle {
+        font-size: 1.8rem;
     }
     
     .profile-image img {
