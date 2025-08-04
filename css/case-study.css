@@ -1175,7 +1175,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 1.2s ease-in-out;
+  transition: transform 2s ease-in-out;
   transform-style: preserve-3d;
   will-change: transform; /* Optimize for animation */
 }
@@ -1183,6 +1183,26 @@
 /* Toggle flip on hover - first hover flips to back, second hover flips to front */
 .character-study .character-item.flip-toggled .card-flip-container {
   transform: rotateY(180deg) !important;
+}
+
+/* Make sure the card fronts and backs are properly positioned */
+.character-item .card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.character-item .card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* When flipped, show the back */
+.character-item.flip-toggled .card-front {
+  transform: rotateY(180deg);
+}
+
+.character-item.flip-toggled .card-back {
+  transform: rotateY(0deg);
 }
 
 .card-front,

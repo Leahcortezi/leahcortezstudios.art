@@ -381,24 +381,20 @@
         const modals = document.querySelectorAll('.character-modal');
         const closeButtons = document.querySelectorAll('.modal-close');
         
-        // Handle card flip toggle on hover - stays flipped until next hover
+        // Handle card flip on hover - flip to back on first hover, stay until mouse leaves and hovers again to flip to front
         characterItems.forEach(item => {
-            let hasBeenHovered = false;
+            let shouldFlipToBack = true; // Start by flipping to back on first hover
             
             item.addEventListener('mouseenter', function() {
-                console.log('Mouse entered. hasBeenHovered:', hasBeenHovered);
-                if (!hasBeenHovered) {
-                    // First time hovering or returning after mouse left - toggle flip state
-                    this.classList.toggle('flip-toggled');
-                    console.log('Toggled flip. Now has class:', this.classList.contains('flip-toggled'));
-                    hasBeenHovered = true;
+                if (shouldFlipToBack) {
+                    // Flip to back
+                    this.classList.add('flip-toggled');
+                    shouldFlipToBack = false; // Next hover will flip to front
+                } else {
+                    // Flip to front
+                    this.classList.remove('flip-toggled');
+                    shouldFlipToBack = true; // Next hover will flip to back
                 }
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                console.log('Mouse left. Resetting hasBeenHovered flag');
-                // Reset hover flag so next mouseenter will trigger flip
-                hasBeenHovered = false;
             });
             
             // Handle modal opening on click
