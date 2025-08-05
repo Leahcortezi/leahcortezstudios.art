@@ -1,23 +1,18 @@
-console.log('🔄 Quiz.js loaded - Version 1754366232 - Enhanced progress bar with glow gradients!');
+console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
 
 class PortfolioQuiz {
     constructor() {
         this.currentQuestion = 0;
         this.answers = [];
         this.scores = {};
-        this.questions = [
+                this.questions = [
             {
                 id: 1,
                 text: "When you're emotionally drained at 2 AM, what calls to your creative soul?",
                 options: [
                     { text: "Drawing the dissociative weight behind tired eyes", piece: "anointed-gaze", weight: 3 },
                     { text: "Building altars from family photographs and memory", piece: "abuelas-altar", weight: 3 },
-                    { text: "Carving mouths that speak unspoken hungers", piece: "gnaw", weight: 3 },
-                    { text: "Wrapping wire around forms until they confess their secrets", piece: "unraveling", weight: 3 },
-                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 },
-                    { text: "Designing cards that make science feel like magic", piece: "playing-cards", weight: 3 },
-                    { text: "Breaking typography until it screams the truth", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Making posters that question everything", piece: "double-sided-poster", weight: 3 }
+                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 }
                 ]
             },
             {
@@ -25,12 +20,8 @@ class PortfolioQuiz {
                 text: "Your creative breakdown usually happens because...",
                 options: [
                     { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
-                    { text: "You're drowning in your own emotional intensity", piece: "anointed-gaze", weight: 3 },
                     { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
-                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 },
-                    { text: "Your perfectionist standards are impossible to meet", piece: "typographic-interpretation", weight: 3 },
-                    { text: "The design brief makes no logical sense", piece: "elements-book", weight: 3 },
-                    { text: "You're questioning what symbols actually mean", piece: "reductive-symbols", weight: 3 }
+                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 }
                 ]
             },
             {
@@ -39,38 +30,23 @@ class PortfolioQuiz {
                 options: [
                     { text: "'Your art is too depressing. Smile more!'", piece: "anointed-gaze", weight: 3 },
                     { text: "'Why can't you just get over your family stuff?'", piece: "abuelas-altar", weight: 3 },
-                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 },
-                    { text: "'I don't get it. What's it supposed to be?'", piece: "abyss-bloom", weight: 3 },
-                    { text: "'This is just random junk glued together.'", piece: "collected-remains", weight: 3 },
-                    { text: "'The kerning is off by 2 pixels.'", piece: "typographic-interpretation", weight: 3 },
-                    { text: "'It's fine, but what does it actually DO?'", piece: "playing-cards", weight: 3 },
-                    { text: "'I've seen this exact design on Pinterest.'", piece: "elements-book", weight: 3 }
+                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 }
                 ]
             },
             {
                 id: 4,
                 text: "Your studio ritual involves...",
                 options: [
-                    { text: "Lighting candles and having imaginary conversations with ancestors", piece: "abuelas-altar", weight: 3 },
-                    { text: "Staring at yourself in mirrors until you see someone else", piece: "anointed-gaze", weight: 3 },
-                    { text: "Collecting broken things others threw away", piece: "collected-remains", weight: 3 },
                     { text: "Destroying perfectly good materials on purpose", piece: "gnaw", weight: 3 },
-                    { text: "Building creatures that shouldn't exist", piece: "abyss-bloom", weight: 3 },
-                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Making educational content feel like rebellion", piece: "playing-cards", weight: 3 },
-                    { text: "Turning every assignment into a manifesto", piece: "double-sided-poster", weight: 3 }
+                    { text: "Wrapping wire around forms until they confess", piece: "unraveling", weight: 3 },
+                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 }
                 ]
             },
             {
                 id: 5,
                 text: "People worry about you because...",
                 options: [
-                    { text: "You spend too much time talking to dead relatives", piece: "abuelas-altar", weight: 3 },
-                    { text: "You seem to disappear even when you're right there", piece: "anointed-gaze", weight: 3 },
-                    { text: "You find beauty in apocalyptic imagery", piece: "heaven-on-fire", weight: 3 },
                     { text: "You never throw anything away - it might be art", piece: "collected-remains", weight: 3 },
-                    { text: "You talk to your sculptures like they're alive", piece: "abyss-bloom", weight: 3 },
-                    { text: "You judge their Instagram posts' typography", piece: "typographic-interpretation", weight: 3 },
                     { text: "You make everything unnecessarily complicated", piece: "elements-book", weight: 3 },
                     { text: "You question everything, including this question", piece: "double-sided-poster", weight: 3 }
                 ]
@@ -79,42 +55,72 @@ class PortfolioQuiz {
                 id: 6,
                 text: "Your art supplies budget embarrassingly goes toward...",
                 options: [
-                    { text: "Expensive graphite for those 6-hour drawing sessions", piece: "anointed-gaze", weight: 3 },
-                    { text: "Candles, frames, and items that remind you of family", piece: "abuelas-altar", weight: 3 },
-                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 },
-                    { text: "Iridescent paints that cost more than your rent", piece: "abyss-bloom", weight: 3 },
-                    { text: "Adobe subscriptions and the perfect Pantone book", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Specialty paper for projects no one will understand", piece: "double-sided-poster", weight: 3 },
                     { text: "Materials to make educational content look cooler", piece: "playing-cards", weight: 3 },
-                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 }
+                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 },
+                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 }
                 ]
             },
             {
                 id: 7,
                 text: "At art openings, you're the person who...",
                 options: [
-                    { text: "Hides because people keep asking about your trauma", piece: "abuelas-altar", weight: 3 },
-                    { text: "Zones out mid-conversation and stares at the wall", piece: "anointed-gaze", weight: 3 },
-                    { text: "Describes their work as 'beautiful chaos' unironically", piece: "heaven-on-fire", weight: 3 },
-                    { text: "Gets excited when someone touches the art", piece: "abyss-bloom", weight: 3 },
-                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Hands out business cards with perfect alignment", piece: "elements-book", weight: 3 },
                     { text: "Starts political debates about design ethics", piece: "double-sided-poster", weight: 3 },
-                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 }
+                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 },
+                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 }
                 ]
             },
             {
                 id: 8,
                 text: "Your therapist (if you have one) probably...",
                 options: [
-                    { text: "Suggests you need to 'process your family dynamics'", piece: "abuelas-altar", weight: 3 },
-                    { text: "Asks if you've considered medication for dissociation", piece: "anointed-gaze", weight: 3 },
-                    { text: "Worries about your 'apocalyptic ideation'", piece: "heaven-on-fire", weight: 3 },
-                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
-                    { text: "Doesn't understand why you anthropomorphize sculptures", piece: "abyss-bloom", weight: 3 },
                     { text: "Thinks your perfectionism is 'maladaptive'", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Suggests you're 'intellectualizing your emotions'", piece: "double-sided-poster", weight: 3 },
+                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
                     { text: "Admires your ability to 'find order in chaos'", piece: "elements-book", weight: 3 }
+                ]
+            },
+            {
+                id: 9,
+                text: "When you're stuck creatively, you usually...",
+                options: [
+                    { text: "Tear apart something beautiful to understand it", piece: "unraveling", weight: 3 },
+                    { text: "Make symbols that mean nothing and everything", piece: "reductive-symbols", weight: 3 },
+                    { text: "Design cards that make learning feel magical", piece: "playing-cards", weight: 3 }
+                ]
+            },
+            {
+                id: 10,
+                text: "Your ideal creative space would be...",
+                options: [
+                    { text: "A wire-wrapped sanctuary where objects confess", piece: "unraveling", weight: 3 },
+                    { text: "A minimal space where symbols speak louder than words", piece: "reductive-symbols", weight: 3 },
+                    { text: "Between worlds, where memory and present collide", piece: "inheritance", weight: 3 }
+                ]
+            },
+            {
+                id: 11,
+                text: "The piece that haunts your dreams is about...",
+                options: [
+                    { text: "What you inherit when you don't choose to", piece: "inheritance", weight: 3 },
+                    { text: "Wire that holds secrets you're afraid to unravel", piece: "unraveling", weight: 3 },
+                    { text: "Symbols stripped down to their essential meaning", piece: "reductive-symbols", weight: 3 }
+                ]
+            },
+            {
+                id: 12,
+                text: "Your creative crisis usually involves...",
+                options: [
+                    { text: "Processing what it means to carry someone else's story", piece: "inheritance", weight: 3 },
+                    { text: "Wondering if beauty can exist in complete destruction", piece: "unraveling", weight: 3 },
+                    { text: "Questioning whether symbols have any real meaning", piece: "reductive-symbols", weight: 3 }
+                ]
+            },
+            {
+                id: 13,
+                text: "The work that feels most like home is...",
+                options: [
+                    { text: "Creating monuments to inherited trauma and love", piece: "inheritance", weight: 3 },
+                    { text: "Finding the story hidden in tangled materials", piece: "unraveling", weight: 3 },
+                    { text: "Stripping everything down to its essential symbol", piece: "reductive-symbols", weight: 3 }
                 ]
             }
         ];
@@ -322,7 +328,7 @@ class PortfolioQuiz {
     }
 
     validateQuizData() {
-        console.log('🔍 Validating quiz data...');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Check all descriptions start with "You're the"
         let invalidDescriptions = [];
@@ -335,22 +341,22 @@ class PortfolioQuiz {
         if (invalidDescriptions.length > 0) {
             console.error('❌ Found piece descriptions instead of archetype descriptions:', invalidDescriptions);
         } else {
-            console.log('✅ All descriptions are archetype-focused!');
+            console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         }
         
         // Count total pieces
-        console.log(`📊 Total pieces in quiz: ${Object.keys(this.portfolioData).length}`);
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Check for entre-mundos
         if (this.portfolioData['entre-mundos']) {
             console.error('❌ entre-mundos still found in quiz data!');
         } else {
-            console.log('✅ entre-mundos successfully removed');
+            console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         }
     }
 
     init() {
-        console.log('🎨 Initializing Portfolio Quiz with Gothic Templates');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         this.bindEvents();
         this.preloadImages();
     }
@@ -359,13 +365,13 @@ class PortfolioQuiz {
         // Preload logo
         const logo = new Image();
         logo.src = 'images/logo/logo3.png';
-        logo.onload = () => console.log('✨ Logo preloaded for gothic templates');
+        logo.onload = () => console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Preload portfolio images
         Object.values(this.portfolioData).forEach(data => {
             const img = new Image();
             img.src = data.image;
-            img.onload = () => console.log(`🖼️ Preloaded ${data.title} image`);
+            img.onload = () => console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         });
     }
 
@@ -390,7 +396,7 @@ class PortfolioQuiz {
     }
 
     startQuiz() {
-        console.log('🎯 Starting Portfolio Soul Quiz');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         this.resetProgress();
         this.showSection('quiz-questions');
         this.displayQuestion();
@@ -464,7 +470,7 @@ class PortfolioQuiz {
         }
 
         // Log progress for debugging
-        console.log(`📊 Progress: ${currentQuestionNumber}/${totalQuestions} (${progressPercentage.toFixed(1)}%)`);
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
     }
 
     selectAnswer(event) {
@@ -501,7 +507,7 @@ class PortfolioQuiz {
     }
 
     calculateResult() {
-        console.log('🧮 Calculating quiz results');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Find the piece with the highest score
         let winningPiece = null;
@@ -520,14 +526,14 @@ class PortfolioQuiz {
         }
 
         const result = this.portfolioData[winningPiece];
-        console.log(`🎯 Result: ${result.title} (${winningPiece})`);
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         this.displayResult(result);
     }
 
     displayResult(result) {
-        console.log('🎯 Displaying result:', result.title);
-        console.log('📝 Description:', result.description);
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         this.showSection('quiz-results');
         
         const resultContainer = document.querySelector('.result-container');
@@ -606,7 +612,7 @@ class PortfolioQuiz {
     }
 
     generateGothicStoryTemplate(ctx, result, img, logo, width, height) {
-        console.log('🖤 Creating Spotify-style Gothic Story template');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Deep gothic gradient background
         const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/2, height);
@@ -786,7 +792,7 @@ class PortfolioQuiz {
     }
 
     drawGothicMinimal(ctx, result, img, logo, width, height) {
-        console.log('🖤 Drawing Gothic Minimal template');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Soft black background
         ctx.fillStyle = '#0e0e0e';
@@ -888,7 +894,7 @@ class PortfolioQuiz {
     }
 
     drawGothicArtistic(ctx, result, img, logo, width, height) {
-        console.log('🎨 Drawing Gothic Artistic template');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Deep burgundy gradient
         const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/3, height);
@@ -989,7 +995,7 @@ class PortfolioQuiz {
     }
 
     drawGothicElegant(ctx, result, img, logo, width, height) {
-        console.log('✨ Drawing Gothic Elegant template');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Elegant dusty rose gradient
         const gradient = ctx.createLinearGradient(0, 0, 0, height);
@@ -1188,7 +1194,7 @@ class PortfolioQuiz {
     }
 
     showShareOptions(canvas, result) {
-        console.log('📱 Showing user-friendly share options');
+        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         
         // Create modal with improved share options
         const modal = document.createElement('div');
@@ -1452,6 +1458,6 @@ class PortfolioQuiz {
 
 // Initialize quiz when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎨 Initializing Portfolio Quiz with Gothic Aesthetics');
+    console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
     new PortfolioQuiz();
 });
