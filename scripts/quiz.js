@@ -5,343 +5,107 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "When you're emotionally drained at 2 AM, what calls to your creative soul?",
+                text: "When you're feeling overwhelmed, what calls to you most?",
                 options: [
-                    { text: "Drawing the dissociative weight behind tired eyes", piece: "anointed-gaze", weight: 3 },
-                    { text: "Building altars from family photographs and memory", piece: "abuelas-altar", weight: 3 },
-                    { text: "Carving mouths that speak unspoken hungers", piece: "gnaw", weight: 3 },
-                    { text: "Wrapping wire around forms until they confess their secrets", piece: "unraveling", weight: 3 },
-                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 },
-                    { text: "Designing cards that make science feel like magic", piece: "playing-cards", weight: 3 },
-                    { text: "Breaking typography until it screams the truth", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Making posters that question everything", piece: "double-sided-poster", weight: 3 }
+                    { text: "Creating something meaningful from my pain", category: "personal", weight: 3 },
+                    { text: "Organizing my thoughts through clear, structured design", category: "design", weight: 3 },
+                    { text: "Working with my hands, letting intuition guide me", category: "studio", weight: 3 },
+                    { text: "Finding inspiration through others' creative work", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 2,
-                text: "Your creative breakdown usually happens because...",
+                text: "What kind of story do you feel most drawn to tell?",
                 options: [
-                    { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
-                    { text: "You're drowning in your own emotional intensity", piece: "anointed-gaze", weight: 3 },
-                    { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
-                    { text: "You're caught between two worlds and can't choose", piece: "entre-mundos", weight: 3 },
-                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 },
-                    { text: "Your perfectionist standards are impossible to meet", piece: "typographic-interpretation", weight: 3 },
-                    { text: "The design brief makes no logical sense", piece: "elements-book", weight: 3 },
-                    { text: "You're questioning what symbols actually mean", piece: "reductive-symbols", weight: 3 }
+                    { text: "The untold stories of my ancestors and heritage", category: "personal", weight: 3 },
+                    { text: "Clear messages that help people understand complex ideas", category: "design", weight: 3 },
+                    { text: "The hidden beauty in forgotten or broken things", category: "studio", weight: 3 },
+                    { text: "Fresh perspectives on familiar concepts", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 3,
-                text: "The comment that would devastate you most as an artist:",
+                text: "When you create, where does your deepest satisfaction come from?",
                 options: [
-                    { text: "'Your art is too depressing. Smile more!'", piece: "anointed-gaze", weight: 3 },
-                    { text: "'Why can't you just get over your family stuff?'", piece: "abuelas-altar", weight: 3 },
-                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 },
-                    { text: "'I don't get it. What's it supposed to be?'", piece: "abyss-bloom", weight: 3 },
-                    { text: "'This is just random junk glued together.'", piece: "collected-remains", weight: 3 },
-                    { text: "'The kerning is off by 2 pixels.'", piece: "typographic-interpretation", weight: 3 },
-                    { text: "'It's fine, but what does it actually DO?'", piece: "playing-cards", weight: 3 },
-                    { text: "'I've seen this exact design on Pinterest.'", piece: "elements-book", weight: 3 }
+                    { text: "Transforming personal wounds into something healing", category: "personal", weight: 3 },
+                    { text: "Solving problems elegantly through thoughtful design", category: "design", weight: 3 },
+                    { text: "Discovering unexpected beauty through experimentation", category: "studio", weight: 3 },
+                    { text: "Building skills and staying current with trends", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 4,
-                text: "Your studio ritual involves...",
+                text: "What draws your eye and captures your heart?",
                 options: [
-                    { text: "Lighting candles and having imaginary conversations with ancestors", piece: "abuelas-altar", weight: 3 },
-                    { text: "Staring at yourself in mirrors until you see someone else", piece: "anointed-gaze", weight: 3 },
-                    { text: "Collecting broken things others threw away", piece: "collected-remains", weight: 3 },
-                    { text: "Destroying perfectly good materials on purpose", piece: "gnaw", weight: 3 },
-                    { text: "Building creatures that shouldn't exist", piece: "abyss-bloom", weight: 3 },
-                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Making educational content feel like rebellion", piece: "playing-cards", weight: 3 },
-                    { text: "Turning every assignment into a manifesto", piece: "double-sided-poster", weight: 3 }
+                    { text: "Sacred objects and symbols that carry deep meaning", category: "personal", weight: 3 },
+                    { text: "Clean, intentional compositions that communicate clearly", category: "design", weight: 3 },
+                    { text: "Raw textures and the patina of time and wear", category: "studio", weight: 3 },
+                    { text: "Vibrant colors and contemporary visual language", category: "design", weight: 2 }
                 ]
             },
             {
                 id: 5,
-                text: "People worry about you because...",
+                text: "How do you hope your creative work impacts others?",
                 options: [
-                    { text: "You spend too much time talking to dead relatives", piece: "abuelas-altar", weight: 3 },
-                    { text: "You seem to disappear even when you're right there", piece: "anointed-gaze", weight: 3 },
-                    { text: "You find beauty in apocalyptic imagery", piece: "heaven-on-fire", weight: 3 },
-                    { text: "You never throw anything away - it might be art", piece: "collected-remains", weight: 3 },
-                    { text: "You talk to your sculptures like they're alive", piece: "abyss-bloom", weight: 3 },
-                    { text: "You judge their Instagram posts' typography", piece: "typographic-interpretation", weight: 3 },
-                    { text: "You make everything unnecessarily complicated", piece: "elements-book", weight: 3 },
-                    { text: "You question everything, including this question", piece: "double-sided-poster", weight: 3 }
-                ]
-            },
-            {
-                id: 6,
-                text: "Your art supplies budget embarrassingly goes toward...",
-                options: [
-                    { text: "Expensive graphite for those 6-hour drawing sessions", piece: "anointed-gaze", weight: 3 },
-                    { text: "Candles, frames, and items that remind you of family", piece: "abuelas-altar", weight: 3 },
-                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 },
-                    { text: "Iridescent paints that cost more than your rent", piece: "abyss-bloom", weight: 3 },
-                    { text: "Adobe subscriptions and the perfect Pantone book", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Specialty paper for projects no one will understand", piece: "double-sided-poster", weight: 3 },
-                    { text: "Materials to make educational content look cooler", piece: "playing-cards", weight: 3 },
-                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 }
-                ]
-            },
-            {
-                id: 7,
-                text: "At art openings, you're the person who...",
-                options: [
-                    { text: "Hides because people keep asking about your trauma", piece: "abuelas-altar", weight: 3 },
-                    { text: "Zones out mid-conversation and stares at the wall", piece: "anointed-gaze", weight: 3 },
-                    { text: "Describes their work as 'beautiful chaos' unironically", piece: "heaven-on-fire", weight: 3 },
-                    { text: "Gets excited when someone touches the art", piece: "abyss-bloom", weight: 3 },
-                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Hands out business cards with perfect alignment", piece: "elements-book", weight: 3 },
-                    { text: "Starts political debates about design ethics", piece: "double-sided-poster", weight: 3 },
-                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 }
-                ]
-            },
-            {
-                id: 8,
-                text: "Your therapist (if you have one) probably...",
-                options: [
-                    { text: "Suggests you need to 'process your family dynamics'", piece: "abuelas-altar", weight: 3 },
-                    { text: "Asks if you've considered medication for dissociation", piece: "anointed-gaze", weight: 3 },
-                    { text: "Worries about your 'apocalyptic ideation'", piece: "heaven-on-fire", weight: 3 },
-                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
-                    { text: "Doesn't understand why you anthropomorphize sculptures", piece: "abyss-bloom", weight: 3 },
-                    { text: "Thinks your perfectionism is 'maladaptive'", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Suggests you're 'intellectualizing your emotions'", piece: "double-sided-poster", weight: 3 },
-                    { text: "Admires your ability to 'find order in chaos'", piece: "elements-book", weight: 3 }
+                    { text: "Helps them feel less alone in their struggles", category: "personal", weight: 3 },
+                    { text: "Makes their daily experiences more beautiful and functional", category: "design", weight: 3 },
+                    { text: "Opens their eyes to beauty they hadn't noticed before", category: "studio", weight: 3 },
+                    { text: "Keeps them informed about current creative directions", category: "design", weight: 1 }
                 ]
             }
         ];
 
         this.portfolioData = {
-            "anointed-gaze": {
-                title: "The Dissociation Devotee",
-                subtitle: "Anointed Gaze",
+            personal: {
+                title: "The Emotional Alchemist",
+                subtitle: "Personal Collection",
                 category: "Personal Work",
-                archetype: {
-                    essence: "You find beauty in exhaustion and liminal states",
-                    medium: "Graphite portraits that capture mental distance",
-                    strength: "Drawing emotional weight and disconnection",
-                    challenge: "Being fully present while creating"
-                },
-                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
-                quote: "I draw the weight of being seen when I can barely see myself.",
-                image: "collections/personal/anointed-gaze/images/anointed-main.jpg",
-                path: "collections/personal/anointed-gaze/"
+                pieceTitle: "Inheritance", // Featured piece name
+                description: "You are drawn to art that transforms pain into beauty, exploring themes of heritage, identity, and spiritual awakening. Your creative soul finds meaning in the intimate and the sacred.",
+                quote: "Through vulnerability, we find our greatest strength.",
+                image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
+                works: [
+                    { name: "Abuela's Altar", path: "collections/personal/abuelas-altar/" },
+                    { name: "Anointed Gaze", path: "collections/personal/anointed-gaze/" },
+                    { name: "Drilled Into Memory", path: "collections/personal/drilled-into-memory/" },
+                    { name: "Entre Mundos", path: "collections/personal/entre-mundos/" },
+                    { name: "Heaven on Fire", path: "collections/personal/heaven-on-fire/" },
+                    { name: "Inheritance", path: "collections/personal/inheritance/" }
+                ]
             },
-            "abuelas-altar": {
-                title: "The Ancestral Archivist",
-                subtitle: "Abuela's Altar",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You channel family stories through art",
-                    medium: "Mixed media altars and memory installations",
-                    strength: "Honoring the past while healing the present",
-                    challenge: "Balancing reverence with creative freedom"
-                },
-                description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
-                quote: "My ancestors speak through my hands when my mouth can't find the words.",
-                image: "collections/personal/abuelas-altar/images/altar-main.jpg",
-                path: "collections/personal/abuelas-altar/"
-            },
-            "heaven-on-fire": {
-                title: "The Apocalypse Aesthete",
-                subtitle: "Heaven on Fire",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You find beauty in destruction and transformation",
-                    medium: "Fiery paintings of paradise in collapse",
-                    strength: "Creating meaning from chaos",
-                    challenge: "Finding peace without drama"
-                },
-                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
-                quote: "I paint paradise burning because sometimes heaven needs to start over.",
-                image: "collections/personal/heaven-on-fire/images/heaven-main.jpg",
-                path: "collections/personal/heaven-on-fire/"
-            },
-            "entre-mundos": {
-                title: "The Liminal Wanderer",
-                subtitle: "Entre Mundos",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You navigate between cultures and identities",
-                    medium: "Mixed media exploring cultural intersections",
-                    strength: "Creating bridges between different worlds",
-                    challenge: "Feeling like you belong everywhere and nowhere"
-                },
-                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
-                quote: "I live in the hyphen between worlds, and I've learned to call it home.",
-                image: "collections/personal/entre-mundos/images/mundos-main.jpg",
-                path: "collections/personal/entre-mundos/"
-            },
-            "inheritance": {
-                title: "The Legacy Liquidator",
-                subtitle: "Inheritance",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You transform family patterns through art",
-                    medium: "Installations examining generational stories",
-                    strength: "Breaking cycles while honoring heritage",
-                    challenge: "Evolving beyond family expectations"
-                },
-                description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
-                quote: "I didn't choose this legacy, but I choose what to do with it.",
-                image: "collections/personal/inheritance/images/inheritance-main.jpg",
-                path: "collections/personal/inheritance/"
-            },
-            "gnaw": {
-                title: "The Hunger Sculptor",
-                subtitle: "Gnaw",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You find meaning in destruction and consumption",
-                    medium: "Sculptural forms exploring mouths and erosion",
-                    strength: "Carving truth from the act of consuming",
-                    challenge: "Explaining why destruction creates meaning"
-                },
-                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, finding truth in the process of erosion.",
-                quote: "I carve mouths that speak the words I can't swallow.",
-                image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
-                path: "collections/studio/gnaw/"
-            },
-            "unraveling": {
-                title: "The Wire Whisperer",
-                subtitle: "Unraveling",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You transform pressure into physical form",
-                    medium: "Wire sculptures that bind and constrain",
-                    strength: "Making anxiety sculptural",
-                    challenge: "Learning when to let go of control"
-                },
-                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets.",
-                quote: "I wrap wire around my thoughts until they tell me the truth.",
-                image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
-                path: "collections/studio/unraveling/"
-            },
-            "abyss-bloom": {
-                title: "The Bioluminescent Botanist",
-                subtitle: "Abyss Bloom",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You create beauty from darkness",
-                    medium: "Glowing sculptures of impossible organisms",
-                    strength: "Growing light from the deepest shadows",
-                    challenge: "Accepting that not everything needs to be categorized"
-                },
-                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
-                quote: "I grow impossible flowers in the dark spaces of imagination.",
-                image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
-                path: "collections/studio/abyss-bloom/"
-            },
-            "collected-remains": {
-                title: "The Ruin Romanticist",
-                subtitle: "Collected Remains",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You find stories in discarded objects",
-                    medium: "Assemblages of abandoned things",
-                    strength: "Seeing potential in what others discard",
-                    challenge: "Not hoarding everything that speaks to you"
-                },
-                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
-                quote: "I collect what others abandon because every ruin has a story to tell.",
-                image: "collections/studio/collected-remains/images/remains-main.jpg",
-                path: "collections/studio/collected-remains/"
-            },
-            "feathers-along-the-bend": {
-                title: "The Current Catcher",
-                subtitle: "Feathers Along the Bend",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You capture things in transition",
-                    medium: "Installations of objects caught in motion",
-                    strength: "Finding poetry in drift and chance",
-                    challenge: "Trusting the process without controlling it"
-                },
-                description: "You're the artist who finds significance in things that drift. Your work captures the poetry of objects caught in motion, suspended between destinations.",
-                quote: "I catch the things that float between where they've been and where they're going.",
-                image: "collections/studio/feathers-along-the-bend/images/feathers-main.jpg",
-                path: "collections/studio/feathers-along-the-bend/"
-            },
-            "typographic-interpretation": {
-                title: "The Letter Liberator",
-                subtitle: "Typographic Interpretation",
+            design: {
+                title: "The Visual Architect",
+                subtitle: "Design Collection", 
                 category: "Design Work",
-                archetype: {
-                    essence: "You make letters feel emotions",
-                    medium: "Typography pushed beyond expected behaviors",
-                    strength: "Breaking typographic rules meaningfully",
-                    challenge: "Perfectionism that slows down creativity"
-                },
-                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
-                quote: "I free letters from their expected behaviors and watch them dance.",
-                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
-                path: "collections/design/typographic-interpretation/"
+                pieceTitle: "Typographic Interpretation", // Featured piece name
+                description: "You appreciate the power of strategic design and purposeful aesthetics. Your creative mind values clarity, function, and the art of visual communication.",
+                quote: "Great design whispers while poor design shouts.",
+                image: "collections/design/typographic-interpretation/images/design5.jpg",
+                works: [
+                    { name: "Typographic Interpretation", path: "collections/design/typographic-interpretation/" },
+                    { name: "Elements & Principles Book", path: "collections/design/elements-and-principles-book-cover/" },
+                    { name: "Flag Design", path: "collections/design/flag-design/" },
+                    { name: "Letter as Form", path: "collections/design/letter-as-form/" },
+                    { name: "Reductive Photo Solutions", path: "collections/design/reductive-photo-solutions/" },
+                    { name: "Playing Card Design", path: "collections/design/themed-playing-card-design/" }
+                ]
             },
-            "playing-cards": {
-                title: "The Educational Insurgent",
-                subtitle: "Scientific Revolution Playing Cards",
-                category: "Design Work",
-                archetype: {
-                    essence: "You make learning feel like play",
-                    medium: "Educational design disguised as entertainment",
-                    strength: "Smuggling knowledge inside beautiful experiences",
-                    challenge: "Not being too clever for your own good"
-                },
-                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
-                quote: "I smuggle education inside beautiful, playful experiences.",
-                image: "collections/design/themed-playing-card-design/images/cards-main.jpg",
-                path: "collections/design/themed-playing-card-design/"
-            },
-            "elements-book": {
-                title: "The Principle Perfectionist",
-                subtitle: "Elements & Principles Book Cover",
-                category: "Design Work",
-                archetype: {
-                    essence: "You find zen in fundamental principles",
-                    medium: "Clean design that honors the basics",
-                    strength: "Making fundamentals feel fresh",
-                    challenge: "Perfectionism that can become paralysis"
-                },
-                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
-                quote: "I make the fundamentals feel fundamental again.",
-                image: "collections/design/elements-and-principles-book-cover/images/book-main.jpg",
-                path: "collections/design/elements-and-principles-book-cover/"
-            },
-            "double-sided-poster": {
-                title: "The Truth Disruptor",
-                subtitle: "Double-Sided Poster",
-                category: "Design Work",
-                archetype: {
-                    essence: "You use design as activism",
-                    medium: "Typography that questions everything",
-                    strength: "Making uncomfortable truths visible",
-                    challenge: "Finding subtlety without losing impact"
-                },
-                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
-                quote: "I break typography so it can tell uncomfortable truths.",
-                image: "collections/design/double-sided-poster/images/poster-main.jpg",
-                path: "collections/design/double-sided-poster/"
-            },
-            "reductive-symbols": {
-                title: "The Symbol Surgeon",
-                subtitle: "Reductive Symbols",
-                category: "Design Work",
-                archetype: {
-                    essence: "You distill complex ideas to their essence",
-                    medium: "Minimal symbols with maximum impact",
-                    strength: "Cutting away everything unnecessary",
-                    challenge: "Knowing when simple becomes too simple"
-                },
-                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
-                quote: "I cut away everything except what absolutely must remain.",
-                image: "collections/design/reductive-symbols/images/symbols-main.jpg",
-                path: "collections/design/reductive-symbols/"
+            studio: {
+                title: "The Material Mystic",
+                subtitle: "Studio Collection",
+                category: "Studio Work", 
+                pieceTitle: "Abyss Bloom", // Featured piece name
+                description: "You are drawn to the alchemy of materials and the poetry found in decay and transformation. Your artistic spirit finds beauty in the overlooked and discarded.",
+                quote: "In breaking, we discover what we're truly made of.",
+                image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
+                works: [
+                    { name: "Abyss Bloom", path: "collections/studio/abyss-bloom/" },
+                    { name: "Artificial Meadow", path: "collections/studio/artificial-meadow/" },
+                    { name: "Collected Remains", path: "collections/studio/collected-remains/" },
+                    { name: "Feathers Along the Bend", path: "collections/studio/feathers-along-the-bend/" },
+                    { name: "Shadows in Repetition", path: "collections/studio/shadows-in-repetition/" },
+                    { name: "Weight of Light", path: "collections/studio/weight-of-light/" }
+                ]
             }
         };
 
@@ -396,28 +160,39 @@ class PortfolioQuiz {
 
     displayQuestion() {
         const question = this.questions[this.currentQuestion];
-        const questionContainer = document.querySelector('.question-container');
         
-        if (questionContainer) {
-            questionContainer.innerHTML = `
-                <div class="question-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${((this.currentQuestion + 1) / this.questions.length) * 100}%"></div>
-                    </div>
-                    <span class="progress-text">Question ${this.currentQuestion + 1} of ${this.questions.length}</span>
-                </div>
-                <h2 class="question-text">${question.text}</h2>
-                <div class="options-container">
-                    ${question.options.map((option, index) => `
-                        <button class="option-btn" data-piece="${option.piece}" data-weight="${option.weight}" data-index="${index}">
-                            ${option.text}
-                        </button>
-                    `).join('')}
-                </div>
-            `;
+        // Update progress
+        const progressFill = document.querySelector('.progress-fill');
+        const currentQuestionSpan = document.querySelector('#current-question');
+        const totalQuestionsSpan = document.querySelector('#total-questions');
+        
+        if (progressFill) {
+            progressFill.style.width = `${((this.currentQuestion + 1) / this.questions.length) * 100}%`;
+        }
+        if (currentQuestionSpan) {
+            currentQuestionSpan.textContent = this.currentQuestion + 1;
+        }
+        if (totalQuestionsSpan) {
+            totalQuestionsSpan.textContent = this.questions.length;
+        }
+        
+        // Update question text
+        const questionText = document.querySelector('#question-text');
+        if (questionText) {
+            questionText.textContent = question.text;
+        }
+        
+        // Update answer options
+        const answerOptions = document.querySelector('#answer-options');
+        if (answerOptions) {
+            answerOptions.innerHTML = question.options.map((option, index) => `
+                <button class="option-btn quiz-btn" data-category="${option.category}" data-weight="${option.weight}" data-index="${index}">
+                    ${option.text}
+                </button>
+            `).join('');
 
             // Bind option buttons
-            const optionButtons = questionContainer.querySelectorAll('.option-btn');
+            const optionButtons = answerOptions.querySelectorAll('.option-btn');
             optionButtons.forEach(button => {
                 button.addEventListener('click', (e) => this.selectAnswer(e));
             });
@@ -426,11 +201,11 @@ class PortfolioQuiz {
 
     selectAnswer(event) {
         const button = event.target;
-        const piece = button.dataset.piece;
+        const category = button.dataset.category;
         const weight = parseInt(button.dataset.weight);
 
         // Store answer
-        this.answers.push({ piece, weight });
+        this.answers.push({ category, weight });
 
         // Visual feedback
         button.classList.add('selected');
@@ -455,22 +230,19 @@ class PortfolioQuiz {
     calculateResult() {
         console.log('🧮 Calculating quiz results');
         
-        // Tally scores by piece
-        const scores = {};
+        // Tally scores by category
+        const scores = { personal: 0, design: 0, studio: 0 };
         this.answers.forEach(answer => {
-            if (!scores[answer.piece]) {
-                scores[answer.piece] = 0;
-            }
-            scores[answer.piece] += answer.weight;
+            scores[answer.category] += answer.weight;
         });
 
-        // Find highest scoring piece
-        const winningPiece = Object.keys(scores).reduce((a, b) => 
+        // Find highest scoring category
+        const winningCategory = Object.keys(scores).reduce((a, b) => 
             scores[a] > scores[b] ? a : b
         );
 
-        const result = this.portfolioData[winningPiece];
-        console.log(`🎯 Result: ${result.title} (${winningPiece})`);
+        const result = this.portfolioData[winningCategory];
+        console.log(`🎯 Result: ${result.title} (${winningCategory})`);
         
         this.displayResult(result);
     }
@@ -478,84 +250,53 @@ class PortfolioQuiz {
     displayResult(result) {
         this.showSection('quiz-results');
         
-        const resultContainer = document.querySelector('.result-container');
-        if (resultContainer) {
-            resultContainer.innerHTML = `
-                <div class="result-header">
-                    <h2 class="result-title">${result.title}</h2>
-                    <p class="result-subtitle">${result.subtitle}</p>
-                    <p class="result-core-identity">"${result.archetype.essence}"</p>
-                </div>
-                <div class="result-content">
-                    <div class="result-image">
-                        <img src="${result.image}" alt="${result.title}" />
-                    </div>
-                    <div class="result-description">
-                        <p>${result.description}</p>
-                        <blockquote>"${result.quote}"</blockquote>
-                    </div>
-                </div>
-                <div class="archetype-profile">
-                    <h3>Your Creative Archetype</h3>
-                    <div class="archetype-grid">
-                        <div class="archetype-item">
-                            <h4>Your Essence</h4>
-                            <p>${result.archetype.essence}</p>
-                        </div>
-                        <div class="archetype-item">
-                            <h4>Your Medium</h4>
-                            <p>${result.archetype.medium}</p>
-                        </div>
-                        <div class="archetype-item">
-                            <h4>Your Strength</h4>
-                            <p>${result.archetype.strength}</p>
-                        </div>
-                        <div class="archetype-item">
-                            <h4>Your Challenge</h4>
-                            <p>${result.archetype.challenge}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="result-actions">
-                    <button class="share-result-btn">Share Your Archetype</button>
-                    <button class="explore-piece-btn" onclick="window.location.href='${result.path}'">
-                        View This Piece
-                    </button>
-                </div>
-                <div class="portfolio-preview">
-                    <h3>You Are Most Like:</h3>
-                    <div class="piece-highlight">
-                        <a href="${result.path}" class="piece-card-large">
-                            <img src="${result.image}" alt="${result.subtitle}" loading="lazy">
-                            <div class="piece-info">
-                                <h4>${result.subtitle}</h4>
-                                <p>${result.category}</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            `;
-
-            // Bind result action buttons
-            const shareButton = resultContainer.querySelector('.share-result-btn');
-            if (shareButton) {
-                shareButton.addEventListener('click', () => this.shareResult(result));
+        // Update the existing HTML elements
+        const resultTitle = document.querySelector('#result-title');
+        const resultSubtitle = document.querySelector('#result-subtitle');
+        const resultDescription = document.querySelector('#result-description');
+        const resultQuote = document.querySelector('#result-quote-text');
+        const resultImage = document.querySelector('#result-project-image');
+        const viewProjectBtn = document.querySelector('#view-project-btn');
+        const retakeQuizBtn = document.querySelector('#retake-quiz-btn');
+        
+        if (resultTitle) resultTitle.textContent = result.title;
+        if (resultSubtitle) resultSubtitle.textContent = result.subtitle;
+        if (resultDescription) resultDescription.textContent = result.description;
+        if (resultQuote) resultQuote.textContent = `"${result.quote}"`;
+        if (resultImage) {
+            resultImage.src = result.image;
+            resultImage.alt = result.title;
+        }
+        
+        if (viewProjectBtn) {
+            // Link to the first work in the collection
+            const firstWork = result.works[0];
+            if (firstWork) {
+                viewProjectBtn.href = firstWork.path;
             }
-
-            // The explore button now uses inline onclick for simplicity
+        }
+        
+        // Bind event listeners
+        if (retakeQuizBtn) {
+            retakeQuizBtn.addEventListener('click', () => this.resetQuiz());
         }
     }
 
-    async shareResult(result) {
-        console.log('📱 Generating gothic share template');
+    resetQuiz() {
+        this.currentQuestion = 0;
+        this.answers = [];
+        this.showSection('quiz-start');
+    }
+
+    async showSection(sectionClass) {
         
         try {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             
-            // Gothic template dimensions (3:4 aspect ratio for social media)
+            // Instagram Stories dimensions (9:16 aspect ratio)
             const width = 1080;
-            const height = 1440;
+            const height = 1920;
             canvas.width = width;
             canvas.height = height;
             
@@ -565,9 +306,8 @@ class PortfolioQuiz {
                 this.loadImage('images/logo/logo3.png')
             ]);
             
-            // Generate template based on category
-            const templateStyle = this.getTemplateStyle(result.category);
-            this.generateGothicTemplate(ctx, result, templateStyle, img, logo, width, height);
+            // Generate Spotify-style gothic template
+            this.generateGothicStoryTemplate(ctx, result, img, logo, width, height);
             
             // Share options
             this.showShareOptions(canvas, result);
@@ -587,22 +327,184 @@ class PortfolioQuiz {
         return styles[category] || 'minimal';
     }
 
-    generateGothicTemplate(ctx, result, template, img, logo, width, height) {
-        console.log(`🎨 Drawing Gothic ${template} template`);
+    generateGothicStoryTemplate(ctx, result, img, logo, width, height) {
+        console.log('🖤 Creating Spotify-style Gothic Story template');
         
-        switch (template) {
-            case 'minimal':
-                this.drawGothicMinimal(ctx, result, img, logo, width, height);
-                break;
-            case 'artistic':
-                this.drawGothicArtistic(ctx, result, img, logo, width, height);
-                break;
-            case 'elegant':
-                this.drawGothicElegant(ctx, result, img, logo, width, height);
-                break;
-            default:
-                this.drawGothicMinimal(ctx, result, img, logo, width, height);
+        // Deep gothic gradient background
+        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/2, height);
+        gradient.addColorStop(0, '#1a0d14');
+        gradient.addColorStop(0.3, '#2d1b25');
+        gradient.addColorStop(0.7, '#7e1c2e');
+        gradient.addColorStop(1, '#0a0508');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Add mystical texture overlay with varied opacity
+        ctx.globalAlpha = 0.08;
+        ctx.fillStyle = '#f7f3f1';
+        for (let i = 0; i < 1500; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 2 + 1;
+            const alpha = Math.random() * 0.3 + 0.1;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
         }
+        
+        // Add some burgundy accent particles
+        ctx.fillStyle = '#7e1c2e';
+        for (let i = 0; i < 300; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 1.5;
+            ctx.globalAlpha = Math.random() * 0.2 + 0.05;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        
+        // Top section: "Now Viewing" Spotify-style header
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(0, 0, width, 120);
+        
+        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        ctx.fillText('NOW VIEWING', width/2, 50);
+        
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('Leah Cortez Studios', width/2, 85);
+        
+        // Main artwork section (large, centered)
+        if (img) {
+            const imgSize = 700;
+            const imgX = (width - imgSize) / 2;
+            const imgY = 200;
+            
+            // Gothic frame with shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 40;
+            ctx.shadowOffsetY = 20;
+            
+            // Ornate frame
+            ctx.strokeStyle = '#7e1c2e';
+            ctx.lineWidth = 8;
+            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
+            
+            // Inner glow
+            ctx.strokeStyle = 'rgba(247, 243, 241, 0.3)';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Draw image
+            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
+            
+            // Gothic corner ornaments
+            ctx.fillStyle = '#f7f3f1';
+            this.drawGothicStar(ctx, imgX - 40, imgY - 40, 25);
+            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY - 40, 25);
+            this.drawGothicStar(ctx, imgX - 40, imgY + imgSize + 40, 25);
+            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY + imgSize + 40, 25);
+        }
+        
+        // Bottom section: Spotify-style track info
+        const bottomY = height - 400;
+        
+        // Semi-transparent background for text area
+        const textBg = ctx.createLinearGradient(0, bottomY - 50, 0, height);
+        textBg.addColorStop(0, 'transparent');
+        textBg.addColorStop(0.3, 'rgba(0, 0, 0, 0.8)');
+        textBg.addColorStop(1, 'rgba(0, 0, 0, 0.95)');
+        ctx.fillStyle = textBg;
+        ctx.fillRect(0, bottomY - 50, width, 450);
+        
+        // Quiz result type (like Spotify artist name)
+        ctx.font = 'bold 48px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.textAlign = 'center';
+        ctx.fillText('LEAH CORTEZ STUDIOS', width/2, bottomY + 40);
+        
+        // Featured piece title (like Spotify song title)
+        ctx.font = 'bold 84px "Pirata One", cursive';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
+        ctx.shadowBlur = 20;
+        
+        const pieceTitle = result.pieceTitle || result.title;
+        const wrappedPieceTitle = this.wrapText(ctx, pieceTitle, width - 120);
+        const titleStartY = bottomY + 100;
+        wrappedPieceTitle.forEach((line, index) => {
+            ctx.fillText(line, width/2, titleStartY + (index * 90));
+        });
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        
+        // Result type subtitle (like Spotify album name)
+        const subtitleY = titleStartY + (wrappedPieceTitle.length * 90) + 30;
+        ctx.font = 'italic 40px "IM Fell English", serif';
+        ctx.fillStyle = '#d4a5a5';
+        ctx.textAlign = 'center';
+        ctx.fillText(`"${result.title}"`, width/2, subtitleY);
+        
+        // Category tag
+        const categoryY = subtitleY + 50;
+        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.textAlign = 'center';
+        ctx.fillText(result.category.toUpperCase(), width/2, categoryY);
+        
+        // Quote (like Spotify album info)
+        const quoteY = categoryY + 80;
+        ctx.font = 'italic 36px "IM Fell English", serif';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'center';
+        const wrappedQuote = this.wrapText(ctx, `"${result.quote}"`, width - 120);
+        wrappedQuote.forEach((line, index) => {
+            ctx.fillText(line, width/2, quoteY + (index * 42));
+        });
+        
+        // Bottom branding bar
+        ctx.fillStyle = 'rgba(126, 28, 46, 0.9)';
+        ctx.fillRect(0, height - 100, width, 100);
+        
+        // Logo and website
+        if (logo) {
+            const logoSize = 60;
+            ctx.drawImage(logo, 60, height - 80, logoSize, logoSize);
+        }
+        
+        ctx.font = 'bold 28px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.textAlign = 'left';
+        ctx.fillText('LEAHCORTEZSTUDIOS.ART', 140, height - 45);
+        
+        // Take quiz CTA
+        ctx.font = '24px "IM Fell English", serif';
+        ctx.fillStyle = '#d4a5a5';
+        ctx.textAlign = 'right';
+        ctx.fillText('Take the Portfolio Soul Quiz →', width - 60, height - 45);
+        
+        // Add decorative border
+        ctx.strokeStyle = '#7e1c2e';
+        ctx.lineWidth = 6;
+        ctx.strokeRect(30, 30, width - 60, height - 60);
+        
+        // Inner decorative border
+        ctx.strokeStyle = 'rgba(247, 243, 241, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(50, 50, width - 100, height - 100);
     }
 
     drawGothicMinimal(ctx, result, img, logo, width, height) {
@@ -1008,60 +910,176 @@ class PortfolioQuiz {
     }
 
     showShareOptions(canvas, result) {
-        console.log('📱 Showing share options');
+        console.log('📱 Showing user-friendly share options');
         
-        // Create modal with share options
+        // Create modal with improved share options
         const modal = document.createElement('div');
         modal.className = 'share-modal';
         modal.innerHTML = `
             <div class="share-modal-content">
-                <h3>Share Your Result</h3>
-                <div class="canvas-preview">
-                    <img src="${canvas.toDataURL()}" alt="Result Preview" />
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                <div class="share-header">
+                    <h3>Share Your Creative Match!</h3>
+                    <p>Share your "${result.title}" result and inspire others to discover their creative soul.</p>
                 </div>
-                <div class="share-buttons">
-                    <button class="share-facebook-btn">Post to Facebook</button>
-                    <button class="save-image-btn">Save Image</button>
-                    <button class="copy-link-btn">Copy Link</button>
+                
+                <div class="share-preview">
+                    <img src="${canvas.toDataURL()}" alt="Your quiz result preview" class="result-preview-img" />
                 </div>
-                <button class="close-modal-btn">×</button>
+                
+                <div class="share-options">
+                    <div class="share-section">
+                        <h4>📱 Social Media</h4>
+                        <div class="social-buttons">
+                            <button class="share-btn instagram-btn">
+                                <img src="icons/instagram.svg" alt="" width="20" height="20" />
+                                <span>Instagram Stories</span>
+                            </button>
+                            <button class="share-btn facebook-btn">
+                                <img src="icons/facebook.svg" alt="" width="20" height="20" />
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="share-section">
+                        <h4>🔗 Quick Share</h4>
+                        <div class="quick-share">
+                            <button class="share-btn copy-link-btn">
+                                <img src="icons/link.svg" alt="" width="18" height="18" />
+                                <span>Copy Link</span>
+                            </button>
+                            <button class="share-btn save-image-btn">
+                                <img src="icons/download.svg" alt="" width="18" height="18" />
+                                <span>Save Image</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="share-section">
+                        <h4>✨ Share Text</h4>
+                        <div class="share-text">
+                            <textarea readonly class="share-message" rows="3">I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!</textarea>
+                            <button class="copy-text-btn">Copy Text</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
         
         document.body.appendChild(modal);
         
-        // Bind share button events
-        modal.querySelector('.share-facebook-btn').addEventListener('click', () => {
-            this.shareToFacebook(canvas, result);
+        // Bind event listeners with improved UX
+        modal.querySelector('.instagram-btn').addEventListener('click', () => {
+            this.shareToInstagram(canvas, result);
         });
         
-        modal.querySelector('.save-image-btn').addEventListener('click', () => {
-            this.saveImage(canvas, result);
+        modal.querySelector('.facebook-btn').addEventListener('click', () => {
+            this.shareToFacebook(canvas, result);
         });
         
         modal.querySelector('.copy-link-btn').addEventListener('click', () => {
             this.copyShareLink(result);
         });
         
+        modal.querySelector('.save-image-btn').addEventListener('click', () => {
+            this.saveImage(canvas, result);
+        });
+        
+        modal.querySelector('.copy-text-btn').addEventListener('click', () => {
+            this.copyShareText(result);
+        });
+        
         modal.querySelector('.close-modal-btn').addEventListener('click', () => {
             document.body.removeChild(modal);
         });
         
-        // Show modal
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+        
+        // Show modal with animation
         setTimeout(() => modal.classList.add('active'), 100);
     }
 
     shareToFacebook(canvas, result) {
+        // Save the image first
         canvas.toBlob((blob) => {
-            const formData = new FormData();
-            formData.append('image', blob, 'quiz-result.png');
-            formData.append('message', `I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+            const link = document.createElement('a');
+            link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
             
-            // This would typically send to a server endpoint that handles Facebook posting
-            // For now, we'll open Facebook share dialog with text
-            const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
-            const shareUrl = encodeURIComponent('https://leahcortezstudios.art');
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareText}`, '_blank', 'width=600,height=400');
+            // Show user-friendly instructions
+            setTimeout(() => {
+                const shareText = encodeURIComponent(`I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`);
+                const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
+                
+                // Try to open Facebook share dialog
+                const fbWindow = window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
+                
+                // Show simple, clear instructions
+                if (fbWindow) {
+                    setTimeout(() => {
+                        const modal = document.createElement('div');
+                        modal.className = 'instruction-modal';
+                        modal.innerHTML = `
+                            <div class="instruction-content">
+                                <h3>🎉 Image Downloaded!</h3>
+                                <p><strong>Facebook sharing made easy:</strong></p>
+                                <ol>
+                                    <li>In the Facebook window that opened, click <strong>"Add Photo"</strong></li>
+                                    <li>Upload your downloaded quiz result image</li>
+                                    <li>Add your personal message and share!</li>
+                                </ol>
+                                <button class="got-it-btn">Got it! ✓</button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                        modal.querySelector('.got-it-btn').addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                        setTimeout(() => modal.classList.add('active'), 100);
+                    }, 1000);
+                }
+            }, 300);
+        }, 'image/png');
+    }
+
+    shareToInstagram(canvas, result) {
+        // For Instagram Stories, we'll save the image and provide better instructions
+        canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+            
+            // Show comprehensive Instagram sharing instructions
+            setTimeout(() => {
+                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    // Try to open Instagram app for mobile users
+                    const instagramUrl = 'instagram://story-camera';
+                    const fallbackUrl = 'https://www.instagram.com/';
+                    
+                    // Try to open Instagram app
+                    const now = new Date().valueOf();
+                    setTimeout(() => {
+                        if (new Date().valueOf() - now > 100) return;
+                        window.location = fallbackUrl;
+                    }, 25);
+                    window.location = instagramUrl;
+                    
+                    alert(`📱 Image saved for Instagram Stories!\n\n✨ INSTAGRAM STORIES:\n1. Open Instagram app (should open automatically)\n2. Tap "Your Story" or swipe right from feed\n3. Tap the gallery icon (bottom left)\n4. Select your downloaded gothic quiz image\n5. Add text, stickers, or music if desired\n6. Share to your story! 🖤\n\n📖 INSTAGRAM FEED:\n1. Tap "+" to create new post\n2. Select the downloaded image\n3. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n4. Share your result!`);
+                } else {
+                    // Desktop instructions
+                    alert(`💻 Image saved for Instagram!\n\n📱 TO SHARE ON MOBILE:\n1. Transfer the downloaded image to your phone\n2. Open Instagram app\n3. For Stories: Swipe right → Gallery → Select image\n4. For Feed: Tap "+" → Select image → Add caption\n\n🌐 FROM DESKTOP:\n1. Go to instagram.com\n2. Click "+" to create new post\n3. Upload the downloaded gothic quiz image\n4. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n5. Share your result! 🖤`);
+                }
+            }, 500);
         }, 'image/png');
     }
 
@@ -1075,7 +1093,20 @@ class PortfolioQuiz {
     copyShareLink(result) {
         const shareUrl = `https://leahcortezstudios.art/?result=${result.category.toLowerCase().replace(' work', '')}`;
         navigator.clipboard.writeText(shareUrl).then(() => {
-            alert('Share link copied to clipboard!');
+            // Show success feedback
+            const button = document.querySelector('.copy-link-btn');
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<img src="icons/link.svg" alt="" width="18" height="18" /><span>Copied! ✓</span>';
+            button.style.background = '#28a745';
+            button.style.borderColor = '#28a745';
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+                button.style.borderColor = '';
+            }, 2000);
+        }).catch(() => {
+            // Fallback
+            alert('Quiz link: ' + shareUrl);
         });
     }
 
@@ -1095,6 +1126,44 @@ class PortfolioQuiz {
         }
     }
 
+    copyShareText(result) {
+        const shareText = `I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`;
+        navigator.clipboard.writeText(shareText).then(() => {
+            // Show success feedback
+            const button = document.querySelector('.copy-text-btn');
+            const originalText = button.textContent;
+            button.textContent = 'Copied! ✓';
+            button.style.background = '#28a745';
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const textArea = document.querySelector('.share-message');
+            textArea.select();
+            document.execCommand('copy');
+            alert('Share text copied to clipboard!');
+        });
+    }
+
+    saveImage(canvas, result) {
+        const link = document.createElement('a');
+        link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        // Show success feedback
+        const button = document.querySelector('.save-image-btn');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<span>Saved! ✓</span>';
+        button.style.background = '#28a745';
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.style.background = '';
+        }, 2000);
+    }
+
     resetQuiz() {
         this.currentQuestion = 0;
         this.answers = [];
@@ -1103,14 +1172,20 @@ class PortfolioQuiz {
 
     showSection(sectionClass) {
         // Hide all quiz sections
-        document.querySelectorAll('.quiz-start, .quiz-questions, .quiz-results').forEach(section => {
-            section.classList.add('hidden');
-            section.classList.remove('active');
+        const quizSections = ['quiz-start', 'quiz-questions', 'quiz-results'];
+        quizSections.forEach(section => {
+            const element = document.querySelector(`.${section}`);
+            if (element) {
+                element.style.display = 'none';
+                element.classList.remove('active');
+                element.classList.add('hidden');
+            }
         });
         
         // Show the requested section
         const targetSection = document.querySelector(`.${sectionClass}`);
         if (targetSection) {
+            targetSection.style.display = 'block';
             targetSection.classList.remove('hidden');
             targetSection.classList.add('active');
         }

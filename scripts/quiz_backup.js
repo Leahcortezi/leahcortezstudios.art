@@ -1,197 +1,347 @@
-/**
- * Portfolio Soul Quiz - Leah Cortez Studio
- * A witty personality quiz that matches visitors with portfolio pieces
- */
-
 class PortfolioQuiz {
     constructor() {
         this.currentQuestion = 0;
-        this.answers = {};
-        this.scores = {};
-        
-                // Quiz data with Leah's authentic voice
+        this.answers = [];
         this.questions = [
             {
                 id: 1,
-                text: "The thing that lives rent-free in your mind:",
-                answers: [
-                    { text: "Random facts you learned at 2 AM", weights: { cards: 3, bookCover: 2, remains: 2, flag: 1 }},
-                    { text: "Something your family always says", weights: { inheritance: 3, altar: 3, entre: 2, anointed: 1 }},
-                    { text: "A melody that makes you want to create", weights: { bloom: 3, gnaw: 2, unraveling: 2, heaven: 1 }},
-                    { text: "Questions that keep you up at night", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 1 }}
+                text: "When you're emotionally drained at 2 AM, what calls to your creative soul?",
+                options: [
+                    { text: "Drawing the dissociative weight behind tired eyes", piece: "anointed-gaze", weight: 3 },
+                    { text: "Building altars from family photographs and memory", piece: "abuelas-altar", weight: 3 },
+                    { text: "Carving mouths that speak unspoken hungers", piece: "gnaw", weight: 3 },
+                    { text: "Wrapping wire around forms until they confess their secrets", piece: "unraveling", weight: 3 },
+                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 },
+                    { text: "Designing cards that make science feel like magic", piece: "playing-cards", weight: 3 },
+                    { text: "Breaking typography until it screams the truth", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Making posters that question everything", piece: "double-sided-poster", weight: 3 }
                 ]
             },
             {
                 id: 2,
-                text: "Your happy place looks like:",
-                answers: [
-                    { text: "A cozy corner with books and good lighting", weights: { cards: 3, bookCover: 2, flag: 1, symbols: 1 }},
-                    { text: "Anywhere that smells like home cooking", weights: { inheritance: 2, altar: 3, entre: 2, remains: 1 }},
-                    { text: "A creative mess that somehow makes sense", weights: { bloom: 3, gnaw: 2, unraveling: 3, altar: 1 }},
-                    { text: "A quiet space where your thoughts can wander", weights: { poster: 2, heaven: 2, hunch: 3, anointed: 2 }}
+                text: "Your creative breakdown usually happens because...",
+                options: [
+                    { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
+                    { text: "You're drowning in your own emotional intensity", piece: "anointed-gaze", weight: 3 },
+                    { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
+                    { text: "You're caught between two worlds and can't choose", piece: "entre-mundos", weight: 3 },
+                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 },
+                    { text: "Your perfectionist standards are impossible to meet", piece: "typographic-interpretation", weight: 3 },
+                    { text: "The design brief makes no logical sense", piece: "elements-book", weight: 3 },
+                    { text: "You're questioning what symbols actually mean", piece: "reductive-symbols", weight: 3 }
                 ]
             },
             {
                 id: 3,
-                text: "The compliment that would actually make you cry:",
-                answers: [
-                    { text: "You helped me understand something new", weights: { bookCover: 3, cards: 2, symbols: 2, reductive: 1 }},
-                    { text: "You remind me of the best parts of our family", weights: { inheritance: 3, entre: 2, altar: 2, anointed: 1 }},
-                    { text: "You changed how I see the world", weights: { heaven: 3, poster: 2, gnaw: 1, hunch: 2 }},
-                    { text: "You make me feel less alone in this", weights: { anointed: 3, unraveling: 3, bloom: 2, gnaw: 2 }}
+                text: "The comment that would devastate you most as an artist:",
+                options: [
+                    { text: "'Your art is too depressing. Smile more!'", piece: "anointed-gaze", weight: 3 },
+                    { text: "'Why can't you just get over your family stuff?'", piece: "abuelas-altar", weight: 3 },
+                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 },
+                    { text: "'I don't get it. What's it supposed to be?'", piece: "abyss-bloom", weight: 3 },
+                    { text: "'This is just random junk glued together.'", piece: "collected-remains", weight: 3 },
+                    { text: "'The kerning is off by 2 pixels.'", piece: "typographic-interpretation", weight: 3 },
+                    { text: "'It's fine, but what does it actually DO?'", piece: "playing-cards", weight: 3 },
+                    { text: "'I've seen this exact design on Pinterest.'", piece: "elements-book", weight: 3 }
                 ]
             },
             {
                 id: 4,
-                text: "Your friends come to you when they need:",
-                answers: [
-                    { text: "Someone who remembers all the details", weights: { cards: 2, remains: 3, bookCover: 1, inheritance: 2 }},
-                    { text: "A warm hug and your mom's recipe", weights: { altar: 3, inheritance: 2, entre: 2, anointed: 1 }},
-                    { text: "Help turning their feelings into something real", weights: { bloom: 3, unraveling: 2, hunch: 2, symbols: 1 }},
-                    { text: "Someone who asks the right questions", weights: { poster: 2, heaven: 2, reductive: 1, flag: 2 }}
+                text: "Your studio ritual involves...",
+                options: [
+                    { text: "Lighting candles and having imaginary conversations with ancestors", piece: "abuelas-altar", weight: 3 },
+                    { text: "Staring at yourself in mirrors until you see someone else", piece: "anointed-gaze", weight: 3 },
+                    { text: "Collecting broken things others threw away", piece: "collected-remains", weight: 3 },
+                    { text: "Destroying perfectly good materials on purpose", piece: "gnaw", weight: 3 },
+                    { text: "Building creatures that shouldn't exist", piece: "abyss-bloom", weight: 3 },
+                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Making educational content feel like rebellion", piece: "playing-cards", weight: 3 },
+                    { text: "Turning every assignment into a manifesto", piece: "double-sided-poster", weight: 3 }
                 ]
             },
             {
                 id: 5,
-                text: "When you leave this world, you want people to say:",
-                answers: [
-                    { text: "She was always learning something new", weights: { bookCover: 3, cards: 2, symbols: 1, flag: 1 }},
-                    { text: "She loved her people with everything she had", weights: { inheritance: 3, altar: 2, entre: 2, remains: 2 }},
-                    { text: "She felt deeply and wasn't afraid to show it", weights: { anointed: 3, gnaw: 3, unraveling: 2, bloom: 2 }},
-                    { text: "She made us think about things differently", weights: { poster: 3, heaven: 2, hunch: 2, reductive: 2 }}
+                text: "People worry about you because...",
+                options: [
+                    { text: "You spend too much time talking to dead relatives", piece: "abuelas-altar", weight: 3 },
+                    { text: "You seem to disappear even when you're right there", piece: "anointed-gaze", weight: 3 },
+                    { text: "You find beauty in apocalyptic imagery", piece: "heaven-on-fire", weight: 3 },
+                    { text: "You never throw anything away - it might be art", piece: "collected-remains", weight: 3 },
+                    { text: "You talk to your sculptures like they're alive", piece: "abyss-bloom", weight: 3 },
+                    { text: "You judge their Instagram posts' typography", piece: "typographic-interpretation", weight: 3 },
+                    { text: "You make everything unnecessarily complicated", piece: "elements-book", weight: 3 },
+                    { text: "You question everything, including this question", piece: "double-sided-poster", weight: 3 }
+                ]
+            },
+            {
+                id: 6,
+                text: "Your art supplies budget embarrassingly goes toward...",
+                options: [
+                    { text: "Expensive graphite for those 6-hour drawing sessions", piece: "anointed-gaze", weight: 3 },
+                    { text: "Candles, frames, and items that remind you of family", piece: "abuelas-altar", weight: 3 },
+                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 },
+                    { text: "Iridescent paints that cost more than your rent", piece: "abyss-bloom", weight: 3 },
+                    { text: "Adobe subscriptions and the perfect Pantone book", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Specialty paper for projects no one will understand", piece: "double-sided-poster", weight: 3 },
+                    { text: "Materials to make educational content look cooler", piece: "playing-cards", weight: 3 },
+                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 }
+                ]
+            },
+            {
+                id: 7,
+                text: "At art openings, you're the person who...",
+                options: [
+                    { text: "Hides because people keep asking about your trauma", piece: "abuelas-altar", weight: 3 },
+                    { text: "Zones out mid-conversation and stares at the wall", piece: "anointed-gaze", weight: 3 },
+                    { text: "Describes their work as 'beautiful chaos' unironically", piece: "heaven-on-fire", weight: 3 },
+                    { text: "Gets excited when someone touches the art", piece: "abyss-bloom", weight: 3 },
+                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Hands out business cards with perfect alignment", piece: "elements-book", weight: 3 },
+                    { text: "Starts political debates about design ethics", piece: "double-sided-poster", weight: 3 },
+                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 }
+                ]
+            },
+            {
+                id: 8,
+                text: "Your therapist (if you have one) probably...",
+                options: [
+                    { text: "Suggests you need to 'process your family dynamics'", piece: "abuelas-altar", weight: 3 },
+                    { text: "Asks if you've considered medication for dissociation", piece: "anointed-gaze", weight: 3 },
+                    { text: "Worries about your 'apocalyptic ideation'", piece: "heaven-on-fire", weight: 3 },
+                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
+                    { text: "Doesn't understand why you anthropomorphize sculptures", piece: "abyss-bloom", weight: 3 },
+                    { text: "Thinks your perfectionism is 'maladaptive'", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Suggests you're 'intellectualizing your emotions'", piece: "double-sided-poster", weight: 3 },
+                    { text: "Admires your ability to 'find order in chaos'", piece: "elements-book", weight: 3 }
                 ]
             }
         ];
 
-        // Results data with project information
-        this.results = {
-            poster: {
-                title: "The Almost Right Word",
-                subtitle: "The Truth Seeker",
-                description: "Like this poster that challenges misinformation, you're drawn to work that questions assumptions and sparks important conversations. You believe design should educate and empower, turning complex issues into clear, compelling visuals.",
-                quote: "You create work that makes people think twice about what they believe.",
-                image: "collections/design/double-sided-poster/images/Design8.jpg",
-                url: "collections/design/double-sided-poster/index-case-study.html"
+        this.portfolioData = {
+            "anointed-gaze": {
+                title: "The Dissociation Devotee",
+                subtitle: "Anointed Gaze",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You find beauty in exhaustion and liminal states",
+                    medium: "Graphite portraits that capture mental distance",
+                    strength: "Drawing emotional weight and disconnection",
+                    challenge: "Being fully present while creating"
+                },
+                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
+                quote: "I draw the weight of being seen when I can barely see myself.",
+                image: "collections/personal/anointed-gaze/images/anointed-main.jpg",
+                path: "collections/personal/anointed-gaze/"
             },
-            cards: {
-                title: "Scientific Revolution Playing Cards",
-                subtitle: "The Educator",
-                description: "Like these cards that bring historical figures to life, you excel at making learning engaging and accessible. You have a gift for research and storytelling, turning complex information into compelling narratives that stick with people.",
-                quote: "You make the complex feel approachable and the historical feel relevant.",
-                image: "collections/design/themed-playing-card-design/images/Design4.jpg",
-                url: "collections/design/themed-playing-card-design/index-case-study.html"
+            "abuelas-altar": {
+                title: "The Ancestral Archivist",
+                subtitle: "Abuela's Altar",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You channel family stories through art",
+                    medium: "Mixed media altars and memory installations",
+                    strength: "Honoring the past while healing the present",
+                    challenge: "Balancing reverence with creative freedom"
+                },
+                description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
+                quote: "My ancestors speak through my hands when my mouth can't find the words.",
+                image: "collections/personal/abuelas-altar/images/altar-main.jpg",
+                path: "collections/personal/abuelas-altar/"
             },
-            bookCover: {
-                title: "Elements & Principles Book Cover",
-                subtitle: "The Systems Thinker",
-                description: "Like this cover that bridges traditional design knowledge with contemporary practice, you understand how to build on established foundations while bringing fresh perspectives. You're drawn to structure, methodology, and clear communication.",
-                quote: "You excel at organizing complex information into accessible, beautiful systems.",
-                image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
-                url: "collections/design/elements-and-principles-book-cover/index-case-study.html"
+            "heaven-on-fire": {
+                title: "The Apocalypse Aesthete",
+                subtitle: "Heaven on Fire",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You find beauty in destruction and transformation",
+                    medium: "Fiery paintings of paradise in collapse",
+                    strength: "Creating meaning from chaos",
+                    challenge: "Finding peace without drama"
+                },
+                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
+                quote: "I paint paradise burning because sometimes heaven needs to start over.",
+                image: "collections/personal/heaven-on-fire/images/heaven-main.jpg",
+                path: "collections/personal/heaven-on-fire/"
             },
-            hunch: {
-                title: "HUNCH Typographic Interpretation",
-                subtitle: "The Intuitive Creator",
-                description: "Like this piece that transforms a single word into visual poetry, you trust your creative instincts and can find meaning in unexpected places. You're skilled at distilling concepts into their essential visual form.",
-                quote: "You have a gift for seeing possibilities others miss.",
-                image: "collections/design/typographic-interpretation/images/Design5.jpg",
-                url: "collections/design/typographic-interpretation/index-case-study.html"
+            "entre-mundos": {
+                title: "The Liminal Wanderer",
+                subtitle: "Entre Mundos",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You navigate between cultures and identities",
+                    medium: "Mixed media exploring cultural intersections",
+                    strength: "Creating bridges between different worlds",
+                    challenge: "Feeling like you belong everywhere and nowhere"
+                },
+                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
+                quote: "I live in the hyphen between worlds, and I've learned to call it home.",
+                image: "collections/personal/entre-mundos/images/mundos-main.jpg",
+                path: "collections/personal/entre-mundos/"
             },
-            altar: {
-                title: "Abuela's Altar",
-                subtitle: "The Cultural Storyteller",
-                description: "Like this altar that honors family tradition and memory, you understand the power of cultural heritage in creative work. You create pieces that connect past and present, honoring where you come from while building something new.",
-                quote: "Your work bridges generations and keeps important stories alive.",
-                image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
-                url: "collections/studio/abuelas-altar/index.html"
+            "inheritance": {
+                title: "The Legacy Liquidator",
+                subtitle: "Inheritance",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You transform family patterns through art",
+                    medium: "Installations examining generational stories",
+                    strength: "Breaking cycles while honoring heritage",
+                    challenge: "Evolving beyond family expectations"
+                },
+                description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
+                quote: "I didn't choose this legacy, but I choose what to do with it.",
+                image: "collections/personal/inheritance/images/inheritance-main.jpg",
+                path: "collections/personal/inheritance/"
             },
-            inheritance: {
-                title: "Inheritance",
-                subtitle: "The Personal Narrator",
-                description: "Like this deeply personal piece, you're not afraid to draw from your own experiences and emotions in your creative work. You understand that the most powerful art often comes from the most authentic places.",
-                quote: "You transform personal experience into universal connection.",
-                image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
-                url: "collections/personal/inheritance/index.html"
-            },
-            heaven: {
-                title: "Heaven on Fire",
-                subtitle: "The Boundary Pusher",
-                description: "Like this piece that questions spiritual assumptions, you're drawn to work that challenges conventional thinking. You're not afraid to explore difficult topics or push against traditional boundaries in your creative practice.",
-                quote: "You create work that starts important conversations.",
-                image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
-                url: "collections/personal/heaven-on-fire/index.html"
-            },
-            reductive: {
-                title: "Reductive Photo Solutions",
-                subtitle: "The Clarity Creator",
-                description: "Like this work that strips away the unnecessary to reveal essential meaning, you excel at finding the clearest way to communicate complex ideas. You understand that sometimes less really is more.",
-                quote: "You find the signal in the noise and make complex ideas simple.",
-                image: "collections/design/reductive-photo-solutions/images/Design6.jpg",
-                url: "collections/design/reductive-photo-solutions/index-case-study.html"
-            },
-            flag: {
-                title: "Flag Design",
-                subtitle: "The Community Builder",
-                description: "Like this flag that represents shared values and identity, you're drawn to projects that bring people together around common causes. You understand how design can build community and create belonging.",
-                quote: "Your work helps people find their place in the larger story.",
-                image: "collections/design/flag-design/images/Design3.jpg",
-                url: "collections/design/flag-design/index-case-study.html"
-            },
-            entre: {
-                title: "Entre Mundos",
-                subtitle: "The Bridge Builder",
-                description: "Like this piece that explores the space between cultures, you understand the complexity of identity and belonging. You create work that speaks to those who exist between worlds and find strength in that liminal space.",
-                quote: "You help others see beauty in complexity and strength in difference.",
-                image: "collections/personal/entre-mundos/images/JPEG/Personal8.jpg",
-                url: "collections/personal/entre-mundos/index.html"
-            },
-            anointed: {
-                title: "Anointed Gaze",
-                subtitle: "The Depth Diver",
-                description: "Like this piece that explores dissociation and mental landscapes, you're drawn to the spaces between consciousness and absence. You find beauty in vulnerability and aren't afraid to examine the complex inner world of human experience.",
-                quote: "You transform difficult emotions into profound visual poetry.",
-                image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
-                url: "collections/personal/anointed-gaze/index.html"
-            },
-            bloom: {
-                title: "Abyss Bloom",
-                subtitle: "The Organic Innovator",
-                description: "Like this sculptural piece that transforms everyday materials into something otherworldly, you see potential in unexpected places. You're drawn to transformation and creating beauty from surprising sources.",
-                quote: "You turn the mundane into the magical through creative vision.",
-                image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
-                url: "collections/studio/abyss-bloom/index.html"
-            },
-            gnaw: {
-                title: "Gnaw",
-                subtitle: "The Interior Explorer",
-                description: "Like this piece that speaks to hunger and anxiety through subtraction, you understand that sometimes the most powerful art comes from what's taken away rather than what's added. You're not afraid to explore difficult emotions.",
-                quote: "You find meaning in the spaces between presence and absence.",
+            "gnaw": {
+                title: "The Hunger Sculptor",
+                subtitle: "Gnaw",
+                category: "Studio Work",
+                archetype: {
+                    essence: "You find meaning in destruction and consumption",
+                    medium: "Sculptural forms exploring mouths and erosion",
+                    strength: "Carving truth from the act of consuming",
+                    challenge: "Explaining why destruction creates meaning"
+                },
+                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, finding truth in the process of erosion.",
+                quote: "I carve mouths that speak the words I can't swallow.",
                 image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
-                url: "collections/studio/gnaw/index.html"
+                path: "collections/studio/gnaw/"
             },
-            unraveling: {
-                title: "Unraveling",
-                subtitle: "The Emotional Architect",
-                description: "Like this wire sculpture that transforms psychological states into physical form, you understand how to give shape to feelings. You're skilled at making the invisible visible through creative interpretation.",
-                quote: "You build bridges between the inner world and outer expression.",
+            "unraveling": {
+                title: "The Wire Whisperer",
+                subtitle: "Unraveling",
+                category: "Studio Work",
+                archetype: {
+                    essence: "You transform pressure into physical form",
+                    medium: "Wire sculptures that bind and constrain",
+                    strength: "Making anxiety sculptural",
+                    challenge: "Learning when to let go of control"
+                },
+                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets.",
+                quote: "I wrap wire around my thoughts until they tell me the truth.",
                 image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
-                url: "collections/studio/unraveling/index.html"
+                path: "collections/studio/unraveling/"
             },
-            symbols: {
-                title: "Reductive Symbols",
-                subtitle: "The Essence Distiller",
-                description: "Like this work that reduces complex emotions to their purest visual form, you excel at finding the core truth in complicated situations. You believe in the power of simplicity to communicate profound meaning.",
-                quote: "You strip away the noise to reveal the essential truth.",
-                image: "collections/design/reductive-symbols/images/design4.jpg",
-                url: "collections/design/reductive-symbols/index-case-study.html"
+            "abyss-bloom": {
+                title: "The Bioluminescent Botanist",
+                subtitle: "Abyss Bloom",
+                category: "Studio Work",
+                archetype: {
+                    essence: "You create beauty from darkness",
+                    medium: "Glowing sculptures of impossible organisms",
+                    strength: "Growing light from the deepest shadows",
+                    challenge: "Accepting that not everything needs to be categorized"
+                },
+                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
+                quote: "I grow impossible flowers in the dark spaces of imagination.",
+                image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
+                path: "collections/studio/abyss-bloom/"
             },
-            remains: {
-                title: "Collected Remains",
-                subtitle: "The Memory Keeper",
-                description: "Like this charcoal composition that transforms forgotten objects into meaningful narrative, you understand that every discarded thing has a story worth telling. You find significance in what others might overlook.",
-                quote: "You see the extraordinary in the everyday and preserve what matters.",
-                image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
-                url: "collections/studio/collected-remains/index.html"
+            "collected-remains": {
+                title: "The Ruin Romanticist",
+                subtitle: "Collected Remains",
+                category: "Studio Work",
+                archetype: {
+                    essence: "You find stories in discarded objects",
+                    medium: "Assemblages of abandoned things",
+                    strength: "Seeing potential in what others discard",
+                    challenge: "Not hoarding everything that speaks to you"
+                },
+                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
+                quote: "I collect what others abandon because every ruin has a story to tell.",
+                image: "collections/studio/collected-remains/images/remains-main.jpg",
+                path: "collections/studio/collected-remains/"
+            },
+            "feathers-along-the-bend": {
+                title: "The Current Catcher",
+                subtitle: "Feathers Along the Bend",
+                category: "Studio Work",
+                archetype: {
+                    essence: "You capture things in transition",
+                    medium: "Installations of objects caught in motion",
+                    strength: "Finding poetry in drift and chance",
+                    challenge: "Trusting the process without controlling it"
+                },
+                description: "You're the artist who finds significance in things that drift. Your work captures the poetry of objects caught in motion, suspended between destinations.",
+                quote: "I catch the things that float between where they've been and where they're going.",
+                image: "collections/studio/feathers-along-the-bend/images/feathers-main.jpg",
+                path: "collections/studio/feathers-along-the-bend/"
+            },
+            "typographic-interpretation": {
+                title: "The Letter Liberator",
+                subtitle: "Typographic Interpretation",
+                category: "Design Work",
+                archetype: {
+                    essence: "You make letters feel emotions",
+                    medium: "Typography pushed beyond expected behaviors",
+                    strength: "Breaking typographic rules meaningfully",
+                    challenge: "Perfectionism that slows down creativity"
+                },
+                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
+                quote: "I free letters from their expected behaviors and watch them dance.",
+                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
+                path: "collections/design/typographic-interpretation/"
+            },
+            "playing-cards": {
+                title: "The Educational Insurgent",
+                subtitle: "Scientific Revolution Playing Cards",
+                category: "Design Work",
+                archetype: {
+                    essence: "You make learning feel like play",
+                    medium: "Educational design disguised as entertainment",
+                    strength: "Smuggling knowledge inside beautiful experiences",
+                    challenge: "Not being too clever for your own good"
+                },
+                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
+                quote: "I smuggle education inside beautiful, playful experiences.",
+                image: "collections/design/themed-playing-card-design/images/cards-main.jpg",
+                path: "collections/design/themed-playing-card-design/"
+            },
+            "elements-book": {
+                title: "The Principle Perfectionist",
+                subtitle: "Elements & Principles Book Cover",
+                category: "Design Work",
+                archetype: {
+                    essence: "You find zen in fundamental principles",
+                    medium: "Clean design that honors the basics",
+                    strength: "Making fundamentals feel fresh",
+                    challenge: "Perfectionism that can become paralysis"
+                },
+                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
+                quote: "I make the fundamentals feel fundamental again.",
+                image: "collections/design/elements-and-principles-book-cover/images/book-main.jpg",
+                path: "collections/design/elements-and-principles-book-cover/"
+            },
+            "double-sided-poster": {
+                title: "The Truth Disruptor",
+                subtitle: "Double-Sided Poster",
+                category: "Design Work",
+                archetype: {
+                    essence: "You use design as activism",
+                    medium: "Typography that questions everything",
+                    strength: "Making uncomfortable truths visible",
+                    challenge: "Finding subtlety without losing impact"
+                },
+                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
+                quote: "I break typography so it can tell uncomfortable truths.",
+                image: "collections/design/double-sided-poster/images/poster-main.jpg",
+                path: "collections/design/double-sided-poster/"
+            },
+            "reductive-symbols": {
+                title: "The Symbol Surgeon",
+                subtitle: "Reductive Symbols",
+                category: "Design Work",
+                archetype: {
+                    essence: "You distill complex ideas to their essence",
+                    medium: "Minimal symbols with maximum impact",
+                    strength: "Cutting away everything unnecessary",
+                    challenge: "Knowing when simple becomes too simple"
+                },
+                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
+                quote: "I cut away everything except what absolutely must remain.",
+                image: "collections/design/reductive-symbols/images/symbols-main.jpg",
+                path: "collections/design/reductive-symbols/"
             }
         };
 
@@ -199,564 +349,253 @@ class PortfolioQuiz {
     }
 
     init() {
+        console.log('🎨 Initializing Portfolio Quiz with Gothic Templates');
         this.bindEvents();
-        this.resetQuiz();
+        this.preloadImages();
+    }
+
+    preloadImages() {
+        // Preload logo
+        const logo = new Image();
+        logo.src = 'images/logo/logo3.png';
+        logo.onload = () => console.log('✨ Logo preloaded for gothic templates');
+        
+        // Preload portfolio images
+        Object.values(this.portfolioData).forEach(data => {
+            const img = new Image();
+            img.src = data.image;
+            img.onload = () => console.log(`🖼️ Preloaded ${data.title} image`);
+        });
     }
 
     bindEvents() {
         // Start quiz button
-        const startBtn = document.getElementById('start-quiz-btn');
-        if (startBtn) {
-            startBtn.addEventListener('click', () => this.startQuiz());
+        const startButton = document.querySelector('#start-quiz-btn');
+        if (startButton) {
+            startButton.addEventListener('click', () => this.startQuiz());
         }
 
         // Next question button
-        const nextBtn = document.getElementById('next-question-btn');
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextQuestion());
+        const nextButton = document.querySelector('#next-question-btn');
+        if (nextButton) {
+            nextButton.addEventListener('click', () => this.nextQuestion());
         }
 
         // Retake quiz button
-        const retakeBtn = document.getElementById('retake-quiz-btn');
-        if (retakeBtn) {
-            retakeBtn.addEventListener('click', () => this.resetQuiz());
+        const retakeButton = document.querySelector('#retake-quiz-btn');
+        if (retakeButton) {
+            retakeButton.addEventListener('click', () => this.resetQuiz());
         }
-
-        // Share result button
-        const shareBtn = document.getElementById('share-result-btn');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', () => this.shareResult());
-        }
-    }
-
-    resetQuiz() {
-        this.currentQuestion = 0;
-        this.answers = {};
-        this.scores = {};
-        
-        // Reset display
-        this.showSection('quiz-start');
-        this.updateProgress();
     }
 
     startQuiz() {
+        console.log('🎯 Starting Portfolio Soul Quiz');
         this.showSection('quiz-questions');
         this.displayQuestion();
-        this.updateProgress();
     }
 
     displayQuestion() {
         const question = this.questions[this.currentQuestion];
-        const questionText = document.getElementById('question-text');
-        const answerOptions = document.getElementById('answer-options');
-        const nextBtn = document.getElementById('next-question-btn');
+        const questionContainer = document.querySelector('.question-container');
+        
+        if (questionContainer) {
+            questionContainer.innerHTML = `
+                <div class="question-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${((this.currentQuestion + 1) / this.questions.length) * 100}%"></div>
+                    </div>
+                    <span class="progress-text">Question ${this.currentQuestion + 1} of ${this.questions.length}</span>
+                </div>
+                <h2 class="question-text">${question.text}</h2>
+                <div class="options-container">
+                    ${question.options.map((option, index) => `
+                        <button class="option-btn" data-piece="${option.piece}" data-weight="${option.weight}" data-index="${index}">
+                            ${option.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
 
-        if (questionText) {
-            questionText.textContent = question.text;
-        }
-
-        if (answerOptions) {
-            answerOptions.innerHTML = '';
-            
-            question.answers.forEach((answer, index) => {
-                const option = document.createElement('div');
-                option.className = 'answer-option';
-                option.textContent = answer.text;
-                option.dataset.index = index;
-                
-                option.addEventListener('click', () => {
-                    // Remove selected class from all options
-                    answerOptions.querySelectorAll('.answer-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to clicked option
-                    option.classList.add('selected');
-                    
-                    // Store answer
-                    this.answers[question.id] = answer;
-                    
-                    // Show next button
-                    if (nextBtn) {
-                        nextBtn.classList.remove('hidden');
-                    }
-                });
-                
-                answerOptions.appendChild(option);
+            // Bind option buttons
+            const optionButtons = questionContainer.querySelectorAll('.option-btn');
+            optionButtons.forEach(button => {
+                button.addEventListener('click', (e) => this.selectAnswer(e));
             });
         }
+    }
 
-        // Hide next button initially
-        if (nextBtn) {
-            nextBtn.classList.add('hidden');
-        }
+    selectAnswer(event) {
+        const button = event.target;
+        const piece = button.dataset.piece;
+        const weight = parseInt(button.dataset.weight);
+
+        // Store answer
+        this.answers.push({ piece, weight });
+
+        // Visual feedback
+        button.classList.add('selected');
+        
+        setTimeout(() => {
+            if (this.currentQuestion < this.questions.length - 1) {
+                this.currentQuestion++;
+                this.displayQuestion();
+            } else {
+                this.calculateResult();
+            }
+        }, 500);
     }
 
     nextQuestion() {
-        this.currentQuestion++;
-        
-        if (this.currentQuestion < this.questions.length) {
+        if (this.currentQuestion < this.questions.length - 1) {
+            this.currentQuestion++;
             this.displayQuestion();
-            this.updateProgress();
-        } else {
-            this.calculateResults();
-            this.showResults();
         }
     }
 
-    updateProgress() {
-        const progressFill = document.querySelector('.progress-fill');
-        const currentQuestionSpan = document.getElementById('current-question');
-        const totalQuestionsSpan = document.getElementById('total-questions');
+    calculateResult() {
+        console.log('🧮 Calculating quiz results');
         
-        const progress = ((this.currentQuestion) / this.questions.length) * 100;
-        
-        if (progressFill) {
-            progressFill.style.width = `${progress}%`;
-        }
-        
-        if (currentQuestionSpan) {
-            currentQuestionSpan.textContent = this.currentQuestion + 1;
-        }
-        
-        if (totalQuestionsSpan) {
-            totalQuestionsSpan.textContent = this.questions.length;
-        }
-    }
-
-    calculateResults() {
-        // Reset scores
-        Object.keys(this.results).forEach(key => {
-            this.scores[key] = 0;
+        // Tally scores by piece
+        const scores = {};
+        this.answers.forEach(answer => {
+            if (!scores[answer.piece]) {
+                scores[answer.piece] = 0;
+            }
+            scores[answer.piece] += answer.weight;
         });
 
-        // Calculate scores based on answers
-        Object.values(this.answers).forEach(answer => {
-            Object.entries(answer.weights).forEach(([project, weight]) => {
-                if (this.scores[project] !== undefined) {
-                    this.scores[project] += weight;
-                }
-            });
-        });
-
-        // Find the highest scoring result
-        this.topResult = Object.keys(this.scores).reduce((a, b) => 
-            this.scores[a] > this.scores[b] ? a : b
+        // Find highest scoring piece
+        const winningPiece = Object.keys(scores).reduce((a, b) => 
+            scores[a] > scores[b] ? a : b
         );
+
+        const result = this.portfolioData[winningPiece];
+        console.log(`🎯 Result: ${result.title} (${winningPiece})`);
+        
+        this.displayResult(result);
     }
 
-    showResults() {
-        const result = this.results[this.topResult];
-        
-        // Update result content
-        const resultTitle = document.getElementById('result-title');
-        const resultSubtitle = document.getElementById('result-subtitle');
-        const resultDescription = document.getElementById('result-description');
-        const resultQuote = document.getElementById('result-quote-text');
-        const resultImage = document.getElementById('result-project-image');
-        const viewProjectBtn = document.getElementById('view-project-btn');
-
-        if (resultTitle) resultTitle.textContent = result.title;
-        if (resultSubtitle) resultSubtitle.textContent = result.subtitle;
-        if (resultDescription) resultDescription.textContent = result.description;
-        if (resultQuote) resultQuote.textContent = result.quote;
-        if (resultImage) {
-            resultImage.src = result.image;
-            resultImage.alt = result.title;
-        }
-        if (viewProjectBtn) {
-            viewProjectBtn.href = result.url;
-        }
-
+    displayResult(result) {
         this.showSection('quiz-results');
-    }
-
-    shareResult() {
-        const result = this.results[this.topResult];
         
-        // Create Spotify-style share modal with multiple story templates
-        this.createSpotifyStyleShareModal(result);
-    }
-
-    createSpotifyStyleShareModal(result) {
-        const modal = document.createElement('div');
-        modal.className = 'spotify-share-modal';
-        modal.innerHTML = `
-            <div class="spotify-share-content">
-                <div class="spotify-share-header">
-                    <h3>Share Your Creative Match</h3>
-                    <button class="spotify-share-close">&times;</button>
-                </div>
-                <div class="spotify-share-body">
-                    <div class="story-templates">
-                        <div class="template-selector">
-                            <button class="template-btn active" data-template="minimal">Minimal</button>
-                            <button class="template-btn" data-template="artistic">Artistic</button>
-                            <button class="template-btn" data-template="bold">Bold</button>
-                            <button class="template-btn" data-template="elegant">Elegant</button>
-                        </div>
-                        <div class="template-preview">
-                            <canvas id="story-canvas" width="1080" height="1920"></canvas>
+        const resultContainer = document.querySelector('.result-container');
+        if (resultContainer) {
+            resultContainer.innerHTML = `
+                <div class="result-content">
+                    <div class="result-image">
+                        <div class="lace-wrapper">
+                            <img src="${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
+                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
                         </div>
                     </div>
-                    <div class="share-options">
-                        <button class="spotify-btn post-facebook">
-                            <span class="btn-icon">📘</span>
-                            Post to Facebook
-                        </button>
-                        <button class="spotify-btn share-instagram">
-                            <span class="btn-icon">📸</span>
-                            Share to Instagram
-                        </button>
-                        <div class="more-options">
-                            <button class="spotify-btn copy-text">
-                                <span class="btn-icon">📋</span>
-                                Copy Link
-                            </button>
-                            <button class="spotify-btn share-more">
-                                <span class="btn-icon">📤</span>
-                                More Options
-                            </button>
+                    <div class="result-text">
+                        <h2 class="result-title">${result.title}</h2>
+                        <h3 class="result-subtitle">${result.subtitle}</h3>
+                        <p class="result-description">${result.description}</p>
+                        <blockquote class="result-quote">"${result.quote}"</blockquote>
+                        
+                        <div class="archetype-summary">
+                            <h4>Your Creative Profile</h4>
+                            <div class="archetype-details">
+                                <p><strong>Essence:</strong> ${result.archetype.essence}</p>
+                                <p><strong>Medium:</strong> ${result.archetype.medium}</p>
+                                <p><strong>Strength:</strong> ${result.archetype.strength}</p>
+                                <p><strong>Challenge:</strong> ${result.archetype.challenge}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-actions">
+                            <a href="${result.path}" class="quiz-btn primary">View This Piece</a>
+                            <button id="retake-quiz-btn" class="quiz-btn secondary">Take Again</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
 
-        // Add to page
-        document.body.appendChild(modal);
-
-        // Initialize templates
-        this.initializeStoryTemplates(modal, result);
-
-        // Add event listeners
-        this.addSpotifyShareEventListeners(modal, result);
-
-        // Show modal
-        setTimeout(() => modal.classList.add('active'), 10);
-    }
-
-    initializeStoryTemplates(modal, result) {
-        this.currentTemplate = 'minimal';
-        this.templates = {
-            minimal: {
-                bgColor: '#7e1c2e', // Your signature burgundy
-                accentColor: '#f5c6d6', // Your cream pink
-                textColor: '#ffffff',
-                layout: 'minimal'
-            },
-            artistic: {
-                bgColor: '#2d1b25', // Deep burgundy base
-                accentColor: '#f5c6d6', // Your cream pink
-                textColor: '#ffffff', // White text for contrast
-                layout: 'artistic'
-            },
-            bold: {
-                bgColor: '#1a0d12', // Very deep burgundy (not black)
-                accentColor: '#f5c6d6', // Your cream pink
-                textColor: '#ffffff',
-                layout: 'bold'
-            },
-            elegant: {
-                bgColor: '#faf8f6', // Light cream
-                accentColor: '#7e1c2e', // Your burgundy
-                textColor: '#2d1b25', // Deep burgundy text
-                layout: 'elegant'
+            // Bind retake button
+            const retakeButton = resultContainer.querySelector('#retake-quiz-btn');
+            if (retakeButton) {
+                retakeButton.addEventListener('click', () => this.resetQuiz());
             }
-        };
-
-        // Generate initial template
-        this.generateStoryTemplate(result, this.currentTemplate);
+        }
     }
-
-    addSpotifyShareEventListeners(modal, result) {
-        const closeBtn = modal.querySelector('.spotify-share-close');
-        const templateBtns = modal.querySelectorAll('.template-btn');
-        const facebookBtn = modal.querySelector('.post-facebook');
-        const instagramBtn = modal.querySelector('.share-instagram');
-        const copyBtn = modal.querySelector('.copy-text');
-        const moreBtn = modal.querySelector('.share-more');
-
-        // Close modal
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-            setTimeout(() => document.body.removeChild(modal), 300);
-        });
-
-        // Template selection
-        templateBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                templateBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.currentTemplate = btn.dataset.template;
-                this.generateStoryTemplate(result, this.currentTemplate);
-            });
-        });
-
-        // Post to Facebook
-        facebookBtn.addEventListener('click', () => {
-            const canvas = modal.querySelector('#story-canvas');
-            canvas.toBlob(blob => {
-                // Create a temporary URL for the image
-                const imageUrl = URL.createObjectURL(blob);
-                
-                // Facebook sharing URL with image
-                const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz and discover your creative match!`;
-                const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`;
-                
-                // Open Facebook share dialog
-                const fbWindow = window.open(fbUrl, 'facebook-share-dialog', 'width=626,height=436');
-                
-                // Show feedback
-                facebookBtn.innerHTML = '<span class="btn-icon">✅</span>Posted!';
-                setTimeout(() => {
-                    facebookBtn.innerHTML = '<span class="btn-icon">📘</span>Post to Facebook';
-                }, 2000);
-                
-                // Clean up the temporary URL after a delay
-                setTimeout(() => {
-                    URL.revokeObjectURL(imageUrl);
-                }, 10000);
-            });
-        });
-
-        // Instagram share
-        instagramBtn.addEventListener('click', () => {
-            const canvas = modal.querySelector('#story-canvas');
-            canvas.toBlob(blob => {
-                if (navigator.share && navigator.canShare({ files: [new File([blob], 'story.png', { type: 'image/png' })] })) {
-                    navigator.share({
-                        files: [new File([blob], 'story.png', { type: 'image/png' })],
-                        title: 'My Creative Match',
-                        text: `I got "${result.title}"! Take the quiz at leahcortezstudios.art`
-                    });
-                } else {
-                    // Fallback: open Instagram
-                    window.open('https://www.instagram.com/stories/camera/', '_blank');
-                }
-            });
-        });
-
-        // Copy link
-        copyBtn.addEventListener('click', () => {
-            const shareText = `I got "${result.title}" - ${result.subtitle}! 🎨✨ Take Leah Cortez's Portfolio Soul Quiz: ${window.location.href}`;
-            navigator.clipboard.writeText(shareText).then(() => {
-                copyBtn.innerHTML = '<span class="btn-icon">✅</span>Copied!';
-                setTimeout(() => {
-                    copyBtn.innerHTML = '<span class="btn-icon">📋</span>Copy Link';
-                }, 2000);
-            });
-        });
-
-        // More options
-        moreBtn.addEventListener('click', () => {
-            const canvas = modal.querySelector('#story-canvas');
-            canvas.toBlob(blob => {
-                const file = new File([blob], 'story.png', { type: 'image/png' });
-                if (navigator.share) {
-                    navigator.share({
-                        title: `My Creative Match: ${result.title}`,
-                        text: `I discovered I'm "${result.subtitle}"! Take the quiz and find your creative match.`,
-                        url: window.location.href,
-                        files: [file]
-                    });
-                }
-            });
-        });
-
-        // Close on backdrop click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeBtn.click();
+                shareButton.addEventListener('click', () => this.shareResult(result));
             }
-        });
+
+            // The explore button now uses inline onclick for simplicity
+        }
     }
 
-    async generateStoryTemplate(result, templateName) {
-        const template = this.templates[templateName];
-        const canvas = document.getElementById('story-canvas');
-        const ctx = canvas.getContext('2d');
+    async shareResult(result) {
+        console.log('📱 Generating gothic share template');
         
-        // Update canvas dimensions for better social media sharing - 3:4 aspect ratio
-        canvas.width = 1080;
-        canvas.height = 1440;
-        
-        // Clear canvas first
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = template.bgColor;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Helper function to load images with proper error handling
-        const loadImage = (src) => {
-            return new Promise((resolve) => {
-                const image = new Image();
-                // Remove crossOrigin to avoid CORS issues on localhost
-                // image.crossOrigin = 'anonymous';
-                
-                image.onload = () => {
-                    console.log(`✅ Successfully loaded: ${src}`);
-                    console.log(`📐 Image dimensions: ${image.width}x${image.height}`);
-                    resolve(image);
-                };
-                image.onerror = (e) => {
-                    console.log(`❌ Failed to load: ${src}`, e);
-                    console.log(`🔍 Attempted URL: ${image.src}`);
-                    resolve(null);
-                };
-                
-                // Construct proper URL based on current location
-                let imageUrl;
-                if (src.startsWith('http')) {
-                    imageUrl = src;
-                } else if (src.startsWith('/')) {
-                    imageUrl = window.location.origin + src;
-                } else {
-                    // Relative path - construct from current location
-                    const basePath = window.location.href.replace(/\/[^\/]*$/, '/');
-                    imageUrl = basePath + src;
-                }
-                
-                console.log(`🌐 Loading image from: ${imageUrl}`);
-                image.src = imageUrl;
-            });
+        try {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Gothic template dimensions (3:4 aspect ratio for social media)
+            const width = 1080;
+            const height = 1440;
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Load images
+            const [img, logo] = await Promise.all([
+                this.loadImage(result.image),
+                this.loadImage('images/logo/logo3.png')
+            ]);
+            
+            // Generate template based on category
+            const templateStyle = this.getTemplateStyle(result.category);
+            this.generateGothicTemplate(ctx, result, templateStyle, img, logo, width, height);
+            
+            // Share options
+            this.showShareOptions(canvas, result);
+            
+        } catch (error) {
+            console.error('Error generating share template:', error);
+            this.showSimpleShare(result);
+        }
+    }
+
+    getTemplateStyle(category) {
+        const styles = {
+            'Personal Work': 'minimal',
+            'Design Work': 'elegant', 
+            'Studio Work': 'artistic'
         };
-        
-        // Load both images concurrently
-        const [resultImage, logoImage] = await Promise.all([
-            loadImage(result.image),
-            loadImage('images/logo/logo3.png')
-        ]);
-        
-        console.log('🎨 Images loaded:', { resultImage: !!resultImage, logoImage: !!logoImage });
-        console.log('📍 Logo path used:', 'images/logo/logo3.png');
-        console.log('📍 Artwork path used:', result.image);
-        
-        // Draw the template
-        this.drawTemplate(ctx, result, template, resultImage, logoImage, canvas.width, canvas.height);
+        return styles[category] || 'minimal';
     }
 
-    drawTemplate(ctx, result, template, img, logo, width, height) {
-        switch (template.layout) {
+    generateGothicTemplate(ctx, result, template, img, logo, width, height) {
+        console.log(`🎨 Drawing Gothic ${template} template`);
+        
+        switch (template) {
             case 'minimal':
-                this.drawMinimalTemplate(ctx, result, template, img, logo, width, height);
+                this.drawGothicMinimal(ctx, result, img, logo, width, height);
                 break;
             case 'artistic':
-                this.drawArtisticTemplate(ctx, result, template, img, logo, width, height);
-                break;
-            case 'bold':
-                this.drawBoldTemplate(ctx, result, template, img, logo, width, height);
+                this.drawGothicArtistic(ctx, result, img, logo, width, height);
                 break;
             case 'elegant':
-                this.drawElegantTemplate(ctx, result, template, img, logo, width, height);
+                this.drawGothicElegant(ctx, result, img, logo, width, height);
                 break;
             default:
-                console.warn('Unknown template layout:', template.layout);
-                this.drawMinimalTemplate(ctx, result, template, img, logo, width, height);
+                this.drawGothicMinimal(ctx, result, img, logo, width, height);
         }
     }
 
-    drawMinimalTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨✨ Drawing Gothic Minimal template');
+    drawGothicMinimal(ctx, result, img, logo, width, height) {
+        console.log('🖤 Drawing Gothic Minimal template');
         
-        // Gothic minimal background - soft black with off-white
+        // Soft black background
         ctx.fillStyle = '#0e0e0e';
         ctx.fillRect(0, 0, width, height);
         
-        // Main content area with off-white background
-        const cardPadding = 80;
-        const cardX = cardPadding;
-        const cardY = cardPadding;
-        const cardWidth = width - (cardPadding * 2);
-        const cardHeight = height - (cardPadding * 2);
-        
-        // Off-white background
+        // Subtle texture
+        ctx.globalAlpha = 0.05;
         ctx.fillStyle = '#f7f3f1';
-        ctx.fillRect(cardX, cardY, cardWidth, cardHeight);
-        
-        // Thin maroon outline border
-        ctx.strokeStyle = '#7e1c2e';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(cardX, cardY, cardWidth, cardHeight);
-        
-        // Gothic corner embellishments (simple star shapes)
-        ctx.fillStyle = '#7e1c2e';
-        ctx.globalAlpha = 0.3;
-        this.drawGothicStar(ctx, cardX + 30, cardY + 30, 15);
-        this.drawGothicStar(ctx, cardX + cardWidth - 30, cardY + 30, 15);
-        this.drawGothicStar(ctx, cardX + 30, cardY + cardHeight - 30, 15);
-        this.drawGothicStar(ctx, cardX + cardWidth - 30, cardY + cardHeight - 30, 15);
-        ctx.globalAlpha = 1;
-        
-        // Title - Pirata One, large and centered
-        ctx.fillStyle = '#0e0e0e';
-        ctx.font = 'bold 72px "Pirata One", serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-        
-        const titleY = cardY + 60;
-        const wrappedTitle = this.wrapText(ctx, result.title.toUpperCase(), cardWidth - 120);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 80));
-        });
-        
-        // Poetic subtitle
-        const subtitleY = titleY + (wrappedTitle.length * 80) + 40;
-        ctx.font = '32px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('"The ' + result.category + '"', width / 2, subtitleY);
-        
-        // Image centered with playing card aesthetic
-        if (img) {
-            const imgSize = Math.min(400, cardWidth - 160);
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 80;
-            
-            // White frame around image
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
-            
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-        }
-        
-        // Symbolic description
-        const descY = height - 280;
-        ctx.font = '28px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#2d1b25';
-        ctx.textAlign = 'center';
-        const wrappedDesc = this.wrapText(ctx, result.description, cardWidth - 120);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 35));
-        });
-        
-        // Footer
-        const footerY = height - 120;
-        ctx.font = 'bold 24px "Pirata One", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = '20px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#0e0e0e';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
-    }
-
-    drawArtisticTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨✨ Drawing Gothic Artistic template');
-        
-        // Berry gradient background with dreamy atmosphere
-        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/3, height);
-        gradient.addColorStop(0, '#8B4B8C'); // Dark plum
-        gradient.addColorStop(0.6, '#A0274A'); // Rose burgundy
-        gradient.addColorStop(1, '#2d1b25'); // Deep burgundy
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Subtle noise texture for dreamy effect
-        ctx.globalAlpha = 0.1;
-        ctx.fillStyle = '#ffffff';
-        for (let i = 0; i < 2000; i++) {
+        for (let i = 0; i < 1000; i++) {
             const x = Math.random() * width;
             const y = Math.random() * height;
             const size = Math.random() * 2;
@@ -764,31 +603,224 @@ class PortfolioQuiz {
         }
         ctx.globalAlpha = 1;
         
-        // Sacred geometry overlays
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.globalAlpha = 0.15;
-        ctx.lineWidth = 2;
+        // Thin maroon border
+        ctx.strokeStyle = '#7e1c2e';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(60, 60, width - 120, height - 120);
         
-        // Mystical circles
+        // Inner frame
+        ctx.strokeStyle = 'rgba(247, 243, 241, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(80, 80, width - 160, height - 160);
+        
+        // Logo placement
+        if (logo) {
+            const logoSize = 80;
+            ctx.drawImage(logo, 100, 100, logoSize, logoSize);
+        }
+        
+        // Gothic star corners
+        ctx.fillStyle = '#7e1c2e';
+        this.drawGothicStar(ctx, 120, 120, 15);
+        this.drawGothicStar(ctx, width - 120, 120, 15);
+        this.drawGothicStar(ctx, 120, height - 120, 15);
+        this.drawGothicStar(ctx, width - 120, height - 120, 15);
+        
+        // Title - Pirata One
+        ctx.fillStyle = '#f7f3f1';
+        ctx.font = 'bold 56px "Pirata One", serif';
+        ctx.textAlign = 'center';
+        const titleY = 280;
+        const wrappedTitle = this.wrapText(ctx, result.title, width - 200);
+        wrappedTitle.forEach((line, index) => {
+            ctx.fillText(line, width / 2, titleY + (index * 65));
+        });
+        
+        // Playing card aesthetic subtitle
+        const subtitleY = titleY + (wrappedTitle.length * 65) + 50;
+        ctx.font = 'italic 32px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('"' + result.category + '"', width / 2, subtitleY);
+        
+        // Image with gothic frame
+        if (img) {
+            const imgSize = 400;
+            const imgX = (width - imgSize) / 2;
+            const imgY = subtitleY + 60;
+            
+            // Gothic frame
+            ctx.strokeStyle = '#7e1c2e';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            
+            // Inner shadow effect
+            ctx.strokeStyle = 'rgba(126, 28, 46, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
+            
+            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
+        }
+        
+        // Description text
+        const descY = height - 300;
+        ctx.font = '28px "IM Fell English", serif';
+        ctx.fillStyle = '#f7f3f1';
+        const wrappedDesc = this.wrapText(ctx, result.description, width - 160);
+        wrappedDesc.forEach((line, index) => {
+            ctx.fillText(line, width / 2, descY + (index * 35));
+        });
+        
+        // Quote
+        const quoteY = height - 180;
+        ctx.font = 'italic 24px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
+        
+        // Footer
+        const footerY = height - 100;
+        ctx.font = 'bold 24px "Pirata One", serif';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
+        
+        ctx.font = '20px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
+    }
+
+    drawGothicArtistic(ctx, result, img, logo, width, height) {
+        console.log('🎨 Drawing Gothic Artistic template');
+        
+        // Deep burgundy gradient
+        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/3, height);
+        gradient.addColorStop(0, '#4A1B3A');
+        gradient.addColorStop(0.6, '#7e1c2e');
+        gradient.addColorStop(1, '#2d1b25');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Mystical particles
+        ctx.fillStyle = 'rgba(247, 243, 241, 0.1)';
+        for (let i = 0; i < 500; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 3;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Sacred geometry
+        ctx.strokeStyle = 'rgba(247, 243, 241, 0.15)';
+        ctx.lineWidth = 2;
         for (let i = 0; i < 3; i++) {
-            const radius = 150 + (i * 50);
+            const radius = 150 + (i * 60);
             ctx.beginPath();
             ctx.arc(width/2, height/2, radius, 0, Math.PI * 2);
             ctx.stroke();
         }
-        ctx.globalAlpha = 1;
         
-        // Title - Pirata One, ethereal
+        // Title with ethereal glow
         ctx.fillStyle = '#f7f3f1';
-        ctx.font = 'bold 56px "Pirata One", serif';
+        ctx.font = 'bold 58px "Pirata One", serif';
         ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(139, 75, 140, 0.8)';
-        ctx.shadowBlur = 20;
-        ctx.shadowOffsetX = 2;
-        ctx.shadowOffsetY = 2;
+        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
+        ctx.shadowBlur = 25;
         
-        const titleY = 120;
-        const wrappedTitle = this.wrapText(ctx, result.title, width - 120);
+        const titleY = 180;
+        const wrappedTitle = this.wrapText(ctx, result.title, width - 160);
+        wrappedTitle.forEach((line, index) => {
+            ctx.fillText(line, width / 2, titleY + (index * 70));
+        });
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        
+        // Category with mystical styling
+        const subtitleY = titleY + (wrappedTitle.length * 70) + 50;
+        ctx.font = 'italic 36px "IM Fell English", serif';
+        ctx.fillStyle = '#f5c6d6';
+        ctx.fillText('"The ' + result.category.replace(' Work', '') + '"', width / 2, subtitleY);
+        
+        // Image with mystical frame
+        if (img) {
+            const imgSize = 380;
+            const imgX = (width - imgSize) / 2;
+            const imgY = subtitleY + 80;
+            
+            // Mystical glow
+            ctx.shadowColor = 'rgba(245, 198, 214, 0.5)';
+            ctx.shadowBlur = 30;
+            ctx.fillStyle = '#f7f3f1';
+            ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            
+            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
+            
+            // Mystical corner ornaments
+            ctx.fillStyle = '#7e1c2e';
+            this.drawGothicStar(ctx, imgX - 25, imgY - 25, 20);
+            this.drawGothicStar(ctx, imgX + imgSize + 25, imgY - 25, 20);
+            this.drawGothicStar(ctx, imgX - 25, imgY + imgSize + 25, 20);
+            this.drawGothicStar(ctx, imgX + imgSize + 25, imgY + imgSize + 25, 20);
+        }
+        
+        // Description
+        const descY = height - 240;
+        ctx.font = '26px "IM Fell English", serif';
+        ctx.fillStyle = '#f7f3f1';
+        const wrappedDesc = this.wrapText(ctx, result.description, width - 160);
+        wrappedDesc.forEach((line, index) => {
+            ctx.fillText(line, width / 2, descY + (index * 32));
+        });
+        
+        // Footer
+        const footerY = height - 90;
+        ctx.font = 'bold 28px "Pirata One", serif';
+        ctx.fillStyle = '#f5c6d6';
+        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
+        
+        ctx.font = '22px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#f7f3f1';
+        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
+    }
+
+    drawGothicElegant(ctx, result, img, logo, width, height) {
+        console.log('✨ Drawing Gothic Elegant template');
+        
+        // Elegant dusty rose gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, '#D4A5A5');
+        gradient.addColorStop(0.5, '#C09090');
+        gradient.addColorStop(1, '#8B6B6B');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Vignette
+        const vignette = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, Math.max(width, height)/2);
+        vignette.addColorStop(0, 'transparent');
+        vignette.addColorStop(0.7, 'transparent');
+        vignette.addColorStop(1, 'rgba(45, 27, 37, 0.4)');
+        ctx.fillStyle = vignette;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Delicate lace border
+        ctx.strokeStyle = 'rgba(45, 27, 37, 0.3)';
+        ctx.lineWidth = 2;
+        this.drawLaceBorder(ctx, 80, 80, width - 160, height - 160);
+        
+        // Title with elegant typography
+        ctx.fillStyle = '#2d1b25';
+        ctx.font = 'bold 54px "Playfair Display", serif';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(212, 165, 165, 0.6)';
+        ctx.shadowBlur = 10;
+        
+        const titleY = 200;
+        const wrappedTitle = this.wrapText(ctx, result.title, width - 200);
         wrappedTitle.forEach((line, index) => {
             ctx.fillText(line, width / 2, titleY + (index * 65));
         });
@@ -796,250 +828,24 @@ class PortfolioQuiz {
         // Reset shadow
         ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Poetic subheading with gothic flair
-        const subtitleY = titleY + (wrappedTitle.length * 65) + 40;
-        ctx.font = 'italic 36px "Georgia", serif';
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillText('"The ' + result.category + '"', width / 2, subtitleY);
-        
-        // Polaroid-style image frame
-        if (img) {
-            const imgSize = 350;
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 60;
-            
-            // Polaroid background
-            ctx.fillStyle = '#f7f3f1';
-            ctx.shadowColor = 'rgba(0,0,0,0.4)';
-            ctx.shadowBlur = 15;
-            ctx.shadowOffsetY = 8;
-            ctx.fillRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 60);
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetY = 0;
-            
-            // Image
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-            
-            // Tape corner effect
-            ctx.fillStyle = 'rgba(245, 198, 214, 0.8)';
-            ctx.rotate(Math.PI / 8);
-            ctx.fillRect(imgX + imgSize - 30, imgY - 30, 60, 20);
-            ctx.rotate(-Math.PI / 8);
-        }
-        
-        // Poetic description
-        const descY = height - 200;
-        ctx.font = 'italic 26px "Georgia", serif';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.textAlign = 'center';
-        const wrappedDesc = this.wrapText(ctx, result.description, width - 120);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 32));
-        });
-        
-        // Footer with mystical feel
-        const footerY = height - 80;
-        ctx.font = 'bold 22px "Pirata One", serif';
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = '18px "Georgia", serif';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 30);
-    }
-
-    drawBoldTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨✨ Drawing Gothic Bold template');
-        
-        // High contrast black background
-        ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, width, height);
-        
-        // Grunge texture overlay
-        ctx.globalAlpha = 0.2;
-        ctx.fillStyle = '#333333';
-        for (let i = 0; i < 500; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 5 + 1;
-            ctx.fillRect(x, y, size, size);
-        }
-        ctx.globalAlpha = 1;
-        
-        // Thick border frame
-        ctx.strokeStyle = '#CC0000'; // Blood red
-        ctx.lineWidth = 8;
-        ctx.strokeRect(40, 40, width - 80, height - 80);
-        
-        // Inner shadow effect
-        ctx.strokeStyle = '#666666';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(50, 50, width - 100, height - 100);
-        
-        // Sacred heart icon in top corner
-        ctx.fillStyle = '#CC0000';
-        this.drawSacredHeart(ctx, width - 120, 80, 30);
-        
-        // Title - Large, uppercase, dramatic
-        ctx.fillStyle = '#FFFFFF';
-        ctx.font = 'bold 64px "Pirata One", serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = '#CC0000';
-        ctx.shadowBlur = 10;
-        ctx.shadowOffsetX = 3;
-        ctx.shadowOffsetY = 3;
-        
-        const titleY = 150;
-        const wrappedTitle = this.wrapText(ctx, result.title.toUpperCase(), width - 160);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 75));
-        });
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Bold subtitle
-        const subtitleY = titleY + (wrappedTitle.length * 75) + 40;
-        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#CC0000';
-        ctx.fillText('"THE ' + result.category.toUpperCase() + '"', width / 2, subtitleY);
-        
-        // Image with spotlight effect
-        if (img) {
-            const imgSize = 320;
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 60;
-            
-            // Spotlight background
-            const spotlightGradient = ctx.createRadialGradient(
-                imgX + imgSize/2, imgY + imgSize/2, 0,
-                imgX + imgSize/2, imgY + imgSize/2, imgSize/2 + 50
-            );
-            spotlightGradient.addColorStop(0, 'rgba(255,255,255,0.3)');
-            spotlightGradient.addColorStop(0.7, 'rgba(255,255,255,0.1)');
-            spotlightGradient.addColorStop(1, 'transparent');
-            
-            ctx.fillStyle = spotlightGradient;
-            ctx.fillRect(imgX - 50, imgY - 50, imgSize + 100, imgSize + 100);
-            
-            // Image with thick border
-            ctx.strokeStyle = '#FFFFFF';
-            ctx.lineWidth = 4;
-            ctx.strokeRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
-            
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-        }
-        
-        // Bold description
-        const descY = height - 180;
-        ctx.font = 'bold 24px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#CCCCCC';
-        ctx.textAlign = 'center';
-        const wrappedDesc = this.wrapText(ctx, result.description.toUpperCase(), width - 160);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 30));
-        });
-        
-        // Footer with metallic effect
-        const footerY = height - 80;
-        ctx.font = 'bold 24px "Pirata One", serif';
-        ctx.fillStyle = '#C0C0C0'; // Metallic gray
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = 'bold 18px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, footerY + 30);
-    }
-
-    drawElegantTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨✨ Drawing Gothic Elegant template');
-        
-        // Dusty rose gradient background
-        const gradient = ctx.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, '#D4A5A5'); // Dusty rose
-        gradient.addColorStop(0.5, '#B8860B'); // Warm gold
-        gradient.addColorStop(1, '#8B0000'); // Velvet red
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Vignette edges
-        const vignetteGradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, Math.max(width, height)/2);
-        vignetteGradient.addColorStop(0, 'transparent');
-        vignetteGradient.addColorStop(0.7, 'transparent');
-        vignetteGradient.addColorStop(1, 'rgba(45, 27, 37, 0.6)');
-        ctx.fillStyle = vignetteGradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Floating pearl orbs
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        const orbs = [
-            {x: width * 0.2, y: height * 0.2, r: 15},
-            {x: width * 0.8, y: height * 0.3, r: 20},
-            {x: width * 0.15, y: height * 0.7, r: 12},
-            {x: width * 0.85, y: height * 0.8, r: 18}
-        ];
-        
-        orbs.forEach(orb => {
-            ctx.beginPath();
-            ctx.arc(orb.x, orb.y, orb.r, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Pearl highlight
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.beginPath();
-            ctx.arc(orb.x - 5, orb.y - 5, orb.r * 0.3, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        });
-        
-        // Lace border pattern
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.lineWidth = 2;
-        this.drawLaceBorder(ctx, 60, 60, width - 120, height - 120);
-        
-        // Title - Elegant serif
-        ctx.fillStyle = '#2d1b25';
-        ctx.font = 'bold 52px "Playfair Display", serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(255, 215, 0, 0.5)';
-        ctx.shadowBlur = 8;
-        
-        const titleY = 140;
-        const wrappedTitle = this.wrapText(ctx, result.title, width - 160);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 60));
-        });
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
         
         // Elegant subtitle
-        const subtitleY = titleY + (wrappedTitle.length * 60) + 30;
-        ctx.font = 'italic 28px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#8B0000';
-        ctx.fillText('"The ' + result.category + '"', width / 2, subtitleY);
+        const subtitleY = titleY + (wrappedTitle.length * 65) + 40;
+        ctx.font = 'italic 32px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('"The ' + result.category.replace(' Work', '') + '"', width / 2, subtitleY);
         
-        // Image with soft glow
+        // Image with elegant frame
         if (img) {
-            const imgSize = 340;
+            const imgSize = 360;
             const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 50;
+            const imgY = subtitleY + 70;
             
-            // Soft glow around image
-            ctx.shadowColor = 'rgba(255, 215, 0, 0.6)';
-            ctx.shadowBlur = 30;
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            // Elegant shadow
+            ctx.shadowColor = 'rgba(45, 27, 37, 0.3)';
+            ctx.shadowBlur = 20;
+            ctx.fillStyle = '#f7f3f1';
+            ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
             
             // Reset shadow
             ctx.shadowColor = 'transparent';
@@ -1048,33 +854,38 @@ class PortfolioQuiz {
             this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
             
             // Elegant frame
-            ctx.strokeStyle = '#B8860B';
+            ctx.strokeStyle = '#7e1c2e';
             ctx.lineWidth = 3;
-            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
+            ctx.strokeRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
         }
         
-        // Elegant description
-        const descY = height - 160;
-        ctx.font = '22px "IBM Plex Mono", monospace';
+        // Description
+        const descY = height - 280;
+        ctx.font = '24px "IM Fell English", serif';
         ctx.fillStyle = '#2d1b25';
-        ctx.textAlign = 'center';
-        const wrappedDesc = this.wrapText(ctx, result.description, width - 160);
+        const wrappedDesc = this.wrapText(ctx, result.description, width - 180);
         wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 28));
+            ctx.fillText(line, width / 2, descY + (index * 30));
         });
         
-        // Elegant footer
-        const footerY = height - 70;
-        ctx.font = 'bold 20px "Playfair Display", serif';
-        ctx.fillStyle = '#8B0000';
+        // Quote
+        const quoteY = height - 160;
+        ctx.font = 'italic 22px "IM Fell English", serif';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
+        
+        // Footer
+        const footerY = height - 90;
+        ctx.font = 'bold 26px "Playfair Display", serif';
+        ctx.fillStyle = '#2d1b25';
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         
-        ctx.font = '16px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#2d1b25';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 25);
+        ctx.font = '20px "IBM Plex Mono", monospace';
+        ctx.fillStyle = '#7e1c2e';
+        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 30);
     }
 
-    // Helper methods for gothic templates
+    // Helper methods
     drawGothicStar(ctx, x, y, size) {
         const points = 5;
         const outerRadius = size;
@@ -1097,44 +908,8 @@ class PortfolioQuiz {
         ctx.fill();
     }
 
-    drawSacredHeart(ctx, x, y, size) {
-        ctx.save();
-        ctx.fillStyle = '#CC0000';
-        
-        // Heart shape
-        ctx.beginPath();
-        ctx.moveTo(x, y + size * 0.3);
-        ctx.bezierCurveTo(x, y, x - size * 0.5, y, x - size * 0.5, y + size * 0.3);
-        ctx.bezierCurveTo(x - size * 0.5, y + size * 0.6, x, y + size, x, y + size);
-        ctx.bezierCurveTo(x, y + size, x + size * 0.5, y + size * 0.6, x + size * 0.5, y + size * 0.3);
-        ctx.bezierCurveTo(x + size * 0.5, y, x, y, x, y + size * 0.3);
-        ctx.fill();
-        
-        // Thorns (crown effect)
-        ctx.strokeStyle = '#CC0000';
-        ctx.lineWidth = 2;
-        for (let i = 0; i < 5; i++) {
-            const angle = (i / 5) * Math.PI * 2;
-            const startX = x + (size * 0.3) * Math.cos(angle);
-            const startY = y + (size * 0.3) * Math.sin(angle);
-            const endX = x + (size * 0.6) * Math.cos(angle);
-            const endY = y + (size * 0.6) * Math.sin(angle);
-            
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-        }
-        
-        ctx.restore();
-    }
-
     drawLaceBorder(ctx, x, y, width, height) {
-        ctx.save();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.lineWidth = 1.5;
-        
-        const scallops = 20;
+        const scallops = 15;
         const scallop = width / scallops;
         
         // Top border
@@ -1145,11 +920,10 @@ class PortfolioQuiz {
             const endX = startX + scallop;
             
             if (i === 0) ctx.moveTo(startX, y);
-            ctx.quadraticCurveTo(midX, y - 10, endX, y);
+            ctx.quadraticCurveTo(midX, y - 8, endX, y);
         }
         ctx.stroke();
         
-        // Similar patterns for other sides...
         // Bottom border
         ctx.beginPath();
         for (let i = 0; i < scallops; i++) {
@@ -1158,11 +932,9 @@ class PortfolioQuiz {
             const endX = startX + scallop;
             
             if (i === 0) ctx.moveTo(startX, y + height);
-            ctx.quadraticCurveTo(midX, y + height + 10, endX, y + height);
+            ctx.quadraticCurveTo(midX, y + height + 8, endX, y + height);
         }
         ctx.stroke();
-        
-        ctx.restore();
     }
 
     wrapText(ctx, text, maxWidth) {
@@ -1191,13 +963,11 @@ class PortfolioQuiz {
         let drawWidth, drawHeight, drawX, drawY;
         
         if (imgAspect > boxAspect) {
-            // Image is wider than box
             drawHeight = height;
             drawWidth = height * imgAspect;
             drawX = x - (drawWidth - width) / 2;
             drawY = y;
         } else {
-            // Image is taller than box
             drawWidth = width;
             drawHeight = width / imgAspect;
             drawX = x;
@@ -1206,648 +976,119 @@ class PortfolioQuiz {
         
         ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
     }
-        ctx.strokeStyle = 'rgba(245, 198, 214, 0.3)';
-        ctx.lineWidth = 8;
-        ctx.strokeRect(4, 4, width - 8, height - 8);
-        
-        console.log('✨ Social media optimized minimal template complete');
-    }
 
-    drawArtisticTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨 Drawing SOCIAL MEDIA artistic template');
-        
-        // Social media optimized artistic gradient
-        const gradient = ctx.createLinearGradient(0, 0, width, height);
-        gradient.addColorStop(0, '#2d1b25');
-        gradient.addColorStop(0.3, '#7e1c2e');
-        gradient.addColorStop(0.7, '#a0274a');
-        gradient.addColorStop(1, '#2d1b25');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Dynamic artistic elements optimized for engagement
-        ctx.fillStyle = '#f5c6d6';
-        ctx.globalAlpha = 0.08;
-        
-        // Flowing artistic shapes
-        for (let i = 0; i < 20; i++) {
-            ctx.beginPath();
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 120 + 60;
-            
-            // Create organic shapes
-            ctx.ellipse(x, y, size, size * 0.6, Math.random() * Math.PI, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        
-        // Artistic flowing lines for visual interest
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 4;
-        ctx.globalAlpha = 0.12;
-        
-        for (let i = 0; i < 8; i++) {
-            ctx.beginPath();
-            const startX = Math.random() * width;
-            const startY = Math.random() * height;
-            const cp1X = Math.random() * width;
-            const cp1Y = Math.random() * height;
-            const cp2X = Math.random() * width;
-            const cp2Y = Math.random() * height;
-            const endX = Math.random() * width;
-            const endY = Math.random() * height;
-            
-            ctx.moveTo(startX, startY);
-            ctx.bezierCurveTo(cp1X, cp1Y, cp2X, cp2Y, endX, endY);
-            ctx.stroke();
-        }
-        ctx.globalAlpha = 1;
-        
-        // Logo positioned for social media engagement
-        if (logo) {
-            const logoSize = 110;
-            const logoX = width - logoSize - 80;
-            const logoY = 80;
-            
-            // Artistic glow effect
-            ctx.shadowColor = '#f5c6d6';
-            ctx.shadowBlur = 30;
-            ctx.shadowOffsetX = -5;
-            ctx.shadowOffsetY = 5;
-            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-        } else {
-            ctx.fillStyle = '#f5c6d6';
-            ctx.font = 'bold 32px "Pirata One", serif';
-            ctx.textAlign = 'right';
-            ctx.fillText('LEAH', width - 80, 110);
-            ctx.font = '20px "IM Fell English", serif';
-            ctx.fillText('CORTEZ STUDIO', width - 80, 140);
-        }
-        
-        // Social media optimized title
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 68px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(45, 27, 37, 0.8)';
-        ctx.shadowBlur = 20;
-        ctx.shadowOffsetY = 8;
-        this.wrapText(ctx, result.title, width / 2, 200, width - 120, 80);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Subtitle with artistic flair
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'italic 40px "IM Fell English", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.3)';
-        ctx.shadowBlur = 8;
-        ctx.fillText(result.subtitle, width / 2, 340);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Artistic decorative flourishes around title
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 3;
-        ctx.globalAlpha = 0.6;
-        
-        // Left flourish
-        ctx.beginPath();
-        ctx.arc(width / 2 - 250, 270, 40, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(width / 2 - 280, 300, 20, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        // Right flourish
-        ctx.beginPath();
-        ctx.arc(width / 2 + 250, 270, 40, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(width / 2 + 280, 300, 20, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        ctx.globalAlpha = 1;
-        
-        // Main artwork with Instagram-style artistic frame
-        const imgSize = 420;
-        const imgX = (width - imgSize) / 2;
-        const imgY = 400;
-        
-        // Multi-layered artistic frame with shadows
-        ctx.shadowColor = 'rgba(0,0,0,0.4)';
-        ctx.shadowBlur = 25;
-        ctx.shadowOffsetY = 12;
-        
-        // Outer artistic frame
-        ctx.fillStyle = '#f5c6d6';
-        ctx.beginPath();
-        ctx.roundRect(imgX - 25, imgY - 25, imgSize + 50, imgSize + 50, 30);
-        ctx.fill();
-        
-        // Middle frame
-        ctx.fillStyle = 'rgba(45, 27, 37, 0.9)';
-        ctx.beginPath();
-        ctx.roundRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30, 25);
-        ctx.fill();
-        
-        // Inner frame
-        ctx.fillStyle = '#f5c6d6';
-        ctx.beginPath();
-        ctx.roundRect(imgX - 8, imgY - 8, imgSize + 16, imgSize + 16, 20);
-        ctx.fill();
-        
-        if (img) {
-            // Clip and draw image
-            ctx.save();
-            ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
-            ctx.clip();
-            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
-            ctx.restore();
-        } else {
-            ctx.fillStyle = '#2d1b25';
-            ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 15);
-            ctx.fill();
-            
-            ctx.fillStyle = '#f5c6d6';
-            ctx.font = '34px "Pirata One", serif';
-            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 15);
-            ctx.font = '30px "IM Fell English", serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
-        }
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Description optimized for social media
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '30px "IM Fell English", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.2)';
-        ctx.shadowBlur = 5;
-        this.wrapText(ctx, this.truncateText(result.description, 100), width / 2, 890, width - 140, 38);
-        
-        // Quote with artistic styling
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'italic 28px "IM Fell English", serif';
-        this.wrapText(ctx, `"${this.truncateText(result.quote, 70)}"`, width / 2, 1050, width - 160, 36);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Social media branding
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'bold 40px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.4)';
-        ctx.shadowBlur = 10;
-        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 200);
-        
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 28px "IBM Plex Mono", monospace';
-        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, height - 160);
-        
-        ctx.fillStyle = 'rgba(245, 198, 214, 0.9)';
-        ctx.font = '26px "IM Fell English", serif';
-        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 120);
-        
-        // Call to action
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.font = '22px "IBM Plex Mono", monospace';
-        ctx.fillText('Discover your creative match', width / 2, height - 85);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        console.log('✨ Social media artistic template complete');
-    }
-
-    drawBoldTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨 Drawing SOCIAL MEDIA bold template');
-        
-        // High-contrast background for social media impact
-        const bgGradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, height/2);
-        bgGradient.addColorStop(0, '#1a0d12');
-        bgGradient.addColorStop(0.6, '#0d0608');
-        bgGradient.addColorStop(1, '#000000');
-        ctx.fillStyle = bgGradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Bold geometric accent elements for social media
-        ctx.fillStyle = '#f5c6d6';
-        ctx.globalAlpha = 0.1;
-        
-        // Dynamic geometric shapes
-        const shapes = [
-            { x: width * 0.1, y: height * 0.2, size: 100 },
-            { x: width * 0.9, y: height * 0.3, size: 80 },
-            { x: width * 0.15, y: height * 0.8, size: 120 },
-            { x: width * 0.85, y: height * 0.7, size: 90 }
-        ];
-        
-        shapes.forEach(shape => {
-            ctx.fillRect(shape.x - shape.size/2, shape.y - shape.size/2, shape.size, shape.size);
-            ctx.beginPath();
-            ctx.arc(shape.x + 60, shape.y - 60, shape.size * 0.3, 0, Math.PI * 2);
-            ctx.fill();
+    async loadImage(src) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = src;
         });
-        ctx.globalAlpha = 1;
-        
-        // Bold accent stripe with enhanced gradient
-        const stripeGradient = ctx.createLinearGradient(0, 150, 0, 300);
-        stripeGradient.addColorStop(0, '#f5c6d6');
-        stripeGradient.addColorStop(0.2, '#ffffff');
-        stripeGradient.addColorStop(0.5, '#7e1c2e');
-        stripeGradient.addColorStop(0.8, '#ffffff');
-        stripeGradient.addColorStop(1, '#f5c6d6');
-        ctx.fillStyle = stripeGradient;
-        ctx.fillRect(0, 150, width, 150);
-        
-        // Logo in the accent stripe
-        if (logo) {
-            const logoSize = 100;
-            const logoX = 100;
-            const logoY = 175;
-            
-            // Bold shadow for logo
-            ctx.shadowColor = '#000000';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetX = 8;
-            ctx.shadowOffsetY = 8;
-            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-        } else {
-            ctx.fillStyle = '#000000';
-            ctx.font = 'bold 40px "Pirata One", serif';
-            ctx.textAlign = 'left';
-            ctx.shadowColor = '#ffffff';
-            ctx.shadowBlur = 3;
-            ctx.fillText('LEAH', 100, 220);
-            ctx.font = 'bold 32px "Pirata One", serif';
-            ctx.fillText('CORTEZ', 100, 260);
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-        }
-        
-        // Large impactful title for social media
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 80px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
-        ctx.shadowBlur = 15;
-        ctx.shadowOffsetY = 8;
-        this.wrapText(ctx, result.title.toUpperCase(), width / 2, 450, width - 100, 90);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Bold subtitle
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'bold 50px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.8)';
-        ctx.shadowBlur = 10;
-        ctx.fillText(result.subtitle.toUpperCase(), width / 2, 580);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Main artwork with bold Instagram-style frame
-        const imgSize = 400;
-        const imgX = (width - imgSize) / 2;
-        const imgY = 630;
-        
-        // Bold multi-layered frame with dramatic shadows
-        ctx.shadowColor = 'rgba(0,0,0,0.6)';
-        ctx.shadowBlur = 30;
-        ctx.shadowOffsetY = 15;
-        
-        // Outer bold frame
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
-        
-        // Inner frame
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillRect(imgX - 12, imgY - 12, imgSize + 24, imgSize + 24);
-        
-        // White inner border
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(imgX - 6, imgY - 6, imgSize + 12, imgSize + 12);
-        
-        if (img) {
-            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
-            
-            // Bold border overlay
-            ctx.strokeStyle = '#f5c6d6';
-            ctx.lineWidth = 6;
-            ctx.strokeRect(imgX, imgY, imgSize, imgSize);
-        } else {
-            ctx.fillStyle = '#1a0d12';
-            ctx.fillRect(imgX, imgY, imgSize, imgSize);
-            ctx.fillStyle = '#f5c6d6';
-            ctx.font = 'bold 36px "Pirata One", serif';
-            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 15);
-            ctx.font = 'bold 32px "Pirata One", serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
-        }
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Description in bold style
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 32px "IM Fell English", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.3)';
-        ctx.shadowBlur = 8;
-        this.wrapText(ctx, this.truncateText(result.description, 90), width / 2, 1100, width - 140, 40);
-        
-        // Bold quote
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'bold italic 30px "IM Fell English", serif';
-        this.wrapText(ctx, `"${this.truncateText(result.quote, 60)}"`, width / 2, 1280, width - 160, 38);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Bold social media branding
-        ctx.fillStyle = '#f5c6d6';
-        ctx.font = 'bold 52px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(0,0,0,0.5)';
-        ctx.shadowBlur = 12;
-        ctx.fillText('LEAH CORTEZ', width / 2, height - 220);
-        
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 36px "Pirata One", serif';
-        ctx.fillText('STUDIO', width / 2, height - 170);
-        
-        ctx.font = 'bold 28px "IBM Plex Mono", monospace';
-        ctx.fillText('LEAHCORTEZSTUDIOS.ART', width / 2, height - 130);
-        
-        // Social media call to action
-        ctx.fillStyle = 'rgba(245, 198, 214, 0.9)';
-        ctx.font = '24px "IBM Plex Mono", monospace';
-        ctx.fillText('TAKE THE QUIZ • FIND YOUR MATCH', width / 2, height - 90);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        console.log('💥 Social media bold template complete');
     }
 
-    drawElegantTemplate(ctx, result, template, img, logo, width, height) {
-        console.log('🎨 Drawing SOCIAL MEDIA elegant template');
+    showShareOptions(canvas, result) {
+        console.log('📱 Showing share options');
         
-        // Sophisticated background for social media elegance
-        const bgGradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, height/2);
-        bgGradient.addColorStop(0, '#ffffff');
-        bgGradient.addColorStop(0.7, '#faf8f6');
-        bgGradient.addColorStop(1, '#f5f2f0');
-        ctx.fillStyle = bgGradient;
-        ctx.fillRect(0, 0, width, height);
+        // Create modal with share options
+        const modal = document.createElement('div');
+        modal.className = 'share-modal';
+        modal.innerHTML = `
+            <div class="share-modal-content">
+                <h3>Share Your Result</h3>
+                <div class="canvas-preview">
+                    <img src="${canvas.toDataURL()}" alt="Result Preview" />
+                </div>
+                <div class="share-buttons">
+                    <button class="share-facebook-btn">Post to Facebook</button>
+                    <button class="save-image-btn">Save Image</button>
+                    <button class="copy-link-btn">Copy Link</button>
+                </div>
+                <button class="close-modal-btn">×</button>
+            </div>
+        `;
         
-        // Subtle elegant texture
-        ctx.fillStyle = '#7e1c2e';
-        ctx.globalAlpha = 0.02;
-        for (let i = 0; i < 500; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            ctx.fillRect(x, y, 1, 1);
-        }
-        ctx.globalAlpha = 1;
+        document.body.appendChild(modal);
         
-        // Elegant outer border with premium feel
-        ctx.strokeStyle = '#7e1c2e';
-        ctx.lineWidth = 15;
-        ctx.strokeRect(60, 60, width - 120, height - 120);
-        
-        // Inner decorative borders
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 6;
-        ctx.strokeRect(90, 90, width - 180, height - 180);
-        
-        ctx.strokeStyle = '#7e1c2e';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(110, 110, width - 220, height - 220);
-        
-        // Corner decorative elements
-        const cornerSize = 40;
-        const corners = [
-            { x: 60, y: 60 },
-            { x: width - 60, y: 60 },
-            { x: 60, y: height - 60 },
-            { x: width - 60, y: height - 60 }
-        ];
-        
-        ctx.fillStyle = '#f5c6d6';
-        corners.forEach(corner => {
-            ctx.beginPath();
-            ctx.arc(corner.x, corner.y, 20, 0, Math.PI * 2);
-            ctx.fill();
+        // Bind share button events
+        modal.querySelector('.share-facebook-btn').addEventListener('click', () => {
+            this.shareToFacebook(canvas, result);
         });
         
-        // Logo with elegant positioning
-        if (logo) {
-            const logoSize = 130;
-            const logoX = (width - logoSize) / 2;
-            const logoY = 140;
-            
-            // Elegant shadow
-            ctx.shadowColor = 'rgba(126, 28, 46, 0.3)';
-            ctx.shadowBlur = 15;
-            ctx.shadowOffsetY = 8;
-            ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetY = 0;
-        } else {
-            ctx.fillStyle = '#7e1c2e';
-            ctx.font = 'bold 36px "Pirata One", serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('LEAH CORTEZ', width / 2, 200);
-            ctx.font = '26px "IM Fell English", serif';
-            ctx.fillText('STUDIO', width / 2, 235);
-        }
+        modal.querySelector('.save-image-btn').addEventListener('click', () => {
+            this.saveImage(canvas, result);
+        });
         
-        // Elegant typography optimized for social media
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#2d1b25';
-        ctx.font = '58px "Pirata One", serif';
-        ctx.shadowColor = 'rgba(126, 28, 46, 0.1)';
-        ctx.shadowBlur = 8;
-        ctx.shadowOffsetY = 4;
-        this.wrapText(ctx, result.title, width / 2, 340, width - 260, 70);
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
+        modal.querySelector('.copy-link-btn').addEventListener('click', () => {
+            this.copyShareLink(result);
+        });
         
-        ctx.fillStyle = '#7e1c2e';
-        ctx.font = 'italic 42px "IM Fell English", serif';
-        ctx.fillText(result.subtitle, width / 2, 450);
+        modal.querySelector('.close-modal-btn').addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
         
-        // Elegant decorative flourishes
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(width / 2 - 220, 480);
-        ctx.lineTo(width / 2 + 220, 480);
-        ctx.stroke();
-        
-        // Decorative elements
-        ctx.fillStyle = '#7e1c2e';
-        ctx.beginPath();
-        ctx.arc(width / 2 - 240, 480, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(width / 2 + 240, 480, 8, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Small accent flourishes
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(width / 2 - 260, 480, 15, 0, Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(width / 2 + 260, 480, 15, 0, Math.PI);
-        ctx.stroke();
-        
-        // Main artwork with sophisticated frame
-        const imgSize = 400;
-        const imgX = (width - imgSize) / 2;
-        const imgY = 520;
-        
-        if (img) {
-            // Elegant shadow for the entire frame
-            ctx.shadowColor = 'rgba(126, 28, 46, 0.2)';
-            ctx.shadowBlur = 25;
-            ctx.shadowOffsetY = 15;
-            
-            // Outer elegant frame
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 15;
-            ctx.strokeRect(imgX - 30, imgY - 30, imgSize + 60, imgSize + 60);
-            
-            // Middle frame
-            ctx.strokeStyle = '#f5c6d6';
-            ctx.lineWidth = 10;
-            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
-            
-            // Inner frame
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 6;
-            ctx.strokeRect(imgX - 12, imgY - 12, imgSize + 24, imgSize + 24);
-            
-            // Finest inner border
-            ctx.strokeStyle = '#2d1b25';
-            ctx.lineWidth = 3;
-            ctx.strokeRect(imgX - 6, imgY - 6, imgSize + 12, imgSize + 12);
-            
-            // Draw image with rounded corners
-            ctx.save();
-            ctx.beginPath();
-            ctx.roundRect(imgX, imgY, imgSize, imgSize, 8);
-            ctx.clip();
-            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
-            ctx.restore();
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetY = 0;
-        } else {
-            // Elegant placeholder
-            ctx.fillStyle = '#f5c6d6';
-            ctx.fillRect(imgX, imgY, imgSize, imgSize);
-            
-            ctx.fillStyle = '#7e1c2e';
-            ctx.font = '36px "Pirata One", serif';
-            ctx.fillText('PORTFOLIO', width / 2, imgY + imgSize/2 - 15);
-            ctx.font = '32px "IM Fell English", serif';
-            ctx.fillText('ARTWORK', width / 2, imgY + imgSize/2 + 25);
-        }
-        
-        // Description in elegant typography
-        ctx.fillStyle = '#2d1b25';
-        ctx.font = '32px "IM Fell English", serif';
-        this.wrapText(ctx, this.truncateText(result.description, 110), width / 2, 990, width - 220, 40);
-        
-        // Quote in elegant italic style
-        ctx.fillStyle = '#7e1c2e';
-        ctx.font = 'italic 28px "IM Fell English", serif';
-        this.wrapText(ctx, `"${this.truncateText(result.quote, 80)}"`, width / 2, 1180, width - 240, 36);
-        
-        // Elegant branding section
-        ctx.fillStyle = '#2d1b25';
-        ctx.font = '42px "Pirata One", serif';
-        ctx.fillText('LEAH CORTEZ STUDIO', width / 2, height - 240);
-        
-        ctx.fillStyle = '#7e1c2e';
-        ctx.font = 'italic 30px "IM Fell English", serif';
-        ctx.fillText('Portfolio Soul Quiz', width / 2, height - 200);
-        
-        ctx.fillStyle = 'rgba(45, 27, 37, 0.8)';
-        ctx.font = '26px "IBM Plex Mono", monospace';
-        ctx.fillText('leahcortezstudios.art', width / 2, height - 160);
-        
-        // Elegant call to action
-        ctx.fillStyle = 'rgba(126, 28, 46, 0.7)';
-        ctx.font = 'italic 24px "IM Fell English", serif';
-        ctx.fillText('Discover your creative essence', width / 2, height - 120);
-        
-        // Final elegant decorative line
-        ctx.strokeStyle = '#f5c6d6';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(200, height - 90);
-        ctx.lineTo(width - 200, height - 90);
-        ctx.stroke();
-        
-        console.log('✨ Social media elegant template complete');
+        // Show modal
+        setTimeout(() => modal.classList.add('active'), 100);
     }
 
-    wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-        const words = text.split(' ');
-        let line = '';
-        let currentY = y;
-
-        for (let n = 0; n < words.length; n++) {
-            const testLine = line + words[n] + ' ';
-            const metrics = ctx.measureText(testLine);
-            const testWidth = metrics.width;
+    shareToFacebook(canvas, result) {
+        canvas.toBlob((blob) => {
+            const formData = new FormData();
+            formData.append('image', blob, 'quiz-result.png');
+            formData.append('message', `I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
             
-            if (testWidth > maxWidth && n > 0) {
-                ctx.fillText(line, x, currentY);
-                line = words[n] + ' ';
-                currentY += lineHeight;
-            } else {
-                line = testLine;
-            }
-        }
-        ctx.fillText(line, x, currentY);
+            // This would typically send to a server endpoint that handles Facebook posting
+            // For now, we'll open Facebook share dialog with text
+            const shareText = encodeURIComponent(`I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`);
+            const shareUrl = encodeURIComponent('https://leahcortezstudios.art');
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareText}`, '_blank', 'width=600,height=400');
+        }, 'image/png');
     }
 
-    // Helper function to truncate text for social media
-    truncateText(text, maxLength) {
-        if (text.length <= maxLength) return text;
-        return text.substring(0, maxLength - 3) + '...';
+    saveImage(canvas, result) {
+        const link = document.createElement('a');
+        link.download = `portfolio-soul-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+
+    copyShareLink(result) {
+        const shareUrl = `https://leahcortezstudios.art/?result=${result.category.toLowerCase().replace(' work', '')}`;
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Share link copied to clipboard!');
+        });
+    }
+
+    showSimpleShare(result) {
+        const shareText = `I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`;
+        
+        if (navigator.share) {
+            navigator.share({
+                title: 'Portfolio Soul Quiz Result',
+                text: shareText,
+                url: 'https://leahcortezstudios.art'
+            });
+        } else {
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert('Result text copied to clipboard!');
+            });
+        }
+    }
+
+    resetQuiz() {
+        this.currentQuestion = 0;
+        this.answers = [];
+        this.showSection('quiz-start');
     }
 
     showSection(sectionClass) {
-        // Hide all sections
-        const sections = ['quiz-start', 'quiz-questions', 'quiz-results'];
-        sections.forEach(section => {
-            const element = document.querySelector(`.${section}`);
-            if (element) {
-                element.classList.remove('active');
-                element.classList.add('hidden');
-            }
+        // Hide all quiz sections
+        document.querySelectorAll('.quiz-start, .quiz-questions, .quiz-results').forEach(section => {
+            section.classList.add('hidden');
+            section.classList.remove('active');
         });
-
-        // Show target section
+        
+        // Show the requested section
         const targetSection = document.querySelector(`.${sectionClass}`);
         if (targetSection) {
             targetSection.classList.remove('hidden');
@@ -1858,5 +1099,6 @@ class PortfolioQuiz {
 
 // Initialize quiz when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎨 Initializing Portfolio Quiz with Gothic Aesthetics');
     new PortfolioQuiz();
 });

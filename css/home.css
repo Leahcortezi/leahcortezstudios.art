@@ -1483,7 +1483,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-.result-text h3 {
+.result-text h2 {
   font-family: 'Pirata One', cursive;
   font-size: 2.5rem;
   color: var(--cream);
@@ -1493,7 +1493,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-.result-text h4 {
+.result-text h3 {
   font-family: 'IM Fell English', serif;
   font-size: 1.4rem;
   color: var(--burgundy);
@@ -1501,7 +1501,7 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
 }
 
-.result-text p {
+.result-description {
   font-family: 'IM Fell English', serif;
   color: var(--light-gray);
   line-height: 1.7;
@@ -1526,20 +1526,51 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.result-quote p {
+.result-quote {
   font-family: 'IM Fell English', serif;
   font-style: italic;
   color: var(--cream);
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.archetype-summary {
+  background: rgba(17, 17, 17, 0.8);
+  border: 1px solid var(--burgundy);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 30px 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.archetype-summary h4 {
+  font-family: 'Pirata One', cursive;
+  color: var(--cream);
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.archetype-details p {
+  font-family: 'IM Fell English', serif;
+  color: var(--light-gray);
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.archetype-details strong {
+  color: var(--burgundy);
 }
 
 .result-actions {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
-  justify-content: center;
 }
 
 /* Quiz Buttons */
