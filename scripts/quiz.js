@@ -1,3 +1,5 @@
+console.log('🔄 Quiz.js loaded - Version 1754365996 - All descriptions are now archetype-focused!');
+
 class PortfolioQuiz {
     constructor() {
         this.currentQuestion = 0;
@@ -316,6 +318,35 @@ class PortfolioQuiz {
         };
 
         this.init();
+        this.validateQuizData();
+    }
+
+    validateQuizData() {
+        console.log('🔍 Validating quiz data...');
+        
+        // Check all descriptions start with "You're the"
+        let invalidDescriptions = [];
+        Object.entries(this.portfolioData).forEach(([key, data]) => {
+            if (!data.description.startsWith("You're the")) {
+                invalidDescriptions.push(`${key}: ${data.description.substring(0, 50)}...`);
+            }
+        });
+        
+        if (invalidDescriptions.length > 0) {
+            console.error('❌ Found piece descriptions instead of archetype descriptions:', invalidDescriptions);
+        } else {
+            console.log('✅ All descriptions are archetype-focused!');
+        }
+        
+        // Count total pieces
+        console.log(`📊 Total pieces in quiz: ${Object.keys(this.portfolioData).length}`);
+        
+        // Check for entre-mundos
+        if (this.portfolioData['entre-mundos']) {
+            console.error('❌ entre-mundos still found in quiz data!');
+        } else {
+            console.log('✅ entre-mundos successfully removed');
+        }
     }
 
     init() {
@@ -464,6 +495,8 @@ class PortfolioQuiz {
     }
 
     displayResult(result) {
+        console.log('🎯 Displaying result:', result.title);
+        console.log('📝 Description:', result.description);
         this.showSection('quiz-results');
         
         const resultContainer = document.querySelector('.result-container');
