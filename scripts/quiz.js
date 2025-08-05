@@ -5,104 +5,253 @@ class PortfolioQuiz {
         this.questions = [
             {
                 id: 1,
-                text: "Which creative process resonates most deeply with your soul?",
+                text: "When you're emotionally drained at 2 AM, what calls to your creative soul?",
                 options: [
-                    { text: "Exploring raw emotions through personal narratives", category: "personal", weight: 3 },
-                    { text: "Mastering traditional design principles and techniques", category: "design", weight: 3 },
-                    { text: "Experimenting with mixed media and found objects", category: "studio", weight: 3 },
-                    { text: "Creating through digital platforms and modern tools", category: "design", weight: 2 }
+                    { text: "Drawing the dissociative weight behind tired eyes", piece: "anointed-gaze", weight: 3 },
+                    { text: "Building altars from family photographs and memory", piece: "abuelas-altar", weight: 3 },
+                    { text: "Carving mouths that speak unspoken hungers", piece: "gnaw", weight: 3 },
+                    { text: "Wrapping wire around forms until they confess their secrets", piece: "unraveling", weight: 3 },
+                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 },
+                    { text: "Designing cards that make science feel like magic", piece: "playing-cards", weight: 3 },
+                    { text: "Breaking typography until it screams the truth", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Making posters that question everything", piece: "double-sided-poster", weight: 3 }
                 ]
             },
             {
                 id: 2,
-                text: "What inspires your creative vision most?",
+                text: "Your creative breakdown usually happens because...",
                 options: [
-                    { text: "Family heritage and cultural memories", category: "personal", weight: 3 },
-                    { text: "Clean lines and purposeful functionality", category: "design", weight: 3 },
-                    { text: "Textures, decay, and the beauty in brokenness", category: "studio", weight: 3 },
-                    { text: "Contemporary trends and fresh perspectives", category: "design", weight: 2 }
+                    { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
+                    { text: "You're drowning in your own emotional intensity", piece: "anointed-gaze", weight: 3 },
+                    { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
+                    { text: "You're caught between two worlds and can't choose", piece: "entre-mundos", weight: 3 },
+                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 },
+                    { text: "Your perfectionist standards are impossible to meet", piece: "typographic-interpretation", weight: 3 },
+                    { text: "The design brief makes no logical sense", piece: "elements-book", weight: 3 },
+                    { text: "You're questioning what symbols actually mean", piece: "reductive-symbols", weight: 3 }
                 ]
             },
             {
                 id: 3,
-                text: "How do you prefer to work through creative challenges?",
+                text: "The comment that would devastate you most as an artist:",
                 options: [
-                    { text: "Deep introspection and emotional processing", category: "personal", weight: 3 },
-                    { text: "Systematic research and structured problem-solving", category: "design", weight: 3 },
-                    { text: "Intuitive experimentation with materials", category: "studio", weight: 3 },
-                    { text: "Collaborative brainstorming and feedback", category: "design", weight: 2 }
+                    { text: "'Your art is too depressing. Smile more!'", piece: "anointed-gaze", weight: 3 },
+                    { text: "'Why can't you just get over your family stuff?'", piece: "abuelas-altar", weight: 3 },
+                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 },
+                    { text: "'I don't get it. What's it supposed to be?'", piece: "abyss-bloom", weight: 3 },
+                    { text: "'This is just random junk glued together.'", piece: "collected-remains", weight: 3 },
+                    { text: "'The kerning is off by 2 pixels.'", piece: "typographic-interpretation", weight: 3 },
+                    { text: "'It's fine, but what does it actually DO?'", piece: "playing-cards", weight: 3 },
+                    { text: "'I've seen this exact design on Pinterest.'", piece: "elements-book", weight: 3 }
                 ]
             },
             {
                 id: 4,
-                text: "Which artistic elements speak to you most?",
+                text: "Your studio ritual involves...",
                 options: [
-                    { text: "Symbolic imagery and metaphorical depth", category: "personal", weight: 3 },
-                    { text: "Typography and compositional balance", category: "design", weight: 3 },
-                    { text: "Natural forms and organic textures", category: "studio", weight: 3 },
-                    { text: "Bold colors and contemporary aesthetics", category: "design", weight: 2 }
+                    { text: "Lighting candles and having imaginary conversations with ancestors", piece: "abuelas-altar", weight: 3 },
+                    { text: "Staring at yourself in mirrors until you see someone else", piece: "anointed-gaze", weight: 3 },
+                    { text: "Collecting broken things others threw away", piece: "collected-remains", weight: 3 },
+                    { text: "Destroying perfectly good materials on purpose", piece: "gnaw", weight: 3 },
+                    { text: "Building creatures that shouldn't exist", piece: "abyss-bloom", weight: 3 },
+                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Making educational content feel like rebellion", piece: "playing-cards", weight: 3 },
+                    { text: "Turning every assignment into a manifesto", piece: "double-sided-poster", weight: 3 }
                 ]
             },
             {
                 id: 5,
-                text: "What role does art play in your life?",
+                text: "People worry about you because...",
                 options: [
-                    { text: "A pathway to healing and self-discovery", category: "personal", weight: 3 },
-                    { text: "A tool for communication and problem-solving", category: "design", weight: 3 },
-                    { text: "A meditation on life's transient beauty", category: "studio", weight: 3 },
-                    { text: "A way to stay current and professionally relevant", category: "design", weight: 1 }
+                    { text: "You spend too much time talking to dead relatives", piece: "abuelas-altar", weight: 3 },
+                    { text: "You seem to disappear even when you're right there", piece: "anointed-gaze", weight: 3 },
+                    { text: "You find beauty in apocalyptic imagery", piece: "heaven-on-fire", weight: 3 },
+                    { text: "You never throw anything away - it might be art", piece: "collected-remains", weight: 3 },
+                    { text: "You talk to your sculptures like they're alive", piece: "abyss-bloom", weight: 3 },
+                    { text: "You judge their Instagram posts' typography", piece: "typographic-interpretation", weight: 3 },
+                    { text: "You make everything unnecessarily complicated", piece: "elements-book", weight: 3 },
+                    { text: "You question everything, including this question", piece: "double-sided-poster", weight: 3 }
+                ]
+            },
+            {
+                id: 6,
+                text: "Your art supplies budget embarrassingly goes toward...",
+                options: [
+                    { text: "Expensive graphite for those 6-hour drawing sessions", piece: "anointed-gaze", weight: 3 },
+                    { text: "Candles, frames, and items that remind you of family", piece: "abuelas-altar", weight: 3 },
+                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 },
+                    { text: "Iridescent paints that cost more than your rent", piece: "abyss-bloom", weight: 3 },
+                    { text: "Adobe subscriptions and the perfect Pantone book", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Specialty paper for projects no one will understand", piece: "double-sided-poster", weight: 3 },
+                    { text: "Materials to make educational content look cooler", piece: "playing-cards", weight: 3 },
+                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 }
+                ]
+            },
+            {
+                id: 7,
+                text: "At art openings, you're the person who...",
+                options: [
+                    { text: "Hides because people keep asking about your trauma", piece: "abuelas-altar", weight: 3 },
+                    { text: "Zones out mid-conversation and stares at the wall", piece: "anointed-gaze", weight: 3 },
+                    { text: "Describes their work as 'beautiful chaos' unironically", piece: "heaven-on-fire", weight: 3 },
+                    { text: "Gets excited when someone touches the art", piece: "abyss-bloom", weight: 3 },
+                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Hands out business cards with perfect alignment", piece: "elements-book", weight: 3 },
+                    { text: "Starts political debates about design ethics", piece: "double-sided-poster", weight: 3 },
+                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 }
+                ]
+            },
+            {
+                id: 8,
+                text: "Your therapist (if you have one) probably...",
+                options: [
+                    { text: "Suggests you need to 'process your family dynamics'", piece: "abuelas-altar", weight: 3 },
+                    { text: "Asks if you've considered medication for dissociation", piece: "anointed-gaze", weight: 3 },
+                    { text: "Worries about your 'apocalyptic ideation'", piece: "heaven-on-fire", weight: 3 },
+                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
+                    { text: "Doesn't understand why you anthropomorphize sculptures", piece: "abyss-bloom", weight: 3 },
+                    { text: "Thinks your perfectionism is 'maladaptive'", piece: "typographic-interpretation", weight: 3 },
+                    { text: "Suggests you're 'intellectualizing your emotions'", piece: "double-sided-poster", weight: 3 },
+                    { text: "Admires your ability to 'find order in chaos'", piece: "elements-book", weight: 3 }
                 ]
             }
         ];
 
         this.portfolioData = {
-            personal: {
-                title: "The Emotional Alchemist",
-                subtitle: "Personal Collection",
+            "anointed-gaze": {
+                title: "The Dissociation Devotee",
+                subtitle: "Anointed Gaze",
                 category: "Personal Work",
-                description: "You are drawn to art that transforms pain into beauty, exploring themes of heritage, identity, and spiritual awakening. Your creative soul finds meaning in the intimate and the sacred.",
-                quote: "Through vulnerability, we find our greatest strength.",
+                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery, when being present becomes a choice rather than a given. You understand that burnout has its own strange aesthetics, and dissociation is just another medium to master.",
+                quote: "I draw the weight of being seen when I can barely see myself.",
+                image: "collections/personal/anointed-gaze/images/anointed-main.jpg",
+                path: "collections/personal/anointed-gaze/"
+            },
+            "abuelas-altar": {
+                title: "The Ancestral Archivist",
+                subtitle: "Abuela's Altar",
+                category: "Personal Work", 
+                description: "You're the keeper of family stories that others want to forget. Your art is a séance with the past, a conversation with ghosts who have too much to say. You understand that healing generational trauma is a full-contact sport, and your canvas bears the bruises of beautiful, necessary work.",
+                quote: "My ancestors speak through my hands when my mouth can't find the words.",
                 image: "collections/personal/abuelas-altar/images/altar-main.jpg",
-                works: [
-                    { name: "Abuela's Altar", path: "collections/personal/abuelas-altar/" },
-                    { name: "Anointed Gaze", path: "collections/personal/anointed-gaze/" },
-                    { name: "Drilled Into Memory", path: "collections/personal/drilled-into-memory/" },
-                    { name: "Entre Mundos", path: "collections/personal/entre-mundos/" },
-                    { name: "Heaven on Fire", path: "collections/personal/heaven-on-fire/" },
-                    { name: "Inheritance", path: "collections/personal/inheritance/" }
-                ]
+                path: "collections/personal/abuelas-altar/"
             },
-            design: {
-                title: "The Visual Architect",
-                subtitle: "Design Collection",
-                category: "Design Work",
-                description: "You appreciate the power of strategic design and purposeful aesthetics. Your creative mind values clarity, function, and the art of visual communication.",
-                quote: "Great design whispers while poor design shouts.",
-                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
-                works: [
-                    { name: "Typographic Interpretation", path: "collections/design/typographic-interpretation/" },
-                    { name: "Elements & Principles Book", path: "collections/design/elements-and-principles-book-cover/" },
-                    { name: "Flag Design", path: "collections/design/flag-design/" },
-                    { name: "Letter as Form", path: "collections/design/letter-as-form/" },
-                    { name: "Reductive Photo Solutions", path: "collections/design/reductive-photo-solutions/" },
-                    { name: "Playing Card Design", path: "collections/design/themed-playing-card-design/" }
-                ]
+            "heaven-on-fire": {
+                title: "The Apocalypse Aesthete",
+                subtitle: "Heaven on Fire",
+                category: "Personal Work",
+                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint. You understand that transformation requires destruction, and you're not afraid to light the match.",
+                quote: "I paint paradise burning because sometimes heaven needs to start over.",
+                image: "collections/personal/heaven-on-fire/images/heaven-main.jpg",
+                path: "collections/personal/heaven-on-fire/"
             },
-            studio: {
-                title: "The Material Mystic",
-                subtitle: "Studio Collection",
+            "entre-mundos": {
+                title: "The Liminal Wanderer",
+                subtitle: "Entre Mundos",
+                category: "Personal Work",
+                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—the profound loneliness and unexpected freedom of living in the spaces between cultures, languages, and identities. You've made homelessness into an art form.",
+                quote: "I live in the hyphen between worlds, and I've learned to call it home.",
+                image: "collections/personal/entre-mundos/images/mundos-main.jpg",
+                path: "collections/personal/entre-mundos/"
+            },
+            "inheritance": {
+                title: "The Legacy Liquidator",
+                subtitle: "Inheritance",
+                category: "Personal Work",
+                description: "You're the artist who inherited more than you bargained for. Your work unpacks the beautiful burden of family legacies—the traditions you cherish, the patterns you're desperate to break, and the stories you're still learning to tell. You understand that inheritance isn't just about money or objects.",
+                quote: "I didn't choose this legacy, but I choose what to do with it.",
+                image: "collections/personal/inheritance/images/inheritance-main.jpg",
+                path: "collections/personal/inheritance/"
+            },
+            "gnaw": {
+                title: "The Hunger Sculptor",
+                subtitle: "Gnaw",
                 category: "Studio Work",
-                description: "You are drawn to the alchemy of materials and the poetry found in decay and transformation. Your artistic spirit finds beauty in the overlooked and discarded.",
-                quote: "In breaking, we discover what we're truly made of.",
+                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, the space where language lives and dies. You understand that sometimes you have to destroy something completely to discover what it's really made of.",
+                quote: "I carve mouths that speak the words I can't swallow.",
+                image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
+                path: "collections/studio/gnaw/"
+            },
+            "unraveling": {
+                title: "The Wire Whisperer",
+                subtitle: "Unraveling",
+                category: "Studio Work",
+                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets. You understand that sometimes the act of falling apart is the only way to discover what holds you together.",
+                quote: "I wrap wire around my thoughts until they tell me the truth.",
+                image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
+                path: "collections/studio/unraveling/"
+            },
+            "abyss-bloom": {
+                title: "The Bioluminescent Botanist",
+                subtitle: "Abyss Bloom",
+                category: "Studio Work",
+                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work lives in the uncanny valley between nature and nightmare, creating beautiful organisms that glow with their own impossible light. You understand that the most profound beauty often comes from the deepest darkness.",
+                quote: "I grow impossible flowers in the dark spaces of imagination.",
                 image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
-                works: [
-                    { name: "Abyss Bloom", path: "collections/studio/abyss-bloom/" },
-                    { name: "Artificial Meadow", path: "collections/studio/artificial-meadow/" },
-                    { name: "Collected Remains", path: "collections/studio/collected-remains/" },
-                    { name: "Feathers Along the Bend", path: "collections/studio/feathers-along-the-bend/" },
-                    { name: "Shadows in Repetition", path: "collections/studio/shadows-in-repetition/" },
-                    { name: "Weight of Light", path: "collections/studio/weight-of-light/" }
-                ]
+                path: "collections/studio/abyss-bloom/"
+            },
+            "collected-remains": {
+                title: "The Ruin Romanticist",
+                subtitle: "Collected Remains",
+                category: "Studio Work",
+                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the discarded. You understand that sometimes the most honest stories are told by objects that have been left behind.",
+                quote: "I collect what others abandon because every ruin has a story to tell.",
+                image: "collections/studio/collected-remains/images/remains-main.jpg",
+                path: "collections/studio/collected-remains/"
+            },
+            "feathers-along-the-bend": {
+                title: "The Current Catcher",
+                subtitle: "Feathers Along the Bend",
+                category: "Studio Work",
+                description: "You're the artist who finds significance in things that drift. Your work captures the poetry of objects caught in motion, suspended between destinations. You understand that sometimes the most important moments happen in the spaces between intention and accident.",
+                quote: "I catch the things that float between where they've been and where they're going.",
+                image: "collections/studio/feathers-along-the-bend/images/feathers-main.jpg",
+                path: "collections/studio/feathers-along-the-bend/"
+            },
+            "typographic-interpretation": {
+                title: "The Letter Liberator",
+                subtitle: "Typographic Interpretation",
+                category: "Design Work",
+                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings and kerning carry weight. You understand that sometimes breaking the rules is the only way to make them meaningful.",
+                quote: "I free letters from their expected behaviors and watch them dance.",
+                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
+                path: "collections/design/typographic-interpretation/"
+            },
+            "playing-cards": {
+                title: "The Educational Insurgent",
+                subtitle: "Scientific Revolution Playing Cards",
+                category: "Design Work",
+                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with. You understand that the best way to teach someone something is to make them forget they're being taught.",
+                quote: "I smuggle education inside beautiful, playful experiences.",
+                image: "collections/design/themed-playing-card-design/images/cards-main.jpg",
+                path: "collections/design/themed-playing-card-design/"
+            },
+            "elements-book": {
+                title: "The Principle Perfectionist",
+                subtitle: "Elements & Principles Book Cover",
+                category: "Design Work",
+                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing. You understand that constraints aren't limitations—they're the scaffolding that lets creativity soar.",
+                quote: "I make the fundamentals feel fundamental again.",
+                image: "collections/design/elements-and-principles-book-cover/images/book-main.jpg",
+                path: "collections/design/elements-and-principles-book-cover/"
+            },
+            "double-sided-poster": {
+                title: "The Truth Disruptor",
+                subtitle: "Double-Sided Poster",
+                category: "Design Work",
+                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts. You understand that good design should comfort the disturbed and disturb the comfortable.",
+                quote: "I break typography so it can tell uncomfortable truths.",
+                image: "collections/design/double-sided-poster/images/poster-main.jpg",
+                path: "collections/design/double-sided-poster/"
+            },
+            "reductive-symbols": {
+                title: "The Symbol Surgeon",
+                subtitle: "Reductive Symbols",
+                category: "Design Work",
+                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains, creating symbols that carry maximum impact with minimum means. You understand that sometimes saying less means everything.",
+                quote: "I cut away everything except what absolutely must remain.",
+                image: "collections/design/reductive-symbols/images/symbols-main.jpg",
+                path: "collections/design/reductive-symbols/"
             }
         };
 
@@ -170,7 +319,7 @@ class PortfolioQuiz {
                 <h2 class="question-text">${question.text}</h2>
                 <div class="options-container">
                     ${question.options.map((option, index) => `
-                        <button class="option-btn" data-category="${option.category}" data-weight="${option.weight}" data-index="${index}">
+                        <button class="option-btn" data-piece="${option.piece}" data-weight="${option.weight}" data-index="${index}">
                             ${option.text}
                         </button>
                     `).join('')}
@@ -187,11 +336,11 @@ class PortfolioQuiz {
 
     selectAnswer(event) {
         const button = event.target;
-        const category = button.dataset.category;
+        const piece = button.dataset.piece;
         const weight = parseInt(button.dataset.weight);
 
         // Store answer
-        this.answers.push({ category, weight });
+        this.answers.push({ piece, weight });
 
         // Visual feedback
         button.classList.add('selected');
@@ -216,19 +365,22 @@ class PortfolioQuiz {
     calculateResult() {
         console.log('🧮 Calculating quiz results');
         
-        // Tally scores by category
-        const scores = { personal: 0, design: 0, studio: 0 };
+        // Tally scores by piece
+        const scores = {};
         this.answers.forEach(answer => {
-            scores[answer.category] += answer.weight;
+            if (!scores[answer.piece]) {
+                scores[answer.piece] = 0;
+            }
+            scores[answer.piece] += answer.weight;
         });
 
-        // Find highest scoring category
-        const winningCategory = Object.keys(scores).reduce((a, b) => 
+        // Find highest scoring piece
+        const winningPiece = Object.keys(scores).reduce((a, b) => 
             scores[a] > scores[b] ? a : b
         );
 
-        const result = this.portfolioData[winningCategory];
-        console.log(`🎯 Result: ${result.title} (${winningCategory})`);
+        const result = this.portfolioData[winningPiece];
+        console.log(`🎯 Result: ${result.title} (${winningPiece})`);
         
         this.displayResult(result);
     }
@@ -254,18 +406,20 @@ class PortfolioQuiz {
                 </div>
                 <div class="result-actions">
                     <button class="share-result-btn">Share Your Result</button>
-                    <button class="explore-collection-btn" data-collection="${result.category.toLowerCase().replace(' work', '')}">
-                        Explore Collection
+                    <button class="explore-piece-btn" onclick="window.location.href='${result.path}'">
+                        View This Piece
                     </button>
                 </div>
                 <div class="portfolio-preview">
-                    <h3>Your Recommended Works:</h3>
-                    <div class="works-grid">
-                        ${result.works.map(work => `
-                            <a href="${work.path}" class="work-card">
-                                <span>${work.name}</span>
-                            </a>
-                        `).join('')}
+                    <h3>You Are Most Like:</h3>
+                    <div class="piece-highlight">
+                        <a href="${result.path}" class="piece-card-large">
+                            <img src="${result.image}" alt="${result.subtitle}" loading="lazy">
+                            <div class="piece-info">
+                                <h4>${result.subtitle}</h4>
+                                <p>${result.category}</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             `;
@@ -276,13 +430,7 @@ class PortfolioQuiz {
                 shareButton.addEventListener('click', () => this.shareResult(result));
             }
 
-            const exploreButton = resultContainer.querySelector('.explore-collection-btn');
-            if (exploreButton) {
-                exploreButton.addEventListener('click', (e) => {
-                    const collection = e.target.dataset.collection;
-                    window.location.href = `collections/${collection}/`;
-                });
-            }
+            // The explore button now uses inline onclick for simplicity
         }
     }
 
