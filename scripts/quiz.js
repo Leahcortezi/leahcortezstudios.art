@@ -376,13 +376,13 @@ class PortfolioQuiz {
         }
 
         // Next question button
-        const nextButton = document.querySelector('.next-question-btn');
+        const nextButton = document.querySelector('#next-question-btn');
         if (nextButton) {
             nextButton.addEventListener('click', () => this.nextQuestion());
         }
 
         // Retake quiz button
-        const retakeButton = document.querySelector('.retake-quiz-btn');
+        const retakeButton = document.querySelector('#retake-quiz-btn');
         if (retakeButton) {
             retakeButton.addEventListener('click', () => this.resetQuiz());
         }
@@ -1102,15 +1102,17 @@ class PortfolioQuiz {
     }
 
     showSection(sectionClass) {
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
+        // Hide all quiz sections
+        document.querySelectorAll('.quiz-start, .quiz-questions, .quiz-results').forEach(section => {
+            section.classList.add('hidden');
+            section.classList.remove('active');
         });
         
         // Show the requested section
         const targetSection = document.querySelector(`.${sectionClass}`);
         if (targetSection) {
-            targetSection.style.display = 'block';
+            targetSection.classList.remove('hidden');
+            targetSection.classList.add('active');
         }
     }
 }
