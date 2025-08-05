@@ -122,7 +122,13 @@ class PortfolioQuiz {
                 title: "The Dissociation Devotee",
                 subtitle: "Anointed Gaze",
                 category: "Personal Work",
-                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery, when being present becomes a choice rather than a given. You understand that burnout has its own strange aesthetics, and dissociation is just another medium to master.",
+                archetype: {
+                    essence: "You find beauty in exhaustion and liminal states",
+                    medium: "Graphite portraits that capture mental distance",
+                    strength: "Drawing emotional weight and disconnection",
+                    challenge: "Being fully present while creating"
+                },
+                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
                 image: "collections/personal/anointed-gaze/images/anointed-main.jpg",
                 path: "collections/personal/anointed-gaze/"
@@ -130,8 +136,14 @@ class PortfolioQuiz {
             "abuelas-altar": {
                 title: "The Ancestral Archivist",
                 subtitle: "Abuela's Altar",
-                category: "Personal Work", 
-                description: "You're the keeper of family stories that others want to forget. Your art is a séance with the past, a conversation with ghosts who have too much to say. You understand that healing generational trauma is a full-contact sport, and your canvas bears the bruises of beautiful, necessary work.",
+                category: "Personal Work",
+                archetype: {
+                    essence: "You channel family stories through art",
+                    medium: "Mixed media altars and memory installations",
+                    strength: "Honoring the past while healing the present",
+                    challenge: "Balancing reverence with creative freedom"
+                },
+                description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
                 image: "collections/personal/abuelas-altar/images/altar-main.jpg",
                 path: "collections/personal/abuelas-altar/"
@@ -140,7 +152,13 @@ class PortfolioQuiz {
                 title: "The Apocalypse Aesthete",
                 subtitle: "Heaven on Fire",
                 category: "Personal Work",
-                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint. You understand that transformation requires destruction, and you're not afraid to light the match.",
+                archetype: {
+                    essence: "You find beauty in destruction and transformation",
+                    medium: "Fiery paintings of paradise in collapse",
+                    strength: "Creating meaning from chaos",
+                    challenge: "Finding peace without drama"
+                },
+                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
                 quote: "I paint paradise burning because sometimes heaven needs to start over.",
                 image: "collections/personal/heaven-on-fire/images/heaven-main.jpg",
                 path: "collections/personal/heaven-on-fire/"
@@ -149,7 +167,13 @@ class PortfolioQuiz {
                 title: "The Liminal Wanderer",
                 subtitle: "Entre Mundos",
                 category: "Personal Work",
-                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—the profound loneliness and unexpected freedom of living in the spaces between cultures, languages, and identities. You've made homelessness into an art form.",
+                archetype: {
+                    essence: "You navigate between cultures and identities",
+                    medium: "Mixed media exploring cultural intersections",
+                    strength: "Creating bridges between different worlds",
+                    challenge: "Feeling like you belong everywhere and nowhere"
+                },
+                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
                 quote: "I live in the hyphen between worlds, and I've learned to call it home.",
                 image: "collections/personal/entre-mundos/images/mundos-main.jpg",
                 path: "collections/personal/entre-mundos/"
@@ -158,7 +182,13 @@ class PortfolioQuiz {
                 title: "The Legacy Liquidator",
                 subtitle: "Inheritance",
                 category: "Personal Work",
-                description: "You're the artist who inherited more than you bargained for. Your work unpacks the beautiful burden of family legacies—the traditions you cherish, the patterns you're desperate to break, and the stories you're still learning to tell. You understand that inheritance isn't just about money or objects.",
+                archetype: {
+                    essence: "You transform family patterns through art",
+                    medium: "Installations examining generational stories",
+                    strength: "Breaking cycles while honoring heritage",
+                    challenge: "Evolving beyond family expectations"
+                },
+                description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
                 quote: "I didn't choose this legacy, but I choose what to do with it.",
                 image: "collections/personal/inheritance/images/inheritance-main.jpg",
                 path: "collections/personal/inheritance/"
@@ -167,7 +197,13 @@ class PortfolioQuiz {
                 title: "The Hunger Sculptor",
                 subtitle: "Gnaw",
                 category: "Studio Work",
-                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, the space where language lives and dies. You understand that sometimes you have to destroy something completely to discover what it's really made of.",
+                archetype: {
+                    essence: "You find meaning in destruction and consumption",
+                    medium: "Sculptural forms exploring mouths and erosion",
+                    strength: "Carving truth from the act of consuming",
+                    challenge: "Explaining why destruction creates meaning"
+                },
+                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, finding truth in the process of erosion.",
                 quote: "I carve mouths that speak the words I can't swallow.",
                 image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
                 path: "collections/studio/gnaw/"
@@ -176,7 +212,13 @@ class PortfolioQuiz {
                 title: "The Wire Whisperer",
                 subtitle: "Unraveling",
                 category: "Studio Work",
-                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets. You understand that sometimes the act of falling apart is the only way to discover what holds you together.",
+                archetype: {
+                    essence: "You transform pressure into physical form",
+                    medium: "Wire sculptures that bind and constrain",
+                    strength: "Making anxiety sculptural",
+                    challenge: "Learning when to let go of control"
+                },
+                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets.",
                 quote: "I wrap wire around my thoughts until they tell me the truth.",
                 image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
                 path: "collections/studio/unraveling/"
@@ -185,7 +227,13 @@ class PortfolioQuiz {
                 title: "The Bioluminescent Botanist",
                 subtitle: "Abyss Bloom",
                 category: "Studio Work",
-                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work lives in the uncanny valley between nature and nightmare, creating beautiful organisms that glow with their own impossible light. You understand that the most profound beauty often comes from the deepest darkness.",
+                archetype: {
+                    essence: "You create beauty from darkness",
+                    medium: "Glowing sculptures of impossible organisms",
+                    strength: "Growing light from the deepest shadows",
+                    challenge: "Accepting that not everything needs to be categorized"
+                },
+                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
                 quote: "I grow impossible flowers in the dark spaces of imagination.",
                 image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
                 path: "collections/studio/abyss-bloom/"
@@ -194,7 +242,13 @@ class PortfolioQuiz {
                 title: "The Ruin Romanticist",
                 subtitle: "Collected Remains",
                 category: "Studio Work",
-                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the discarded. You understand that sometimes the most honest stories are told by objects that have been left behind.",
+                archetype: {
+                    essence: "You find stories in discarded objects",
+                    medium: "Assemblages of abandoned things",
+                    strength: "Seeing potential in what others discard",
+                    challenge: "Not hoarding everything that speaks to you"
+                },
+                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
                 quote: "I collect what others abandon because every ruin has a story to tell.",
                 image: "collections/studio/collected-remains/images/remains-main.jpg",
                 path: "collections/studio/collected-remains/"
@@ -203,7 +257,13 @@ class PortfolioQuiz {
                 title: "The Current Catcher",
                 subtitle: "Feathers Along the Bend",
                 category: "Studio Work",
-                description: "You're the artist who finds significance in things that drift. Your work captures the poetry of objects caught in motion, suspended between destinations. You understand that sometimes the most important moments happen in the spaces between intention and accident.",
+                archetype: {
+                    essence: "You capture things in transition",
+                    medium: "Installations of objects caught in motion",
+                    strength: "Finding poetry in drift and chance",
+                    challenge: "Trusting the process without controlling it"
+                },
+                description: "You're the artist who finds significance in things that drift. Your work captures the poetry of objects caught in motion, suspended between destinations.",
                 quote: "I catch the things that float between where they've been and where they're going.",
                 image: "collections/studio/feathers-along-the-bend/images/feathers-main.jpg",
                 path: "collections/studio/feathers-along-the-bend/"
@@ -212,7 +272,13 @@ class PortfolioQuiz {
                 title: "The Letter Liberator",
                 subtitle: "Typographic Interpretation",
                 category: "Design Work",
-                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings and kerning carry weight. You understand that sometimes breaking the rules is the only way to make them meaningful.",
+                archetype: {
+                    essence: "You make letters feel emotions",
+                    medium: "Typography pushed beyond expected behaviors",
+                    strength: "Breaking typographic rules meaningfully",
+                    challenge: "Perfectionism that slows down creativity"
+                },
+                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
                 quote: "I free letters from their expected behaviors and watch them dance.",
                 image: "collections/design/typographic-interpretation/images/typo-main.jpg",
                 path: "collections/design/typographic-interpretation/"
@@ -221,7 +287,13 @@ class PortfolioQuiz {
                 title: "The Educational Insurgent",
                 subtitle: "Scientific Revolution Playing Cards",
                 category: "Design Work",
-                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with. You understand that the best way to teach someone something is to make them forget they're being taught.",
+                archetype: {
+                    essence: "You make learning feel like play",
+                    medium: "Educational design disguised as entertainment",
+                    strength: "Smuggling knowledge inside beautiful experiences",
+                    challenge: "Not being too clever for your own good"
+                },
+                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
                 quote: "I smuggle education inside beautiful, playful experiences.",
                 image: "collections/design/themed-playing-card-design/images/cards-main.jpg",
                 path: "collections/design/themed-playing-card-design/"
@@ -230,7 +302,13 @@ class PortfolioQuiz {
                 title: "The Principle Perfectionist",
                 subtitle: "Elements & Principles Book Cover",
                 category: "Design Work",
-                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing. You understand that constraints aren't limitations—they're the scaffolding that lets creativity soar.",
+                archetype: {
+                    essence: "You find zen in fundamental principles",
+                    medium: "Clean design that honors the basics",
+                    strength: "Making fundamentals feel fresh",
+                    challenge: "Perfectionism that can become paralysis"
+                },
+                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
                 quote: "I make the fundamentals feel fundamental again.",
                 image: "collections/design/elements-and-principles-book-cover/images/book-main.jpg",
                 path: "collections/design/elements-and-principles-book-cover/"
@@ -239,7 +317,13 @@ class PortfolioQuiz {
                 title: "The Truth Disruptor",
                 subtitle: "Double-Sided Poster",
                 category: "Design Work",
-                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts. You understand that good design should comfort the disturbed and disturb the comfortable.",
+                archetype: {
+                    essence: "You use design as activism",
+                    medium: "Typography that questions everything",
+                    strength: "Making uncomfortable truths visible",
+                    challenge: "Finding subtlety without losing impact"
+                },
+                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
                 quote: "I break typography so it can tell uncomfortable truths.",
                 image: "collections/design/double-sided-poster/images/poster-main.jpg",
                 path: "collections/design/double-sided-poster/"
@@ -248,7 +332,13 @@ class PortfolioQuiz {
                 title: "The Symbol Surgeon",
                 subtitle: "Reductive Symbols",
                 category: "Design Work",
-                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains, creating symbols that carry maximum impact with minimum means. You understand that sometimes saying less means everything.",
+                archetype: {
+                    essence: "You distill complex ideas to their essence",
+                    medium: "Minimal symbols with maximum impact",
+                    strength: "Cutting away everything unnecessary",
+                    challenge: "Knowing when simple becomes too simple"
+                },
+                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
                 quote: "I cut away everything except what absolutely must remain.",
                 image: "collections/design/reductive-symbols/images/symbols-main.jpg",
                 path: "collections/design/reductive-symbols/"
@@ -394,6 +484,7 @@ class PortfolioQuiz {
                 <div class="result-header">
                     <h2 class="result-title">${result.title}</h2>
                     <p class="result-subtitle">${result.subtitle}</p>
+                    <p class="result-core-identity">"${result.archetype.coreIdentity}"</p>
                 </div>
                 <div class="result-content">
                     <div class="result-image">
@@ -404,8 +495,29 @@ class PortfolioQuiz {
                         <blockquote>"${result.quote}"</blockquote>
                     </div>
                 </div>
+                <div class="archetype-profile">
+                    <h3>Your Creative Archetype</h3>
+                    <div class="archetype-grid">
+                        <div class="archetype-item">
+                            <h4>Your Essence</h4>
+                            <p>${result.archetype.essence}</p>
+                        </div>
+                        <div class="archetype-item">
+                            <h4>Your Medium</h4>
+                            <p>${result.archetype.medium}</p>
+                        </div>
+                        <div class="archetype-item">
+                            <h4>Your Strength</h4>
+                            <p>${result.archetype.strength}</p>
+                        </div>
+                        <div class="archetype-item">
+                            <h4>Your Challenge</h4>
+                            <p>${result.archetype.challenge}</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="result-actions">
-                    <button class="share-result-btn">Share Your Result</button>
+                    <button class="share-result-btn">Share Your Archetype</button>
                     <button class="explore-piece-btn" onclick="window.location.href='${result.path}'">
                         View This Piece
                     </button>
