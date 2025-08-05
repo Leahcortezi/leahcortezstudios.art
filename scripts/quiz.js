@@ -250,35 +250,35 @@ class PortfolioQuiz {
     displayResult(result) {
         this.showSection('quiz-results');
         
-        // Update the existing HTML elements
-        const resultTitle = document.querySelector('#result-title');
-        const resultSubtitle = document.querySelector('#result-subtitle');
-        const resultDescription = document.querySelector('#result-description');
-        const resultQuote = document.querySelector('#result-quote-text');
-        const resultImage = document.querySelector('#result-project-image');
-        const viewProjectBtn = document.querySelector('#view-project-btn');
-        const retakeQuizBtn = document.querySelector('#retake-quiz-btn');
-        
-        if (resultTitle) resultTitle.textContent = result.title;
-        if (resultSubtitle) resultSubtitle.textContent = result.subtitle;
-        if (resultDescription) resultDescription.textContent = result.description;
-        if (resultQuote) resultQuote.textContent = `"${result.quote}"`;
-        if (resultImage) {
-            resultImage.src = result.image;
-            resultImage.alt = result.title;
-        }
-        
-        if (viewProjectBtn) {
-            // Link to the first work in the collection
-            const firstWork = result.works[0];
-            if (firstWork) {
-                viewProjectBtn.href = firstWork.path;
+        const resultContainer = document.querySelector('.result-container');
+        if (resultContainer) {
+            resultContainer.innerHTML = `
+                <div class="result-content">
+                    <div class="result-image">
+                        <div class="lace-wrapper">
+                            <img src="${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
+                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="result-text">
+                        <h2 class="result-title">${result.title}</h2>
+                        <h3 class="result-subtitle">${result.subtitle}</h3>
+                        <p class="result-description">${result.description}</p>
+                        <blockquote class="result-quote">"${result.quote}"</blockquote>
+                        
+                        <div class="result-actions">
+                            <a href="${result.works[0].path}" class="quiz-btn primary">View ${result.pieceTitle}</a>
+                            <button id="retake-quiz-btn" class="quiz-btn secondary">Take Again</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Bind retake button
+            const retakeButton = resultContainer.querySelector('#retake-quiz-btn');
+            if (retakeButton) {
+                retakeButton.addEventListener('click', () => this.resetQuiz());
             }
-        }
-        
-        // Bind event listeners
-        if (retakeQuizBtn) {
-            retakeQuizBtn.addEventListener('click', () => this.resetQuiz());
         }
     }
 
@@ -288,33 +288,18 @@ class PortfolioQuiz {
         this.showSection('quiz-start');
     }
 
-    async showSection(sectionClass) {
+    showSection(sectionClass) {
+        // Hide all quiz sections
+        document.querySelectorAll('.quiz-start, .quiz-questions, .quiz-results').forEach(section => {
+            section.classList.add('hidden');
+            section.classList.remove('active');
+        });
         
-        try {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Instagram Stories dimensions (9:16 aspect ratio)
-            const width = 1080;
-            const height = 1920;
-            canvas.width = width;
-            canvas.height = height;
-            
-            // Load images
-            const [img, logo] = await Promise.all([
-                this.loadImage(result.image),
-                this.loadImage('images/logo/logo3.png')
-            ]);
-            
-            // Generate Spotify-style gothic template
-            this.generateGothicStoryTemplate(ctx, result, img, logo, width, height);
-            
-            // Share options
-            this.showShareOptions(canvas, result);
-            
-        } catch (error) {
-            console.error('Error generating share template:', error);
-            this.showSimpleShare(result);
+        // Show the requested section
+        const targetSection = document.querySelector(`.${sectionClass}`);
+        if (targetSection) {
+            targetSection.classList.remove('hidden');
+            targetSection.classList.add('active');
         }
     }
 
@@ -1170,26 +1155,6 @@ class PortfolioQuiz {
         this.showSection('quiz-start');
     }
 
-    showSection(sectionClass) {
-        // Hide all quiz sections
-        const quizSections = ['quiz-start', 'quiz-questions', 'quiz-results'];
-        quizSections.forEach(section => {
-            const element = document.querySelector(`.${section}`);
-            if (element) {
-                element.style.display = 'none';
-                element.classList.remove('active');
-                element.classList.add('hidden');
-            }
-        });
-        
-        // Show the requested section
-        const targetSection = document.querySelector(`.${sectionClass}`);
-        if (targetSection) {
-            targetSection.style.display = 'block';
-            targetSection.classList.remove('hidden');
-            targetSection.classList.add('active');
-        }
-    }
 }
 
 // Initialize quiz when DOM is loaded
