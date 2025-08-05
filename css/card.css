@@ -513,7 +513,7 @@ nav a.active {
 }
 
 .footer-logo {
-    height: 32px;
+    height: 48px;
     width: auto;
     opacity: 0.8;
     transition: opacity 0.3s ease;
