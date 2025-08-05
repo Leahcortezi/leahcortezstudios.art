@@ -25,7 +25,6 @@ class PortfolioQuiz {
                     { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
                     { text: "You're drowning in your own emotional intensity", piece: "anointed-gaze", weight: 3 },
                     { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
-                    { text: "You're caught between two worlds and can't choose", piece: "entre-mundos", weight: 3 },
                     { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 },
                     { text: "Your perfectionist standards are impossible to meet", piece: "typographic-interpretation", weight: 3 },
                     { text: "The design brief makes no logical sense", piece: "elements-book", weight: 3 },
@@ -129,7 +128,7 @@ class PortfolioQuiz {
                     strength: "Drawing emotional weight and disconnection",
                     challenge: "Being fully present while creating"
                 },
-                description: "This graphite portrait captures the weight of mental exhaustion and disconnection. Created during a period of burnout, it explores the beauty found in liminal states of consciousness.",
+                description: "You're the artist who finds poetry in exhaustion. Your work captures the beauty of liminal states—the space between sleeping and waking, presence and absence.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
                 image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
                 path: "collections/personal/anointed-gaze/index.html"
@@ -144,7 +143,7 @@ class PortfolioQuiz {
                     strength: "Honoring the past while healing the present",
                     challenge: "Balancing reverence with creative freedom"
                 },
-                description: "A mixed media altar honoring family memories and ancestral stories. This piece explores generational experiences through personal objects and imagery.",
+                description: "You're the artist who transforms family trauma into sacred ritual. Your work creates altars where ancestors can speak and wounds can finally heal.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
                 image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
                 path: "collections/personal/abuelas-altar/index.html"
@@ -159,25 +158,10 @@ class PortfolioQuiz {
                     strength: "Creating meaning from chaos",
                     challenge: "Finding peace without drama"
                 },
-                description: "A vibrant painting exploring themes of paradise and destruction. This piece finds beauty in chaos and transformation through bold colors and dramatic imagery.",
+                description: "You're the artist who finds beauty in apocalypse. Your work celebrates destruction as necessary for rebirth—sometimes paradise needs to burn before it can bloom again.",
                 quote: "I paint paradise burning because sometimes heaven needs to start over.",
                 image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
                 path: "collections/personal/heaven-on-fire/index.html"
-            },
-            "entre-mundos": {
-                title: "The Liminal Wanderer",
-                subtitle: "Entre Mundos",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You navigate between cultures and identities",
-                    medium: "Mixed media exploring cultural intersections",
-                    strength: "Creating bridges between different worlds",
-                    challenge: "Feeling like you belong everywhere and nowhere"
-                },
-                description: "A mixed media exploration of existing between cultures and identities. This piece examines the immigrant experience and the beauty of cultural intersections.",
-                quote: "I live in the hyphen between worlds, and I've learned to call it home.",
-                image: "images/logo/logo3.png",
-                path: "collections/personal/entre-mundos/index.html"
             },
             "inheritance": {
                 title: "The Legacy Liquidator",
@@ -189,7 +173,7 @@ class PortfolioQuiz {
                     strength: "Breaking cycles while honoring heritage",
                     challenge: "Evolving beyond family expectations"
                 },
-                description: "An installation examining family legacies and generational patterns. This work explores the balance between honoring traditions and breaking cycles.",
+                description: "You're the artist who transforms generational patterns into art. Your work examines what you've inherited and what you choose to pass on—or break forever.",
                 quote: "I didn't choose this legacy, but I choose what to do with it.",
                 image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
                 path: "collections/personal/inheritance/index.html"
@@ -204,7 +188,7 @@ class PortfolioQuiz {
                     strength: "Carving truth from the act of consuming",
                     challenge: "Explaining why destruction creates meaning"
                 },
-                description: "A sculptural exploration of mouths, consumption, and erosion. This piece examines the mouth as both destroyer and creator through carved forms.",
+                description: "You're the artist who finds meaning in destruction. Your work explores the mouth as both creator and destroyer—carving truth from the act of consuming.",
                 quote: "I carve mouths that speak the words I can't swallow.",
                 image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
                 path: "collections/studio/gnaw/index.html"
@@ -219,7 +203,7 @@ class PortfolioQuiz {
                     strength: "Making anxiety sculptural",
                     challenge: "Learning when to let go of control"
                 },
-                description: "A wire sculpture exploring psychological pressure and constraint. This piece transforms mental states into physical form through binding and wrapping techniques.",
+                description: "You're the artist who makes anxiety sculptural. Your work transforms psychological pressure into physical form—binding, wrapping, constraining until the truth emerges.",
                 quote: "I wrap wire around my thoughts until they tell me the truth.",
                 image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
                 path: "collections/studio/unraveling/index.html"
@@ -234,7 +218,7 @@ class PortfolioQuiz {
                     strength: "Growing light from the deepest shadows",
                     challenge: "Accepting that not everything needs to be categorized"
                 },
-                description: "A glowing sculptural organism that shouldn't exist but absolutely must. This piece creates beauty from darkness through impossible forms and luminescent materials.",
+                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
                 quote: "I grow impossible flowers in the dark spaces of imagination.",
                 image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
                 path: "collections/studio/abyss-bloom/index.html"
