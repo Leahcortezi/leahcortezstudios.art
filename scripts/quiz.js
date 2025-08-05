@@ -11,145 +11,90 @@ class PortfolioQuiz {
         this.questions = [
             {
             id: 1,
-            text: "When you're emotionally drained, what calls to your creative soul?",
+            text: "When you're drained, what type of art pulls you back in?",
             options: [
-                { text: "Creating something deeply personal and introspective", piece: "anointed-gaze", weight: 3 },
-                { text: "Working with symbols and spiritual imagery", piece: "abuelas-altar", weight: 3 },
-                { text: "Making something beautiful from chaos", piece: "heaven-on-fire", weight: 3 },
-                { text: "Inventing playful, weird creatures or forms", piece: "abyss-bloom", weight: 3 },
-                { text: "Organizing or refining visual details", piece: "typographic-interpretation", weight: 3 }
+                { text: "I sketch through the spiral. No audience, just survival.", piece: "anointed-gaze", weight: 3 },
+                { text: "I light candles and build a tiny altar.", piece: "abuelas-altar", weight: 3 },
+                { text: "I paint until the brush breaks. Then I finger-paint.", piece: "heaven-on-fire", weight: 3 },
+                { text: "I build a creature no one asked for and love it anyway.", piece: "abyss-bloom", weight: 3 },
+                { text: "I rearrange my tools alphabetically and feel better.", piece: "typographic-interpretation", weight: 3 }
             ]
             },
             {
             id: 2,
-            text: "Your creative process usually involves...",
+            text: "Your creative process is usually...",
             options: [
-                { text: "Exploring family history and personal narratives", piece: "abuelas-altar", weight: 3 },
-                { text: "Embracing destruction as part of creation", piece: "gnaw", weight: 3 },
-                { text: "Finding beauty in discarded or overlooked things", piece: "collected-remains", weight: 3 },
-                { text: "Turning chaos into systems or games", piece: "playing-cards", weight: 3 },
-                { text: "Stripping ideas down to their essence", piece: "reductive-symbols", weight: 3 }
+                { text: "Breaking things to see how they were made.", piece: "gnaw", weight: 3 },
+                { text: "Turning chaos into games, systems, or categories.", piece: "playing-cards", weight: 3 },
+                { text: "Collecting weird trash and pretending it’s on purpose.", piece: "collected-remains", weight: 3 },
+                { text: "Reducing everything until it feels honest.", piece: "reductive-symbols", weight: 3 },
+                { text: "Building meaning through playful experiments.", piece: "elements-book", weight: 3 }
             ]
             },
             {
             id: 3,
-            text: "The critique that would hurt you most:",
+            text: "The feedback that would hurt the most:",
             options: [
-                { text: "Your work is too heavy or melancholic", piece: "anointed-gaze", weight: 3 },
-                { text: "You're stuck in the past", piece: "inheritance", weight: 3 },
-                { text: "Your work lacks structure or focus", piece: "heaven-on-fire", weight: 3 },
-                { text: "Your ideas are too weird or childish", piece: "abyss-bloom", weight: 3 },
-                { text: "Your design is too minimal or cold", piece: "reductive-symbols", weight: 3 }
+                { text: "You’re too much. Too emotional. Too intense.", piece: "anointed-gaze", weight: 3 },
+                { text: "You’re stuck in the past.", piece: "inheritance", weight: 3 },
+                { text: "Your ideas are too weird to make sense.", piece: "abyss-bloom", weight: 3 },
+                { text: "Your design is soulless. No heart.", piece: "typographic-interpretation", weight: 3 },
+                { text: "You made this as a joke, right?", piece: "elements-book", weight: 3 }
             ]
             },
             {
             id: 4,
-            text: "Your ideal creative practice includes...",
+            text: "What do your hands crave?",
             options: [
-                { text: "Deconstructing and rebuilding concepts", piece: "gnaw", weight: 3 },
-                { text: "Repetitive, meditative processes", piece: "unraveling", weight: 3 },
-                { text: "Refining details until they're perfect", piece: "typographic-interpretation", weight: 3 },
-                { text: "Making playful, conceptual work", piece: "elements-book", weight: 3 },
-                { text: "Transforming trash into treasure", piece: "collected-remains", weight: 3 }
+                { text: "Wire, thread, anything I can bind or twist.", piece: "unraveling", weight: 3 },
+                { text: "Paint, fire, and emotional combustion.", piece: "heaven-on-fire", weight: 3 },
+                { text: "Found junk with good energy.", piece: "collected-remains", weight: 3 },
+                { text: "Precise rulers, pens, and a good grid.", piece: "typographic-interpretation", weight: 3 },
+                { text: "Symbols and objects from family history.", piece: "abuelas-altar", weight: 3 }
             ]
             },
             {
             id: 5,
-            text: "People describe your artistic personality as...",
+            text: "People in critique say you're the one who...",
             options: [
-                { text: "Someone who sees potential everywhere", piece: "collected-remains", weight: 3 },
-                { text: "A perfectionist who sweats the details", piece: "elements-book", weight: 3 },
-                { text: "An activist who uses art to make statements", piece: "double-sided-poster", weight: 3 },
-                { text: "A theorist who loves discussing technique", piece: "typographic-interpretation", weight: 3 },
-                { text: "A dreamer who makes the uncanny beautiful", piece: "abyss-bloom", weight: 3 }
+                { text: "Draws like they're exorcising a ghost.", piece: "anointed-gaze", weight: 3 },
+                { text: "Brings the conversation back to social issues.", piece: "double-sided-poster", weight: 3 },
+                { text: "Thinks in rules, breaks them anyway.", piece: "playing-cards", weight: 3 },
+                { text: "Sculpts their anxiety into beautiful knots.", piece: "unraveling", weight: 3 },
+                { text: "Talks about font kerning like it’s spiritual.", piece: "typographic-interpretation", weight: 3 }
             ]
             },
             {
             id: 6,
-            text: "Your creative tools tend to be...",
+            text: "When you're creatively blocked, you...",
             options: [
-                { text: "Whatever makes learning and teaching engaging", piece: "playing-cards", weight: 3 },
-                { text: "Unconventional materials and found objects", piece: "collected-remains", weight: 3 },
-                { text: "Traditional tools used in innovative ways", piece: "gnaw", weight: 3 },
-                { text: "Wire, thread, or things you can twist and bind", piece: "unraveling", weight: 3 },
-                { text: "Pens, rulers, and grids for perfect layouts", piece: "typographic-interpretation", weight: 3 }
+                { text: "Invent a silly concept with surprising depth.", piece: "elements-book", weight: 3 },
+                { text: "Pick up trash and wait for it to whisper.", piece: "collected-remains", weight: 3 },
+                { text: "Reduce everything down to a dot and call it done.", piece: "reductive-symbols", weight: 3 },
+                { text: "Draw something just for you. Ugly on purpose.", piece: "anointed-gaze", weight: 3 },
+                { text: "Recreate something from your childhood, but weirder.", piece: "abyss-bloom", weight: 3 }
             ]
             },
             {
             id: 7,
-            text: "In creative communities, you're known as...",
+            text: "Your dream studio has...",
             options: [
-                { text: "The one who brings social consciousness to conversations", piece: "double-sided-poster", weight: 3 },
-                { text: "The storyteller who explains the 'why' behind materials", piece: "collected-remains", weight: 3 },
-                { text: "The theory enthusiast who loves discussing technique", piece: "typographic-interpretation", weight: 3 },
-                { text: "The playful experimenter who tries everything", piece: "elements-book", weight: 3 },
-                { text: "The one who makes the weird seem wonderful", piece: "abyss-bloom", weight: 3 }
+                { text: "Dust, tools, raw mess. Sculptural chaos.", piece: "gnaw", weight: 3 },
+                { text: "A sacred shelf of memory and meaning.", piece: "abuelas-altar", weight: 3 },
+                { text: "Books, rulers, rulers about books.", piece: "typographic-interpretation", weight: 3 },
+                { text: "A vibe board covered in revolution posters.", piece: "double-sided-poster", weight: 3 },
+                { text: "Drawers full of weird textures and wire.", piece: "unraveling", weight: 3 }
             ]
             },
             {
             id: 8,
-            text: "Your biggest creative challenge is...",
+            text: "Art, at its best, should...",
             options: [
-                { text: "Perfectionism that prevents you from finishing", piece: "elements-book", weight: 3 },
-                { text: "Getting emotionally attached to every piece", piece: "anointed-gaze", weight: 3 },
-                { text: "Letting go of what you can't preserve", piece: "abuelas-altar", weight: 3 },
-                { text: "Balancing spontaneity with intentional design", piece: "reductive-symbols", weight: 3 },
-                { text: "Not overcomplicating your ideas", piece: "playing-cards", weight: 3 }
-            ]
-            },
-            {
-            id: 9,
-            text: "When creatively blocked, you usually...",
-            options: [
-                { text: "Take something apart to understand it better", piece: "unraveling", weight: 3 },
-                { text: "Strip away elements until the essence remains", piece: "reductive-symbols", weight: 3 },
-                { text: "Turn complex problems into simple, playful solutions", piece: "playing-cards", weight: 3 },
-                { text: "Make something just for yourself, no audience", piece: "anointed-gaze", weight: 3 },
-                { text: "Start with a random object and see where it leads", piece: "collected-remains", weight: 3 }
-            ]
-            },
-            {
-            id: 10,
-            text: "Your dream workspace would be...",
-            options: [
-                { text: "A place where you can experiment and get messy", piece: "gnaw", weight: 3 },
-                { text: "A clean, minimal space that promotes focus", piece: "reductive-symbols", weight: 3 },
-                { text: "Somewhere filled with meaningful objects and memories", piece: "inheritance", weight: 3 },
-                { text: "A studio with lots of reference books and tools", piece: "typographic-interpretation", weight: 3 },
-                { text: "A cozy nook for sketching and reflection", piece: "anointed-gaze", weight: 3 }
-            ]
-            },
-            {
-            id: 11,
-            text: "The themes that fascinate you explore...",
-            options: [
-                { text: "What we inherit from previous generations", piece: "inheritance", weight: 3 },
-                { text: "The hidden stories in everyday objects", piece: "collected-remains", weight: 3 },
-                { text: "How much you can communicate with less", piece: "reductive-symbols", weight: 3 },
-                { text: "The intersection of play and meaning", piece: "elements-book", weight: 3 },
-                { text: "How design can challenge the status quo", piece: "double-sided-poster", weight: 3 }
-            ]
-            },
-            {
-            id: 12,
-            text: "Your creative philosophy centers on...",
-            options: [
-                { text: "Understanding and transforming generational patterns", piece: "inheritance", weight: 3 },
-                { text: "Finding beauty through deconstruction and rebuilding", piece: "gnaw", weight: 3 },
-                { text: "Believing that simplicity can hold profound meaning", piece: "reductive-symbols", weight: 3 },
-                { text: "Using design as a tool for activism", piece: "double-sided-poster", weight: 3 },
-                { text: "Letting intuition and emotion guide your work", piece: "anointed-gaze", weight: 3 }
-            ]
-            },
-            {
-            id: 13,
-            text: "The medium that speaks to your soul involves...",
-            options: [
-                { text: "Materials with personal or cultural significance", piece: "inheritance", weight: 3 },
-                { text: "Flexible materials you can manipulate and bind", piece: "unraveling", weight: 3 },
-                { text: "Clean, essential elements that communicate clearly", piece: "reductive-symbols", weight: 3 },
-                { text: "Bold type and expressive layouts", piece: "typographic-interpretation", weight: 3 },
-                { text: "Assemblages of found or discarded objects", piece: "collected-remains", weight: 3 }
+                { text: "Unpack trauma and transform it into clarity.", piece: "inheritance", weight: 3 },
+                { text: "Shout truth in bold letters.", piece: "double-sided-poster", weight: 3 },
+                { text: "Make people laugh and then feel weird about it.", piece: "elements-book", weight: 3 },
+                { text: "Say everything in the simplest shape.", piece: "reductive-symbols", weight: 3 },
+                { text: "Document the stuff no one thinks is important.", piece: "collected-remains", weight: 3 }
             ]
             }
         ];
