@@ -146,7 +146,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
-                image: "images/me.jpg",
+                image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
                 path: "collections/personal/abuelas-altar/"
             },
             "heaven-on-fire": {
@@ -161,7 +161,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
                 quote: "I paint paradise burning because sometimes heaven needs to start over.",
-                image: "collections/personal/heaven-on-fire/images/heaven-main.jpg",
+                image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
                 path: "collections/personal/heaven-on-fire/"
             },
             "entre-mundos": {
@@ -176,7 +176,7 @@ class PortfolioQuiz {
                 },
                 description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
                 quote: "I live in the hyphen between worlds, and I've learned to call it home.",
-                image: "collections/personal/entre-mundos/images/mundos-main.jpg",
+                image: "images/logo/logo3.png",
                 path: "collections/personal/entre-mundos/"
             },
             "inheritance": {
@@ -191,7 +191,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
                 quote: "I didn't choose this legacy, but I choose what to do with it.",
-                image: "collections/personal/inheritance/images/inheritance-main.jpg",
+                image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
                 path: "collections/personal/inheritance/"
             },
             "gnaw": {
@@ -251,7 +251,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
                 quote: "I collect what others abandon because every ruin has a story to tell.",
-                image: "collections/studio/collected-remains/images/remains-main.jpg",
+                image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
                 path: "collections/studio/collected-remains/"
             },
             "typographic-interpretation": {
@@ -296,7 +296,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
                 quote: "I make the fundamentals feel fundamental again.",
-                image: "collections/design/elements-and-principles-book-cover/images/book-main.jpg",
+                image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
                 path: "collections/design/elements-and-principles-book-cover/"
             },
             "double-sided-poster": {
@@ -311,7 +311,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
                 quote: "I break typography so it can tell uncomfortable truths.",
-                image: "collections/design/double-sided-poster/images/poster-main.jpg",
+                image: "collections/design/double-sided-poster/images/Design8.jpg",
                 path: "collections/design/double-sided-poster/"
             },
             "reductive-symbols": {
@@ -326,7 +326,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
                 quote: "I cut away everything except what absolutely must remain.",
-                image: "collections/design/reductive-symbols/images/symbols-main.jpg",
+                image: "collections/design/reductive-symbols/images/design4.jpg",
                 path: "collections/design/reductive-symbols/"
             }
         };
