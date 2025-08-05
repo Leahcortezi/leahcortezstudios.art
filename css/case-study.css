@@ -120,7 +120,7 @@
 }
 
 .hero-image img:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 /* --------------------
@@ -356,6 +356,12 @@
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.step-images.horizontal img:hover {
+  transform: scale(1.05);
 }
 
 .step-images img {
@@ -365,11 +371,12 @@
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
 }
 
 .step-images img:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 /* For single images in conceptual development */
@@ -409,6 +416,12 @@
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.phases-grid .step-images img:hover {
+  transform: scale(1.05);
 }
 
 /* New layout for text with side image */
@@ -430,6 +443,12 @@
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.step-side-image img:hover {
+  transform: scale(1.05);
 }
 
 .step-text h3 {
@@ -468,6 +487,12 @@
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.process-image img:hover {
+  transform: scale(1.05);
 }
 
 .process-image .image-caption {
@@ -509,6 +534,12 @@
   height: auto;
   border-radius: 8px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.solution-image img:hover {
+  transform: scale(1.05);
 }
 
 .solution-details h3 {
@@ -783,11 +814,13 @@
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 1rem;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: zoom-in;
 }
 
 .character-item img:hover {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
 }
 
 .character-item h4 {
@@ -896,7 +929,7 @@
 }
 
 .modal-image img:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 .modal-details {
