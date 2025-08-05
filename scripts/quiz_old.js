@@ -1,5 +1,5 @@
 if (typeof console !== 'undefined') {
-    console.log("🔄 Quiz.js loaded - Version 1754408000 - Enhanced relatable archetypes!");
+    console.log("🔄 Quiz.js loaded - Version 1754402500 - Universal artist archetypes!");
 }
 
 class PortfolioQuiz {
@@ -134,12 +134,12 @@ class PortfolioQuiz {
                 subtitle: "Anointed Gaze",
                 category: "Personal Work",
                 archetype: {
-                    essence: "You turn personal trauma into universal art",
-                    medium: "Whatever medium helps you process your feelings",
+                    essence: "You find beauty in exhaustion and liminal states",
+                    medium: "Graphite portraits that capture mental distance",
                     strength: "Drawing emotional weight and disconnection",
                     challenge: "Being fully present while creating"
                 },
-                description: "You're the artist who can't help but put your heart into everything. Your sketchbook reads like a diary, and people always ask 'Is this about you?' (It usually is.) Your charcoal hands are permanently stained, you have strong opinions about graphite grades, and you've never met a self-portrait you didn't want to psychoanalyze.",
+                description: "You're the artist who finds poetry in exhaustion. Your work captures the beauty of liminal states—the space between sleeping and waking, presence and absence.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
                 image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
                 path: "collections/personal/anointed-gaze/index.html"
@@ -149,7 +149,7 @@ class PortfolioQuiz {
                 subtitle: "Abuela's Altar",
                 category: "Personal Work",
                 archetype: {
-                    essence: "You believe art can heal generational wounds",
+                    essence: "You channel family stories through art",
                     medium: "Mixed media altars and memory installations",
                     strength: "Honoring the past while healing the present",
                     challenge: "Balancing reverence with creative freedom"
@@ -164,7 +164,7 @@ class PortfolioQuiz {
                 subtitle: "Heaven on Fire",
                 category: "Personal Work",
                 archetype: {
-                    essence: "You believe art should be impossible to ignore",
+                    essence: "You find beauty in destruction and transformation",
                     medium: "Fiery paintings of paradise in collapse",
                     strength: "Creating meaning from chaos",
                     challenge: "Finding peace without drama"
