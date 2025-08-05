@@ -370,7 +370,7 @@ class PortfolioQuiz {
 
     bindEvents() {
         // Start quiz button
-        const startButton = document.querySelector('.start-quiz-btn');
+        const startButton = document.querySelector('#start-quiz-btn');
         if (startButton) {
             startButton.addEventListener('click', () => this.startQuiz());
         }
