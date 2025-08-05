@@ -129,7 +129,7 @@ class PortfolioQuiz {
                     strength: "Drawing emotional weight and disconnection",
                     challenge: "Being fully present while creating"
                 },
-                description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
+                description: "This graphite portrait captures the weight of mental exhaustion and disconnection. Created during a period of burnout, it explores the beauty found in liminal states of consciousness.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
                 image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
                 path: "collections/personal/anointed-gaze/index.html"
@@ -144,7 +144,7 @@ class PortfolioQuiz {
                     strength: "Honoring the past while healing the present",
                     challenge: "Balancing reverence with creative freedom"
                 },
-                description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
+                description: "A mixed media altar honoring family memories and ancestral stories. This piece explores generational experiences through personal objects and imagery.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
                 image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
                 path: "collections/personal/abuelas-altar/index.html"
@@ -159,7 +159,7 @@ class PortfolioQuiz {
                     strength: "Creating meaning from chaos",
                     challenge: "Finding peace without drama"
                 },
-                description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
+                description: "A vibrant painting exploring themes of paradise and destruction. This piece finds beauty in chaos and transformation through bold colors and dramatic imagery.",
                 quote: "I paint paradise burning because sometimes heaven needs to start over.",
                 image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
                 path: "collections/personal/heaven-on-fire/index.html"
@@ -174,7 +174,7 @@ class PortfolioQuiz {
                     strength: "Creating bridges between different worlds",
                     challenge: "Feeling like you belong everywhere and nowhere"
                 },
-                description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
+                description: "A mixed media exploration of existing between cultures and identities. This piece examines the immigrant experience and the beauty of cultural intersections.",
                 quote: "I live in the hyphen between worlds, and I've learned to call it home.",
                 image: "images/logo/logo3.png",
                 path: "collections/personal/entre-mundos/index.html"
@@ -189,7 +189,7 @@ class PortfolioQuiz {
                     strength: "Breaking cycles while honoring heritage",
                     challenge: "Evolving beyond family expectations"
                 },
-                description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
+                description: "An installation examining family legacies and generational patterns. This work explores the balance between honoring traditions and breaking cycles.",
                 quote: "I didn't choose this legacy, but I choose what to do with it.",
                 image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
                 path: "collections/personal/inheritance/index.html"
@@ -204,7 +204,7 @@ class PortfolioQuiz {
                     strength: "Carving truth from the act of consuming",
                     challenge: "Explaining why destruction creates meaning"
                 },
-                description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, finding truth in the process of erosion.",
+                description: "A sculptural exploration of mouths, consumption, and erosion. This piece examines the mouth as both destroyer and creator through carved forms.",
                 quote: "I carve mouths that speak the words I can't swallow.",
                 image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
                 path: "collections/studio/gnaw/index.html"
@@ -219,7 +219,7 @@ class PortfolioQuiz {
                     strength: "Making anxiety sculptural",
                     challenge: "Learning when to let go of control"
                 },
-                description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets.",
+                description: "A wire sculpture exploring psychological pressure and constraint. This piece transforms mental states into physical form through binding and wrapping techniques.",
                 quote: "I wrap wire around my thoughts until they tell me the truth.",
                 image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
                 path: "collections/studio/unraveling/index.html"
@@ -234,7 +234,7 @@ class PortfolioQuiz {
                     strength: "Growing light from the deepest shadows",
                     challenge: "Accepting that not everything needs to be categorized"
                 },
-                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
+                description: "A glowing sculptural organism that shouldn't exist but absolutely must. This piece creates beauty from darkness through impossible forms and luminescent materials.",
                 quote: "I grow impossible flowers in the dark spaces of imagination.",
                 image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
                 path: "collections/studio/abyss-bloom/index.html"
