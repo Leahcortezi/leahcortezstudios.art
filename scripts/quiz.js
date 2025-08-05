@@ -2,6 +2,7 @@ class PortfolioQuiz {
     constructor() {
         this.currentQuestion = 0;
         this.answers = [];
+        this.scores = {};
         this.questions = [
             {
                 id: 1,
@@ -130,7 +131,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
-                image: "collections/personal/anointed-gaze/images/anointed-main.jpg",
+                image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
                 path: "collections/personal/anointed-gaze/"
             },
             "abuelas-altar": {
@@ -145,7 +146,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
-                image: "collections/personal/abuelas-altar/images/altar-main.jpg",
+                image: "images/me.jpg",
                 path: "collections/personal/abuelas-altar/"
             },
             "heaven-on-fire": {
@@ -235,7 +236,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
                 quote: "I grow impossible flowers in the dark spaces of imagination.",
-                image: "collections/studio/abyss-bloom/images/abyss-main.jpg",
+                image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
                 path: "collections/studio/abyss-bloom/"
             },
             "collected-remains": {
@@ -265,7 +266,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
                 quote: "I free letters from their expected behaviors and watch them dance.",
-                image: "collections/design/typographic-interpretation/images/typo-main.jpg",
+                image: "collections/design/typographic-interpretation/images/design5.jpg",
                 path: "collections/design/typographic-interpretation/"
             },
             "playing-cards": {
@@ -280,7 +281,7 @@ class PortfolioQuiz {
                 },
                 description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
                 quote: "I smuggle education inside beautiful, playful experiences.",
-                image: "collections/design/themed-playing-card-design/images/cards-main.jpg",
+                image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
                 path: "collections/design/themed-playing-card-design/"
             },
             "elements-book": {
@@ -486,10 +487,7 @@ class PortfolioQuiz {
             resultContainer.innerHTML = `
                 <div class="result-content">
                     <div class="result-image">
-                        <div class="lace-wrapper">
-                            <img src="${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
-                            <img src="icons/border1.png" class="lace-border" alt="lace border" loading="lazy">
-                        </div>
+                        <img src="${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
                     </div>
                     <div class="result-text">
                         <h2 class="result-title">${result.title}</h2>
