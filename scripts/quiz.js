@@ -1,5 +1,5 @@
 if (typeof console !== 'undefined') {
-    console.log("🔄 Quiz.js loaded - Version 1754411000 - Trademarked Archetype Personalities™!");
+    console.log("🔄 Quiz.js loaded - Version 1754411000 - Trademarked Archetype Personalities  !");
 }
 
 class PortfolioQuiz {
@@ -130,7 +130,7 @@ class PortfolioQuiz {
 
         this.portfolioData = {
             "anointed-gaze": {
-                title: "The Feelings-Excavator™",
+                title: "The Feelings-Excavator",
                 subtitle: "Anointed Gaze",
                 category: "Personal Work",
                 archetype: {
@@ -145,7 +145,7 @@ class PortfolioQuiz {
                 path: "collections/personal/anointed-gaze/index.html"
             },
             "abuelas-altar": {
-                title: "The Sage-Slinger™",
+                title: "The Sage-Slinger",
                 subtitle: "Abuela's Altar",
                 category: "Personal Work",
                 archetype: {
@@ -160,7 +160,7 @@ class PortfolioQuiz {
                 path: "collections/personal/abuelas-altar/index.html"
             },
             "heaven-on-fire": {
-                title: "The Volume-Maxer™",
+                title: "The Volume-Maxer",
                 subtitle: "Heaven on Fire",
                 category: "Personal Work",
                 archetype: {
@@ -175,7 +175,7 @@ class PortfolioQuiz {
                 path: "collections/personal/heaven-on-fire/index.html"
             },
             "inheritance": {
-                title: "The Footnote-Fetishist™",
+                title: "The Footnote-Fetishist",
                 subtitle: "Inheritance",
                 category: "Personal Work",
                 archetype: {
@@ -190,7 +190,7 @@ class PortfolioQuiz {
                 path: "collections/personal/inheritance/index.html"
             },
             "gnaw": {
-                title: "The Chaos-Carver™",
+                title: "The Chaos-Carver",
                 subtitle: "Gnaw",
                 category: "Studio Work",
                 archetype: {
@@ -205,7 +205,7 @@ class PortfolioQuiz {
                 path: "collections/studio/gnaw/index.html"
             },
             "unraveling": {
-                title: "The Wire-Tamer™",
+                title: "The Wire-Tamer",
                 subtitle: "Unraveling",
                 category: "Studio Work",
                 archetype: {
@@ -220,7 +220,7 @@ class PortfolioQuiz {
                 path: "collections/studio/unraveling/index.html"
             },
             "abyss-bloom": {
-                title: "The Rules-Bender™",
+                title: "The Rules-Bender",
                 subtitle: "Abyss Bloom",
                 category: "Studio Work",
                 archetype: {
@@ -235,7 +235,7 @@ class PortfolioQuiz {
                 path: "collections/studio/abyss-bloom/index.html"
             },
             "collected-remains": {
-                title: "The Hoard-Whisperer™",
+                title: "The Hoard-Whisperer",
                 subtitle: "Collected Remains",
                 category: "Studio Work",
                 archetype: {
@@ -250,7 +250,7 @@ class PortfolioQuiz {
                 path: "collections/studio/collected-remains/index.html"
             },
             "typographic-interpretation": {
-                title: "The Lab-Rat™",
+                title: "The Lab-Rat",
                 subtitle: "Typographic Interpretation",
                 category: "Design Work",
                 archetype: {
@@ -265,7 +265,7 @@ class PortfolioQuiz {
                 path: "collections/design/typographic-interpretation/index-case-study.html"
             },
             "playing-cards": {
-                title: "The People-Magnetizer™",
+                title: "The People-Magnetizer",
                 subtitle: "Scientific Revolution Playing Cards",
                 category: "Design Work",
                 archetype: {
@@ -280,7 +280,7 @@ class PortfolioQuiz {
                 path: "collections/design/themed-playing-card-design/index-case-study.html"
             },
             "elements-book": {
-                title: "The Lab-Rat™",
+                title: "The Lab-Rat",
                 subtitle: "Elements & Principles Book Cover",
                 category: "Design Work",
                 archetype: {
@@ -295,7 +295,7 @@ class PortfolioQuiz {
                 path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
             },
             "double-sided-poster": {
-                title: "The Comfort-Zone-Assassin™",
+                title: "The Comfort-Zone-Assassin",
                 subtitle: "Double-Sided Poster",
                 category: "Design Work",
                 archetype: {
@@ -310,7 +310,7 @@ class PortfolioQuiz {
                 path: "collections/design/double-sided-poster/index-case-study.html"
             },
             "reductive-symbols": {
-                title: "The Void-Whisperer™",
+                title: "The Symbol-Surgeon",
                 subtitle: "Reductive Symbols",
                 category: "Design Work",
                 archetype: {
