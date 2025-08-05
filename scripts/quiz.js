@@ -130,199 +130,199 @@ class PortfolioQuiz {
 
         this.portfolioData = {
             "anointed-gaze": {
-                title: "The Feelings-Excavator",
-                subtitle: "Anointed Gaze",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You turn personal trauma into universal art",
-                    medium: "Whatever medium helps you process your feelings",
-                    strength: "Drawing emotional weight and disconnection",
-                    challenge: "Being fully present while creating"
-                },
-                description: "You're the artist who can't help but put your heart into everything. Your sketchbook reads like a diary, and people always ask 'Is this about you?' (It usually is.) Your charcoal hands are permanently stained, you have strong opinions about graphite grades, and you've never met a self-portrait you didn't want to psychoanalyze.",
-                quote: "I draw the weight of being seen when I can barely see myself.",
-                image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
-                path: "collections/personal/anointed-gaze/index.html"
+            title: "The Sleepless Sketcher",
+            subtitle: "Anointed Gaze",
+            category: "Personal Work",
+            archetype: {
+                essence: "You draw until your hands cramp and your brain floats.",
+                medium: "Charcoal, graphite, and endless sketchbooks",
+                strength: "Emotional rawness and obsessive observation",
+                challenge: "Knowing when to rest and let go"
+            },
+            description: "You're the artist who journals breakdowns in gesture lines. Eyes haunt your pages, and your sketchbook is a confessional. You process everything through drawing — even when you should probably be sleeping.",
+            quote: "I draw until the world blurs and my feelings sharpen.",
+            image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
+            path: "collections/personal/anointed-gaze/index.html"
             },
             "abuelas-altar": {
-                title: "The Sage-Slinger",
-                subtitle: "Abuela's Altar",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You believe art can heal generational wounds",
-                    medium: "Mixed media altars and memory installations",
-                    strength: "Honoring the past while healing the present",
-                    challenge: "Balancing reverence with creative freedom"
-                },
-                description: "You're the artist who transforms family trauma into sacred ritual. Your work creates altars where ancestors can speak and wounds can finally heal.",
-                quote: "My ancestors speak through my hands when my mouth can't find the words.",
-                image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
-                path: "collections/personal/abuelas-altar/index.html"
+            title: "The Memory Keeper",
+            subtitle: "Abuela's Altar",
+            category: "Personal Work",
+            archetype: {
+                essence: "You archive family stories through objects and space.",
+                medium: "Altars, candles, and sacred assemblages",
+                strength: "Turning grief into ritual and reverence",
+                challenge: "Letting go of what you can’t preserve"
+            },
+            description: "You're the artist who lights candles before critiques — metaphorically and literally. You transform loss into sacred space, and every object is a vessel for memory.",
+            quote: "I build altars so my ancestors always have a seat at the table.",
+            image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
+            path: "collections/personal/abuelas-altar/index.html"
             },
             "heaven-on-fire": {
-                title: "The Volume-Maxer",
-                subtitle: "Heaven on Fire",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You believe art should be impossible to ignore",
-                    medium: "Fiery paintings of paradise in collapse",
-                    strength: "Creating meaning from chaos",
-                    challenge: "Finding peace without drama"
-                },
-                description: "You're the artist who finds beauty in apocalypse. Your work celebrates destruction as necessary for rebirth—sometimes paradise needs to burn before it can bloom again.",
-                quote: "I paint paradise burning because sometimes heaven needs to start over.",
-                image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
-                path: "collections/personal/heaven-on-fire/index.html"
+            title: "The Beautiful Catastrophist",
+            subtitle: "Heaven on Fire",
+            category: "Personal Work",
+            archetype: {
+                essence: "You paint like the world is ending and that's the point.",
+                medium: "Fiery paintings, chaos, and color",
+                strength: "Making destruction look delicate",
+                challenge: "Finding peace without the drama"
+            },
+            description: "You're the artist who thrives in chaos and emotional combustion. You make apocalypse look poetic, and your brushwork is a controlled explosion.",
+            quote: "I set paradise on fire just to see what grows back.",
+            image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
+            path: "collections/personal/heaven-on-fire/index.html"
             },
             "inheritance": {
-                title: "The Footnote-Fetishist",
-                subtitle: "Inheritance",
-                category: "Personal Work",
-                archetype: {
-                    essence: "You transform family patterns through art",
-                    medium: "Installations examining generational stories",
-                    strength: "Breaking cycles while honoring heritage",
-                    challenge: "Evolving beyond family expectations"
-                },
-                description: "You're the artist who transforms generational patterns into art. Your work examines what you've inherited and what you choose to pass on—or break forever.",
-                quote: "I didn't choose this legacy, but I choose what to do with it.",
-                image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
-                path: "collections/personal/inheritance/index.html"
+            title: "The Generational Theorist",
+            subtitle: "Inheritance",
+            category: "Personal Work",
+            archetype: {
+                essence: "You make art to unpack everything you were handed.",
+                medium: "Installations, threads, and symbol-heavy portraits",
+                strength: "Breaking cycles with insight and empathy",
+                challenge: "Not letting the past define your future"
+            },
+            description: "You're the artist who thinks in bloodlines and family patterns. You turn inherited silence into visual language, and every piece is a footnote to your story.",
+            quote: "I unravel what I inherit, one thread at a time.",
+            image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
+            path: "collections/personal/inheritance/index.html"
             },
             "gnaw": {
-                title: "The Chaos-Carver",
-                subtitle: "Gnaw",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You find meaning in destruction and consumption",
-                    medium: "Sculptural forms exploring mouths and erosion",
-                    strength: "Carving truth from the act of consuming",
-                    challenge: "Explaining why destruction creates meaning"
-                },
-                description: "You're the artist who finds meaning in destruction. Your work explores the mouth as both creator and destroyer—carving truth from the act of consuming.",
-                quote: "I carve mouths that speak the words I can't swallow.",
-                image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
-                path: "collections/studio/gnaw/index.html"
+            title: "The Raw Materialist",
+            subtitle: "Gnaw",
+            category: "Studio Work",
+            archetype: {
+                essence: "You carve until the piece bleeds.",
+                medium: "Sculpture, teeth, and eroded forms",
+                strength: "Revealing what hides beneath the surface",
+                challenge: "Knowing when to stop digging"
+            },
+            description: "You're the artist who thinks teeth are underused as symbols. You love mess, form, and the truth that comes from destruction.",
+            quote: "I carve until the material tells me its secrets.",
+            image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
+            path: "collections/studio/gnaw/index.html"
             },
             "unraveling": {
-                title: "The Wire-Tamer",
-                subtitle: "Unraveling",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You transform pressure into physical form",
-                    medium: "Wire sculptures that bind and constrain",
-                    strength: "Making anxiety sculptural",
-                    challenge: "Learning when to let go of control"
-                },
-                description: "You're the artist who makes anxiety sculptural. Your work transforms psychological pressure into physical form—binding, wrapping, constraining until the truth emerges.",
-                quote: "I wrap wire around my thoughts until they tell me the truth.",
-                image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
-                path: "collections/studio/unraveling/index.html"
+            title: "The Emotional Engineer",
+            subtitle: "Unraveling",
+            category: "Studio Work",
+            archetype: {
+                essence: "You use wire and tension to process your inner chaos.",
+                medium: "Wire, knots, and sculpted anxiety",
+                strength: "Turning structure into therapy",
+                challenge: "Letting go of control"
+            },
+            description: "You're the artist who sculpts thoughts directly. You believe structure is healing, and every twist of wire is a step toward clarity.",
+            quote: "I bind my worries until they become something beautiful.",
+            image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
+            path: "collections/studio/unraveling/index.html"
             },
             "abyss-bloom": {
-                title: "The Rules-Bender",
-                subtitle: "Abyss Bloom",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You create beauty from darkness",
-                    medium: "Glowing sculptures of impossible organisms",
-                    strength: "Growing light from the deepest shadows",
-                    challenge: "Accepting that not everything needs to be categorized"
-                },
-                description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
-                quote: "I grow impossible flowers in the dark spaces of imagination.",
-                image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
-                path: "collections/studio/abyss-bloom/index.html"
+            title: "The Weird Creature Kid",
+            subtitle: "Abyss Bloom",
+            category: "Studio Work",
+            archetype: {
+                essence: "You make beautiful things that shouldn’t exist.",
+                medium: "Glowing, gooey, bioluminescent sculptures",
+                strength: "Turning nightmares into pets",
+                challenge: "Letting your creatures live outside the shadows"
+            },
+            description: "You're the artist who loves soft horror and biology. You invent glowing organisms and make the uncanny adorable.",
+            quote: "I grow impossible flowers in the dark corners of my mind.",
+            image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
+            path: "collections/studio/abyss-bloom/index.html"
             },
             "collected-remains": {
-                title: "The Hoard-Whisperer",
-                subtitle: "Collected Remains",
-                category: "Studio Work",
-                archetype: {
-                    essence: "You find stories in discarded objects",
-                    medium: "Assemblages of abandoned things",
-                    strength: "Seeing potential in what others discard",
-                    challenge: "Not hoarding everything that speaks to you"
-                },
-                description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
-                quote: "I collect what others abandon because every ruin has a story to tell.",
-                image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
-                path: "collections/studio/collected-remains/index.html"
+            title: "The Trash Archaeologist",
+            subtitle: "Collected Remains",
+            category: "Studio Work",
+            archetype: {
+                essence: "You hoard with purpose.",
+                medium: "Assemblages of abandoned things",
+                strength: "Seeing potential in the discarded",
+                challenge: "Not keeping everything that whispers to you"
+            },
+            description: "You're the artist whose workbench is a spiritual junk drawer. You turn trash into storytelling devices and believe every ruin has a secret.",
+            quote: "I collect what others abandon because every object has a past.",
+            image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
+            path: "collections/studio/collected-remains/index.html"
             },
             "typographic-interpretation": {
-                title: "The Lab-Rat",
-                subtitle: "Typographic Interpretation",
-                category: "Design Work",
-                archetype: {
-                    essence: "You make letters feel emotions",
-                    medium: "Typography pushed beyond expected behaviors",
-                    strength: "Breaking typographic rules meaningfully",
-                    challenge: "Perfectionism that slows down creativity"
-                },
-                description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
-                quote: "I free letters from their expected behaviors and watch them dance.",
-                image: "collections/design/typographic-interpretation/images/design5.jpg",
-                path: "collections/design/typographic-interpretation/index-case-study.html"
+            title: "The Kerning Critic",
+            subtitle: "Typographic Interpretation",
+            category: "Design Work",
+            archetype: {
+                essence: "You can spot bad tracking from across the room.",
+                medium: "Expressive, rule-breaking typography",
+                strength: "Making fonts feel things",
+                challenge: "Letting go of perfection"
+            },
+            description: "You're the designer who judges every menu and poster. You’d die for hierarchy, and you believe letters have souls.",
+            quote: "I free letters from their cages and watch them dance.",
+            image: "collections/design/typographic-interpretation/images/design5.jpg",
+            path: "collections/design/typographic-interpretation/index-case-study.html"
             },
             "playing-cards": {
-                title: "The People-Magnetizer",
-                subtitle: "Scientific Revolution Playing Cards",
-                category: "Design Work",
-                archetype: {
-                    essence: "You make learning feel like play",
-                    medium: "Educational design disguised as entertainment",
-                    strength: "Smuggling knowledge inside beautiful experiences",
-                    challenge: "Not being too clever for your own good"
-                },
-                description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
-                quote: "I smuggle education inside beautiful, playful experiences.",
-                image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
-                path: "collections/design/themed-playing-card-design/index-case-study.html"
+            title: "The Organized Chaos Theorist",
+            subtitle: "Scientific Revolution Playing Cards",
+            category: "Design Work",
+            archetype: {
+                essence: "You have 17 tabs open, and they’re all research.",
+                medium: "Educational design disguised as entertainment",
+                strength: "Making rules just to break them beautifully",
+                challenge: "Finishing before the next big idea hits"
+            },
+            description: "You're the designer who thinks in categories, color codes, and revolution timelines. You smuggle knowledge inside beautiful experiences.",
+            quote: "I turn chaos into systems and systems into play.",
+            image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
+            path: "collections/design/themed-playing-card-design/index-case-study.html"
             },
             "elements-book": {
-                title: "The Lab-Rat",
-                subtitle: "Elements & Principles Book Cover",
-                category: "Design Work",
-                archetype: {
-                    essence: "You find zen in fundamental principles",
-                    medium: "Clean design that honors the basics",
-                    strength: "Making fundamentals feel fresh",
-                    challenge: "Perfectionism that can become paralysis"
-                },
-                description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
-                quote: "I make the fundamentals feel fundamental again.",
-                image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
-                path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
+            title: "The Conceptual Clown",
+            subtitle: "Elements & Principles Book Cover",
+            category: "Design Work",
+            archetype: {
+                essence: "You make things that are funny, sad, and secretly deep.",
+                medium: "Playful visuals with serious commentary",
+                strength: "Balancing cute and weird",
+                challenge: "Not hiding meaning behind the joke"
+            },
+            description: "You're the designer who sneaks big ideas into playful packages. You live for the line between silly and profound.",
+            quote: "I use whimsy to say what seriousness can’t.",
+            image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
+            path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
             },
             "double-sided-poster": {
-                title: "The Comfort-Zone-Assassin",
-                subtitle: "Double-Sided Poster",
-                category: "Design Work",
-                archetype: {
-                    essence: "You use design as activism",
-                    medium: "Typography that questions everything",
-                    strength: "Making uncomfortable truths visible",
-                    challenge: "Finding subtlety without losing impact"
-                },
-                description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
-                quote: "I break typography so it can tell uncomfortable truths.",
-                image: "collections/design/double-sided-poster/images/Design8.jpg",
-                path: "collections/design/double-sided-poster/index-case-study.html"
+            title: "The Design Vigilante",
+            subtitle: "Double-Sided Poster",
+            category: "Design Work",
+            archetype: {
+                essence: "You use posters to fight injustice.",
+                medium: "Bold, activist typography",
+                strength: "Disrupting and informing with design",
+                challenge: "Finding subtlety without losing impact"
+            },
+            description: "You're the person who actually reads theory — and then yells it in bold type. Your work doesn’t just communicate, it interrogates.",
+            quote: "I break typography so it can shout uncomfortable truths.",
+            image: "collections/design/double-sided-poster/images/Design8.jpg",
+            path: "collections/design/double-sided-poster/index-case-study.html"
             },
             "reductive-symbols": {
-                title: "The Symbol-Surgeon",
-                subtitle: "Reductive Symbols",
-                category: "Design Work",
-                archetype: {
-                    essence: "You distill complex ideas to their essence",
-                    medium: "Minimal symbols with maximum impact",
-                    strength: "Cutting away everything unnecessary",
-                    challenge: "Knowing when simple becomes too simple"
-                },
-                description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
-                quote: "I cut away everything except what absolutely must remain.",
-                image: "collections/design/reductive-symbols/images/design4.jpg",
-                path: "collections/design/reductive-symbols/index-case-study.html"
+            title: "The Shape Whisperer",
+            subtitle: "Reductive Symbols",
+            category: "Design Work",
+            archetype: {
+                essence: "You strip everything down to what matters.",
+                medium: "Minimal symbols with maximum impact",
+                strength: "Speaking in icons, not paragraphs",
+                challenge: "Knowing when less becomes too little"
+            },
+            description: "You're the designer who believes less is more (and more is annoying). You perform surgery on meaning until only the essential remains.",
+            quote: "I cut away everything except what absolutely must remain.",
+            image: "collections/design/reductive-symbols/images/design4.jpg",
+            path: "collections/design/reductive-symbols/index-case-study.html"
             }
         };
 
