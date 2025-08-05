@@ -132,7 +132,7 @@ class PortfolioQuiz {
                 description: "You're the artist who finds profound beauty in mental exhaustion. Your art captures those liminal moments when consciousness hovers at the periphery. You understand that burnout has its own strange aesthetics.",
                 quote: "I draw the weight of being seen when I can barely see myself.",
                 image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
-                path: "collections/personal/anointed-gaze/"
+                path: "collections/personal/anointed-gaze/index.html"
             },
             "abuelas-altar": {
                 title: "The Ancestral Archivist",
@@ -147,7 +147,7 @@ class PortfolioQuiz {
                 description: "You're the keeper of family stories that others want to forget. Your art is a conversation with the past, honoring ancestors while processing generational experiences.",
                 quote: "My ancestors speak through my hands when my mouth can't find the words.",
                 image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
-                path: "collections/personal/abuelas-altar/"
+                path: "collections/personal/abuelas-altar/index.html"
             },
             "heaven-on-fire": {
                 title: "The Apocalypse Aesthete",
@@ -162,7 +162,7 @@ class PortfolioQuiz {
                 description: "You're the artist who finds paradise in chaos and beauty in collapse. Your work suggests that maybe the end of the world isn't something to fear—maybe it's something to paint.",
                 quote: "I paint paradise burning because sometimes heaven needs to start over.",
                 image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
-                path: "collections/personal/heaven-on-fire/"
+                path: "collections/personal/heaven-on-fire/index.html"
             },
             "entre-mundos": {
                 title: "The Liminal Wanderer",
@@ -177,7 +177,7 @@ class PortfolioQuiz {
                 description: "You exist beautifully between worlds, never fully belonging to just one. Your art captures the eternal immigrant experience—living in the spaces between cultures, languages, and identities.",
                 quote: "I live in the hyphen between worlds, and I've learned to call it home.",
                 image: "images/logo/logo3.png",
-                path: "collections/personal/entre-mundos/"
+                path: "collections/personal/entre-mundos/index.html"
             },
             "inheritance": {
                 title: "The Legacy Liquidator",
@@ -192,7 +192,7 @@ class PortfolioQuiz {
                 description: "You're the artist who inherited more than you bargained for. Your work unpacks family legacies—the traditions you cherish and the patterns you're desperate to break.",
                 quote: "I didn't choose this legacy, but I choose what to do with it.",
                 image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
-                path: "collections/personal/inheritance/"
+                path: "collections/personal/inheritance/index.html"
             },
             "gnaw": {
                 title: "The Hunger Sculptor",
@@ -207,7 +207,7 @@ class PortfolioQuiz {
                 description: "You're the artist who carves meaning from the act of consumption. Your work explores the mouth as both destroyer and creator, finding truth in the process of erosion.",
                 quote: "I carve mouths that speak the words I can't swallow.",
                 image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
-                path: "collections/studio/gnaw/"
+                path: "collections/studio/gnaw/index.html"
             },
             "unraveling": {
                 title: "The Wire Whisperer",
@@ -222,7 +222,7 @@ class PortfolioQuiz {
                 description: "You're the artist who finds poetry in psychological pressure. Your work transforms mental states into physical form, wrapping wire around thoughts until they confess their secrets.",
                 quote: "I wrap wire around my thoughts until they tell me the truth.",
                 image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
-                path: "collections/studio/unraveling/"
+                path: "collections/studio/unraveling/index.html"
             },
             "abyss-bloom": {
                 title: "The Bioluminescent Botanist",
@@ -237,7 +237,7 @@ class PortfolioQuiz {
                 description: "You're the artist who births creatures that shouldn't exist but absolutely must. Your work creates beautiful organisms that glow with their own impossible light.",
                 quote: "I grow impossible flowers in the dark spaces of imagination.",
                 image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
-                path: "collections/studio/abyss-bloom/"
+                path: "collections/studio/abyss-bloom/index.html"
             },
             "collected-remains": {
                 title: "The Ruin Romanticist",
@@ -252,7 +252,7 @@ class PortfolioQuiz {
                 description: "You're the artist who sees potential in what others discard. Your work is an archaeology of abandonment, finding beauty in the broken and meaning in the forgotten.",
                 quote: "I collect what others abandon because every ruin has a story to tell.",
                 image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
-                path: "collections/studio/collected-remains/"
+                path: "collections/studio/collected-remains/index.html"
             },
             "typographic-interpretation": {
                 title: "The Letter Liberator",
@@ -267,7 +267,7 @@ class PortfolioQuiz {
                 description: "You're the designer who believes letters have souls. Your work pushes typography beyond communication into pure emotion, making fonts feel feelings.",
                 quote: "I free letters from their expected behaviors and watch them dance.",
                 image: "collections/design/typographic-interpretation/images/design5.jpg",
-                path: "collections/design/typographic-interpretation/"
+                path: "collections/design/typographic-interpretation/index-case-study.html"
             },
             "playing-cards": {
                 title: "The Educational Insurgent",
@@ -282,7 +282,7 @@ class PortfolioQuiz {
                 description: "You're the designer who makes learning feel like rebellion. Your work transforms boring educational content into something people actually want to engage with.",
                 quote: "I smuggle education inside beautiful, playful experiences.",
                 image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
-                path: "collections/design/themed-playing-card-design/"
+                path: "collections/design/themed-playing-card-design/index-case-study.html"
             },
             "elements-book": {
                 title: "The Principle Perfectionist",
@@ -297,7 +297,7 @@ class PortfolioQuiz {
                 description: "You're the designer who finds zen in fundamental principles. Your work demonstrates that mastery comes from understanding the basics so deeply that you can make them sing.",
                 quote: "I make the fundamentals feel fundamental again.",
                 image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
-                path: "collections/design/elements-and-principles-book-cover/"
+                path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
             },
             "double-sided-poster": {
                 title: "The Truth Disruptor",
@@ -312,7 +312,7 @@ class PortfolioQuiz {
                 description: "You're the designer who uses typography as a weapon against complacency. Your work doesn't just communicate—it interrogates, questions, and occasionally shouts.",
                 quote: "I break typography so it can tell uncomfortable truths.",
                 image: "collections/design/double-sided-poster/images/Design8.jpg",
-                path: "collections/design/double-sided-poster/"
+                path: "collections/design/double-sided-poster/index-case-study.html"
             },
             "reductive-symbols": {
                 title: "The Symbol Surgeon",
@@ -327,7 +327,7 @@ class PortfolioQuiz {
                 description: "You're the designer who performs surgery on meaning itself. Your work strips away everything unnecessary until only the essential remains.",
                 quote: "I cut away everything except what absolutely must remain.",
                 image: "collections/design/reductive-symbols/images/design4.jpg",
-                path: "collections/design/reductive-symbols/"
+                path: "collections/design/reductive-symbols/index-case-study.html"
             }
         };
 
