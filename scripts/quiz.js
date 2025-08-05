@@ -1,4 +1,4 @@
-console.log('🔄 Quiz.js loaded - Version 1754365996 - All descriptions are now archetype-focused!');
+console.log('🔄 Quiz.js loaded - Version 1754366232 - Enhanced progress bar with glow gradients!');
 
 class PortfolioQuiz {
     constructor() {
@@ -391,27 +391,23 @@ class PortfolioQuiz {
 
     startQuiz() {
         console.log('🎯 Starting Portfolio Soul Quiz');
+        this.resetProgress();
         this.showSection('quiz-questions');
         this.displayQuestion();
+    }
+
+    resetProgress() {
+        const progressFill = document.querySelector('.progress-fill');
+        if (progressFill) {
+            progressFill.style.width = '0%';
+        }
     }
 
     displayQuestion() {
         const question = this.questions[this.currentQuestion];
         
-        // Update progress
-        const progressFill = document.querySelector('.progress-fill');
-        const currentQuestionSpan = document.querySelector('#current-question');
-        const totalQuestionsSpan = document.querySelector('#total-questions');
-        
-        if (progressFill) {
-            progressFill.style.width = `${((this.currentQuestion + 1) / this.questions.length) * 100}%`;
-        }
-        if (currentQuestionSpan) {
-            currentQuestionSpan.textContent = this.currentQuestion + 1;
-        }
-        if (totalQuestionsSpan) {
-            totalQuestionsSpan.textContent = this.questions.length;
-        }
+        // Update progress with smooth animation
+        this.updateProgress();
         
         // Update question text
         const questionText = document.querySelector('#question-text');
@@ -434,6 +430,41 @@ class PortfolioQuiz {
                 button.addEventListener('click', (e) => this.selectAnswer(e));
             });
         }
+    }
+
+    updateProgress() {
+        const progressFill = document.querySelector('.progress-fill');
+        const currentQuestionSpan = document.querySelector('#current-question');
+        const totalQuestionsSpan = document.querySelector('#total-questions');
+        
+        const currentQuestionNumber = this.currentQuestion + 1;
+        const totalQuestions = this.questions.length;
+        const progressPercentage = (currentQuestionNumber / totalQuestions) * 100;
+        
+        // Update progress bar with smooth animation
+        if (progressFill) {
+            // Add a subtle pause before updating for visual appeal
+            setTimeout(() => {
+                progressFill.style.width = `${progressPercentage}%`;
+                
+                // Add a pulsing effect when progress updates
+                progressFill.style.animationDuration = '1s';
+                setTimeout(() => {
+                    progressFill.style.animationDuration = '2s';
+                }, 1000);
+            }, 100);
+        }
+        
+        // Update progress text
+        if (currentQuestionSpan) {
+            currentQuestionSpan.textContent = currentQuestionNumber;
+        }
+        if (totalQuestionsSpan) {
+            totalQuestionsSpan.textContent = totalQuestions;
+        }
+
+        // Log progress for debugging
+        console.log(`📊 Progress: ${currentQuestionNumber}/${totalQuestions} (${progressPercentage.toFixed(1)}%)`);
     }
 
     selectAnswer(event) {
@@ -546,6 +577,7 @@ class PortfolioQuiz {
         this.currentQuestion = 0;
         this.answers = [];
         this.scores = {};
+        this.resetProgress();
         this.showSection('quiz-start');
     }
 
