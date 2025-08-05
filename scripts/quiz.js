@@ -1,126 +1,129 @@
-console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+if (typeof console !== 'undefined') {
+    console.log("🔄 Quiz.js loaded - Version 1754402500 - Universal artist archetypes!");
+}
 
 class PortfolioQuiz {
     constructor() {
         this.currentQuestion = 0;
         this.answers = [];
-        this.scores = {};
-                this.questions = [
+        this.scores = {}; // Initialize scores object
+        
+        this.questions = [
             {
                 id: 1,
-                text: "When you're emotionally drained at 2 AM, what calls to your creative soul?",
+                text: "When you're emotionally drained, what calls to your creative soul?",
                 options: [
-                    { text: "Drawing the dissociative weight behind tired eyes", piece: "anointed-gaze", weight: 3 },
-                    { text: "Building altars from family photographs and memory", piece: "abuelas-altar", weight: 3 },
-                    { text: "Creating luminescent creatures from the void", piece: "abyss-bloom", weight: 3 }
+                    { text: "Creating something deeply personal and introspective", piece: "anointed-gaze", weight: 3 },
+                    { text: "Working with symbols and spiritual imagery", piece: "abuelas-altar", weight: 3 },
+                    { text: "Making something beautiful from chaos", piece: "abyss-bloom", weight: 3 }
                 ]
             },
             {
                 id: 2,
-                text: "Your creative breakdown usually happens because...",
+                text: "Your creative process usually involves...",
                 options: [
-                    { text: "You're processing generational trauma through art", piece: "abuelas-altar", weight: 3 },
-                    { text: "Paradise is burning and you need to paint it", piece: "heaven-on-fire", weight: 3 },
-                    { text: "You found beauty in something everyone else discarded", piece: "collected-remains", weight: 3 }
+                    { text: "Exploring family history and personal narratives", piece: "abuelas-altar", weight: 3 },
+                    { text: "Embracing destruction as part of creation", piece: "heaven-on-fire", weight: 3 },
+                    { text: "Finding beauty in discarded or overlooked things", piece: "collected-remains", weight: 3 }
                 ]
             },
             {
                 id: 3,
-                text: "The comment that would devastate you most as an artist:",
+                text: "The critique that would hurt you most:",
                 options: [
-                    { text: "'Your art is too depressing. Smile more!'", piece: "anointed-gaze", weight: 3 },
-                    { text: "'Why can't you just get over your family stuff?'", piece: "abuelas-altar", weight: 3 },
-                    { text: "'This looks like something a child could make.'", piece: "heaven-on-fire", weight: 3 }
+                    { text: "Your work is too heavy or melancholic", piece: "anointed-gaze", weight: 3 },
+                    { text: "You're stuck in the past", piece: "inheritance", weight: 3 },
+                    { text: "Your work lacks structure or focus", piece: "heaven-on-fire", weight: 3 }
                 ]
             },
             {
                 id: 4,
-                text: "Your studio ritual involves...",
+                text: "Your ideal creative practice includes...",
                 options: [
-                    { text: "Destroying perfectly good materials on purpose", piece: "gnaw", weight: 3 },
-                    { text: "Wrapping wire around forms until they confess", piece: "unraveling", weight: 3 },
-                    { text: "Obsessing over typography until 4 AM", piece: "typographic-interpretation", weight: 3 }
+                    { text: "Deconstructing and rebuilding concepts", piece: "gnaw", weight: 3 },
+                    { text: "Repetitive, meditative processes", piece: "unraveling", weight: 3 },
+                    { text: "Refining details until they're perfect", piece: "typographic-interpretation", weight: 3 }
                 ]
             },
             {
                 id: 5,
-                text: "People worry about you because...",
+                text: "People describe your artistic personality as...",
                 options: [
-                    { text: "You never throw anything away - it might be art", piece: "collected-remains", weight: 3 },
-                    { text: "You make everything unnecessarily complicated", piece: "elements-book", weight: 3 },
-                    { text: "You question everything, including this question", piece: "double-sided-poster", weight: 3 }
+                    { text: "Someone who sees potential everywhere", piece: "collected-remains", weight: 3 },
+                    { text: "A perfectionist who sweats the details", piece: "elements-book", weight: 3 },
+                    { text: "An activist who uses art to make statements", piece: "double-sided-poster", weight: 3 }
                 ]
             },
             {
                 id: 6,
-                text: "Your art supplies budget embarrassingly goes toward...",
+                text: "Your creative tools tend to be...",
                 options: [
-                    { text: "Materials to make educational content look cooler", piece: "playing-cards", weight: 3 },
-                    { text: "Whatever weird stuff you found in the trash", piece: "collected-remains", weight: 3 },
-                    { text: "Wire, plaster, and tools you'll probably break", piece: "gnaw", weight: 3 }
+                    { text: "Whatever makes learning and teaching engaging", piece: "playing-cards", weight: 3 },
+                    { text: "Unconventional materials and found objects", piece: "collected-remains", weight: 3 },
+                    { text: "Traditional tools used in innovative ways", piece: "gnaw", weight: 3 }
                 ]
             },
             {
                 id: 7,
-                text: "At art openings, you're the person who...",
+                text: "In creative communities, you're known as...",
                 options: [
-                    { text: "Starts political debates about design ethics", piece: "double-sided-poster", weight: 3 },
-                    { text: "Points out the recycled materials in every piece", piece: "collected-remains", weight: 3 },
-                    { text: "Explains the typographic choices in excessive detail", piece: "typographic-interpretation", weight: 3 }
+                    { text: "The one who brings social consciousness to conversations", piece: "double-sided-poster", weight: 3 },
+                    { text: "The storyteller who explains the 'why' behind materials", piece: "collected-remains", weight: 3 },
+                    { text: "The theory enthusiast who loves discussing technique", piece: "typographic-interpretation", weight: 3 }
                 ]
             },
             {
                 id: 8,
-                text: "Your therapist (if you have one) probably...",
+                text: "Your biggest creative challenge is...",
                 options: [
-                    { text: "Thinks your perfectionism is 'maladaptive'", piece: "typographic-interpretation", weight: 3 },
-                    { text: "Questions your 'attachment to broken objects'", piece: "collected-remains", weight: 3 },
-                    { text: "Admires your ability to 'find order in chaos'", piece: "elements-book", weight: 3 }
+                    { text: "Perfectionism that prevents you from finishing", piece: "elements-book", weight: 3 },
+                    { text: "Getting emotionally attached to every piece", piece: "collected-remains", weight: 3 },
+                    { text: "Balancing spontaneity with intentional design", piece: "reductive-symbols", weight: 3 }
                 ]
             },
             {
                 id: 9,
-                text: "When you're stuck creatively, you usually...",
+                text: "When creatively blocked, you usually...",
                 options: [
-                    { text: "Tear apart something beautiful to understand it", piece: "unraveling", weight: 3 },
-                    { text: "Make symbols that mean nothing and everything", piece: "reductive-symbols", weight: 3 },
-                    { text: "Design cards that make learning feel magical", piece: "playing-cards", weight: 3 }
+                    { text: "Take something apart to understand it better", piece: "unraveling", weight: 3 },
+                    { text: "Strip away elements until the essence remains", piece: "reductive-symbols", weight: 3 },
+                    { text: "Turn complex problems into simple, playful solutions", piece: "playing-cards", weight: 3 }
                 ]
             },
             {
                 id: 10,
-                text: "Your ideal creative space would be...",
+                text: "Your dream workspace would be...",
                 options: [
-                    { text: "A wire-wrapped sanctuary where objects confess", piece: "unraveling", weight: 3 },
-                    { text: "A minimal space where symbols speak louder than words", piece: "reductive-symbols", weight: 3 },
-                    { text: "Between worlds, where memory and present collide", piece: "inheritance", weight: 3 }
+                    { text: "A place where you can experiment and get messy", piece: "unraveling", weight: 3 },
+                    { text: "A clean, minimal space that promotes focus", piece: "reductive-symbols", weight: 3 },
+                    { text: "Somewhere filled with meaningful objects and memories", piece: "inheritance", weight: 3 }
                 ]
             },
             {
                 id: 11,
-                text: "The piece that haunts your dreams is about...",
+                text: "The themes that fascinate you explore...",
                 options: [
-                    { text: "What you inherit when you don't choose to", piece: "inheritance", weight: 3 },
-                    { text: "Wire that holds secrets you're afraid to unravel", piece: "unraveling", weight: 3 },
-                    { text: "Symbols stripped down to their essential meaning", piece: "reductive-symbols", weight: 3 }
+                    { text: "What we inherit from previous generations", piece: "inheritance", weight: 3 },
+                    { text: "The hidden stories in everyday objects", piece: "unraveling", weight: 3 },
+                    { text: "How much you can communicate with less", piece: "reductive-symbols", weight: 3 }
                 ]
             },
             {
                 id: 12,
-                text: "Your creative crisis usually involves...",
+                text: "Your creative philosophy centers on...",
                 options: [
-                    { text: "Processing what it means to carry someone else's story", piece: "inheritance", weight: 3 },
-                    { text: "Wondering if beauty can exist in complete destruction", piece: "unraveling", weight: 3 },
-                    { text: "Questioning whether symbols have any real meaning", piece: "reductive-symbols", weight: 3 }
+                    { text: "Understanding and transforming generational patterns", piece: "inheritance", weight: 3 },
+                    { text: "Finding beauty through deconstruction and rebuilding", piece: "unraveling", weight: 3 },
+                    { text: "Believing that simplicity can hold profound meaning", piece: "reductive-symbols", weight: 3 }
                 ]
             },
             {
                 id: 13,
-                text: "The work that feels most like home is...",
+                text: "The medium that speaks to your soul involves...",
                 options: [
-                    { text: "Creating monuments to inherited trauma and love", piece: "inheritance", weight: 3 },
-                    { text: "Finding the story hidden in tangled materials", piece: "unraveling", weight: 3 },
-                    { text: "Stripping everything down to its essential symbol", piece: "reductive-symbols", weight: 3 }
+                    { text: "Materials with personal or cultural significance", piece: "inheritance", weight: 3 },
+                    { text: "Flexible materials you can manipulate and bind", piece: "unraveling", weight: 3 },
+                    { text: "Clean, essential elements that communicate clearly", piece: "reductive-symbols", weight: 3 }
                 ]
             }
         ];
@@ -328,8 +331,6 @@ class PortfolioQuiz {
     }
 
     validateQuizData() {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
         // Check all descriptions start with "You're the"
         let invalidDescriptions = [];
         Object.entries(this.portfolioData).forEach(([key, data]) => {
@@ -341,22 +342,21 @@ class PortfolioQuiz {
         if (invalidDescriptions.length > 0) {
             console.error('❌ Found piece descriptions instead of archetype descriptions:', invalidDescriptions);
         } else {
-            console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+            console.log("✅ All descriptions are archetype-focused!");
         }
         
         // Count total pieces
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log(`📊 Quiz has ${Object.keys(this.portfolioData).length} possible results`);
         
         // Check for entre-mundos
         if (this.portfolioData['entre-mundos']) {
             console.error('❌ entre-mundos still found in quiz data!');
         } else {
-            console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+            console.log("✅ entre-mundos successfully removed");
         }
     }
 
     init() {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
         this.bindEvents();
         this.preloadImages();
     }
@@ -365,13 +365,13 @@ class PortfolioQuiz {
         // Preload logo
         const logo = new Image();
         logo.src = 'images/logo/logo3.png';
-        logo.onload = () => console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        logo.onload = () => console.log("✅ Logo preloaded");
         
         // Preload portfolio images
         Object.values(this.portfolioData).forEach(data => {
             const img = new Image();
             img.src = data.image;
-            img.onload = () => console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+            img.onload = () => console.log(`✅ Image preloaded: ${data.title}`);
         });
     }
 
@@ -396,7 +396,7 @@ class PortfolioQuiz {
     }
 
     startQuiz() {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log("🎯 Starting quiz...");
         this.resetProgress();
         this.showSection('quiz-questions');
         this.displayQuestion();
@@ -470,7 +470,7 @@ class PortfolioQuiz {
         }
 
         // Log progress for debugging
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log(`📈 Progress: ${currentQuestionNumber}/${totalQuestions} (${progressPercentage.toFixed(1)}%)`);
     }
 
     selectAnswer(event) {
@@ -507,7 +507,8 @@ class PortfolioQuiz {
     }
 
     calculateResult() {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log("🧮 Calculating quiz result...");
+        console.log("📊 Final scores:", this.scores);
         
         // Find the piece with the highest score
         let winningPiece = null;
@@ -526,14 +527,14 @@ class PortfolioQuiz {
         }
 
         const result = this.portfolioData[winningPiece];
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log(`🎯 Result: ${result.title} (${winningPiece})`);
         
         this.displayResult(result);
     }
 
     displayResult(result) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+        console.log(`🎨 Displaying result: ${result.title}`);
+        console.log(`📝 Description: ${result.description}`);
         this.showSection('quiz-results');
         
         const resultContainer = document.querySelector('.result-container');
@@ -565,7 +566,7 @@ class PortfolioQuiz {
                         
                         <div class="result-actions">
                             <a href="${result.path}" class="quiz-btn primary">View Piece</a>
-                            <button id="retake-quiz-btn" class="quiz-btn secondary">Take Again</button>
+                            <button id="retake-quiz-btn" class="quiz-btn secondary">Retake Quiz</button>
                         </div>
                     </div>
                 </div>
@@ -580,6 +581,7 @@ class PortfolioQuiz {
     }
 
     resetQuiz() {
+        console.log("🔄 Resetting quiz...");
         this.currentQuestion = 0;
         this.answers = [];
         this.scores = {};
@@ -601,863 +603,10 @@ class PortfolioQuiz {
             targetSection.classList.add('active');
         }
     }
-
-    getTemplateStyle(category) {
-        const styles = {
-            'Personal Work': 'minimal',
-            'Design Work': 'elegant', 
-            'Studio Work': 'artistic'
-        };
-        return styles[category] || 'minimal';
-    }
-
-    generateGothicStoryTemplate(ctx, result, img, logo, width, height) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
-        // Deep gothic gradient background
-        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/2, height);
-        gradient.addColorStop(0, '#1a0d14');
-        gradient.addColorStop(0.3, '#2d1b25');
-        gradient.addColorStop(0.7, '#7e1c2e');
-        gradient.addColorStop(1, '#0a0508');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Add mystical texture overlay with varied opacity
-        ctx.globalAlpha = 0.08;
-        ctx.fillStyle = '#f7f3f1';
-        for (let i = 0; i < 1500; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 2 + 1;
-            const alpha = Math.random() * 0.3 + 0.1;
-            ctx.globalAlpha = alpha;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        
-        // Add some burgundy accent particles
-        ctx.fillStyle = '#7e1c2e';
-        for (let i = 0; i < 300; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 1.5;
-            ctx.globalAlpha = Math.random() * 0.2 + 0.05;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        
-        // Top section: "Now Viewing" Spotify-style header
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        ctx.fillRect(0, 0, width, 120);
-        
-        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.textAlign = 'center';
-        ctx.fillText('NOW VIEWING', width/2, 50);
-        
-        ctx.font = '24px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('Leah Cortez Studios', width/2, 85);
-        
-        // Main artwork section (large, centered)
-        if (img) {
-            const imgSize = 700;
-            const imgX = (width - imgSize) / 2;
-            const imgY = 200;
-            
-            // Gothic frame with shadow
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-            ctx.shadowBlur = 40;
-            ctx.shadowOffsetY = 20;
-            
-            // Ornate frame
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 8;
-            ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
-            
-            // Inner glow
-            ctx.strokeStyle = 'rgba(247, 243, 241, 0.3)';
-            ctx.lineWidth = 3;
-            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetY = 0;
-            
-            // Draw image
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-            
-            // Gothic corner ornaments
-            ctx.fillStyle = '#f7f3f1';
-            this.drawGothicStar(ctx, imgX - 40, imgY - 40, 25);
-            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY - 40, 25);
-            this.drawGothicStar(ctx, imgX - 40, imgY + imgSize + 40, 25);
-            this.drawGothicStar(ctx, imgX + imgSize + 40, imgY + imgSize + 40, 25);
-        }
-        
-        // Bottom section: Spotify-style track info
-        const bottomY = height - 400;
-        
-        // Semi-transparent background for text area
-        const textBg = ctx.createLinearGradient(0, bottomY - 50, 0, height);
-        textBg.addColorStop(0, 'transparent');
-        textBg.addColorStop(0.3, 'rgba(0, 0, 0, 0.8)');
-        textBg.addColorStop(1, 'rgba(0, 0, 0, 0.95)');
-        ctx.fillStyle = textBg;
-        ctx.fillRect(0, bottomY - 50, width, 450);
-        
-        // Quiz result type (like Spotify artist name)
-        ctx.font = 'bold 48px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.textAlign = 'center';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width/2, bottomY + 40);
-        
-        // Featured piece title (like Spotify song title)
-        ctx.font = 'bold 84px "Pirata One", cursive';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
-        ctx.shadowBlur = 20;
-        
-        const pieceTitle = result.pieceTitle || result.title;
-        const wrappedPieceTitle = this.wrapText(ctx, pieceTitle, width - 120);
-        const titleStartY = bottomY + 100;
-        wrappedPieceTitle.forEach((line, index) => {
-            ctx.fillText(line, width/2, titleStartY + (index * 90));
-        });
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Result type subtitle (like Spotify album name)
-        const subtitleY = titleStartY + (wrappedPieceTitle.length * 90) + 30;
-        ctx.font = 'italic 40px "IM Fell English", serif';
-        ctx.fillStyle = '#d4a5a5';
-        ctx.textAlign = 'center';
-        ctx.fillText(`"${result.title}"`, width/2, subtitleY);
-        
-        // Category tag
-        const categoryY = subtitleY + 50;
-        ctx.font = 'bold 32px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.textAlign = 'center';
-        ctx.fillText(result.category.toUpperCase(), width/2, categoryY);
-        
-        // Quote (like Spotify album info)
-        const quoteY = categoryY + 80;
-        ctx.font = 'italic 36px "IM Fell English", serif';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.textAlign = 'center';
-        const wrappedQuote = this.wrapText(ctx, `"${result.quote}"`, width - 120);
-        wrappedQuote.forEach((line, index) => {
-            ctx.fillText(line, width/2, quoteY + (index * 42));
-        });
-        
-        // Bottom branding bar
-        ctx.fillStyle = 'rgba(126, 28, 46, 0.9)';
-        ctx.fillRect(0, height - 100, width, 100);
-        
-        // Logo and website
-        if (logo) {
-            const logoSize = 60;
-            ctx.drawImage(logo, 60, height - 80, logoSize, logoSize);
-        }
-        
-        ctx.font = 'bold 28px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.textAlign = 'left';
-        ctx.fillText('LEAHCORTEZSTUDIOS.ART', 140, height - 45);
-        
-        // Take quiz CTA
-        ctx.font = '24px "IM Fell English", serif';
-        ctx.fillStyle = '#d4a5a5';
-        ctx.textAlign = 'right';
-        ctx.fillText('Take the Portfolio Soul Quiz →', width - 60, height - 45);
-        
-        // Add decorative border
-        ctx.strokeStyle = '#7e1c2e';
-        ctx.lineWidth = 6;
-        ctx.strokeRect(30, 30, width - 60, height - 60);
-        
-        // Inner decorative border
-        ctx.strokeStyle = 'rgba(247, 243, 241, 0.2)';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(50, 50, width - 100, height - 100);
-    }
-
-    drawGothicMinimal(ctx, result, img, logo, width, height) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
-        // Soft black background
-        ctx.fillStyle = '#0e0e0e';
-        ctx.fillRect(0, 0, width, height);
-        
-        // Subtle texture
-        ctx.globalAlpha = 0.05;
-        ctx.fillStyle = '#f7f3f1';
-        for (let i = 0; i < 1000; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 2;
-            ctx.fillRect(x, y, size, size);
-        }
-        ctx.globalAlpha = 1;
-        
-        // Thin maroon border
-        ctx.strokeStyle = '#7e1c2e';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(60, 60, width - 120, height - 120);
-        
-        // Inner frame
-        ctx.strokeStyle = 'rgba(247, 243, 241, 0.2)';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(80, 80, width - 160, height - 160);
-        
-        // Logo placement
-        if (logo) {
-            const logoSize = 80;
-            ctx.drawImage(logo, 100, 100, logoSize, logoSize);
-        }
-        
-        // Gothic star corners
-        ctx.fillStyle = '#7e1c2e';
-        this.drawGothicStar(ctx, 120, 120, 15);
-        this.drawGothicStar(ctx, width - 120, 120, 15);
-        this.drawGothicStar(ctx, 120, height - 120, 15);
-        this.drawGothicStar(ctx, width - 120, height - 120, 15);
-        
-        // Title - Pirata One
-        ctx.fillStyle = '#f7f3f1';
-        ctx.font = 'bold 56px "Pirata One", serif';
-        ctx.textAlign = 'center';
-        const titleY = 280;
-        const wrappedTitle = this.wrapText(ctx, result.title, width - 200);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 65));
-        });
-        
-        // Playing card aesthetic subtitle
-        const subtitleY = titleY + (wrappedTitle.length * 65) + 50;
-        ctx.font = 'italic 32px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('"' + result.category + '"', width / 2, subtitleY);
-        
-        // Image with gothic frame
-        if (img) {
-            const imgSize = 400;
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 60;
-            
-            // Gothic frame
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 4;
-            ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
-            
-            // Inner shadow effect
-            ctx.strokeStyle = 'rgba(126, 28, 46, 0.3)';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(imgX - 5, imgY - 5, imgSize + 10, imgSize + 10);
-            
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-        }
-        
-        // Description text
-        const descY = height - 300;
-        ctx.font = '28px "IM Fell English", serif';
-        ctx.fillStyle = '#f7f3f1';
-        const wrappedDesc = this.wrapText(ctx, result.description, width - 160);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 35));
-        });
-        
-        // Quote
-        const quoteY = height - 180;
-        ctx.font = 'italic 24px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
-        
-        // Footer
-        const footerY = height - 100;
-        ctx.font = 'bold 24px "Pirata One", serif';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = '20px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
-    }
-
-    drawGothicArtistic(ctx, result, img, logo, width, height) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
-        // Deep burgundy gradient
-        const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/3, height);
-        gradient.addColorStop(0, '#4A1B3A');
-        gradient.addColorStop(0.6, '#7e1c2e');
-        gradient.addColorStop(1, '#2d1b25');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Mystical particles
-        ctx.fillStyle = 'rgba(247, 243, 241, 0.1)';
-        for (let i = 0; i < 500; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const size = Math.random() * 3;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        
-        // Sacred geometry
-        ctx.strokeStyle = 'rgba(247, 243, 241, 0.15)';
-        ctx.lineWidth = 2;
-        for (let i = 0; i < 3; i++) {
-            const radius = 150 + (i * 60);
-            ctx.beginPath();
-            ctx.arc(width/2, height/2, radius, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-        
-        // Title with ethereal glow
-        ctx.fillStyle = '#f7f3f1';
-        ctx.font = 'bold 58px "Pirata One", serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
-        ctx.shadowBlur = 25;
-        
-        const titleY = 180;
-        const wrappedTitle = this.wrapText(ctx, result.title, width - 160);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 70));
-        });
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Category with mystical styling
-        const subtitleY = titleY + (wrappedTitle.length * 70) + 50;
-        ctx.font = 'italic 36px "IM Fell English", serif';
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillText('"The ' + result.category.replace(' Work', '') + '"', width / 2, subtitleY);
-        
-        // Image with mystical frame
-        if (img) {
-            const imgSize = 380;
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 80;
-            
-            // Mystical glow
-            ctx.shadowColor = 'rgba(245, 198, 214, 0.5)';
-            ctx.shadowBlur = 30;
-            ctx.fillStyle = '#f7f3f1';
-            ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-            
-            // Mystical corner ornaments
-            ctx.fillStyle = '#7e1c2e';
-            this.drawGothicStar(ctx, imgX - 25, imgY - 25, 20);
-            this.drawGothicStar(ctx, imgX + imgSize + 25, imgY - 25, 20);
-            this.drawGothicStar(ctx, imgX - 25, imgY + imgSize + 25, 20);
-            this.drawGothicStar(ctx, imgX + imgSize + 25, imgY + imgSize + 25, 20);
-        }
-        
-        // Description
-        const descY = height - 240;
-        ctx.font = '26px "IM Fell English", serif';
-        ctx.fillStyle = '#f7f3f1';
-        const wrappedDesc = this.wrapText(ctx, result.description, width - 160);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 32));
-        });
-        
-        // Footer
-        const footerY = height - 90;
-        ctx.font = 'bold 28px "Pirata One", serif';
-        ctx.fillStyle = '#f5c6d6';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = '22px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#f7f3f1';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
-    }
-
-    drawGothicElegant(ctx, result, img, logo, width, height) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
-        // Elegant dusty rose gradient
-        const gradient = ctx.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, '#D4A5A5');
-        gradient.addColorStop(0.5, '#C09090');
-        gradient.addColorStop(1, '#8B6B6B');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Vignette
-        const vignette = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, Math.max(width, height)/2);
-        vignette.addColorStop(0, 'transparent');
-        vignette.addColorStop(0.7, 'transparent');
-        vignette.addColorStop(1, 'rgba(45, 27, 37, 0.4)');
-        ctx.fillStyle = vignette;
-        ctx.fillRect(0, 0, width, height);
-        
-        // Delicate lace border
-        ctx.strokeStyle = 'rgba(45, 27, 37, 0.3)';
-        ctx.lineWidth = 2;
-        this.drawLaceBorder(ctx, 80, 80, width - 160, height - 160);
-        
-        // Title with elegant typography
-        ctx.fillStyle = '#2d1b25';
-        ctx.font = 'bold 54px "Playfair Display", serif';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(212, 165, 165, 0.6)';
-        ctx.shadowBlur = 10;
-        
-        const titleY = 200;
-        const wrappedTitle = this.wrapText(ctx, result.title, width - 200);
-        wrappedTitle.forEach((line, index) => {
-            ctx.fillText(line, width / 2, titleY + (index * 65));
-        });
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Elegant subtitle
-        const subtitleY = titleY + (wrappedTitle.length * 65) + 40;
-        ctx.font = 'italic 32px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('"The ' + result.category.replace(' Work', '') + '"', width / 2, subtitleY);
-        
-        // Image with elegant frame
-        if (img) {
-            const imgSize = 360;
-            const imgX = (width - imgSize) / 2;
-            const imgY = subtitleY + 70;
-            
-            // Elegant shadow
-            ctx.shadowColor = 'rgba(45, 27, 37, 0.3)';
-            ctx.shadowBlur = 20;
-            ctx.fillStyle = '#f7f3f1';
-            ctx.fillRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            
-            this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
-            
-            // Elegant frame
-            ctx.strokeStyle = '#7e1c2e';
-            ctx.lineWidth = 3;
-            ctx.strokeRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
-        }
-        
-        // Description
-        const descY = height - 280;
-        ctx.font = '24px "IM Fell English", serif';
-        ctx.fillStyle = '#2d1b25';
-        const wrappedDesc = this.wrapText(ctx, result.description, width - 180);
-        wrappedDesc.forEach((line, index) => {
-            ctx.fillText(line, width / 2, descY + (index * 30));
-        });
-        
-        // Quote
-        const quoteY = height - 160;
-        ctx.font = 'italic 22px "IM Fell English", serif';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
-        
-        // Footer
-        const footerY = height - 90;
-        ctx.font = 'bold 26px "Playfair Display", serif';
-        ctx.fillStyle = '#2d1b25';
-        ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
-        
-        ctx.font = '20px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#7e1c2e';
-        ctx.fillText('leahcortezstudios.art', width / 2, footerY + 30);
-    }
-
-    // Helper methods
-    drawGothicStar(ctx, x, y, size) {
-        const points = 5;
-        const outerRadius = size;
-        const innerRadius = size * 0.4;
-        
-        ctx.beginPath();
-        for (let i = 0; i < points * 2; i++) {
-            const radius = i % 2 === 0 ? outerRadius : innerRadius;
-            const angle = (i / (points * 2)) * Math.PI * 2 - Math.PI / 2;
-            const pointX = x + radius * Math.cos(angle);
-            const pointY = y + radius * Math.sin(angle);
-            
-            if (i === 0) {
-                ctx.moveTo(pointX, pointY);
-            } else {
-                ctx.lineTo(pointX, pointY);
-            }
-        }
-        ctx.closePath();
-        ctx.fill();
-    }
-
-    drawLaceBorder(ctx, x, y, width, height) {
-        const scallops = 15;
-        const scallop = width / scallops;
-        
-        // Top border
-        ctx.beginPath();
-        for (let i = 0; i < scallops; i++) {
-            const startX = x + (i * scallop);
-            const midX = startX + (scallop / 2);
-            const endX = startX + scallop;
-            
-            if (i === 0) ctx.moveTo(startX, y);
-            ctx.quadraticCurveTo(midX, y - 8, endX, y);
-        }
-        ctx.stroke();
-        
-        // Bottom border
-        ctx.beginPath();
-        for (let i = 0; i < scallops; i++) {
-            const startX = x + (i * scallop);
-            const midX = startX + (scallop / 2);
-            const endX = startX + scallop;
-            
-            if (i === 0) ctx.moveTo(startX, y + height);
-            ctx.quadraticCurveTo(midX, y + height + 8, endX, y + height);
-        }
-        ctx.stroke();
-    }
-
-    wrapText(ctx, text, maxWidth) {
-        const words = text.split(' ');
-        const lines = [];
-        let currentLine = words[0];
-
-        for (let i = 1; i < words.length; i++) {
-            const word = words[i];
-            const width = ctx.measureText(currentLine + ' ' + word).width;
-            if (width < maxWidth) {
-                currentLine += ' ' + word;
-            } else {
-                lines.push(currentLine);
-                currentLine = word;
-            }
-        }
-        lines.push(currentLine);
-        return lines;
-    }
-
-    drawImageCentered(ctx, img, x, y, width, height) {
-        const imgAspect = img.naturalWidth / img.naturalHeight;
-        const boxAspect = width / height;
-        
-        let drawWidth, drawHeight, drawX, drawY;
-        
-        if (imgAspect > boxAspect) {
-            drawHeight = height;
-            drawWidth = height * imgAspect;
-            drawX = x - (drawWidth - width) / 2;
-            drawY = y;
-        } else {
-            drawWidth = width;
-            drawHeight = width / imgAspect;
-            drawX = x;
-            drawY = y - (drawHeight - height) / 2;
-        }
-        
-        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
-    }
-
-    async loadImage(src) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = src;
-        });
-    }
-
-    showShareOptions(canvas, result) {
-        console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
-        
-        // Create modal with improved share options
-        const modal = document.createElement('div');
-        modal.className = 'share-modal';
-        modal.innerHTML = `
-            <div class="share-modal-content">
-                <button class="close-modal-btn" aria-label="Close">&times;</button>
-                <div class="share-header">
-                    <h3>Share Your Creative Match!</h3>
-                    <p>Share your "${result.title}" result and inspire others to discover their creative soul.</p>
-                </div>
-                
-                <div class="share-preview">
-                    <img src="${canvas.toDataURL()}" alt="Your quiz result preview" class="result-preview-img" />
-                </div>
-                
-                <div class="share-options">
-                    <div class="share-section">
-                        <h4>📱 Social Media</h4>
-                        <div class="social-buttons">
-                            <button class="share-btn instagram-btn">
-                                <img src="icons/instagram.svg" alt="" width="20" height="20" />
-                                <span>Instagram Stories</span>
-                            </button>
-                            <button class="share-btn facebook-btn">
-                                <img src="icons/facebook.svg" alt="" width="20" height="20" />
-                                <span>Facebook</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="share-section">
-                        <h4>🔗 Quick Share</h4>
-                        <div class="quick-share">
-                            <button class="share-btn copy-link-btn">
-                                <img src="icons/link.svg" alt="" width="18" height="18" />
-                                <span>Copy Link</span>
-                            </button>
-                            <button class="share-btn save-image-btn">
-                                <img src="icons/download.svg" alt="" width="18" height="18" />
-                                <span>Save Image</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="share-section">
-                        <h4>✨ Share Text</h4>
-                        <div class="share-text">
-                            <textarea readonly class="share-message" rows="3">I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!</textarea>
-                            <button class="copy-text-btn">Copy Text</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Bind event listeners with improved UX
-        modal.querySelector('.instagram-btn').addEventListener('click', () => {
-            this.shareToInstagram(canvas, result);
-        });
-        
-        modal.querySelector('.facebook-btn').addEventListener('click', () => {
-            this.shareToFacebook(canvas, result);
-        });
-        
-        modal.querySelector('.copy-link-btn').addEventListener('click', () => {
-            this.copyShareLink(result);
-        });
-        
-        modal.querySelector('.save-image-btn').addEventListener('click', () => {
-            this.saveImage(canvas, result);
-        });
-        
-        modal.querySelector('.copy-text-btn').addEventListener('click', () => {
-            this.copyShareText(result);
-        });
-        
-        modal.querySelector('.close-modal-btn').addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
-        
-        // Close on background click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-            }
-        });
-        
-        // Show modal with animation
-        setTimeout(() => modal.classList.add('active'), 100);
-    }
-
-    shareToFacebook(canvas, result) {
-        // Save the image first
-        canvas.toBlob((blob) => {
-            const link = document.createElement('a');
-            link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
-            link.href = canvas.toDataURL();
-            link.click();
-            
-            // Show user-friendly instructions
-            setTimeout(() => {
-                const shareText = encodeURIComponent(`I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`);
-                const shareUrl = encodeURIComponent('https://leahcortezstudios.art/#portfolio-quiz');
-                
-                // Try to open Facebook share dialog
-                const fbWindow = window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
-                
-                // Show simple, clear instructions
-                if (fbWindow) {
-                    setTimeout(() => {
-                        const modal = document.createElement('div');
-                        modal.className = 'instruction-modal';
-                        modal.innerHTML = `
-                            <div class="instruction-content">
-                                <h3>🎉 Image Downloaded!</h3>
-                                <p><strong>Facebook sharing made easy:</strong></p>
-                                <ol>
-                                    <li>In the Facebook window that opened, click <strong>"Add Photo"</strong></li>
-                                    <li>Upload your downloaded quiz result image</li>
-                                    <li>Add your personal message and share!</li>
-                                </ol>
-                                <button class="got-it-btn">Got it! ✓</button>
-                            </div>
-                        `;
-                        document.body.appendChild(modal);
-                        modal.querySelector('.got-it-btn').addEventListener('click', () => {
-                            document.body.removeChild(modal);
-                        });
-                        setTimeout(() => modal.classList.add('active'), 100);
-                    }, 1000);
-                }
-            }, 300);
-        }, 'image/png');
-    }
-
-    shareToInstagram(canvas, result) {
-        // For Instagram Stories, we'll save the image and provide better instructions
-        canvas.toBlob((blob) => {
-            const link = document.createElement('a');
-            link.download = `gothic-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
-            link.href = canvas.toDataURL();
-            link.click();
-            
-            // Show comprehensive Instagram sharing instructions
-            setTimeout(() => {
-                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                
-                if (isMobile) {
-                    // Try to open Instagram app for mobile users
-                    const instagramUrl = 'instagram://story-camera';
-                    const fallbackUrl = 'https://www.instagram.com/';
-                    
-                    // Try to open Instagram app
-                    const now = new Date().valueOf();
-                    setTimeout(() => {
-                        if (new Date().valueOf() - now > 100) return;
-                        window.location = fallbackUrl;
-                    }, 25);
-                    window.location = instagramUrl;
-                    
-                    alert(`📱 Image saved for Instagram Stories!\n\n✨ INSTAGRAM STORIES:\n1. Open Instagram app (should open automatically)\n2. Tap "Your Story" or swipe right from feed\n3. Tap the gallery icon (bottom left)\n4. Select your downloaded gothic quiz image\n5. Add text, stickers, or music if desired\n6. Share to your story! 🖤\n\n📖 INSTAGRAM FEED:\n1. Tap "+" to create new post\n2. Select the downloaded image\n3. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n4. Share your result!`);
-                } else {
-                    // Desktop instructions
-                    alert(`💻 Image saved for Instagram!\n\n📱 TO SHARE ON MOBILE:\n1. Transfer the downloaded image to your phone\n2. Open Instagram app\n3. For Stories: Swipe right → Gallery → Select image\n4. For Feed: Tap "+" → Select image → Add caption\n\n🌐 FROM DESKTOP:\n1. Go to instagram.com\n2. Click "+" to create new post\n3. Upload the downloaded gothic quiz image\n4. Add caption: "I just discovered my creative soul match: ${result.title}! 🖤 Take the Portfolio Soul Quiz at leahcortezstudios.art"\n5. Share your result! 🖤`);
-                }
-            }, 500);
-        }, 'image/png');
-    }
-
-    saveImage(canvas, result) {
-        const link = document.createElement('a');
-        link.download = `portfolio-soul-quiz-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-    }
-
-    copyShareLink(result) {
-        const shareUrl = `https://leahcortezstudios.art/?result=${result.category.toLowerCase().replace(' work', '')}`;
-        navigator.clipboard.writeText(shareUrl).then(() => {
-            // Show success feedback
-            const button = document.querySelector('.copy-link-btn');
-            const originalHTML = button.innerHTML;
-            button.innerHTML = '<img src="icons/link.svg" alt="" width="18" height="18" /><span>Copied! ✓</span>';
-            button.style.background = '#28a745';
-            button.style.borderColor = '#28a745';
-            setTimeout(() => {
-                button.innerHTML = originalHTML;
-                button.style.background = '';
-                button.style.borderColor = '';
-            }, 2000);
-        }).catch(() => {
-            // Fallback
-            alert('Quiz link: ' + shareUrl);
-        });
-    }
-
-    showSimpleShare(result) {
-        const shareText = `I just discovered my creative soul match: ${result.title}! Take the Portfolio Soul Quiz at leahcortezstudios.art`;
-        
-        if (navigator.share) {
-            navigator.share({
-                title: 'Portfolio Soul Quiz Result',
-                text: shareText,
-                url: 'https://leahcortezstudios.art'
-            });
-        } else {
-            navigator.clipboard.writeText(shareText).then(() => {
-                alert('Result text copied to clipboard!');
-            });
-        }
-    }
-
-    copyShareText(result) {
-        const shareText = `I just discovered my creative soul match: "${result.title}"! 🎨 Take the Portfolio Soul Quiz at leahcortezstudios.art and find your artistic inspiration!`;
-        navigator.clipboard.writeText(shareText).then(() => {
-            // Show success feedback
-            const button = document.querySelector('.copy-text-btn');
-            const originalText = button.textContent;
-            button.textContent = 'Copied! ✓';
-            button.style.background = '#28a745';
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
-            }, 2000);
-        }).catch(() => {
-            // Fallback for older browsers
-            const textArea = document.querySelector('.share-message');
-            textArea.select();
-            document.execCommand('copy');
-            alert('Share text copied to clipboard!');
-        });
-    }
-
-    saveImage(canvas, result) {
-        const link = document.createElement('a');
-        link.download = `creative-soul-match-${result.title.toLowerCase().replace(/\s+/g, '-')}.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-        
-        // Show success feedback
-        const button = document.querySelector('.save-image-btn');
-        const originalText = button.innerHTML;
-        button.innerHTML = '<span>Saved! ✓</span>';
-        button.style.background = '#28a745';
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.style.background = '';
-        }, 2000);
-    }
-
-    resetQuiz() {
-        this.currentQuestion = 0;
-        this.answers = [];
-        this.showSection('quiz-start');
-    }
-
 }
 
 // Initialize quiz when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("🔄 Quiz.js loaded - Version 1754401349 - Streamlined to 3 options per question!");
+    console.log("🚀 Initializing Portfolio Quiz...");
     new PortfolioQuiz();
 });
