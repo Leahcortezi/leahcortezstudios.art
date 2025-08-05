@@ -484,7 +484,7 @@ class PortfolioQuiz {
                 <div class="result-header">
                     <h2 class="result-title">${result.title}</h2>
                     <p class="result-subtitle">${result.subtitle}</p>
-                    <p class="result-core-identity">"${result.archetype.coreIdentity}"</p>
+                    <p class="result-core-identity">"${result.archetype.essence}"</p>
                 </div>
                 <div class="result-content">
                     <div class="result-image">
