@@ -1221,7 +1221,7 @@ h1, h2, h3, h4, h5, h6 {
    -------------------- */
 
 .portfolio-quiz-section {
-  padding: 80px 20px;
+  padding: 40px 20px 80px 20px; 
   background: var(--dark-charcoal);
   border-top: 3px solid var(--burgundy);
   border-bottom: 3px solid var(--burgundy);
