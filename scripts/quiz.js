@@ -56,13 +56,13 @@ class PortfolioQuiz {
             },
             {
             id: 5,
-            text: "What kind of art stops you in your tracks?",
+            text: "When you scroll through art online, what makes you actually stop and save it?",
             options: [
-                { text: "Work with flawless concept-to-execution consistency.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "Work that makes you feel understood without saying a word.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "Pieces that look like organized chaos and somehow make perfect sense.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Art that makes you want to text everyone you know about injustice.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Something that makes you go 'wait, you can DO that?'", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Clean lines and perfect composition that makes you want to reorganize your entire life.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "Something raw that hits you right in the feelings before you even know what it is.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "Messy, layered pieces where you discover new details every time you look.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Bold work that makes a statement and doesn't care who's uncomfortable.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Weird experimental stuff that makes you go down a 2-hour rabbit hole.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             }
         ];
