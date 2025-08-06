@@ -1584,7 +1584,7 @@ function generateBrandingRecommendations(projectType, audience, mood) {
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
             <div>
-                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">✨ Key Elements</h5>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">Key Elements</h5>
                 <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
                     <li>Consistent color usage across all materials</li>
                     <li>Typography that matches your brand voice</li>
@@ -1593,7 +1593,7 @@ function generateBrandingRecommendations(projectType, audience, mood) {
                 </ul>
             </div>
             <div>
-                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">🎯 Brand Application</h5>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">Brand Application</h5>
                 <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
                     <li>Business cards and stationery</li>
                     <li>Digital presence (website, social media)</li>
@@ -1999,7 +1999,7 @@ function generateColorRecommendations(projectType, audience, mood) {
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">We've selected ${selectedPalettes.length} complementary palettes based on your preferences. Each palette includes 4 colors: primary, secondary, accent, and background.${audienceNote}</p>
         </div>
         <div style="margin-bottom: 15px;">
-            <h4 style="color: #f8c8d0; margin: 0 0 10px 0; font-size: 0.95rem;">💡 Usage Guidelines</h4>
+            <h4 style="color: #f8c8d0; margin: 0 0 10px 0; font-size: 0.95rem;">Usage Guidelines</h4>
             <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.5;">
                 <li><strong>Primary (darkest):</strong> Main brand color, headers, important text</li>
                 <li><strong>Secondary:</strong> Supporting elements, buttons, links</li>

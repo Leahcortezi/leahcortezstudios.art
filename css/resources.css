@@ -552,10 +552,13 @@
     border: 2px solid var(--color-primary-accent);
     border-radius: 15px;
     max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 20px auto;
     backdrop-filter: blur(10px);
     position: relative;
-    top: 50px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
 }
 
 .professional-palette-maker {
@@ -1491,6 +1494,7 @@
     
     .step-header h3 {
         margin: 0;
+        font-size: 1.5rem;
     }
     
     .moodboard-grid,
@@ -1533,9 +1537,26 @@
     }
     
     .modal-content {
-        top: 20px;
-        max-height: 90vh;
+        margin: 10px;
+        max-width: calc(100vw - 20px);
+        max-height: calc(100vh - 20px);
         overflow-y: auto;
+    }
+    
+    .resource-modal {
+        padding: 10px;
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 20px;
     }
 }
 
@@ -1558,6 +1579,32 @@
     
     .step-header h3 {
         font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        margin: 5px;
+        max-width: calc(100vw - 10px);
+        border-radius: 10px;
+    }
+    
+    .modal-header {
+        padding: 10px 15px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+    
+    .resource-modal {
+        padding: 5px;
+    }
+    
+    .palette-step {
+        padding: 15px 10px;
     }
 }
 
