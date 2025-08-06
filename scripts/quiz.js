@@ -12,12 +12,12 @@ class PortfolioQuiz {
         this.questions = [
             {
             id: 1,
-            text: "What's your biggest art-school pet peeve?",
+            text: "What makes you irrationally angry about design?",
             options: [
-                { text: "Bad kerning. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Bad spacing. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
                 { text: "When people act like emotional art is cringe.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
                 { text: "People who throw away 'scraps.' I needed those.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Critique where no one talks but the professor.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Art that doesn't say anything important.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
                 { text: "When someone says 'it's giving AI' and they're right.", piece: "elements-book", weight: 3 } // Restless Experimenter
             ]
             },
@@ -56,13 +56,13 @@ class PortfolioQuiz {
             },
             {
             id: 5,
-            text: "What's your vibe while making stuff?",
+            text: "What kind of art stops you in your tracks?",
             options: [
-                { text: "Naming your layers 'final_FINAL2_reallyfinal.psd'.", piece: "playing-cards", weight: 3 }, // Perfectionist
-                { text: "Replaying childhood trauma like a podcast.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "Covered in paint. Also maybe crying.", piece: "heaven-on-fire", weight: 3 }, // Chaotic Creator
-                { text: "Channeling rage into every brushstroke.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Hot gluing eyes on things at 2am.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Something so clean and perfect it makes you weep.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "Pieces that punch you in the feelings unexpectedly.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "Work that looks like beautiful controlled chaos.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Art that makes you want to change the world.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Something you've never seen done before.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             }
         ];
