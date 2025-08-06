@@ -8,125 +8,127 @@ class PortfolioQuiz {
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
+        // === REWRITTEN QUESTIONS & ANSWERS ===
         this.questions = [
             {
             id: 1,
-            text: "When you're drained, what type of art pulls you back in?",
+            text: "What do you do when you’re deep in burnout?",
             options: [
-                { text: "I sketch through the spiral. No audience, just survival.", piece: "anointed-gaze", weight: 3 },
-                { text: "I light candles and build a tiny altar.", piece: "abuelas-altar", weight: 3 },
-                { text: "I paint until the brush breaks. Then I finger-paint.", piece: "heaven-on-fire", weight: 3 },
-                { text: "I build a creature no one asked for and love it anyway.", piece: "abyss-bloom", weight: 3 },
-                { text: "I rearrange my tools alphabetically and feel better.", piece: "typographic-interpretation", weight: 3 }
+                { text: "Mindlessly sketch haunted eyes in the corner of the page until you cry or pass out.", piece: "anointed-gaze", weight: 3 },
+                { text: "Light a candle. Rearrange sentimental junk. Cry. Repeat.", piece: "abuelas-altar", weight: 3 },
+                { text: "Start a painting. Hate it. Set it on fire emotionally (maybe literally).", piece: "heaven-on-fire", weight: 3 },
+                { text: "Hot glue weird stuff together and whisper ‘you are my son’ to it.", piece: "abyss-bloom", weight: 3 },
+                { text: "Clean your desk. Make a to-do list about making art. Don’t make art.", piece: "typographic-interpretation", weight: 3 }
             ]
             },
             {
             id: 2,
-            text: "Your creative process is usually...",
+            text: "What’s your real art process?",
             options: [
-                { text: "Breaking things to see how they were made.", piece: "gnaw", weight: 3 },
-                { text: "Turning chaos into games, systems, or categories.", piece: "playing-cards", weight: 3 },
-                { text: "Collecting weird trash and pretending it’s on purpose.", piece: "collected-remains", weight: 3 },
-                { text: "Reducing everything until it feels honest.", piece: "reductive-symbols", weight: 3 },
-                { text: "Building meaning through playful experiments.", piece: "elements-book", weight: 3 }
+                { text: "Break stuff to see what’s inside. Repeat until it’s good or a mess.", piece: "gnaw", weight: 3 },
+                { text: "Invent a whole fake system so you feel in control. Chaos = tamed.", piece: "playing-cards", weight: 3 },
+                { text: "Pick up trash and decide it's meaningful now.", piece: "collected-remains", weight: 3 },
+                { text: "Delete 90% of it until it’s one dot with a deep backstory.", piece: "reductive-symbols", weight: 3 },
+                { text: "Make a joke design. Accidentally make it profound.", piece: "elements-book", weight: 3 }
             ]
             },
             {
             id: 3,
-            text: "The feedback that would hurt the most:",
+            text: "What critique would absolutely ruin your week?",
             options: [
-                { text: "You’re too much. Too emotional. Too intense.", piece: "anointed-gaze", weight: 3 },
-                { text: "You’re stuck in the past.", piece: "inheritance", weight: 3 },
-                { text: "Your ideas are too weird to make sense.", piece: "abyss-bloom", weight: 3 },
-                { text: "Your design is soulless. No heart.", piece: "typographic-interpretation", weight: 3 },
-                { text: "You made this as a joke, right?", piece: "elements-book", weight: 3 }
+                { text: "You’re a little... much.", piece: "anointed-gaze", weight: 3 },
+                { text: "This feels like you're just working through your trauma.", piece: "inheritance", weight: 3 },
+                { text: "Are you okay? This is kinda disturbing.", piece: "abyss-bloom", weight: 3 },
+                { text: "This feels clean but soulless.", piece: "typographic-interpretation", weight: 3 },
+                { text: "This looks like a school project. Was it?", piece: "elements-book", weight: 3 }
             ]
             },
             {
             id: 4,
             text: "What do your hands crave?",
             options: [
-                { text: "Wire, thread, anything I can bind or twist.", piece: "unraveling", weight: 3 },
-                { text: "Paint, fire, and emotional combustion.", piece: "heaven-on-fire", weight: 3 },
-                { text: "Found junk with good energy.", piece: "collected-remains", weight: 3 },
-                { text: "Precise rulers, pens, and a good grid.", piece: "typographic-interpretation", weight: 3 },
-                { text: "Symbols and objects from family history.", piece: "abuelas-altar", weight: 3 }
+                { text: "Wire. Thread. Anything I can twist into my emotions.", piece: "unraveling", weight: 3 },
+                { text: "Messy paint. Fire. Brushes that snap in half dramatically.", piece: "heaven-on-fire", weight: 3 },
+                { text: "Junk from the street with good vibes.", piece: "collected-remains", weight: 3 },
+                { text: "A ruler, a pencil, and complete control over everything.", piece: "typographic-interpretation", weight: 3 },
+                { text: "Ritual objects and family heirlooms I found in a box.", piece: "abuelas-altar", weight: 3 }
             ]
             },
             {
             id: 5,
-            text: "People in critique say you're the one who...",
+            text: "In critique, people always say you...",
             options: [
-                { text: "Draws like they're exorcising a ghost.", piece: "anointed-gaze", weight: 3 },
-                { text: "Brings the conversation back to social issues.", piece: "double-sided-poster", weight: 3 },
-                { text: "Thinks in rules, breaks them anyway.", piece: "playing-cards", weight: 3 },
-                { text: "Sculpts their anxiety into beautiful knots.", piece: "unraveling", weight: 3 },
-                { text: "Talks about font kerning like it’s spiritual.", piece: "typographic-interpretation", weight: 3 }
+                { text: "Draw like you're trying to summon something.", piece: "anointed-gaze", weight: 3 },
+                { text: "Somehow made it about social justice again (slay).", piece: "double-sided-poster", weight: 3 },
+                { text: "Break every rule, but with a plan?", piece: "playing-cards", weight: 3 },
+                { text: "Turn your mental breakdowns into beautiful knots.", piece: "unraveling", weight: 3 },
+                { text: "Get emotional about fonts. And make us care too.", piece: "typographic-interpretation", weight: 3 }
             ]
             },
             {
             id: 6,
-            text: "When you're creatively blocked, you...",
+            text: "When you’re creatively blocked…",
             options: [
-                { text: "Invent a silly concept with surprising depth.", piece: "elements-book", weight: 3 },
-                { text: "Pick up trash and wait for it to whisper.", piece: "collected-remains", weight: 3 },
-                { text: "Reduce everything down to a dot and call it done.", piece: "reductive-symbols", weight: 3 },
-                { text: "Draw something just for you. Ugly on purpose.", piece: "anointed-gaze", weight: 3 },
-                { text: "Recreate something from your childhood, but weirder.", piece: "abyss-bloom", weight: 3 }
+                { text: "Invent a joke idea that accidentally changes your life.", piece: "elements-book", weight: 3 },
+                { text: "Collect weird objects and hope they start a conversation.", piece: "collected-remains", weight: 3 },
+                { text: "Reduce everything until it’s basically just ✦ ✦ ✦.", piece: "reductive-symbols", weight: 3 },
+                { text: "Draw something ugly on purpose and end up loving it.", piece: "anointed-gaze", weight: 3 },
+                { text: "Recreate a childhood memory but make it weird and gooey.", piece: "abyss-bloom", weight: 3 }
             ]
             },
             {
             id: 7,
-            text: "Your dream studio has...",
+            text: "Your dream studio would have…",
             options: [
-                { text: "Dust, tools, raw mess. Sculptural chaos.", piece: "gnaw", weight: 3 },
-                { text: "A sacred shelf of memory and meaning.", piece: "abuelas-altar", weight: 3 },
-                { text: "Books, rulers, rulers about books.", piece: "typographic-interpretation", weight: 3 },
-                { text: "A vibe board covered in revolution posters.", piece: "double-sided-poster", weight: 3 },
-                { text: "Drawers full of weird textures and wire.", piece: "unraveling", weight: 3 }
+                { text: "A mess of half-finished sculptures and suspicious tools.", piece: "gnaw", weight: 3 },
+                { text: "A glowing shelf of memory, vibes, and emotional dust.", piece: "abuelas-altar", weight: 3 },
+                { text: "Shelves labeled by font category. Precision is self-care.", piece: "typographic-interpretation", weight: 3 },
+                { text: "Posters that scream design IS political.", piece: "double-sided-poster", weight: 3 },
+                { text: "Drawers full of wire, texture scraps, and slightly cursed ribbon.", piece: "unraveling", weight: 3 }
             ]
             },
             {
             id: 8,
-            text: "Art, at its best, should...",
+            text: "Art should…",
             options: [
-                { text: "Unpack trauma and transform it into clarity.", piece: "inheritance", weight: 3 },
-                { text: "Shout truth in bold letters.", piece: "double-sided-poster", weight: 3 },
-                { text: "Make people laugh and then feel weird about it.", piece: "elements-book", weight: 3 },
-                { text: "Say everything in the simplest shape.", piece: "reductive-symbols", weight: 3 },
-                { text: "Document the stuff no one thinks is important.", piece: "collected-remains", weight: 3 }
+                { text: "Unpack trauma and turn it into something less heavy.", piece: "inheritance", weight: 3 },
+                { text: "Yell at people in bold type and cool colors.", piece: "double-sided-poster", weight: 3 },
+                { text: "Make you laugh, then feel weird, then think.", piece: "elements-book", weight: 3 },
+                { text: "Say everything with the smallest shape possible.", piece: "reductive-symbols", weight: 3 },
+                { text: "Honor the overlooked stuff that’s full of meaning.", piece: "collected-remains", weight: 3 }
             ]
             }
         ];
 
+        // === REWRITTEN ARCHETYPE RESULTS ===
         this.portfolioData = {
             "anointed-gaze": {
             title: "The Sleepless Sketcher",
             subtitle: "Anointed Gaze",
             category: "Personal Work",
             archetype: {
-                essence: "You draw until your hands cramp and your brain floats.",
-                medium: "Charcoal, graphite, and endless sketchbooks",
-                strength: "Emotional rawness and obsessive observation",
-                challenge: "Knowing when to rest and let go"
+                essence: "You sketch like you’re possessed. Emotional? Maybe. Haunted? Definitely.",
+                medium: "Charcoal. Pencil. Crying on the page.",
+                strength: "Catching feelings through line work.",
+                challenge: "Not every drawing has to be a breakdown."
             },
             description: "You're the artist who journals breakdowns in gesture lines. Eyes haunt your pages, and your sketchbook is a confessional. You process everything through drawing — even when you should probably be sleeping.",
-            quote: "I draw until the world blurs and my feelings sharpen.",
+            quote: "I draw until I disassociate. And then I draw that too.",
             image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
             path: "collections/personal/anointed-gaze/index.html"
             },
             "abuelas-altar": {
-            title: "The Memory Keeper",
+            title: "The Sentimental Shrine Builder",
             subtitle: "Abuela's Altar",
             category: "Personal Work",
             archetype: {
-                essence: "You archive family stories through objects and space.",
-                medium: "Altars, candles, and sacred assemblages",
-                strength: "Turning grief into ritual and reverence",
-                challenge: "Letting go of what you can’t preserve"
+                essence: "Your studio smells like old candles, and you treat every found object like it has a soul.",
+                medium: "Candles, rosaries, and inherited buttons.",
+                strength: "Turning nostalgia into sacred art.",
+                challenge: "You can’t keep every single object (even if it’s cute)."
             },
-            description: "You're the artist who lights candles before critiques — metaphorically and literally. You transform loss into sacred space, and every object is a vessel for memory.",
-            quote: "I build altars so my ancestors always have a seat at the table.",
+            description: "You turn family, grief, and memory into sacred installations. You're basically a one-person museum of feelings.",
+            quote: "Is it trash or an emotional relic? Yes.",
             image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
             path: "collections/personal/abuelas-altar/index.html"
             },
@@ -135,13 +137,13 @@ class PortfolioQuiz {
             subtitle: "Heaven on Fire",
             category: "Personal Work",
             archetype: {
-                essence: "You paint like the world is ending and that's the point.",
-                medium: "Fiery paintings, chaos, and color",
-                strength: "Making destruction look delicate",
-                challenge: "Finding peace without the drama"
+                essence: "You paint like you’re trying to win an emotional apocalypse.",
+                medium: "Fiery brushstrokes and paint that gets everywhere.",
+                strength: "Making chaos look gorgeous.",
+                challenge: "Sometimes you need a break from intensity."
             },
-            description: "You're the artist who thrives in chaos and emotional combustion. You make apocalypse look poetic, and your brushwork is a controlled explosion.",
-            quote: "I set paradise on fire just to see what grows back.",
+            description: "Your work is fire, literally and metaphorically. People say your art is “a lot” — and you say thank you.",
+            quote: "If it’s not dramatic, I’m not interested.",
             image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
             path: "collections/personal/heaven-on-fire/index.html"
             },
@@ -150,13 +152,13 @@ class PortfolioQuiz {
             subtitle: "Inheritance",
             category: "Personal Work",
             archetype: {
-                essence: "You make art to unpack everything you were handed.",
-                medium: "Installations, threads, and symbol-heavy portraits",
-                strength: "Breaking cycles with insight and empathy",
-                challenge: "Not letting the past define your future"
+                essence: "You make art like a therapist with a glue stick.",
+                medium: "Yarn, old photos, family secrets.",
+                strength: "Turning identity crises into installations.",
+                challenge: "Not everything has to be that deep… probably."
             },
-            description: "You're the artist who thinks in bloodlines and family patterns. You turn inherited silence into visual language, and every piece is a footnote to your story.",
-            quote: "I unravel what I inherit, one thread at a time.",
+            description: "Everything you create has layers — of trauma, cultural commentary, and probably thread. You’re not just unpacking your past; you’re making a slideshow about it.",
+            quote: "I turned my generational trauma into a design concept.",
             image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
             path: "collections/personal/inheritance/index.html"
             },
@@ -165,13 +167,13 @@ class PortfolioQuiz {
             subtitle: "Gnaw",
             category: "Studio Work",
             archetype: {
-                essence: "You carve until the piece bleeds.",
-                medium: "Sculpture, teeth, and eroded forms",
-                strength: "Revealing what hides beneath the surface",
-                challenge: "Knowing when to stop digging"
+                essence: "You carve, shred, and rip your way to the truth.",
+                medium: "Anything breakable, bendable, or biteable.",
+                strength: "Making destruction look intentional.",
+                challenge: "Knowing when to stop before everything breaks."
             },
-            description: "You're the artist who thinks teeth are underused as symbols. You love mess, form, and the truth that comes from destruction.",
-            quote: "I carve until the material tells me its secrets.",
+            description: "Sculpting is your coping mechanism and also your gym membership. If something’s not falling apart, you probably haven’t started yet.",
+            quote: "I sanded it down to the bone and then kept going.",
             image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
             path: "collections/studio/gnaw/index.html"
             },
@@ -180,13 +182,13 @@ class PortfolioQuiz {
             subtitle: "Unraveling",
             category: "Studio Work",
             archetype: {
-                essence: "You use wire and tension to process your inner chaos.",
-                medium: "Wire, knots, and sculpted anxiety",
-                strength: "Turning structure into therapy",
-                challenge: "Letting go of control"
+                essence: "You sculpt your anxiety into wire, knots, and small controlled messes.",
+                medium: "Wire, thread, unresolved feelings.",
+                strength: "Making chaos look organized.",
+                challenge: "You might be overthinking this."
             },
-            description: "You're the artist who sculpts thoughts directly. You believe structure is healing, and every twist of wire is a step toward clarity.",
-            quote: "I bind my worries until they become something beautiful.",
+            description: "Every piece is a beautifully tangled panic attack you’re lowkey proud of.",
+            quote: "If I can’t untangle my thoughts, I’ll just twist them into art.",
             image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
             path: "collections/studio/unraveling/index.html"
             },
@@ -195,13 +197,13 @@ class PortfolioQuiz {
             subtitle: "Abyss Bloom",
             category: "Studio Work",
             archetype: {
-                essence: "You make beautiful things that shouldn’t exist.",
-                medium: "Glowing, gooey, bioluminescent sculptures",
-                strength: "Turning nightmares into pets",
-                challenge: "Letting your creatures live outside the shadows"
+                essence: "You make squishy little monsters and call it art.",
+                medium: "Glowing goo, sad eyes, body horror lite™.",
+                strength: "Turning nightmares into adoptable pets.",
+                challenge: "People keep asking if you’re okay (you are)."
             },
-            description: "You're the artist who loves soft horror and biology. You invent glowing organisms and make the uncanny adorable.",
-            quote: "I grow impossible flowers in the dark corners of my mind.",
+            description: "You’re the person who says, “It’s cute!” while everyone else is slightly scared. Bioluminescent? Gooey? Unsettling? Yes to all of the above.",
+            quote: "This one has four limbs and trauma. I love them.",
             image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
             path: "collections/studio/abyss-bloom/index.html"
             },
@@ -210,13 +212,13 @@ class PortfolioQuiz {
             subtitle: "Collected Remains",
             category: "Studio Work",
             archetype: {
-                essence: "You hoard with purpose.",
-                medium: "Assemblages of abandoned things",
-                strength: "Seeing potential in the discarded",
-                challenge: "Not keeping everything that whispers to you"
+                essence: "You collect weird little objects “for a project.”",
+                medium: "Broken things with emotional potential.",
+                strength: "Finding magic in literal garbage.",
+                challenge: "Your workspace is a danger zone."
             },
-            description: "You're the artist whose workbench is a spiritual junk drawer. You turn trash into storytelling devices and believe every ruin has a secret.",
-            quote: "I collect what others abandon because every object has a past.",
+            description: "You never throw anything away because “it has a vibe.” Your studio is 20% art supplies and 80% haunted thrift store finds.",
+            quote: "It’s not hoarding if it’s conceptual.",
             image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
             path: "collections/studio/collected-remains/index.html"
             },
@@ -225,13 +227,13 @@ class PortfolioQuiz {
             subtitle: "Typographic Interpretation",
             category: "Design Work",
             archetype: {
-                essence: "You can spot bad tracking from across the room.",
-                medium: "Expressive, rule-breaking typography",
-                strength: "Making fonts feel things",
-                challenge: "Letting go of perfection"
+                essence: "You see fonts the way some people see auras.",
+                medium: "Grids, rulers, and passive-aggressive typefaces.",
+                strength: "Making letters feel things.",
+                challenge: "Perfectionism in places no one notices but you."
             },
-            description: "You're the designer who judges every menu and poster. You’d die for hierarchy, and you believe letters have souls.",
-            quote: "I free letters from their cages and watch them dance.",
+            description: "You’ve cried over bad tracking and fought someone over Helvetica. Type isn’t just design—it’s your love language (and your Roman Empire).",
+            quote: "This font pairing is giving me a migraine.",
             image: "collections/design/typographic-interpretation/images/design5.jpg",
             path: "collections/design/typographic-interpretation/index-case-study.html"
             },
@@ -240,13 +242,13 @@ class PortfolioQuiz {
             subtitle: "Scientific Revolution Playing Cards",
             category: "Design Work",
             archetype: {
-                essence: "You have 17 tabs open, and they’re all research.",
-                medium: "Educational design disguised as entertainment",
-                strength: "Making rules just to break them beautifully",
-                challenge: "Finishing before the next big idea hits"
+                essence: "You have 14 sketchbooks, 37 tabs open, and one very specific system that only you understand.",
+                medium: "Color codes, timelines, trivia.",
+                strength: "Turning chaos into clever structure.",
+                challenge: "You start 10 projects for every 1 you finish."
             },
-            description: "You're the designer who thinks in categories, color codes, and revolution timelines. You smuggle knowledge inside beautiful experiences.",
-            quote: "I turn chaos into systems and systems into play.",
+            description: "Your art is research. Your systems are games. Your brain is a beautiful spreadsheet with glitter.",
+            quote: "This deck is about science, but also about me winning.",
             image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
             path: "collections/design/themed-playing-card-design/index-case-study.html"
             },
@@ -255,13 +257,13 @@ class PortfolioQuiz {
             subtitle: "Elements & Principles Book Cover",
             category: "Design Work",
             archetype: {
-                essence: "You make things that are funny, sad, and secretly deep.",
-                medium: "Playful visuals with serious commentary",
-                strength: "Balancing cute and weird",
-                challenge: "Not hiding meaning behind the joke"
+                essence: "You love to make people laugh—then immediately regret it by hitting them with deep meaning.",
+                medium: "Bright colors, visual puns, chaotic joy.",
+                strength: "Making people feel things after they laugh.",
+                challenge: "Hiding behind the joke a little too well."
             },
-            description: "You're the designer who sneaks big ideas into playful packages. You live for the line between silly and profound.",
-            quote: "I use whimsy to say what seriousness can’t.",
+            description: "Everything you make is funny, sad, and weirdly brilliant. You’re the class clown with a thesis.",
+            quote: "Yes, it’s silly. No, I’m not explaining it.",
             image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
             path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
             },
@@ -270,13 +272,13 @@ class PortfolioQuiz {
             subtitle: "Double-Sided Poster",
             category: "Design Work",
             archetype: {
-                essence: "You use posters to fight injustice.",
-                medium: "Bold, activist typography",
-                strength: "Disrupting and informing with design",
-                challenge: "Finding subtlety without losing impact"
+                essence: "You make protest posters for fun.",
+                medium: "Bold type, strong opinions, minimal chill.",
+                strength: "Making people read and feel things.",
+                challenge: "Subtlety is not your thing (and that’s fine)."
             },
-            description: "You're the person who actually reads theory — and then yells it in bold type. Your work doesn’t just communicate, it interrogates.",
-            quote: "I break typography so it can shout uncomfortable truths.",
+            description: "You’ve definitely made someone uncomfortable with your typography—and you’re proud of it. Your design isn’t just visual, it’s a weapon.",
+            quote: "This typeface is yelling for a reason.",
             image: "collections/design/double-sided-poster/images/Design8.jpg",
             path: "collections/design/double-sided-poster/index-case-study.html"
             },
@@ -285,13 +287,13 @@ class PortfolioQuiz {
             subtitle: "Reductive Symbols",
             category: "Design Work",
             archetype: {
-                essence: "You strip everything down to what matters.",
-                medium: "Minimal symbols with maximum impact",
-                strength: "Speaking in icons, not paragraphs",
-                challenge: "Knowing when less becomes too little"
+                essence: "You believe less is more, and more is… annoying.",
+                medium: "Grids, dots, shapes that whisper deep things.",
+                strength: "Maximum meaning, minimum fluff.",
+                challenge: "People don’t always “get it” (they’re wrong)."
             },
-            description: "You're the designer who believes less is more (and more is annoying). You perform surgery on meaning until only the essential remains.",
-            quote: "I cut away everything except what absolutely must remain.",
+            description: "You design like you’re allergic to clutter. Everything is stripped down to the core, and you speak in icons, not essays.",
+            quote: "I reduced the concept to a single pixel. You’re welcome.",
             image: "collections/design/reductive-symbols/images/design4.jpg",
             path: "collections/design/reductive-symbols/index-case-study.html"
             }
