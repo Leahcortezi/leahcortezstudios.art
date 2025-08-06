@@ -1062,27 +1062,43 @@ function generateLayoutAdvice() {
 
 // Design Decision Helper Functions
 function generateDesignRecommendations() {
-    const projectType = document.getElementById('designProjectType').value;
-    const audience = document.getElementById('designAudience').value;
-    const mood = document.getElementById('designMood').value;
+    console.log('generateDesignRecommendations called');
+    
+    const projectType = document.getElementById('designProjectType');
+    const audience = document.getElementById('designAudience');
+    const mood = document.getElementById('designMood');
+    const resultsDiv = document.getElementById('designRecommendations');
+    
+    if (!projectType || !audience || !mood || !resultsDiv) {
+        console.error('Missing required elements for design recommendations');
+        return;
+    }
+    
+    const projectTypeValue = projectType.value;
+    const audienceValue = audience.value;
+    const moodValue = mood.value;
+    
+    console.log('Values:', projectTypeValue, audienceValue, moodValue);
     
     // Show results section
-    document.getElementById('designRecommendations').style.display = 'block';
+    resultsDiv.style.display = 'block';
     
     // Generate color recommendations
-    generateColorRecommendations(projectType, audience, mood);
+    generateColorRecommendations(projectTypeValue, audienceValue, moodValue);
     
     // Generate typography recommendations
-    generateTypographyRecommendations(projectType, audience, mood);
+    generateTypographyRecommendations(projectTypeValue, audienceValue, moodValue);
     
     // Generate layout recommendations
-    generateLayoutRecommendations(projectType, audience, mood);
+    generateLayoutRecommendations(projectTypeValue, audienceValue, moodValue);
     
     // Generate general tips
-    generateDesignTips(projectType, audience, mood);
+    generateDesignTips(projectTypeValue, audienceValue, moodValue);
 }
 
 function generateColorRecommendations(projectType, audience, mood) {
+    console.log('generateColorRecommendations called with:', projectType, audience, mood);
+    
     const colorSchemes = {
         trustworthy: { colors: ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D'], description: "Professional blues and warm accents build trust" },
         friendly: { colors: ['#F79F79', '#F7931E', '#FFD23F', '#06A77D'], description: "Warm oranges and friendly greens create approachability" },
@@ -1096,7 +1112,15 @@ function generateColorRecommendations(projectType, audience, mood) {
     
     const scheme = colorSchemes[mood] || colorSchemes.trustworthy;
     
-    document.getElementById('colorRecommendations').innerHTML = `
+    const colorRecommendationsDiv = document.getElementById('colorRecommendations');
+    const colorSwatchesDiv = document.getElementById('colorSwatches');
+    
+    if (!colorRecommendationsDiv || !colorSwatchesDiv) {
+        console.error('Color recommendation elements not found');
+        return;
+    }
+    
+    colorRecommendationsDiv.innerHTML = `
         <p><strong>Recommended palette:</strong> ${scheme.description}</p>
         <p><strong>Usage tips:</strong> Use the darkest color for text, brightest for accents, and middle tones for backgrounds or secondary elements.</p>
     `;
@@ -1106,10 +1130,19 @@ function generateColorRecommendations(projectType, audience, mood) {
         `<div style="width: 60px; height: 60px; background: ${color}; border-radius: 8px; display: flex; align-items: flex-end; justify-content: center; color: white; font-size: 0.7rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); padding: 4px; box-sizing: border-box;">${color}</div>`
     ).join('');
     
-    document.getElementById('colorSwatches').innerHTML = swatchesHtml;
+    colorSwatchesDiv.innerHTML = swatchesHtml;
+    console.log('Color recommendations generated successfully');
 }
 
 function generateTypographyRecommendations(projectType, audience, mood) {
+    console.log('generateTypographyRecommendations called');
+    
+    const typographyDiv = document.getElementById('typographyRecommendations');
+    if (!typographyDiv) {
+        console.error('Typography recommendations element not found');
+        return;
+    }
+    
     let recommendations = '';
     
     if (projectType === 'logo') {
@@ -1134,13 +1167,22 @@ function generateTypographyRecommendations(projectType, audience, mood) {
         recommendations += " Stick to classic, conservative fonts like Times New Roman, Helvetica, or Georgia.";
     }
     
-    document.getElementById('typographyRecommendations').innerHTML = `
+    typographyDiv.innerHTML = `
         <p>${recommendations}</p>
         <p><strong>Font pairing tip:</strong> Combine a decorative header font with a simple, readable body font. Never use more than 2-3 font families in one design.</p>
     `;
+    console.log('Typography recommendations generated successfully');
 }
 
 function generateLayoutRecommendations(projectType, audience, mood) {
+    console.log('generateLayoutRecommendations called');
+    
+    const layoutDiv = document.getElementById('layoutRecommendations');
+    if (!layoutDiv) {
+        console.error('Layout recommendations element not found');
+        return;
+    }
+    
     let layoutTips = '';
     
     if (projectType === 'logo') {
@@ -1153,7 +1195,7 @@ function generateLayoutRecommendations(projectType, audience, mood) {
         layoutTips = "Focus on clear hierarchy, good spacing, and logical flow of information.";
     }
     
-    document.getElementById('layoutRecommendations').innerHTML = `
+    layoutDiv.innerHTML = `
         <p>${layoutTips}</p>
         <p><strong>Universal principles:</strong></p>
         <ul>
@@ -1163,9 +1205,18 @@ function generateLayoutRecommendations(projectType, audience, mood) {
             <li>Create visual hierarchy with size, color, and positioning</li>
         </ul>
     `;
+    console.log('Layout recommendations generated successfully');
 }
 
 function generateDesignTips(projectType, audience, mood) {
+    console.log('generateDesignTips called');
+    
+    const tipsDiv = document.getElementById('designTips');
+    if (!tipsDiv) {
+        console.error('Design tips element not found');
+        return;
+    }
+    
     const tips = [
         "Less is more - don't try to include everything in one design",
         "Consistency is key - use the same fonts, colors, and spacing throughout",
@@ -1177,10 +1228,11 @@ function generateDesignTips(projectType, audience, mood) {
     
     const shuffledTips = tips.sort(() => 0.5 - Math.random()).slice(0, 4);
     
-    document.getElementById('designTips').innerHTML = `
+    tipsDiv.innerHTML = `
         <ul>
             ${shuffledTips.map(tip => `<li>${tip}</li>`).join('')}
         </ul>
         <p><strong>Remember:</strong> Great design serves your audience and achieves your goals. When in doubt, prioritize clarity and usability over decoration.</p>
     `;
+    console.log('Design tips generated successfully');
 }
