@@ -1887,18 +1887,96 @@ function generateTrendsRecommendations(projectType, audience, mood) {
 function generateColorRecommendations(projectType, audience, mood) {
     console.log('generateColorRecommendations called with:', projectType, audience, mood);
     
-    const colorSchemes = {
-        trustworthy: { colors: ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D'], description: "Professional blues and warm accents build trust" },
-        friendly: { colors: ['#F79F79', '#F7931E', '#FFD23F', '#06A77D'], description: "Warm oranges and friendly greens create approachability" },
-        exciting: { colors: ['#FF006E', '#FFBE0B', '#8338EC', '#3A86FF'], description: "High-energy colors that demand attention" },
-        calm: { colors: ['#8ECAE6', '#219EBC', '#023047', '#FFB3BA'], description: "Soothing blues and soft pastels for tranquility" },
-        luxurious: { colors: ['#2D3748', '#805AD5', '#D69E2E', '#F7FAFC'], description: "Rich purples and gold accents suggest premium quality" },
-        fun: { colors: ['#FF8A80', '#FFD54F', '#81C784', '#64B5F6'], description: "Bright, playful colors that spark joy" },
-        serious: { colors: ['#2D3748', '#4A5568', '#718096', '#A0AEC0'], description: "Sophisticated grays convey authority and professionalism" },
-        creative: { colors: ['#E53E3E', '#DD6B20', '#38B2AC', '#805AD5'], description: "Bold, artistic palette that inspires creativity" }
+    // Enhanced color schemes with more variety and intelligence
+    const colorSchemeDatabase = {
+        // Mood-based palettes
+        trustworthy: [
+            { colors: ['#1E3A8A', '#3B82F6', '#60A5FA', '#DBEAFE'], name: "Corporate Blue", description: "Professional blues that build trust and reliability" },
+            { colors: ['#064E3B', '#059669', '#34D399', '#ECFDF5'], name: "Financial Green", description: "Money-associated greens for financial and investment services" },
+            { colors: ['#1F2937', '#4B5563', '#9CA3AF', '#F9FAFB'], name: "Executive Gray", description: "Sophisticated neutrals for executive and consulting brands" },
+            { colors: ['#7C2D12', '#DC2626', '#F87171', '#FEE2E2'], name: "Heritage Red", description: "Traditional reds that convey stability and heritage" }
+        ],
+        friendly: [
+            { colors: ['#FFF7ED', '#FDBA74', '#F97316', '#EA580C'], name: "Warm Orange", description: "Inviting oranges that create warmth and approachability" },
+            { colors: ['#F0FDF4', '#86EFAC', '#22C55E', '#15803D'], name: "Fresh Green", description: "Natural greens that feel welcoming and organic" },
+            { colors: ['#FFF1F2', '#FBBF24', '#F59E0B', '#D97706'], name: "Sunny Yellow", description: "Cheerful yellows that brighten and welcome" },
+            { colors: ['#FDF2F8', '#F9A8D4', '#EC4899', '#BE185D'], name: "Gentle Pink", description: "Soft pinks that feel caring and approachable" }
+        ],
+        exciting: [
+            { colors: ['#581C87', '#C026D3', '#E879F9', '#F5D0FE'], name: "Electric Purple", description: "High-energy purples that create excitement and innovation" },
+            { colors: ['#7F1D1D', '#DC2626', '#F87171', '#FEE2E2'], name: "Bold Red", description: "Passionate reds that demand attention and action" },
+            { colors: ['#166534', '#16A34A', '#4ADE80', '#DCFCE7'], name: "Vibrant Lime", description: "Electric greens that feel fresh and energetic" },
+            { colors: ['#1E1B4B', '#4338CA', '#6366F1', '#E0E7FF'], name: "Dynamic Blue", description: "Energetic blues that suggest movement and progress" }
+        ],
+        calm: [
+            { colors: ['#F0F9FF', '#7DD3FC', '#0EA5E9', '#0284C7'], name: "Ocean Breeze", description: "Peaceful blues like calm waters" },
+            { colors: ['#F0FDF4', '#BBF7D0', '#4ADE80', '#22C55E'], name: "Sage Garden", description: "Tranquil greens inspired by nature" },
+            { colors: ['#FDF4FF', '#DDD6FE', '#A78BFA', '#8B5CF6'], name: "Lavender Field", description: "Soothing purples that promote relaxation" },
+            { colors: ['#FFFBEB', '#FDE68A', '#F59E0B', '#D97706'], name: "Sunset Glow", description: "Warm, comforting tones like a peaceful sunset" }
+        ],
+        luxurious: [
+            { colors: ['#1C1917', '#A16207', '#EAB308', '#FEF3C7'], name: "Royal Gold", description: "Rich golds that suggest premium quality and exclusivity" },
+            { colors: ['#581C87', '#7C3AED', '#A78BFA', '#EDE9FE'], name: "Imperial Purple", description: "Regal purples that convey luxury and sophistication" },
+            { colors: ['#0C0A09', '#1C1917', '#78716C', '#F5F5F4'], name: "Platinum Elite", description: "Sophisticated metallics for high-end brands" },
+            { colors: ['#450A0A', '#991B1B', '#DC2626', '#FEE2E2'], name: "Ruby Prestige", description: "Deep reds that suggest opulence and refinement" }
+        ],
+        fun: [
+            { colors: ['#FFF7ED', '#FB923C', '#EA580C', '#C2410C'], name: "Playful Orange", description: "Energetic oranges that spark joy and creativity" },
+            { colors: ['#F0F9FF', '#38BDF8', '#0EA5E9', '#0284C7'], name: "Splash Blue", description: "Refreshing blues that feel playful and free" },
+            { colors: ['#FEFCE8', '#BEF264', '#65A30D', '#4D7C0F'], name: "Lime Pop", description: "Zesty greens that burst with energy" },
+            { colors: ['#FDF2F8', '#F472B6', '#EC4899', '#BE185D'], name: "Bubblegum Pink", description: "Sweet pinks that feel youthful and fun" }
+        ],
+        serious: [
+            { colors: ['#0F172A', '#334155', '#64748B', '#CBD5E1'], name: "Charcoal Professional", description: "Authoritative grays for serious business" },
+            { colors: ['#1E1B4B', '#3730A3', '#4F46E5', '#C7D2FE'], name: "Navy Authority", description: "Deep blues that command respect" },
+            { colors: ['#1C1917', '#44403C', '#78716C', '#E7E5E4'], name: "Stone Executive", description: "Refined earth tones for executive presence" },
+            { colors: ['#450A0A', '#7F1D1D', '#991B1B', '#FECACA'], name: "Burgundy Power", description: "Deep reds that suggest strength and authority" }
+        ],
+        creative: [
+            { colors: ['#EC4899', '#8B5CF6', '#3B82F6', '#10B981'], name: "Artist Spectrum", description: "Bold, artistic colors that inspire creativity" },
+            { colors: ['#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4'], name: "Creative Burst", description: "Vibrant mix that sparks imagination" },
+            { colors: ['#84CC16', '#F59E0B', '#EF4444', '#8B5CF6'], name: "Designer's Choice", description: "Dynamic palette for creative professionals" },
+            { colors: ['#06B6D4', '#84CC16', '#F59E0B', '#EF4444'], name: "Innovation Flow", description: "Flowing colors that suggest creative thinking" }
+        ]
     };
     
-    const scheme = colorSchemes[mood] || colorSchemes.trustworthy;
+    // Project-specific palettes
+    const projectSpecificPalettes = {
+        logo: {
+            tech: { colors: ['#1E293B', '#3B82F6', '#06B6D4', '#E2E8F0'], name: "Tech Innovation", description: "Modern blues for technology companies" },
+            health: { colors: ['#064E3B', '#059669', '#A7F3D0', '#ECFDF5'], name: "Medical Trust", description: "Clean greens that suggest health and wellness" },
+            food: { colors: ['#DC2626', '#F59E0B', '#65A30D', '#FEF3C7'], name: "Appetite Appeal", description: "Warm colors that stimulate appetite" }
+        },
+        website: {
+            ecommerce: { colors: ['#1E40AF', '#3B82F6', '#DBEAFE', '#F8FAFC'], name: "E-commerce Blue", description: "Trustworthy blues for online shopping" },
+            portfolio: { colors: ['#1F2937', '#6B7280', '#D1D5DB', '#F9FAFB'], name: "Portfolio Neutral", description: "Sophisticated grays that let content shine" },
+            blog: { colors: ['#7C2D12', '#EA580C', '#FED7AA', '#FFFBEB'], name: "Editorial Warm", description: "Readable browns for content-focused sites" }
+        },
+        poster: {
+            event: { colors: ['#7C2D12', '#DC2626', '#FBBF24', '#FEF3C7'], name: "Event Energy", description: "High-impact colors for event promotion" },
+            music: { colors: ['#581C87', '#C026D3', '#F472B6', '#FAE8FF'], name: "Music Vibe", description: "Electric purples for music events" },
+            art: { colors: ['#064E3B', '#10B981', '#6EE7B7', '#D1FAE5'], name: "Gallery Green", description: "Sophisticated greens for art exhibitions" }
+        }
+    };
+    
+    // Audience-specific adjustments
+    const audienceAdjustments = {
+        youth: "vibrant_high_contrast",
+        seniors: "high_contrast_readable",
+        professional: "conservative_trustworthy",
+        creative: "bold_experimental"
+    };
+    
+    // Get base palettes from mood
+    let availablePalettes = colorSchemeDatabase[mood] || colorSchemeDatabase.trustworthy;
+    
+    // Add project-specific palettes if available
+    if (projectSpecificPalettes[projectType]) {
+        availablePalettes = [...availablePalettes, ...Object.values(projectSpecificPalettes[projectType])];
+    }
+    
+    // Select multiple palettes for variety
+    const selectedPalettes = availablePalettes.slice(0, 3);
     
     const colorRecommendationsDiv = document.getElementById('colorRecommendations');
     const colorSwatchesDiv = document.getElementById('colorSwatches');
@@ -1908,18 +1986,49 @@ function generateColorRecommendations(projectType, audience, mood) {
         return;
     }
     
+    // Generate recommendations text
+    const audienceNote = audience === 'seniors' ? 
+        "<br><strong>Accessibility note:</strong> Using high contrast combinations for better readability." :
+        audience === 'youth' ? 
+        "<br><strong>Youth appeal:</strong> Bold, trendy colors that resonate with younger audiences." :
+        "";
+    
     colorRecommendationsDiv.innerHTML = `
-        <p><strong>Recommended palette:</strong> ${scheme.description}</p>
-        <p><strong>Usage tips:</strong> Use the darkest color for text, brightest for accents, and middle tones for backgrounds or secondary elements.</p>
+        <div style="margin-bottom: 20px;">
+            <p style="margin-bottom: 10px;"><strong>Curated for your ${projectType} targeting ${audience} with a ${mood} mood:</strong></p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">We've selected ${selectedPalettes.length} complementary palettes based on your preferences. Each palette includes 4 colors: primary, secondary, accent, and background.${audienceNote}</p>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #f8c8d0; margin: 0 0 10px 0; font-size: 0.95rem;">💡 Usage Guidelines</h4>
+            <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.5;">
+                <li><strong>Primary (darkest):</strong> Main brand color, headers, important text</li>
+                <li><strong>Secondary:</strong> Supporting elements, buttons, links</li>
+                <li><strong>Accent (brightest):</strong> Call-to-action buttons, highlights</li>
+                <li><strong>Background (lightest):</strong> Backgrounds, subtle elements</li>
+            </ul>
+        </div>
     `;
     
-    // Generate color swatches
-    const swatchesHtml = scheme.colors.map(color => 
-        `<div style="width: 60px; height: 60px; background: ${color}; border-radius: 8px; display: flex; align-items: flex-end; justify-content: center; color: white; font-size: 0.7rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); padding: 4px; box-sizing: border-box;">${color}</div>`
-    ).join('');
+    // Generate color swatches for all selected palettes
+    const paletteSwatchesHtml = selectedPalettes.map((palette, index) => `
+        <div style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.1); border-radius: 8px;">
+            <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.9rem;">${palette.name}</h5>
+            <p style="margin: 0 0 12px 0; font-size: 0.8rem; color: rgba(255,255,255,0.8);">${palette.description}</p>
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                ${palette.colors.map((color, colorIndex) => {
+                    const labels = ['Primary', 'Secondary', 'Accent', 'Background'];
+                    return `<div style="text-align: center;">
+                        <div style="width: 50px; height: 50px; background: ${color}; border-radius: 6px; margin-bottom: 4px; border: 1px solid rgba(255,255,255,0.1);"></div>
+                        <div style="font-size: 0.65rem; color: rgba(255,255,255,0.7); margin-bottom: 2px;">${labels[colorIndex]}</div>
+                        <div style="font-size: 0.6rem; color: white; font-family: monospace;">${color}</div>
+                    </div>`;
+                }).join('')}
+            </div>
+        </div>
+    `).join('');
     
-    colorSwatchesDiv.innerHTML = swatchesHtml;
-    console.log('Color recommendations generated successfully');
+    colorSwatchesDiv.innerHTML = paletteSwatchesHtml;
+    console.log('Enhanced color recommendations generated successfully');
 }
 
 function generateTypographyRecommendations(projectType, audience, mood) {
