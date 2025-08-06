@@ -839,119 +839,281 @@ function findClosestStandardSize(width, height, units) {
     return `${closest[0]}${unitSymbol} × ${closest[1]}${unitSymbol}`;
 }
 
-// Font Pairing Helper
-const fontPairings = {
-    modern: {
-        poster: [
-            { header: "Helvetica Neue", body: "Open Sans", note: "Clean, professional, highly readable" },
-            { header: "Montserrat", body: "Source Sans Pro", note: "Modern geometric with excellent legibility" },
-            { header: "Roboto", body: "Lato", note: "Friendly tech aesthetic, works great for digital" }
-        ],
-        logo: [
-            { header: "Futura", body: "Avenir", note: "Geometric precision, timeless appeal" },
-            { header: "Proxima Nova", body: "Museo Sans", note: "Balanced modern look with personality" }
-        ],
-        website: [
-            { header: "Inter", body: "System UI", note: "Optimized for screens, excellent readability" },
-            { header: "Poppins", body: "Nunito", note: "Friendly and approachable for web use" }
-        ],
-        presentation: [
-            { header: "Montserrat", body: "Open Sans", note: "Great contrast between bold headers and readable body" },
-            { header: "Roboto Condensed", body: "Roboto", note: "Same family, different weights for hierarchy" }
-        ],
-        invitation: [
-            { header: "Quicksand", body: "Karla", note: "Modern but warm, perfect for contemporary events" }
-        ]
+// Mood-Based Color Generator
+const moodColorPalettes = {
+    emotion: {
+        peaceful: {
+            name: "Peaceful & Calm",
+            baseColors: ['#87CEEB', '#E0F6FF', '#B6E5D8', '#F0F8EA', '#E6E6FA'],
+            description: "Soft blues and gentle greens that evoke tranquility and peace"
+        },
+        energetic: {
+            name: "Energetic & Bold", 
+            baseColors: ['#FF6B35', '#F7931E', '#FFD23F', '#C5351B', '#D8315B'],
+            description: "Vibrant oranges and reds that burst with energy and excitement"
+        },
+        romantic: {
+            name: "Romantic & Soft",
+            baseColors: ['#FFB6C1', '#FFC0CB', '#FFEAE5', '#E6B3BA', '#F8BBD9'],
+            description: "Delicate pinks and warm tones perfect for romantic themes"
+        },
+        mysterious: {
+            name: "Mysterious & Dark",
+            baseColors: ['#2C1810', '#4A4A4A', '#6A0DAD', '#191970', '#36454F'],
+            description: "Deep purples and dark tones that create intrigue and mystery"
+        },
+        joyful: {
+            name: "Joyful & Bright",
+            baseColors: ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#9ACD32'],
+            description: "Bright, happy colors that radiate joy and positivity"
+        }
     },
-    classic: {
-        poster: [
-            { header: "Trajan Pro", body: "Minion Pro", note: "Classical elegance with excellent readability" },
-            { header: "Optima", body: "Palatino", note: "Timeless sophistication" }
-        ],
-        logo: [
-            { header: "Times New Roman", body: "Georgia", note: "Traditional authority and trust" },
-            { header: "Garamond", body: "Sabon", note: "Elegant old-style serifs" }
-        ],
-        website: [
-            { header: "Playfair Display", body: "Source Serif Pro", note: "Elegant serif combination for traditional feel" }
-        ],
-        presentation: [
-            { header: "Georgia", body: "Verdana", note: "Professional and readable in any size" }
-        ],
-        invitation: [
-            { header: "Baskerville", body: "Caslon", note: "Refined elegance for formal occasions" }
-        ]
+    theme: {
+        ocean: {
+            name: "Ocean Depths",
+            baseColors: ['#006994', '#47B5FF', '#06FFA5', '#B2FCFF', '#4D194D'],
+            description: "From deep ocean blues to coral reef teals"
+        },
+        sunset: {
+            name: "Golden Sunset",
+            baseColors: ['#FF6B35', '#F7931E', '#FFD23F', '#FFAB91', '#FF7043'],
+            description: "Warm sunset colors from golden hour"
+        },
+        forest: {
+            name: "Enchanted Forest",
+            baseColors: ['#2D5016', '#4F7942', '#9ACD32', '#8FBC8F', '#3CB371'],
+            description: "Rich forest greens and earthy tones"
+        },
+        cosmic: {
+            name: "Cosmic Space",
+            baseColors: ['#0B1426', '#2E1065', '#6A0DAD', '#9932CC', '#FFD700'],
+            description: "Deep space purples with starlight accents"
+        },
+        vintage: {
+            name: "Vintage Elegance",
+            baseColors: ['#8B4513', '#D2691E', '#F4A460', '#DEB887', '#CD853F'],
+            description: "Classic vintage browns and warm golds"
+        }
     },
-    playful: {
-        poster: [
-            { header: "Fredoka One", body: "Nunito", note: "Fun and bouncy for kid-friendly designs" },
-            { header: "Pacifico", body: "Open Sans", note: "Casual script with clean supporting text" }
-        ],
-        logo: [
-            { header: "Comfortaa", body: "Quicksand", note: "Rounded and friendly geometric shapes" }
-        ],
-        website: [
-            { header: "Baloo", body: "Nunito", note: "Playful headers with readable body text" }
-        ],
-        invitation: [
-            { header: "Dancing Script", body: "Lato", note: "Celebratory script with clean support" }
-        ]
+    season: {
+        spring: {
+            name: "Fresh Spring",
+            baseColors: ['#98FB98', '#FFB6C1', '#87CEEB', '#F0E68C', '#DDA0DD'],
+            description: "Fresh pastels that capture spring's renewal"
+        },
+        summer: {
+            name: "Bright Summer",
+            baseColors: ['#FF6347', '#FFD700', '#00CED1', '#32CD32', '#FF1493'],
+            description: "Vibrant summer colors full of life and warmth"
+        },
+        autumn: {
+            name: "Autumn Harvest",
+            baseColors: ['#CD853F', '#D2691E', '#B22222', '#DAA520', '#8B4513'],
+            description: "Rich autumn colors of changing leaves"
+        },
+        winter: {
+            name: "Winter Frost",
+            baseColors: ['#E0E6F8', '#B0C4DE', '#4682B4', '#2F4F4F', '#708090'],
+            description: "Cool winter blues and silver tones"
+        }
     },
-    professional: {
-        poster: [
-            { header: "Myriad Pro", body: "Minion Pro", note: "Corporate standard, highly professional" }
-        ],
-        logo: [
-            { header: "Helvetica", body: "Univers", note: "Classic corporate identity choice" }
-        ],
-        website: [
-            { header: "Source Sans Pro", body: "PT Sans", note: "Professional web-optimized fonts" }
-        ],
-        presentation: [
-            { header: "Calibri", body: "Segoe UI", note: "Microsoft standard, familiar and professional" }
-        ]
-    },
-    artistic: {
-        poster: [
-            { header: "Bebas Neue", body: "Open Sans", note: "Bold artistic headers with readable support" }
-        ],
-        logo: [
-            { header: "Amatic SC", body: "Josefin Sans", note: "Hand-drawn feel with artistic flair" }
-        ],
-        invitation: [
-            { header: "Great Vibes", body: "Libre Baskerville", note: "Artistic script with classic support" }
-        ]
+    style: {
+        impressionist: {
+            name: "Impressionist",
+            baseColors: ['#E6E6FA', '#FFB6C1', '#98FB98', '#F0E68C', '#87CEEB'],
+            description: "Soft, light colors characteristic of Impressionist painting"
+        },
+        abstract: {
+            name: "Bold Abstract",
+            baseColors: ['#FF0000', '#0000FF', '#FFFF00', '#000000', '#FFFFFF'],
+            description: "Primary colors and high contrast for abstract expression"
+        },
+        minimalist: {
+            name: "Minimalist",
+            baseColors: ['#FFFFFF', '#F5F5F5', '#E5E5E5', '#333333', '#666666'],
+            description: "Clean, minimal palette with subtle variations"
+        },
+        bohemian: {
+            name: "Bohemian",
+            baseColors: ['#8B4513', '#DAA520', '#CD853F', '#9932CC', '#DC143C'],
+            description: "Rich, earthy tones with jewel accents"
+        }
     }
 };
 
-function generateFontPairs() {
-    const style = document.getElementById('designStyle').value;
-    const project = document.getElementById('projectType').value;
-    const content = document.getElementById('fontPairContent');
+function updateMoodOptions() {
+    const moodType = document.getElementById('colorMoodType').value;
+    const specificMoodSelect = document.getElementById('specificMood');
     
-    const pairs = fontPairings[style] && fontPairings[style][project] 
-        ? fontPairings[style][project] 
-        : fontPairings.modern.poster;
+    specificMoodSelect.innerHTML = '';
     
-    if (pairs.length === 0) {
-        content.innerHTML = `<em>No specific recommendations for ${style} ${project} - try the Modern style for versatile options</em>`;
-        return;
+    Object.keys(moodColorPalettes[moodType]).forEach(key => {
+        const palette = moodColorPalettes[moodType][key];
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = palette.name;
+        specificMoodSelect.appendChild(option);
+    });
+}
+
+function generateMoodColors() {
+    const moodType = document.getElementById('colorMoodType').value;
+    const specificMood = document.getElementById('specificMood').value;
+    const paletteSize = parseInt(document.getElementById('paletteSize').value);
+    const harmony = document.getElementById('colorHarmony').value;
+    
+    const basePalette = moodColorPalettes[moodType][specificMood];
+    if (!basePalette) return;
+    
+    let finalColors = [...basePalette.baseColors];
+    
+    // Apply color harmony modifications
+    if (harmony === 'complementary') {
+        finalColors = finalColors.map(color => adjustColorForHarmony(color, 'complementary'));
+    } else if (harmony === 'analogous') {
+        finalColors = finalColors.map(color => adjustColorForHarmony(color, 'analogous'));
+    } else if (harmony === 'monochromatic') {
+        const baseColor = finalColors[0];
+        finalColors = generateMonochromaticPalette(baseColor, paletteSize);
     }
     
-    let html = '';
-    pairs.forEach((pair, index) => {
-        html += `
-            <div style="margin-bottom: 12px; padding: 8px; background: rgba(248, 200, 208, 0.1); border-radius: 4px;">
-                <div style="font-weight: bold; margin-bottom: 4px;">Option ${index + 1}:</div>
-                <div style="margin-bottom: 2px;"><strong>Header:</strong> ${pair.header}</div>
-                <div style="margin-bottom: 2px;"><strong>Body:</strong> ${pair.body}</div>
-                <div style="font-size: 0.65rem; color: #f8c8d0; font-style: italic;">${pair.note}</div>
-            </div>
-        `;
-    });
+    // Adjust palette size
+    if (finalColors.length > paletteSize) {
+        finalColors = finalColors.slice(0, paletteSize);
+    } else if (finalColors.length < paletteSize) {
+        while (finalColors.length < paletteSize) {
+            const randomColor = generateHarmoniousColor(finalColors[0]);
+            finalColors.push(randomColor);
+        }
+    }
     
-    content.innerHTML = html;
+    displayMoodColors(finalColors, basePalette);
 }
+
+function adjustColorForHarmony(hexColor, harmonyType) {
+    // Convert hex to HSL for easier manipulation
+    const hsl = hexToHsl(hexColor);
+    
+    if (harmonyType === 'complementary') {
+        hsl.h = (hsl.h + 180) % 360;
+    } else if (harmonyType === 'analogous') {
+        hsl.h = (hsl.h + (Math.random() * 60 - 30)) % 360;
+    }
+    
+    return hslToHex(hsl.h, hsl.s, hsl.l);
+}
+
+function generateMonochromaticPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [];
+    
+    for (let i = 0; i < count; i++) {
+        const lightness = Math.max(10, Math.min(90, hsl.l + (i - count/2) * 15));
+        colors.push(hslToHex(hsl.h, hsl.s, lightness));
+    }
+    
+    return colors;
+}
+
+function generateHarmoniousColor(baseColor) {
+    const hsl = hexToHsl(baseColor);
+    const newHue = (hsl.h + (Math.random() * 60 - 30)) % 360;
+    const newSaturation = Math.max(20, Math.min(100, hsl.s + (Math.random() * 40 - 20)));
+    const newLightness = Math.max(20, Math.min(80, hsl.l + (Math.random() * 30 - 15)));
+    
+    return hslToHex(newHue, newSaturation, newLightness);
+}
+
+function hexToHsl(hex) {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+    
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    
+    if (max === min) {
+        h = s = 0;
+    } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+    
+    return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+}
+
+function hslToHex(h, s, l) {
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function displayMoodColors(colors, paletteInfo) {
+    const resultsDiv = document.getElementById('moodColorResults');
+    const swatchesDiv = document.getElementById('moodColorSwatches');
+    const infoDiv = document.getElementById('moodColorInfo');
+    
+    // Create color swatches
+    const swatchesHtml = colors.map((color, index) => 
+        `<div style="width: 40px; height: 40px; background: ${color}; border-radius: 6px; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; position: relative; margin-bottom: 4px;" 
+              title="${color}" onclick="copyColorToClipboard('${color}')">
+            <div style="position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: #f8c8d0; text-align: center; width: 50px;">${color}</div>
+        </div>`
+    ).join('');
+    
+    swatchesDiv.innerHTML = swatchesHtml;
+    
+    // Create color information
+    infoDiv.innerHTML = `
+        <div style="margin-bottom: 6px;"><strong>${paletteInfo.name}</strong></div>
+        <div style="margin-bottom: 6px; font-style: italic;">${paletteInfo.description}</div>
+        <div style="font-size: 0.6rem; color: #f8c8d0;">💡 Click any color to copy to clipboard</div>
+    `;
+    
+    resultsDiv.style.display = 'block';
+}
+
+function copyColorToClipboard(color) {
+    navigator.clipboard.writeText(color).then(() => {
+        // Show a brief notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed; top: 20px; right: 20px; 
+            background: rgba(248, 200, 208, 0.9); color: black; 
+            padding: 10px 15px; border-radius: 6px; 
+            font-size: 0.8rem; z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        `;
+        notification.textContent = `Copied ${color}!`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 2000);
+    }).catch(() => {
+        alert(`Color ${color} copied to clipboard!`);
+    });
+}
+
+// Initialize mood options when document loads
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('colorMoodType')) {
+        updateMoodOptions();
+        document.getElementById('colorMoodType').addEventListener('change', updateMoodOptions);
+    }
+});
 
 // Layout Composition Guide
 const layoutAdvice = {

@@ -48,37 +48,54 @@
                 <div class="tools-grid">
                     
                     <!-- Font Pairing Guide -->
+                    <!-- Mood-Based Color Generator -->
                     <div class="tool-card">
-                        <h3>Font Pairing Helper</h3>
-                        <p>Find perfect font combinations for your design projects - get professional typography choices instantly</p>
-                        <div class="generator-display" id="fontPairingGuide" style="padding: 8px; margin: 8px 0;">
+                        <h3>Mood Color Generator</h3>
+                        <p>Generate beautiful color palettes based on emotions, themes, or art styles - perfect for any creative project</p>
+                        <div class="generator-display" id="moodColorGenerator" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="designStyle" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="modern">Modern & Clean</option>
-                                        <option value="classic">Classic & Elegant</option>
-                                        <option value="playful">Fun & Playful</option>
-                                        <option value="professional">Professional</option>
-                                        <option value="artistic">Creative & Artistic</option>
+                                    <select id="colorMoodType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="emotion">Emotion/Feeling</option>
+                                        <option value="theme">Art Theme</option>
+                                        <option value="season">Season/Nature</option>
+                                        <option value="style">Art Style</option>
                                     </select>
-                                    <select id="projectType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="poster">Poster/Flyer</option>
-                                        <option value="logo">Logo Design</option>
-                                        <option value="website">Website</option>
-                                        <option value="presentation">Presentation</option>
-                                        <option value="invitation">Invitation</option>
+                                    <select id="specificMood" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="peaceful">Peaceful & Calm</option>
+                                        <option value="energetic">Energetic & Bold</option>
+                                        <option value="romantic">Romantic & Soft</option>
+                                        <option value="mysterious">Mysterious & Dark</option>
+                                        <option value="joyful">Joyful & Bright</option>
                                     </select>
                                 </div>
-                                <div id="fontPairResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 120px; overflow-y: auto;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Font Recommendations:</div>
-                                    <div id="fontPairContent">Select your style and project type to see font combinations</div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="paletteSize" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="3">3 Colors</option>
+                                        <option value="4">4 Colors</option>
+                                        <option value="5" selected>5 Colors</option>
+                                        <option value="6">6 Colors</option>
+                                    </select>
+                                    <select id="colorHarmony" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="analogous">Harmonious</option>
+                                        <option value="complementary">Contrasting</option>
+                                        <option value="triadic">Balanced</option>
+                                        <option value="monochromatic">Tonal</option>
+                                    </select>
+                                </div>
+                                <div id="moodColorResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Generated Palette:</div>
+                                    <div id="moodColorSwatches" style="display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap;">
+                                        <!-- Color swatches will appear here -->
+                                    </div>
+                                    <div id="moodColorInfo" style="font-size: 0.65rem;">
+                                        <!-- Color information will appear here -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="generateFontPairs()">Get Font Pairs</button>
-                    </div>
-
-                    <!-- Design Layout Helper -->
+                        <button class="generate-btn" onclick="generateMoodColors()">Generate Colors</button>
+                    </div>                    <!-- Design Layout Helper -->
                     <div class="tool-card">
                         <h3>Layout Composition Guide</h3>
                         <p>Learn design principles and get layout suggestions based on your content and goals</p>
