@@ -49,7 +49,31 @@ const artStyles = [
     "Surrealist dream imagery", "Folk art primitive style",
     "Minimalist line drawings", "Street art and graffiti",
     "Renaissance chiaroscuro", "Comic book illustration",
-    "Cubist fragmentation", "Impressionist color studies"
+    "Cubist fragmentation", "Impressionist color studies",
+    "Photorealism with hyper-detailed shading",
+    "Lowbrow pop surrealism",
+    "Brutalist graphic design",
+    "Cyberpunk neon dystopia",
+    "Minimalist abstract sculpture",
+    "Ink wash Sumi-e painting",
+    "Kinetic art with moving parts",
+    "Op Art optical illusions",
+    "Conceptual text-based art",
+    "Psychedelic poster design of the 1960s",
+    "Graffiti wildstyle lettering",
+    "Steampunk mechanical collage",
+    "Eco-art using natural materials",
+    "Fantasy illustration with epic landscapes",
+    "Glitch art digital distortion",
+    "Hypercolor 80s Memphis design",
+    "Mixed media textile work",
+    "Paper-cut layered illustrations",
+    "Monochrome ink illustrations",
+    "Collage surreal photomontage",
+    "3D voxel pixel sculptures",
+    "Augmented reality interactive art",
+    "Post-minimalist installation pieces",
+    "Experimental ceramics and pottery"
 ];
 
 const colorPalettes = [
@@ -106,7 +130,17 @@ const timerPrompts = [
     "The view from your window in a different art style",
     "An emotion you felt today as an abstract composition",
     "Your favorite song as a visual pattern",
-    "What you did one hour ago as a comic panel"
+    "What you did one hour ago as a comic panel",
+    "Draw your anxiety as a creature you can befriend",
+    "Your creative block as a physical object you can transform",
+    "The feeling of being late, but make it beautiful",
+    "Draw procrastination as a character with superpowers",
+    "Your to-do list as a fantasy quest map",
+    "The last dream you remember as a movie poster",
+    "Draw what inspiration feels like in your body",
+    "Your worst habit as a helpful sidekick character",
+    "The feeling of nostalgia as a place you can visit",
+    "Draw what your inner critic looks like, then give it a makeover"
 ];
 
 const shakePrompts = [
@@ -119,7 +153,21 @@ const shakePrompts = [
     "What does your creative voice look like as a character?",
     "Turn a boring daily routine into an adventure scene",
     "Draw the feeling of almost remembering something important",
-    "Create art about the space between thoughts"
+    "Create art about the space between thoughts",
+    "Draw what it feels like to be misunderstood, but make it hopeful",
+    "Create a character that represents your relationship with time",
+    "Draw what your comfort zone looks like from the outside",
+    "Make art about the feeling of growth - awkward but necessary",
+    "Draw what your intuition whispers to you",
+    "Create something inspired by the phrase 'beautiful chaos'",
+    "Draw what it feels like when everything clicks into place",
+    "Make art about the courage it takes to start over",
+    "Draw your biggest dream as if it's already happening",
+    "Create art that represents the feeling of 'not quite there yet'",
+    "Draw what it feels like to surprise yourself",
+    "Make art about the beauty of imperfect timing",
+    "Draw what your creative energy looks like when it's fully unleashed",
+    "Create something inspired by 'the magic hiding in ordinary moments'"
 ];
 
 
@@ -421,6 +469,109 @@ function calculatePrint() {
 
 
 
+// Pricing Estimator
+function calculatePricing() {
+    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
+    const estimatedHours = parseFloat(document.getElementById('estimatedHours').value);
+    const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
+    const complexityMultiplier = parseFloat(document.getElementById('complexityMultiplier').value);
+    const display = document.getElementById('pricingResults');
+    
+    if (!hourlyRate || !estimatedHours) {
+        display.innerHTML = '<span style="color: #f8c8d0;">Enter hourly rate and estimated hours</span>';
+        return;
+    }
+    
+    const laborCost = hourlyRate * estimatedHours * complexityMultiplier;
+    const totalCost = laborCost + materialCost;
+    const recommendedPrice = totalCost * 1.2; // 20% markup
+    
+    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
+    result += `<strong>Labor Cost:</strong> $${laborCost.toFixed(2)}<br>`;
+    result += `<strong>Materials:</strong> $${materialCost.toFixed(2)}<br>`;
+    result += `<strong>Subtotal:</strong> $${totalCost.toFixed(2)}<br>`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-top: 4px;">`;
+    result += `<strong>Recommended Price:</strong> $${recommendedPrice.toFixed(2)}</div>`;
+    result += `<div style="font-size: 0.65rem; opacity: 0.8; margin-top: 4px;">`;
+    result += `(Includes 20% business markup)</div>`;
+    result += `</div>`;
+    
+    display.innerHTML = result;
+}
+
+// Daily Creative Challenge
+const creativeChallenges = [
+    "Draw something from your kitchen in an unusual perspective",
+    "Create art inspired by the last song you listened to",
+    "Make a self-portrait using only circles and lines",
+    "Draw your mood right now as a weather pattern",
+    "Illustrate a childhood memory in 3 panels",
+    "Create a pattern inspired by something in nature",
+    "Draw the view from your window in a fantasy style",
+    "Make art using only warm colors today",
+    "Draw your favorite food as if it were a superhero",
+    "Create a landscape that represents how you feel",
+    "Draw something ordinary in an extraordinary way",
+    "Make a character design inspired by your pet or favorite animal",
+    "Create abstract art inspired by your favorite book",
+    "Draw your hand in 5 different poses",
+    "Make a collage using only magazine cutouts",
+    "Draw something that makes you happy",
+    "Create art inspired by your favorite time of day",
+    "Draw a building or structure you see every day",
+    "Make a comic strip about your morning routine",
+    "Create a mandala inspired by your current emotions",
+    "Draw texture studies of 3 different materials",
+    "Make art inspired by a conversation you overheard",
+    "Draw your dream workspace or studio",
+    "Create a character that represents your current goal",
+    "Draw something using only your non-dominant hand",
+    "Design a new mythical creature combining 3 real animals",
+    "Draw what music looks like as it flows through the air",
+    "Create a map of an imaginary place you'd like to visit",
+    "Draw your biggest fear as a friendly cartoon character",
+    "Make art using only items found in your junk drawer",
+    "Draw what love looks like without using hearts or people",
+    "Create a poster for the worst movie idea you can imagine",
+    "Draw your favorite childhood toy as an adult superhero",
+    "Make art that represents the feeling of forgetting something important",
+    "Draw what your creative voice would look like as a person",
+    "Create a pattern using only the shapes you can make with your hands",
+    "Draw a conversation between two inanimate objects",
+    "Make art inspired by the strangest compliment you've ever received",
+    "Draw what procrastination looks like in your mind",
+    "Create a piece showing what it feels like to finish something difficult",
+    "Draw your ideal creative space in impossible architecture",
+    "Make art that represents the sound of your favorite word",
+    "Draw what inspiration feels like when it hits you",
+    "Create a comic about the secret life of office supplies",
+    "Draw yourself as the main character in your favorite video game",
+    "Make art inspired by the most beautiful mistake you've ever made",
+    "Draw what your neighborhood would look like in 100 years",
+    "Create a piece showing what it feels like to learn something new"
+];
+
+function generateDailyChallenge() {
+    const today = new Date();
+    const dateString = today.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    
+    // Use date as seed for consistent daily challenge
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    const challenge = creativeChallenges[dayOfYear % creativeChallenges.length];
+    
+    document.getElementById('challengeDate').textContent = dateString;
+    document.getElementById('todaysChallenge').textContent = challenge;
+    
+    // Generate a random hashtag
+    const hashtags = ['#DailyArt', '#CreativeChallenge', '#ArtPractice', '#SketchDaily', '#CreateDaily'];
+    const randomTag = hashtags[Math.floor(Math.random() * hashtags.length)];
+    document.getElementById('challengeTag').textContent = randomTag;
+}
+
 // Font Pairing Helper
 const fontPairings = [
     { primary: "Playfair Display", secondary: "Source Sans Pro", use: "Editorial, luxury branding" },
@@ -629,40 +780,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Spinning Challenge Wheel
 const wheelChallenges = [
-    "Draw with your eyes closed",
+    "Draw with your eyes closed for 2 minutes",
     "Use only your non-dominant hand", 
-    "Create art with coffee or tea",
-    "Only use three colors",
-    "No erasing allowed",
-    "Work upside down",
-    "Use unconventional tools only",
-    "Make art from memory only"
+    "Create art with coffee, tea, or food coloring",
+    "Only use three colors maximum",
+    "No erasing or undoing allowed - embrace mistakes",
+    "Work standing up the entire time",
+    "Use unconventional tools (no brushes/pencils)",
+    "Make something intentionally weird or ugly",
+    "Work with your paper upside down",
+    "Use only geometric shapes",
+    "No planning - start drawing immediately",
+    "Include text or words in your composition",
+    "Work only in black and white",
+    "Draw using both hands simultaneously",
+    "Create something smaller than your palm",
+    "Use only dots to create your image",
+    "Draw while listening to music and let it guide you",
+    "Create art inspired by the last text you received",
+    "Make a self-portrait as a monster",
+    "Draw your breakfast as if it's alive",
+    "Use only straight lines - no curves allowed",
+    "Create art that tells a story in 3 panels",
+    "Draw your biggest fear as something cute",
+    "Make art using only things from your kitchen",
+    "Draw what happiness sounds like",
+    "Create something that moves or spins",
+    "Use only warm colors (reds, oranges, yellows)",
+    "Draw your favorite song as abstract shapes",
+    "Make art that represents your current mood",
+    "Draw something ordinary in an extraordinary way",
+    "Create art inspired by your last dream",
+    "Draw what stress looks like and then destroy it creatively"
 ];
 
 function spinWheel() {
     const wheel = document.getElementById('wheelCircle');
     const result = document.getElementById('wheelResult');
-    
-    // Random spin amount (multiple full rotations + random position)
-    const spinAmount = 1440 + Math.random() * 1440; // 4-8 full rotations
-    wheel.style.transform = `rotate(${spinAmount}deg)`;
+    const button = event.target;
     
     // Disable button during spin
-    const button = event.target;
     button.disabled = true;
     button.textContent = 'Spinning...';
+    
+    // Generate random spin amount (4-8 full rotations + random position)
+    const baseRotation = 1440; // 4 full rotations
+    const extraRotation = Math.random() * 1440; // up to 4 more rotations
+    const finalPosition = Math.random() * 360; // final position
+    const totalRotation = baseRotation + extraRotation + finalPosition;
+    
+    // Apply rotation with CSS custom property for more control
+    wheel.style.setProperty('--spin-amount', `${totalRotation}deg`);
+    wheel.classList.add('spinning');
     
     // Show result after spin completes
     setTimeout(() => {
         const challenge = wheelChallenges[Math.floor(Math.random() * wheelChallenges.length)];
-        result.textContent = challenge;
+        result.innerHTML = `<span style="color: #f8c8d0; font-weight: bold;">${challenge}</span>`;
+        
+        // Re-enable button
         button.disabled = false;
         button.textContent = 'Spin Again';
         
-        // Add excitement effect
-        result.style.transform = 'scale(1.1)';
+        // Remove spinning class and add excitement effect
+        wheel.classList.remove('spinning');
+        result.style.transform = 'scale(1.05)';
         setTimeout(() => result.style.transform = 'scale(1)', 300);
-    }, 2000);
+    }, 2500); // Slightly longer to match animation
 }
 
 // Fake Client Brief Generator
@@ -1078,6 +1262,126 @@ const artistInspiration = [
         style: "Impressionist light and atmosphere studies",
         technique: "Paint the same subject at different times of day",
         prompt: "Draw the same scene in morning, noon, and evening light"
+    },
+    {
+        artist: "Jean-Michel Basquiat",
+        style: "Neo-expressionist graffiti-inspired painting",
+        technique: "Mix text, symbols, and abstract figures with raw brushwork",
+        prompt: "Create an expressive composition using both words and imagery"
+    },
+    {
+        artist: "Zaha Hadid",
+        style: "Futuristic, fluid architectural forms",
+        technique: "Use sweeping curves and dynamic angles in your composition",
+        prompt: "Design a building or structure with impossible, flowing forms"
+    },
+    {
+        artist: "Hokusai",
+        style: "Japanese ukiyo-e woodblock prints",
+        technique: "Emphasize flat color fields, stylized waves, and nature",
+        prompt: "Draw a natural scene using strong outlines and flat color"
+    },
+    {
+        artist: "Yayoi Kusama",
+        style: "Polka-dot infinity installations",
+        technique: "Cover your subject in repeating shapes or patterns",
+        prompt: "Create a space filled with endless repeating motifs"
+    },
+    {
+        artist: "Kara Walker",
+        style: "Silhouette cutouts with historical themes",
+        technique: "Use strong black-and-white contrast to tell a story",
+        prompt: "Depict a narrative only through shadowed silhouettes"
+    },
+    {
+        artist: "Ansel Adams",
+        style: "Black-and-white large-format photography",
+        technique: "Focus on high contrast and sharp depth of field",
+        prompt: "Capture a natural scene in dramatic monochrome"
+    },
+    {
+        artist: "Barbara Kruger",
+        style: "Bold text over imagery with political messages",
+        technique: "Combine impactful typography with high-contrast images",
+        prompt: "Overlay powerful words on an image to provoke thought"
+    },
+    {
+        artist: "Alexander Calder",
+        style: "Mobile and kinetic sculpture",
+        technique: "Use balance and movement as design elements",
+        prompt: "Create a hanging piece that moves with air currents"
+    },
+    {
+        artist: "Salvador Dalí",
+        style: "Dreamlike surrealism with precise realism",
+        technique: "Blend bizarre dream elements with realistic detail",
+        prompt: "Depict an everyday object in an impossible situation"
+    },
+    {
+        artist: "Piet Mondrian",
+        style: "Geometric abstraction with primary colors",
+        technique: "Use strict grids and a limited palette for balance",
+        prompt: "Design a composition of only lines and primary colors"
+    },
+    {
+        artist: "Louise Bourgeois",
+        style: "Psychological sculptures exploring memory and body",
+        technique: "Work in tactile, symbolic forms with emotional meaning",
+        prompt: "Create a sculpture representing an emotion"
+    },
+    {
+        artist: "Shepard Fairey",
+        style: "Propaganda-inspired street art",
+        technique: "Use bold shapes, limited palettes, and political themes",
+        prompt: "Design a poster in a retro propaganda style"
+    },
+    {
+        artist: "Hilma af Klint",
+        style: "Spiritual geometric abstraction",
+        technique: "Use symbolic shapes and layered transparent colors",
+        prompt: "Paint an abstract work inspired by meditation"
+    },
+    {
+        artist: "Takashi Murakami",
+        style: "Superflat pop-art with anime influences",
+        technique: "Mix high art with playful cartoon elements",
+        prompt: "Create a pop-style character in a patterned world"
+    },
+    {
+        artist: "Christo and Jeanne-Claude",
+        style: "Large-scale environmental wrapping",
+        technique: "Transform a landscape or building with temporary fabric",
+        prompt: "Wrap an object to alter how people perceive it"
+    },
+    {
+        artist: "Andy Goldsworthy",
+        style: "Ephemeral natural installations",
+        technique: "Use only natural materials found on site",
+        prompt: "Arrange leaves, stones, or sticks into a pattern outdoors"
+    },
+    {
+        artist: "Ai Weiwei",
+        style: "Political conceptual art",
+        technique: "Use objects to comment on culture and freedom",
+        prompt: "Create art that critiques a system or authority"
+    },
+    {
+        artist: "David Hockney",
+        style: "Brightly colored modern landscapes and portraits",
+        technique: "Use vivid color blocks and playful perspective",
+        prompt: "Paint your neighborhood in exaggerated colors"
+    },
+    {
+        artist: "Jenny Holzer",
+        style: "LED text installations with provocative phrases",
+        technique: "Deliver short impactful statements as the art itself",
+        prompt: "Display a bold sentence as the main subject"
+    },
+    {
+        artist: "Nick Cave",
+        style: "Wearable 'Soundsuits' blending sculpture, dance, and fashion",
+        technique: "Combine fabric, found objects, and movement",
+        prompt: "Design a costume that hides identity and transforms movement"
     }
 ];
 
