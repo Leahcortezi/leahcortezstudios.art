@@ -1838,3 +1838,47 @@ select:focus,
         opacity: 1;
     }
 }
+
+/* Creative Inspiration Section Styles */
+.inspiration-section button {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.inspiration-section button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.inspiration-section button:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced button animations */
+@keyframes buttonPulse {
+    0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+    50% { box-shadow: 0 6px 16px rgba(248, 200, 208, 0.3); }
+    100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+}
+
+.inspiration-section button:focus {
+    animation: buttonPulse 2s infinite;
+    outline: 2px solid #f8c8d0;
+    outline-offset: 2px;
+}
+
+/* Responsive improvements for inspiration section */
+@media (max-width: 768px) {
+    .inspiration-section .button-grid {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .inspiration-section button {
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 10px 16px;
+    }
+}

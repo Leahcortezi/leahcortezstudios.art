@@ -48,93 +48,89 @@
                 <div class="tools-grid">
                     
                     <!-- Font Pairing Guide -->
-                    <!-- Mood-Based Color Generator -->
+                    <!-- Enhanced Mood Color Generator -->
                     <div class="tool-card">
-                        <h3>Mood Color Generator</h3>
-                        <p>Generate beautiful color palettes based on emotions, themes, or art styles - perfect for any creative project</p>
+                        <h3>AI Mood Color Generator</h3>
+                        <p>Describe your artwork's mood, theme, or feeling and get intelligent color palettes that perfectly match your vision</p>
                         <div class="generator-display" id="moodColorGenerator" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="colorMoodType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="emotion">Emotion/Feeling</option>
-                                        <option value="theme">Art Theme</option>
-                                        <option value="season">Season/Nature</option>
-                                        <option value="style">Art Style</option>
-                                    </select>
-                                    <select id="specificMood" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="peaceful">Peaceful & Calm</option>
-                                        <option value="energetic">Energetic & Bold</option>
-                                        <option value="romantic">Romantic & Soft</option>
-                                        <option value="mysterious">Mysterious & Dark</option>
-                                        <option value="joyful">Joyful & Bright</option>
-                                    </select>
+                                <!-- Main Text Description Input -->
+                                <div style="margin-bottom: 10px;">
+                                    <label style="display: block; margin-bottom: 6px; color: #f8c8d0; font-size: 0.8rem; font-weight: 600;">Describe your artwork's mood, theme, or feeling:</label>
+                                    <textarea id="pieceDescription" placeholder="e.g., 'A dreamy sunset over calm waters', 'Bold energy for a rock concert poster', 'Cozy autumn coffee shop vibes', 'Mysterious forest at twilight', 'Vibrant tropical paradise', 'Elegant vintage wedding', 'Moody cyberpunk cityscape'..." 
+                                        style="width: 100%; height: 55px; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 6px; font-size: 0.75rem; resize: vertical; font-family: inherit; line-height: 1.4; box-sizing: border-box;"
+                                        oninput="analyzeDescription()"></textarea>
                                 </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="paletteSize" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="3">3 Colors</option>
-                                        <option value="4">4 Colors</option>
-                                        <option value="5" selected>5 Colors</option>
-                                        <option value="6">6 Colors</option>
-                                    </select>
-                                    <select id="colorHarmony" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="analogous">Harmonious</option>
-                                        <option value="complementary">Contrasting</option>
-                                        <option value="triadic">Balanced</option>
-                                        <option value="monochromatic">Tonal</option>
-                                    </select>
+                                
+                                <!-- AI Analysis Display -->
+                                <div id="aiAnalysis" style="font-size: 0.7rem; line-height: 1.3; background: rgba(126, 28, 46, 0.15); padding: 8px; border-radius: 5px; margin-bottom: 10px; display: none; border-left: 3px solid var(--color-primary-accent);">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 4px;">AI Analysis:</div>
+                                    <div id="analysisContent" style="color: rgba(255,255,255,0.9);">
+                                        <!-- AI analysis will appear here -->
+                                    </div>
                                 </div>
-                                <div id="moodColorResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Generated Palette:</div>
-                                    <div id="moodColorSwatches" style="display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap;">
+                                
+                                <div id="moodColorResults" style="font-size: 0.75rem; line-height: 1.3; background: rgba(0,0,0,0.25); padding: 10px; border-radius: 6px; display: none;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 8px; font-size: 0.8rem;">Generated Palette:</div>
+                                    <div id="moodColorSwatches" style="display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center;">
                                         <!-- Color swatches will appear here -->
                                     </div>
-                                    <div id="moodColorInfo" style="font-size: 0.65rem;">
+                                    <div id="moodColorInfo" style="font-size: 0.7rem; color: rgba(255,255,255,0.85);">
                                         <!-- Color information will appear here -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="generate-btn" onclick="generateMoodColors()">Generate Colors</button>
-                    </div>                    <!-- Design Layout Helper -->
+                    </div>                    <!-- Creative Art Prompt Generator -->
                     <div class="tool-card">
-                        <h3>Layout Composition Guide</h3>
-                        <p>Learn design principles and get layout suggestions based on your content and goals</p>
-                        <div class="generator-display" id="layoutHelper" style="padding: 8px; margin: 8px 0;">
+                        <h3>Creative Art Prompt Generator</h3>
+                        <p>Break creative blocks with wild, imaginative prompts for any medium - from surreal scenes to fantastical creatures</p>
+                        <div class="generator-display" id="promptGenerator" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="contentType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="text-heavy">Lots of Text</option>
-                                        <option value="image-heavy">Lots of Images</option>
-                                        <option value="balanced">Text + Images</option>
-                                        <option value="minimal">Minimal Content</option>
+                                    <select id="promptMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="drawing">Drawing/Sketch</option>
+                                        <option value="painting">Painting</option>
+                                        <option value="digital">Digital Art</option>
+                                        <option value="sculpture">Sculpture</option>
+                                        <option value="mixed-media">Mixed Media</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="any">Any Medium</option>
                                     </select>
-                                    <select id="layoutGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="inform">Inform/Educate</option>
-                                        <option value="sell">Sell/Promote</option>
-                                        <option value="inspire">Inspire/Motivate</option>
-                                        <option value="entertain">Entertain</option>
+                                    <select id="promptStyle" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="surreal">Surreal/Dreamlike</option>
+                                        <option value="fantasy">Fantasy/Magical</option>
+                                        <option value="creature">Creature Design</option>
+                                        <option value="scene">Scene/Environment</option>
+                                        <option value="abstract">Abstract/Experimental</option>
+                                        <option value="portrait">Character/Portrait</option>
+                                        <option value="random">Completely Random</option>
                                     </select>
                                 </div>
                                 <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="layoutFormat" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="portrait">Portrait (Tall)</option>
-                                        <option value="landscape">Landscape (Wide)</option>
-                                        <option value="square">Square</option>
+                                    <select id="promptComplexity" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="simple">Simple & Quick</option>
+                                        <option value="detailed">Detailed Challenge</option>
+                                        <option value="epic">Epic Project</option>
                                     </select>
-                                    <select id="audienceType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="casual">Casual/Personal</option>
-                                        <option value="business">Business/Formal</option>
-                                        <option value="creative">Creative/Artistic</option>
-                                        <option value="youth">Young Audience</option>
+                                    <select id="promptMood" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="any">Any Mood</option>
+                                        <option value="dark">Dark/Gothic</option>
+                                        <option value="whimsical">Whimsical/Cute</option>
+                                        <option value="epic">Epic/Heroic</option>
+                                        <option value="peaceful">Peaceful/Serene</option>
+                                        <option value="chaotic">Chaotic/Wild</option>
                                     </select>
                                 </div>
-                                <div id="layoutResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Layout Recommendations:</div>
-                                    <div id="layoutContent">Select your options to get layout suggestions</div>
+                                <div id="promptResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Your Creative Prompt:</div>
+                                    <div id="promptContent" style="margin-bottom: 6px; font-style: italic; color: rgba(255,255,255,0.95);"></div>
+                                    <div id="promptTips" style="font-size: 0.65rem; color: rgba(248, 200, 208, 0.8); border-top: 1px solid rgba(248, 200, 208, 0.2); padding-top: 4px;"></div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="generateLayoutAdvice()">Get Layout Ideas</button>
+                        <button class="generate-btn" onclick="generateArtPrompt()">Generate Prompt</button>
                     </div>
 
                     <!-- Project Price Helper -->
@@ -486,29 +482,49 @@
 
                 </div>
 
-                <!-- Paint Calculator -->
-                <div id="paintSection" class="calculator-section">
-                    <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">🎨 Paint Needed</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                        <div>
-                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">Paint Type</label>
-                            <select id="paintType" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
-                                <option value="acrylic">Acrylic Paint</option>
-                                <option value="oil">Oil Paint</option>
-                                <option value="watercolor">Watercolor</option>
-                                <option value="gouache">Gouache</option>
-                                <option value="tempera">Tempera</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">Coverage Style</label>
-                            <select id="coverageStyle" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
-                                <option value="light">Light Coverage</option>
-                                <option value="medium">Medium Coverage</option>
-                                <option value="heavy">Heavy/Thick Coverage</option>
-                            </select>
+                <!-- Enhanced Design Recommendations Section -->
+                <div id="enhancedRecommendations" style="margin: 25px 0;">
+                    
+                    <!-- Additional Recommendations Categories -->
+                    <div id="brandingRecommendations" style="background: rgba(52, 152, 219, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; display: none;">
+                        <h3 style="color: #3498db; margin: 0 0 15px 0;">🎯 Branding & Visual Identity</h3>
+                        <div id="brandingContent" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Branding recommendations will be populated here -->
                         </div>
                     </div>
+
+                    <!-- User Experience Recommendations -->
+                    <div id="uxRecommendations" style="background: rgba(230, 126, 34, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; display: none;">
+                        <h3 style="color: #e67e22; margin: 0 0 15px 0;">👥 User Experience & Accessibility</h3>
+                        <div id="uxContent" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- UX recommendations will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Technical Specifications -->
+                    <div id="technicalRecommendations" style="background: rgba(46, 204, 113, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; display: none;">
+                        <h3 style="color: #2ecc71; margin: 0 0 15px 0;">⚙️ Technical Specifications & Best Practices</h3>
+                        <div id="technicalContent" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Technical recommendations will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Industry-Specific Advice -->
+                    <div id="industryRecommendations" style="background: rgba(155, 89, 182, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; display: none;">
+                        <h3 style="color: #9b59b6; margin: 0 0 15px 0;">🏢 Industry-Specific Guidelines</h3>
+                        <div id="industryContent" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Industry-specific recommendations will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Creative Trends & Innovation -->
+                    <div id="trendsRecommendations" style="background: rgba(231, 76, 60, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; display: none;">
+                        <h3 style="color: #e74c3c; margin: 0 0 15px 0;">� Current Trends & Creative Innovation</h3>
+                        <div id="trendsContent" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Trends recommendations will be populated here -->
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Calculate Button -->

@@ -10,13 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Modal Management
 function openModal(modalId) {
+    console.log('Opening modal:', modalId);
     const modal = document.getElementById(modalId);
     const overlay = document.querySelector('.modal-overlay');
     
     if (modal && overlay) {
+        console.log('Modal and overlay found');
         modal.style.display = 'block';
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        
+        // Force visibility and animation
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modal.style.transform = 'translateY(0)';
+        }, 10);
         
         // Close button functionality
         const closeBtn = modal.querySelector('.modal-close');
@@ -33,6 +41,8 @@ function openModal(modalId) {
                 closeModal();
             }
         });
+    } else {
+        console.error('Modal or overlay not found:', { modal, overlay });
     }
 }
 
@@ -41,7 +51,12 @@ function closeModal() {
     const overlay = document.querySelector('.modal-overlay');
     
     modals.forEach(modal => {
-        modal.style.display = 'none';
+        modal.style.opacity = '0';
+        modal.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
     });
     
     if (overlay) {
@@ -839,155 +854,271 @@ function findClosestStandardSize(width, height, units) {
     return `${closest[0]}${unitSymbol} × ${closest[1]}${unitSymbol}`;
 }
 
-// Mood-Based Color Generator
-const moodColorPalettes = {
-    emotion: {
-        peaceful: {
-            name: "Peaceful & Calm",
-            baseColors: ['#87CEEB', '#E0F6FF', '#B6E5D8', '#F0F8EA', '#E6E6FA'],
-            description: "Soft blues and gentle greens that evoke tranquility and peace"
-        },
-        energetic: {
-            name: "Energetic & Bold", 
-            baseColors: ['#FF6B35', '#F7931E', '#FFD23F', '#C5351B', '#D8315B'],
-            description: "Vibrant oranges and reds that burst with energy and excitement"
-        },
-        romantic: {
-            name: "Romantic & Soft",
-            baseColors: ['#FFB6C1', '#FFC0CB', '#FFEAE5', '#E6B3BA', '#F8BBD9'],
-            description: "Delicate pinks and warm tones perfect for romantic themes"
-        },
-        mysterious: {
-            name: "Mysterious & Dark",
-            baseColors: ['#2C1810', '#4A4A4A', '#6A0DAD', '#191970', '#36454F'],
-            description: "Deep purples and dark tones that create intrigue and mystery"
-        },
-        joyful: {
-            name: "Joyful & Bright",
-            baseColors: ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#9ACD32'],
-            description: "Bright, happy colors that radiate joy and positivity"
-        }
-    },
-    theme: {
-        ocean: {
-            name: "Ocean Depths",
-            baseColors: ['#006994', '#47B5FF', '#06FFA5', '#B2FCFF', '#4D194D'],
-            description: "From deep ocean blues to coral reef teals"
-        },
-        sunset: {
-            name: "Golden Sunset",
-            baseColors: ['#FF6B35', '#F7931E', '#FFD23F', '#FFAB91', '#FF7043'],
-            description: "Warm sunset colors from golden hour"
-        },
-        forest: {
-            name: "Enchanted Forest",
-            baseColors: ['#2D5016', '#4F7942', '#9ACD32', '#8FBC8F', '#3CB371'],
-            description: "Rich forest greens and earthy tones"
-        },
-        cosmic: {
-            name: "Cosmic Space",
-            baseColors: ['#0B1426', '#2E1065', '#6A0DAD', '#9932CC', '#FFD700'],
-            description: "Deep space purples with starlight accents"
-        },
-        vintage: {
-            name: "Vintage Elegance",
-            baseColors: ['#8B4513', '#D2691E', '#F4A460', '#DEB887', '#CD853F'],
-            description: "Classic vintage browns and warm golds"
-        }
-    },
-    season: {
-        spring: {
-            name: "Fresh Spring",
-            baseColors: ['#98FB98', '#FFB6C1', '#87CEEB', '#F0E68C', '#DDA0DD'],
-            description: "Fresh pastels that capture spring's renewal"
-        },
-        summer: {
-            name: "Bright Summer",
-            baseColors: ['#FF6347', '#FFD700', '#00CED1', '#32CD32', '#FF1493'],
-            description: "Vibrant summer colors full of life and warmth"
-        },
-        autumn: {
-            name: "Autumn Harvest",
-            baseColors: ['#CD853F', '#D2691E', '#B22222', '#DAA520', '#8B4513'],
-            description: "Rich autumn colors of changing leaves"
-        },
-        winter: {
-            name: "Winter Frost",
-            baseColors: ['#E0E6F8', '#B0C4DE', '#4682B4', '#2F4F4F', '#708090'],
-            description: "Cool winter blues and silver tones"
-        }
-    },
-    style: {
-        impressionist: {
-            name: "Impressionist",
-            baseColors: ['#E6E6FA', '#FFB6C1', '#98FB98', '#F0E68C', '#87CEEB'],
-            description: "Soft, light colors characteristic of Impressionist painting"
-        },
-        abstract: {
-            name: "Bold Abstract",
-            baseColors: ['#FF0000', '#0000FF', '#FFFF00', '#000000', '#FFFFFF'],
-            description: "Primary colors and high contrast for abstract expression"
-        },
-        minimalist: {
-            name: "Minimalist",
-            baseColors: ['#FFFFFF', '#F5F5F5', '#E5E5E5', '#333333', '#666666'],
-            description: "Clean, minimal palette with subtle variations"
-        },
-        bohemian: {
-            name: "Bohemian",
-            baseColors: ['#8B4513', '#DAA520', '#CD853F', '#9932CC', '#DC143C'],
-            description: "Rich, earthy tones with jewel accents"
-        }
-    }
+// Enhanced Mood-Based Color Generator with Text Analysis
+const enhancedColorPalettes = {
+    // Emotions & Moods
+    peaceful: { colors: ['#87CEEB', '#E0F6FF', '#98FB98', '#F0FFF0', '#E6E6FA'], name: "Peaceful Serenity", desc: "Calming blues and gentle greens for tranquil moods" },
+    energetic: { colors: ['#FF4500', '#FF6347', '#FFD700', '#FF1493', '#00FF00'], name: "Electric Energy", desc: "Bold, vibrant colors that pulse with life" },
+    romantic: { colors: ['#FFB6C1', '#FFEAE5', '#F8BBD9', '#FFCCCB', '#E6B3BA'], name: "Romantic Blush", desc: "Soft pinks and warm tones for love and tenderness" },
+    mysterious: { colors: ['#191970', '#483D8B', '#2F2F2F', '#8B008B', '#4B0082'], name: "Dark Mystery", desc: "Deep purples and shadows for enigmatic themes" },
+    joyful: { colors: ['#FFD700', '#FF69B4', '#00CED1', '#ADFF2F', '#FF6347'], name: "Pure Joy", desc: "Bright, happy colors that spark delight" },
+    melancholy: { colors: ['#4682B4', '#778899', '#B0C4DE', '#696969', '#A9A9A9'], name: "Gentle Sadness", desc: "Muted blues and grays for contemplative moods" },
+    excited: { colors: ['#FF4500', '#FF1493', '#00FF7F', '#FFD700', '#FF6347'], name: "Electric Excitement", desc: "High-energy colors that vibrate with enthusiasm" },
+    dreamy: { colors: ['#E6E6FA', '#F0E68C', '#DDA0DD', '#98FB98', '#87CEEB'], name: "Ethereal Dreams", desc: "Soft pastels for dreamlike, floating feelings" },
+    confident: { colors: ['#B22222', '#DAA520', '#2E8B57', '#4B0082', '#FF8C00'], name: "Bold Confidence", desc: "Strong, assertive colors that command attention" },
+    nostalgic: { colors: ['#D2691E', '#F4A460', '#DEB887', '#BC8F8F', '#CD853F'], name: "Warm Nostalgia", desc: "Vintage tones that evoke cherished memories" },
+
+    // Nature & Environments
+    ocean: { colors: ['#006994', '#20B2AA', '#40E0D0', '#87CEEB', '#4682B4'], name: "Ocean Depths", desc: "From deep sea to tropical shallows" },
+    sunset: { colors: ['#FF6347', '#FF4500', '#FFD700', '#FF69B4', '#FF8C00'], name: "Golden Hour", desc: "Warm sunset colors from sky to horizon" },
+    forest: { colors: ['#228B22', '#32CD32', '#8FBC8F', '#9ACD32', '#006400'], name: "Deep Woods", desc: "Rich forest greens and earthy undertones" },
+    cosmic: { colors: ['#0B1426', '#483D8B', '#9400D3', '#4B0082', '#C71585'], name: "Starry Cosmos", desc: "Deep space purples with stellar highlights" },
+    vintage: { colors: ['#8B4513', '#CD853F', '#D2691E', '#F4A460', '#DEB887'], name: "Antique Elegance", desc: "Classic vintage browns and warm patina" },
+    tropical: { colors: ['#00FF7F', '#FF1493', '#FFD700', '#FF6347', '#00CED1'], name: "Paradise Found", desc: "Vibrant tropical colors of sun and sea" },
+    desert: { colors: ['#F4A460', '#D2691E', '#CD853F', '#DEB887', '#BC8F8F'], name: "Desert Sands", desc: "Warm earth tones of arid landscapes" },
+    arctic: { colors: ['#E0F6FF', '#B0E0E6', '#87CEEB', '#4682B4', '#F0F8FF'], name: "Frozen Beauty", desc: "Cool blues and whites of icy realms" },
+    garden: { colors: ['#FF69B4', '#ADFF2F', '#9ACD32', '#FFB6C1', '#98FB98'], name: "Blooming Garden", desc: "Fresh florals and vibrant garden life" },
+    cityscape: { colors: ['#696969', '#A9A9A9', '#FFD700', '#FF4500', '#4682B4'], name: "Urban Energy", desc: "Modern city colors of steel and neon" },
+
+    // Seasons
+    spring: { colors: ['#98FB98', '#FFB6C1', '#87CEEB', '#F0E68C', '#DDA0DD'], name: "Spring Awakening", desc: "Fresh pastels of new growth and renewal" },
+    summer: { colors: ['#FF6347', '#FFD700', '#00CED1', '#32CD32', '#FF1493'], name: "Summer Vibrance", desc: "Bright, warm colors of peak season" },
+    autumn: { colors: ['#CD853F', '#D2691E', '#B22222', '#DAA520', '#8B4513'], name: "Autumn Harvest", desc: "Rich colors of changing leaves and harvest" },
+    winter: { colors: ['#E0E6F8', '#B0C4DE', '#4682B4', '#2F4F4F', '#708090'], name: "Winter Frost", desc: "Cool, crisp colors of snow and ice" },
+
+    // Art Styles
+    impressionist: { colors: ['#E6E6FA', '#FFB6C1', '#98FB98', '#F0E68C', '#87CEEB'], name: "Impressionist Light", desc: "Soft, luminous colors of the masters" },
+    abstract: { colors: ['#FF0000', '#0000FF', '#FFFF00', '#FF1493', '#00FF00'], name: "Abstract Expression", desc: "Bold primaries for pure artistic expression" },
+    minimalist: { colors: ['#FFFFFF', '#F5F5F5', '#E5E5E5', '#CCCCCC', '#999999'], name: "Clean Minimal", desc: "Subtle grays for elegant simplicity" },
+    bohemian: { colors: ['#8B4513', '#DAA520', '#CD853F', '#9932CC', '#DC143C'], name: "Boho Chic", desc: "Rich earth tones with jewel accents" },
+    gothic: { colors: ['#000000', '#8B0000', '#4B0082', '#2F2F2F', '#800080'], name: "Gothic Drama", desc: "Dark, dramatic colors for gothic romance" },
+    retro: { colors: ['#FF6B35', '#F7931E', '#FFD23F', '#3CBCCF', '#FF006E'], name: "Retro Groove", desc: "Funky colors from decades past" },
+    cyberpunk: { colors: ['#FF00FF', '#00FFFF', '#FF1493', '#7FFF00', '#9400D3'], name: "Neon Future", desc: "Electric colors of digital dreams" },
+    pastel: { colors: ['#FFB3E6', '#B3E6FF', '#B3FFB3', '#FFFFB3', '#E6B3FF'], name: "Soft Pastels", desc: "Gentle, muted colors for delicate beauty" },
+
+    // Color Theory Based
+    monochromatic_blue: { colors: ['#000080', '#4169E1', '#6495ED', '#87CEEB', '#E6F3FF'], name: "Blue Harmony", desc: "Monochromatic blue from deep to light" },
+    monochromatic_red: { colors: ['#8B0000', '#DC143C', '#FF6347', '#FFA07A', '#FFE4E1'], name: "Red Gradient", desc: "Warm reds from deep to blush" },
+    complementary_warm: { colors: ['#FF4500', '#FF6347', '#FFD700', '#32CD32', '#228B22'], name: "Warm Contrast", desc: "Orange and green complementary harmony" },
+    triadic_primary: { colors: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'], name: "Primary Triad", desc: "Classic red, blue, yellow with accents" },
+    analogous_warm: { colors: ['#FF0000', '#FF4500', '#FF8C00', '#FFD700', '#FFFF00'], name: "Fire Warmth", desc: "Neighboring warm colors that flow together" },
+    split_complement: { colors: ['#FF6347', '#32CD32', '#4169E1', '#FFD700', '#9932CC'], name: "Balanced Split", desc: "Sophisticated color relationships" },
+
+    // Specific Objects & Themes
+    coffee: { colors: ['#8B4513', '#A0522D', '#D2691E', '#F4A460', '#FFEFD5'], name: "Coffee House", desc: "Rich browns and cream like perfect coffee" },
+    wine: { colors: ['#722F37', '#8B0000', '#DC143C', '#800080', '#4B0082'], name: "Wine Country", desc: "Deep burgundies and rich purples" },
+    chocolate: { colors: ['#3C1810', '#8B4513', '#A0522D', '#D2691E', '#F4A460'], name: "Chocolate Dreams", desc: "Rich chocolate tones from dark to milk" },
+    honey: { colors: ['#DAA520', '#FFD700', '#F0E68C', '#FFEFD5', '#FFF8DC'], name: "Golden Honey", desc: "Sweet golden tones like flowing honey" },
+    lavender: { colors: ['#E6E6FA', '#DDA0DD', '#9370DB', '#8A2BE2', '#663399'], name: "Lavender Fields", desc: "Soothing purples of lavender blooms" },
+    emerald: { colors: ['#006400', '#228B22', '#32CD32', '#90EE90', '#F0FFF0'], name: "Emerald Jewel", desc: "Precious green tones from deep to light" },
+    sapphire: { colors: ['#003366', '#0047AB', '#4169E1', '#6495ED', '#E6F3FF'], name: "Sapphire Depths", desc: "Royal blues like precious gemstones" },
+    rose: { colors: ['#8B0000', '#DC143C', '#FF69B4', '#FFB6C1', '#FFF0F5'], name: "Rose Garden", desc: "Romantic pinks and reds of blooming roses" },
+
+    // Weather & Atmosphere
+    storm: { colors: ['#2F4F4F', '#696969', '#4682B4', '#B0C4DE', '#E6E6FA'], name: "Storm Clouds", desc: "Dramatic grays and blues of stormy weather" },
+    sunshine: { colors: ['#FFD700', '#FFA500', '#FF8C00', '#FFFF00', '#FFFACD'], name: "Bright Sunshine", desc: "Warm, glowing yellows of sunny days" },
+    mist: { colors: ['#F5F5F5', '#E6E6FA', '#D3D3D3', '#B0C4DE', '#778899'], name: "Misty Morning", desc: "Soft grays and blues of foggy landscapes" },
+    rainbow: { colors: ['#FF0000', '#FF8C00', '#FFFF00', '#00FF00', '#0000FF'], name: "Rainbow Bright", desc: "All colors of the spectrum in harmony" },
+
+    // Architectural & Design
+    modern: { colors: ['#000000', '#FFFFFF', '#808080', '#FF0000', '#0000FF'], name: "Modern Design", desc: "Clean, contemporary color scheme" },
+    rustic: { colors: ['#8B4513', '#A0522D', '#D2691E', '#F4A460', '#DEB887'], name: "Rustic Charm", desc: "Natural wood tones and earth colors" },
+    industrial: { colors: ['#2F4F4F', '#696969', '#A9A9A9', '#D3D3D3', '#F5F5F5'], name: "Industrial Steel", desc: "Metal grays and concrete tones" },
+    luxury: { colors: ['#FFD700', '#FF1493', '#8B008B', '#000000', '#FFFFFF'], name: "Luxury Gold", desc: "Rich golds and premium accent colors" }
 };
 
-function updateMoodOptions() {
-    const moodType = document.getElementById('colorMoodType').value;
-    const specificMoodSelect = document.getElementById('specificMood');
+// Enhanced keyword detection with more words and phrases
+const enhancedKeywords = {
+    // Emotions
+    peaceful: ['calm', 'serene', 'tranquil', 'peaceful', 'relaxing', 'soothing', 'gentle', 'quiet', 'meditation', 'zen', 'harmony', 'balance', 'still', 'restful'],
+    energetic: ['energetic', 'bold', 'vibrant', 'exciting', 'dynamic', 'power', 'strong', 'intense', 'electric', 'explosive', 'active', 'fierce', 'alive', 'buzzing'],
+    romantic: ['romantic', 'love', 'soft', 'dreamy', 'tender', 'sweet', 'intimate', 'passionate', 'delicate', 'feminine', 'graceful', 'heart', 'valentine', 'pink'],
+    mysterious: ['mysterious', 'dark', 'moody', 'gothic', 'shadow', 'noir', 'enigmatic', 'secret', 'hidden', 'dramatic', 'intense', 'black', 'deep', 'unknown'],
+    joyful: ['joyful', 'happy', 'bright', 'cheerful', 'uplifting', 'positive', 'sunny', 'smile', 'laugh', 'celebration', 'festival', 'party', 'fun', 'playful'],
+    melancholy: ['sad', 'melancholy', 'blue', 'lonely', 'nostalgic', 'wistful', 'grey', 'rain', 'tears', 'sorrow', 'mournful', 'pensive', 'reflective'],
+    excited: ['excited', 'thrilled', 'electric', 'pumped', 'hyper', 'energized', 'animated', 'exhilarated', 'elated', 'euphoric', 'ecstatic'],
+    dreamy: ['dreamy', 'ethereal', 'floating', 'soft', 'misty', 'cloudy', 'magical', 'fantasy', 'surreal', 'whimsical', 'fairy', 'pastel'],
+    confident: ['confident', 'bold', 'strong', 'powerful', 'assertive', 'dominant', 'commanding', 'fierce', 'warrior', 'leader', 'champion'],
+    nostalgic: ['nostalgic', 'vintage', 'retro', 'old', 'antique', 'classic', 'memory', 'past', 'heritage', 'traditional', 'timeless'],
+
+    // Nature & Environments
+    ocean: ['ocean', 'sea', 'water', 'waves', 'beach', 'coral', 'marine', 'nautical', 'aqua', 'blue', 'teal', 'turquoise', 'underwater'],
+    sunset: ['sunset', 'sunrise', 'golden hour', 'orange', 'warm', 'glow', 'horizon', 'twilight', 'dusk', 'amber', 'honey'],
+    forest: ['forest', 'woods', 'trees', 'nature', 'green', 'leaves', 'jungle', 'woodland', 'moss', 'fern', 'pine', 'oak'],
+    cosmic: ['space', 'cosmic', 'galaxy', 'stars', 'universe', 'nebula', 'purple', 'deep', 'void', 'celestial', 'astral'],
+    tropical: ['tropical', 'paradise', 'palm', 'island', 'exotic', 'vibrant', 'colorful', 'lush', 'bright', 'hawaii'],
+    desert: ['desert', 'sand', 'dune', 'arid', 'cactus', 'dry', 'brown', 'tan', 'beige', 'earth', 'southwestern'],
+    arctic: ['arctic', 'ice', 'snow', 'frozen', 'cold', 'white', 'blue', 'crystal', 'glacier', 'polar', 'winter'],
+    garden: ['garden', 'flowers', 'blooms', 'petals', 'botanical', 'floral', 'roses', 'spring', 'fresh', 'colorful'],
+    storm: ['storm', 'thunder', 'lightning', 'rain', 'clouds', 'dramatic', 'gray', 'dark', 'moody', 'turbulent'],
+
+    // Seasons
+    spring: ['spring', 'fresh', 'new', 'growth', 'renewal', 'pastel', 'light', 'soft', 'blooming', 'awakening'],
+    summer: ['summer', 'hot', 'bright', 'sunny', 'warm', 'vibrant', 'beach', 'vacation', 'tropical', 'intense'],
+    autumn: ['autumn', 'fall', 'harvest', 'orange', 'red', 'brown', 'leaves', 'cozy', 'warm', 'rustic'],
+    winter: ['winter', 'cold', 'snow', 'ice', 'blue', 'gray', 'white', 'crisp', 'frozen', 'cool'],
+
+    // Objects & Themes
+    coffee: ['coffee', 'cafe', 'brown', 'warm', 'cozy', 'espresso', 'latte', 'mocha', 'bean', 'roast'],
+    wine: ['wine', 'burgundy', 'red', 'purple', 'grape', 'elegant', 'sophisticated', 'deep', 'rich'],
+    chocolate: ['chocolate', 'brown', 'sweet', 'rich', 'cocoa', 'dark', 'milk', 'decadent', 'smooth'],
+    honey: ['honey', 'golden', 'yellow', 'sweet', 'amber', 'warm', 'glow', 'natural', 'smooth'],
+    rose: ['rose', 'pink', 'red', 'romantic', 'flower', 'petal', 'bloom', 'garden', 'love'],
     
-    specificMoodSelect.innerHTML = '';
+    // Art Styles
+    vintage: ['vintage', 'retro', 'old', 'classic', 'antique', 'aged', 'weathered', 'worn', 'nostalgic'],
+    modern: ['modern', 'contemporary', 'clean', 'minimalist', 'simple', 'sleek', 'geometric', 'linear'],
+    gothic: ['gothic', 'dark', 'dramatic', 'black', 'mysterious', 'ornate', 'medieval', 'architectural'],
+    bohemian: ['bohemian', 'boho', 'artistic', 'eclectic', 'creative', 'free', 'colorful', 'textured'],
+    cyberpunk: ['cyberpunk', 'neon', 'digital', 'futuristic', 'electric', 'bright', 'synthetic', 'urban']
+};
+
+function analyzeDescription() {
+    const description = document.getElementById('pieceDescription').value.toLowerCase();
+    const analysisDiv = document.getElementById('aiAnalysis');
+    const contentDiv = document.getElementById('analysisContent');
     
-    Object.keys(moodColorPalettes[moodType]).forEach(key => {
-        const palette = moodColorPalettes[moodType][key];
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = palette.name;
-        specificMoodSelect.appendChild(option);
-    });
+    if (description.length < 8) {
+        analysisDiv.style.display = 'none';
+        return;
+    }
+    
+    const analysis = performEnhancedTextAnalysis(description);
+    if (analysis.detectedThemes.length > 0) {
+        contentDiv.innerHTML = `
+            <div style="margin-bottom: 4px;"><strong>Detected Themes:</strong> ${analysis.detectedThemes.join(', ')}</div>
+            <div style="margin-bottom: 4px;"><strong>Color Mood:</strong> ${analysis.overallMood}</div>
+            <div><strong>Best Match:</strong> ${analysis.bestMatch}</div>
+        `;
+        analysisDiv.style.display = 'block';
+    } else {
+        analysisDiv.style.display = 'none';
+    }
+}
+
+function performEnhancedTextAnalysis(text) {
+    const detectedThemes = [];
+    const matchScores = {};
+    
+    // Check against all keywords in enhanced system
+    for (const [theme, keywords] of Object.entries(enhancedKeywords)) {
+        const matchCount = keywords.filter(keyword => text.includes(keyword)).length;
+        if (matchCount > 0) {
+            detectedThemes.push(theme);
+            matchScores[theme] = matchCount;
+        }
+    }
+    
+    // Find best matching theme
+    let bestMatch = 'peaceful'; // default
+    let bestScore = 0;
+    for (const [theme, score] of Object.entries(matchScores)) {
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = theme;
+        }
+    }
+    
+    // Determine overall mood
+    let overallMood = 'balanced';
+    if (detectedThemes.some(theme => ['energetic', 'excited', 'joyful'].includes(theme))) {
+        overallMood = 'vibrant';
+    } else if (detectedThemes.some(theme => ['peaceful', 'dreamy', 'melancholy'].includes(theme))) {
+        overallMood = 'soft';
+    } else if (detectedThemes.some(theme => ['mysterious', 'gothic', 'storm'].includes(theme))) {
+        overallMood = 'dramatic';
+    }
+    
+    return {
+        detectedThemes,
+        bestMatch,
+        overallMood,
+        matchScores
+    };
 }
 
 function generateMoodColors() {
-    const moodType = document.getElementById('colorMoodType').value;
-    const specificMood = document.getElementById('specificMood').value;
-    const paletteSize = parseInt(document.getElementById('paletteSize').value);
-    const harmony = document.getElementById('colorHarmony').value;
+    const description = document.getElementById('pieceDescription').value;
+    let selectedPalette;
     
-    const basePalette = moodColorPalettes[moodType][specificMood];
-    if (!basePalette) return;
-    
-    let finalColors = [...basePalette.baseColors];
-    
-    // Apply color harmony modifications
-    if (harmony === 'complementary') {
-        finalColors = finalColors.map(color => adjustColorForHarmony(color, 'complementary'));
-    } else if (harmony === 'analogous') {
-        finalColors = finalColors.map(color => adjustColorForHarmony(color, 'analogous'));
-    } else if (harmony === 'monochromatic') {
-        const baseColor = finalColors[0];
-        finalColors = generateMonochromaticPalette(baseColor, paletteSize);
+    // Use description-based generation if there's meaningful text
+    if (description && description.length > 8) {
+        const analysis = performEnhancedTextAnalysis(description.toLowerCase());
+        selectedPalette = enhancedColorPalettes[analysis.bestMatch] || enhancedColorPalettes.peaceful;
+    } else {
+        // Use a random inspiring palette if no description
+        const paletteKeys = Object.keys(enhancedColorPalettes);
+        const randomKey = paletteKeys[Math.floor(Math.random() * paletteKeys.length)];
+        selectedPalette = enhancedColorPalettes[randomKey];
     }
     
-    // Adjust palette size
-    if (finalColors.length > paletteSize) {
-        finalColors = finalColors.slice(0, paletteSize);
-    } else if (finalColors.length < paletteSize) {
-        while (finalColors.length < paletteSize) {
-            const randomColor = generateHarmoniousColor(finalColors[0]);
-            finalColors.push(randomColor);
+    // Generate final palette with some variation
+    const baseColors = [...selectedPalette.colors];
+    let finalColors = [];
+    
+    // Add the main colors with slight variations for interest
+    for (let i = 0; i < Math.min(5, baseColors.length); i++) {
+        if (Math.random() > 0.3) {
+            finalColors.push(baseColors[i]);
+        } else {
+            finalColors.push(generateColorVariation(baseColors[i]));
         }
     }
     
-    displayMoodColors(finalColors, basePalette);
+    // Ensure we have 5 colors
+    while (finalColors.length < 5) {
+        const baseColor = baseColors[Math.floor(Math.random() * baseColors.length)];
+        finalColors.push(generateColorVariation(baseColor));
+    }
+    
+    displayMoodColors(finalColors, selectedPalette);
+}
+
+function generateColorVariation(hexColor) {
+    // Convert hex to HSL for easier manipulation
+    const hsl = hexToHsl(hexColor);
+    
+    // Add small random variations
+    const newHue = (hsl.h + (Math.random() * 30 - 15)) % 360;
+    const newSaturation = Math.max(20, Math.min(100, hsl.s + (Math.random() * 20 - 10)));
+    const newLightness = Math.max(15, Math.min(85, hsl.l + (Math.random() * 20 - 10)));
+    
+    return hslToHex(newHue, newSaturation, newLightness);
+}
+
+function generateCustomPalette(basePalette, analysis) {
+    let colors = [...basePalette.baseColors];
+    
+    // Adjust colors based on temperature
+    if (analysis.temperature === 'warm') {
+        colors = colors.map(color => adjustColorTemperature(color, 'warm'));
+    } else if (analysis.temperature === 'cool') {
+        colors = colors.map(color => adjustColorTemperature(color, 'cool'));
+    }
+    
+    return {
+        colors: colors,
+        name: basePalette.name,
+        description: basePalette.description + ` (adjusted for ${analysis.temperature} temperature)`
+    };
+}
+
+function adjustColorTemperature(hexColor, direction) {
+    const hsl = hexToHsl(hexColor);
+    
+    if (direction === 'warm') {
+        // Shift towards oranges/reds
+        if (hsl.h > 180) hsl.h = Math.max(0, hsl.h - 20);
+        else hsl.h = Math.min(60, hsl.h + 10);
+    } else if (direction === 'cool') {
+        // Shift towards blues/greens
+        hsl.h = (hsl.h + 180) % 360;
+        if (hsl.h > 240 || hsl.h < 120) {
+            hsl.h = 180 + (hsl.h % 60);
+        }
+    }
+    
+    return hslToHex(hsl.h, hsl.s, hsl.l);
 }
 
 function adjustColorForHarmony(hexColor, harmonyType) {
@@ -1107,12 +1238,9 @@ function copyColorToClipboard(color) {
     });
 }
 
-// Initialize mood options when document loads
+// Enhanced Color Generator ready
 document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('colorMoodType')) {
-        updateMoodOptions();
-        document.getElementById('colorMoodType').addEventListener('change', updateMoodOptions);
-    }
+    console.log("🎨 Enhanced Color Generator with 50+ palettes loaded");
 });
 
 // Layout Composition Guide
@@ -1157,72 +1285,228 @@ const layoutAdvice = {
     }
 };
 
-function generateLayoutAdvice() {
-    const content = document.getElementById('contentType').value;
-    const goal = document.getElementById('layoutGoal').value;
-    const format = document.getElementById('layoutFormat').value;
-    const audience = document.getElementById('audienceType').value;
+// Art Prompt Generator - Creative prompts for any medium
+const artPrompts = {
+    surreal: {
+        simple: [
+            "A clock melting like honey",
+            "Trees growing upside down from clouds",
+            "Fish swimming through air in a library",
+            "A door floating in the middle of an ocean",
+            "Stairs leading into a mirror",
+            "Flowers blooming from old books",
+            "A house made of crystallized music",
+            "Rain falling upwards into the sky"
+        ],
+        detailed: [
+            "A fever dream where gravity works sideways and people walk on walls while giant butterflies carry umbrellas",
+            "An abandoned carnival where the rides are made of living coral and ticket stubs grow like leaves",
+            "A cityscape where buildings breathe and windows blink like eyes, with rivers of liquid starlight flowing between streets",
+            "A forest where each tree is a different season, connected by bridges made of solidified wind",
+            "A library where books fly like birds and words physically fall from pages to carpet the floor in shifting meanings"
+        ],
+        epic: [
+            "Create a massive dreamscape showing the moment when all human memories become visible as floating islands, each containing a different person's most vivid dream, connected by bridges of crystallized time",
+            "Design an enormous surreal battlefield where abstract emotions fight as living creatures - Depression as a massive tar-black whale, Joy as golden lightning birds, Anxiety as swarms of geometric insects"
+        ]
+    },
+    fantasy: {
+        simple: [
+            "A tiny dragon guarding a coffee cup",
+            "Mushroom houses in a fairy village",
+            "A magical staff growing flowers",
+            "Crystal cave with floating gems",
+            "Enchanted forest with glowing moss",
+            "A phoenix rising from birthday candles",
+            "Unicorn drinking from a rainbow pond",
+            "Fairy lights that are actual tiny fairies"
+        ],
+        detailed: [
+            "A steampunk fairy realm where mechanical butterflies pollinate gear-flowers and clockwork trees tick in rhythm",
+            "An underwater wizard's tower where merfolk students learn to cast spells with bioluminescent sea creatures",
+            "A floating sky city where dragon riders deliver mail and cloud shepherds herd storm systems",
+            "A magical blacksmith's forge where they hammer shooting stars into armor and temper swords in moonbeams",
+            "An enchanted greenhouse where each plant represents a different type of magic and they're all blooming at once"
+        ],
+        epic: [
+            "Design the final battle between the last giant and an army of technological sprites in a world where magic and machinery have merged",
+            "Create an epic scene of a cosmic dragon weaving new constellations while flying between planets, with star-dust trailing from its wings"
+        ]
+    },
+    creature: {
+        simple: [
+            "A cat-octopus hybrid",
+            "A bird with butterfly wings",
+            "A dog with deer antlers",
+            "A rabbit-dragon mix",
+            "An owl with peacock feathers",
+            "A fox with fish fins",
+            "A bear with crystal spines",
+            "A horse with moth wings"
+        ],
+        detailed: [
+            "Combine a mantis shrimp with a peacock mantis - design a creature with the shrimp's powerful punching claws but the mantis's grace and the peacock's magnificent display",
+            "Merge a polar bear with a jellyfish - create a translucent arctic creature that glows and floats through icy waters",
+            "Blend a hummingbird with a chameleon - design a tiny creature that can change colors while hovering and has an impossibly long tongue",
+            "Fuse a pangolin with a monarch butterfly - armored creature with beautiful wing patterns that migrates seasonally",
+            "Cross a sea otter with a phoenix - aquatic creature that can ignite its waterproof fur for warmth and protection"
+        ],
+        epic: [
+            "Design an ancient guardian creature that's part mountain, part dragon, part forest - show it awakening after centuries of slumber with trees growing from its back and waterfalls flowing from its eyes",
+            "Create a cosmic leviathan that swims through space, part whale, part nebula, part crystalline structure, with galaxies visible through its translucent body"
+        ]
+    },
+    scene: {
+        simple: [
+            "A cozy cottage during a thunderstorm",
+            "A secret garden hidden behind a waterfall",
+            "An old bookshop at midnight",
+            "A picnic on a mountain peak",
+            "A lighthouse during a meteor shower",
+            "A train station in the clouds",
+            "A campfire on an alien planet",
+            "A greenhouse full of glowing plants"
+        ],
+        detailed: [
+            "A bustling night market in a floating city, with vendors selling bottled starlight and customers browsing while riding on flying carpets",
+            "An abandoned space station being reclaimed by alien plant life, with vines growing through broken windows and flowers blooming in zero gravity",
+            "A massive tree house city where each branch holds a different dwelling and rope bridges connect them all under a canopy of golden leaves",
+            "An underwater tea party where merfolk and sea creatures gather around a table made of coral with bubbles rising instead of steam",
+            "A desert oasis that appears only during eclipses, where time moves differently and ancient travelers rest between dimensions"
+        ],
+        epic: [
+            "Illustrate the moment when a dying star is reborn as a garden planet, showing the transformation from stellar explosion to the first life taking root",
+            "Create a vast interdimensional marketplace where beings from different realities trade memories, dreams, and pieces of their worlds"
+        ]
+    },
+    abstract: {
+        simple: [
+            "Emotions as geometric shapes",
+            "Music visualized as flowing colors",
+            "Time represented through texture",
+            "Movement frozen in angular lines",
+            "Silence depicted through negative space",
+            "Energy flowing in spirals",
+            "Growth shown through expanding patterns",
+            "Chaos organized into harmony"
+        ],
+        detailed: [
+            "Create a visual symphony where each instrument becomes a different type of mark-making - violins as flowing lines, drums as explosive textures, flutes as delicate dots",
+            "Design an abstract representation of human consciousness with layers representing memory, emotion, thought, and instinct blending and separating",
+            "Visualize the concept of time as a living entity that changes form - past as heavy textures, present as sharp lines, future as flowing gradients",
+            "Abstract the feeling of falling in love using only complementary colors and geometric forms that seem to dance together",
+            "Represent the four seasons as abstract forms that morph into each other in an endless cycle"
+        ],
+        epic: [
+            "Create an enormous abstract piece representing the birth of the universe, from the initial void through explosion to the formation of matter and energy patterns",
+            "Design a massive abstract representation of human evolution, showing the progression from simple to complex through purely visual elements"
+        ]
+    },
+    portrait: {
+        simple: [
+            "A person made of seasonal elements",
+            "Someone with galaxy eyes",
+            "A character with flower hair",
+            "Portrait using only geometric shapes",
+            "Person dissolving into butterflies",
+            "Face emerging from tree bark",
+            "Character with constellation freckles",
+            "Portrait reflected in water drops"
+        ],
+        detailed: [
+            "A steampunk inventor whose goggles reflect their latest creation and whose hair is made of copper wire and small gears",
+            "A sea witch whose hair flows like ocean currents and whose eyes contain tiny storm systems",
+            "A forest guardian whose skin has bark texture and whose breath creates small plants and flowers",
+            "A time traveler whose clothing shifts between different historical periods and whose eyes show glimpses of different eras",
+            "A dream weaver whose fingers trail stardust and whose hair contains floating symbols and sleeping animals"
+        ],
+        epic: [
+            "Portrait of the personification of Earth, showing the passage of geological time through their features - mountains in their bones, forests in their hair, oceans in their eyes",
+            "Create a portrait of a cosmic being whose body contains entire solar systems, with planets orbiting within their silhouette"
+        ]
+    }
+};
+
+const mediumTips = {
+    drawing: "Try different pencil weights for depth. Use cross-hatching for shadows and texture.",
+    painting: "Layer colors while wet for blending, or let dry between layers for crisp edges.",
+    digital: "Use layers for easy editing. Try different brushes to create unique textures.",
+    sculpture: "Consider your material's properties. Think about how light will hit the surface.",
+    'mixed-media': "Combine unexpected materials. Let each medium's strength enhance the others.",
+    photography: "Use lighting to create mood. Consider composition and the story you're telling.",
+    any: "Focus on the core idea first, then choose the medium that best expresses it."
+};
+
+function generateArtPrompt() {
+    const medium = document.getElementById('promptMedium').value;
+    const style = document.getElementById('promptStyle').value;
+    const complexity = document.getElementById('promptComplexity').value;
+    const mood = document.getElementById('promptMood').value;
     
-    const results = document.getElementById('layoutResults');
-    const contentDiv = document.getElementById('layoutContent');
+    const resultsDiv = document.getElementById('promptResults');
+    const contentDiv = document.getElementById('promptContent');
+    const tipsDiv = document.getElementById('promptTips');
     
-    let advice = '';
+    let prompt = '';
+    let moodModifier = '';
     
-    // Get specific advice based on content type and goal
-    if (layoutAdvice[content] && layoutAdvice[content][goal] && layoutAdvice[content][goal][format]) {
-        advice = layoutAdvice[content][goal][format];
+    // Get base prompt
+    if (style === 'random') {
+        // Pick random style and prompt
+        const styles = Object.keys(artPrompts);
+        const randomStyle = styles[Math.floor(Math.random() * styles.length)];
+        const prompts = artPrompts[randomStyle][complexity];
+        prompt = prompts[Math.floor(Math.random() * prompts.length)];
     } else {
-        // Fallback advice based on format
-        if (format === 'portrait') {
-            advice = "Vertical layout works well for reading flow. Place most important content in upper third. Use clear hierarchy from top to bottom.";
-        } else if (format === 'landscape') {
-            advice = "Horizontal layout allows for side-by-side comparisons. Use left-to-right reading pattern. Great for before/after content.";
-        } else {
-            advice = "Square format works best with centered, balanced compositions. Perfect for social media. Focus on single key message.";
+        const prompts = artPrompts[style][complexity];
+        prompt = prompts[Math.floor(Math.random() * prompts.length)];
+    }
+    
+    // Add mood modifier if not 'any'
+    if (mood !== 'any') {
+        switch (mood) {
+            case 'dark':
+                moodModifier = ' Render this with a dark, gothic atmosphere using deep shadows and mysterious lighting.';
+                break;
+            case 'whimsical':
+                moodModifier = ' Give this a whimsical, playful feeling with bright colors and charming details.';
+                break;
+            case 'epic':
+                moodModifier = ' Make this feel epic and heroic with dramatic lighting and grand scale.';
+                break;
+            case 'peaceful':
+                moodModifier = ' Create a peaceful, serene mood with soft colors and gentle lighting.';
+                break;
+            case 'chaotic':
+                moodModifier = ' Infuse this with chaotic energy using wild colors and dynamic movement.';
+                break;
         }
     }
     
-    // Add audience-specific advice
-    let audienceAdvice = '';
-    switch (audience) {
-        case 'business':
-            audienceAdvice = "Use professional fonts, conservative colors, and clear information hierarchy.";
-            break;
-        case 'youth':
-            audienceAdvice = "Bold colors, dynamic layouts, and modern typography work well. Don't be afraid of asymmetry.";
-            break;
-        case 'seniors':
-            audienceAdvice = "Larger text, high contrast, simple layouts, and familiar design patterns.";
-            break;
-        case 'creative':
-            audienceAdvice = "Experiment with unconventional layouts, artistic typography, and creative use of space.";
-            break;
-        default:
-            audienceAdvice = "Keep it simple and accessible. Use familiar patterns and clear visual hierarchy.";
+    // Special creature combinations for creature prompts
+    if (style === 'creature' && complexity === 'simple') {
+        const animals1 = ['cat', 'dog', 'bird', 'fish', 'rabbit', 'fox', 'bear', 'deer', 'wolf', 'owl', 'snake', 'turtle'];
+        const animals2 = ['octopus', 'butterfly', 'dragon', 'phoenix', 'jellyfish', 'mantis', 'spider', 'moth', 'eel', 'gecko', 'peacock', 'pangolin'];
+        const animal1 = animals1[Math.floor(Math.random() * animals1.length)];
+        const animal2 = animals2[Math.floor(Math.random() * animals2.length)];
+        prompt = `A ${animal1} with characteristics of a ${animal2}`;
     }
     
-    contentDiv.innerHTML = `
-        <div style="margin-bottom: 10px;">
-            <strong>Layout Suggestion:</strong><br>
-            ${advice}
-        </div>
-        <div style="margin-bottom: 10px;">
-            <strong>For Your Audience:</strong><br>
-            ${audienceAdvice}
-        </div>
-        <div style="background: rgba(248, 200, 208, 0.1); padding: 8px; border-radius: 4px; font-size: 0.65rem;">
-            <strong>Quick Tips:</strong><br>
-            • Rule of thirds: Place important elements along imaginary grid lines<br>
-            • White space is your friend - don't fill every inch<br>
-            • Create visual hierarchy with size, color, and positioning<br>
-            • Align elements for a clean, professional look
-        </div>
-    `;
+    // Get medium-specific tips
+    const tips = mediumTips[medium] || mediumTips.any;
     
-    results.style.display = 'block';
+    contentDiv.innerHTML = `"${prompt}${moodModifier}"`;
+    tipsDiv.innerHTML = `<strong>Medium Tips:</strong> ${tips}`;
+    
+    resultsDiv.style.display = 'block';
 }
 
-// Design Decision Helper Functions
+function generateLayoutAdvice() {
+    // Legacy function - replaced by generateArtPrompt
+    generateArtPrompt();
+}
+
+// Enhanced Design Decision Helper Functions
 function generateDesignRecommendations() {
     console.log('generateDesignRecommendations called');
     
@@ -1245,17 +1529,359 @@ function generateDesignRecommendations() {
     // Show results section
     resultsDiv.style.display = 'block';
     
-    // Generate color recommendations
+    // Generate all recommendation categories
     generateColorRecommendations(projectTypeValue, audienceValue, moodValue);
-    
-    // Generate typography recommendations
     generateTypographyRecommendations(projectTypeValue, audienceValue, moodValue);
-    
-    // Generate layout recommendations
     generateLayoutRecommendations(projectTypeValue, audienceValue, moodValue);
-    
-    // Generate general tips
     generateDesignTips(projectTypeValue, audienceValue, moodValue);
+    
+    // Generate enhanced recommendation categories
+    generateBrandingRecommendations(projectTypeValue, audienceValue, moodValue);
+    generateUXRecommendations(projectTypeValue, audienceValue, moodValue);
+    generateTechnicalRecommendations(projectTypeValue, audienceValue, moodValue);
+    generateIndustryRecommendations(projectTypeValue, audienceValue, moodValue);
+    generateTrendsRecommendations(projectTypeValue, audienceValue, moodValue);
+}
+
+// New Enhanced Recommendation Functions
+function generateBrandingRecommendations(projectType, audience, mood) {
+    console.log('generateBrandingRecommendations called');
+    
+    const brandingDiv = document.getElementById('brandingRecommendations');
+    const brandingContent = document.getElementById('brandingContent');
+    
+    if (!brandingDiv || !brandingContent) {
+        console.error('Branding recommendations elements not found');
+        return;
+    }
+    
+    const brandingAdvice = {
+        logo: {
+            professional: "Focus on simplicity and memorability. Your logo should work in one color and at any size. Consider how it will look on business cards and billboards.",
+            casual: "Be more playful with your approach. Hand-drawn elements or friendly mascots can work well for casual brands.",
+            youth: "Embrace bold colors and modern trends. Consider animated versions for digital use.",
+            creative: "Let your artistic style shine through, but maintain versatility across different applications."
+        },
+        poster: {
+            trustworthy: "Use established visual hierarchies and professional imagery. Include clear contact information and credentials.",
+            exciting: "Create visual impact with dynamic compositions and high-contrast elements. Use action words and energetic layouts.",
+            luxurious: "Emphasize quality through premium paper stocks, elegant typography, and sophisticated color palettes."
+        },
+        website: {
+            professional: "Establish trust through clean layouts, professional photography, and clear navigation. Include testimonials and credentials prominently.",
+            youth: "Use modern design patterns, social media integration, and mobile-first design approaches.",
+            general: "Focus on user experience and accessibility. Ensure your brand personality comes through in micro-interactions and content tone."
+        }
+    };
+    
+    const advice = brandingAdvice[projectType]?.[audience] || brandingAdvice[projectType]?.[mood] || 
+                  "Ensure consistent brand application across all touchpoints. Your visual identity should reflect your values and resonate with your target audience.";
+    
+    brandingContent.innerHTML = `
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #3498db; margin: 0 0 10px 0; font-size: 0.95rem;">Brand Identity Guidelines</h4>
+            <p style="margin: 0 0 10px 0;">${advice}</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">✨ Key Elements</h5>
+                <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
+                    <li>Consistent color usage across all materials</li>
+                    <li>Typography that matches your brand voice</li>
+                    <li>Imagery style that supports your message</li>
+                    <li>Logo placement and sizing guidelines</li>
+                </ul>
+            </div>
+            <div>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">🎯 Brand Application</h5>
+                <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
+                    <li>Business cards and stationery</li>
+                    <li>Digital presence (website, social media)</li>
+                    <li>Marketing materials and packaging</li>
+                    <li>Environmental graphics and signage</li>
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    brandingDiv.style.display = 'block';
+    console.log('Branding recommendations generated successfully');
+}
+
+function generateUXRecommendations(projectType, audience, mood) {
+    console.log('generateUXRecommendations called');
+    
+    const uxDiv = document.getElementById('uxRecommendations');
+    const uxContent = document.getElementById('uxContent');
+    
+    if (!uxDiv || !uxContent) {
+        console.error('UX recommendations elements not found');
+        return;
+    }
+    
+    const uxGuidelines = {
+        website: "Prioritize page load speed, mobile responsiveness, and intuitive navigation. Users should find what they need within 3 clicks.",
+        presentation: "Design for readability from the back of the room. Use large fonts, high contrast, and minimal text per slide.",
+        poster: "Create a clear visual hierarchy that guides the eye through the most important information first.",
+        invitation: "Make essential details (date, time, location) immediately scannable. Consider how the design will look when printed.",
+        social: "Optimize for each platform's specific dimensions and viewing contexts. Consider how it will look in feeds vs. stories.",
+        packaging: "Balance shelf appeal with functional information. Consider the unboxing experience and sustainability."
+    };
+    
+    const accessibilityTips = [
+        "Ensure color contrast ratios meet WCAG guidelines (4.5:1 for normal text)",
+        "Use alt text for images and descriptive link text",
+        "Design for users with motor impairments - make clickable areas large enough",
+        "Test with screen readers and keyboard navigation",
+        "Avoid using color alone to convey important information",
+        "Provide multiple ways to access the same information"
+    ];
+    
+    const guidelines = uxGuidelines[projectType] || "Focus on user needs and test your design with real users for feedback.";
+    const randomTips = accessibilityTips.sort(() => 0.5 - Math.random()).slice(0, 4);
+    
+    uxContent.innerHTML = `
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #e67e22; margin: 0 0 10px 0; font-size: 0.95rem;">User Experience Guidelines</h4>
+            <p style="margin: 0 0 15px 0;">${guidelines}</p>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <h5 style="color: #f8c8d0; margin: 0 0 10px 0; font-size: 0.85rem;">♿ Accessibility Checklist</h5>
+            <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
+                ${randomTips.map(tip => `<li>${tip}</li>`).join('')}
+            </ul>
+        </div>
+        <div style="background: rgba(230, 126, 34, 0.15); padding: 12px; border-radius: 6px; border-left: 3px solid #e67e22;">
+            <p style="margin: 0; font-size: 0.8rem; font-style: italic;">
+                💡 <strong>Remember:</strong> Good design is accessible design. When you design for people with disabilities, 
+                you create better experiences for everyone.
+            </p>
+        </div>
+    `;
+    
+    uxDiv.style.display = 'block';
+    console.log('UX recommendations generated successfully');
+}
+
+function generateTechnicalRecommendations(projectType, audience, mood) {
+    console.log('generateTechnicalRecommendations called');
+    
+    const techDiv = document.getElementById('technicalRecommendations');
+    const techContent = document.getElementById('technicalContent');
+    
+    if (!techDiv || !techContent) {
+        console.error('Technical recommendations elements not found');
+        return;
+    }
+    
+    const technicalSpecs = {
+        logo: {
+            formats: "Vector formats (AI, EPS, SVG) for scalability, PNG with transparency for web",
+            resolution: "Vector-based for infinite scalability, 300 DPI minimum for print applications",
+            colors: "CMYK for print, RGB for digital, Pantone colors for brand consistency"
+        },
+        poster: {
+            formats: "High-resolution PDF for print, JPEG for digital sharing",
+            resolution: "300 DPI for print, 72 DPI for digital display",
+            dimensions: "Common sizes: 18x24\", 24x36\", A3, A2. Include 0.125\" bleed for print"
+        },
+        website: {
+            formats: "WebP for modern browsers, JPEG fallbacks, SVG for icons",
+            resolution: "Optimize images for web (under 1MB), use responsive images",
+            performance: "Optimize for Core Web Vitals, use compression, implement lazy loading"
+        },
+        social: {
+            formats: "JPEG or PNG for static posts, MP4 for videos, GIF for short animations",
+            dimensions: "Platform-specific: Instagram 1080x1080, Facebook 1200x630, Twitter 1200x675",
+            fileSize: "Keep under platform limits: Instagram 30MB, Facebook 25MB"
+        }
+    };
+    
+    const specs = technicalSpecs[projectType] || technicalSpecs.website;
+    
+    techContent.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">📁 File Formats</h5>
+                <p style="margin: 0; font-size: 0.8rem; line-height: 1.4;">${specs.formats}</p>
+            </div>
+            <div>
+                <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">🔍 Resolution & Quality</h5>
+                <p style="margin: 0; font-size: 0.8rem; line-height: 1.4;">${specs.resolution}</p>
+            </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">🎨 Color Management</h5>
+            <p style="margin: 0; font-size: 0.8rem; line-height: 1.4;">${specs.colors || "Use consistent color profiles and consider viewing conditions"}</p>
+        </div>
+        <div style="background: rgba(46, 204, 113, 0.15); padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+            <p style="margin: 0; font-size: 0.8rem; font-style: italic;">
+                ⚙️ <strong>Pro Tip:</strong> Always save your original working files in the native application format. 
+                Export multiple versions for different use cases, and maintain an organized file naming system.
+            </p>
+        </div>
+    `;
+    
+    techDiv.style.display = 'block';
+    console.log('Technical recommendations generated successfully');
+}
+
+function generateIndustryRecommendations(projectType, audience, mood) {
+    console.log('generateIndustryRecommendations called');
+    
+    const industryDiv = document.getElementById('industryRecommendations');
+    const industryContent = document.getElementById('industryContent');
+    
+    if (!industryDiv || !industryContent) {
+        console.error('Industry recommendations elements not found');
+        return;
+    }
+    
+    const industryGuidelines = {
+        professional: {
+            healthcare: "Use calming colors, ensure HIPAA compliance in digital materials, prioritize accessibility",
+            legal: "Conservative typography, high contrast for readability, formal tone in all communications",
+            financial: "Emphasize security and trust, use professional imagery, include required disclaimers",
+            education: "Consider diverse audiences, ensure readability at various education levels, include institutional branding"
+        },
+        creative: {
+            entertainment: "Bold visuals, trend-aware design, consider motion graphics for digital applications",
+            arts: "Let artistic vision lead, but maintain professional presentation for grants and exhibitions",
+            fashion: "Emphasis on visual appeal, seasonal trends, high-quality photography essential",
+            food: "Appetite appeal through color and imagery, consider cultural dietary restrictions in messaging"
+        }
+    };
+    
+    const audienceType = audience === 'professional' ? 'professional' : 'creative';
+    const guidelines = industryGuidelines[audienceType];
+    
+    let content = '';
+    if (guidelines) {
+        const industries = Object.keys(guidelines);
+        const randomIndustries = industries.sort(() => 0.5 - Math.random()).slice(0, 3);
+        
+        content = `
+            <div style="margin-bottom: 15px;">
+                <h4 style="color: #9b59b6; margin: 0 0 10px 0; font-size: 0.95rem;">Industry-Specific Considerations</h4>
+                ${randomIndustries.map(industry => `
+                    <div style="margin-bottom: 12px;">
+                        <h5 style="color: #f8c8d0; margin: 0 0 6px 0; font-size: 0.85rem; text-transform: capitalize;">
+                            🏢 ${industry}
+                        </h5>
+                        <p style="margin: 0; font-size: 0.8rem; line-height: 1.4;">${guidelines[industry]}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    content += `
+        <div style="margin-bottom: 15px;">
+            <h5 style="color: #f8c8d0; margin: 0 0 8px 0; font-size: 0.85rem;">📋 General Best Practices</h5>
+            <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; line-height: 1.5;">
+                <li>Research your industry's visual standards and expectations</li>
+                <li>Consider regulatory requirements and compliance needs</li>
+                <li>Study successful competitors while maintaining your unique voice</li>
+                <li>Adapt your design for industry-specific platforms and contexts</li>
+            </ul>
+        </div>
+        <div style="background: rgba(155, 89, 182, 0.15); padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+            <p style="margin: 0; font-size: 0.8rem; font-style: italic;">
+                🏢 <strong>Industry Insight:</strong> Every industry has unwritten visual rules. 
+                Understanding these conventions helps you know when to follow them and when to break them strategically.
+            </p>
+        </div>
+    `;
+    
+    industryContent.innerHTML = content;
+    industryDiv.style.display = 'block';
+    console.log('Industry recommendations generated successfully');
+}
+
+function generateTrendsRecommendations(projectType, audience, mood) {
+    console.log('generateTrendsRecommendations called');
+    
+    const trendsDiv = document.getElementById('trendsRecommendations');
+    const trendsContent = document.getElementById('trendsContent');
+    
+    if (!trendsDiv || !trendsContent) {
+        console.error('Trends recommendations elements not found');
+        return;
+    }
+    
+    const currentTrends = [
+        {
+            name: "Inclusive Design",
+            description: "Designing for diverse abilities, cultures, and experiences from the start",
+            application: "Use diverse imagery, ensure accessibility, consider cultural contexts"
+        },
+        {
+            name: "Sustainable Design",
+            description: "Environmentally conscious design choices and production methods",
+            application: "Choose eco-friendly materials, optimize for digital delivery, consider lifecycle impact"
+        },
+        {
+            name: "Authentic Photography",
+            description: "Real, unfiltered images over stock photography and AI-generated content",
+            application: "Invest in original photography, show real people and genuine moments"
+        },
+        {
+            name: "Bold Typography",
+            description: "Large, expressive fonts that make strong statements",
+            application: "Use typography as a design element, experiment with font pairing, ensure readability"
+        },
+        {
+            name: "Micro-Interactions",
+            description: "Small animated details that enhance user experience",
+            application: "Add subtle hover effects, loading animations, and feedback mechanisms"
+        },
+        {
+            name: "Data Visualization",
+            description: "Making complex information accessible through visual design",
+            application: "Use charts, infographics, and interactive elements to explain data"
+        },
+        {
+            name: "Retro Revival",
+            description: "Nostalgic design elements from past decades with modern execution",
+            application: "Incorporate vintage colors, retro typography, but keep functionality current"
+        },
+        {
+            name: "Minimalist Maximalism",
+            description: "Bold, expressive design within clean, organized layouts",
+            application: "Use white space strategically, choose one bold element per design, maintain clarity"
+        }
+    ];
+    
+    const randomTrends = currentTrends.sort(() => 0.5 - Math.random()).slice(0, 4);
+    
+    trendsContent.innerHTML = `
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #e74c3c; margin: 0 0 10px 0; font-size: 0.95rem;">🔥 Current Design Trends</h4>
+            <p style="margin: 0 0 15px 0; font-size: 0.8rem;">
+                Stay current with these trending approaches, but remember that timeless design principles always matter more than trends.
+            </p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            ${randomTrends.map(trend => `
+                <div style="background: rgba(231, 76, 60, 0.1); padding: 12px; border-radius: 6px;">
+                    <h5 style="color: #f8c8d0; margin: 0 0 6px 0; font-size: 0.85rem;">${trend.name}</h5>
+                    <p style="margin: 0 0 8px 0; font-size: 0.75rem; line-height: 1.4;">${trend.description}</p>
+                    <p style="margin: 0; font-size: 0.7rem; font-style: italic; color: rgba(255,255,255,0.8);">
+                        💡 ${trend.application}
+                    </p>
+                </div>
+            `).join('')}
+        </div>
+        <div style="background: rgba(231, 76, 60, 0.15); padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+            <p style="margin: 0; font-size: 0.8rem; font-style: italic;">
+                🔥 <strong>Trend Strategy:</strong> Use trends to inspire and modernize your work, 
+                but don't chase every trend. Focus on those that align with your brand and audience needs.
+            </p>
+        </div>
+    `;
+    
+    trendsDiv.style.display = 'block';
+    console.log('Trends recommendations generated successfully');
 }
 
 function generateColorRecommendations(projectType, audience, mood) {
@@ -1397,4 +2023,59 @@ function generateDesignTips(projectType, audience, mood) {
         <p><strong>Remember:</strong> Great design serves your audience and achieves your goals. When in doubt, prioritize clarity and usability over decoration.</p>
     `;
     console.log('Design tips generated successfully');
+}
+
+// Quick Font Tips Generator
+function generateFontTips() {
+    console.log('Generating quick font tips...');
+    
+    const fontTips = [
+        {
+            category: "Sans-Serif Fonts",
+            fonts: ["Helvetica", "Arial", "Open Sans", "Roboto", "Lato"],
+            use: "Clean, modern, and highly readable. Perfect for websites, presentations, and contemporary designs."
+        },
+        {
+            category: "Serif Fonts", 
+            fonts: ["Times New Roman", "Georgia", "Baskerville", "Playfair Display", "Crimson Text"],
+            use: "Traditional and elegant. Great for books, formal documents, and luxury branding."
+        },
+        {
+            category: "Script Fonts",
+            fonts: ["Pacifico", "Dancing Script", "Great Vibes", "Allura", "Sacramento"],
+            use: "Decorative and personal. Use sparingly for headers, invitations, or artistic touches."
+        },
+        {
+            category: "Display Fonts",
+            fonts: ["Impact", "Bebas Neue", "Oswald", "Anton", "Fredoka One"],
+            use: "Bold and attention-grabbing. Perfect for headlines, posters, and making a statement."
+        }
+    ];
+    
+    const generalTips = [
+        "Never use more than 2-3 different fonts in one design",
+        "Ensure good contrast between text and background",
+        "Test readability at different sizes and distances",
+        "Consider your audience - formal vs. casual contexts",
+        "Sans-serif fonts work better for digital screens",
+        "Serif fonts can enhance readability in long text blocks"
+    ];
+    
+    const randomCategory = fontTips[Math.floor(Math.random() * fontTips.length)];
+    const randomTips = generalTips.sort(() => 0.5 - Math.random()).slice(0, 3);
+    
+    // Create a simple alert with the tips
+    const message = `🔤 FONT RECOMMENDATION: ${randomCategory.category}
+
+✨ Try these fonts: ${randomCategory.fonts.slice(0, 3).join(', ')}
+
+📖 Best for: ${randomCategory.use}
+
+💡 Quick Tips:
+${randomTips.map(tip => `• ${tip}`).join('\n')}
+
+🎨 Pro Tip: Always prioritize readability over style!`;
+    
+    alert(message);
+    console.log('Font tips generated successfully');
 }
