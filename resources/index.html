@@ -82,7 +82,7 @@
                                     <div style="width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(from 0deg, #f8c8d0 0deg 45deg, #7e1c2e 45deg 90deg, #d4a5a5 90deg 135deg, #8b3a3a 135deg 180deg, #f8c8d0 180deg 225deg, #7e1c2e 225deg 270deg, #d4a5a5 270deg 315deg, #8b3a3a 315deg 360deg); margin: 0 auto; position: relative; transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);" id="wheelCircle">
                                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: bold; font-size: 0.7rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">SPIN</div>
                                     </div>
-                                    <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #f8c8d0;"></div>
+                                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 15px solid #f8c8d0;"></div>
                                 </div>
                                 <div style="font-weight: 500; margin: 10px 0; min-height: 35px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;" id="wheelResult">Click to spin the wheel!</div>
                             </div>
@@ -90,21 +90,69 @@
                         <button class="generate-btn" onclick="spinWheel()">Spin Wheel</button>
                     </div>
 
-                    <!-- Fake Client Brief Generator -->
+                    <!-- Is Your Color Palette Accessible -->
                     <div class="tool-card">
-                        <h3>Fake Client Brief Generator</h3>
-                        <p>Generate realistic client briefs to practice professional design work and overcome art block</p>
-                        <div class="generator-display" id="clientBrief" style="padding: 8px; margin: 8px 0;">
+                        <h3>Is Your Color Palette Accessible?</h3>
+                        <p>Test multiple colors at once for WCAG accessibility compliance and color blindness</p>
+                        <div class="generator-display" id="paletteAccessibility" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="font-weight: bold; color: #f8c8d0; margin-bottom: 6px; font-size: 0.9rem;" id="clientName">Moonlight Café</div>
-                                <div style="font-size: 0.75rem; line-height: 1.3; margin-bottom: 6px;" id="projectType">Logo Design Project</div>
-                                <div style="font-size: 0.7rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 70px; overflow-y: auto;" id="briefDetails">
-                                    Create a cozy, welcoming logo for our late-night café. Target audience: students and night workers. Colors: warm earth tones. Style: modern but friendly. Must work on signage and coffee cups.
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px; align-items: center;">
+                                    <input type="color" id="paletteColor1" value="#ffffff" style="width: 30px; height: 25px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                    <input type="color" id="paletteColor2" value="#000000" style="width: 30px; height: 25px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                    <input type="color" id="paletteColor3" value="#e74c3c" style="width: 30px; height: 25px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                    <input type="color" id="paletteColor4" value="#3498db" style="width: 30px; height: 25px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
                                 </div>
-                                <div style="font-size: 0.65rem; margin-top: 4px; opacity: 0.8;" id="briefDeadline">Deadline: 2 weeks • Budget: $800</div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="accessibilityLevel" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="aa">WCAG AA</option>
+                                        <option value="aaa">WCAG AAA</option>
+                                    </select>
+                                    <select id="colorBlindTest" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="normal">Normal Vision</option>
+                                        <option value="protanopia">Protanopia</option>
+                                        <option value="deuteranopia">Deuteranopia</option>
+                                        <option value="tritanopia">Tritanopia</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.65rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 90px; overflow-y: auto;" id="accessibilityResults">
+                                    Select colors to test your palette's accessibility
+                                </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="generateClientBrief()">New Brief</button>
+                        <button class="generate-btn" onclick="testPaletteAccessibility()">Test Palette</button>
+                    </div>
+
+                    <!-- File Size Calculator -->
+                    <div class="tool-card">
+                        <h3>File Size Calculator</h3>
+                        <p>Estimate file sizes for different resolutions and formats before creating large artwork</p>
+                        <div class="generator-display" id="fileSizeCalc" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <input type="number" id="pixelWidth" placeholder="Width (px)" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="pixelHeight" placeholder="Height (px)" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                </div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="fileFormat" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="uncompressed">Uncompressed</option>
+                                        <option value="png">PNG</option>
+                                        <option value="jpg">JPEG (High)</option>
+                                        <option value="jpgMed">JPEG (Med)</option>
+                                        <option value="psd">PSD</option>
+                                        <option value="tiff">TIFF</option>
+                                    </select>
+                                    <select id="bitDepth" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="8">8-bit</option>
+                                        <option value="16">16-bit</option>
+                                        <option value="32">32-bit</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="fileSizeResults">
+                                    Enter dimensions to estimate file sizes
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="calculateFileSize()">Calculate Size</button>
                     </div>
 
                     <!-- Artist Inspiration Generator -->
@@ -189,21 +237,6 @@
                         <button class="generate-btn" onclick="generateColorHarmony()">Generate Harmony</button>
                     </div>
 
-                    <!-- Color Contrast Checker -->
-                    <div class="tool-card">
-                        <h3>Color Contrast Checker</h3>
-                        <p>Check if your text and background colors meet accessibility standards (WCAG)</p>
-                        <div class="generator-display" id="contrastChecker" style="padding: 8px; margin: 8px 0;">
-                            <div style="display: flex; gap: 6px; margin: 8px 0;">
-                                <input type="color" id="textColor" value="#000000" style="width: 45px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
-                                <input type="color" id="bgColor" value="#ffffff" style="width: 45px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
-                                <div style="flex: 1; padding: 6px; font-size: 0.8rem;">Text on Background</div>
-                            </div>
-                            <div id="contrastResult" style="font-size: 0.8rem;">Select colors to check contrast</div>
-                        </div>
-                        <button class="generate-btn" onclick="checkContrast()">Check Contrast</button>
-                    </div>
-
                     <!-- Font Pairing Helper -->
                     <div class="tool-card">
                         <h3>Font Pairing Helper</h3>
@@ -214,62 +247,63 @@
                         <button class="generate-btn" onclick="generateFontPairing()">Generate Pairing</button>
                     </div>
 
-                    <!-- Pricing Estimator -->
+                    <!-- Aspect Ratio Calculator -->
                     <div class="tool-card">
-                        <h3>Pricing Estimator</h3>
-                        <p>Quick commission rate calculator to help price your artistic work fairly</p>
-                        <div class="generator-display" id="pricingCalculator" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 6px; margin-bottom: 6px; align-items: center;">
-                                    <input type="number" id="hourlyRate" placeholder="$/hr" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="estimatedHours" placeholder="Hours" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                </div>
-                                <div style="display: flex; gap: 6px; margin-bottom: 8px; align-items: center;">
-                                    <input type="number" id="materialCost" placeholder="Materials $" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <select id="complexityMultiplier" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="1">Simple</option>
-                                        <option value="1.3">Medium</option>
-                                        <option value="1.6">Complex</option>
-                                        <option value="2">Very Complex</option>
-                                    </select>
-                                </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="pricingResults">
-                                    Enter your rates to calculate commission pricing
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="calculatePricing()">Calculate Price</button>
-                    </div>
-
-                    <!-- Print Calculator -->
-                    <div class="tool-card">
-                        <h3>Print Size Calculator</h3>
-                        <p>Calculate print dimensions, DPI requirements, and file sizes for professional printing</p>
-                        <div class="generator-display" id="printCalculator" style="padding: 8px; margin: 8px 0;">
+                        <h3>Aspect Ratio Calculator</h3>
+                        <p>Calculate perfect dimensions for any aspect ratio - essential for layouts and compositions</p>
+                        <div class="generator-display" id="aspectRatio" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <input type="number" id="printWidth" placeholder="W" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="printHeight" placeholder="H" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <select id="printUnit" style="padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 40px;">
-                                        <option value="in">in</option>
-                                        <option value="cm">cm</option>
-                                        <option value="mm">mm</option>
+                                    <input type="number" id="aspectWidth" placeholder="Width" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <select id="aspectPreset" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="custom">Custom</option>
+                                        <option value="16:9">16:9 (Widescreen)</option>
+                                        <option value="4:3">4:3 (Standard)</option>
+                                        <option value="3:2">3:2 (Photo)</option>
+                                        <option value="1:1">1:1 (Square)</option>
+                                        <option value="1.618:1">Golden Ratio</option>
+                                        <option value="9:16">9:16 (Vertical)</option>
                                     </select>
                                 </div>
-                                <div style="margin-bottom: 8px;">
-                                    <select id="printDPI" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="72">72 DPI (Web)</option>
-                                        <option value="150">150 DPI (Draft)</option>
-                                        <option value="300" selected>300 DPI (Print)</option>
-                                        <option value="600">600 DPI (High Quality)</option>
-                                    </select>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <input type="number" id="aspectHeight" placeholder="Height" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="customRatio" placeholder="Custom Ratio" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
                                 </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="printResults">
-                                    Enter dimensions to calculate print specifications
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="aspectResults">
+                                    Enter width or height to calculate perfect proportions
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="calculatePrint()">Calculate</button>
+                        <button class="generate-btn" onclick="calculateAspectRatio()">Calculate Ratio</button>
+                    </div>
+
+                    <!-- DPI/Resolution Guide -->
+                    <div class="tool-card">
+                        <h3>DPI/Resolution Guide</h3>
+                        <p>Quick reference for optimal resolution settings across different media and output types</p>
+                        <div class="generator-display" id="dpiGuide" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="outputType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="web">Web Display</option>
+                                        <option value="print">Print Design</option>
+                                        <option value="photo">Photo Printing</option>
+                                        <option value="large">Large Format</option>
+                                        <option value="book">Book/Magazine</option>
+                                        <option value="poster">Poster/Billboard</option>
+                                    </select>
+                                    <select id="colorMode" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="rgb">RGB</option>
+                                        <option value="cmyk">CMYK</option>
+                                        <option value="grayscale">Grayscale</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 90px; overflow-y: auto;" id="dpiResults">
+                                    Select output type for optimal settings
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="showDPIGuide()">Get Recommendations</button>
                     </div>
 
                 </div>

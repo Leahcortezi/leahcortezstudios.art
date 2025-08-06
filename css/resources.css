@@ -12,6 +12,7 @@
     padding: 60px 20px;
     background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
     margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-secondary-accent);
 }
 
 @keyframes glow {
@@ -26,27 +27,8 @@
     position: relative;
 }
 
-#wheelCircle::after {
-    content: '▲';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--color-primary-accent);
-    font-size: 1rem;
-    z-index: 2;
-}
-
 .spinning {
     animation: spinWheel 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.hero-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--color-secondary-accent);
 }
 
 @keyframes spinWheel {
@@ -381,6 +363,24 @@
     
     .tool-card {
         padding: 25px;
+        height: auto;
+        min-height: 400px;
+        max-height: none;
+    }
+    
+    .generator-display {
+        max-height: 140px;
+        overflow-y: auto;
+    }
+    
+    #aiAnalysis {
+        max-height: 100px !important;
+        overflow-y: auto !important;
+    }
+    
+    #analysisContent {
+        font-size: 0.65rem !important;
+        line-height: 1.2 !important;
     }
     
     .color-display {
@@ -399,6 +399,16 @@
     
     .shake-card {
         padding: 30px 20px;
+    }
+    
+    /* Fix file upload area on mobile */
+    #uploadArea {
+        padding: 8px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    #imagePreview img {
+        max-height: 60px !important;
     }
 }
 

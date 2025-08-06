@@ -439,65 +439,380 @@ function generateProjectName() {
     display.innerHTML = `<span style="color: #f8c8d0; font-weight: 600;">${randomName}</span>`;
 }
 
-// Print Size Calculator
-function calculatePrint() {
-    const width = parseFloat(document.getElementById('widthInput').value);
-    const height = parseFloat(document.getElementById('heightInput').value);
-    const unit = document.getElementById('unitSelect').value;
-    const display = document.getElementById('calcResult');
+// Aspect Ratio Calculator
+function calculateAspectRatio() {
+    const width = parseFloat(document.getElementById('aspectWidth').value);
+    const height = parseFloat(document.getElementById('aspectHeight').value);
+    const preset = document.getElementById('aspectPreset').value;
+    const customRatio = parseFloat(document.getElementById('customRatio').value);
+    const display = document.getElementById('aspectResults');
+    
+    let result = '<div style="font-size: 0.7rem; line-height: 1.4;">';
+    
+    if (preset !== 'custom') {
+        // Use preset ratio
+        const ratios = {
+            '16:9': 16/9,
+            '4:3': 4/3,
+            '3:2': 3/2,
+            '1:1': 1,
+            '1.618:1': 1.618,
+            '9:16': 9/16
+        };
+        
+        const ratio = ratios[preset];
+        
+        if (width && !height) {
+            const calculatedHeight = Math.round(width / ratio);
+            result += `<div style="color: #f8c8d0; font-weight: bold;">Perfect ${preset} Dimensions:</div>`;
+            result += `<strong>Width:</strong> ${width}px<br>`;
+            result += `<strong>Height:</strong> ${calculatedHeight}px<br>`;
+            result += `<strong>Ratio:</strong> ${ratio.toFixed(3)}:1`;
+        } else if (height && !width) {
+            const calculatedWidth = Math.round(height * ratio);
+            result += `<div style="color: #f8c8d0; font-weight: bold;">Perfect ${preset} Dimensions:</div>`;
+            result += `<strong>Width:</strong> ${calculatedWidth}px<br>`;
+            result += `<strong>Height:</strong> ${height}px<br>`;
+            result += `<strong>Ratio:</strong> ${ratio.toFixed(3)}:1`;
+        } else {
+            result += `<div style="color: #f8c8d0; font-weight: bold;">${preset} Reference:</div>`;
+            result += `<strong>Ratio:</strong> ${ratio.toFixed(3)}:1<br>`;
+            result += `<strong>Example:</strong> 1920×${Math.round(1920/ratio)} or ${Math.round(1080*ratio)}×1080`;
+        }
+    } else if (customRatio && width) {
+        // Custom ratio with width
+        const calculatedHeight = Math.round(width / customRatio);
+        result += `<div style="color: #f8c8d0; font-weight: bold;">Custom Ratio ${customRatio}:1</div>`;
+        result += `<strong>Width:</strong> ${width}px<br>`;
+        result += `<strong>Height:</strong> ${calculatedHeight}px`;
+    } else if (customRatio && height) {
+        // Custom ratio with height
+        const calculatedWidth = Math.round(height * customRatio);
+        result += `<div style="color: #f8c8d0; font-weight: bold;">Custom Ratio ${customRatio}:1</div>`;
+        result += `<strong>Width:</strong> ${calculatedWidth}px<br>`;
+        result += `<strong>Height:</strong> ${height}px`;
+    } else if (width && height) {
+        // Calculate ratio from both dimensions
+        const ratio = (width / height).toFixed(3);
+        result += `<div style="color: #f8c8d0; font-weight: bold;">Current Dimensions:</div>`;
+        result += `<strong>Ratio:</strong> ${ratio}:1<br>`;
+        
+        // Find closest standard ratio
+        const standards = {
+            '16:9': 1.778, '4:3': 1.333, '3:2': 1.5, '1:1': 1, 
+            'Golden': 1.618, '9:16': 0.563
+        };
+        let closest = '16:9';
+        let closestDiff = Math.abs(parseFloat(ratio) - standards['16:9']);
+        
+        for (const [name, value] of Object.entries(standards)) {
+            const diff = Math.abs(parseFloat(ratio) - value);
+            if (diff < closestDiff) {
+                closest = name;
+                closestDiff = diff;
+            }
+        }
+        
+        result += `<strong>Closest Standard:</strong> ${closest}`;
+    } else {
+        result += 'Enter width or height with a ratio preset, or both dimensions to analyze.';
+    }
+    
+    result += '</div>';
+    display.innerHTML = result;
+}
+
+// DPI/Resolution Guide
+function showDPIGuide() {
+    const outputType = document.getElementById('outputType').value;
+    const colorMode = document.getElementById('colorMode').value;
+    const display = document.getElementById('dpiResults');
+    
+    const guides = {
+        web: {
+            dpi: '72-96 DPI',
+            format: 'RGB, sRGB color space',
+            notes: 'PNG for graphics, JPEG for photos. Optimize for loading speed.'
+        },
+        print: {
+            dpi: '300 DPI minimum',
+            format: 'CMYK color mode preferred',
+            notes: 'Add 0.125" bleed. Use high-quality JPEG or TIFF for photos.'
+        },
+        photo: {
+            dpi: '300-600 DPI',
+            format: 'RGB or Adobe RGB',
+            notes: 'Higher DPI for enlargements. TIFF or high-quality JPEG.'
+        },
+        large: {
+            dpi: '150-300 DPI',
+            format: 'CMYK, large format profile',
+            notes: 'Lower DPI acceptable for viewing distance. Vector preferred.'
+        },
+        book: {
+            dpi: '300-600 DPI',
+            format: 'CMYK, coated/uncoated profile',
+            notes: 'Higher DPI for text clarity. Consider paper type.'
+        },
+        poster: {
+            dpi: '150-300 DPI',
+            format: 'CMYK, large format',
+            notes: 'DPI depends on viewing distance. Vector graphics scale best.'
+        }
+    };
+    
+    const guide = guides[outputType];
+    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 4px;">${outputType.charAt(0).toUpperCase() + outputType.slice(1)} Specifications:</div>`;
+    result += `<strong>Resolution:</strong> ${guide.dpi}<br>`;
+    result += `<strong>Color Mode:</strong> ${guide.format}<br>`;
+    result += `<strong>Notes:</strong> ${guide.notes}`;
+    
+    // Add color mode specific info
+    if (colorMode === 'cmyk') {
+        result += `<br><br><strong>CMYK Tips:</strong> Convert RGB to CMYK before printing. Colors may shift slightly.`;
+    } else if (colorMode === 'rgb') {
+        result += `<br><br><strong>RGB Tips:</strong> Best for digital display. Use sRGB for web compatibility.`;
+    }
+    
+    result += `</div>`;
+    display.innerHTML = result;
+}
+
+// Is Your Color Palette Accessible
+function testPaletteAccessibility() {
+    const color1 = document.getElementById('paletteColor1').value;
+    const color2 = document.getElementById('paletteColor2').value;
+    const color3 = document.getElementById('paletteColor3').value;
+    const color4 = document.getElementById('paletteColor4').value;
+    const level = document.getElementById('accessibilityLevel').value;
+    const colorBlindTest = document.getElementById('colorBlindTest').value;
+    const display = document.getElementById('accessibilityResults');
+    
+    const colors = [color1, color2, color3, color4];
+    
+    // Convert hex to RGB for calculations
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+    
+    // Calculate relative luminance
+    function getLuminance(r, g, b) {
+        const [rs, gs, bs] = [r, g, b].map(c => {
+            c = c / 255;
+            return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        });
+        return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    }
+    
+    // Calculate contrast ratio
+    function getContrastRatio(color1, color2) {
+        const rgb1 = hexToRgb(color1);
+        const rgb2 = hexToRgb(color2);
+        const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+        const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+        const brightest = Math.max(lum1, lum2);
+        const darkest = Math.min(lum1, lum2);
+        return (brightest + 0.05) / (darkest + 0.05);
+    }
+    
+    let result = '<div style="font-size: 0.65rem; line-height: 1.2;">';
+    
+    // Show color palette
+    result += '<div style="display: flex; gap: 4px; margin-bottom: 6px; justify-content: center;">';
+    colors.forEach(color => {
+        result += `<div style="width: 20px; height: 20px; background: ${color}; border-radius: 3px; border: 1px solid rgba(255,255,255,0.3);"></div>`;
+    });
+    result += '</div>';
+    
+    // Test all color combinations
+    const threshold = level === 'aa' ? 4.5 : 7.0;
+    let passCount = 0;
+    let totalTests = 0;
+    
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 4px;">Contrast Tests (${level.toUpperCase()}):</div>`;
+    
+    for (let i = 0; i < colors.length; i++) {
+        for (let j = i + 1; j < colors.length; j++) {
+            const ratio = getContrastRatio(colors[i], colors[j]);
+            const passes = ratio >= threshold;
+            passCount += passes ? 1 : 0;
+            totalTests++;
+            
+            const status = passes ? '✓' : '✗';
+            const statusColor = passes ? '#4CAF50' : '#F44336';
+            result += `<div style="color: ${statusColor};">${status} ${ratio.toFixed(1)}:1</div>`;
+        }
+    }
+    
+    const overallScore = Math.round((passCount / totalTests) * 100);
+    result += `<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+    result += `<strong>Accessibility Score: ${overallScore}%</strong><br>`;
+    result += `<strong>Passed:</strong> ${passCount}/${totalTests} combinations`;
+    
+    // Color blindness note
+    if (colorBlindTest !== 'normal') {
+        const notes = {
+            protanopia: 'Red-blind users may struggle with red/green distinctions',
+            deuteranopia: 'Green-blind users may have difficulty with green/red',
+            tritanopia: 'Blue-blind users may not distinguish blue/yellow well'
+        };
+        result += `<br><strong>Color Blind Note:</strong> ${notes[colorBlindTest]}`;
+    }
+    
+    result += '</div></div>';
+    
+    display.innerHTML = result;
+}
+
+// File Size Calculator
+function calculateFileSize() {
+    const width = parseFloat(document.getElementById('pixelWidth').value);
+    const height = parseFloat(document.getElementById('pixelHeight').value);
+    const format = document.getElementById('fileFormat').value;
+    const bitDepth = parseInt(document.getElementById('bitDepth').value);
+    const display = document.getElementById('fileSizeResults');
     
     if (!width || !height) {
         display.innerHTML = '<span style="color: #f8c8d0;">Enter both width and height</span>';
         return;
     }
     
-    let result = `<strong>Dimensions:</strong> ${width}" × ${height}" ${unit}<br>`;
-    result += `<strong>Aspect Ratio:</strong> ${(width/height).toFixed(2)}:1<br>`;
+    const pixels = width * height;
+    const channels = 3; // RGB
+    const bytesPerChannel = bitDepth / 8;
     
-    if (unit === 'in') {
-        result += `<strong>For 300 DPI:</strong> ${Math.round(width * 300)} × ${Math.round(height * 300)} pixels<br>`;
-        result += `<strong>For 150 DPI:</strong> ${Math.round(width * 150)} × ${Math.round(height * 150)} pixels`;
-    } else if (unit === 'cm') {
-        const inchWidth = (width / 2.54);
-        const inchHeight = (height / 2.54);
-        result += `<strong>In inches:</strong> ${inchWidth.toFixed(2)}" × ${inchHeight.toFixed(2)}"<br>`;
-        result += `<strong>For 300 DPI:</strong> ${Math.round(inchWidth * 300)} × ${Math.round(inchHeight * 300)} pixels`;
+    // Base uncompressed size
+    const uncompressedMB = (pixels * channels * bytesPerChannel) / (1024 * 1024);
+    
+    // Format multipliers (approximate)
+    const formatMultipliers = {
+        uncompressed: 1,
+        png: 0.6, // Lossless compression
+        jpg: 0.1, // High quality JPEG
+        jpgMed: 0.05, // Medium quality JPEG
+        psd: 1.2, // PSD with layers
+        tiff: 0.8 // TIFF compression
+    };
+    
+    const estimatedMB = uncompressedMB * formatMultipliers[format];
+    
+    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 4px;">${width}×${height} (${(pixels/1000000).toFixed(1)}MP)</div>`;
+    result += `<strong>Uncompressed:</strong> ${uncompressedMB.toFixed(1)} MB<br>`;
+    
+    const formatNames = {
+        uncompressed: 'Uncompressed',
+        png: 'PNG',
+        jpg: 'JPEG (High)',
+        jpgMed: 'JPEG (Medium)',
+        psd: 'PSD',
+        tiff: 'TIFF'
+    };
+    
+    if (format !== 'uncompressed') {
+        result += `<strong>${formatNames[format]}:</strong> ~${estimatedMB.toFixed(1)} MB<br>`;
     }
     
+    result += `<strong>Bit Depth:</strong> ${bitDepth}-bit<br>`;
+    
+    // Storage estimates
+    if (estimatedMB > 100) {
+        result += `<div style="margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+        result += `<strong>Storage:</strong> Large file - consider compression`;
+        result += `</div>`;
+    } else if (estimatedMB > 10) {
+        result += `<div style="margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+        result += `<strong>Storage:</strong> Medium file size`;
+        result += `</div>`;
+    }
+    
+    result += `</div>`;
     display.innerHTML = result;
 }
 
-
-
-// Pricing Estimator
-function calculatePricing() {
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
-    const estimatedHours = parseFloat(document.getElementById('estimatedHours').value);
-    const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
-    const complexityMultiplier = parseFloat(document.getElementById('complexityMultiplier').value);
-    const display = document.getElementById('pricingResults');
+// Unit Converter
+function convertUnits() {
+    const width = parseFloat(document.getElementById('convertWidth').value);
+    const height = parseFloat(document.getElementById('convertHeight').value);
+    const fromUnit = document.getElementById('fromUnit').value;
+    const dpi = parseFloat(document.getElementById('dpiSelect').value);
+    const display = document.getElementById('conversionResults');
     
-    if (!hourlyRate || !estimatedHours) {
-        display.innerHTML = '<span style="color: #f8c8d0;">Enter hourly rate and estimated hours</span>';
+    if (!width || !height) {
+        display.innerHTML = '<span style="color: #f8c8d0;">Enter both width and height</span>';
         return;
     }
     
-    const laborCost = hourlyRate * estimatedHours * complexityMultiplier;
-    const totalCost = laborCost + materialCost;
-    const recommendedPrice = totalCost * 1.2; // 20% markup
+    let result = '<div style="font-size: 0.7rem; line-height: 1.4;">';
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 4px;">Converting ${width} × ${height} ${fromUnit.toUpperCase()}</div>`;
     
-    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
-    result += `<strong>Labor Cost:</strong> $${laborCost.toFixed(2)}<br>`;
-    result += `<strong>Materials:</strong> $${materialCost.toFixed(2)}<br>`;
-    result += `<strong>Subtotal:</strong> $${totalCost.toFixed(2)}<br>`;
-    result += `<div style="color: #f8c8d0; font-weight: bold; margin-top: 4px;">`;
-    result += `<strong>Recommended Price:</strong> $${recommendedPrice.toFixed(2)}</div>`;
-    result += `<div style="font-size: 0.65rem; opacity: 0.8; margin-top: 4px;">`;
-    result += `(Includes 20% business markup)</div>`;
+    // Convert everything to inches first for consistent calculations
+    let widthInches, heightInches;
+    
+    switch(fromUnit) {
+        case 'px':
+            widthInches = width / dpi;
+            heightInches = height / dpi;
+            break;
+        case 'in':
+            widthInches = width;
+            heightInches = height;
+            break;
+        case 'cm':
+            widthInches = width / 2.54;
+            heightInches = height / 2.54;
+            break;
+        case 'mm':
+            widthInches = width / 25.4;
+            heightInches = height / 25.4;
+            break;
+    }
+    
+    // Calculate all other units
+    const widthPx = Math.round(widthInches * dpi);
+    const heightPx = Math.round(heightInches * dpi);
+    const widthCm = widthInches * 2.54;
+    const heightCm = heightInches * 2.54;
+    const widthMm = widthInches * 25.4;
+    const heightMm = heightInches * 25.4;
+    
+    // Display conversions (skip the original unit)
+    if (fromUnit !== 'px') {
+        result += `<strong>Pixels (${dpi} DPI):</strong> ${widthPx} × ${heightPx} px<br>`;
+    }
+    if (fromUnit !== 'in') {
+        result += `<strong>Inches:</strong> ${widthInches.toFixed(2)}" × ${heightInches.toFixed(2)}"<br>`;
+    }
+    if (fromUnit !== 'cm') {
+        result += `<strong>Centimeters:</strong> ${widthCm.toFixed(2)} × ${heightCm.toFixed(2)} cm<br>`;
+    }
+    if (fromUnit !== 'mm') {
+        result += `<strong>Millimeters:</strong> ${widthMm.toFixed(1)} × ${heightMm.toFixed(1)} mm<br>`;
+    }
+    
+    // Add aspect ratio and file size estimate
+    const aspectRatio = (width / height).toFixed(2);
+    result += `<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+    result += `<strong>Aspect Ratio:</strong> ${aspectRatio}:1<br>`;
+    
+    // Estimate file size (rough calculation)
+    const pixelCount = widthPx * heightPx;
+    const fileSizeMB = (pixelCount * 3 / 1024 / 1024).toFixed(1); // RGB, uncompressed
+    result += `<strong>Est. File Size:</strong> ${fileSizeMB} MB (RGB)`;
     result += `</div>`;
+    
+    result += '</div>';
     
     display.innerHTML = result;
 }
+
+
 
 // Daily Creative Challenge
 const creativeChallenges = [
@@ -601,69 +916,6 @@ function generateFontPairing() {
     `;
     
     display.innerHTML = pairingHTML;
-}
-
-// Contrast Checker
-function checkContrast() {
-    const textColor = document.getElementById('textColor').value;
-    const bgColor = document.getElementById('bgColor').value;
-    const display = document.getElementById('contrastResult');
-    
-    // Convert hex to RGB
-    function hexToRgb(hex) {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
-    }
-    
-    // Calculate relative luminance
-    function getLuminance(r, g, b) {
-        const [rs, gs, bs] = [r, g, b].map(c => {
-            c = c / 255;
-            return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-        });
-        return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
-    }
-    
-    // Calculate contrast ratio
-    function getContrastRatio(color1, color2) {
-        const lum1 = getLuminance(color1.r, color1.g, color1.b);
-        const lum2 = getLuminance(color2.r, color2.g, color2.b);
-        const brightest = Math.max(lum1, lum2);
-        const darkest = Math.min(lum1, lum2);
-        return (brightest + 0.05) / (darkest + 0.05);
-    }
-    
-    const textRgb = hexToRgb(textColor);
-    const bgRgb = hexToRgb(bgColor);
-    const ratio = getContrastRatio(textRgb, bgRgb);
-    
-    let level = '';
-    let color = '';
-    if (ratio >= 7) {
-        level = 'AAA (Excellent)';
-        color = '#4CAF50';
-    } else if (ratio >= 4.5) {
-        level = 'AA (Good)';
-        color = '#8BC34A';
-    } else if (ratio >= 3) {
-        level = 'AA Large Text';
-        color = '#FF9800';
-    } else {
-        level = 'Fail';
-        color = '#F44336';
-    }
-    
-    let result = `<div style="font-size: 0.85rem; line-height: 1.4;">`;
-    result += `<strong>Contrast Ratio:</strong> ${ratio.toFixed(2)}:1<br>`;
-    result += `<strong>WCAG Level:</strong> <span style="color: ${color};">${level}</span><br>`;
-    result += `<div style="background: ${bgColor}; color: ${textColor}; padding: 8px; margin: 8px 0; border-radius: 4px; text-align: center;">Sample Text</div>`;
-    result += `</div>`;
-    
-    display.innerHTML = result;
 }
 
 // Visual Color Palette Generator
@@ -847,80 +1099,6 @@ function spinWheel() {
         result.style.transform = 'scale(1.05)';
         setTimeout(() => result.style.transform = 'scale(1)', 300);
     }, 2500); // Slightly longer to match animation
-}
-
-// Fake Client Brief Generator
-const clientBriefs = [
-    {
-        client: "Moonlight Café",
-        project: "Logo Design Project",
-        description: "Create a cozy, welcoming logo for our late-night café. Target audience: students and night workers. Colors: warm earth tones. Style: modern but friendly. Must work on signage and coffee cups.",
-        deadline: "2 weeks",
-        budget: "$800"
-    },
-    {
-        client: "Green Thumb Nursery",
-        project: "Brand Identity Package",
-        description: "Design a complete brand identity for an eco-friendly plant nursery. Include logo, business cards, and social media templates. Style: natural, organic, trustworthy. Colors: greens and earth tones.",
-        deadline: "3 weeks",
-        budget: "$1,200"
-    },
-    {
-        client: "Fitness Revolution",
-        project: "Poster Series Design",
-        description: "Create 3 motivational workout posters for our gym. Bold, energetic design. Include inspiring quotes. Colors: high contrast, energetic. Size: 24x36 inches each.",
-        deadline: "10 days",
-        budget: "$600"
-    },
-    {
-        client: "Artisan Bakery Co.",
-        project: "Packaging Design",
-        description: "Design packaging for our premium bread line. 5 different bread types. Style: rustic, handcrafted, premium. Colors: warm, inviting. Must include nutritional info space.",
-        deadline: "4 weeks",
-        budget: "$1,500"
-    },
-    {
-        client: "TechStart Solutions",
-        project: "App Icon & UI Elements",
-        description: "Create app icon and basic UI elements for productivity app. Style: clean, modern, professional. Colors: blue and white primary. Must work at multiple sizes.",
-        deadline: "1 week",
-        budget: "$400"
-    },
-    {
-        client: "Local Music Festival",
-        project: "Event Poster Design",
-        description: "Design poster for summer music festival. Include 12 band names, date, venue. Style: vibrant, youthful, eye-catching. Colors: bright, festival vibes. Size: various.",
-        deadline: "5 days",
-        budget: "$300"
-    },
-    {
-        client: "Coastal Real Estate",
-        project: "Brochure Design", 
-        description: "Tri-fold brochure for luxury beachfront properties. Include 6-8 property photos. Style: elegant, sophisticated, high-end. Colors: ocean blues and whites.",
-        deadline: "2 weeks",
-        budget: "$500"
-    },
-    {
-        client: "Kids Learning Center",
-        project: "Illustrated Book Cover",
-        description: "Design cover for children's educational book about animals. Age group: 5-8 years. Style: friendly, colorful, approachable. Include cute animal characters.",
-        deadline: "3 weeks",
-        budget: "$750"
-    }
-];
-
-function generateClientBrief() {
-    const brief = clientBriefs[Math.floor(Math.random() * clientBriefs.length)];
-    
-    document.getElementById('clientName').textContent = brief.client;
-    document.getElementById('projectType').textContent = brief.project;
-    document.getElementById('briefDetails').textContent = brief.description;
-    document.getElementById('briefDeadline').textContent = `Deadline: ${brief.deadline} • Budget: ${brief.budget}`;
-    
-    // Add visual feedback
-    const display = document.querySelector('#clientBrief .generator-display');
-    display.style.opacity = '0.8';
-    setTimeout(() => display.style.opacity = '1', 200);
 }
 
 // AI Art Critique Tool
