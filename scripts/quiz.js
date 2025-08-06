@@ -8,61 +8,61 @@ class PortfolioQuiz {
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
-                // === UPDATED QUESTIONS & ANSWERS ===
+                // === UPDATED QUESTIONS WITH 5 MAIN ARCHETYPES ===
         this.questions = [
             {
             id: 1,
             text: "What's your biggest art-school pet peeve?",
             options: [
-                { text: "When someone says 'it's giving AI' and they're right.", piece: "elements-book", weight: 3 },
-                { text: "Bad kerning. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 },
-                { text: "Critique where no one talks but the professor.", piece: "double-sided-poster", weight: 3 },
-                { text: "People who throw away 'scraps.' I needed those.", piece: "collected-remains", weight: 3 },
-                { text: "When people act like emotional art is cringe.", piece: "anointed-gaze", weight: 3 }
+                { text: "Bad kerning. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "When people act like emotional art is cringe.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "People who throw away 'scraps.' I needed those.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "Critique where no one talks but the professor.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "When someone says 'it's giving AI' and they're right.", piece: "elements-book", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 2,
             text: "Who are you in the gallery?",
             options: [
-                { text: "Reading every wall label and then judging the kerning.", piece: "typographic-interpretation", weight: 3 },
-                { text: "Touching stuff you're not supposed to (gently).", piece: "gnaw", weight: 3 },
-                { text: "Tearing up in front of a piece and pretending it's allergies.", piece: "inheritance", weight: 3 },
-                { text: "Saying 'my kid could do that' sarcastically, but kinda meaning it.", piece: "elements-book", weight: 3 },
-                { text: "Taking a blurry pic of the one corner that inspired you.", piece: "abuelas-altar", weight: 3 }
+                { text: "Reading every wall label and then judging the kerning.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Tearing up in front of a piece and pretending it's allergies.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "Touching stuff you're not supposed to (gently).", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Looking for the political message in everything.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Taking notes on techniques to try later.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 3,
             text: "What would destroy you in a critique?",
             options: [
-                { text: "This looks like it came from Canva.", piece: "typographic-interpretation", weight: 3 },
-                { text: "You use trauma like a design element.", piece: "inheritance", weight: 3 },
-                { text: "This feels... unfinished. On purpose?", piece: "collected-remains", weight: 3 },
-                { text: "This feels like it's trying to be funny. Is it?", piece: "elements-book", weight: 3 },
-                { text: "Have you ever tried making happy art?", piece: "anointed-gaze", weight: 3 }
+                { text: "This looks like it came from Canva.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "You use trauma like a design element.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "This feels... unfinished. On purpose?", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "Your message is too heavy-handed.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Pick a style and stick with it.", piece: "playing-cards", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 4,
             text: "What do you secretly believe about art?",
             options: [
-                { text: "Art should hit you in the gut, not the brain.", piece: "heaven-on-fire", weight: 3 },
-                { text: "It's all about the process and the mess, baby.", piece: "gnaw", weight: 3 },
-                { text: "If it doesn't make people feel something, what's the point?", piece: "anointed-gaze", weight: 3 },
-                { text: "Good design should never have to explain itself.", piece: "reductive-symbols", weight: 3 },
-                { text: "Every object has meaning. Even the weird ones.", piece: "collected-remains", weight: 3 }
+                { text: "Good design should never have to explain itself.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "If it doesn't make people feel something, what's the point?", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "It's all about the process and the mess, baby.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Art should hit you in the gut, not the brain.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
+                { text: "Every medium has something different to teach you.", piece: "unraveling", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 5,
             text: "What's your vibe while making stuff?",
             options: [
-                { text: "Replaying childhood trauma like a podcast.", piece: "inheritance", weight: 3 },
-                { text: "Covered in paint. Also maybe crying.", piece: "heaven-on-fire", weight: 3 },
-                { text: "Tying wire like it's a puzzle that unlocks your brain.", piece: "unraveling", weight: 3 },
-                { text: "Hot gluing eyes on things at 2am.", piece: "abyss-bloom", weight: 3 },
-                { text: "Naming your layers 'final_FINAL2_reallyfinal.psd'.", piece: "playing-cards", weight: 3 }
+                { text: "Naming your layers 'final_FINAL2_reallyfinal.psd'.", piece: "playing-cards", weight: 3 }, // Perfectionist
+                { text: "Replaying childhood trauma like a podcast.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "Covered in paint. Also maybe crying.", piece: "heaven-on-fire", weight: 3 }, // Chaotic Creator
+                { text: "Channeling rage into every brushstroke.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Hot gluing eyes on things at 2am.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             }
         ];
