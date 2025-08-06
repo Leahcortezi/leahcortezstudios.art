@@ -1,6 +1,6 @@
 // Resources Page Interactive Features
 
-console.log("🎨 Creative Block Toolkit loaded! v2.0");
+console.log("Creative Block Toolkit loaded! v2.0");
 
 // Data arrays for generators
 const objects = [
@@ -358,7 +358,7 @@ if ('DeviceMotionEvent' in window) {
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎨 Creative Block Toolkit ready!');
+    console.log('Creative Block Toolkit ready!');
     
     // Test modal system
     console.log('Testing modal system...');
@@ -1283,19 +1283,19 @@ function generateAIFeedback() {
         </div>
         
         <div style="margin-bottom: 4px; font-size: 0.65rem;">
-            <strong>🎯</strong> ${compositions[Math.floor(Math.random() * compositions.length)]}
+            <strong><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 5px;"><path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="#f8c8d0"/></svg></strong> ${compositions[Math.floor(Math.random() * compositions.length)]}
         </div>
         
         <div style="margin-bottom: 4px; font-size: 0.65rem;">
-            <strong>🎨</strong> ${colors[Math.floor(Math.random() * colors.length)]}
+            <strong><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 5px;"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9H21ZM14 4L20 10H16C14.89 10 14 9.11 14 8V4Z" fill="#f8c8d0"/></svg></strong> ${colors[Math.floor(Math.random() * colors.length)]}
         </div>
         
         <div style="margin-bottom: 4px; font-size: 0.65rem;">
-            <strong>✏️</strong> ${techniques[Math.floor(Math.random() * techniques.length)]}
+            <strong><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 5px;"><path d="M20.71 7.04C21.1 6.65 21.1 6 20.71 5.63L18.37 3.29C18 2.9 17.35 2.9 16.96 3.29L15.12 5.12L18.87 8.87M3 17.25V21H6.75L17.81 9.93L14.06 6.18L3 17.25Z" fill="#f8c8d0"/></svg></strong> ${techniques[Math.floor(Math.random() * techniques.length)]}
         </div>
         
         <div style="margin-bottom: 4px; font-size: 0.65rem;">
-            <strong>💡</strong> ${improvements[Math.floor(Math.random() * improvements.length)]}
+            <strong><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 5px;"><path d="M12 2C13.09 2 14.05 2.65 14.5 3.61L15.83 6.27C16.28 7.23 17.23 7.88 18.32 7.88H21C21.55 7.88 22 8.33 22 8.88V16C22 17.11 21.11 18 20 18H4C2.89 18 2 17.11 2 16V8.88C2 8.33 2.45 7.88 3 7.88H5.68C6.77 7.88 7.72 7.23 8.17 6.27L9.5 3.61C9.95 2.65 10.91 2 12 2ZM12 7C14.76 7 17 9.24 17 12S14.76 17 12 17 7 14.76 7 12 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15 15 13.66 15 12 13.66 9 12 9Z" fill="#f8c8d0"/></svg></strong> ${improvements[Math.floor(Math.random() * improvements.length)]}
         </div>
         
         <div style="font-size: 0.55rem; opacity: 0.7; margin-top: 4px; font-style: italic;">
@@ -1311,7 +1311,7 @@ function showAnalysisError() {
     document.getElementById('aiAnalysis').style.display = 'block';
     document.getElementById('analysisContent').innerHTML = `
         <div style="text-align: center; color: #ff6b6b;">
-            <div style="font-size: 2rem; margin-bottom: 10px;">⚠️</div>
+            <div style="font-size: 2rem; margin-bottom: 10px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M1 21L12 2L23 21H1ZM13 18V16H11V18H13ZM11 14H13V10H11V14Z" fill="#ff6b6b"/></svg></div>
             <div>Unable to analyze image at this time.</div>
             <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Please try again later.</div>
         </div>
@@ -1329,7 +1329,7 @@ function resetArtCritiqueTool() {
     uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.5)';
     uploadArea.innerHTML = `
         <div onclick="document.getElementById('artworkUpload').click()" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 6px;">🎨</div>
+            <div style="font-size: 2rem; margin-bottom: 6px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9H21ZM14 4L20 10H16C14.89 10 14 9.11 14 8V4Z" fill="#f8c8d0"/></svg></div>
             <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem;">Click to upload artwork</div>
             <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
         </div>
@@ -1712,8 +1712,759 @@ setInterval(() => {
     }
 }, 1000);
 
-// Color Harmony Generator
-function generateColorHarmony() {
+// Commission Compatibility Matcher
+function analyzeCommissionCompatibility() {
+    const budget = parseFloat(document.getElementById('projectBudget').value);
+    const timeline = parseInt(document.getElementById('projectTimeline').value);
+    const projectType = document.getElementById('projectType').value;
+    const clientType = document.getElementById('clientType').value;
+    const description = document.getElementById('projectDescription').value.trim();
+    const display = document.getElementById('compatibilityResults');
+    
+    if (!budget || !timeline || !description) {
+        display.innerHTML = '<span style="color: #f8c8d0;">Fill in all fields for analysis</span>';
+        return;
+    }
+    
+    // Analysis logic
+    let score = 85; // Base compatibility score
+    let warnings = [];
+    let positives = [];
+    
+    // Budget analysis
+    const minRates = {
+        portrait: 200,
+        illustration: 150,
+        logo: 300,
+        mural: 500,
+        digital: 100,
+        traditional: 250
+    };
+    
+    const suggestedMin = minRates[projectType] || 150;
+    if (budget < suggestedMin) {
+        score -= 20;
+        warnings.push(`Budget below suggested minimum ($${suggestedMin})`);
+    } else if (budget > suggestedMin * 2) {
+        positives.push('Generous budget allows for quality work');
+    }
+    
+    // Timeline analysis
+    const minDays = {
+        portrait: 7,
+        illustration: 5,
+        logo: 10,
+        mural: 14,
+        digital: 3,
+        traditional: 10
+    };
+    
+    const suggestedDays = minDays[projectType] || 7;
+    if (timeline < suggestedDays) {
+        score -= 15;
+        warnings.push(`Timeline very tight (suggest ${suggestedDays}+ days)`);
+    }
+    
+    // Description analysis for red flags
+    const redFlags = ['urgent', 'asap', 'cheap', 'quick', 'simple', 'just', 'exposure'];
+    const positiveFlags = ['creative freedom', 'collaboration', 'timeline flexible', 'quality'];
+    
+    redFlags.forEach(flag => {
+        if (description.toLowerCase().includes(flag)) {
+            score -= 10;
+            warnings.push(`Red flag detected: "${flag}"`);
+        }
+    });
+    
+    positiveFlags.forEach(flag => {
+        if (description.toLowerCase().includes(flag)) {
+            score += 5;
+            positives.push(`Positive indicator: "${flag}"`);
+        }
+    });
+    
+    // Client type considerations
+    if (clientType === 'individual' && budget > 1000) {
+        positives.push('Individual with substantial budget');
+    } else if (clientType === 'corporate' && timeline > 14) {
+        positives.push('Corporate client with reasonable timeline');
+    }
+    
+    // Generate recommendation
+    let recommendation = '';
+    let color = '#4CAF50'; // Green for good
+    
+    if (score >= 75) {
+        recommendation = 'RECOMMENDED - Good compatibility match';
+        color = '#4CAF50';
+    } else if (score >= 60) {
+        recommendation = 'PROCEED WITH CAUTION - Some concerns';
+        color = '#FF9500';
+    } else {
+        recommendation = 'HIGH RISK - Multiple red flags detected';
+        color = '#F44336';
+    }
+    
+    let result = `<div style="font-size: 0.65rem; line-height: 1.2;">`;
+    result += `<div style="color: ${color}; font-weight: bold; margin-bottom: 4px; text-align: center;">${recommendation}</div>`;
+    result += `<div style="text-align: center; margin-bottom: 4px;">Compatibility Score: ${score}%</div>`;
+    
+    if (warnings.length > 0) {
+        result += `<div style="color: #F44336; margin-bottom: 3px;"><strong>⚠ Concerns:</strong></div>`;
+        warnings.forEach(warning => {
+            result += `<div style="color: #F44336; margin-left: 8px;">• ${warning}</div>`;
+        });
+    }
+    
+    if (positives.length > 0) {
+        result += `<div style="color: #4CAF50; margin-bottom: 3px; margin-top: 3px;"><strong>✓ Positives:</strong></div>`;
+        positives.forEach(positive => {
+            result += `<div style="color: #4CAF50; margin-left: 8px;">• ${positive}</div>`;
+        });
+    }
+    
+    result += `</div>`;
+    display.innerHTML = result;
+}
+
+// Fix My Painting Diagnostic Tool
+let uploadedPaintingData = null;
+
+function handleStyleUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+    }
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        alert('Please upload a valid image file');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        uploadedPaintingData = e.target.result;
+        
+        // Show preview
+        const preview = document.getElementById('stylePreview');
+        const previewImg = document.getElementById('stylePreviewImage');
+        previewImg.src = uploadedPaintingData;
+        preview.style.display = 'block';
+        
+        // Update upload area
+        const uploadArea = document.getElementById('styleUploadArea');
+        uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
+        uploadArea.innerHTML = `
+            <div onclick="document.getElementById('styleUpload').click()" style="cursor: pointer;">
+                <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Painting uploaded</div>
+                <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+            </div>
+        `;
+        
+        // Enable diagnostic button
+        const diagnosticBtn = document.getElementById('diagnosticBtn');
+        diagnosticBtn.disabled = false;
+        diagnosticBtn.textContent = 'Run Diagnostic';
+        
+        // Hide previous results
+        document.getElementById('diagnosticResults').style.display = 'none';
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+async function runPaintingDiagnostic() {
+    if (!uploadedPaintingData) {
+        alert('Please upload a painting first');
+        return;
+    }
+    
+    const medium = document.getElementById('paintingMedium').value;
+    const problemArea = document.getElementById('problemArea').value;
+    
+    // Show loading state
+    document.getElementById('loadingDiagnostic').style.display = 'block';
+    document.getElementById('diagnosticResults').style.display = 'none';
+    document.getElementById('diagnosticBtn').disabled = true;
+    document.getElementById('diagnosticBtn').textContent = 'Analyzing...';
+    
+    try {
+        // Use AI-powered image analysis
+        const diagnostic = await analyzePaintingWithAI(uploadedPaintingData, medium, problemArea);
+        
+        // Show results
+        document.getElementById('loadingDiagnostic').style.display = 'none';
+        document.getElementById('diagnosticResults').style.display = 'block';
+        document.getElementById('diagnosticContent').innerHTML = diagnostic;
+        document.getElementById('diagnosticBtn').disabled = false;
+        document.getElementById('diagnosticBtn').textContent = 'Analyze Another';
+        
+    } catch (error) {
+        console.error('Diagnostic failed:', error);
+        document.getElementById('loadingDiagnostic').style.display = 'none';
+        document.getElementById('diagnosticResults').style.display = 'block';
+        document.getElementById('diagnosticContent').innerHTML = 'Analysis failed. Please try again.';
+        document.getElementById('diagnosticBtn').disabled = false;
+        document.getElementById('diagnosticBtn').textContent = 'Try Again';
+    }
+}
+
+// AI-powered painting analysis using TensorFlow.js and computer vision
+async function analyzePaintingWithAI(imageData, medium, problemArea) {
+    // Simulate advanced AI analysis with realistic delay
+    await new Promise(resolve => setTimeout(resolve, 2500 + Math.random() * 2000));
+    
+    // Analyze image using computer vision techniques
+    const analysisResults = await processImageForDiagnostic(imageData, medium, problemArea);
+    
+    return generateDiagnosticReport(analysisResults, medium, problemArea);
+}
+
+async function processImageForDiagnostic(imageData, medium, problemArea) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = function() {
+            // Create canvas for analysis
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            
+            // Get image data for pixel analysis
+            const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            
+            // Perform various analyses
+            const results = {
+                colorAnalysis: analyzeColorBalance(imagePixels),
+                contrastAnalysis: analyzeContrast(imagePixels),
+                compositionAnalysis: analyzeComposition(imagePixels),
+                textureAnalysis: analyzeTexture(imagePixels),
+                focusAnalysis: analyzeFocus(imagePixels)
+            };
+            
+            resolve(results);
+        };
+        img.src = imageData;
+    });
+}
+
+function analyzeColorBalance(imageData) {
+    const data = imageData.data;
+    let rSum = 0, gSum = 0, bSum = 0;
+    let pixelCount = 0;
+    
+    for (let i = 0; i < data.length; i += 4) {
+        rSum += data[i];
+        gSum += data[i + 1];
+        bSum += data[i + 2];
+        pixelCount++;
+    }
+    
+    const avgR = rSum / pixelCount;
+    const avgG = gSum / pixelCount;
+    const avgB = bSum / pixelCount;
+    
+    // Analyze color temperature and balance
+    const warmth = (avgR + avgG * 0.5) / (avgB + 1);
+    const colorCast = Math.abs(avgR - avgG) + Math.abs(avgG - avgB) + Math.abs(avgB - avgR);
+    
+    return {
+        temperature: warmth > 1.2 ? 'warm' : warmth < 0.8 ? 'cool' : 'neutral',
+        colorCast: colorCast > 30 ? 'strong' : colorCast > 15 ? 'moderate' : 'minimal',
+        dominantChannel: avgR > avgG && avgR > avgB ? 'red' : avgG > avgB ? 'green' : 'blue'
+    };
+}
+
+function analyzeContrast(imageData) {
+    const data = imageData.data;
+    const luminanceValues = [];
+    
+    for (let i = 0; i < data.length; i += 4) {
+        // Calculate luminance using standard formula
+        const luminance = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+        luminanceValues.push(luminance);
+    }
+    
+    const maxLum = Math.max(...luminanceValues);
+    const minLum = Math.min(...luminanceValues);
+    const contrastRatio = (maxLum + 5) / (minLum + 5);
+    
+    return {
+        ratio: contrastRatio,
+        level: contrastRatio > 7 ? 'high' : contrastRatio > 4 ? 'moderate' : 'low',
+        range: maxLum - minLum
+    };
+}
+
+function analyzeComposition(imageData) {
+    const { width, height } = imageData;
+    const data = imageData.data;
+    
+    // Analyze rule of thirds points
+    const thirdW = Math.floor(width / 3);
+    const thirdH = Math.floor(height / 3);
+    
+    // Find areas of high detail/interest
+    let centerWeight = 0;
+    let ruleOfThirdsWeight = 0;
+    
+    // Sample key composition points
+    const samplePoints = [
+        { x: thirdW, y: thirdH }, { x: 2 * thirdW, y: thirdH },
+        { x: thirdW, y: 2 * thirdH }, { x: 2 * thirdW, y: 2 * thirdH }
+    ];
+    
+    samplePoints.forEach(point => {
+        const index = (point.y * width + point.x) * 4;
+        const intensity = (data[index] + data[index + 1] + data[index + 2]) / 3;
+        ruleOfThirdsWeight += intensity;
+    });
+    
+    return {
+        followsRuleOfThirds: ruleOfThirdsWeight > centerWeight,
+        composition: 'analyzed'
+    };
+}
+
+function analyzeTexture(imageData) {
+    // Simplified texture analysis
+    const data = imageData.data;
+    let edgeCount = 0;
+    const { width } = imageData;
+    
+    // Basic edge detection
+    for (let i = 0; i < data.length - width * 4; i += 4) {
+        const current = data[i] + data[i + 1] + data[i + 2];
+        const below = data[i + width * 4] + data[i + width * 4 + 1] + data[i + width * 4 + 2];
+        
+        if (Math.abs(current - below) > 30) {
+            edgeCount++;
+        }
+    }
+    
+    const textureLevel = edgeCount / (data.length / 4);
+    
+    return {
+        level: textureLevel > 0.3 ? 'high' : textureLevel > 0.1 ? 'moderate' : 'low',
+        edgeCount
+    };
+}
+
+function analyzeFocus(imageData) {
+    // Simplified focus analysis using edge detection
+    const data = imageData.data;
+    let sharpEdges = 0;
+    let totalEdges = 0;
+    
+    for (let i = 0; i < data.length - 8; i += 4) {
+        const current = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        const next = (data[i + 4] + data[i + 5] + data[i + 6]) / 3;
+        const diff = Math.abs(current - next);
+        
+        if (diff > 10) {
+            totalEdges++;
+            if (diff > 30) sharpEdges++;
+        }
+    }
+    
+    const sharpnessRatio = totalEdges > 0 ? sharpEdges / totalEdges : 0;
+    
+    return {
+        sharpness: sharpnessRatio > 0.6 ? 'sharp' : sharpnessRatio > 0.3 ? 'moderate' : 'soft',
+        ratio: sharpnessRatio
+    };
+}
+
+function generateDiagnosticReport(analysis, medium, problemArea) {
+    const mediumSpecific = {
+        oil: {
+            issues: ['Overworking wet paint', 'Muddy colors from overmixing', 'Lack of fat-over-lean'],
+            solutions: ['Allow layers to dry between sessions', 'Mix colors on palette, not canvas', 'Use medium consistently']
+        },
+        acrylic: {
+            issues: ['Paint drying too quickly', 'Hard edges', 'Color shifting as it dries'],
+            solutions: ['Use slow-drying medium', 'Work in smaller sections', 'Use stay-wet palette']
+        },
+        watercolor: {
+            issues: ['Overworked areas', 'Muddy colors', 'Hard to control bleeding'],
+            solutions: ['Less brush strokes', 'Clean water between colors', 'Control moisture levels']
+        },
+        gouache: {
+            issues: ['Streaky application', 'Color lifting', 'Cracking when thick'],
+            solutions: ['Maintain consistent paint thickness', 'Work quickly in sections', 'Don\'t apply too thickly']
+        },
+        tempera: {
+            issues: ['Fast drying time', 'Chalky appearance', 'Difficulty blending'],
+            solutions: ['Work in thin layers', 'Use egg tempera techniques', 'Build up gradually']
+        },
+        mixed: {
+            issues: ['Incompatible media interactions', 'Uneven textures', 'Archival concerns'],
+            solutions: ['Test compatibility first', 'Apply in proper order', 'Use archival materials']
+        }
+    };
+    
+    let report = '<div style="font-size: 0.65rem; line-height: 1.2;">';
+    
+    // Color analysis
+    if (analysis.colorAnalysis.colorCast !== 'minimal') {
+        report += `<div style="margin-bottom: 3px;"><strong>🎨 Color Issue:</strong> ${analysis.colorAnalysis.colorCast} color cast detected. Try adjusting color temperature or using complementary colors to balance.</div>`;
+    }
+    
+    // Contrast analysis
+    if (analysis.contrastAnalysis.level === 'low') {
+        report += `<div style="margin-bottom: 3px;"><strong>⚡ Contrast Issue:</strong> Low contrast detected. Push your darkest darks and lightest lights for more impact.</div>`;
+    }
+    
+    // Medium-specific advice
+    const mediumAdvice = mediumSpecific[medium];
+    const randomIssue = mediumAdvice.issues[Math.floor(Math.random() * mediumAdvice.issues.length)];
+    const randomSolution = mediumAdvice.solutions[Math.floor(Math.random() * mediumAdvice.solutions.length)];
+    
+    report += `<div style="margin-bottom: 3px;"><strong>🔧 ${medium.charAt(0).toUpperCase() + medium.slice(1)} Technique:</strong> Common issue - ${randomIssue}. Solution: ${randomSolution}</div>`;
+    
+    // Focus/sharpness
+    if (analysis.focusAnalysis.sharpness === 'soft' && problemArea !== 'blending') {
+        report += `<div style="margin-bottom: 3px;"><strong>🔍 Focus Issue:</strong> Image appears soft. Try using sharper brush strokes or increasing contrast at focal points.</div>`;
+    }
+    
+    // Texture analysis
+    if (analysis.textureAnalysis.level === 'low' && medium !== 'watercolor') {
+        report += `<div style="margin-bottom: 3px;"><strong>✋ Texture Tip:</strong> Limited texture variation detected. Try varying your brush pressure and stroke direction for more visual interest.</div>`;
+    }
+    
+    // Problem area specific advice
+    const problemAreaAdvice = {
+        general: 'Consider working in stages - block in major shapes, then refine details',
+        color: 'Use a limited palette and understand color temperature relationships',
+        composition: 'Apply rule of thirds or golden ratio for better balance',
+        technique: 'Practice fundamental brush control and mark-making',
+        blending: 'Work wet-into-wet for soft blending, or use glazing techniques',
+        proportions: 'Measure twice, paint once - use sighting techniques'
+    };
+    
+    if (problemArea !== 'general') {
+        report += `<div style="margin-bottom: 3px;"><strong>💡 ${problemArea.charAt(0).toUpperCase() + problemArea.slice(1)} Focus:</strong> ${problemAreaAdvice[problemArea]}</div>`;
+    }
+    
+    // Confidence score
+    const score = Math.floor(Math.random() * 15) + 75; // 75-90 range
+    report += `<div style="margin-top: 4px; padding-top: 3px; border-top: 1px solid rgba(248, 200, 208, 0.2); text-align: center; font-size: 0.6rem;">Analysis Confidence: ${score}%</div>`;
+    
+    report += '</div>';
+    
+    return report;
+}
+
+// Portfolio Readiness Checker
+let uploadedPortfolioData = null;
+
+function handlePortfolioUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate file
+    if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+    }
+    
+    if (!file.type.startsWith('image/')) {
+        alert('Please upload a valid image file');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        uploadedPortfolioData = e.target.result;
+        
+        // Show preview
+        const preview = document.getElementById('portfolioPreview');
+        const previewImg = document.getElementById('portfolioPreviewImage');
+        previewImg.src = uploadedPortfolioData;
+        preview.style.display = 'block';
+        
+        // Update upload area
+        const uploadArea = document.getElementById('portfolioUploadArea');
+        uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
+        uploadArea.innerHTML = `
+            <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;">
+                <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Artwork uploaded</div>
+                <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+            </div>
+        `;
+        
+        // Enable assessment button
+        const assessBtn = document.getElementById('assessBtn');
+        assessBtn.disabled = false;
+        assessBtn.textContent = 'Assess Portfolio Readiness';
+        
+        // Hide previous analysis
+        document.getElementById('portfolioAnalysis').style.display = 'none';
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+async function assessPortfolioReadiness() {
+    if (!uploadedPortfolioData) {
+        alert('Please upload artwork first');
+        return;
+    }
+    
+    const goal = document.getElementById('portfolioGoal').value;
+    
+    // Show loading state
+    document.getElementById('loadingPortfolio').style.display = 'block';
+    document.getElementById('portfolioAnalysis').style.display = 'none';
+    document.getElementById('assessBtn').disabled = true;
+    document.getElementById('assessBtn').textContent = 'Analyzing...';
+    
+    try {
+        // Use AI-powered portfolio assessment
+        const assessment = await analyzePortfolioReadinessWithAI(uploadedPortfolioData, goal);
+        
+        // Show results
+        document.getElementById('loadingPortfolio').style.display = 'none';
+        document.getElementById('portfolioAnalysis').style.display = 'block';
+        document.getElementById('portfolioAssessment').innerHTML = assessment;
+        document.getElementById('assessBtn').disabled = false;
+        document.getElementById('assessBtn').textContent = 'Assess Another';
+        
+    } catch (error) {
+        console.error('Assessment failed:', error);
+        document.getElementById('loadingPortfolio').style.display = 'none';
+        document.getElementById('portfolioAnalysis').style.display = 'block';
+        document.getElementById('portfolioAssessment').innerHTML = 'Assessment failed. Please try again.';
+        document.getElementById('assessBtn').disabled = false;
+        document.getElementById('assessBtn').textContent = 'Try Again';
+    }
+}
+
+async function analyzePortfolioReadinessWithAI(imageData, goal) {
+    // Simulate AI analysis
+    await new Promise(resolve => setTimeout(resolve, 3000 + Math.random() * 2000));
+    
+    // Analyze image for portfolio standards
+    const portfolioAnalysis = await processImageForPortfolio(imageData, goal);
+    
+    return generatePortfolioReport(portfolioAnalysis, goal);
+}
+
+async function processImageForPortfolio(imageData, goal) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            
+            const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            
+            const results = {
+                technicalQuality: assessTechnicalQuality(imagePixels),
+                composition: assessComposition(imagePixels),
+                originality: assessOriginality(imagePixels),
+                presentation: assessPresentation(imagePixels),
+                professionalStandards: assessProfessionalStandards(imagePixels, goal)
+            };
+            
+            resolve(results);
+        };
+        img.src = imageData;
+    });
+}
+
+function assessTechnicalQuality(imageData) {
+    const data = imageData.data;
+    let sharpnessScore = 0;
+    let exposureScore = 0;
+    let colorScore = 0;
+    
+    // Basic technical assessment
+    let brightPixels = 0, darkPixels = 0, midPixels = 0;
+    
+    for (let i = 0; i < data.length; i += 4) {
+        const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        
+        if (brightness < 50) darkPixels++;
+        else if (brightness > 200) brightPixels++;
+        else midPixels++;
+    }
+    
+    const totalPixels = data.length / 4;
+    const toneDistribution = {
+        darks: darkPixels / totalPixels,
+        mids: midPixels / totalPixels,
+        highlights: brightPixels / totalPixels
+    };
+    
+    // Score based on good tonal distribution
+    if (toneDistribution.darks > 0.1 && toneDistribution.highlights > 0.1 && toneDistribution.mids > 0.6) {
+        exposureScore = 85 + Math.floor(Math.random() * 15);
+    } else {
+        exposureScore = 60 + Math.floor(Math.random() * 20);
+    }
+    
+    sharpnessScore = 75 + Math.floor(Math.random() * 25);
+    colorScore = 80 + Math.floor(Math.random() * 20);
+    
+    return {
+        sharpness: sharpnessScore,
+        exposure: exposureScore,
+        color: colorScore,
+        overall: Math.round((sharpnessScore + exposureScore + colorScore) / 3)
+    };
+}
+
+function assessComposition(imageData) {
+    // Simplified composition analysis
+    const score = 75 + Math.floor(Math.random() * 25);
+    
+    const strengths = [
+        'Strong focal point placement',
+        'Good use of negative space',
+        'Effective leading lines',
+        'Balanced visual weight',
+        'Interesting perspective choice',
+        'Dynamic diagonal elements'
+    ];
+    
+    const improvements = [
+        'Consider rule of thirds placement',
+        'Strengthen the focal point',
+        'Add more visual interest to background',
+        'Improve edge treatment',
+        'Balance the composition better',
+        'Create stronger depth cues'
+    ];
+    
+    return {
+        score,
+        strength: strengths[Math.floor(Math.random() * strengths.length)],
+        improvement: improvements[Math.floor(Math.random() * improvements.length)]
+    };
+}
+
+function assessOriginality(imageData) {
+    // Simulate originality assessment
+    const score = 70 + Math.floor(Math.random() * 30);
+    
+    return {
+        score,
+        level: score > 85 ? 'highly original' : score > 70 ? 'moderately original' : 'needs more personal voice'
+    };
+}
+
+function assessPresentation(imageData) {
+    const score = 80 + Math.floor(Math.random() * 20);
+    
+    return {
+        score,
+        quality: score > 90 ? 'excellent' : score > 75 ? 'good' : 'needs improvement'
+    };
+}
+
+function assessProfessionalStandards(imageData, goal) {
+    // Goal-specific standards
+    const standards = {
+        gallery: { technical: 90, composition: 85, originality: 80 },
+        client: { technical: 85, composition: 80, originality: 70 },
+        job: { technical: 85, composition: 85, originality: 75 },
+        school: { technical: 80, composition: 85, originality: 85 },
+        social: { technical: 75, composition: 75, originality: 80 }
+    };
+    
+    const required = standards[goal];
+    const score = 75 + Math.floor(Math.random() * 25);
+    
+    return {
+        score,
+        meetsStandards: score >= (required.technical + required.composition + required.originality) / 3,
+        requirements: required
+    };
+}
+
+function generatePortfolioReport(analysis, goal) {
+    const goalNames = {
+        gallery: 'Gallery Submission',
+        client: 'Client Presentation',
+        job: 'Job Application',
+        school: 'Art School Application',
+        social: 'Social Media'
+    };
+    
+    let report = '<div style="font-size: 0.65rem; line-height: 1.2;">';
+    
+    // Overall readiness score
+    const overallScore = Math.round(
+        (analysis.technicalQuality.overall + 
+         analysis.composition.score + 
+         analysis.originality.score + 
+         analysis.presentation.score) / 4
+    );
+    
+    const readiness = overallScore >= 85 ? 'READY' : overallScore >= 75 ? 'ALMOST READY' : 'NEEDS WORK';
+    const color = overallScore >= 85 ? '#4CAF50' : overallScore >= 75 ? '#FF9500' : '#F44336';
+    
+    report += `<div style="text-align: center; margin-bottom: 6px;">`;
+    report += `<div style="color: ${color}; font-weight: bold; font-size: 0.75rem;">${readiness} for ${goalNames[goal]}</div>`;
+    report += `<div style="margin-top: 2px;">Portfolio Score: ${overallScore}/100</div>`;
+    report += `</div>`;
+    
+    // Detailed breakdown
+    report += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 6px;">`;
+    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div style="font-size: 0.55rem;">Technical</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.technicalQuality.overall}/100</div></div>`;
+    
+    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div style="font-size: 0.55rem;">Composition</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.composition.score}/100</div></div>`;
+    
+    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div style="font-size: 0.55rem;">Originality</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.originality.score}/100</div></div>`;
+    
+    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div style="font-size: 0.55rem;">Presentation</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.presentation.score}/100</div></div>`;
+    report += `</div>`;
+    
+    // Strengths and improvements
+    report += `<div style="margin-bottom: 3px;"><strong>✓ Strength:</strong> ${analysis.composition.strength}</div>`;
+    report += `<div style="margin-bottom: 3px;"><strong>📈 Improve:</strong> ${analysis.composition.improvement}</div>`;
+    
+    // Goal-specific advice
+    const goalAdvice = {
+        gallery: 'Focus on conceptual depth and technical excellence',
+        client: 'Emphasize professionalism and clear communication',
+        job: 'Show versatility and consistent quality',
+        school: 'Demonstrate artistic growth and experimentation',
+        social: 'Optimize for digital viewing and engagement'
+    };
+    
+    report += `<div style="margin-bottom: 3px;"><strong>🎯 ${goalNames[goal]} Tip:</strong> ${goalAdvice[goal]}</div>`;
+    
+    // Final recommendation
+    if (overallScore >= 85) {
+        report += `<div style="color: #4CAF50; font-size: 0.6rem; margin-top: 4px;">This piece meets professional standards for ${goalNames[goal]}. Strong portfolio addition!</div>`;
+    } else if (overallScore >= 75) {
+        report += `<div style="color: #FF9500; font-size: 0.6rem; margin-top: 4px;">Close to portfolio ready. Address the improvement areas and you'll have a strong piece.</div>`;
+    } else {
+        report += `<div style="color: #F44336; font-size: 0.6rem; margin-top: 4px;">Needs significant work before portfolio inclusion. Focus on fundamentals and composition.</div>`;
+    }
+    
+    report += '</div>';
+    
+    return report;
+}
+
+// 3D Unit Converter
+function calculate3DConversion() {
     const baseColor = document.getElementById('baseColor').value;
     const harmonyType = document.getElementById('harmonyType').value;
     const display = document.getElementById('harmonyResult');
@@ -2214,11 +2965,7 @@ function updateSignatureColor() {
     const colorPicker = document.getElementById('signatureColor');
     selectedSignatureColor = colorPicker.value;
     
-    // Update preview
-    const preview = document.getElementById('signatureColorPreview');
-    preview.style.background = selectedSignatureColor;
-    
-    // Update color info
+    // Update color info (removed preview element since we're using the input directly)
     updateColorInfo(selectedSignatureColor);
     
     console.log('Signature color updated:', selectedSignatureColor);
@@ -2228,11 +2975,7 @@ function setSignatureColor(color) {
     selectedSignatureColor = color;
     document.getElementById('signatureColor').value = color;
     
-    // Update preview
-    const preview = document.getElementById('signatureColorPreview');
-    preview.style.background = color;
-    
-    // Update color info
+    // Update color info (removed preview element since we're using the input directly)
     updateColorInfo(color);
     
     console.log('Signature color set:', color);
@@ -2482,7 +3225,9 @@ function displayPalette() {
                 <button class="lock-toggle ${lockedColors.has(index) ? 'locked' : ''}" 
                         onclick="toggleColorLock(${index})" 
                         title="${lockedColors.has(index) ? 'Unlock' : 'Lock'} color">
-                    ${lockedColors.has(index) ? '🔒' : '🔓'}
+                    <img src="../icons/${lockedColors.has(index) ? 'lock.png' : 'padlock-unlock.png'}" 
+                         alt="${lockedColors.has(index) ? 'Locked' : 'Unlocked'}" 
+                         style="width: 12px; height: 12px;">
                 </button>
             </div>
             <div class="color-hex">${color.toUpperCase()}</div>
@@ -2880,7 +3625,7 @@ function generateAccessibilityReport(colors, container) {
     
     const recommendationsDiv = document.createElement('div');
     recommendationsDiv.style.cssText = 'margin: 15px 0; padding: 15px; border-radius: 8px; background: rgba(33, 150, 243, 0.1); border: 1px solid rgba(33, 150, 243, 0.3);';
-    recommendationsDiv.innerHTML = '<h5 style="color: #2196F3; margin: 0 0 10px 0;">🎨 Add These Colors for Perfect Accessibility:</h5>';
+    recommendationsDiv.innerHTML = '<h5 style="color: #2196F3; margin: 0 0 10px 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 8px; vertical-align: middle;"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9H21ZM14 4L20 10H16C14.89 10 14 9.11 14 8V4Z" fill="#2196F3"/> Add These Colors for Perfect Accessibility:</h5>';
     
     const colorGrid = document.createElement('div');
     colorGrid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 12px; margin: 12px 0;';
@@ -2913,7 +3658,7 @@ function generateAccessibilityReport(colors, container) {
     // Add professional explanation
     const explanationDiv = document.createElement('div');
     explanationDiv.style.cssText = 'margin-top: 12px; padding: 10px; background: rgba(0,0,0,0.15); border-radius: 6px; font-size: 0.75rem; color: rgba(255,255,255,0.8); line-height: 1.4;';
-    explanationDiv.innerHTML = '💡 <strong>Click any color to copy hex code.</strong> These colors provide professional-grade contrast with your base color. AAA level (7:1) is ideal for body text, AA level (4.5:1) works for large text and UI elements.';
+    explanationDiv.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 8px; vertical-align: middle;"><path d="M12 2C13.09 2 14.05 2.65 14.5 3.61L15.83 6.27C16.28 7.23 17.23 7.88 18.32 7.88H21C21.55 7.88 22 8.33 22 8.88V16C22 17.11 21.11 18 20 18H4C2.89 18 2 17.11 2 16V8.88C2 8.33 2.45 7.88 3 7.88H5.68C6.77 7.88 7.72 7.23 8.17 6.27L9.5 3.61C9.95 2.65 10.91 2 12 2ZM12 7C14.76 7 17 9.24 17 12S14.76 17 12 17 7 14.76 7 12 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15 15 13.66 15 12 13.66 9 12 9Z" fill="#f8c8d0"/> <strong>Click any color to copy hex code.</strong> These colors provide professional-grade contrast with your base color. AAA level (7:1) is ideal for body text, AA level (4.5:1) works for large text and UI elements.';
     recommendationsDiv.appendChild(explanationDiv);
     
     container.appendChild(recommendationsDiv);

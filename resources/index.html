@@ -27,7 +27,7 @@
                 <li><a href="../contact/index.html">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <img src="../icons/flower.svg" alt="Menu" class="hamburger-icon">
+                <span>Menu</span>
             </div>
         </div>
     </nav>
@@ -35,7 +35,7 @@
     <main class="resources-main">
         <div class="hero-section">
             <h1>Creative Studio Resources</h1>
-            <p class="hero-subtitle">Professional tools and interactive utilities designed to enhance your artistic workflow and inspire new ideas</p>
+            <p class="hero-subtitle">Essential creative tools to enhance your artistic workflow - streamlined and focused on what matters most</p>
         </div>
 
         <div class="toolkit-container">
@@ -44,139 +44,88 @@
             <section class="toolkit-section">
                 <div class="tools-grid">
                     
-                    <!-- 10-Minute Sketch Timer -->
-                    <div class="tool-card timer-card">
-                        <h3>Quick Sketch Timer</h3>
-                        <p>Time-limited challenges to break perfectionism</p>
-                        <div class="timer-display">
-                            <div class="timer-time" id="timer-display">10:00</div>
-                            <div class="timer-prompt" id="timer-prompt">Draw the last thing you ate, but make it dramatic</div>
-                        </div>
-                        <div class="timer-controls">
-                            <button class="generate-btn" onclick="startTimer()">Start Timer</button>
-                            <button class="secondary-btn" onclick="newTimerPrompt()">New Prompt</button>
-                        </div>
-                    </div>
-
-                    <!-- Daily Creative Challenge -->
+                    <!-- Commission Compatibility Matcher -->
                     <div class="tool-card">
-                        <h3>Daily Creative Challenge</h3>
-                        <p>Get a new creative challenge every day - perfect for building a consistent art practice</p>
-                        <div class="generator-display" id="dailyChallenge" style="padding: 8px; margin: 8px 0;">
-                            <div style="text-align: center; margin: 10px 0;">
-                                <div style="font-size: 0.9rem; color: #f8c8d0; margin-bottom: 8px;" id="challengeDate">Today's Challenge</div>
-                                <div style="font-weight: 500; line-height: 1.3; font-size: 0.85rem;" id="todaysChallenge">Click to reveal today's creative challenge</div>
-                                <div style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;" id="challengeTag">#ArtChallenge</div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="generateDailyChallenge()">Today's Challenge</button>
-                    </div>
-
-                    <!-- Spinning Challenge Wheel -->
-                    <div class="tool-card">
-                        <h3>Spinning Challenge Wheel</h3>
-                        <p>Watch the wheel spin and land on creative challenges and constraints</p>
-                        <div class="generator-display" id="spinningWheel" style="padding: 8px; margin: 8px 0;">
-                            <div style="text-align: center; margin: 10px 0;">
-                                <div style="position: relative; display: inline-block;">
-                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(from 0deg, #f8c8d0 0deg 45deg, #7e1c2e 45deg 90deg, #d4a5a5 90deg 135deg, #8b3a3a 135deg 180deg, #f8c8d0 180deg 225deg, #7e1c2e 225deg 270deg, #d4a5a5 270deg 315deg, #8b3a3a 315deg 360deg); margin: 0 auto; position: relative; transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);" id="wheelCircle">
-                                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: bold; font-size: 0.7rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">SPIN</div>
-                                    </div>
-                                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 15px solid #f8c8d0;"></div>
+                        <h3>Commission Compatibility Matcher</h3>
+                        <p>Analyze client requests to identify red flags and ensure profitable, manageable commissions</p>
+                        <div class="generator-display" id="commissionMatcher" style="padding: 6px; margin: 6px 0;">
+                            <div style="margin: 3px 0;">
+                                <div style="display: flex; gap: 3px; margin-bottom: 4px;">
+                                    <input type="number" id="projectBudget" placeholder="Budget ($)" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; min-width: 0;">
+                                    <input type="number" id="projectTimeline" placeholder="Days" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; min-width: 0;">
                                 </div>
-                                <div style="font-weight: 500; margin: 10px 0; min-height: 35px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;" id="wheelResult">Click to spin the wheel!</div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="spinWheel()">Spin Wheel</button>
-                    </div>
-
-                    <!-- Explore This Art Style -->
-                    <div class="tool-card">
-                        <h3>Explore This Art Style</h3>
-                        <p>Discover art movements, key characteristics, and essential artists to research and study</p>
-                        <div class="generator-display" id="artStyleExplorer" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="artMovement" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="impressionism">Impressionism</option>
-                                        <option value="surrealism">Surrealism</option>
-                                        <option value="abstract-expressionism">Abstract Expressionism</option>
-                                        <option value="pop-art">Pop Art</option>
-                                        <option value="minimalism">Minimalism</option>
-                                        <option value="cubism">Cubism</option>
-                                        <option value="art-nouveau">Art Nouveau</option>
-                                        <option value="street-art">Street Art</option>
-                                        <option value="digital-art">Digital Art</option>
-                                        <option value="mixed-media">Mixed Media</option>
+                                <div style="display: flex; gap: 3px; margin-bottom: 4px;">
+                                    <select id="projectType" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem;">
+                                        <option value="portrait">Portrait</option>
+                                        <option value="illustration">Illustration</option>
+                                        <option value="logo">Logo Design</option>
+                                        <option value="mural">Mural</option>
+                                        <option value="digital">Digital Art</option>
+                                        <option value="traditional">Traditional</option>
                                     </select>
-                                    <button class="secondary-btn" onclick="randomArtStyle()" style="padding: 4px 8px; font-size: 0.75rem;">Random</button>
+                                    <select id="clientType" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem;">
+                                        <option value="individual">Individual</option>
+                                        <option value="small-business">Small Biz</option>
+                                        <option value="corporate">Corporate</option>
+                                        <option value="nonprofit">Non-Profit</option>
+                                    </select>
                                 </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 120px; overflow-y: auto;" id="artStyleResults">
-                                    Select an art movement to explore key characteristics and artists
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="exploreArtStyle()">Explore Style</button>
-                    </div>
-
-                    <!-- Upload Image & Analyze Color -->
-                    <div class="tool-card">
-                        <h3>Upload Image & Analyze Color</h3>
-                        <p>Extract dominant colors, generate palettes, and get color harmony suggestions from any image</p>
-                        <div class="generator-display" id="imageColorAnalyzer" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease;" id="colorUploadArea">
-                                    <input type="file" id="colorImageUpload" accept="image/*" style="display: none;" onchange="handleColorImageUpload(event)">
-                                    <div onclick="document.getElementById('colorImageUpload').click()" style="cursor: pointer;">
-                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Upload Image for Color Analysis</div>
-                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG • Max 5MB</div>
-                                    </div>
-                                </div>
-                                <div id="colorImagePreview" style="display: none; margin-bottom: 8px; text-align: center;">
-                                    <img id="colorPreviewImage" style="max-width: 100%; max-height: 60px; border-radius: 4px; object-fit: contain;">
-                                </div>
-                                <div id="colorAnalysisResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 100px; overflow-y: auto;">
-                                    <div id="dominantColors" style="display: flex; gap: 4px; margin-bottom: 6px;"></div>
-                                    <div id="colorHarmony" style="font-size: 0.65rem; opacity: 0.9;"></div>
-                                </div>
-                                <div id="loadingColorAnalysis" style="display: none; text-align: center; padding: 12px;">
-                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing colors...</div>
-                                    <div style="font-size: 0.7rem; opacity: 0.8;">Extracting palette...</div>
+                                <textarea id="projectDescription" placeholder="Project details..." style="width: 100%; height: 32px; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; resize: none; font-family: inherit; margin-bottom: 4px; box-sizing: border-box;"></textarea>
+                                <div style="font-size: 0.65rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 4px; max-height: 60px; overflow-y: auto;" id="compatibilityResults">
+                                    Enter details for analysis
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="analyzeImageColors()" id="analyzeColorsBtn" disabled>Upload Image First</button>
+                        <button class="generate-btn" onclick="analyzeCommissionCompatibility()">Analyze Commission</button>
                     </div>
 
                     <!-- Image Style Analyzer -->
+                    <!-- Painting Diagnostic Tool -->
                     <div class="tool-card">
-                        <h3>Image Style Analyzer</h3>
-                        <p>Upload any artwork to get detailed analysis including style matching, color breakdown, and composition insights</p>
+                        <h3>Fix My Painting Diagnostic</h3>
+                        <p>Upload your artwork to identify technical issues and get specific solutions for common painting problems</p>
                         <div class="generator-display" id="styleAnalyzer" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease;" id="styleUploadArea">
-                                    <input type="file" id="styleImageUpload" accept="image/*" style="display: none;" onchange="handleStyleImageUpload(event)">
-                                    <div onclick="document.getElementById('styleImageUpload').click()" style="cursor: pointer;">
-                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Upload Image for Analysis</div>
-                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG • Max 10MB</div>
+                                    <input type="file" id="styleUpload" accept="image/*" style="display: none;" onchange="handleStyleUpload(event)">
+                                    <div onclick="document.getElementById('styleUpload').click()" style="cursor: pointer;">
+                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload painting for diagnostic</div>
+                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
                                     </div>
                                 </div>
-                                <div id="styleImagePreview" style="display: none; margin-bottom: 8px; text-align: center;">
+                                <div id="stylePreview" style="display: none; margin-bottom: 8px; text-align: center;">
                                     <img id="stylePreviewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain;">
                                 </div>
-                                <div id="styleAnalysis" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 120px; overflow-y: auto;">
-                                    <div id="styleAnalysisContent">Upload an image to get comprehensive style analysis...</div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <select id="paintingMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="oil">Oil Paint</option>
+                                        <option value="acrylic">Acrylic</option>
+                                        <option value="watercolor">Watercolor</option>
+                                        <option value="gouache">Gouache</option>
+                                        <option value="tempera">Tempera</option>
+                                        <option value="mixed">Mixed Media</option>
+                                    </select>
+                                    <select id="problemArea" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="general">General Issues</option>
+                                        <option value="color">Color Problems</option>
+                                        <option value="composition">Composition</option>
+                                        <option value="technique">Technique</option>
+                                        <option value="blending">Blending Issues</option>
+                                        <option value="proportions">Proportions</option>
+                                    </select>
                                 </div>
-                                <div id="loadingStyleAnalysis" style="display: none; text-align: center; padding: 12px;">
-                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing style...</div>
-                                    <div style="font-size: 0.7rem; opacity: 0.8;">Detecting patterns, colors, and composition...</div>
+                                <div id="diagnosticResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 120px; overflow-y: auto;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Diagnostic Results:</div>
+                                    <div id="diagnosticContent">Upload painting to identify technical issues and get solutions...</div>
+                                </div>
+                                <div id="loadingDiagnostic" style="display: none; text-align: center; padding: 12px;">
+                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing painting techniques...</div>
+                                    <div style="font-size: 0.7rem; opacity: 0.8;">Identifying issues and preparing solutions...</div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="analyzeImageStyle()" id="analyzeStyleBtn" disabled>Upload Image First</button>
-                    </div>
-
-                    <!-- 3D Unit Converter -->
+                        <button class="generate-btn" onclick="runPaintingDiagnostic()" id="diagnosticBtn" disabled>Upload Painting First</button>
+                    </div>                    <!-- 3D Unit Converter -->
                     <div class="tool-card">
                         <h3>3D Unit Converter</h3>
                         <p>Convert between different 3D modeling units, calculate volumes, and estimate material costs</p>
@@ -211,68 +160,42 @@
                         <button class="generate-btn" onclick="calculate3DConversion()">Calculate Volume</button>
                     </div>
 
-                    <!-- AI Art Critique Tool -->
+                    <!-- Portfolio Readiness Checker -->
                     <div class="tool-card">
-                        <h3>Rate My Piece</h3>
-                        <p>Upload your artwork and get AI-powered feedback on composition, color, technique, and style</p>
-                        <div class="generator-display" id="artCritique" style="padding: 8px; margin: 8px 0;">
+                        <h3>Is My Piece Portfolio Ready</h3>
+                        <p>Upload your artwork to get professional portfolio assessment and improvement recommendations</p>
+                        <div class="generator-display" id="portfolioChecker" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease;" id="uploadArea">
-                                    <input type="file" id="artworkUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                                    <div onclick="document.getElementById('artworkUpload').click()" style="cursor: pointer;">
-                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork</div>
+                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease;" id="portfolioUploadArea">
+                                    <input type="file" id="portfolioUpload" accept="image/*" style="display: none;" onchange="handlePortfolioUpload(event)">
+                                    <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;">
+                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for portfolio assessment</div>
                                         <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
                                     </div>
                                 </div>
-                                <div id="imagePreview" style="display: none; margin-bottom: 8px; text-align: center;">
-                                    <img id="previewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain;">
+                                <div id="portfolioPreview" style="display: none; margin-bottom: 8px; text-align: center;">
+                                    <img id="portfolioPreviewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain;">
                                 </div>
-                                <div id="aiAnalysis" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 120px; overflow-y: auto;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">AI Analysis Results:</div>
-                                    <div id="analysisContent">Upload an image to get AI feedback...</div>
-                                </div>
-                                <div id="loadingAnalysis" style="display: none; text-align: center; padding: 12px;">
-                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing artwork...</div>
-                                    <div style="font-size: 0.7rem; opacity: 0.8;">Please wait...</div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="analyzeArtwork()" id="analyzeBtn" disabled>Upload Image First</button>
-                    </div>
-
-                    <!-- Font Pairing Tool -->
-                    <div class="tool-card">
-                        <h3>Font Pairing Tool</h3>
-                        <p>Discover perfect font combinations with preview and pairing suggestions for your design projects</p>
-                        <div class="generator-display" id="fontPairing" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="primaryFont" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="serif">Serif</option>
-                                        <option value="sans-serif">Sans-Serif</option>
-                                        <option value="script">Script</option>
-                                        <option value="display">Display</option>
-                                        <option value="monospace">Monospace</option>
-                                    </select>
-                                    <select id="fontMood" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="professional">Professional</option>
-                                        <option value="creative">Creative</option>
-                                        <option value="elegant">Elegant</option>
-                                        <option value="modern">Modern</option>
-                                        <option value="playful">Playful</option>
-                                        <option value="minimal">Minimal</option>
+                                    <select id="portfolioGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="gallery">Gallery Submission</option>
+                                        <option value="client">Client Presentation</option>
+                                        <option value="job">Job Application</option>
+                                        <option value="school">Art School Application</option>
+                                        <option value="social">Social Media</option>
                                     </select>
                                 </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="fontPairingResults">
-                                    <div id="fontPreview" style="margin-bottom: 6px;">
-                                        <div style="font-family: serif; font-size: 1rem; margin-bottom: 2px;">Primary Heading</div>
-                                        <div style="font-family: sans-serif; font-size: 0.8rem;">Secondary text example</div>
-                                    </div>
-                                    <div id="fontSuggestions" style="font-size: 0.65rem; opacity: 0.8;">Select font type and mood for pairing suggestions</div>
+                                <div id="portfolioAnalysis" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 120px; overflow-y: auto;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Portfolio Assessment:</div>
+                                    <div id="portfolioAssessment">Upload artwork to get professional portfolio evaluation...</div>
+                                </div>
+                                <div id="loadingPortfolio" style="display: none; text-align: center; padding: 12px;">
+                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing portfolio readiness...</div>
+                                    <div style="font-size: 0.7rem; opacity: 0.8;">Checking composition, technique, and professional standards...</div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="generateFontPairing()">Generate Pairing</button>
+                        <button class="generate-btn" onclick="assessPortfolioReadiness()" id="assessBtn" disabled>Upload Image First</button>
                     </div>
 
                     <!-- Creative Prompt Generator -->
@@ -308,30 +231,59 @@
                         <button class="generate-btn" onclick="generateCreativePrompt()">New Prompt</button>
                     </div>
 
-                    <!-- Color Harmony Explorer -->
+                    <!-- Drying Time Calculator -->
                     <div class="tool-card">
-                        <h3>Color Harmony Explorer</h3>
-                        <p>Explore advanced color relationships, undertones, and professional color combinations</p>
-                        <div class="generator-display" id="colorHarmony" style="padding: 8px; margin: 8px 0;">
+                        <h3>Drying Time Calculator</h3>
+                        <p>Calculate optimal drying times for different paint mediums based on thickness, humidity, and temperature</p>
+                        <div class="generator-display" id="dryingCalculator" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px; align-items: center;">
-                                    <input type="color" id="harmonyBaseColor" value="#e74c3c" style="width: 40px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
-                                    <select id="harmonyType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="monochromatic">Monochromatic</option>
-                                        <option value="analogous">Analogous</option>
-                                        <option value="complementary">Complementary</option>
-                                        <option value="split-complementary">Split Complementary</option>
-                                        <option value="triadic">Triadic</option>
-                                        <option value="tetradic">Tetradic</option>
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <select id="dryingMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="oil">Oil Paint</option>
+                                        <option value="acrylic">Acrylic Paint</option>
+                                        <option value="watercolor">Watercolor</option>
+                                        <option value="gouache">Gouache</option>
+                                        <option value="tempera">Tempera</option>
+                                        <option value="encaustic">Encaustic Wax</option>
+                                    </select>
+                                    <select id="paintThickness" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="thin">Thin Layer</option>
+                                        <option value="medium">Medium Layer</option>
+                                        <option value="thick">Thick/Impasto</option>
+                                        <option value="heavy">Heavy Texture</option>
                                     </select>
                                 </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="harmonyResults">
-                                    <div id="harmonyColors" style="display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap;"></div>
-                                    <div id="harmonyDescription" style="font-size: 0.65rem; opacity: 0.8;">Select a base color and harmony type to explore relationships</div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <div style="flex: 1;">
+                                        <label style="font-size: 0.7rem; color: #f8c8d0; display: block; margin-bottom: 2px;">Temperature (°F)</label>
+                                        <input type="number" id="temperature" value="70" min="32" max="100" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label style="font-size: 0.7rem; color: #f8c8d0; display: block; margin-bottom: 2px;">Humidity (%)</label>
+                                        <input type="number" id="humidity" value="45" min="10" max="90" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="airflow" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="still">Still Air</option>
+                                        <option value="gentle">Gentle Breeze</option>
+                                        <option value="fan">Fan/Ventilation</option>
+                                    </select>
+                                    <select id="surface" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="canvas">Canvas</option>
+                                        <option value="paper">Paper</option>
+                                        <option value="wood">Wood Panel</option>
+                                        <option value="metal">Metal</option>
+                                        <option value="plastic">Plastic</option>
+                                    </select>
+                                </div>
+                                <div id="dryingResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Estimated Drying Times:</div>
+                                    <div id="dryingContent">Click calculate to get drying time estimates...</div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="exploreColorHarmony()">Explore Harmony</button>
+                        <button class="generate-btn" onclick="calculateDryingTime()">Calculate Drying Time</button>
                     </div>
 
                 </div>
@@ -364,11 +316,11 @@
     </main>
 
     <!-- Professional Color Palette Maker Modal -->
-    <div id="colorTheoryModal" class="resource-modal">
+    <div id="colorTheoryModal" class="resource-modal" role="dialog" aria-labelledby="palette-maker-title" aria-modal="true">
         <div class="modal-content professional-palette-maker">
             <div class="modal-header">
-                <h2 style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">🎨 Professional Color Palette Maker</h2>
-                <button class="modal-close">&times;</button>
+                <h2 id="palette-maker-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">Professional Color Palette Maker</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 
@@ -385,7 +337,6 @@
                             <label for="signatureColor">Your Signature Color:</label>
                             <div class="signature-color-input">
                                 <input type="color" id="signatureColor" value="#e74c3c" onchange="updateSignatureColor()">
-                                <div class="signature-color-preview" id="signatureColorPreview"></div>
                                 <div class="color-info" id="signatureColorInfo">
                                     <span class="hex-value">#e74c3c</span>
                                     <span class="color-name">Alizarin</span>
@@ -489,7 +440,7 @@
                         <div class="refinement-controls">
                             <div class="randomize-section">
                                 <button class="randomize-btn" onclick="randomizeTintsShades()">
-                                    🎲 Randomize Unlocked Colors
+                                    Randomize Unlocked Colors
                                 </button>
                                 <div class="randomize-options">
                                     <label>
@@ -505,8 +456,14 @@
                             </div>
                             
                             <div class="lock-controls">
-                                <button class="lock-btn" onclick="lockAllColors()">🔒 Lock All</button>
-                                <button class="unlock-btn" onclick="unlockAllColors()">🔓 Unlock All</button>
+                                <button class="lock-btn" onclick="lockAllColors()">
+                                    <img src="../icons/lock.png" alt="Lock" style="width: 14px; height: 14px; margin-right: 6px;">
+                                    Lock All
+                                </button>
+                                <button class="unlock-btn" onclick="unlockAllColors()">
+                                    <img src="../icons/padlock-unlock.png" alt="Unlock" style="width: 14px; height: 14px; margin-right: 6px;">
+                                    Unlock All
+                                </button>
                             </div>
                         </div>
                         
@@ -543,10 +500,11 @@
     </div>
 
     <!-- Composition Grid Overlay Modal -->
-    <div id="compositionModal" class="resource-modal">
+    <div id="compositionModal" class="resource-modal" role="dialog" aria-labelledby="composition-modal-title" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <button class="modal-close">&times;</button>
+                <h2 id="composition-modal-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">Composition Grid Overlay</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="composition-controls">
@@ -580,16 +538,17 @@
     </div>
 
     <!-- Print Specifications Modal -->
-    <div id="printSpecModal" class="resource-modal">
+    <div id="printSpecModal" class="resource-modal" role="dialog" aria-labelledby="print-spec-modal-title" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <button class="modal-close">&times;</button>
+                <h2 id="print-spec-modal-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">Print Specifications</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="print-spec-controls">
                     <div class="control-group">
-                        <label>Print Type:</label>
-                        <select id="printType">
+                        <label for="printType">Print Type:</label>
+                        <select id="printType" aria-describedby="print-type-help">
                             <option value="poster">Poster</option>
                             <option value="business-card">Business Card</option>
                             <option value="brochure">Brochure</option>
@@ -597,18 +556,22 @@
                             <option value="magazine">Magazine</option>
                             <option value="packaging">Packaging</option>
                         </select>
+                        <div id="print-type-help" class="sr-only">Select the type of print project you're working on</div>
                     </div>
                     <div class="control-group">
-                        <label>Width (inches):</label>
-                        <input type="number" id="printWidth" placeholder="Width" step="0.1">
+                        <label for="printWidth">Width (inches):</label>
+                        <input type="number" id="printWidth" placeholder="Width" step="0.1" aria-describedby="width-help">
+                        <div id="width-help" class="sr-only">Enter the width of your print project in inches</div>
                     </div>
                     <div class="control-group">
-                        <label>Height (inches):</label>
-                        <input type="number" id="printHeight" placeholder="Height" step="0.1">
+                        <label for="printHeight">Height (inches):</label>
+                        <input type="number" id="printHeight" placeholder="Height" step="0.1" aria-describedby="height-help">
+                        <div id="height-help" class="sr-only">Enter the height of your print project in inches</div>
                     </div>
                     <div class="control-group">
-                        <label>DPI:</label>
-                        <input type="number" id="printDPI" value="300" step="50">
+                        <label for="printDPI">DPI:</label>
+                        <input type="number" id="printDPI" value="300" step="50" aria-describedby="dpi-help">
+                        <div id="dpi-help" class="sr-only">Dots per inch - 300 DPI is standard for print quality</div>
                     </div>
                     <button class="modal-generate-btn" onclick="calculatePrintSpecs()">Calculate Specifications</button>
                 </div>

@@ -85,7 +85,7 @@ class PortfolioQuiz {
     }
 
     init() {
-        console.log('🎨 Portfolio Quiz initialized');
+        console.log('Portfolio Quiz initialized');
         this.preloadImages();
         this.bindEvents();
     }
@@ -278,6 +278,6 @@ class PortfolioQuiz {
 
 // Initialize quiz when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎨 Initializing Portfolio Quiz');
+    console.log('Initializing Portfolio Quiz');
     new PortfolioQuiz();
 });
