@@ -1,6 +1,24 @@
 // Resources Page Interactive Features
 
-console.log("Creative Block Toolkit loaded! v2.0");
+console.log("Creative Block Toolkit loaded! v2.0 - Enhanced");
+
+// Test function to verify JavaScript is working
+window.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded, JavaScript is working!");
+    
+    // Test if main functions exist
+    if (typeof generateCreativePrompt === 'function') {
+        console.log("✅ generateCreativePrompt function exists");
+    } else {
+        console.error("❌ generateCreativePrompt function missing");
+    }
+    
+    if (typeof openModal === 'function') {
+        console.log("✅ openModal function exists");
+    } else {
+        console.error("❌ openModal function missing");
+    }
+});
 
 // Data arrays for generators
 const objects = [
@@ -1976,20 +1994,23 @@ function handleStyleUpload(event) {
     reader.onload = function(e) {
         uploadedPaintingData = e.target.result;
         
-        // Update upload area to show image as background
+        // Update upload area to show image properly contained
         const uploadArea = document.getElementById('styleUploadArea');
         const uploadText = document.getElementById('styleUploadText');
         
-        // Set image as background
-        uploadArea.style.backgroundImage = `url(${uploadedPaintingData})`;
+        // Clear background image and update styling for proper image display
+        uploadArea.style.backgroundImage = 'none';
         uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
         uploadArea.style.borderStyle = 'solid';
+        uploadArea.style.padding = '8px';
         
-        // Update text with overlay styling
+        // Create image element that fits within the container
         uploadText.innerHTML = `
-            <div style="background: rgba(0,0,0,0.7); padding: 8px; border-radius: 4px; backdrop-filter: blur(2px);">
-                <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Painting uploaded</div>
-                <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+            <div style="position: relative; width: 100%; height: 100%;">
+                <img src="${uploadedPaintingData}" style="max-width: 100%; max-height: 64px; object-fit: contain; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; backdrop-filter: blur(2px); white-space: nowrap;">
+                    <div style="color: #f8c8d0; font-weight: 500; font-size: 0.7rem;">✓ Artwork uploaded - Click to change</div>
+                </div>
             </div>
         `;
         
@@ -2014,6 +2035,8 @@ async function runPaintingDiagnostic() {
     const medium = document.getElementById('paintingMedium').value;
     const problemArea = document.getElementById('problemArea').value;
     
+    console.log('Starting diagnostic analysis...', { medium, problemArea });
+    
     // Show loading state
     document.getElementById('loadingDiagnostic').style.display = 'block';
     document.getElementById('diagnosticResults').style.display = 'none';
@@ -2022,7 +2045,10 @@ async function runPaintingDiagnostic() {
     
     try {
         // Use AI-powered image analysis
+        console.log('Calling analyzePaintingWithAI...');
         const diagnostic = await analyzePaintingWithAI(uploadedPaintingData, medium, problemArea);
+        
+        console.log('Analysis completed successfully');
         
         // Show results
         document.getElementById('loadingDiagnostic').style.display = 'none';
@@ -2035,7 +2061,11 @@ async function runPaintingDiagnostic() {
         console.error('Diagnostic failed:', error);
         document.getElementById('loadingDiagnostic').style.display = 'none';
         document.getElementById('diagnosticResults').style.display = 'block';
-        document.getElementById('diagnosticContent').innerHTML = 'Analysis failed. Please try again.';
+        document.getElementById('diagnosticContent').innerHTML = `
+            <div style="color: #ff6b6b; margin-bottom: 6px;">Analysis Failed</div>
+            <div style="font-size: 0.6rem; opacity: 0.9;">${error.message}</div>
+            <div style="font-size: 0.6rem; margin-top: 4px; opacity: 0.7;">Please try uploading a different image or check the console for more details.</div>
+        `;
         document.getElementById('diagnosticBtn').disabled = false;
         document.getElementById('diagnosticBtn').textContent = 'Try Again';
     }
@@ -2043,51 +2073,28 @@ async function runPaintingDiagnostic() {
 
 // AI-powered painting analysis using TensorFlow.js and computer vision
 async function analyzePaintingWithAI(imageData, medium, problemArea) {
+    console.log('analyzePaintingWithAI called with:', { medium, problemArea });
+    
     // Simulate advanced AI analysis with realistic delay
     await new Promise(resolve => setTimeout(resolve, 2500 + Math.random() * 2000));
+    
+    console.log('Starting image processing...');
     
     // Analyze image using computer vision techniques
     const analysisResults = await processImageForDiagnostic(imageData, medium, problemArea);
     
-    return generateDiagnosticReport(analysisResults, medium, problemArea);
+    console.log('Image processing complete, generating report...');
+    
+    const report = generateDiagnosticReport(analysisResults, medium, problemArea);
+    
+    console.log('Report generated successfully');
+    
+    return report;
 }
 
 async function processImageForDiagnostic(imageData, medium, problemArea) {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        
-        img.onload = function() {
-            try {
-                // Create canvas for analysis
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                
-                // Get image data for pixel analysis
-                const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                
-                // Perform various analyses
-                const results = {
-                    colorAnalysis: analyzeColorBalance(imagePixels),
-                    contrastAnalysis: analyzeContrast(imagePixels),
-                    compositionAnalysis: analyzeComposition(imagePixels),
-                    textureAnalysis: analyzeTexture(imagePixels),
-                    focusAnalysis: analyzeFocus(imagePixels)
-                };
-                
-                resolve(results);
-            } catch (error) {
-                console.error('Image analysis failed:', error);
-                reject(new Error('Image analysis failed. Please try with a different image.'));
-            }
-        };
-        
-        img.onerror = function() {
-            console.error('Failed to load image for analysis');
-            reject(new Error('Failed to load image. Please check the file format and try again.'));
-        };
         
         // Add timeout to prevent hanging
         const timeout = setTimeout(() => {
@@ -2121,6 +2128,12 @@ async function processImageForDiagnostic(imageData, medium, problemArea) {
                 console.error('Image analysis failed:', error);
                 reject(new Error('Image analysis failed. Please try with a different image.'));
             }
+        };
+        
+        img.onerror = function() {
+            clearTimeout(timeout);
+            console.error('Failed to load image for analysis');
+            reject(new Error('Failed to load image. Please check the file format and try again.'));
         };
         
         img.src = imageData;
@@ -2556,20 +2569,23 @@ function handlePortfolioUpload(event) {
     reader.onload = function(e) {
         uploadedPortfolioData = e.target.result;
         
-        // Update upload area to show image as background
+        // Update upload area to show image properly contained
         const uploadArea = document.getElementById('portfolioUploadArea');
         const uploadText = document.getElementById('portfolioUploadText');
         
-        // Set image as background
-        uploadArea.style.backgroundImage = `url(${uploadedPortfolioData})`;
+        // Clear background image and update styling for proper image display
+        uploadArea.style.backgroundImage = 'none';
         uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
         uploadArea.style.borderStyle = 'solid';
+        uploadArea.style.padding = '8px';
         
-        // Update text with overlay styling
+        // Create image element that fits within the container
         uploadText.innerHTML = `
-            <div style="background: rgba(0,0,0,0.7); padding: 8px; border-radius: 4px; backdrop-filter: blur(2px);">
-                <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Artwork uploaded</div>
-                <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+            <div style="position: relative; width: 100%; height: 100%;">
+                <img src="${uploadedPortfolioData}" style="max-width: 100%; max-height: 64px; object-fit: contain; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; backdrop-filter: blur(2px); white-space: nowrap;">
+                    <div style="color: #f8c8d0; font-weight: 500; font-size: 0.7rem;">✓ Portfolio piece uploaded - Click to change</div>
+                </div>
             </div>
         `;
         
@@ -3436,6 +3452,12 @@ function openModal(modalId) {
     // Initialize specific modal functionality
     if (modalId === 'colorTheoryModal') {
         initializeProfessionalPaletteMaker();
+    } else if (modalId === 'lightingModal') {
+        setTimeout(() => {
+            if (!simple3DInitialized) {
+                initSimple3D();
+            }
+        }, 100);
     }
     
     console.log('Modal opened successfully:', modalId);
@@ -4395,136 +4417,677 @@ function getLuminance(r, g, b) {
     return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
 }
 
-// Composition Grid Overlay
-function loadCompositionImage() {
-    const input = document.getElementById('imageUpload');
-    const file = input.files[0];
+// Simple Educational 3D Lighting System - Enhanced
+let simpleScene, simpleRenderer, simpleCamera, simpleControls;
+let simpleModel, simpleLight, simpleAmbient, rimLight, fillLight;
+let simple3DInitialized = false;
+let currentModel = 'portrait'; // Default model type
+
+const modelTypes = {
+    portrait: { 
+        name: 'Portrait Head', 
+        geometry: 'sphere', 
+        size: 1.0, 
+        position: [0, 0.5, 0],
+        description: 'Classic portrait subject - shows how light affects faces and features'
+    },
+    ethereal: { 
+        name: 'Ethereal Figure', 
+        geometry: 'elongated', 
+        size: 1.2, 
+        position: [0, 0, 0],
+        description: 'Tall, graceful form - perfect for dreamy, soft lighting effects'
+    },
+    dramatic: { 
+        name: 'Dramatic Bust', 
+        geometry: 'angular', 
+        size: 1.1, 
+        position: [0, 0.3, 0],
+        description: 'Angular sculpture - shows strong shadows and dramatic contrasts'
+    },
+    sculptural: { 
+        name: 'Art Sculpture', 
+        geometry: 'complex', 
+        size: 0.9, 
+        position: [0, 0.2, 0],
+        description: 'Complex geometric form - reveals how light defines shape and texture'
+    },
+    product: { 
+        name: 'Product Mock', 
+        geometry: 'cube', 
+        size: 1.0, 
+        position: [0, 0.5, 0],
+        description: 'Simple product form - ideal for commercial lighting practice'
+    }
+};
+
+function initSimple3D() {
+    if (simple3DInitialized) return;
     
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const canvas = document.getElementById('compositionCanvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            
-            img.onload = function() {
-                // Set canvas size
-                const maxWidth = 600;
-                const maxHeight = 400;
-                let { width, height } = img;
-                
-                if (width > maxWidth || height > maxHeight) {
-                    const ratio = Math.min(maxWidth / width, maxHeight / height);
-                    width *= ratio;
-                    height *= ratio;
-                }
-                
-                canvas.width = width;
-                canvas.height = height;
-                
-                // Store original image data for grid switching
-                canvas.originalImageData = e.target.result;
-                
-                // Draw image
-                ctx.drawImage(img, 0, 0, width, height);
-                
-                // Apply grid immediately
-                applyCompositionGrid();
-            };
-            
-            img.src = e.target.result;
+    const container = document.getElementById('simple3DViewport');
+    const loadingDiv = document.getElementById('simple3DLoading');
+    
+    try {
+        // Create scene
+        simpleScene = new THREE.Scene();
+        simpleScene.background = new THREE.Color(0x1a1a1a);
+        
+        // Create camera positioned to see the model clearly
+        simpleCamera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+        simpleCamera.position.set(3, 2, 3);  // Position camera to see model
+        simpleCamera.lookAt(0, 0, 0);  // Look directly at center
+        
+        // Create renderer
+        simpleRenderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+        simpleRenderer.setSize(container.offsetWidth, container.offsetHeight);
+        simpleRenderer.shadowMap.enabled = true;
+        simpleRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        
+        // Add to container
+        container.appendChild(simpleRenderer.domElement);
+        
+        // Add orbit controls with proper setup
+        if (window.THREE && THREE.OrbitControls) {
+            simpleControls = new THREE.OrbitControls(simpleCamera, simpleRenderer.domElement);
+            simpleControls.target.set(0, 0, 0);  // Set target first
+            simpleControls.enableDamping = true;
+            simpleControls.dampingFactor = 0.05;
+            simpleControls.minDistance = 2;
+            simpleControls.maxDistance = 15;
+            simpleControls.maxPolarAngle = Math.PI;  // Allow full rotation
+            simpleControls.enablePan = true;
+            simpleControls.enableZoom = true;
+            simpleControls.enableRotate = true;
+            simpleControls.update();  // Force initial update
+            console.log('Orbit controls ready - drag to rotate, scroll to zoom, right-click+drag to pan');
+        } else {
+            console.log('OrbitControls not available - basic view only');
+        }
+        
+        // Create different model types based on selection
+        createSelectedModel();
+        
+        // Create advanced lighting setup
+        setupAdvancedLighting();
+        
+        // Add ground plane centered
+        const groundGeometry = new THREE.PlaneGeometry(8, 8);
+        const groundMaterial = new THREE.MeshPhongMaterial({ 
+            color: 0x404040,
+            shininess: 10
+        });
+        const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -1.0;
+        ground.receiveShadow = true;
+        simpleScene.add(ground);
+        
+        // Create main light
+        simpleLight = new THREE.DirectionalLight(0xffffff, 1.0);
+        simpleLight.position.set(3, 4, 3);  // Better initial position
+        simpleLight.castShadow = true;
+        simpleLight.shadow.mapSize.width = 2048;
+        simpleLight.shadow.mapSize.height = 2048;
+        simpleLight.shadow.camera.near = 0.1;
+        simpleLight.shadow.camera.far = 20;
+        simpleLight.shadow.camera.left = -6;
+        simpleLight.shadow.camera.right = 6;
+        simpleLight.shadow.camera.top = 6;
+        simpleLight.shadow.camera.bottom = -6;
+        simpleScene.add(simpleLight);
+        
+        // Add soft ambient light
+        simpleAmbient = new THREE.AmbientLight(0x404060, 0.2);
+        simpleScene.add(simpleAmbient);
+        
+        // Start animation loop
+        animateSimple3D();
+        
+        // Handle window resize
+        const handleResize = () => {
+            if (simpleCamera && simpleRenderer && container) {
+                const width = container.offsetWidth;
+                const height = container.offsetHeight;
+                simpleCamera.aspect = width / height;
+                simpleCamera.updateProjectionMatrix();
+                simpleRenderer.setSize(width, height);
+            }
         };
-        reader.readAsDataURL(file);
+        window.addEventListener('resize', handleResize);
+        
+        // Hide loading
+        loadingDiv.style.display = 'none';
+        simple3DInitialized = true;
+        
+        // Update initial explanation
+        updateLightingExplanation('front');
+        
+        console.log('Simple 3D lighting initialized successfully');
+        
+    } catch (error) {
+        console.error('3D initialization failed:', error);
+        loadingDiv.innerHTML = '<div style="color: #ff6b6b;">❌ 3D not available<br><small>Your browser may not support WebGL</small></div>';
     }
 }
 
-function applyCompositionGrid() {
-    const canvas = document.getElementById('compositionCanvas');
-    const ctx = canvas.getContext('2d');
-    const gridType = document.getElementById('gridType').value;
-    const opacity = parseFloat(document.getElementById('gridOpacity').value);
+function animateSimple3D() {
+    requestAnimationFrame(animateSimple3D);
     
-    // Clear the canvas completely first
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (simpleControls) simpleControls.update();
+    if (simpleRenderer && simpleScene && simpleCamera) {
+        simpleRenderer.render(simpleScene, simpleCamera);
+    }
+}
+
+// Model creation functions
+function createSelectedModel() {
+    // Remove existing model if any
+    if (simpleModel) {
+        simpleScene.remove(simpleModel);
+        simpleModel = null;
+    }
     
-    // Get the original image if it exists
-    if (canvas.originalImageData) {
-        // Redraw the original image
-        const img = new Image();
-        img.onload = function() {
-            // Clear and redraw image
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const modelInfo = modelTypes[currentModel];
+    let geometry, material;
+    
+    // Create different geometries based on model type
+    switch (modelInfo.geometry) {
+        case 'sphere':
+            geometry = new THREE.SphereGeometry(modelInfo.size, 32, 24);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0xfdbcb4,  // Skin tone
+                shininess: 30
+            });
+            break;
             
-            // Apply the selected grid
-            drawGrid(ctx, canvas.width, canvas.height, gridType, opacity);
-        };
-        img.src = canvas.originalImageData;
+        case 'elongated':
+            geometry = new THREE.CylinderGeometry(0.6, 0.8, modelInfo.size * 2, 16);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0xe8d5c9,  // Ethereal light tone
+                shininess: 60,
+                transparent: true,
+                opacity: 0.9
+            });
+            break;
+            
+        case 'angular':
+            geometry = new THREE.OctahedronGeometry(modelInfo.size, 1);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0xc4a484,  // Dramatic bronze tone
+                shininess: 80,
+                specular: 0x222222
+            });
+            break;
+            
+        case 'complex':
+            geometry = new THREE.DodecahedronGeometry(modelInfo.size);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0xf0f0f0,  // Marble white
+                shininess: 90
+            });
+            break;
+            
+        case 'cube':
+            geometry = new THREE.BoxGeometry(modelInfo.size, modelInfo.size, modelInfo.size);
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0x8b4513,  // Product brown
+                shininess: 40
+            });
+            break;
+    }
+    
+    simpleModel = new THREE.Mesh(geometry, material);
+    simpleModel.position.set(...modelInfo.position);
+    simpleModel.castShadow = true;
+    simpleModel.receiveShadow = true;
+    simpleScene.add(simpleModel);
+    
+    console.log('Created model:', modelInfo.name);
+}
+
+// Advanced lighting setup
+function setupAdvancedLighting() {
+    // Add rim light for ethereal effects
+    rimLight = new THREE.DirectionalLight(0x4080ff, 0.3);
+    rimLight.position.set(-2, 1, -2);
+    simpleScene.add(rimLight);
+    
+    // Add fill light for softer shadows
+    fillLight = new THREE.DirectionalLight(0xffeedd, 0.2);
+    fillLight.position.set(-1, 2, 2);
+    simpleScene.add(fillLight);
+}
+
+// Define professional lighting styles for enhanced user experience
+const lightingStyles = {
+    ethereal: {
+        name: 'Ethereal',
+        mainLight: { position: [-2, 4, 3], intensity: 0.8, color: '#e6f3ff' },
+        fillLight: { intensity: 0.4 },
+        rimLight: { intensity: 0.6 },
+        description: 'Soft, dreamy lighting with cool tones - creates a heavenly, otherworldly feel'
+    },
+    dramatic: {
+        name: 'Dramatic',
+        mainLight: { position: [4, 1.5, 2], intensity: 2.0, color: '#fff2e6' },
+        fillLight: { intensity: 0.1 },
+        rimLight: { intensity: 0.8 },
+        description: 'High contrast with strong shadows - bold and theatrical lighting'
+    },
+    beauty: {
+        name: 'Beauty',
+        mainLight: { position: [0, 3, 4], intensity: 1.0, color: '#fff9f0' },
+        fillLight: { intensity: 0.6 },
+        rimLight: { intensity: 0.3 },
+        description: 'Even, flattering light that minimizes harsh shadows - perfect for portraits'
+    },
+    moody: {
+        name: 'Moody',
+        mainLight: { position: [3, 1, -2], intensity: 1.5, color: '#f0e6ff' },
+        fillLight: { intensity: 0.2 },
+        rimLight: { intensity: 0.7 },
+        description: 'Mysterious back-lighting with purple tones - creates atmosphere and emotion'
+    },
+    golden: {
+        name: 'Golden Hour',
+        mainLight: { position: [4, 2, 3], intensity: 1.3, color: '#ffe6b3' },
+        fillLight: { intensity: 0.3 },
+        rimLight: { intensity: 0.5 },
+        description: 'Warm, golden light mimicking sunset - romantic and inviting'
+    },
+    studio: {
+        name: 'Studio Professional',
+        mainLight: { position: [2, 4, 3], intensity: 1.1, color: '#ffffff' },
+        fillLight: { intensity: 0.5 },
+        rimLight: { intensity: 0.4 },
+        description: 'Clean, professional lighting setup - controlled and even for commercial work'
+    }
+};
+
+// Apply professional lighting styles - NEW FUNCTION
+function applyLightingStyle(styleName) {
+    if (!simple3DInitialized || !lightingStyles[styleName]) {
+        console.error('Cannot apply lighting style:', styleName);
+        return;
+    }
+    
+    const style = lightingStyles[styleName];
+    
+    // Apply main light settings
+    simpleLight.position.set(...style.mainLight.position);
+    simpleLight.intensity = style.mainLight.intensity;
+    simpleLight.color.setHex(style.mainLight.color.replace('#', '0x'));
+    
+    // Apply fill and rim light settings
+    if (fillLight) fillLight.intensity = style.fillLight.intensity;
+    if (rimLight) rimLight.intensity = style.rimLight.intensity;
+    
+    // Update UI controls to reflect the changes
+    document.getElementById('simpleLightX').value = style.mainLight.position[0];
+    document.getElementById('simpleLightY').value = style.mainLight.position[1];
+    document.getElementById('simpleLightZ').value = style.mainLight.position[2];
+    document.getElementById('simpleBrightness').value = style.mainLight.intensity;
+    if (document.getElementById('fillIntensity')) document.getElementById('fillIntensity').value = style.fillLight.intensity;
+    if (document.getElementById('rimIntensity')) document.getElementById('rimIntensity').value = style.rimLight.intensity;
+    
+    // Update display values
+    updateSimpleBrightness();
+    if (document.getElementById('fillIntensity')) updateFillLight();
+    if (document.getElementById('rimIntensity')) updateRimLight();
+    
+    // Update explanation with style-specific info
+    updateLightingExplanation(styleName, style.description);
+    
+    showSimpleNotification(`✨ Applied ${style.name} lighting`);
+    
+    console.log('Applied lighting style:', styleName);
+}
+
+// Model selection function
+function selectModel(modelType) {
+    if (!modelTypes[modelType]) {
+        console.error('Unknown model type:', modelType);
+        return;
+    }
+    
+    currentModel = modelType;
+    
+    if (simple3DInitialized) {
+        createSelectedModel();
+        updateModelButtons();
+        
+        const modelInfo = modelTypes[modelType];
+        showSimpleNotification(`🎭 Switched to ${modelInfo.name}`);
+        
+        // Update explanation to include model-specific info
+        updateLightingExplanation('custom', modelInfo.description);
+    }
+    
+    console.log('Selected model:', modelType);
+}
+
+// Enhanced control functions
+function updateSimpleLight() {
+    if (!simple3DInitialized) return;
+    
+    const x = parseFloat(document.getElementById('simpleLightX').value);
+    const y = parseFloat(document.getElementById('simpleLightY').value);
+    const z = parseFloat(document.getElementById('simpleLightZ').value);
+    
+    simpleLight.position.set(x, y, z);
+    
+    // Update explanation based on position
+    if (Math.abs(x) < 1 && z > 2) {
+        updateLightingExplanation('front');
+    } else if (Math.abs(x) > 3) {
+        updateLightingExplanation('side');
+    } else if (z < 0) {
+        updateLightingExplanation('back');
+    } else if (y > 6) {
+        updateLightingExplanation('top');
     } else {
-        // No image, just draw grid on empty canvas
-        ctx.fillStyle = 'rgba(40, 40, 40, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        drawGrid(ctx, canvas.width, canvas.height, gridType, opacity);
+        updateLightingExplanation('general');
     }
 }
 
-function drawGrid(ctx, width, height, gridType, opacity) {
-    // Set grid style
-    ctx.strokeStyle = `rgba(248, 200, 208, ${opacity})`;
-    ctx.lineWidth = 2;
-    ctx.setLineDash([]);
+function updateSimpleBrightness() {
+    if (!simple3DInitialized) return;
     
-    ctx.beginPath();
+    const brightness = parseFloat(document.getElementById('simpleBrightness').value);
+    simpleLight.intensity = brightness;
     
-    switch (gridType) {
-        case 'rule-of-thirds':
-            // Vertical lines
-            ctx.moveTo(width / 3, 0);
-            ctx.lineTo(width / 3, height);
-            ctx.moveTo((width * 2) / 3, 0);
-            ctx.lineTo((width * 2) / 3, height);
-            // Horizontal lines
-            ctx.moveTo(0, height / 3);
-            ctx.lineTo(width, height / 3);
-            ctx.moveTo(0, (height * 2) / 3);
-            ctx.lineTo(width, (height * 2) / 3);
-            break;
-            
-        case 'golden-ratio':
-            const phi = 1.618;
-            const goldenWidth = width / phi;
-            const goldenHeight = height / phi;
-            
-            // Vertical lines
-            ctx.moveTo(goldenWidth, 0);
-            ctx.lineTo(goldenWidth, height);
-            ctx.moveTo(width - goldenWidth, 0);
-            ctx.lineTo(width - goldenWidth, height);
-            // Horizontal lines
-            ctx.moveTo(0, goldenHeight);
-            ctx.lineTo(width, goldenHeight);
-            ctx.moveTo(0, height - goldenHeight);
-            ctx.lineTo(width, height - goldenHeight);
-            break;
-            
-        case 'diagonal':
-            // Main diagonals only
-            ctx.moveTo(0, 0);
-            ctx.lineTo(width, height);
-            ctx.moveTo(width, 0);
-            ctx.lineTo(0, height);
-            break;
-            
-        case 'center':
-            // Center cross only
-            ctx.moveTo(width / 2, 0);
-            ctx.lineTo(width / 2, height);
-            ctx.moveTo(0, height / 2);
-            ctx.lineTo(width, height / 2);
-            break;
+    const percentage = Math.round(brightness * 100);
+    document.getElementById('simpleBrightnessValue').textContent = percentage + '%';
+}
+
+// Color temperature function (Kelvin to RGB)
+function kelvinToRGB(kelvin) {
+    const temp = kelvin / 100;
+    let r, g, b;
+    
+    if (temp <= 66) {
+        r = 255;
+        g = Math.max(0, Math.min(255, 99.4708025861 * Math.log(temp) - 161.1195681661));
+        if (temp >= 19) {
+            b = Math.max(0, Math.min(255, 138.5177312231 * Math.log(temp - 10) - 305.0447927307));
+        } else {
+            b = 0;
+        }
+    } else {
+        r = Math.max(0, Math.min(255, 329.698727446 * Math.pow(temp - 60, -0.1332047592)));
+        g = Math.max(0, Math.min(255, 288.1221695283 * Math.pow(temp - 60, -0.0755148492)));
+        b = 255;
     }
     
-    ctx.stroke();
+    return { r: r / 255, g: g / 255, b: b / 255 };
+}
+
+// Enhanced color lighting with temperature
+function setLightTemperature(kelvin) {
+    if (!simple3DInitialized) return;
+    
+    const rgb = kelvinToRGB(kelvin);
+    simpleLight.color.setRGB(rgb.r, rgb.g, rgb.b);
+    
+    // Update temperature display
+    const tempValue = document.getElementById('temperatureValue');
+    if (tempValue) {
+        tempValue.textContent = kelvin + 'K';
+    }
+    
+    // Visual feedback
+    const description = kelvin < 3000 ? 'Warm' : kelvin < 5000 ? 'Neutral' : 'Cool';
+    showSimpleNotification(`🌡️ ${description} Light: ${kelvin}K`);
+}
+
+function setLightColor(colorHex) {
+    if (!simple3DInitialized) return;
+    
+    simpleLight.color.setHex(colorHex.replace('#', '0x'));
+    
+    // Update button borders to show selection
+    const buttons = document.querySelectorAll('[onclick*="setLightColor"]');
+    buttons.forEach(btn => btn.style.border = '2px solid transparent');
+    event.target.style.border = '2px solid #f8c8d0';
+}
+
+// Teaching functions
+function teachLighting(type) {
+    if (!simple3DInitialized) {
+        initSimple3D();
+        setTimeout(() => teachLighting(type), 1000);
+        return;
+    }
+    
+    const positions = {
+        front: { x: 0, y: 3, z: 4, brightness: 1.0, color: '#ffffff' },
+        side: { x: 4, y: 2, z: 1, brightness: 1.2, color: '#ffffff' },
+        back: { x: 0, y: 4, z: -3, brightness: 1.5, color: '#ffffff' },
+        top: { x: 0, y: 6, z: 0, brightness: 1.3, color: '#ffffff' },
+        dramatic: { x: 3, y: 1, z: 2, brightness: 2.0, color: '#ffeb99' },
+        soft: { x: -1, y: 4, z: 3, brightness: 0.6, color: '#ffffff' }
+    };
+    
+    const setup = positions[type];
+    if (!setup) return;
+    
+    // Update sliders
+    document.getElementById('simpleLightX').value = setup.x;
+    document.getElementById('simpleLightY').value = setup.y;
+    document.getElementById('simpleLightZ').value = setup.z;
+    document.getElementById('simpleBrightness').value = setup.brightness;
+    
+    // Apply to 3D scene
+    simpleLight.position.set(setup.x, setup.y, setup.z);
+    simpleLight.intensity = setup.brightness;
+    simpleLight.color.setHex(setup.color.replace('#', '0x'));
+    
+    // Update brightness display
+    document.getElementById('simpleBrightnessValue').textContent = Math.round(setup.brightness * 100) + '%';
+    
+    // Update explanation
+    updateLightingExplanation(type);
+    
+    // Animate model slightly for feedback
+    if (simpleModel) {
+        const originalY = simpleModel.position.y;
+        simpleModel.position.y = originalY + 0.1;
+        setTimeout(() => {
+            if (simpleModel) simpleModel.position.y = originalY;
+        }, 200);
+    }
+}
+
+function updateLightingExplanation(type, customDescription) {
+    const explanations = {
+        // Professional lighting styles
+        ethereal: {
+            title: 'Ethereal Lighting',
+            description: customDescription || 'Soft, diffused light with cool tones creates a dreamy, otherworldly atmosphere.',
+            goodFor: 'Fantasy art, spiritual themes, fashion photography',
+            realWorld: 'Use large softboxes with blue gels, or shoot during blue hour outdoors'
+        },
+        dramatic: {
+            title: 'Dramatic Lighting',
+            description: customDescription || 'High contrast with strong shadows emphasizes form and creates emotional impact.',
+            goodFor: 'Character portraits, film noir style, artistic photography',
+            realWorld: 'Use a single strong light source, minimal fill light, embrace deep shadows'
+        },
+        beauty: {
+            title: 'Beauty Lighting',
+            description: customDescription || 'Even, flattering light that minimizes harsh shadows and enhances features.',
+            goodFor: 'Portrait photography, commercial work, headshots',
+            realWorld: 'Use ring lights or large softboxes directly in front of subject'
+        },
+        moody: {
+            title: 'Moody Lighting',
+            description: customDescription || 'Atmospheric back-lighting creates silhouettes and mysterious ambiance.',
+            goodFor: 'Artistic portraits, album covers, emotional storytelling',
+            realWorld: 'Place lights behind subject, use colored gels for atmosphere'
+        },
+        golden: {
+            title: 'Golden Hour Lighting',
+            description: customDescription || 'Warm, soft light mimics the magical quality of sunrise or sunset.',
+            goodFor: 'Romantic portraits, lifestyle photography, outdoor scenes',
+            realWorld: 'Shoot during golden hour, or use warm-toned LED panels'
+        },
+        studio: {
+            title: 'Studio Professional',
+            description: customDescription || 'Clean, controlled lighting with balanced fill provides consistent results.',
+            goodFor: 'Commercial photography, product shots, professional portraits',
+            realWorld: 'Use 3-point lighting setup: key light, fill light, and background light'
+        },
+        // Basic lighting positions
+        front: {
+            title: 'Front Lighting',
+            description: 'Light comes from in front of the subject. This creates even, safe lighting with minimal shadows.',
+            goodFor: 'Portraits, detail work, showing clear features',
+            realWorld: 'Face the subject toward a window or use a ring light'
+        },
+        side: {
+            title: 'Side Lighting',
+            description: 'Light comes from the side, creating strong shadows on one side. This adds drama and shows form.',
+            goodFor: 'Dramatic portraits, showing texture, creating depth',
+            realWorld: 'Place light 90° to the side, use reflector to fill shadows if needed'
+        },
+        back: {
+            title: 'Back Lighting (Rim Light)',
+            description: 'Light comes from behind, creating a bright outline around the subject. Very dramatic!',
+            goodFor: 'Silhouettes, mood shots, separating from background',
+            realWorld: 'Put light behind subject, expose for the subject not the bright background'
+        },
+        top: {
+            title: 'Top Lighting',
+            description: 'Light comes from above, creating strong shadows underneath. Can be harsh but dramatic.',
+            goodFor: 'Dramatic effect, showing form from above, artistic shots',
+            realWorld: 'Use overhead light or sun at noon, watch for harsh eye shadows'
+        },
+        soft: {
+            title: 'Soft Lighting',
+            description: 'Gentle, diffused light that creates minimal shadows. Very flattering and safe.',
+            goodFor: 'Beauty shots, children, older subjects, commercial work',
+            realWorld: 'Use large light source or bounce light off white wall/ceiling'
+        },
+        custom: {
+            title: 'Custom Lighting Setup',
+            description: customDescription || 'You\'re creating your own lighting arrangement. Watch how moving lights affects shadows and mood.',
+            goodFor: 'Experimenting with different effects and learning light behavior',
+            realWorld: 'Try moving your lights around and observe how shadows change the mood'
+        }
+    };
+    
+    const info = explanations[type] || explanations.custom;
+    const explanationDiv = document.getElementById('lightingExplanation');
+    
+    if (explanationDiv) {
+        explanationDiv.innerHTML = `
+            <p><strong>${info.title}:</strong> ${info.description}</p>
+            <p><strong>Best for:</strong> ${info.goodFor}</p>
+            <p><strong>💡 Real world tip:</strong> ${info.realWorld}</p>
+        `;
+    }
+    
+    // Update practical tips with enhanced advice
+    const tipsDiv = document.getElementById('practicalTips');
+    if (tipsDiv) {
+        const tips = {
+            ethereal: ['Use soft, diffused light sources', 'Cool color temperatures (5500K+)', 'Add subtle rim lighting for glow'],
+            dramatic: ['Embrace deep shadows', 'Use hard light sources', 'High contrast is your friend'],
+            beauty: ['Even lighting is key', 'Use large light sources close to subject', 'Minimal shadows on face'],
+            moody: ['Experiment with colored lights', 'Back-lighting creates atmosphere', 'Low fill light maintains mystery'],
+            golden: ['Warm color temperature (2700-3200K)', 'Side lighting works best', 'Soft shadows are flattering'],
+            studio: ['Use 3-point lighting system', 'Control all light sources', 'Consistent, repeatable setup'],
+            front: ['Even lighting for all subjects', 'No harsh shadows', 'Can look flat - add side fill for depth'],
+            side: ['Creates depth and dimension', 'Shows texture well', 'Use reflector opposite light to fill shadows'],
+            back: ['Very dramatic effect', 'Creates silhouettes', 'Need to expose carefully to keep subject visible'],
+            top: ['Strong directional shadows', 'Good for showing form', 'Can create raccoon eyes in portraits'],
+            soft: ['Large light sources = soft light', 'Bounce light for even softer effect', 'Great for flattering portraits'],
+            custom: ['Experiment freely', 'Observe how each change affects the mood', 'There are no wrong answers in art']
+        };
+        
+        const tipsList = tips[type] || tips.custom;
+        tipsDiv.innerHTML = '<ul style="margin: 0; padding-left: 16px;">' + 
+            tipsList.map(tip => `<li>${tip}</li>`).join('') + '</ul>';
+    }
+}
+
+function saveSimpleReference() {
+    if (!simpleRenderer || !simple3DInitialized) {
+        alert('3D scene not ready yet. Please wait a moment and try again.');
+        return;
+    }
+    
+    try {
+        // Render current frame
+        simpleRenderer.render(simpleScene, simpleCamera);
+        
+        // Convert to blob and download
+        simpleRenderer.domElement.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `lighting-example-${Date.now()}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+        
+        showSimpleNotification('💾 Lighting reference saved!');
+    } catch (error) {
+        console.error('Save failed:', error);
+        showSimpleNotification('❌ Save failed - try again');
+    }
+}
+
+function resetToBasic() {
+    if (!simple3DInitialized) return;
+    
+    // Reset to front lighting
+    document.getElementById('simpleLightX').value = 0;
+    document.getElementById('simpleLightY').value = 3;
+    document.getElementById('simpleLightZ').value = 4;
+    document.getElementById('simpleBrightness').value = 1;
+    
+    updateSimpleLight();
+    updateSimpleBrightness();
+    setLightColor('#ffffff');
+    updateLightingExplanation('front');
+    
+    showSimpleNotification('🔄 Reset to basic front lighting');
+}
+
+function showSimpleNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed; top: 20px; right: 20px; 
+        background: #4CAF50; color: white; padding: 12px 20px;
+        border-radius: 4px; z-index: 10000; font-size: 14px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        animation: slideIn 0.3s ease-out;
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+        }
+    }, 3000);
+}
+
+// Initialize when modal opens
+function generateLightingScenario() {
+    if (!simple3DInitialized) {
+        setTimeout(() => {
+            initSimple3D();
+        }, 100);
+    } else {
+        // If already initialized, show a random lighting setup
+        const types = ['front', 'side', 'back', 'top', 'dramatic', 'soft'];
+        const randomType = types[Math.floor(Math.random() * types.length)];
+        teachLighting(randomType);
+    }
 }
 
 // Print Specifications Guide
@@ -4805,9 +5368,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Modal overlay click to close
     document.querySelector('.modal-overlay')?.addEventListener('click', closeModal);
     
-    // Grid controls listeners
-    document.getElementById('gridType')?.addEventListener('change', applyCompositionGrid);
-    document.getElementById('gridOpacity')?.addEventListener('input', applyCompositionGrid);
+    // Grid controls listeners (removed - replaced with lighting planner)
     
     // Temperature slider listener
     document.getElementById('temperatureSlider')?.addEventListener('input', function() {
@@ -5397,46 +5958,940 @@ function generateCreativePrompt() {
     const prompts = {
         drawing: {
             beginner: [
+                // Fundamentals & Comfort Building
+                'Draw the same object in five different light directions to understand form',
+                'Make a 5-value grayscale study of an everyday object',
+                'Copy a master drawing for 30 minutes to study line economy',
+                'Draw your hand in three different poses from life',
+                'Use only basic shapes (cubes, cylinders, spheres) to construct an object',
                 'Draw your favorite mug from three different angles',
                 'Sketch the shadows cast by objects on your desk',
-                'Draw a self-portrait using only continuous lines'
+                'Draw a self-portrait using only continuous lines',
+                'Practice drawing perfect circles and straight lines for 20 minutes',
+                'Draw the negative spaces around a chair',
+                'Sketch your breakfast before eating it',
+                'Draw the same simple object 10 times, focusing on getting faster',
+                'Practice drawing ellipses from different viewpoints',
+                'Draw only the contour lines of objects without looking at your paper',
+                'Study how light falls on a white egg in different positions',
+                'Draw your shoes from three different angles',
+                'Make thumbnail sketches of 20 different compositions',
+                'Practice cross-hatching to show form on simple geometric shapes',
+                'Draw a paper bag with various objects creating different bulges',
+                'Study and draw the proportions of your face using guidelines',
+                'Draw a simple still life focusing only on edges (no shading)',
+                'Practice drawing hair textures on different people',
+                'Draw fabric folds on a draped cloth',
+                'Study and draw tree bark textures',
+                'Draw water reflections in a glass',
+                'Practice gesture drawing with 30-second poses',
+                'Draw your pet or a favorite animal from multiple angles',
+                'Study and copy medieval illuminated letter forms',
+                'Draw architectural elements from your neighborhood',
+                'Practice drawing perfect perspective boxes'
             ],
             intermediate: [
+                // Applying Concepts
+                'Create a still life with three objects of different textures and render them',
+                'Draw a character in three-point perspective with accurate foreshortening',
+                'Take a reference photo and change the lighting mood completely',
                 'Create a portrait using only crosshatching techniques',
                 'Draw a bustling street scene from memory',
-                'Illustrate an emotion using abstract forms'
+                'Illustrate an emotion using abstract forms',
+                'Draw a complex interior space with accurate two-point perspective',
+                'Create a figure drawing showing weight and balance',
+                'Draw the same portrait in 5 different artistic styles',
+                'Render a chrome sphere showing multiple reflections',
+                'Draw a crowd scene with clear focal hierarchy',
+                'Create a comic page layout with dynamic camera angles',
+                'Draw a mechanical object showing how it works internally',
+                'Render different fabric types hanging on a clothesline',
+                'Draw an architectural space from an unusual viewpoint',
+                'Create character expressions showing 10 different emotions',
+                'Draw a landscape with atmospheric perspective',
+                'Render glass objects with complex reflections and refractions',
+                'Draw the same scene in different weather conditions',
+                'Create a composition using dramatic diagonal lines',
+                'Draw portraits of people from different age groups',
+                'Render food with appetizing textures and lighting',
+                'Draw hands in 15 different positions and gestures',
+                'Create a drawing that tells a story without words',
+                'Draw animals in motion using gesture and structure',
+                'Render a complex cityscape with proper proportions',
+                'Draw portraits showing different lighting scenarios',
+                'Create a surreal landscape combining impossible elements',
+                'Draw the same object in different artistic movements\' styles',
+                'Render natural textures (wood grain, stone, water) accurately'
             ],
             advanced: [
+                // Mastery & Experimentation
+                'Design a multi-figure scene with clear focal hierarchy using composition rules',
+                'Create a narrative illustration using only shape silhouettes',
                 'Create a hyperrealistic study of fabric textures',
                 'Draw a complex architectural interior with accurate perspective',
-                'Design a character expressing a specific personality through gesture alone'
+                'Design a character expressing a specific personality through gesture alone',
+                'Create a series of drawings exploring a single theme',
+                'Draw a portrait that captures the subject\'s personality and mood',
+                'Create a complex composition with overlapping transparent objects',
+                'Draw a detailed study of aged hands showing life experience',
+                'Design characters for different genres (fantasy, sci-fi, historical)',
+                'Create a drawing using unconventional perspective (fisheye, etc.)',
+                'Draw a complex machinery cutaway showing internal mechanisms',
+                'Create a portrait series showing the same person at different life stages',
+                'Draw a complex crowd scene with individual character details',
+                'Create a drawing that works both as realism and as abstract design',
+                'Draw a sequence showing transformation or metamorphosis',
+                'Create a detailed architectural fantasy combining multiple periods',
+                'Draw a complex still life with challenging materials (glass, metal, fur)',
+                'Design a character whose silhouette alone tells their story',
+                'Create a drawing exploring the psychology of spaces',
+                'Draw a complex vehicle or machine from multiple technical angles',
+                'Create a portrait using experimental mark-making techniques',
+                'Draw a scene that plays with scale in unexpected ways',
+                'Create a drawing that appears three-dimensional on flat paper',
+                'Draw a complex organic form (trees, rocks, clouds) with scientific accuracy',
+                'Create a drawing series documenting a process or change over time',
+                'Draw a scene combining multiple light sources convincingly',
+                'Create a character design portfolio for an imaginary story',
+                'Draw a complex architectural space that defies physics',
+                'Create a drawing using only dots (stippling) for all values'
             ],
             experimental: [
+                // Breaking Rules
                 'Draw with your non-dominant hand for 30 minutes',
                 'Create a drawing using found objects as drawing tools',
-                'Illustrate sound - make music visible through mark-making'
+                'Illustrate sound - make music visible through mark-making',
+                'Draw only the reflected light areas, leaving direct light blank',
+                'Draw using unconventional materials (coffee, makeup, dirt)',
+                'Create a drawing on an unusual surface (bark, fabric, metal)',
+                'Draw while listening to music, letting rhythm guide your marks',
+                'Create a collaborative drawing by folding paper (exquisite corpse)',
+                'Draw the same subject while spinning around slowly',
+                'Create a drawing using only your fingertips',
+                'Draw in complete darkness, then reveal and continue in light',
+                'Create a drawing that changes meaning when rotated',
+                'Draw using only tools from nature (sticks, stones, leaves)',
+                'Create a drawing by erasing rather than adding marks',
+                'Draw while looking only in mirrors, never directly at paper',
+                'Create a drawing using only geometric instruments (ruler, compass)',
+                'Draw the same image 100 times, each slightly different',
+                'Create a drawing using only one continuous line',
+                'Draw using stencils cut from found materials',
+                'Create a drawing by folding and cutting paper first',
+                'Draw using only the negative space around forms',
+                'Create a drawing that incorporates chance (dice, random numbers)',
+                'Draw while wearing gloves or mittens',
+                'Create a drawing using only symbols and icons',
+                'Draw the same subject from 20 different impossible viewpoints',
+                'Create a drawing by combining multiple photographs torn up',
+                'Draw using only tools made from recycled materials',
+                'Create a drawing that functions as a map of somewhere imaginary',
+                'Draw by responding to someone else\'s marks alternately',
+                'Create a drawing that can only be "read" with a magnifying glass'
             ]
         },
         painting: {
             beginner: [
+                // Fundamentals & Comfort Building
+                'Paint a simple still life focusing only on warm vs cool temperature shifts',
                 'Paint a simple still life with 3 primary colors only',
                 'Create a landscape using palette knife techniques',
-                'Paint the same object in morning and evening light'
+                'Paint the same object in morning and evening light',
+                'Make a 5-color value study of a simple form',
+                'Paint wet-into-wet watercolor experiments with basic shapes',
+                'Create color swatches showing how colors mix and interact',
+                'Paint simple geometric forms to understand light and shadow',
+                'Practice painting basic brushstrokes and mark-making',
+                'Paint a monochromatic study using only one color plus white and black',
+                'Study color temperature by painting the same scene in warm and cool versions',
+                'Paint simple cloud studies to understand soft edges',
+                'Practice painting different textures with basic brush techniques',
+                'Paint fruit to understand subsurface scattering and translucency',
+                'Create gradient studies using wet blending techniques',
+                'Paint a simple seascape focusing on horizon line and sky',
+                'Study reflected light by painting objects on colored surfaces',
+                'Paint the same simple landscape in different seasons',
+                'Practice painting water in different states (calm, rippled, flowing)',
+                'Paint flowers focusing on basic petal shapes and color mixing',
+                'Study atmospheric perspective with simple mountain ranges',
+                'Paint basic portraits focusing on proportions rather than details',
+                'Practice painting different times of day with the same scene',
+                'Paint simple architectural forms to understand perspective',
+                'Study how shadows work by painting objects under single light sources',
+                'Paint basic animal forms focusing on gesture and movement',
+                'Practice color mixing by painting a complete color wheel',
+                'Paint simple abstract compositions to understand color relationships',
+                'Study paint consistency and application with texture experiments',
+                'Paint basic still lifes to understand composition and balance'
             ],
             intermediate: [
+                // Applying Concepts
+                'Paint a landscape using only three colors (limited palette training)',
+                'Illustrate a scene using complementary color harmony',
                 'Paint a portrait focusing on skin tone variations',
                 'Create an abstract representation of your favorite song',
-                'Paint a rainy day scene capturing atmospheric effects'
+                'Paint a rainy day scene capturing atmospheric effects',
+                'Paint a complex still life with reflective and transparent objects',
+                'Create a painting showing dramatic lighting (chiaroscuro)',
+                'Paint the same scene in different weather conditions',
+                'Create a painting with complex color harmonies (triadic, split-complementary)',
+                'Paint a crowded scene with clear focal point hierarchy',
+                'Create a painting exploring texture contrasts (smooth vs rough)',
+                'Paint a nocturne (night scene) with artificial light sources',
+                'Create a painting showing seasonal color changes',
+                'Paint a complex interior with multiple light sources',
+                'Create an impressionist study of changing light conditions',
+                'Paint a seascape with complex wave action and foam',
+                'Create a painting exploring depth through overlapping forms',
+                'Paint a market scene or festival with complex compositions',
+                'Create a painting showing emotional color choices',
+                'Paint architectural subjects with complex perspective',
+                'Create a painting series showing progression through time',
+                'Paint complex cloud formations and sky conditions',
+                'Create a painting with intentional color discord for effect',
+                'Paint a scene with challenging backlighting',
+                'Create a painting exploring different paint application techniques',
+                'Paint a complex garden scene with varied greens and textures',
+                'Create a painting showing cultural or historical themes',
+                'Paint a scene that combines realistic and stylized elements',
+                'Create a painting exploring the psychology of color',
+                'Paint a complex animal portrait showing personality and character'
             ],
             advanced: [
+                // Mastery & Experimentation
+                'Do a color study from a film still to replicate cinematic lighting',
+                'Merge two lighting conditions in one scene (e.g., sunset + artificial neon)',
+                'Render a complex reflective surface (chrome, glass, water)',
                 'Paint a complex multi-figure composition',
                 'Create a series exploring color temperature relationships',
-                'Paint a highly detailed botanical illustration'
+                'Paint a highly detailed botanical illustration',
+                'Create a large-scale painting with multiple focal points',
+                'Paint a complex portrait capturing psychological depth',
+                'Create a painting that functions as both realism and abstraction',
+                'Paint a challenging subject like translucent materials or subsurface scattering',
+                'Create a painting series exploring a single theme from multiple approaches',
+                'Paint a complex landscape with detailed foreground, middle ground, and background',
+                'Create a painting with intentionally difficult color relationships',
+                'Paint a scene combining multiple artistic movements or techniques',
+                'Create a painting that changes meaning depending on viewing distance',
+                'Paint a complex architectural scene with challenging perspective',
+                'Create a painting exploring cultural identity through color and symbol',
+                'Paint a scene with complex reflections in multiple surfaces',
+                'Create a painting that documents a specific moment in time',
+                'Paint a complex animal scene showing behavior and environment',
+                'Create a painting exploring social or political themes',
+                'Paint a scene combining natural and artificial light convincingly',
+                'Create a painting using advanced color theory for specific emotional effect',
+                'Paint a complex water scene showing depth, movement, and transparency',
+                'Create a painting that tells a story across multiple panels or sections',
+                'Paint a scene combining multiple seasons or times of day impossibly',
+                'Create a painting exploring the physics of light in complex ways',
+                'Paint a scene showing human emotion through environmental metaphor',
+                'Create a painting that functions as historical documentation',
+                'Paint a complex scene showing cause and effect relationships'
             ],
             experimental: [
+                // Breaking Rules
+                'Paint only the reflected light areas, leaving direct light as blank canvas',
+                'Use found textures (sandpaper, lace, leaves) to imprint into wet paint',
+                'Make an image where light is the subject rather than objects',
+                'Invert your entire value structure for surreal effect',
                 'Paint with unconventional tools (sponges, sticks, fingers)',
                 'Create a painting that changes meaning when viewed upside down',
-                'Use coffee, tea, and spices as your painting medium'
+                'Use coffee, tea, and spices as your painting medium',
+                'Paint using only colors you mix from primary colors plus black',
+                'Create a painting by removing paint rather than adding it',
+                'Paint on unconventional surfaces (wood, metal, fabric, stone)',
+                'Create a painting using only palette knife, no brushes',
+                'Paint while the surface is moving or rotating',
+                'Create a painting using only dots (pointillism) with unusual tools',
+                'Paint a scene using only the colors visible at one time of day',
+                'Create a painting by printing with objects dipped in paint',
+                'Paint using only warm colors to depict a cold scene (or vice versa)',
+                'Create a painting using chance methods (splattering, pouring, blowing)',
+                'Paint the same image multiple times with different emotional approaches',
+                'Create a painting using only geometric shapes to represent organic forms',
+                'Paint using only your non-dominant hand',
+                'Create a painting that incorporates collaged elements seamlessly',
+                'Paint by responding to music, letting rhythm guide color and brushwork',
+                'Create a painting using only black paint on colored ground',
+                'Paint a scene where gravity appears to work differently',
+                'Create a painting by layering transparent colors in unexpected ways',
+                'Paint using only brushes made from natural materials',
+                'Create a painting that can only be viewed under specific lighting',
+                'Paint by creating textures first, then finding images in them',
+                'Create a painting using only paint mixed with unusual additives',
+                'Paint a scene where time moves in different directions simultaneously'
+            ]
+        },
+        digital: {
+            beginner: [
+                // Fundamentals & Comfort Building
+                'Recreate a still from a movie in flat vector shapes to study shape design',
+                'Use the eyedropper tool to analyze and replicate 10 skin tones from photos',
+                'Practice making 10 custom brushes and then use only those in an artwork',
+                'Design a page layout using the rule of thirds grid',
+                'Make an object icon in 3 different color harmonies',
+                'Create simple geometric illustrations using basic shapes',
+                'Practice digital color mixing by creating a color wheel',
+                'Design a simple poster using only typography and basic shapes',
+                'Create pixel art sprites for a simple video game character',
+                'Practice using selection tools to isolate and modify image elements',
+                'Design simple icons for common objects or actions',
+                'Create a digital collage using photos and basic blending modes',
+                'Practice pen tool techniques by tracing photographs',
+                'Design a simple repeating pattern for backgrounds',
+                'Create basic digital lettering and text effects',
+                'Practice photo retouching with basic healing and cloning tools',
+                'Design a simple infographic with charts and basic illustrations',
+                'Create digital paintings of simple still life subjects',
+                'Practice using layers and masks for non-destructive editing',
+                'Design simple web graphics like buttons and banners',
+                'Create basic 3D text effects using layer styles',
+                'Practice digital sketching with pressure-sensitive brushes',
+                'Design simple business cards or stationery',
+                'Create basic animations using keyframes',
+                'Practice color correction and adjustment on photographs',
+                'Design simple logos using geometric shapes',
+                'Create basic digital matte paintings by combining photos',
+                'Practice creating smooth gradients and color transitions',
+                'Design simple mobile app interfaces',
+                'Create basic digital portraits focusing on proportions'
+            ],
+            intermediate: [
+                // Applying Concepts
+                'Create a color script for a short story or scene',
+                'Redesign an existing poster using hierarchy and typographic contrast',
+                'Create a character sheet with front, profile, and dynamic pose',
+                'Convert a photo into a value-only composition to study readability',
+                'Design a pattern using only geometric construction',
+                'Create a digital painting combining photo references seamlessly',
+                'Design a complete brand identity system with multiple applications',
+                'Create concept art for an imaginary video game or film',
+                'Design complex user interfaces with user experience considerations',
+                'Create digital illustrations using advanced brush techniques',
+                'Design promotional materials for a fictional event or product',
+                'Create complex photo manipulations telling a story',
+                'Design detailed environment art for games or animation',
+                'Create character designs with detailed costume and expression studies',
+                'Design complex data visualizations that are both clear and beautiful',
+                'Create digital paintings exploring advanced lighting techniques',
+                'Design packaging and product mockups with realistic materials',
+                'Create complex animations with detailed timing and spacing',
+                'Design editorial illustrations for articles or stories',
+                'Create detailed digital sculptures using modeling software',
+                'Design complex responsive web layouts',
+                'Create matte paintings for film or game backgrounds',
+                'Design detailed vehicle or mechanical object concepts',
+                'Create complex composites combining multiple photographic elements',
+                'Design detailed creature concepts with biological plausibility',
+                'Create digital paintings exploring stylized realism',
+                'Design complex motion graphics sequences',
+                'Create detailed architectural visualizations',
+                'Design complex interactive media experiences',
+                'Create digital art exploring cultural themes and identity'
+            ],
+            advanced: [
+                // Mastery & Experimentation
+                'Build a multi-layer parallax scene for motion use',
+                'Create a branding system with logo, color palette, and mockups',
+                'Develop a digital painting using photobashing + overpaint techniques',
+                'Make a series of 5 icons that work at 16px and 512px sizes',
+                'Use 3D in your 2D work for accurate lighting reference',
+                'Create a complete animated short film or motion graphics piece',
+                'Design complex interactive installations or experiences',
+                'Create photorealistic digital humans with detailed skin and hair',
+                'Design complex architectural spaces using 3D modeling',
+                'Create advanced particle systems for natural phenomena',
+                'Design and rig complex 3D characters for animation',
+                'Create complex procedural textures and materials',
+                'Design advanced user interfaces with micro-interactions',
+                'Create complex data visualizations with real-time interactivity',
+                'Design and prototype complex mobile or web applications',
+                'Create advanced digital composites indistinguishable from photography',
+                'Design complex motion graphics for broadcast or advertising',
+                'Create advanced digital paintings with traditional media appearance',
+                'Design complex game environments with optimization considerations',
+                'Create advanced character rigs with realistic deformation',
+                'Design complex lighting setups for 3D scenes',
+                'Create advanced photo manipulations exploring surreal concepts',
+                'Design complex branding systems spanning multiple media',
+                'Create advanced simulations of natural phenomena (water, fire, smoke)',
+                'Design complex architectural visualizations with photorealistic quality',
+                'Create advanced digital illustrations exploring new techniques',
+                'Design complex interactive media art installations',
+                'Create advanced concept art pipelines for film or games',
+                'Design complex data-driven visualizations and infographics',
+                'Create advanced digital art exploring AI and machine learning integration'
+            ],
+            experimental: [
+                // Breaking Rules
+                'Merge vector + pixel art styles in one image',
+                'Build an illustration entirely from type glyphs',
+                'Use data visualization as a storytelling device in art',
+                'Create a surreal animation using only UI elements',
+                'Randomize your color palette with a script and adapt your work',
+                'Create art using code and algorithms as the primary creative tool',
+                'Design using only found internet imagery recombined',
+                'Create interactive art that responds to user behavior in real-time',
+                'Build art using machine learning or AI as a collaborator',
+                'Create digital art that exists only as augmented reality',
+                'Design experiences that blur the line between digital and physical',
+                'Create art using glitch aesthetics as intentional design choice',
+                'Build generative art systems that create infinite variations',
+                'Create digital art using unconventional input devices',
+                'Design art that changes based on environmental data (weather, time, etc.)',
+                'Create collaborative digital art where multiple people contribute simultaneously',
+                'Build art that incorporates live data feeds or social media',
+                'Create digital art that functions differently on different devices',
+                'Design art using virtual or mixed reality as the medium',
+                'Create digital art that degrades or evolves over time automatically',
+                'Build art using blockchain or NFT technology meaningfully',
+                'Create art that exists only in computer memory without files',
+                'Design art that responds to biometric data from viewers',
+                'Create digital art using only open source and creative commons materials',
+                'Build art that generates itself based on user location data',
+                'Create art using computer vision to analyze and respond to real world input',
+                'Design art that exists simultaneously across multiple platforms',
+                'Create digital art that incorporates elements of game design',
+                'Build art using artificial life or emergence as core concepts',
+                'Create art that challenges traditional notions of digital authorship'
+            ]
+        },
+        sculpture: {
+            beginner: [
+                // Fundamentals & Comfort Building
+                'Sculpt a cube, sphere, and cone with perfect proportions',
+                'Build a simple bust using armature wire + clay',
+                'Make a model with three contrasting textures (smooth, rough, patterned)',
+                'Replicate a small household object in clay',
+                'Sculpt from a photo reference without measuring tools',
+                'Practice basic clay techniques: pinching, coiling, slab building',
+                'Create simple geometric forms to understand volume and mass',
+                'Sculpt basic animal forms focusing on essential shapes',
+                'Practice making smooth, even surfaces with various tools',
+                'Create simple vessels exploring form and function',
+                'Sculpt basic human features: eyes, nose, mouth separately',
+                'Practice additive and subtractive sculpting techniques',
+                'Create simple relief sculptures in clay',
+                'Sculpt simple architectural elements like columns or arches',
+                'Practice joining clay pieces using proper scoring and slip techniques',
+                'Create simple figurines focusing on proportion',
+                'Sculpt basic hand poses and gestures',
+                'Practice creating different surface textures with tools',
+                'Create simple abstract forms exploring balance',
+                'Sculpt basic plant forms like leaves, flowers, trees',
+                'Practice working with different clay consistencies',
+                'Create simple functional objects like bowls or cups',
+                'Sculpt basic machine parts or geometric assemblies',
+                'Practice making clean, precise edges and corners',
+                'Create simple portrait studies focusing on basic proportions',
+                'Sculpt basic fabric or drapery effects',
+                'Practice hollow construction techniques',
+                'Create simple landscape or environmental elements',
+                'Sculpt basic tool or weapon forms',
+                'Practice surface finishing and refinement techniques'
+            ],
+            intermediate: [
+                // Applying Concepts
+                'Create a piece based on contrapposto balance in human figures',
+                'Sculpt a hand or foot with accurate anatomy landmarks',
+                'Make a maquette for a larger installation',
+                'Sculpt an abstract form that communicates a specific emotion',
+                'Build a kinetic sculpture using simple mechanics',
+                'Create complex portrait studies showing character and personality',
+                'Sculpt detailed animal studies showing anatomy and movement',
+                'Build architectural models with detailed ornamentation',
+                'Create sculptures exploring complex surface treatments',
+                'Sculpt figures in dynamic action poses',
+                'Build complex assemblage sculptures from found objects',
+                'Create sculptures exploring negative space as design element',
+                'Sculpt detailed studies of natural forms (shells, rocks, plants)',
+                'Build sculptures incorporating multiple materials',
+                'Create figurative work showing emotional states',
+                'Sculpt complex mechanical forms or vehicles',
+                'Build environmental sculptures that interact with landscape',
+                'Create sculptures exploring cultural themes or symbols',
+                'Sculpt detailed costume or clothing studies',
+                'Build installation pieces that transform space',
+                'Create sculptures exploring light and shadow play',
+                'Sculpt complex architectural fantasies or impossible structures',
+                'Build kinetic works with complex movement patterns',
+                'Create sculptures that invite touch and interaction',
+                'Sculpt detailed studies of aging and weathering effects',
+                'Build modular sculptures with interchangeable parts',
+                'Create sculptures exploring weight, gravity, and balance',
+                'Sculpt complex group compositions with multiple figures',
+                'Build sculptures that change appearance from different viewpoints',
+                'Create works exploring the boundary between sculpture and architecture'
+            ],
+            advanced: [
+                // Mastery & Experimentation
+                'Create a life-size bust from multi-angle reference photos',
+                'Merge two unrelated objects into one cohesive 3D design',
+                'Sculpt a form designed to cast a specific shadow image',
+                'Build a figure in dynamic motion with accurate center of gravity',
+                'Use subtractive carving instead of additive building',
+                'Create large-scale environmental installations',
+                'Sculpt photorealistic human figures with detailed anatomy',
+                'Build complex mechanical sculptures with working parts',
+                'Create sculptures that incorporate advanced material engineering',
+                'Sculpt detailed architectural spaces as miniature environments',
+                'Build sculptures that respond to environmental conditions',
+                'Create complex multi-part installations with narrative elements',
+                'Sculpt detailed creature designs with biological plausibility',
+                'Build sculptures exploring advanced manufacturing techniques',
+                'Create works that push the boundaries of structural engineering',
+                'Sculpt complex group scenes with psychological interaction',
+                'Build large-scale public art with community engagement',
+                'Create sculptures that incorporate advanced technology',
+                'Sculpt detailed historical reconstructions',
+                'Build works that explore sustainability and environmental themes',
+                'Create sculptures that function as functional architecture',
+                'Sculpt complex natural phenomena in permanent materials',
+                'Build works that explore the intersection of art and science',
+                'Create sculptures that document and preserve cultural practices',
+                'Sculpt works that explore identity and social justice themes',
+                'Build complex installations that transform over time',
+                'Create sculptures that incorporate sound, light, or movement',
+                'Sculpt works that challenge traditional notions of monument',
+                'Build sculptures that explore virtual and augmented reality integration',
+                'Create works that exist at the intersection of multiple disciplines'
+            ],
+            experimental: [
+                // Breaking Rules
+                'Sculpt with frozen, melting, or decaying materials',
+                'Create a piece meant to be destroyed after viewing',
+                'Build a sculpture to be experienced blindfolded',
+                'Sculpt to be photographed rather than displayed physically',
+                'Make an object that only works under UV or projection light',
+                'Create sculptures using only recycled or found materials',
+                'Build works that incorporate living elements (plants, microorganisms)',
+                'Create sculptures that exist only digitally or virtually',
+                'Build works that involve audience participation in their creation',
+                'Create sculptures using unconventional scales (microscopic or massive)',
+                'Build works that incorporate smell, taste, or other senses',
+                'Create sculptures that change with weather or seasonal conditions',
+                'Build works that exist in multiple locations simultaneously',
+                'Create sculptures using only temporary or ephemeral materials',
+                'Build works that incorporate real-time data or internet connectivity',
+                'Create sculptures that can only be experienced through documentation',
+                'Build works that violate expectations of material behavior',
+                'Create sculptures using AI or machine learning as creative partner',
+                'Build works that exist only in social media or virtual spaces',
+                'Create sculptures that incorporate elements of performance',
+                'Build works using only materials available in immediate environment',
+                'Create sculptures that respond to biometric data from viewers',
+                'Build works that exist across multiple time zones or cultures',
+                'Create sculptures using only discarded technology',
+                'Build works that challenge ownership and authorship concepts',
+                'Create sculptures that incorporate elements of chance or randomness',
+                'Build works that exist only during specific events or conditions',
+                'Create sculptures using unconventional fabrication methods',
+                'Build works that explore post-human or transhuman themes',
+                'Create sculptures that question the nature of physical reality'
+            ]
+        },
+        photography: {
+            beginner: [
+                // Fundamentals & Comfort Building
+                'Shoot an object in five different lighting scenarios',
+                'Take 20 photos of one subject from different angles',
+                'Photograph leading lines in your environment',
+                'Capture the same location at three different times of day',
+                'Focus on foreground-background separation',
+                'Practice shooting in manual mode for one full day',
+                'Photograph reflections in various surfaces',
+                'Take portraits using only natural light',
+                'Practice composition using rule of thirds',
+                'Shoot the same subject in different weather conditions',
+                'Focus on capturing interesting shadows',
+                'Photograph textures found in your immediate environment',
+                'Practice shooting in different aspect ratios',
+                'Capture motion using different shutter speeds',
+                'Photograph the golden hour and blue hour',
+                'Focus on negative space in your compositions',
+                'Shoot a series showing the passage of time',
+                'Practice depth of field control',
+                'Photograph patterns and repetition',
+                'Capture candid moments in public spaces',
+                'Focus on color relationships and harmonies',
+                'Shoot macro details of everyday objects',
+                'Practice using available light creatively',
+                'Photograph geometric shapes in architecture',
+                'Capture emotional expressions in portraits',
+                'Focus on contrast between light and dark',
+                'Shoot a documentary series about your daily routine',
+                'Practice using different focal lengths',
+                'Photograph water in different states and conditions',
+                'Capture the character of your neighborhood'
+            ],
+            intermediate: [
+                // Applying Concepts
+                'Create a photo essay about a single emotion',
+                'Shoot using only prime lens focal length',
+                'Recreate a classical painting in photography',
+                'Capture a moving subject with intentional motion blur',
+                'Use framing elements to contain your subject',
+                'Create environmental portraits that tell stories about people',
+                'Shoot a series exploring cultural identity or heritage',
+                'Photograph architecture showing human scale',
+                'Create abstract compositions from realistic subjects',
+                'Shoot portraits showing personality through lighting',
+                'Document a community event or gathering',
+                'Create photographs that explore social issues',
+                'Shoot landscapes that evoke specific moods',
+                'Photograph food that tells cultural stories',
+                'Create a series showing before and after transformations',
+                'Shoot street photography with strong narrative elements',
+                'Document traditional crafts or skills',
+                'Create photographs exploring the concept of home',
+                'Shoot environmental issues through compelling imagery',
+                'Photograph people in their work environments',
+                'Create a series about relationships between people',
+                'Shoot urban landscapes showing human impact',
+                'Document seasonal changes in a specific location',
+                'Create photographs that challenge viewer assumptions',
+                'Shoot portraits of people from different generations',
+                'Document disappearing traditions or practices',
+                'Create photographs exploring memory and nostalgia',
+                'Shoot a series about migration or displacement',
+                'Document the effects of technology on daily life',
+                'Create photographs that explore gender or identity themes'
+            ],
+            advanced: [
+                // Mastery & Experimentation
+                'Stage a conceptual portrait with symbolic props',
+                'Shoot for cinematic lighting using gels and modifiers',
+                'Create a composite image from 5+ photos seamlessly',
+                'Plan and execute a multi-location narrative series',
+                'Photograph only reflections to tell a story',
+                'Create large-scale environmental portraits',
+                'Shoot complex studio setups with multiple light sources',
+                'Document complex social or political issues',
+                'Create photographs for museum or gallery exhibition',
+                'Shoot commercial work with high production values',
+                'Create photographs that function as historical documents',
+                'Shoot fashion photography with creative concepts',
+                'Document endangered cultures or environments',
+                'Create photographs that explore philosophical concepts',
+                'Shoot architectural photography for professional use',
+                'Create photographs that challenge photographic conventions',
+                'Document scientific processes or discoveries',
+                'Shoot portraits of notable figures in their fields',
+                'Create photographs for editorial publications',
+                'Document the effects of climate change',
+                'Shoot fine art photography for collectors',
+                'Create photographs that explore technological impact on society',
+                'Document conflict, recovery, or social change',
+                'Shoot photographs that function as advocacy tools',
+                'Create work that explores the medium of photography itself',
+                'Document cultural exchange and globalization effects',
+                'Shoot photographs that explore human rights issues',
+                'Create work that bridges documentary and fine art',
+                'Document the intersection of nature and human development',
+                'Shoot photographs that explore the future of humanity'
+            ],
+            experimental: [
+                // Breaking Rules
+                'Use long exposure + flash painting',
+                'Photograph through distorted media like water or glass',
+                'Overlay printed images into your shoot for analog compositing',
+                'Stage a scene that only makes sense from one camera angle',
+                'Build a physical filter in front of the lens',
+                'Create photographs using unconventional light sources',
+                'Shoot using camera obscura or pinhole techniques',
+                'Create photographs by manipulating the film or sensor directly',
+                'Use multiple exposures to create impossible scenes',
+                'Photograph using only ultraviolet or infrared light',
+                'Create photographs by chemically altering traditional processes',
+                'Shoot using cameras made from unusual materials',
+                'Create photographs that incorporate elements of sculpture',
+                'Use photography to document ephemeral or temporary works',
+                'Create photographs using AI or machine learning integration',
+                'Shoot using unconventional projection or display methods',
+                'Create photographs that exist only in virtual or augmented reality',
+                'Use photography to create interactive installations',
+                'Create photographs that incorporate sound or other senses',
+                'Shoot using robotics or automated systems',
+                'Create photographs that change over time or with viewing conditions',
+                'Use photography to document invisible phenomena',
+                'Create photographs that challenge the nature of authorship',
+                'Shoot using crowdsourced or collaborative methods',
+                'Create photographs that incorporate elements of performance',
+                'Use photography to explore concepts of time and space',
+                'Create photographs that exist only as data or code',
+                'Shoot using techniques that blur reality and fiction',
+                'Create photographs that question the nature of representation',
+                'Use photography to explore post-human or transhuman themes'
+            ]
+        },
+        "mixed-media": {
+            beginner: [
+                // Fundamentals & Comfort Building
+                'Combine gesture drawing + collage to form a final image',
+                'Create a composition mixing watercolor and ink',
+                'Combine photography with hand-drawn elements',
+                'Use natural materials (leaves, sand) with traditional media',
+                'Create texture rubbings and incorporate them into a drawing',
+                'Mix digital prints with paint applications',
+                'Combine fabric scraps with drawing or painting',
+                'Create compositions using old book pages as base',
+                'Mix different paper types in one composition',
+                'Combine stamping with traditional drawing',
+                'Use coffee or tea staining with ink drawings',
+                'Mix crayon resist with watercolor',
+                'Incorporate string or thread into drawings',
+                'Combine torn paper with painted elements',
+                'Use wax resist techniques with mixed applications',
+                'Create compositions mixing realistic and abstract elements',
+                'Combine magazine cutouts with original artwork',
+                'Mix different mark-making tools in one piece',
+                'Use salt or sugar effects with wet media',
+                'Combine graphite with colored pencils',
+                'Incorporate found textures through frottage techniques',
+                'Mix warm and cool media in temperature studies',
+                'Combine linear and painterly approaches',
+                'Use masking techniques with multiple media types',
+                'Create layered compositions with transparency effects',
+                'Mix traditional and digital media seamlessly',
+                'Combine different cultural art traditions',
+                'Use unconventional substrates with traditional media',
+                'Mix scientific and artistic approaches',
+                'Create compositions that tell stories through material choices'
+            ],
+            intermediate: [
+                // Applying Concepts
+                'Create a piece that uses material symbolically to enhance meaning',
+                'Combine 3D elements with 2D compositions',
+                'Mix traditional media with found objects meaningfully',
+                'Create texture studies using multiple material approaches',
+                'Combine time-based media with static elements',
+                'Use architectural or industrial materials in fine art contexts',
+                'Mix organic and synthetic materials thoughtfully',
+                'Create works that incorporate text and image seamlessly',
+                'Combine different cultural material traditions',
+                'Use technology to enhance traditional media',
+                'Create environmental works using natural and synthetic materials',
+                'Mix permanent and temporary materials in single works',
+                'Combine realistic rendering with abstract material elements',
+                'Use scientific materials or processes artistically',
+                'Create works that change with environmental conditions',
+                'Mix precious and common materials to explore value concepts',
+                'Combine personal and universal material references',
+                'Use industrial processes in fine art contexts',
+                'Create works that require viewer participation',
+                'Mix documentation with creative interpretation',
+                'Combine miniature and monumental scales',
+                'Use medical or biological materials safely in art',
+                'Create works that explore material sustainability',
+                'Mix high-tech and low-tech approaches',
+                'Combine different sensory experiences through materials',
+                'Use historical materials in contemporary contexts',
+                'Create works that explore material transformation',
+                'Mix craft traditions with fine art approaches',
+                'Combine local and global material references',
+                'Use materials to explore social or political themes'
+            ],
+            advanced: [
+                // Mastery & Experimentation
+                'Create large-scale installations mixing multiple media and materials',
+                'Develop signature techniques combining specific material approaches',
+                'Create works that push the boundaries of material compatibility',
+                'Mix traditional crafts with contemporary art concepts',
+                'Create works that incorporate live or growing elements',
+                'Use advanced technology to enhance material possibilities',
+                'Create works that explore cultural material traditions',
+                'Mix scientific research with artistic exploration',
+                'Create works that document and preserve material techniques',
+                'Use materials to explore environmental or sustainability themes',
+                'Create works that challenge material permanence concepts',
+                'Mix virtual and physical materials in hybrid works',
+                'Create works that explore material labor and value',
+                'Use materials to create immersive environmental experiences',
+                'Create works that incorporate community participation',
+                'Mix archival and ephemeral materials strategically',
+                'Create works that explore material memory and history',
+                'Use unconventional fabrication methods',
+                'Create works that exist across multiple locations',
+                'Mix material approaches from different time periods',
+                'Create works that incorporate data or information as material',
+                'Use materials to explore identity and cultural themes',
+                'Create works that challenge museum display conventions',
+                'Mix material approaches with performance elements',
+                'Create works that explore post-human material relationships',
+                'Use materials to create social interaction platforms',
+                'Create works that incorporate chance or unpredictability',
+                'Mix traditional conservation with creative destruction',
+                'Create works that explore material futures and possibilities',
+                'Use materials to bridge different communities or cultures'
+            ],
+            experimental: [
+                // Breaking Rules
+                'Use materials that degrade or transform over exhibition time',
+                'Create works using only materials found within one city block',
+                'Mix materials that should theoretically be incompatible',
+                'Create works using only discarded or waste materials',
+                'Use materials that require special environmental conditions',
+                'Create works that incorporate living organisms safely',
+                'Use materials that respond to viewer presence or behavior',
+                'Create works using only materials from specific historical periods',
+                'Mix digital materials with traditional approaches',
+                'Use materials that exist only temporarily or seasonally',
+                'Create works using only materials made by other artists',
+                'Use materials that require collaboration with scientists or engineers',
+                'Create works that exist simultaneously in multiple dimensions',
+                'Use materials that challenge legal or ethical boundaries',
+                'Create works using only materials created by natural processes',
+                'Use materials that require audience participation to activate',
+                'Create works using only materials sourced from social media',
+                'Use materials that incorporate real-time data streams',
+                'Create works using materials that exist only in memory',
+                'Use materials that require special training or certification',
+                'Create works using only materials from dream or imagination',
+                'Use materials that incorporate elements of time travel',
+                'Create works using only materials created by AI or machines',
+                'Use materials that exist only in virtual or augmented reality',
+                'Create works using only materials created through collaboration',
+                'Use materials that challenge concepts of individual authorship',
+                'Create works using only materials that tell specific stories',
+                'Use materials that exist only during specific weather conditions',
+                'Create works using only materials created by children',
+                'Use materials that require translation between languages or cultures'
+            ]
+        },
+        design: {
+            beginner: [
+                // Fundamentals & Comfort Building
+                'Design a simple logo using only geometric shapes',
+                'Create a poster using only typography and one color',
+                'Design a business card layout using grid system',
+                'Create a simple icon set for common actions',
+                'Design a book cover using only type and color',
+                'Create a simple infographic with basic data visualization',
+                'Design a magazine layout using hierarchy principles',
+                'Create packaging design for a simple product',
+                'Design a simple website layout using wireframes',
+                'Create signage system for a small business',
+                'Design simple stationery set (letterhead, envelope, business card)',
+                'Create a simple app interface focusing on usability',
+                'Design event poster using contrast principles',
+                'Create simple branding guidelines document',
+                'Design restaurant menu using clear hierarchy',
+                'Create simple pattern designs for backgrounds',
+                'Design book or magazine cover series',
+                'Create simple data visualization charts',
+                'Design T-shirt graphics using simple concepts',
+                'Create simple packaging labels for products',
+                'Design simple environmental graphics for spaces',
+                'Create simple email newsletter template',
+                'Design simple presentation template',
+                'Create simple social media template system',
+                'Design simple wayfinding system',
+                'Create simple brand identity for fictional company',
+                'Design simple poster series for events',
+                'Create simple web banner advertisements',
+                'Design simple product catalog layout',
+                'Create simple instructional design materials'
+            ],
+            intermediate: [
+                // Applying Concepts
+                'Design a complete brand identity system with multiple touchpoints',
+                'Create editorial design for magazine or publication',
+                'Design user experience for mobile application',
+                'Create environmental graphics for public space',
+                'Design packaging system for product line',
+                'Create information design for complex data sets',
+                'Design exhibition graphics and spatial experiences',
+                'Create motion graphics for brand or advertising',
+                'Design book layout with complex typography',
+                'Create digital design system with components',
+                'Design advertising campaign across multiple media',
+                'Create wayfinding system for complex building',
+                'Design annual report with data visualization',
+                'Create interactive design for website or app',
+                'Design retail environment and graphics',
+                'Create publishing design for academic or professional content',
+                'Design identity for cultural institution',
+                'Create design for political or social cause',
+                'Design educational materials for specific audiences',
+                'Create design system for digital products',
+                'Design graphics for film, TV, or entertainment',
+                'Create design for healthcare or scientific applications',
+                'Design for accessibility across different abilities',
+                'Create design for specific cultural communities',
+                'Design for sustainability and environmental impact',
+                'Create design that works across multiple languages',
+                'Design for aging populations with specific needs',
+                'Create design that incorporates emerging technologies',
+                'Design for crisis communication or emergency response',
+                'Create design that bridges digital and physical experiences'
+            ],
+            advanced: [
+                // Mastery & Experimentation
+                'Design complete visual identity for international organization',
+                'Create complex data visualization systems',
+                'Design user experience for complex software systems',
+                'Create environmental design for major public institution',
+                'Design comprehensive publishing system',
+                'Create design strategy for large-scale cultural change',
+                'Design identity system that evolves over time',
+                'Create design for cutting-edge technology interfaces',
+                'Design for virtual or augmented reality environments',
+                'Create design system for artificial intelligence interfaces',
+                'Design for post-pandemic social interaction',
+                'Create design for climate change communication',
+                'Design for global accessibility and inclusion',
+                'Create design for space exploration or extreme environments',
+                'Design for biotechnology or genetic engineering applications',
+                'Create design for quantum computing interfaces',
+                'Design for brain-computer interface systems',
+                'Create design for sustainable circular economy',
+                'Design for intergenerational knowledge transfer',
+                'Create design for post-human or transhuman interfaces',
+                'Design for global refugee or displaced populations',
+                'Create design for underwater or subterranean environments',
+                'Design for interplanetary or space colonization',
+                'Create design for time-based or temporal experiences',
+                'Design for collective intelligence systems',
+                'Create design for post-capitalist economic systems',
+                'Design for resurrection or preservation of extinct cultures',
+                'Create design for consciousness uploading or digital immortality',
+                'Design for communication with artificial or alien intelligence',
+                'Create design for reality systems beyond current human perception'
+            ],
+            experimental: [
+                // Breaking Rules
+                'Design using only found or recycled visual elements',
+                'Create design that changes based on viewer interaction',
+                'Design using algorithms or artificial intelligence as primary tool',
+                'Create design that exists only temporarily or ephemerally',
+                'Design using only materials available in immediate environment',
+                'Create design that requires multiple people to complete',
+                'Design using only crowdsourced content',
+                'Create design that exists across multiple time zones simultaneously',
+                'Design using only biometric data as design input',
+                'Create design that incorporates real-time environmental data',
+                'Design using only extinct or obsolete technologies',
+                'Create design that exists only in dreams or imagination',
+                'Design using only materials created by other species',
+                'Create design that requires special equipment to view',
+                'Design using only data from social media or internet',
+                'Create design that incorporates living organisms',
+                'Design using only sounds converted to visual elements',
+                'Create design that exists only during specific weather',
+                'Design using only mistakes, errors, or failures',
+                'Create design that requires translation to understand',
+                'Design using only materials from specific historical period',
+                'Create design that incorporates elements of chance',
+                'Design using only child-created elements',
+                'Create design that exists only in virtual reality',
+                'Design using only materials created by AI',
+                'Create design that incorporates smell or taste',
+                'Design using only elements from dreams',
+                'Create design that requires viewer to move or dance',
+                'Design using only materials found at bottom of ocean',
+                'Create design that exists only during solar eclipses'
             ]
         }
     };
@@ -5446,10 +6901,10 @@ function generateCreativePrompt() {
     const randomPrompt = difficultyPrompts[Math.floor(Math.random() * difficultyPrompts.length)];
     
     const tips = {
-        beginner: 'Focus on basic shapes and proportions. Don\'t worry about perfection!',
-        intermediate: 'Push yourself to try new techniques. Reference photos are your friend.',
-        advanced: 'Plan your approach carefully. Consider composition and focal points.',
-        experimental: 'Embrace failure as learning. Document your process for insights.'
+        beginner: 'Focus on fundamentals and building confidence. Practice makes perfect!',
+        intermediate: 'Push yourself to try new techniques. Combine concepts you\'ve learned.',
+        advanced: 'Focus on mastery and developing your unique voice. Plan thoroughly.',
+        experimental: 'Break rules intentionally. Document your process for insights.'
     };
     
     promptDiv.textContent = randomPrompt;
@@ -5570,4 +7025,1300 @@ function hslToHex(h, s, l) {
         return Math.round(255 * color).toString(16).padStart(2, '0');
     };
     return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+// Enhanced UI Control Functions for Advanced 3D Lighting System
+function setLightColor(color) {
+    if (simpleLight) {
+        simpleLight.color.set(color);
+        // Update color buttons visual state
+        document.querySelectorAll('[onclick*="setLightColor"]').forEach(btn => {
+            btn.style.border = '2px solid transparent';
+        });
+        event.target.style.border = '2px solid #f8c8d0';
+    }
+}
+
+// Temperature Control Functions
+function setLightTemperature(kelvin) {
+    const rgb = kelvinToRGB(kelvin);
+    if (simpleLight) {
+        simpleLight.color.setRGB(rgb.r, rgb.g, rgb.b);
+    }
+    document.getElementById('temperatureValue').textContent = kelvin + 'K';
+}
+
+// Fill and Rim Light Controls
+function updateFillLight() {
+    const value = document.getElementById('fillIntensity').value;
+    if (fillLight) {
+        fillLight.intensity = parseFloat(value);
+    }
+    document.getElementById('fillIntensityValue').textContent = Math.round(value * 100) + '%';
+}
+
+function updateRimLight() {
+    const value = document.getElementById('rimIntensity').value;
+    if (rimLight) {
+        rimLight.intensity = parseFloat(value);
+    }
+    document.getElementById('rimIntensityValue').textContent = Math.round(value * 100) + '%';
+}
+
+// Model Selection UI Updates
+function updateModelButtons() {
+    document.querySelectorAll('.model-btn').forEach(btn => {
+        if (btn.dataset.model === currentModel) {
+            btn.classList.add('active');
+            btn.style.background = 'rgba(248, 200, 208, 0.2)';
+            btn.style.border = '2px solid #f8c8d0';
+        } else {
+            btn.classList.remove('active');
+            btn.style.background = 'rgba(248, 200, 208, 0.1)';
+            btn.style.border = '2px solid transparent';
+        }
+    });
+}
+
+// Reference Image Analyzer - Simple but Powerful Tool
+let extractedColors = [];
+let analysisData = {};
+
+function analyzeReferenceImage() {
+    const fileInput = document.getElementById('referenceImageInput');
+    const file = fileInput.files[0];
+    
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            // Show preview
+            const preview = document.getElementById('previewImage');
+            preview.src = e.target.result;
+            
+            // Comprehensive analysis pipeline
+            extractColorsFromImage(img);
+            analyzeComposition(img);
+            analyzeLighting(img);
+            detectArtStyle(img);
+            analyzeObjects(img);
+            analyzeShapesAndElements(img);
+            generateKeywordsAndMood(img);
+            generateArtistTips();
+            
+            // Show results
+            document.getElementById('analysisResults').style.display = 'block';
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function detectArtStyle(img) {
+    // Advanced art style detection based on visual characteristics
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 150;
+    canvas.height = 150;
+    
+    ctx.drawImage(img, 0, 0, 150, 150);
+    const imageData = ctx.getImageData(0, 0, 150, 150);
+    const data = imageData.data;
+    
+    // Analyze visual characteristics for style detection
+    const styleMetrics = analyzeStyleMetrics(data, canvas.width, canvas.height);
+    const detectedStyle = determineArtStyle(styleMetrics);
+    
+    analysisData.artStyle = detectedStyle;
+    
+    // Add art style section to the display
+    addArtStyleSection(detectedStyle);
+}
+
+function analyzeStyleMetrics(data, width, height) {
+    let colorVariation = 0;
+    let edgeSharpness = 0;
+    let colorSaturation = 0;
+    let brushStrokes = 0;
+    let geometricShapes = 0;
+    let organicForms = 0;
+    let textureComplexity = 0;
+    
+    const totalPixels = data.length / 4;
+    const colors = new Set();
+    
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        
+        // Color analysis
+        const colorKey = `${Math.floor(r/32)},${Math.floor(g/32)},${Math.floor(b/32)}`;
+        colors.add(colorKey);
+        
+        // Saturation analysis
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const saturation = max === 0 ? 0 : (max - min) / max;
+        colorSaturation += saturation;
+        
+        // Edge detection for brush strokes and geometric shapes
+        const pixelIndex = i / 4;
+        const x = pixelIndex % width;
+        const y = Math.floor(pixelIndex / width);
+        
+        if (x > 0 && y > 0) {
+            const prevX = ((y * width) + (x - 1)) * 4;
+            const prevY = (((y - 1) * width) + x) * 4;
+            
+            const edgeX = Math.abs(r - data[prevX]) + Math.abs(g - data[prevX + 1]) + Math.abs(b - data[prevX + 2]);
+            const edgeY = Math.abs(r - data[prevY]) + Math.abs(g - data[prevY + 1]) + Math.abs(b - data[prevY + 2]);
+            
+            const totalEdge = edgeX + edgeY;
+            edgeSharpness += totalEdge;
+            
+            // Detect brush stroke patterns (high variation in specific directions)
+            if (totalEdge > 100) brushStrokes++;
+            
+            // Detect geometric patterns (consistent edges)
+            if (totalEdge > 50 && totalEdge < 120) geometricShapes++;
+            else if (totalEdge > 20 && totalEdge < 60) organicForms++;
+        }
+    }
+    
+    return {
+        colorCount: colors.size,
+        avgSaturation: colorSaturation / totalPixels,
+        edgeSharpness: edgeSharpness / totalPixels,
+        brushStrokeRatio: brushStrokes / totalPixels,
+        geometricRatio: geometricShapes / totalPixels,
+        organicRatio: organicForms / totalPixels,
+        textureComplexity: (brushStrokes + geometricShapes) / totalPixels
+    };
+}
+
+function determineArtStyle(metrics) {
+    const styles = {
+        photorealistic: {
+            name: 'Photorealistic',
+            confidence: 0,
+            characteristics: ['High detail precision', 'Smooth gradations', 'Natural lighting'],
+            keywords: ['realistic', 'detailed', 'lifelike', 'precise', 'natural']
+        },
+        impressionist: {
+            name: 'Impressionist',
+            confidence: 0,
+            characteristics: ['Visible brush strokes', 'Light and color focus', 'Loose technique'],
+            keywords: ['painterly', 'atmospheric', 'light-focused', 'expressive', 'loose']
+        },
+        abstract: {
+            name: 'Abstract',
+            confidence: 0,
+            characteristics: ['Non-representational forms', 'Color relationships', 'Emotional expression'],
+            keywords: ['non-representational', 'color-driven', 'emotional', 'conceptual', 'expressive']
+        },
+        minimalist: {
+            name: 'Minimalist',
+            confidence: 0,
+            characteristics: ['Simple forms', 'Limited palette', 'Clean composition'],
+            keywords: ['simple', 'clean', 'minimal', 'reduced', 'essential']
+        },
+        expressionist: {
+            name: 'Expressionist',
+            confidence: 0,
+            characteristics: ['Emotional intensity', 'Distorted forms', 'Bold colors'],
+            keywords: ['emotional', 'intense', 'bold', 'dramatic', 'expressive']
+        },
+        geometric: {
+            name: 'Geometric/Constructivist',
+            confidence: 0,
+            characteristics: ['Sharp edges', 'Geometric forms', 'Structured composition'],
+            keywords: ['geometric', 'structured', 'angular', 'precise', 'mathematical']
+        },
+        organic: {
+            name: 'Organic/Natural',
+            confidence: 0,
+            characteristics: ['Flowing forms', 'Natural patterns', 'Soft edges'],
+            keywords: ['flowing', 'natural', 'organic', 'curved', 'biomorphic']
+        }
+    };
+    
+    // Calculate confidence scores based on metrics
+    if (metrics.edgeSharpness < 20 && metrics.brushStrokeRatio < 0.1) {
+        styles.photorealistic.confidence += 0.4;
+    }
+    
+    if (metrics.brushStrokeRatio > 0.15) {
+        styles.impressionist.confidence += 0.3;
+        styles.expressionist.confidence += 0.2;
+    }
+    
+    if (metrics.colorCount < 50 && metrics.geometricRatio < 0.1) {
+        styles.minimalist.confidence += 0.3;
+    }
+    
+    if (metrics.avgSaturation > 0.6) {
+        styles.expressionist.confidence += 0.2;
+        styles.abstract.confidence += 0.1;
+    }
+    
+    if (metrics.geometricRatio > 0.2) {
+        styles.geometric.confidence += 0.4;
+    }
+    
+    if (metrics.organicRatio > 0.2) {
+        styles.organic.confidence += 0.3;
+    }
+    
+    if (metrics.colorCount > 100 && metrics.brushStrokeRatio > 0.1) {
+        styles.abstract.confidence += 0.3;
+    }
+    
+    // Find style with highest confidence
+    let detectedStyle = styles.photorealistic;
+    for (const style of Object.values(styles)) {
+        if (style.confidence > detectedStyle.confidence) {
+            detectedStyle = style;
+        }
+    }
+    
+    // Add metrics for reference
+    detectedStyle.metrics = metrics;
+    
+    return detectedStyle;
+}
+
+function analyzeObjects(img) {
+    // Object and element detection
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 200;
+    canvas.height = 200;
+    
+    ctx.drawImage(img, 0, 0, 200, 200);
+    const imageData = ctx.getImageData(0, 0, 200, 200);
+    const data = imageData.data;
+    
+    // Analyze for common artistic elements
+    const objectAnalysis = performObjectAnalysis(data, 200, 200);
+    analysisData.objects = objectAnalysis;
+    
+    addObjectAnalysisSection(objectAnalysis);
+}
+
+function performObjectAnalysis(data, width, height) {
+    // Simplified object detection based on color clustering and edge patterns
+    const regions = findColorRegions(data, width, height);
+    const shapes = detectBasicShapes(data, width, height);
+    const complexity = measureCompositionComplexity(regions, shapes);
+    
+    return {
+        estimatedObjects: Math.min(Math.max(Math.floor(regions.length / 3), 1), 10),
+        dominantShapes: shapes,
+        complexity: complexity,
+        regions: regions.length,
+        elements: categorizeElements(regions, shapes)
+    };
+}
+
+function findColorRegions(data, width, height) {
+    const regions = [];
+    const visited = new Set();
+    const threshold = 50;
+    
+    for (let i = 0; i < data.length; i += 16) { // Sample every 4th pixel
+        if (visited.has(i)) continue;
+        
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        
+        const region = { 
+            color: [r, g, b], 
+            pixels: 1,
+            avgBrightness: (r + g + b) / 3
+        };
+        
+        // Find similar adjacent colors (simplified flood fill)
+        for (let j = i + 16; j < data.length; j += 16) {
+            if (visited.has(j)) continue;
+            
+            const r2 = data[j];
+            const g2 = data[j + 1];
+            const b2 = data[j + 2];
+            
+            const colorDiff = Math.abs(r - r2) + Math.abs(g - g2) + Math.abs(b - b2);
+            
+            if (colorDiff < threshold) {
+                region.pixels++;
+                visited.add(j);
+            }
+        }
+        
+        if (region.pixels > 10) { // Only significant regions
+            regions.push(region);
+        }
+        visited.add(i);
+    }
+    
+    return regions.sort((a, b) => b.pixels - a.pixels).slice(0, 12);
+}
+
+function detectBasicShapes(data, width, height) {
+    // Detect basic geometric shapes based on edge patterns
+    const shapes = {
+        circular: 0,
+        angular: 0,
+        linear: 0,
+        organic: 0
+    };
+    
+    // Sample edge detection for shape classification
+    for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+            const center = ((y * width) + x) * 4;
+            const right = ((y * width) + (x + 1)) * 4;
+            const bottom = (((y + 1) * width) + x) * 4;
+            
+            const edgeX = Math.abs(data[center] - data[right]);
+            const edgeY = Math.abs(data[center] - data[bottom]);
+            
+            if (edgeX > 30 || edgeY > 30) {
+                // Classify edge type
+                if (Math.abs(edgeX - edgeY) < 10) {
+                    shapes.angular++;
+                } else if (edgeX > edgeY * 2 || edgeY > edgeX * 2) {
+                    shapes.linear++;
+                } else {
+                    shapes.organic++;
+                }
+            }
+        }
+    }
+    
+    // Determine dominant shapes
+    const total = shapes.angular + shapes.linear + shapes.organic;
+    if (total > 0) {
+        shapes.angular = (shapes.angular / total * 100).toFixed(1);
+        shapes.linear = (shapes.linear / total * 100).toFixed(1);
+        shapes.organic = (shapes.organic / total * 100).toFixed(1);
+    }
+    
+    return shapes;
+}
+
+function measureCompositionComplexity(regions, shapes) {
+    const regionCount = regions.length;
+    const shapeVariety = Object.values(shapes).filter(v => typeof v === 'number' && v > 0).length;
+    
+    if (regionCount < 3) return 'Simple';
+    if (regionCount < 6) return 'Moderate';
+    if (regionCount < 10) return 'Complex';
+    return 'Very Complex';
+}
+
+function categorizeElements(regions, shapes) {
+    const elements = [];
+    
+    // Categorize based on size and characteristics
+    regions.forEach((region, index) => {
+        if (index < 5) { // Top 5 regions
+            let category = 'Background Element';
+            
+            if (region.pixels > 500) {
+                category = 'Major Subject';
+            } else if (region.pixels > 200) {
+                category = 'Secondary Element';
+            } else if (region.avgBrightness > 180) {
+                category = 'Highlight';
+            } else if (region.avgBrightness < 60) {
+                category = 'Shadow';
+            }
+            
+            elements.push({
+                category: category,
+                size: region.pixels > 500 ? 'Large' : region.pixels > 200 ? 'Medium' : 'Small',
+                prominence: index < 2 ? 'Primary' : index < 4 ? 'Secondary' : 'Supporting'
+            });
+        }
+    });
+    
+    return elements;
+}
+
+function analyzeShapesAndElements(img) {
+    // Advanced shape and compositional element analysis
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 120;
+    canvas.height = 120;
+    
+    ctx.drawImage(img, 0, 0, 120, 120);
+    const imageData = ctx.getImageData(0, 0, 120, 120);
+    
+    const shapeAnalysis = performShapeBreakdown(imageData.data, 120, 120);
+    analysisData.shapes = shapeAnalysis;
+    
+    addShapeAnalysisSection(shapeAnalysis);
+}
+
+function performShapeBreakdown(data, width, height) {
+    const breakdown = {
+        geometric: { count: 0, types: [] },
+        organic: { count: 0, types: [] },
+        lines: { dominant: 'none', characteristics: [] },
+        patterns: { repetition: 'none', rhythm: 'none' },
+        balance: 'unknown',
+        weight: { top: 0, bottom: 0, left: 0, right: 0 }
+    };
+    
+    // Analyze image quadrants for weight distribution
+    const quadrants = analyzeQuadrants(data, width, height);
+    breakdown.weight = quadrants;
+    
+    // Determine balance
+    const horizontalBalance = Math.abs(quadrants.left - quadrants.right);
+    const verticalBalance = Math.abs(quadrants.top - quadrants.bottom);
+    
+    if (horizontalBalance < 0.1 && verticalBalance < 0.1) {
+        breakdown.balance = 'Symmetrical';
+    } else if (horizontalBalance < 0.2 && verticalBalance < 0.2) {
+        breakdown.balance = 'Near Symmetrical';
+    } else {
+        breakdown.balance = 'Asymmetrical';
+    }
+    
+    // Line direction analysis
+    const lineAnalysis = analyzeDominantLines(data, width, height);
+    breakdown.lines = lineAnalysis;
+    
+    return breakdown;
+}
+
+function analyzeQuadrants(data, width, height) {
+    const quadrants = { top: 0, bottom: 0, left: 0, right: 0 };
+    const midWidth = Math.floor(width / 2);
+    const midHeight = Math.floor(height / 2);
+    
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const pixelIndex = ((y * width) + x) * 4;
+            const brightness = (data[pixelIndex] + data[pixelIndex + 1] + data[pixelIndex + 2]) / 3;
+            const weight = brightness > 128 ? 1 : 0.3; // Bright areas have more visual weight
+            
+            if (y < midHeight) quadrants.top += weight;
+            else quadrants.bottom += weight;
+            
+            if (x < midWidth) quadrants.left += weight;
+            else quadrants.right += weight;
+        }
+    }
+    
+    const total = quadrants.top + quadrants.bottom;
+    quadrants.top /= total;
+    quadrants.bottom /= total;
+    
+    const totalHorizontal = quadrants.left + quadrants.right;
+    quadrants.left /= totalHorizontal;
+    quadrants.right /= totalHorizontal;
+    
+    return quadrants;
+}
+
+function analyzeDominantLines(data, width, height) {
+    let horizontal = 0;
+    let vertical = 0;
+    let diagonal = 0;
+    let curved = 0;
+    
+    // Simple line detection
+    for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+            const center = ((y * width) + x) * 4;
+            const right = ((y * width) + (x + 1)) * 4;
+            const bottom = (((y + 1) * width) + x) * 4;
+            const diagonal_br = (((y + 1) * width) + (x + 1)) * 4;
+            
+            const edgeH = Math.abs(data[center] - data[right]);
+            const edgeV = Math.abs(data[center] - data[bottom]);
+            const edgeD = Math.abs(data[center] - data[diagonal_br]);
+            
+            if (edgeH > 30) horizontal++;
+            if (edgeV > 30) vertical++;
+            if (edgeD > 30) diagonal++;
+        }
+    }
+    
+    const total = horizontal + vertical + diagonal;
+    if (total === 0) return { dominant: 'minimal', characteristics: ['Soft edges', 'Blended forms'] };
+    
+    const hPercent = (horizontal / total) * 100;
+    const vPercent = (vertical / total) * 100;
+    const dPercent = (diagonal / total) * 100;
+    
+    let dominant = 'mixed';
+    const characteristics = [];
+    
+    if (hPercent > 40) {
+        dominant = 'horizontal';
+        characteristics.push('Stable, grounded feeling');
+        characteristics.push('Emphasis on width and landscape');
+    } else if (vPercent > 40) {
+        dominant = 'vertical';
+        characteristics.push('Dynamic, upward energy');
+        characteristics.push('Emphasis on height and structure');
+    } else if (dPercent > 30) {
+        dominant = 'diagonal';
+        characteristics.push('Dynamic movement and tension');
+        characteristics.push('Creates visual excitement');
+    } else {
+        characteristics.push('Balanced line distribution');
+        characteristics.push('Harmonious, stable composition');
+    }
+    
+    return { dominant, characteristics };
+}
+
+function generateKeywordsAndMood(img) {
+    // Generate comprehensive keywords and mood analysis
+    const moodAnalysis = {
+        primary: [],
+        secondary: [],
+        keywords: [],
+        associations: [],
+        execution: []
+    };
+    
+    // Analyze based on all collected data
+    const { lighting, artStyle, objects, shapes, composition } = analysisData;
+    
+    // Mood from lighting
+    if (lighting) {
+        switch(lighting.mood) {
+            case 'Bright, Optimistic':
+                moodAnalysis.primary.push('uplifting', 'cheerful', 'energetic');
+                moodAnalysis.keywords.push('bright', 'airy', 'positive', 'clean');
+                break;
+            case 'Dramatic, Mysterious':
+                moodAnalysis.primary.push('mysterious', 'dramatic', 'intense');
+                moodAnalysis.keywords.push('shadow', 'contrast', 'moody', 'cinematic');
+                break;
+            case 'Gentle, Flattering':
+                moodAnalysis.primary.push('peaceful', 'serene', 'calming');
+                moodAnalysis.keywords.push('soft', 'subtle', 'harmonious', 'balanced');
+                break;
+        }
+    }
+    
+    // Mood from art style
+    if (artStyle) {
+        moodAnalysis.secondary.push(...artStyle.keywords);
+        
+        if (artStyle.name.includes('Abstract')) {
+            moodAnalysis.associations.push('conceptual exploration', 'emotional expression', 'color relationships');
+        } else if (artStyle.name.includes('Minimalist')) {
+            moodAnalysis.associations.push('simplicity', 'essential forms', 'negative space');
+        } else if (artStyle.name.includes('Impressionist')) {
+            moodAnalysis.associations.push('fleeting moments', 'atmospheric effects', 'light studies');
+        }
+    }
+    
+    // Mood from composition
+    if (shapes) {
+        if (shapes.balance === 'Symmetrical') {
+            moodAnalysis.keywords.push('formal', 'stable', 'classical');
+        } else if (shapes.balance === 'Asymmetrical') {
+            moodAnalysis.keywords.push('dynamic', 'modern', 'energetic');
+        }
+        
+        if (shapes.lines.dominant === 'horizontal') {
+            moodAnalysis.associations.push('landscape format', 'stability', 'calm horizon');
+        } else if (shapes.lines.dominant === 'vertical') {
+            moodAnalysis.associations.push('portrait format', 'growth', 'aspiration');
+        } else if (shapes.lines.dominant === 'diagonal') {
+            moodAnalysis.associations.push('movement', 'action', 'dynamism');
+        }
+    }
+    
+    // Generate execution keywords
+    moodAnalysis.execution = generateExecutionKeywords(lighting, artStyle, shapes);
+    
+    analysisData.mood = moodAnalysis;
+    
+    addMoodAndKeywordsSection(moodAnalysis);
+}
+
+function generateExecutionKeywords(lighting, artStyle, shapes) {
+    const execution = [];
+    
+    // Technical execution based on analysis
+    if (lighting && lighting.type === 'Hard Light') {
+        execution.push('strong directional lighting', 'defined shadows', 'high contrast setup');
+    } else if (lighting && lighting.type === 'Soft Light') {
+        execution.push('diffused lighting', 'gentle transitions', 'flattering illumination');
+    }
+    
+    if (artStyle && artStyle.name.includes('Geometric')) {
+        execution.push('precise edges', 'mathematical composition', 'clean shapes');
+    } else if (artStyle && artStyle.name.includes('Organic')) {
+        execution.push('flowing lines', 'natural forms', 'soft transitions');
+    }
+    
+    if (shapes && shapes.balance === 'Asymmetrical') {
+        execution.push('dynamic balance', 'visual tension', 'rule of thirds');
+    }
+    
+    // Always include fundamental execution tips
+    execution.push('value studies', 'color temperature awareness', 'compositional sketches');
+    
+    return execution;
+}
+
+// Display functions for new analysis sections
+function addArtStyleSection(styleData) {
+    const analysisResults = document.getElementById('analysisResults');
+    
+    // Find the lighting analysis section and add art style after it
+    const lightingSection = analysisResults.querySelector('#lightingAnalysis').parentElement;
+    
+    const styleSection = document.createElement('div');
+    styleSection.style.cssText = 'background: rgba(155, 89, 182, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;';
+    styleSection.innerHTML = `
+        <h3 style="color: #9B59B6; margin: 0 0 15px 0;">🎨 Art Style Analysis</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <p><strong>🎭 Detected Style:</strong> ${styleData.name}</p>
+                <p><strong>📊 Confidence:</strong> ${(styleData.confidence * 100).toFixed(1)}%</p>
+            </div>
+            <div>
+                <p><strong>🌈 Color Count:</strong> ~${styleData.metrics.colorCount}</p>
+                <p><strong>🖌️ Texture:</strong> ${styleData.metrics.textureComplexity > 0.2 ? 'High' : 'Low'}</p>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+            <strong>✨ Style Characteristics:</strong>
+            <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.85rem;">
+                ${styleData.characteristics.map(char => `<li>${char}</li>`).join('')}
+            </ul>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 6px;">
+            <strong>🔑 Style Keywords:</strong> ${styleData.keywords.join(', ')}
+        </div>
+    `;
+    
+    lightingSection.parentNode.insertBefore(styleSection, lightingSection.nextSibling);
+}
+
+function addObjectAnalysisSection(objectData) {
+    const analysisResults = document.getElementById('analysisResults');
+    
+    const objectSection = document.createElement('div');
+    objectSection.style.cssText = 'background: rgba(52, 152, 219, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;';
+    objectSection.innerHTML = `
+        <h3 style="color: #3498DB; margin: 0 0 15px 0;">🔍 Object & Element Analysis</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <p><strong>📦 Est. Objects:</strong> ${objectData.estimatedObjects}</p>
+                <p><strong>🏗️ Complexity:</strong> ${objectData.complexity}</p>
+            </div>
+            <div>
+                <p><strong>🎯 Color Regions:</strong> ${objectData.regions}</p>
+                <p><strong>📐 Angular Forms:</strong> ${objectData.dominantShapes.angular}%</p>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 6px;">
+            <strong>🎨 Element Breakdown:</strong>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; font-size: 0.8rem;">
+                <div>Angular: ${objectData.dominantShapes.angular}%</div>
+                <div>Linear: ${objectData.dominantShapes.linear}%</div>
+                <div>Organic: ${objectData.dominantShapes.organic}%</div>
+            </div>
+        </div>
+    `;
+    
+    analysisResults.appendChild(objectSection);
+}
+
+function addShapeAnalysisSection(shapeData) {
+    const analysisResults = document.getElementById('analysisResults');
+    
+    const shapeSection = document.createElement('div');
+    shapeSection.style.cssText = 'background: rgba(241, 196, 15, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;';
+    shapeSection.innerHTML = `
+        <h3 style="color: #F1C40F; margin: 0 0 15px 0;">📐 Shape & Balance Analysis</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <p><strong>⚖️ Balance Type:</strong> ${shapeData.balance}</p>
+                <p><strong>📏 Dominant Lines:</strong> ${shapeData.lines.dominant}</p>
+            </div>
+            <div>
+                <p><strong>🎚️ Visual Weight:</strong></p>
+                <div style="font-size: 0.8rem; margin-top: 5px;">
+                    Top: ${(shapeData.weight.top * 100).toFixed(0)}% | Bottom: ${(shapeData.weight.bottom * 100).toFixed(0)}%
+                </div>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 6px;">
+            <strong>📊 Line Characteristics:</strong>
+            <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.85rem;">
+                ${shapeData.lines.characteristics.map(char => `<li>${char}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+    
+    analysisResults.appendChild(shapeSection);
+}
+
+function addMoodAndKeywordsSection(moodData) {
+    const analysisResults = document.getElementById('analysisResults');
+    
+    const moodSection = document.createElement('div');
+    moodSection.style.cssText = 'background: rgba(230, 126, 34, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;';
+    moodSection.innerHTML = `
+        <h3 style="color: #E67E22; margin: 0 0 15px 0;">🌟 Mood & Keywords Analysis</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 6px;">
+                <strong>🎭 Primary Mood:</strong>
+                <div style="margin-top: 5px; font-size: 0.85rem;">
+                    ${moodData.primary.join(', ') || 'Neutral, balanced'}
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 6px;">
+                <strong>🔑 Visual Keywords:</strong>
+                <div style="margin-top: 5px; font-size: 0.85rem;">
+                    ${moodData.keywords.slice(0, 8).join(', ')}
+                </div>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+            <strong>💭 Word Associations:</strong>
+            <div style="margin-top: 8px; font-size: 0.85rem; line-height: 1.4;">
+                ${moodData.associations.join(' • ') || 'Classic composition with balanced elements'}
+            </div>
+        </div>
+        <div style="background: rgba(46, 204, 113, 0.1); padding: 12px; border-radius: 6px;">
+            <strong>⚡ Execution Keywords:</strong>
+            <div style="margin-top: 8px; font-size: 0.85rem; line-height: 1.4; color: #2ECC71;">
+                ${moodData.execution.join(' • ')}
+            </div>
+        </div>
+    `;
+    
+    analysisResults.appendChild(moodSection);
+}
+
+function extractColorsFromImage(img) {
+    // Create canvas to analyze image
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Resize for faster processing
+    const maxSize = 200;
+    const ratio = Math.min(maxSize / img.width, maxSize / img.height);
+    canvas.width = img.width * ratio;
+    canvas.height = img.height * ratio;
+    
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    
+    // Get image data
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    
+    // Extract dominant colors using simple color quantization
+    const colorCounts = {};
+    
+    for (let i = 0; i < data.length; i += 16) { // Sample every 4th pixel
+        const r = Math.round(data[i] / 32) * 32;
+        const g = Math.round(data[i + 1] / 32) * 32;
+        const b = Math.round(data[i + 2] / 32) * 32;
+        
+        if (r + g + b < 50 || r + g + b > 700) continue; // Skip too dark/light
+        
+        const color = `rgb(${r},${g},${b})`;
+        colorCounts[color] = (colorCounts[color] || 0) + 1;
+    }
+    
+    // Sort by frequency and get top colors
+    const sortedColors = Object.entries(colorCounts)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 6)
+        .map(([color]) => color);
+    
+    extractedColors = sortedColors.map(rgbColor => {
+        const rgb = rgbColor.match(/\d+/g);
+        return rgbToHex(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
+    });
+    
+    displayColorPalette();
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function displayColorPalette() {
+    const paletteContainer = document.getElementById('colorPalette');
+    
+    paletteContainer.innerHTML = extractedColors.map(color => `
+        <div style="background: ${color}; aspect-ratio: 1; border-radius: 6px; cursor: pointer; position: relative; transition: transform 0.2s;" 
+             onclick="copyColorToClipboard('${color}')" 
+             title="Click to copy ${color}"
+             onmouseover="this.style.transform='scale(1.1)'" 
+             onmouseout="this.style.transform='scale(1)'">
+            <div style="position: absolute; bottom: 2px; left: 2px; right: 2px; background: rgba(0,0,0,0.7); color: white; font-size: 0.6rem; padding: 2px; border-radius: 3px; text-align: center;">
+                ${color}
+            </div>
+        </div>
+    `).join('');
+}
+
+function copyColorToClipboard(color) {
+    navigator.clipboard.writeText(color).then(() => {
+        showExportFeedback(`${color} copied!`);
+    });
+}
+
+function analyzeComposition(img) {
+    const aspectRatio = img.width / img.height;
+    let compositionType = 'square';
+    
+    if (aspectRatio > 1.4) compositionType = 'landscape';
+    else if (aspectRatio < 0.7) compositionType = 'portrait';
+    
+    const analysis = document.getElementById('compositionAnalysis');
+    
+    const tips = {
+        landscape: {
+            ratio: 'Wide format',
+            strength: 'Great for panoramic views, establishing shots',
+            suggestion: 'Use leading lines to guide the eye across the frame'
+        },
+        portrait: {
+            ratio: 'Tall format', 
+            strength: 'Perfect for subjects, emphasizes height',
+            suggestion: 'Consider vertical elements and negative space'
+        },
+        square: {
+            ratio: 'Balanced format',
+            strength: 'Even composition, social media friendly',
+            suggestion: 'Use rule of thirds or central composition'
+        }
+    };
+    
+    const tip = tips[compositionType];
+    analysisData.composition = compositionType;
+    
+    analysis.innerHTML = `
+        <p><strong>Format:</strong> ${tip.ratio} (${aspectRatio.toFixed(2)}:1)</p>
+        <p><strong>Strength:</strong> ${tip.strength}</p>
+        <p><strong>Tip:</strong> ${tip.suggestion}</p>
+    `;
+}
+
+function analyzeLighting(img) {
+    // Enhanced lighting analysis with detailed breakdown
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const analysisSize = 100; // Higher resolution for better analysis
+    canvas.width = analysisSize;
+    canvas.height = analysisSize;
+    
+    ctx.drawImage(img, 0, 0, analysisSize, analysisSize);
+    const imageData = ctx.getImageData(0, 0, analysisSize, analysisSize);
+    const data = imageData.data;
+    
+    // Advanced lighting metrics
+    let totalBrightness = 0;
+    let brightPixels = 0;
+    let darkPixels = 0;
+    let midtonePixels = 0;
+    let shadowPixels = 0;
+    let highlightPixels = 0;
+    let colorTemperature = { warm: 0, cool: 0, neutral: 0 };
+    let edgeDetection = 0;
+    
+    // Analyze each pixel for comprehensive lighting data
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const brightness = (r + g + b) / 3;
+        
+        totalBrightness += brightness;
+        
+        // Brightness categories for lighting analysis
+        if (brightness > 220) highlightPixels++;
+        else if (brightness > 180) brightPixels++;
+        else if (brightness > 120) midtonePixels++;
+        else if (brightness > 60) darkPixels++;
+        else shadowPixels++;
+        
+        // Color temperature analysis
+        if (r > b + 20) colorTemperature.warm++;
+        else if (b > r + 20) colorTemperature.cool++;
+        else colorTemperature.neutral++;
+        
+        // Basic edge detection for lighting direction
+        if (i % (analysisSize * 4) !== (analysisSize - 1) * 4) { // Not last pixel in row
+            const nextR = data[i + 4];
+            const nextG = data[i + 5];
+            const nextB = data[i + 6];
+            const brightnessDiff = Math.abs(brightness - (nextR + nextG + nextB) / 3);
+            if (brightnessDiff > 30) edgeDetection++;
+        }
+    }
+    
+    const totalPixels = data.length / 4;
+    const avgBrightness = totalBrightness / totalPixels;
+    const contrast = (brightPixels + shadowPixels) / totalPixels;
+    const midtoneRatio = midtonePixels / totalPixels;
+    const shadowRatio = shadowPixels / totalPixels;
+    const highlightRatio = highlightPixels / totalPixels;
+    
+    // Determine lighting characteristics
+    const lightingAnalysis = analyzeLightingCharacteristics(
+        avgBrightness, contrast, midtoneRatio, shadowRatio, highlightRatio, 
+        colorTemperature, edgeDetection, totalPixels
+    );
+    
+    analysisData.lighting = lightingAnalysis;
+    
+    const analysis = document.getElementById('lightingAnalysis');
+    analysis.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <p><strong>💡 Lighting Type:</strong> ${lightingAnalysis.type}</p>
+                <p><strong>🌡️ Color Temp:</strong> ${lightingAnalysis.colorTemp}</p>
+                <p><strong>📊 Contrast:</strong> ${lightingAnalysis.contrast}</p>
+            </div>
+            <div>
+                <p><strong>🎯 Direction:</strong> ${lightingAnalysis.direction}</p>
+                <p><strong>☀️ Source:</strong> ${lightingAnalysis.source}</p>
+                <p><strong>🎭 Mood:</strong> ${lightingAnalysis.mood}</p>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.1); padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+            <strong>🎨 Execution Tips:</strong>
+            <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.85rem;">
+                ${lightingAnalysis.executionTips.map(tip => `<li>${tip}</li>`).join('')}
+            </ul>
+        </div>
+        <div style="background: rgba(78, 205, 196, 0.1); padding: 10px; border-radius: 6px;">
+            <strong>🔍 Key Observation:</strong> ${lightingAnalysis.keyInsight}
+        </div>
+    `;
+}
+
+function analyzeLightingCharacteristics(avgBrightness, contrast, midtoneRatio, shadowRatio, highlightRatio, colorTemp, edgeDetection, totalPixels) {
+    // Determine lighting type
+    let lightingType = 'Natural Light';
+    let mood = 'Neutral';
+    let direction = 'Even';
+    let source = 'Diffused';
+    let colorTemperature = 'Neutral';
+    
+    // Color temperature analysis
+    const warmRatio = colorTemp.warm / totalPixels;
+    const coolRatio = colorTemp.cool / totalPixels;
+    
+    if (warmRatio > coolRatio + 0.15) colorTemperature = 'Warm (3000K-4000K)';
+    else if (coolRatio > warmRatio + 0.15) colorTemperature = 'Cool (5500K-7000K)';
+    else colorTemperature = 'Daylight (4500K-5500K)';
+    
+    // Lighting type based on brightness distribution
+    if (highlightRatio > 0.2 && shadowRatio < 0.15) {
+        lightingType = 'High Key';
+        mood = 'Bright, Optimistic';
+        source = 'Soft Box/Window Light';
+    } else if (shadowRatio > 0.3 && highlightRatio < 0.1) {
+        lightingType = 'Low Key';
+        mood = 'Dramatic, Mysterious';
+        source = 'Spot Light/Single Source';
+    } else if (contrast > 0.5) {
+        lightingType = 'Hard Light';
+        mood = 'Bold, Defined';
+        source = 'Direct Sun/Hard Light';
+        direction = 'Directional';
+    } else if (midtoneRatio > 0.4) {
+        lightingType = 'Soft Light';
+        mood = 'Gentle, Flattering';
+        source = 'Overcast/Diffused';
+    }
+    
+    // Direction analysis based on edge detection
+    const edgeRatio = edgeDetection / totalPixels;
+    if (edgeRatio > 0.15) {
+        direction = 'Strong Directional';
+    } else if (edgeRatio > 0.08) {
+        direction = 'Moderate Direction';
+    } else {
+        direction = 'Even/Flat';
+    }
+    
+    // Generate execution tips based on analysis
+    const executionTips = generateLightingExecutionTips(lightingType, colorTemperature, direction, mood);
+    
+    // Key insight
+    const keyInsight = generateKeyLightingInsight(lightingType, contrast, shadowRatio, highlightRatio);
+    
+    return {
+        type: lightingType,
+        colorTemp: colorTemperature,
+        contrast: contrast > 0.6 ? 'High' : contrast > 0.3 ? 'Medium' : 'Low',
+        direction: direction,
+        source: source,
+        mood: mood,
+        executionTips: executionTips,
+        keyInsight: keyInsight,
+        metrics: {
+            avgBrightness: Math.round(avgBrightness),
+            shadowRatio: Math.round(shadowRatio * 100),
+            highlightRatio: Math.round(highlightRatio * 100),
+            midtoneRatio: Math.round(midtoneRatio * 100)
+        }
+    };
+}
+
+function generateLightingExecutionTips(lightingType, colorTemp, direction, mood) {
+    const tips = [];
+    
+    // Type-specific tips
+    switch(lightingType) {
+        case 'High Key':
+            tips.push('Use multiple light sources to eliminate harsh shadows');
+            tips.push('Overexpose slightly to maintain the bright, airy feel');
+            break;
+        case 'Low Key':
+            tips.push('Embrace deep shadows - use single strong light source');
+            tips.push('Let 70% of your subject fall into shadow for drama');
+            break;
+        case 'Hard Light':
+            tips.push('Position light at 45° angle for sculptural shadows');
+            tips.push('Use shadows as compositional elements');
+            break;
+        case 'Soft Light':
+            tips.push('Diffuse your light source with translucent material');
+            tips.push('Perfect for portraits - flattering skin tones');
+            break;
+        default:
+            tips.push('Study how light wraps around forms in this reference');
+    }
+    
+    // Color temperature tips
+    if (colorTemp.includes('Warm')) {
+        tips.push('Use warm lights (tungsten/candlelight) for cozy feeling');
+    } else if (colorTemp.includes('Cool')) {
+        tips.push('Cool lights (LED/daylight) for clean, modern look');
+    }
+    
+    // Direction tips
+    if (direction.includes('Strong')) {
+        tips.push('Mimic this directional quality with focused lighting setup');
+    } else if (direction.includes('Even')) {
+        tips.push('Use bounce cards or multiple sources for even lighting');
+    }
+    
+    return tips;
+}
+
+function generateKeyLightingInsight(lightingType, contrast, shadowRatio, highlightRatio) {
+    if (shadowRatio > 0.4) {
+        return 'This image uses shadow as a primary compositional tool - notice how darkness shapes the mood';
+    } else if (highlightRatio > 0.25) {
+        return 'Highlights are the star here - bright areas draw the eye and create energy';
+    } else if (contrast > 0.6) {
+        return 'Strong contrast creates visual tension - light and dark areas compete for attention';
+    } else {
+        return 'Even lighting distribution creates a calm, balanced feeling throughout the composition';
+    }
+}
+
+function generateArtistTips() {
+    const tips = document.getElementById('artistTips');
+    const { composition, lighting, artStyle, objects, shapes, mood } = analysisData;
+    
+    const comprehensiveTips = [];
+    
+    // Advanced composition tips
+    if (composition) {
+        const compositionAdvice = {
+            landscape: [
+                'Layer your composition: foreground, midground, background for depth',
+                'Use horizontal elements to emphasize the width and stability',
+                'Leading lines work well to guide the eye across the frame'
+            ],
+            portrait: [
+                'Utilize the full vertical space - consider top-to-bottom flow',
+                'Vertical elements create energy and draw the eye upward',
+                'Portrait format naturally emphasizes the subject\'s importance'
+            ],
+            square: [
+                'Central compositions work beautifully in square format',
+                'Try diagonal placements to add dynamic energy',
+                'Square format is perfect for balanced, harmonious subjects'
+            ]
+        };
+        
+        comprehensiveTips.push(...compositionAdvice[composition] || ['Study the balance of elements in your frame']);
+    }
+    
+    // Advanced lighting tips
+    if (lighting) {
+        comprehensiveTips.push(`${lighting.keyInsight}`);
+        comprehensiveTips.push(...lighting.executionTips.slice(0, 2));
+    }
+    
+    // Art style specific tips
+    if (artStyle) {
+        switch(artStyle.name) {
+            case 'Photorealistic':
+                comprehensiveTips.push('Focus on subtle value transitions and precise detail work');
+                comprehensiveTips.push('Study how light bounces and creates secondary illumination');
+                break;
+            case 'Impressionist':
+                comprehensiveTips.push('Capture the essence rather than details - work quickly and confidently');
+                comprehensiveTips.push('Let your brushstrokes be visible and expressive');
+                break;
+            case 'Abstract':
+                comprehensiveTips.push('Focus on color relationships and emotional impact over representation');
+                comprehensiveTips.push('Trust your intuition - abstract work is about feeling, not copying');
+                break;
+            case 'Minimalist':
+                comprehensiveTips.push('Every element must earn its place - remove anything unnecessary');
+                comprehensiveTips.push('Negative space is as important as positive space');
+                break;
+        }
+    }
+    
+    // Shape and balance tips
+    if (shapes) {
+        if (shapes.balance === 'Asymmetrical') {
+            comprehensiveTips.push('Use asymmetrical balance to create visual interest and movement');
+        } else if (shapes.balance === 'Symmetrical') {
+            comprehensiveTips.push('Symmetrical balance creates stability - perfect for formal compositions');
+        }
+        
+        if (shapes.lines.dominant === 'diagonal') {
+            comprehensiveTips.push('Diagonal lines create energy - use them to guide the viewer\'s eye');
+        }
+    }
+    
+    // Object complexity tips
+    if (objects) {
+        if (objects.complexity === 'Simple') {
+            comprehensiveTips.push('Simple compositions allow viewers to focus - don\'t overcomplicate');
+        } else if (objects.complexity === 'Complex') {
+            comprehensiveTips.push('Complex scenes need strong focal points to avoid visual chaos');
+        }
+    }
+    
+    // Color advice from extracted palette
+    const colorAdvice = getColorAdvice(extractedColors);
+    comprehensiveTips.push(colorAdvice);
+    
+    // Mood-based execution advice
+    if (mood && mood.execution) {
+        comprehensiveTips.push('Key execution focus: ' + mood.execution.slice(0, 3).join(', '));
+    }
+    
+    // Remove duplicates and limit tips
+    const uniqueTips = [...new Set(comprehensiveTips)].slice(0, 8);
+    
+    tips.innerHTML = `
+        <div style="display: grid; gap: 10px;">
+            ${uniqueTips.map((tip, index) => `
+                <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #4ECDC4;">
+                    <div style="font-size: 0.85rem; line-height: 1.4;">
+                        <strong>${index + 1}.</strong> ${tip}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div style="margin-top: 15px; padding: 12px; background: rgba(78, 205, 196, 0.2); border-radius: 8px; text-align: center;">
+            <strong style="color: #4ECDC4;">� Pro Tip:</strong> 
+            <span style="font-size: 0.9rem;">
+                ${generateProTip(lighting, artStyle, mood)}
+            </span>
+        </div>
+    `;
+}
+
+function generateProTip(lighting, artStyle, mood) {
+    const tips = [
+        'Take multiple reference photos from different angles to fully understand your subject',
+        'Create small thumbnail sketches to plan your composition before starting the final piece',
+        'Study the shadows as much as the lights - they define the form',
+        'Color temperature changes throughout the day - note the time when shooting references',
+        'Squint at your reference to see the major value shapes without getting lost in details',
+        'Take notes about what attracted you to this reference - capture that feeling in your art',
+        'Consider cropping differently than the original photo for better composition'
+    ];
+    
+    // Contextual pro tips based on analysis
+    if (lighting && lighting.type === 'Hard Light') {
+        return 'Hard light creates strong shadows - use them as design elements, not just darkness to fill in';
+    } else if (artStyle && artStyle.name.includes('Abstract')) {
+        return 'Abstract work is about emotion and concept - let the reference inspire you, don\'t copy it exactly';
+    } else if (mood && mood.primary.includes('dramatic')) {
+        return 'Dramatic lighting is all about contrast - push your darks darker and lights lighter than you think';
+    }
+    
+    return tips[Math.floor(Math.random() * tips.length)];
+}
+
+function getColorAdvice(colors) {
+    if (colors.length < 3) return 'Limited palette - great for minimalist approaches.';
+    
+    // Simple color temperature analysis
+    let warmColors = 0;
+    let coolColors = 0;
+    
+    colors.forEach(color => {
+        const rgb = hexToRgb(color);
+        if (rgb && rgb.r > rgb.b) warmColors++;
+        else coolColors++;
+    });
+    
+    if (warmColors > coolColors) {
+        return 'Warm color palette - creates cozy, energetic feelings. Great for sunsets, autumn scenes.';
+    } else if (coolColors > warmColors) {
+        return 'Cool color palette - creates calm, serene moods. Perfect for water, sky, or winter themes.';
+    } else {
+        return 'Balanced warm/cool palette - versatile and harmonious. Good for natural, realistic rendering.';
+    }
+}
+
+function exportExtractedPalette() {
+    if (extractedColors.length === 0) return;
+    
+    const paletteText = extractedColors.join('\n');
+    navigator.clipboard.writeText(paletteText).then(() => {
+        showExportFeedback('Color palette copied to clipboard!');
+    });
+}
+
+function showExportFeedback(message) {
+    const feedback = document.createElement('div');
+    feedback.textContent = message;
+    feedback.style.cssText = `
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white;
+        padding: 15px 25px; border-radius: 8px; z-index: 10001; font-weight: bold;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3); font-size: 14px;
+    `;
+    
+    document.body.appendChild(feedback);
+    setTimeout(() => document.body.removeChild(feedback), 2500);
 }

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/resources.css">
     <link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
+    <!-- Three.js for 3D lighting visualization -->
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -27,7 +30,7 @@
                 <li><a href="../contact/index.html">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span>Menu</span>
+                <img src="../icons/flower.svg" alt="Menu" class="hamburger-icon">
             </div>
         </div>
     </nav>
@@ -83,13 +86,12 @@
                         <p>Upload your artwork to identify technical issues and get specific solutions across all art mediums</p>
                         <div class="generator-display" id="styleAnalyzer" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat;" id="styleUploadArea">
+                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 30px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative;" id="styleUploadArea">
                                     <input type="file" id="styleUpload" accept="image/*" style="display: none;" onchange="handleStyleUpload(event)">
                                     <div onclick="document.getElementById('styleUpload').click()" style="cursor: pointer;" id="styleUploadText">
                                         <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for diagnostic</div>
                                         <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
                                     </div>
-                                    <img id="stylePreviewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain; display: none;">
                                 </div>
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
                                     <select id="paintingMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
@@ -141,13 +143,12 @@
                         <p>Upload your artwork to get professional portfolio assessment and improvement recommendations</p>
                         <div class="generator-display" id="portfolioChecker" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat;" id="portfolioUploadArea">
+                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 30px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative;" id="portfolioUploadArea">
                                     <input type="file" id="portfolioUpload" accept="image/*" style="display: none;" onchange="handlePortfolioUpload(event)">
                                     <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;" id="portfolioUploadText">
                                         <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for portfolio assessment</div>
                                         <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
                                     </div>
-                                    <img id="portfolioPreviewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain; display: none;">
                                 </div>
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
                                     <select id="portfolioGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
@@ -308,10 +309,10 @@
                         <span class="modal-btn-desc">Create accessible palettes with color theory principles</span>
                     </button>
                     
-                    <button class="modal-trigger-btn" onclick="openModal('compositionModal')">
-                        <img src="../icons/starburst.svg" alt="Composition Grid" class="modal-btn-icon">
-                        <span class="modal-btn-text">Composition Grid Overlay</span>
-                        <span class="modal-btn-desc">Upload images and apply professional composition grids</span>
+                    <button class="modal-trigger-btn" onclick="openModal('imageAnalyzerModal')">
+                        <img src="../icons/starburst.svg" alt="Reference Analyzer" class="modal-btn-icon">
+                        <span class="modal-btn-text">Reference Image Analyzer</span>
+                        <span class="modal-btn-desc">Extract colors, analyze composition, and get lighting insights from photos</span>
                     </button>
                     
                     <button class="modal-trigger-btn" onclick="openModal('printSpecModal')">
@@ -509,40 +510,75 @@
         </div>
     </div>
 
-    <!-- Composition Grid Overlay Modal -->
-    <div id="compositionModal" class="resource-modal" role="dialog" aria-labelledby="composition-modal-title" aria-modal="true">
-        <div class="modal-content">
+    <!-- Reference Image Analyzer Modal -->
+    <div id="imageAnalyzerModal" class="resource-modal" role="dialog" aria-labelledby="analyzer-modal-title" aria-modal="true">
+        <div class="modal-content" style="max-width: 900px;">
             <div class="modal-header">
-                <h2 id="composition-modal-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">Composition Grid Overlay</h2>
+                <h2 id="analyzer-modal-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">📷 Reference Image Analyzer</h2>
                 <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="composition-controls">
-                    <div class="upload-section">
-                        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="loadCompositionImage()">
-                        <button class="modal-upload-btn" onclick="document.getElementById('imageUpload').click()">
-                            Upload Image
-                        </button>
-                    </div>
-                    <div class="grid-controls">
-                        <div class="control-group">
-                            <label>Grid Type:</label>
-                            <select id="gridType">
-                                <option value="rule-of-thirds">Rule of Thirds</option>
-                                <option value="golden-ratio">Golden Ratio</option>
-                                <option value="diagonal">Diagonal</option>
-                                <option value="center">Center Cross</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label>Opacity:</label>
-                            <input type="range" id="gridOpacity" min="0.3" max="1" step="0.1" value="0.8">
-                        </div>
+                
+                <!-- Upload Area -->
+                <div style="margin-bottom: 25px; padding: 20px; background: rgba(248, 200, 208, 0.1); border-radius: 8px; border: 2px dashed rgba(248, 200, 208, 0.3);">
+                    <div style="text-align: center;">
+                        <input type="file" id="referenceImageInput" accept="image/*" style="display: none;" onchange="analyzeReferenceImage()">
+                        <label for="referenceImageInput" style="cursor: pointer; display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; border-radius: 8px; font-weight: bold; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            📁 Choose Reference Image
+                        </label>
+                        <p style="margin: 10px 0 0 0; font-size: 0.9rem; opacity: 0.8;">Upload a photo to extract colors, analyze composition, and get lighting insights</p>
                     </div>
                 </div>
-                <div class="composition-canvas">
-                    <canvas id="compositionCanvas" width="400" height="300"></canvas>
+
+                <!-- Results Area -->
+                <div id="analysisResults" style="display: none;">
+                    
+                    <!-- Image Preview -->
+                    <div style="margin-bottom: 25px; text-align: center;">
+                        <img id="previewImage" style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        
+                        <!-- Color Palette -->
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">🎨 Dominant Colors</h3>
+                            <div id="colorPalette" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;">
+                                <!-- Colors will be populated here -->
+                            </div>
+                            <div style="text-align: center;">
+                                <button onclick="exportExtractedPalette()" class="modal-generate-btn" style="font-size: 0.85rem; padding: 8px 16px;">💾 Export Palette</button>
+                            </div>
+                        </div>
+
+                        <!-- Composition Analysis -->
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">📐 Composition</h3>
+                            <div id="compositionAnalysis" style="font-size: 0.9rem; line-height: 1.5;">
+                                <!-- Analysis will be populated here -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Lighting Analysis -->
+                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; margin-top: 20px;">
+                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">💡 Lighting Insights</h3>
+                        <div id="lightingAnalysis" style="font-size: 0.9rem; line-height: 1.5;">
+                            <!-- Lighting analysis will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Art Tips -->
+                    <div style="background: rgba(78, 205, 196, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;">
+                        <h3 style="color: #4ECDC4; margin: 0 0 15px 0;">✨ Artist Tips</h3>
+                        <div id="artistTips" style="font-size: 0.9rem; line-height: 1.5;">
+                            <!-- Tips will be populated here -->
+                        </div>
+                    </div>
+
                 </div>
+                
             </div>
         </div>
     </div>

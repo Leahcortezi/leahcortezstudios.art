@@ -1812,3 +1812,15 @@ select:focus,
     margin: 0 !important;
     flex: 1 !important;
 }
+
+/* 3D Lighting Notifications */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
