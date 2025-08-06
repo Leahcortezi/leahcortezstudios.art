@@ -1488,11 +1488,12 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  min-height: 48px;
+  min-height: 60px;
   white-space: normal;
   text-align: left;
   width: 100%;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .option-btn::before {
