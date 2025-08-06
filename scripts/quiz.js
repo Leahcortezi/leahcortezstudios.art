@@ -14,11 +14,11 @@ class PortfolioQuiz {
             id: 1,
             text: "What's your biggest art pet peeve?",
             options: [
-                { text: "Bad kerning on expensive signage. Someone got PAID for that.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "Instagram art that's all aesthetics, no soul.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "When someone says 'I could recreate that' like effort doesn't matter.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Art with zero concept but perfect execution. What's the point?", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "People who stick to one medium because 'that's their thing.'", piece: "elements-book", weight: 3 } // Restless Experimenter
+                { text: "Losing your best file version because 'FinalFinal_V2_REAL.zip' wasn't the real one.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Someone watching you draw and saying: 'Draw me!'", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "People touching your work without asking.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "'It's just a font, right?' No, it's 3 hours of research and 47 iterations.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "When people ask what medium you used and get confused by your 12-part answer.", piece: "elements-book", weight: 3 } // Restless Experimenter
             ]
             },
             {
