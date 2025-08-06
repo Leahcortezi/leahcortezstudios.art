@@ -516,6 +516,9 @@
     overflow-y: auto;
     padding: 20px;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .modal-overlay {
@@ -534,11 +537,770 @@
     background: linear-gradient(135deg, rgba(126, 28, 46, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
     border: 2px solid var(--color-primary-accent);
     border-radius: 15px;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     backdrop-filter: blur(10px);
     position: relative;
     top: 50px;
+}
+
+.professional-palette-maker {
+    max-width: 1000px;
+}
+
+/* Professional Palette Maker Styles */
+.palette-step {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.step-header h3 {
+    color: #f8c8d0;
+    margin: 0 15px 0 0;
+    font-size: 1.4rem;
+    font-family: 'Pirata One', serif;
+}
+
+.step-header p {
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Step 1: Signature Color Picker Styles */
+.signature-color-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.color-picker-area {
+    text-align: center;
+}
+
+.signature-color-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+#signatureColor {
+    width: 80px;
+    height: 80px;
+    border: 3px solid rgba(248, 200, 208, 0.5);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: none;
+}
+
+#signatureColor:hover {
+    border-color: var(--color-primary-accent);
+    box-shadow: 0 0 15px rgba(248, 200, 208, 0.6);
+}
+
+.signature-color-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    background: var(--signature-color, #e74c3c);
+    transition: all 0.3s ease;
+}
+
+.color-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 120px;
+}
+
+.hex-value {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-primary-accent);
+}
+
+.color-name {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.quick-color-suggestions label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--color-primary-accent);
+}
+
+.suggestion-colors {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.suggestion-color {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suggestion-color:hover {
+    border-color: var(--color-primary-accent);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(248, 200, 208, 0.4);
+}
+
+/* Step 2: Style & Mood Selection Styles */
+.style-mood-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.color-theory-section label,
+.mood-section label,
+.palette-size-section label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--color-primary-accent);
+}
+
+.theory-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.theory-btn {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background: rgba(126, 28, 46, 0.1);
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    color: white;
+}
+
+.theory-btn:hover {
+    background: rgba(126, 28, 46, 0.2);
+    border-color: var(--color-primary-accent);
+}
+
+.theory-btn.active {
+    background: rgba(248, 200, 208, 0.2);
+    border-color: var(--color-primary-accent);
+    box-shadow: 0 0 10px rgba(248, 200, 208, 0.3);
+}
+
+.theory-name {
+    font-weight: 600;
+    color: var(--color-primary-accent);
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.theory-desc {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    line-height: 1.3;
+}
+
+.mood-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    padding: 8px 16px;
+    background: rgba(126, 28, 46, 0.1);
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.mood-btn:hover {
+    background: rgba(126, 28, 46, 0.2);
+    border-color: var(--color-primary-accent);
+}
+
+.mood-btn.active {
+    background: rgba(248, 200, 208, 0.2);
+    border-color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
+    font-weight: 600;
+}
+
+.size-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#paletteSize {
+    flex: 1;
+    max-width: 200px;
+}
+
+.size-value {
+    min-width: 80px;
+    font-weight: 600;
+    color: var(--color-primary-accent);
+}
+
+.generate-palette-btn {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, #e74c3c 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.generate-palette-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(248, 200, 208, 0.4);
+}
+
+/* Step 3: Palette Refinement Styles */
+.palette-refinement {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.palette-display {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 120px;
+}
+
+.palette-colors {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.palette-color-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+    border-color: var(--color-primary-accent);
+}
+
+.color-hex {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+}
+
+.lock-toggle {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(248, 200, 208, 0.9);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 0.7rem;
+}
+
+.lock-toggle:hover {
+    background: var(--color-primary-accent);
+    transform: scale(1.1);
+}
+
+.lock-toggle.locked {
+    background: #e74c3c;
+    color: white;
+}
+
+.refinement-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.randomize-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.randomize-btn {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.randomize-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+.randomize-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.randomize-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.lock-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.lock-btn, .unlock-btn {
+    background: rgba(126, 28, 46, 0.8);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.lock-btn:hover, .unlock-btn:hover {
+    background: var(--color-primary-accent);
+    transform: translateY(-1px);
+}
+
+/* Inspiration Options */
+.inspiration-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.inspiration-tab {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.inspiration-tab.active,
+.inspiration-tab:hover {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%);
+    border-color: var(--color-primary-accent);
+}
+
+/* Moodboard Grid */
+.moodboard-grid,
+.design-styles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.moodboard-item,
+.style-item {
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid rgba(248, 200, 208, 0.2);
+    background: rgba(0,0,0,0.1);
+}
+
+.moodboard-item:hover,
+.style-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary-accent);
+}
+
+.moodboard-item.selected,
+.style-item.selected {
+    border-color: var(--color-primary-accent);
+    background: rgba(248, 200, 208, 0.1);
+}
+
+.moodboard-preview,
+.style-preview {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Moodboard specific styles */
+.minimalist { background: linear-gradient(45deg, #FFFFFF 0%, #F8F8FF 25%, #E8E8E8 50%, #2C2C2C 75%, #1A1A1A 100%); }
+.vintage { background: linear-gradient(45deg, #D4A574 0%, #8B4513 25%, #CD853F 50%, #F5DEB3 75%, #2F4F4F 100%); }
+.tropical { background: linear-gradient(45deg, #00CED1 0%, #FFD700 25%, #FF6347 50%, #32CD32 75%, #FF1493 100%); }
+.autumn { background: linear-gradient(45deg, #8B4513 0%, #CD853F 25%, #DAA520 50%, #B22222 75%, #FF8C00 100%); }
+.ocean { background: linear-gradient(45deg, #006994 0%, #47B5FF 25%, #06FFA5 50%, #87CEEB 75%, #4682B4 100%); }
+.corporate { background: linear-gradient(45deg, #2C3E50 0%, #3498DB 25%, #E74C3C 50%, #F39C12 75%, #95A5A6 100%); }
+.modern { background: linear-gradient(45deg, #000000 0%, #FFFFFF 25%, #FF3838 50%, #3742FA 75%, #2F3542 100%); }
+.pastels { background: linear-gradient(45deg, #FFB3BA 0%, #FFDFBA 25%, #FFFFBA 50%, #BAFFC9 75%, #BAE1FF 100%); }
+.neon { background: linear-gradient(45deg, #FF073A 0%, #39FF14 25%, #00FFFF 50%, #FF1493 75%, #FFFF00 100%); }
+.earth { background: linear-gradient(45deg, #8D6E63 0%, #A0522D 25%, #D2B48C 50%, #F4A460 75%, #CD853F 100%); }
+
+.moodboard-item span,
+.style-item span {
+    color: #f8c8d0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Photo Upload */
+.photo-upload-area {
+    border: 3px dashed rgba(248, 200, 208, 0.4);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.1);
+}
+
+.photo-upload-area:hover {
+    border-color: var(--color-primary-accent);
+    background: rgba(248, 200, 208, 0.05);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    color: #f8c8d0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.upload-subtext {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+}
+
+/* Smart Formulas */
+.smart-formulas {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.formula-btn {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.formula-btn.active,
+.formula-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%);
+    border-color: var(--color-primary-accent);
+}
+
+/* Color Selection */
+.color-inputs {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.palette-color-input {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    border: 3px solid rgba(248, 200, 208, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.palette-color-input:hover {
+    transform: scale(1.1);
+    border-color: var(--color-primary-accent);
+}
+
+.palette-preview {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+.preview-colors {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.generate-variations-btn {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.generate-variations-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+}
+
+/* Accessibility Testing */
+.wcag-level-selector {
+    margin-bottom: 25px;
+}
+
+.level-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.level-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    background: rgba(0,0,0,0.3);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.level-btn.active {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    border-color: #27ae60;
+}
+
+.level-btn:hover {
+    transform: scale(1.05);
+}
+
+.contrast-matrix {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+/* Export Options */
+.export-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.export-btn {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design for Professional Palette Maker */
+@media (max-width: 768px) {
+    .professional-palette-maker {
+        max-width: 95vw;
+    }
+    
+    .palette-step {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .step-header h3 {
+        margin: 0;
+    }
+    
+    .moodboard-grid,
+    .design-styles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+    
+    .inspiration-tabs {
+        justify-content: center;
+    }
+    
+    .inspiration-tab {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+    
+    .smart-formulas {
+        justify-content: center;
+    }
+    
+    .color-inputs {
+        justify-content: center;
+    }
+    
+    .level-buttons {
+        justify-content: center;
+    }
+    
+    .export-options {
+        justify-content: center;
+    }
+    
+    .contrast-matrix {
+        overflow-x: auto;
+    }
+    
+    .preview-colors {
+        justify-content: center;
+    }
+    
+    .modal-content {
+        top: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .moodboard-grid,
+    .design-styles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .palette-color-input {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .step-header h3 {
+        font-size: 1.2rem;
+    }
 }
 
 .modal-header {

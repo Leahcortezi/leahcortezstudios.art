@@ -363,34 +363,181 @@
         </div>
     </main>
 
-    <!-- Color Theory Palette Maker Modal -->
+    <!-- Professional Color Palette Maker Modal -->
     <div id="colorTheoryModal" class="resource-modal">
-        <div class="modal-content">
+        <div class="modal-content professional-palette-maker">
             <div class="modal-header">
+                <h2 style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">🎨 Professional Color Palette Maker</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="color-theory-controls">
-                    <div class="control-group">
-                        <label>Base Color:</label>
-                        <input type="color" id="baseColor" value="#e74c3c">
+                
+                <!-- Step 1: Choose Signature Color -->
+                <div class="palette-step" id="step1">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h3>Pick Your Signature Color</h3>
+                        <p>Start with your main color - this will be the foundation of your palette</p>
                     </div>
-                    <div class="control-group">
-                        <label>Color Scheme:</label>
-                        <select id="colorScheme">
-                            <option value="monochromatic">Monochromatic</option>
-                            <option value="analogous">Analogous</option>
-                            <option value="complementary">Complementary</option>
-                            <option value="triadic">Triadic</option>
-                            <option value="split-complementary">Split Complementary</option>
-                        </select>
+                    
+                    <div class="signature-color-selector">
+                        <div class="color-picker-area">
+                            <label for="signatureColor">Your Signature Color:</label>
+                            <div class="signature-color-input">
+                                <input type="color" id="signatureColor" value="#e74c3c" onchange="updateSignatureColor()">
+                                <div class="signature-color-preview" id="signatureColorPreview"></div>
+                                <div class="color-info" id="signatureColorInfo">
+                                    <span class="hex-value">#e74c3c</span>
+                                    <span class="color-name">Alizarin</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-color-suggestions">
+                            <label>Quick Picks:</label>
+                            <div class="suggestion-colors">
+                                <button class="suggestion-color" style="background: #e74c3c" onclick="setSignatureColor('#e74c3c')" title="Red"></button>
+                                <button class="suggestion-color" style="background: #3498db" onclick="setSignatureColor('#3498db')" title="Blue"></button>
+                                <button class="suggestion-color" style="background: #2ecc71" onclick="setSignatureColor('#2ecc71')" title="Green"></button>
+                                <button class="suggestion-color" style="background: #f39c12" onclick="setSignatureColor('#f39c12')" title="Orange"></button>
+                                <button class="suggestion-color" style="background: #9b59b6" onclick="setSignatureColor('#9b59b6')" title="Purple"></button>
+                                <button class="suggestion-color" style="background: #1abc9c" onclick="setSignatureColor('#1abc9c')" title="Teal"></button>
+                                <button class="suggestion-color" style="background: #e67e22" onclick="setSignatureColor('#e67e22')" title="Carrot"></button>
+                                <button class="suggestion-color" style="background: #34495e" onclick="setSignatureColor('#34495e')" title="Wet Asphalt"></button>
+                            </div>
+                        </div>
                     </div>
-                    <button class="modal-generate-btn" onclick="generateColorTheoryPalette()">Generate Palette</button>
                 </div>
-                <div class="palette-display" id="paletteDisplay">
-                    <div class="palette-info">Select a base color and scheme to generate your palette</div>
+                
+                <!-- Step 2: Choose Style & Mood -->
+                <div class="palette-step" id="step2">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <h3>Choose Style & Mood</h3>
+                        <p>Select the color theory relationship and vibe for your palette</p>
+                    </div>
+                    
+                    <div class="style-mood-selection">
+                        <div class="color-theory-section">
+                            <label>Color Theory Relationship:</label>
+                            <div class="theory-buttons">
+                                <button class="theory-btn active" onclick="selectColorTheory('monochromatic')" data-theory="monochromatic">
+                                    <span class="theory-name">Monochromatic</span>
+                                    <span class="theory-desc">Same hue, different tints & shades</span>
+                                </button>
+                                <button class="theory-btn" onclick="selectColorTheory('analogous')" data-theory="analogous">
+                                    <span class="theory-name">Analogous</span>
+                                    <span class="theory-desc">Adjacent colors on color wheel</span>
+                                </button>
+                                <button class="theory-btn" onclick="selectColorTheory('complementary')" data-theory="complementary">
+                                    <span class="theory-name">Complementary</span>
+                                    <span class="theory-desc">Opposite colors for contrast</span>
+                                </button>
+                                <button class="theory-btn" onclick="selectColorTheory('triadic')" data-theory="triadic">
+                                    <span class="theory-name">Triadic</span>
+                                    <span class="theory-desc">Three evenly spaced colors</span>
+                                </button>
+                                <button class="theory-btn" onclick="selectColorTheory('split-complementary')" data-theory="split-complementary">
+                                    <span class="theory-name">Split Complementary</span>
+                                    <span class="theory-desc">Base + two adjacent to complement</span>
+                                </button>
+                                <button class="theory-btn" onclick="selectColorTheory('tetradic')" data-theory="tetradic">
+                                    <span class="theory-name">Tetradic</span>
+                                    <span class="theory-desc">Two complementary pairs</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mood-section">
+                            <label>Palette Mood:</label>
+                            <div class="mood-buttons">
+                                <button class="mood-btn active" onclick="selectMood('balanced')" data-mood="balanced">Balanced</button>
+                                <button class="mood-btn" onclick="selectMood('vibrant')" data-mood="vibrant">Vibrant</button>
+                                <button class="mood-btn" onclick="selectMood('muted')" data-mood="muted">Muted</button>
+                                <button class="mood-btn" onclick="selectMood('dark')" data-mood="dark">Dark</button>
+                                <button class="mood-btn" onclick="selectMood('light')" data-mood="light">Light</button>
+                                <button class="mood-btn" onclick="selectMood('warm')" data-mood="warm">Warm</button>
+                                <button class="mood-btn" onclick="selectMood('cool')" data-mood="cool">Cool</button>
+                            </div>
+                        </div>
+                        
+                        <div class="palette-size-section">
+                            <label>Number of Colors:</label>
+                            <div class="size-selector">
+                                <input type="range" id="paletteSize" min="3" max="8" value="5" onchange="updatePaletteSize()">
+                                <span class="size-value" id="sizeValue">5 colors</span>
+                            </div>
+                        </div>
+                        
+                        <button class="generate-palette-btn" onclick="generateBasePalette()">Generate Base Palette</button>
+                    </div>
                 </div>
-                <div class="accessibility-report" id="accessibilityReport"></div>
+                
+                <!-- Step 3: Perfect Your Palette -->
+                <div class="palette-step" id="step3">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <h3>Perfect Your Palette</h3>
+                        <p>Fine-tune with locks and randomization to find your perfect accessible palette</p>
+                    </div>
+                    
+                    <div class="palette-refinement">
+                        <div class="palette-display" id="paletteDisplay">
+                            <!-- Generated palette colors with lock/unlock controls will be here -->
+                        </div>
+                        
+                        <div class="refinement-controls">
+                            <div class="randomize-section">
+                                <button class="randomize-btn" onclick="randomizeTintsShades()">
+                                    🎲 Randomize Unlocked Colors
+                                </button>
+                                <div class="randomize-options">
+                                    <label>
+                                        <input type="checkbox" id="adjustTints" checked> Adjust Tints (lighter)
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="adjustShades" checked> Adjust Shades (darker)
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="adjustSaturation"> Adjust Saturation
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="lock-controls">
+                                <button class="lock-btn" onclick="lockAllColors()">🔒 Lock All</button>
+                                <button class="unlock-btn" onclick="unlockAllColors()">🔓 Unlock All</button>
+                            </div>
+                        </div>
+                        
+                        <div class="accessibility-testing">
+                            <div class="wcag-level-selector">
+                                <label>WCAG Compliance Level:</label>
+                                <div class="level-buttons">
+                                    <button class="level-btn" onclick="setWCAGLevel('A')">A</button>
+                                    <button class="level-btn active" onclick="setWCAGLevel('AA')">AA</button>
+                                    <button class="level-btn" onclick="setWCAGLevel('AAA')">AAA</button>
+                                </div>
+                            </div>
+                            
+                            <div class="contrast-matrix" id="contrastMatrix">
+                                <!-- Contrast testing grid will be generated here -->
+                            </div>
+                            
+                            <div class="accessibility-report" id="accessibilityReport">
+                                <!-- Detailed accessibility report will be generated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="export-options">
+                            <button class="export-btn" onclick="exportPalette('hex')">Export HEX</button>
+                            <button class="export-btn" onclick="exportPalette('rgb')">Export RGB</button>
+                            <button class="export-btn" onclick="exportPalette('hsl')">Export HSL</button>
+                            <button class="export-btn" onclick="exportPalette('css')">Export CSS</button>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

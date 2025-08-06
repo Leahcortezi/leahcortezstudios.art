@@ -1,6 +1,6 @@
 // Resources Page Interactive Features
 
-console.log("🎨 Creative Block Toolkit loaded!");
+console.log("🎨 Creative Block Toolkit loaded! v2.0");
 
 // Data arrays for generators
 const objects = [
@@ -359,6 +359,24 @@ if ('DeviceMotionEvent' in window) {
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🎨 Creative Block Toolkit ready!');
+    
+    // Test modal system
+    console.log('Testing modal system...');
+    const colorModal = document.getElementById('colorTheoryModal');
+    const overlay = document.querySelector('.modal-overlay');
+    console.log('Color modal found:', !!colorModal);
+    console.log('Overlay found:', !!overlay);
+    
+    // Test color palette inputs
+    const baseColor = document.getElementById('baseColor');
+    const colorScheme = document.getElementById('colorScheme');
+    const paletteDisplay = document.getElementById('paletteDisplay');
+    const accessibilityReport = document.getElementById('accessibilityReport');
+    
+    console.log('Base color input found:', !!baseColor);
+    console.log('Color scheme select found:', !!colorScheme);
+    console.log('Palette display found:', !!paletteDisplay);
+    console.log('Accessibility report found:', !!accessibilityReport);
     
     // Add some visual flair to page load
     const toolCards = document.querySelectorAll('.tool-card');
@@ -2117,58 +2135,681 @@ function generateReferenceCategory() {
 
 // Modal Management
 function openModal(modalId) {
+    console.log('Opening modal:', modalId);
+    
     const modal = document.getElementById(modalId);
     const overlay = document.querySelector('.modal-overlay');
     
-    if (modal && overlay) {
-        modal.style.display = 'block';
-        overlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+    if (!modal) {
+        console.error('Modal not found:', modalId);
+        return;
     }
+    
+    if (!overlay) {
+        console.error('Modal overlay not found');
+        return;
+    }
+    
+    // Close any currently open modals first
+    closeModal();
+    
+    // Show modal and overlay
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Initialize specific modal functionality
+    if (modalId === 'colorTheoryModal') {
+        initializeProfessionalPaletteMaker();
+    }
+    
+    console.log('Modal opened successfully:', modalId);
+    
+    // Add smooth entrance animation
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.transform = 'translateY(0)';
+    }, 10);
 }
 
 function closeModal() {
+    console.log('Closing modals');
+    
     const modals = document.querySelectorAll('.resource-modal');
     const overlay = document.querySelector('.modal-overlay');
     
-    modals.forEach(modal => modal.style.display = 'none');
-    if (overlay) overlay.style.display = 'none';
+    modals.forEach(modal => {
+        modal.style.display = 'none';
+        modal.style.opacity = '0';
+        modal.style.transform = 'translateY(-20px)';
+    });
+    
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+    
     document.body.style.overflow = 'auto';
 }
 
-// Color Theory Palette Maker
-function generateColorTheoryPalette() {
-    const baseColor = document.getElementById('baseColor').value;
-    const schemeType = document.getElementById('colorScheme').value;
-    const paletteDisplay = document.getElementById('paletteDisplay');
-    const accessibilityReport = document.getElementById('accessibilityReport');
+// Professional Color Palette Maker - New Workflow
+// Global variables for palette maker
+let selectedSignatureColor = '#e74c3c';
+let selectedColorTheory = 'monochromatic';
+let selectedMood = 'balanced';
+let paletteSize = 5;
+let currentPalette = [];
+let lockedColors = new Set();
+let wcagLevel = 'AA';
+let currentWCAGLevel = 'AA';
+
+// Color name database (simplified)
+const colorNames = {
+    '#e74c3c': 'Alizarin', '#3498db': 'Dodger Blue', '#2ecc71': 'Emerald',
+    '#f39c12': 'Orange', '#9b59b6': 'Amethyst', '#1abc9c': 'Turquoise',
+    '#e67e22': 'Carrot', '#34495e': 'Wet Asphalt'
+};
+
+// Step 1: Signature Color Functions
+function updateSignatureColor() {
+    const colorPicker = document.getElementById('signatureColor');
+    selectedSignatureColor = colorPicker.value;
     
-    if (!baseColor) return;
+    // Update preview
+    const preview = document.getElementById('signatureColorPreview');
+    preview.style.background = selectedSignatureColor;
     
-    const colors = generateColorScheme(baseColor, schemeType);
+    // Update color info
+    updateColorInfo(selectedSignatureColor);
     
-    // Display palette
-    paletteDisplay.innerHTML = '<h4>Generated Palette:</h4>';
-    colors.forEach((color, index) => {
-        const swatch = document.createElement('div');
-        swatch.className = 'color-swatch-large';
-        swatch.style.backgroundColor = color;
-        swatch.title = color;
-        swatch.onclick = () => copyToClipboard(color);
+    console.log('Signature color updated:', selectedSignatureColor);
+}
+
+function setSignatureColor(color) {
+    selectedSignatureColor = color;
+    document.getElementById('signatureColor').value = color;
+    
+    // Update preview
+    const preview = document.getElementById('signatureColorPreview');
+    preview.style.background = color;
+    
+    // Update color info
+    updateColorInfo(color);
+    
+    console.log('Signature color set:', color);
+}
+
+function updateColorInfo(color) {
+    const hexValue = document.querySelector('.hex-value');
+    const colorName = document.querySelector('.color-name');
+    
+    hexValue.textContent = color.toUpperCase();
+    colorName.textContent = colorNames[color] || getColorName(color);
+}
+
+function getColorName(hex) {
+    // Simple color naming based on HSL values
+    const hsl = hexToHsl(hex);
+    const hue = hsl.h;
+    const sat = hsl.s;
+    const light = hsl.l;
+    
+    if (sat < 0.1) return light > 0.8 ? 'Light Gray' : light < 0.2 ? 'Dark Gray' : 'Gray';
+    
+    if (hue < 30) return light > 0.6 ? 'Light Red' : 'Red';
+    if (hue < 60) return light > 0.6 ? 'Light Orange' : 'Orange';
+    if (hue < 120) return light > 0.6 ? 'Light Yellow' : 'Yellow';
+    if (hue < 180) return light > 0.6 ? 'Light Green' : 'Green';
+    if (hue < 240) return light > 0.6 ? 'Light Blue' : 'Blue';
+    if (hue < 300) return light > 0.6 ? 'Light Purple' : 'Purple';
+    return light > 0.6 ? 'Light Pink' : 'Pink';
+}
+
+// Step 2: Color Theory and Mood Functions
+function selectColorTheory(theory) {
+    selectedColorTheory = theory;
+    
+    // Update active button
+    document.querySelectorAll('.theory-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-theory="${theory}"]`).classList.add('active');
+    
+    console.log('Color theory selected:', theory);
+}
+
+function selectMood(mood) {
+    selectedMood = mood;
+    
+    // Update active button
+    document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-mood="${mood}"]`).classList.add('active');
+    
+    console.log('Mood selected:', mood);
+}
+
+function updatePaletteSize() {
+    const slider = document.getElementById('paletteSize');
+    paletteSize = parseInt(slider.value);
+    document.getElementById('sizeValue').textContent = `${paletteSize} colors`;
+    
+    console.log('Palette size updated:', paletteSize);
+}
+
+function generateBasePalette() {
+    currentPalette = generatePaletteFromSettings();
+    lockedColors.clear(); // Reset locks when generating new palette
+    
+    displayPalette();
+    generateContrastMatrix();
+    updateAccessibilityReport();
+    
+    // Show step 3
+    showStep(3);
+    
+    console.log('Base palette generated:', currentPalette);
+}
+
+function generatePaletteFromSettings() {
+    const baseColor = selectedSignatureColor;
+    let colors = [];
+    
+    switch (selectedColorTheory) {
+        case 'monochromatic':
+            colors = generateMonochromaticPalette(baseColor, paletteSize);
+            break;
+        case 'analogous':
+            colors = generateAnalogousPalette(baseColor, paletteSize);
+            break;
+        case 'complementary':
+            colors = generateComplementaryPalette(baseColor, paletteSize);
+            break;
+        case 'triadic':
+            colors = generateTriadicPalette(baseColor, paletteSize);
+            break;
+        case 'split-complementary':
+            colors = generateSplitComplementaryPalette(baseColor, paletteSize);
+            break;
+        case 'tetradic':
+            colors = generateTetradicPalette(baseColor, paletteSize);
+            break;
+    }
+    
+    // Apply mood adjustments
+    return applyMoodToPalette(colors, selectedMood);
+}
+
+// Color Theory Generation Functions
+function generateMonochromaticPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [];
+    
+    for (let i = 0; i < count; i++) {
+        const lightness = Math.max(0.1, Math.min(0.9, hsl.l + (i - Math.floor(count/2)) * 0.15));
+        colors.push(hslToHex(hsl.h, hsl.s, lightness));
+    }
+    
+    return colors;
+}
+
+function generateAnalogousPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [];
+    const range = 60; // degrees
+    
+    for (let i = 0; i < count; i++) {
+        const hueOffset = (i - Math.floor(count/2)) * (range / count);
+        const newHue = (hsl.h + hueOffset + 360) % 360;
+        colors.push(hslToHex(newHue, hsl.s, hsl.l));
+    }
+    
+    return colors;
+}
+
+function generateComplementaryPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const complement = (hsl.h + 180) % 360;
+    const colors = [baseColor];
+    
+    // Add complement and variations
+    colors.push(hslToHex(complement, hsl.s, hsl.l));
+    
+    // Fill remaining with tints and shades
+    for (let i = 2; i < count; i++) {
+        const useBase = i % 2 === 0;
+        const targetHue = useBase ? hsl.h : complement;
+        const lightness = Math.max(0.1, Math.min(0.9, hsl.l + (Math.random() - 0.5) * 0.4));
+        colors.push(hslToHex(targetHue, hsl.s, lightness));
+    }
+    
+    return colors;
+}
+
+function generateTriadicPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [baseColor];
+    
+    // Add triadic colors
+    colors.push(hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l));
+    colors.push(hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l));
+    
+    // Fill remaining with variations
+    for (let i = 3; i < count; i++) {
+        const baseIndex = i % 3;
+        const baseHue = [hsl.h, (hsl.h + 120) % 360, (hsl.h + 240) % 360][baseIndex];
+        const lightness = Math.max(0.2, Math.min(0.8, hsl.l + (Math.random() - 0.5) * 0.3));
+        colors.push(hslToHex(baseHue, hsl.s, lightness));
+    }
+    
+    return colors;
+}
+
+function generateSplitComplementaryPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [baseColor];
+    
+    // Add split complementary colors
+    colors.push(hslToHex((hsl.h + 150) % 360, hsl.s, hsl.l));
+    colors.push(hslToHex((hsl.h + 210) % 360, hsl.s, hsl.l));
+    
+    // Fill remaining
+    for (let i = 3; i < count; i++) {
+        const hues = [hsl.h, (hsl.h + 150) % 360, (hsl.h + 210) % 360];
+        const targetHue = hues[i % 3];
+        const lightness = Math.max(0.2, Math.min(0.8, hsl.l + (Math.random() - 0.5) * 0.3));
+        colors.push(hslToHex(targetHue, hsl.s * 0.8, lightness));
+    }
+    
+    return colors;
+}
+
+function generateTetradicPalette(baseColor, count) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [baseColor];
+    
+    // Add tetradic colors
+    colors.push(hslToHex((hsl.h + 90) % 360, hsl.s, hsl.l));
+    colors.push(hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+    colors.push(hslToHex((hsl.h + 270) % 360, hsl.s, hsl.l));
+    
+    // Fill remaining with variations
+    for (let i = 4; i < count; i++) {
+        const baseIndex = i % 4;
+        const baseHue = [hsl.h, (hsl.h + 90) % 360, (hsl.h + 180) % 360, (hsl.h + 270) % 360][baseIndex];
+        const lightness = Math.max(0.2, Math.min(0.8, hsl.l + (Math.random() - 0.5) * 0.2));
+        colors.push(hslToHex(baseHue, hsl.s * 0.9, lightness));
+    }
+    
+    return colors;
+}
+
+// Mood Application Functions
+function applyMoodToPalette(colors, mood) {
+    return colors.map(color => {
+        const hsl = hexToHsl(color);
         
-        const label = document.createElement('div');
-        label.textContent = color;
-        label.style.cssText = 'text-align: center; font-size: 0.8rem; margin-top: 5px; color: white;';
+        switch (mood) {
+            case 'vibrant':
+                return hslToHex(hsl.h, Math.min(1, hsl.s * 1.2), hsl.l);
+            case 'muted':
+                return hslToHex(hsl.h, hsl.s * 0.6, hsl.l);
+            case 'dark':
+                return hslToHex(hsl.h, hsl.s, Math.max(0.1, hsl.l * 0.7));
+            case 'light':
+                return hslToHex(hsl.h, hsl.s * 0.8, Math.min(0.9, hsl.l * 1.3));
+            case 'warm':
+                const warmHue = hsl.h < 180 ? hsl.h : Math.max(0, hsl.h - 20);
+                return hslToHex(warmHue, hsl.s, hsl.l);
+            case 'cool':
+                const coolHue = hsl.h > 180 ? hsl.h : Math.min(360, hsl.h + 20);
+                return hslToHex(coolHue, hsl.s, hsl.l);
+            case 'balanced':
+            default:
+                return color;
+        }
+    });
+}
+
+// Step 3: Palette Display and Refinement Functions
+function displayPalette() {
+    const container = document.getElementById('paletteDisplay');
+    
+    if (!currentPalette.length) {
+        container.innerHTML = '<div style="text-align: center; padding: 40px; opacity: 0.7;">Generate a palette to see colors here</div>';
+        return;
+    }
+    
+    const colorsHtml = currentPalette.map((color, index) => `
+        <div class="palette-color-item">
+            <div class="color-swatch" style="background: ${color}" onclick="copyColorToClipboard('${color}')">
+                <button class="lock-toggle ${lockedColors.has(index) ? 'locked' : ''}" 
+                        onclick="toggleColorLock(${index})" 
+                        title="${lockedColors.has(index) ? 'Unlock' : 'Lock'} color">
+                    ${lockedColors.has(index) ? '🔒' : '🔓'}
+                </button>
+            </div>
+            <div class="color-hex">${color.toUpperCase()}</div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = `
+        <div class="palette-colors">${colorsHtml}</div>
+        <div style="text-align: center; margin-top: 10px; font-size: 0.85rem; opacity: 0.8;">
+            Click colors to copy • Use locks to preserve colors during randomization
+        </div>
+    `;
+}
+
+function toggleColorLock(index) {
+    event.stopPropagation(); // Prevent color copy
+    
+    if (lockedColors.has(index)) {
+        lockedColors.delete(index);
+    } else {
+        lockedColors.add(index);
+    }
+    
+    displayPalette(); // Refresh display to update lock buttons
+    console.log('Toggled lock for color', index, 'Locked colors:', Array.from(lockedColors));
+}
+
+function lockAllColors() {
+    lockedColors.clear();
+    for (let i = 0; i < currentPalette.length; i++) {
+        lockedColors.add(i);
+    }
+    displayPalette();
+    console.log('All colors locked');
+}
+
+function unlockAllColors() {
+    lockedColors.clear();
+    displayPalette();
+    console.log('All colors unlocked');
+}
+
+function randomizeTintsShades() {
+    const adjustTints = document.getElementById('adjustTints').checked;
+    const adjustShades = document.getElementById('adjustShades').checked;
+    const adjustSaturation = document.getElementById('adjustSaturation').checked;
+    
+    currentPalette = currentPalette.map((color, index) => {
+        if (lockedColors.has(index)) return color; // Skip locked colors
         
-        const container = document.createElement('div');
-        container.style.cssText = 'display: inline-block; margin: 10px; text-align: center;';
-        container.appendChild(swatch);
-        container.appendChild(label);
-        paletteDisplay.appendChild(container);
+        const hsl = hexToHsl(color);
+        let newHsl = { ...hsl };
+        
+        if (adjustTints && Math.random() > 0.5) {
+            newHsl.l = Math.min(0.9, newHsl.l + Math.random() * 0.2);
+        }
+        
+        if (adjustShades && Math.random() > 0.5) {
+            newHsl.l = Math.max(0.1, newHsl.l - Math.random() * 0.2);
+        }
+        
+        if (adjustSaturation) {
+            const variation = (Math.random() - 0.5) * 0.3;
+            newHsl.s = Math.max(0, Math.min(1, newHsl.s + variation));
+        }
+        
+        return hslToHex(newHsl.h, newHsl.s, newHsl.l);
     });
     
-    // Generate accessibility report
-    generateAccessibilityReport(colors, accessibilityReport);
+    displayPalette();
+    generateContrastMatrix();
+    updateAccessibilityReport();
+    
+    console.log('Randomized unlocked colors:', currentPalette);
+}
+
+// Step 3: Accessibility Testing
+function setWCAGLevel(level) {
+    currentWCAGLevel = level;
+    
+    // Update active button
+    document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    generateContrastMatrix();
+    
+    console.log('WCAG level set to:', level);
+}
+
+function generateContrastMatrix() {
+    if (currentPalette.length === 0) return;
+    
+    const matrix = document.getElementById('contrastMatrix');
+    matrix.innerHTML = '<h4 style="color: #f8c8d0; margin-bottom: 15px;">🔍 Contrast Matrix</h4>';
+    
+    // Create matrix grid
+    const grid = document.createElement('div');
+    grid.style.cssText = 'display: grid; grid-template-columns: 60px repeat(' + currentPalette.length + ', 1fr); gap: 5px; align-items: center;';
+    
+    // Add header row
+    grid.appendChild(createMatrixCell('', true, true));
+    currentPalette.forEach((color, index) => {
+        const cell = createMatrixCell('', true);
+        cell.style.background = color;
+        cell.style.borderRadius = '4px';
+        grid.appendChild(cell);
+    });
+    
+    // Add matrix rows
+    currentPalette.forEach((bgColor, rowIndex) => {
+        // Row header
+        const rowHeader = createMatrixCell('', true);
+        rowHeader.style.background = bgColor;
+        rowHeader.style.borderRadius = '4px';
+        grid.appendChild(rowHeader);
+        
+        // Contrast cells
+        currentPalette.forEach((textColor, colIndex) => {
+            const contrast = calculateContrast(bgColor, textColor);
+            const passes = passesWCAG(contrast, currentWCAGLevel);
+            
+            const cell = createMatrixCell(contrast.toFixed(1) + ':1');
+            cell.style.background = bgColor;
+            cell.style.color = textColor;
+            cell.style.border = `2px solid ${passes ? '#4CAF50' : '#F44336'}`;
+            cell.style.borderRadius = '4px';
+            cell.title = `${bgColor} on ${textColor}: ${contrast.toFixed(1)}:1 - ${passes ? 'PASS' : 'FAIL'} WCAG ${currentWCAGLevel}`;
+            
+            grid.appendChild(cell);
+        });
+    });
+    
+    matrix.appendChild(grid);
+    
+    // Generate detailed report
+    generateDetailedAccessibilityReport();
+}
+
+function createMatrixCell(text, isHeader = false, isEmpty = false) {
+    const cell = document.createElement('div');
+    cell.textContent = text;
+    cell.style.cssText = `
+        padding: 8px 4px;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: ${isHeader ? 'bold' : 'normal'};
+        min-height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        ${isEmpty ? 'visibility: hidden;' : ''}
+    `;
+    return cell;
+}
+
+function passesWCAG(contrast, level) {
+    const thresholds = { A: 3, AA: 4.5, AAA: 7 };
+    return contrast >= thresholds[level];
+}
+
+function generateDetailedAccessibilityReport() {
+    const report = document.getElementById('accessibilityReport');
+    
+    let passCount = 0;
+    let totalTests = 0;
+    const combinations = [];
+    
+    for (let i = 0; i < currentPalette.length; i++) {
+        for (let j = 0; j < currentPalette.length; j++) {
+            if (i !== j) {
+                const contrast = calculateContrast(currentPalette[i], currentPalette[j]);
+                const passes = passesWCAG(contrast, currentWCAGLevel);
+                
+                combinations.push({
+                    bg: currentPalette[i],
+                    text: currentPalette[j],
+                    contrast,
+                    passes
+                });
+                
+                if (passes) passCount++;
+                totalTests++;
+            }
+        }
+    }
+    
+    const scorePercentage = Math.round((passCount / totalTests) * 100);
+    
+    report.innerHTML = `
+        <div style="background: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 15px; margin-top: 15px;">
+            <h4 style="color: #f8c8d0; margin: 0 0 10px 0;">📊 Accessibility Score</h4>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                <div style="flex: 1; background: rgba(255,255,255,0.1); border-radius: 20px; height: 20px; overflow: hidden;">
+                    <div style="width: ${scorePercentage}%; height: 100%; background: linear-gradient(90deg, #f44336, #ff9800, #4caf50); transition: width 0.3s ease;"></div>
+                </div>
+                <div style="color: ${scorePercentage >= 70 ? '#4CAF50' : scorePercentage >= 40 ? '#FF9800' : '#F44336'}; font-weight: bold; font-size: 1.1rem;">
+                    ${scorePercentage}%
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; opacity: 0.9;">
+                ${passCount} of ${totalTests} combinations pass WCAG ${wcagLevel} (${passCount > 0 ? scorePercentage >= 70 ? 'Excellent!' : scorePercentage >= 40 ? 'Good' : 'Needs improvement' : 'Poor'})
+            </div>
+        </div>
+    `;
+}
+
+function updateAccessibilityReport() {
+    // This function is called to update the accessibility report
+    // It relies on generateContrastMatrix() which calls generateDetailedAccessibilityReport()
+    if (currentPalette.length > 0) {
+        generateContrastMatrix();
+    }
+}
+
+// Export Functions
+function exportPalette(format) {
+    let exportData = '';
+    
+    switch (format) {
+        case 'hex':
+            exportData = currentPalette.join('\n');
+            break;
+        case 'rgb':
+            exportData = currentPalette.map(color => {
+                const rgb = hexToRgb(color);
+                return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            }).join('\n');
+            break;
+        case 'hsl':
+            exportData = currentPalette.map(color => {
+                const hsl = hexToHsl(color);
+                return `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s * 100)}%, ${Math.round(hsl.l * 100)}%)`;
+            }).join('\n');
+            break;
+        case 'css':
+            exportData = ':root {\n' + currentPalette.map((color, index) => {
+                return `  --color-${index + 1}: ${color};`;
+            }).join('\n') + '\n}';
+            break;
+    }
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(exportData).then(() => {
+        showExportFeedback(format);
+    });
+}
+
+function showExportFeedback(format) {
+    const feedback = document.createElement('div');
+    feedback.textContent = `${format.toUpperCase()} palette exported to clipboard!`;
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        z-index: 10001;
+        font-weight: bold;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    `;
+    
+    document.body.appendChild(feedback);
+    setTimeout(() => {
+        document.body.removeChild(feedback);
+    }, 2000);
+}
+
+// Initialize the professional palette maker
+function initializeProfessionalPaletteMaker() {
+    // Reset to step 1
+    showStep(1);
+    
+    // Set default signature color
+    selectedSignatureColor = '#e74c3c';
+    document.getElementById('signatureColor').value = selectedSignatureColor;
+    updateSignatureColor();
+    
+    // Set default theory and mood
+    selectedColorTheory = 'monochromatic';
+    selectedMood = 'balanced';
+    paletteSize = 5;
+    
+    // Clear any existing palette and locks
+    currentPalette = [];
+    lockedColors.clear();
+    
+    console.log('Professional Color Palette Maker initialized with new workflow');
+}
+
+// Step Navigation Functions
+function showStep(stepNumber) {
+    // Hide all steps
+    document.querySelectorAll('.palette-step').forEach(step => {
+        step.classList.remove('active');
+    });
+    
+    // Show target step
+    const targetStep = document.getElementById(`step${stepNumber}`);
+    if (targetStep) {
+        targetStep.classList.add('active');
+        console.log('Showing step:', stepNumber);
+    }
+}
+
+function nextStep() {
+    // Find current active step
+    const activeStep = document.querySelector('.palette-step.active');
+    if (activeStep) {
+        const currentStepNum = parseInt(activeStep.id.replace('step', ''));
+        if (currentStepNum < 3) {
+            showStep(currentStepNum + 1);
+        }
+    }
+}
+
+function previousStep() {
+    // Find current active step
+    const activeStep = document.querySelector('.palette-step.active');
+    if (activeStep) {
+        const currentStepNum = parseInt(activeStep.id.replace('step', ''));
+        if (currentStepNum > 1) {
+            showStep(currentStepNum - 1);
+        }
+    }
 }
 
 function generateColorScheme(baseColor, schemeType) {
