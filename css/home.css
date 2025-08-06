@@ -1275,7 +1275,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 15px;
   border: 2px solid var(--burgundy);
   box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-  overflow: hidden;
+  overflow: auto;
   position: relative;
   z-index: 2;
 }
@@ -1447,7 +1447,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Questions */
 .quiz-questions {
-  min-height: 400px;
+  min-height: 500px;
+  overflow-y: auto;
 }
 
 .question-container {
@@ -1470,6 +1471,19 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   gap: 15px;
   margin-bottom: 40px;
+  grid-auto-rows: auto;
+}
+
+/* Option buttons - override quiz-btn white-space */
+.option-btn.quiz-btn {
+  white-space: normal !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
+  font-family: 'IM Fell English', serif !important;
+  font-size: 1.1rem !important;
+  padding: 20px 25px !important;
+  overflow: visible !important;
 }
 
 .option-btn {
@@ -1488,12 +1502,12 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  min-height: 60px;
+  min-height: auto;
+  height: auto;
   white-space: normal;
   text-align: left;
   width: 100%;
   box-sizing: border-box;
-  overflow: visible;
 }
 
 .option-btn::before {
