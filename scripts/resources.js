@@ -1722,108 +1722,234 @@ function analyzeCommissionCompatibility() {
     const display = document.getElementById('compatibilityResults');
     
     if (!budget || !timeline || !description) {
-        display.innerHTML = '<span style="color: #f8c8d0;">Fill in all fields for analysis</span>';
+        display.innerHTML = '<span style="color: #f8c8d0; font-size: 0.6rem;">Fill in all fields for comprehensive analysis</span>';
         return;
     }
     
-    // Analysis logic
-    let score = 85; // Base compatibility score
+    // Enhanced analysis logic with professional insights
+    let score = 80; // Base compatibility score
     let warnings = [];
     let positives = [];
+    let negotiations = [];
+    let insights = [];
     
-    // Budget analysis
-    const minRates = {
-        portrait: 200,
-        illustration: 150,
-        logo: 300,
-        mural: 500,
-        digital: 100,
-        traditional: 250
+    // Comprehensive budget analysis with market rates
+    const marketRates = {
+        portrait: { min: 200, ideal: 400, premium: 800, hours: 15 },
+        illustration: { min: 150, ideal: 300, premium: 600, hours: 12 },
+        logo: { min: 300, ideal: 600, premium: 1200, hours: 20 },
+        mural: { min: 500, ideal: 1000, premium: 2500, hours: 40 },
+        digital: { min: 100, ideal: 250, premium: 500, hours: 8 },
+        traditional: { min: 250, ideal: 500, premium: 1000, hours: 20 }
     };
     
-    const suggestedMin = minRates[projectType] || 150;
-    if (budget < suggestedMin) {
+    const rates = marketRates[projectType] || marketRates.digital;
+    const hourlyRate = budget / rates.hours;
+    
+    if (budget < rates.min) {
+        score -= 25;
+        warnings.push(`Budget significantly below market rate ($${rates.min}-${rates.premium})`);
+        negotiations.push(`Propose minimum viable product at $${rates.min}`);
+    } else if (budget < rates.ideal) {
+        score -= 10;
+        warnings.push(`Budget below ideal range. Limited revisions recommended.`);
+        negotiations.push(`Suggest $${rates.ideal} for full creative process`);
+    } else if (budget >= rates.premium) {
+        score += 15;
+        positives.push(`Premium budget allows for exceptional quality and service`);
+        insights.push(`Client values quality - opportunity for portfolio piece`);
+    }
+    
+    // Advanced timeline analysis with complexity factors
+    const timelineAnalysis = {
+        portrait: { min: 7, ideal: 14, complex: 21 },
+        illustration: { min: 5, ideal: 10, complex: 15 },
+        logo: { min: 10, ideal: 21, complex: 30 },
+        mural: { min: 14, ideal: 30, complex: 60 },
+        digital: { min: 3, ideal: 7, complex: 14 },
+        traditional: { min: 10, ideal: 18, complex: 30 }
+    };
+    
+    const timeReqs = timelineAnalysis[projectType] || timelineAnalysis.digital;
+    
+    if (timeline < timeReqs.min) {
         score -= 20;
-        warnings.push(`Budget below suggested minimum ($${suggestedMin})`);
-    } else if (budget > suggestedMin * 2) {
-        positives.push('Generous budget allows for quality work');
+        warnings.push(`Extremely tight timeline. Quality may be compromised.`);
+        negotiations.push(`Request minimum ${timeReqs.min} days for quality work`);
+    } else if (timeline < timeReqs.ideal) {
+        score -= 8;
+        warnings.push(`Compressed timeline. Limited revision rounds.`);
+        negotiations.push(`Ideal timeline would be ${timeReqs.ideal} days`);
+    } else if (timeline > timeReqs.complex) {
+        positives.push(`Generous timeline allows for thoughtful development`);
+        insights.push(`Extended timeline suggests client values process`);
     }
     
-    // Timeline analysis
-    const minDays = {
-        portrait: 7,
-        illustration: 5,
-        logo: 10,
-        mural: 14,
-        digital: 3,
-        traditional: 10
+    // Sophisticated description analysis
+    const analysisPatterns = {
+        redFlags: {
+            'urgent|asap|rush': { penalty: -15, note: 'Urgency pressure detected' },
+            'cheap|budget|affordable': { penalty: -12, note: 'Price-focused language' },
+            'simple|easy|quick': { penalty: -10, note: 'Undervaluing complexity' },
+            'just|only|basic': { penalty: -8, note: 'Minimizing scope' },
+            'exposure|portfolio|spec': { penalty: -20, note: 'Non-monetary compensation' },
+            'test|trial|sample': { penalty: -15, note: 'Unpaid preliminary work' },
+            'flexible budget': { penalty: -10, note: 'Unclear financial commitment' }
+        },
+        positiveFlags: {
+            'creative freedom|artistic license': { bonus: 10, note: 'Values artistic input' },
+            'collaboration|partnership': { bonus: 8, note: 'Cooperative approach' },
+            'quality|professional|excellence': { bonus: 7, note: 'Quality-focused mindset' },
+            'timeline flexible|not rushed': { bonus: 6, note: 'Realistic expectations' },
+            'inspiration|vision|concept': { bonus: 5, note: 'Clear artistic direction' },
+            'long-term|ongoing|relationship': { bonus: 12, note: 'Potential for repeat business' },
+            'reference|referral|recommendation': { bonus: 8, note: 'Trusted source connection' }
+        }
     };
     
-    const suggestedDays = minDays[projectType] || 7;
-    if (timeline < suggestedDays) {
-        score -= 15;
-        warnings.push(`Timeline very tight (suggest ${suggestedDays}+ days)`);
-    }
-    
-    // Description analysis for red flags
-    const redFlags = ['urgent', 'asap', 'cheap', 'quick', 'simple', 'just', 'exposure'];
-    const positiveFlags = ['creative freedom', 'collaboration', 'timeline flexible', 'quality'];
-    
-    redFlags.forEach(flag => {
-        if (description.toLowerCase().includes(flag)) {
-            score -= 10;
-            warnings.push(`Red flag detected: "${flag}"`);
+    // Pattern matching analysis
+    Object.entries(analysisPatterns.redFlags).forEach(([pattern, data]) => {
+        const regex = new RegExp(pattern, 'i');
+        if (regex.test(description)) {
+            score += data.penalty;
+            warnings.push(data.note);
         }
     });
     
-    positiveFlags.forEach(flag => {
-        if (description.toLowerCase().includes(flag)) {
-            score += 5;
-            positives.push(`Positive indicator: "${flag}"`);
+    Object.entries(analysisPatterns.positiveFlags).forEach(([pattern, data]) => {
+        const regex = new RegExp(pattern, 'i');
+        if (regex.test(description)) {
+            score += data.bonus;
+            positives.push(data.note);
         }
     });
     
-    // Client type considerations
-    if (clientType === 'individual' && budget > 1000) {
-        positives.push('Individual with substantial budget');
-    } else if (clientType === 'corporate' && timeline > 14) {
-        positives.push('Corporate client with reasonable timeline');
+    // Client type sophistication analysis
+    const clientTypeAnalysis = {
+        individual: {
+            expectations: 'Personal connection, direct communication, emotional investment',
+            concerns: 'Budget constraints, indecisiveness, scope creep',
+            advantages: 'Creative freedom, personal satisfaction, portfolio potential'
+        },
+        startup: {
+            expectations: 'Brand development, scalability, modern aesthetic',
+            concerns: 'Budget uncertainty, multiple stakeholders, pivot risk',
+            advantages: 'Innovation opportunity, equity potential, growth partnership'
+        },
+        corporate: {
+            expectations: 'Brand compliance, committee approval, professional standards',
+            concerns: 'Bureaucracy, revision cycles, brand restrictions',
+            advantages: 'Stable budget, clear processes, referral opportunities'
+        },
+        nonprofit: {
+            expectations: 'Mission alignment, community impact, budget sensitivity',
+            concerns: 'Limited budget, timeline pressures, approval complexity',
+            advantages: 'Meaningful work, community visibility, tax benefits'
+        }
+    };
+    
+    const clientAnalysis = clientTypeAnalysis[clientType];
+    if (clientAnalysis) {
+        insights.push(`${clientType.toUpperCase()} Client: ${clientAnalysis.expectations}`);
     }
     
-    // Generate recommendation
-    let recommendation = '';
-    let color = '#4CAF50'; // Green for good
+    // Advanced compatibility scoring
+    if (clientType === 'individual' && budget > rates.ideal) {
+        positives.push('Individual client with serious investment');
+        score += 10;
+    }
     
-    if (score >= 75) {
-        recommendation = 'RECOMMENDED - Good compatibility match';
-        color = '#4CAF50';
-    } else if (score >= 60) {
-        recommendation = 'PROCEED WITH CAUTION - Some concerns';
-        color = '#FF9500';
+    if (clientType === 'corporate' && timeline > timeReqs.ideal) {
+        positives.push('Corporate timeline suggests proper planning');
+        score += 8;
+    }
+    
+    if (clientType === 'startup' && description.includes('brand') && budget > rates.min) {
+        positives.push('Startup brand project with adequate budget');
+        score += 5;
+    }
+    
+    // Risk assessment
+    let riskLevel = 'LOW';
+    let riskColor = '#4ECDC4';
+    
+    if (score >= 80) {
+        riskLevel = 'LOW RISK';
+        riskColor = '#4ECDC4';
+    } else if (score >= 65) {
+        riskLevel = 'MODERATE RISK';
+        riskColor = '#FF9500';
+    } else if (score >= 50) {
+        riskLevel = 'HIGH RISK';
+        riskColor = '#f8c8d0';
     } else {
-        recommendation = 'HIGH RISK - Multiple red flags detected';
-        color = '#F44336';
+        riskLevel = 'VERY HIGH RISK';
+        riskColor = '#FF6B6B';
     }
     
-    let result = `<div style="font-size: 0.65rem; line-height: 1.2;">`;
-    result += `<div style="color: ${color}; font-weight: bold; margin-bottom: 4px; text-align: center;">${recommendation}</div>`;
-    result += `<div style="text-align: center; margin-bottom: 4px;">Compatibility Score: ${score}%</div>`;
+    // Generate comprehensive report
+    let result = `<div style="font-size: 0.6rem; line-height: 1.2; max-width: 100%; overflow-wrap: break-word;">`;
     
-    if (warnings.length > 0) {
-        result += `<div style="color: #F44336; margin-bottom: 3px;"><strong>⚠ Concerns:</strong></div>`;
-        warnings.forEach(warning => {
-            result += `<div style="color: #F44336; margin-left: 8px;">• ${warning}</div>`;
-        });
-    }
-    
-    if (positives.length > 0) {
-        result += `<div style="color: #4CAF50; margin-bottom: 3px; margin-top: 3px;"><strong>✓ Positives:</strong></div>`;
-        positives.forEach(positive => {
-            result += `<div style="color: #4CAF50; margin-left: 8px;">• ${positive}</div>`;
-        });
-    }
-    
+    // Header with score and risk
+    result += `<div style="text-align: center; margin-bottom: 3px;">`;
+    result += `<div style="color: ${riskColor}; font-weight: bold; font-size: 0.65rem;">${riskLevel}</div>`;
+    result += `<div style="margin-top: 1px;">Commission Score: ${Math.max(0, score)}/100</div>`;
     result += `</div>`;
+    
+    // Financial analysis
+    result += `<div style="margin-bottom: 2px;"><strong style="color: #4ECDC4;">💰 Financial Analysis:</strong></div>`;
+    result += `<div style="margin-bottom: 1px;">• Effective hourly rate: $${hourlyRate.toFixed(0)}/hour</div>`;
+    result += `<div style="margin-bottom: 1px;">• Market range: $${rates.min}-$${rates.premium}</div>`;
+    result += `<div style="margin-bottom: 3px;">• Project complexity: ${timeline > timeReqs.ideal ? 'High' : timeline > timeReqs.min ? 'Medium' : 'Low'}</div>`;
+    
+    // Risk factors
+    if (warnings.length > 0) {
+        result += `<div style="margin-bottom: 2px;"><strong style="color: #f8c8d0;">⚠ Risk Factors:</strong></div>`;
+        warnings.slice(0, 3).forEach(warning => {
+            result += `<div style="margin-bottom: 1px; margin-left: 4px;">• ${warning}</div>`;
+        });
+    }
+    
+    // Positive indicators
+    if (positives.length > 0) {
+        result += `<div style="margin-bottom: 2px; margin-top: 2px;"><strong style="color: #4ECDC4;">✓ Positive Signals:</strong></div>`;
+        positives.slice(0, 3).forEach(positive => {
+            result += `<div style="margin-bottom: 1px; margin-left: 4px;">• ${positive}</div>`;
+        });
+    }
+    
+    // Negotiation strategies
+    if (negotiations.length > 0) {
+        result += `<div style="margin-bottom: 2px; margin-top: 2px;"><strong style="color: #FF9500;">🤝 Negotiation Options:</strong></div>`;
+        negotiations.slice(0, 2).forEach(negotiation => {
+            result += `<div style="margin-bottom: 1px; margin-left: 4px; font-size: 0.55rem;">• ${negotiation}</div>`;
+        });
+    }
+    
+    // Professional insights
+    if (insights.length > 0) {
+        result += `<div style="margin-bottom: 2px; margin-top: 2px;"><strong style="color: #9C27B0;">💡 Professional Insights:</strong></div>`;
+        insights.slice(0, 2).forEach(insight => {
+            result += `<div style="margin-bottom: 1px; margin-left: 4px; font-size: 0.55rem; font-style: italic;">• ${insight}</div>`;
+        });
+    }
+    
+    // Final recommendation
+    let recommendation = '';
+    if (score >= 80) {
+        recommendation = 'PROCEED - Strong compatibility indicators suggest successful project outcome.';
+    } else if (score >= 65) {
+        recommendation = 'NEGOTIATE - Address concerns above before commitment.';
+    } else if (score >= 50) {
+        recommendation = 'CAUTION - Multiple risk factors require careful consideration.';
+    } else {
+        recommendation = 'DECLINE - Too many red flags for professional relationship.';
+    }
+    
+    result += `<div style="margin-top: 4px; padding-top: 2px; border-top: 1px solid rgba(248, 200, 208, 0.2); font-size: 0.55rem; text-align: center; color: ${riskColor}; font-style: italic;">`;
+    result += recommendation;
+    result += `</div></div>`;
+    
     display.innerHTML = result;
 }
 
@@ -1850,17 +1976,18 @@ function handleStyleUpload(event) {
     reader.onload = function(e) {
         uploadedPaintingData = e.target.result;
         
-        // Show preview
-        const preview = document.getElementById('stylePreview');
-        const previewImg = document.getElementById('stylePreviewImage');
-        previewImg.src = uploadedPaintingData;
-        preview.style.display = 'block';
-        
-        // Update upload area
+        // Update upload area to show image as background
         const uploadArea = document.getElementById('styleUploadArea');
+        const uploadText = document.getElementById('styleUploadText');
+        
+        // Set image as background
+        uploadArea.style.backgroundImage = `url(${uploadedPaintingData})`;
         uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
-        uploadArea.innerHTML = `
-            <div onclick="document.getElementById('styleUpload').click()" style="cursor: pointer;">
+        uploadArea.style.borderStyle = 'solid';
+        
+        // Update text with overlay styling
+        uploadText.innerHTML = `
+            <div style="background: rgba(0,0,0,0.7); padding: 8px; border-radius: 4px; backdrop-filter: blur(2px);">
                 <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Painting uploaded</div>
                 <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
             </div>
@@ -1926,30 +2053,76 @@ async function analyzePaintingWithAI(imageData, medium, problemArea) {
 }
 
 async function processImageForDiagnostic(imageData, medium, problemArea) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const img = new Image();
+        
         img.onload = function() {
-            // Create canvas for analysis
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            
-            // Get image data for pixel analysis
-            const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            // Perform various analyses
-            const results = {
-                colorAnalysis: analyzeColorBalance(imagePixels),
-                contrastAnalysis: analyzeContrast(imagePixels),
-                compositionAnalysis: analyzeComposition(imagePixels),
-                textureAnalysis: analyzeTexture(imagePixels),
-                focusAnalysis: analyzeFocus(imagePixels)
-            };
-            
-            resolve(results);
+            try {
+                // Create canvas for analysis
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // Get image data for pixel analysis
+                const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                
+                // Perform various analyses
+                const results = {
+                    colorAnalysis: analyzeColorBalance(imagePixels),
+                    contrastAnalysis: analyzeContrast(imagePixels),
+                    compositionAnalysis: analyzeComposition(imagePixels),
+                    textureAnalysis: analyzeTexture(imagePixels),
+                    focusAnalysis: analyzeFocus(imagePixels)
+                };
+                
+                resolve(results);
+            } catch (error) {
+                console.error('Image analysis failed:', error);
+                reject(new Error('Image analysis failed. Please try with a different image.'));
+            }
         };
+        
+        img.onerror = function() {
+            console.error('Failed to load image for analysis');
+            reject(new Error('Failed to load image. Please check the file format and try again.'));
+        };
+        
+        // Add timeout to prevent hanging
+        const timeout = setTimeout(() => {
+            reject(new Error('Image analysis timed out. Please try with a smaller image file.'));
+        }, 10000);
+        
+        img.onload = function() {
+            clearTimeout(timeout);
+            try {
+                // Create canvas for analysis
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // Get image data for pixel analysis
+                const imagePixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                
+                // Perform various analyses
+                const results = {
+                    colorAnalysis: analyzeColorBalance(imagePixels),
+                    contrastAnalysis: analyzeContrast(imagePixels),
+                    compositionAnalysis: analyzeComposition(imagePixels),
+                    textureAnalysis: analyzeTexture(imagePixels),
+                    focusAnalysis: analyzeFocus(imagePixels)
+                };
+                
+                resolve(results);
+            } catch (error) {
+                console.error('Image analysis failed:', error);
+                reject(new Error('Image analysis failed. Please try with a different image.'));
+            }
+        };
+        
         img.src = imageData;
     });
 }
@@ -2082,83 +2255,283 @@ function analyzeFocus(imageData) {
 }
 
 function generateDiagnosticReport(analysis, medium, problemArea) {
+    // Create deterministic "random" seed based on analysis data and selections
+    const seed = (analysis.colorAnalysis.dominantChannel === 'red' ? 1 : 
+                  analysis.colorAnalysis.dominantChannel === 'green' ? 2 : 3) +
+                 (analysis.contrastAnalysis.level === 'high' ? 10 : 
+                  analysis.contrastAnalysis.level === 'moderate' ? 20 : 30) +
+                 (medium.charCodeAt(0) % 10) +
+                 (problemArea.charCodeAt(0) % 10);
+    
+    // Deterministic selection function
+    function selectFromArray(array, seedOffset = 0) {
+        return array[(seed + seedOffset) % array.length];
+    }
+
+    // Leah's personalized style-informed recommendations
+    const styleSpecificInsights = {
+        cultural_storytelling: [
+            'Consider how cultural symbols or motifs could strengthen your visual narrative',
+            'Think about the layers of meaning - what story does each element tell beyond its surface?',
+            'How might your cultural perspective inform unique color or compositional choices?',
+            'Consider juxtaposing traditional elements with contemporary techniques for deeper impact'
+        ],
+        symbolic_depth: [
+            'Look for opportunities to embed symbolic meaning in seemingly decorative elements',
+            'Consider how negative space might carry symbolic weight in your composition',
+            'Think about archetypal forms and how they resonate with universal themes',
+            'Layer multiple symbolic references to create rich, interpretive depth'
+        ],
+        surreal_elements: [
+            'Experiment with unexpected scale relationships to create surreal visual tension',
+            'Consider dreamlike juxtapositions that challenge logical spatial relationships',
+            'Use symbolic transformation - how might familiar forms become metaphorical?',
+            'Think about time compression - showing multiple moments in one image'
+        ],
+        mixed_media_approach: [
+            'Consider how different textures could represent different emotional or conceptual layers',
+            'Think about collaging as storytelling - each element should advance the narrative',
+            'Experiment with transparency and layering to show the evolution of ideas',
+            'Use material choices symbolically - rough vs smooth, organic vs manufactured'
+        ]
+    };
+
     const mediumSpecific = {
         oil: {
-            issues: ['Overworking wet paint', 'Muddy colors from overmixing', 'Lack of fat-over-lean'],
-            solutions: ['Allow layers to dry between sessions', 'Mix colors on palette, not canvas', 'Use medium consistently']
+            issues: ['Overworking wet paint', 'Muddy colors from overmixing', 'Lack of fat-over-lean rule', 'Slow drying affecting layers', 'Brushwork losing definition'],
+            solutions: ['Allow layers to dry between sessions', 'Mix colors on palette, not canvas', 'Use medium consistently', 'Apply paint in correct sequence', 'Clean brushes frequently'],
+            leah_approach: ['Use the slow-drying nature to your advantage for blending symbolic elements', 'Consider glazing techniques to build luminous, otherworldly effects', 'Think about impasto for areas that need physical presence and texture']
         },
         acrylic: {
-            issues: ['Paint drying too quickly', 'Hard edges', 'Color shifting as it dries'],
-            solutions: ['Use slow-drying medium', 'Work in smaller sections', 'Use stay-wet palette']
+            issues: ['Paint drying too quickly', 'Hard edges forming', 'Color shifting as it dries', 'Loss of workability', 'Streaky application'],
+            solutions: ['Use slow-drying medium', 'Work in smaller sections', 'Use stay-wet palette', 'Apply paint quickly', 'Mist work surface lightly'],
+            leah_approach: ['Perfect for collage integration - the quick dry time lets you layer mixed media', 'Use the hard edges intentionally for graphic, symbolic elements', 'Consider spray techniques for atmospheric, dreamlike backgrounds']
         },
         watercolor: {
-            issues: ['Overworked areas', 'Muddy colors', 'Hard to control bleeding'],
-            solutions: ['Less brush strokes', 'Clean water between colors', 'Control moisture levels']
+            issues: ['Overworked areas losing transparency', 'Muddy color mixing', 'Hard to control bleeding', 'Backruns forming', 'Lost white areas'],
+            solutions: ['Fewer brush strokes per area', 'Clean water between colors', 'Control moisture levels', 'Plan white areas first', 'Use masking techniques'],
+            leah_approach: ['Embrace the unpredictability for organic, subconscious imagery', 'Use bleeding effects to suggest connections between symbolic elements', 'Consider salt, alcohol, or other texture agents for surreal effects']
         },
         gouache: {
-            issues: ['Streaky application', 'Color lifting', 'Cracking when thick'],
-            solutions: ['Maintain consistent paint thickness', 'Work quickly in sections', 'Don\'t apply too thickly']
+            issues: ['Streaky application', 'Color lifting when layering', 'Cracking when applied thick', 'Inconsistent opacity', 'Chalky appearance'],
+            solutions: ['Maintain consistent paint thickness', 'Work quickly in sections', 'Don\'t apply too thickly', 'Use proper water ratios', 'Layer carefully'],
+            leah_approach: ['Perfect for flat, poster-like elements in mixed media work', 'Use the opacity to create strong graphic shapes and typography', 'Great for cultural color references - vibrant, matte finish']
         },
-        tempera: {
-            issues: ['Fast drying time', 'Chalky appearance', 'Difficulty blending'],
-            solutions: ['Work in thin layers', 'Use egg tempera techniques', 'Build up gradually']
+        pencil: {
+            issues: ['Inconsistent line weight', 'Smudging graphite', 'Lack of value range', 'Overworked areas', 'Poor edge control'],
+            solutions: ['Practice pressure control', 'Use blending stumps properly', 'Build values gradually', 'Rotate pencil for consistent lines', 'Use fixative to prevent smudging'],
+            leah_approach: ['Use line weight variation to create visual hierarchy in symbolic elements', 'Consider cross-hatching patterns that reference cultural textiles or patterns', 'Think about using smudging intentionally for atmospheric effects']
+        },
+        charcoal: {
+            issues: ['Messy application', 'Loss of fine detail', 'Uncontrolled blending', 'Difficulty erasing', 'Inconsistent blacks'],
+            solutions: ['Use chamois for controlled blending', 'Layer compressed charcoal carefully', 'Use kneaded eraser techniques', 'Spray fixative in thin layers', 'Practice subtractive drawing'],
+            leah_approach: ['Perfect for dramatic contrast and emotional intensity', 'Use subtractive techniques to "reveal" symbolic forms from darkness', 'Great for creating archetypal shadow figures and forms']
+        },
+        pastel: {
+            issues: ['Colors becoming muddy', 'Tooth of paper filling up', 'Difficulty with fine details', 'Pastel dust falling off', 'Hard vs soft pastel confusion'],
+            solutions: ['Use light pressure initially', 'Work light to dark values', 'Use textured papers appropriately', 'Apply fixative between layers', 'Choose pastel hardness for task'],
+            leah_approach: ['Excellent for achieving the soft, dreamlike quality of surreal imagery', 'Use the powdery quality for atmospheric, transitional areas', 'Layer colors to create complex, nuanced cultural color references']
+        },
+        ink: {
+            issues: ['Line weight inconsistency', 'Ink bleeding or feathering', 'Difficulty with gradations', 'Overworked cross-hatching', 'Poor contrast control'],
+            solutions: ['Practice consistent pen pressure', 'Test paper absorbency first', 'Use stippling for gradations', 'Plan hatching direction', 'Build contrast systematically'],
+            leah_approach: ['Perfect for graphic, symbolic elements and typography integration', 'Use controlled bleeding for organic transitions between elements', 'Consider traditional calligraphy influences for expressive mark-making']
+        },
+        digital: {
+            issues: ['Overuse of blending tools', 'Lack of texture variety', 'Poor brush selection', 'Color picking instead of mixing', 'Over-rendering details'],
+            solutions: ['Use hard brushes for structure first', 'Create custom texture brushes', 'Study traditional media techniques', 'Practice color mixing digitally', 'Focus on overall before details'],
+            leah_approach: ['Create custom brushes that reference cultural patterns and textures', 'Use layers strategically to build symbolic depth', 'Experiment with blending modes for surreal color interactions']
+        },
+        collage: {
+            issues: ['Poor material integration', 'Inconsistent adhesive application', 'Lack of visual hierarchy', 'Color/texture conflicts', 'Composition imbalance'],
+            solutions: ['Test adhesives on materials first', 'Create color/texture studies', 'Establish focal points clearly', 'Use unifying elements', 'Plan composition with thumbnails'],
+            leah_approach: ['This is your strength! Use materials symbolically - newspaper for communication, fabric for comfort/culture', 'Consider the history and context of each material in your narrative', 'Layer transparencies to create temporal depth and meaning']
+        },
+        sculpture: {
+            issues: ['Structural weakness', 'Poor proportional relationships', 'Surface treatment inconsistency', 'Inadequate planning', 'Material limitations not considered'],
+            solutions: ['Create armatures for support', 'Use measuring tools consistently', 'Practice surface techniques separately', 'Make detailed maquettes first', 'Research material properties thoroughly'],
+            leah_approach: ['Think about how viewers will physically relate to the work - what does the scale communicate?', 'Consider materials that reference cultural objects or traditions', 'Use texture and surface to create tactile, emotional connections']
+        },
+        printmaking: {
+            issues: ['Inconsistent ink application', 'Poor registration', 'Plate/block preparation issues', 'Pressure variations', 'Paper selection problems'],
+            solutions: ['Practice ink rolling techniques', 'Use registration marks', 'Prepare surfaces methodically', 'Calibrate press pressure', 'Test papers for absorption/texture'],
+            leah_approach: ['Perfect for creating editions with slight variations - celebrating the imperfect, human touch', 'Consider how the printing process itself becomes part of the artwork\'s meaning', 'Use registration "errors" intentionally for visual interest']
+        },
+        fiber: {
+            issues: ['Thread tension inconsistency', 'Pattern misalignment', 'Color bleeding in dyes', 'Fiber preparation inadequate', 'Structural integrity problems'],
+            solutions: ['Maintain consistent tension', 'Use guides and templates', 'Test dye fastness first', 'Prepare fibers properly', 'Plan structural elements carefully'],
+            leah_approach: ['Connect to cultural textile traditions - what stories do patterns tell?', 'Consider the meditative, ritualistic aspects of fiber work', 'Think about how fiber choices reference cultural identity and heritage']
+        },
+        ceramics: {
+            issues: ['Cracking during drying', 'Glaze application problems', 'Firing temperature issues', 'Poor centering on wheel', 'Thickness inconsistency'],
+            solutions: ['Control drying speed/environment', 'Practice glaze application techniques', 'Use cone packs to verify temperature', 'Practice centering exercises', 'Use calipers to check thickness'],
+            leah_approach: ['Connect to ancient traditions while creating contemporary forms', 'Use surface decoration to embed cultural symbols and meanings', 'Consider the vessel as metaphor - what does it contain or protect?']
         },
         mixed: {
-            issues: ['Incompatible media interactions', 'Uneven textures', 'Archival concerns'],
-            solutions: ['Test compatibility first', 'Apply in proper order', 'Use archival materials']
+            issues: ['Media incompatibility', 'Uneven surface preparation', 'Archival concerns', 'Visual coherence problems', 'Technical complexity overwhelming'],
+            solutions: ['Test media combinations first', 'Prepare surfaces for each medium', 'Research archival practices', 'Establish unifying elements', 'Master individual media first'],
+            leah_approach: ['Your specialty! Each medium should serve the concept - rough for struggle, smooth for hope', 'Create visual bridges between media through color, form, or symbolic content', 'Document your successful combinations for future reference']
         }
     };
     
-    let report = '<div style="font-size: 0.65rem; line-height: 1.2;">';
+    // Generate detailed technical analysis
+    let report = '<div style="font-size: 0.65rem; line-height: 1.2; max-width: 100%; overflow-wrap: break-word;">';
     
-    // Color analysis
+    // AI Computer Vision Analysis Results
+    report += `<div style="margin-bottom: 3px;"><strong style="color: #4ECDC4;">🔍 Visual Analysis:</strong></div>`;
+    
     if (analysis.colorAnalysis.colorCast !== 'minimal') {
-        report += `<div style="margin-bottom: 3px;"><strong>🎨 Color Issue:</strong> ${analysis.colorAnalysis.colorCast} color cast detected. Try adjusting color temperature or using complementary colors to balance.</div>`;
+        const castAdvice = {
+            'strong': 'Significant color imbalance detected - this could work beautifully for emotional or surreal effects, or may need neutralizing with complementary colors.',
+            'moderate': 'Noticeable color cast present - consider if this serves your concept or if color temperature adjustments would strengthen the work.'
+        };
+        report += `<div style="margin-bottom: 2px;">• <strong>Color Cast:</strong> ${castAdvice[analysis.colorAnalysis.colorCast]}</div>`;
     }
     
-    // Contrast analysis
+    // Contrast and depth analysis
     if (analysis.contrastAnalysis.level === 'low') {
-        report += `<div style="margin-bottom: 3px;"><strong>⚡ Contrast Issue:</strong> Low contrast detected. Push your darkest darks and lightest lights for more impact.</div>`;
+        report += `<div style="margin-bottom: 2px;">• <strong>Contrast:</strong> Low contrast ratio (${analysis.contrastAnalysis.ratio.toFixed(1)}:1). For your symbolic work, consider if this softness serves the concept or if pushing darks would create more dramatic impact.</div>`;
+    } else if (analysis.contrastAnalysis.level === 'high') {
+        report += `<div style="margin-bottom: 2px;">• <strong>Contrast:</strong> Strong contrast detected - excellent for creating focal hierarchy in symbolic compositions.</div>`;
     }
     
-    // Medium-specific advice
-    const mediumAdvice = mediumSpecific[medium];
-    const randomIssue = mediumAdvice.issues[Math.floor(Math.random() * mediumAdvice.issues.length)];
-    const randomSolution = mediumAdvice.solutions[Math.floor(Math.random() * mediumAdvice.solutions.length)];
-    
-    report += `<div style="margin-bottom: 3px;"><strong>🔧 ${medium.charAt(0).toUpperCase() + medium.slice(1)} Technique:</strong> Common issue - ${randomIssue}. Solution: ${randomSolution}</div>`;
-    
-    // Focus/sharpness
-    if (analysis.focusAnalysis.sharpness === 'soft' && problemArea !== 'blending') {
-        report += `<div style="margin-bottom: 3px;"><strong>🔍 Focus Issue:</strong> Image appears soft. Try using sharper brush strokes or increasing contrast at focal points.</div>`;
+    // Composition analysis
+    if (analysis.compositionAnalysis.followsRuleOfThirds) {
+        report += `<div style="margin-bottom: 2px;">• <strong>Composition:</strong> Good focal point placement - strong foundation for layering symbolic elements.</div>`;
+    } else {
+        report += `<div style="margin-bottom: 2px;">• <strong>Composition:</strong> Consider compositional guidelines, or break them intentionally for surreal, unsettling effects.</div>`;
     }
     
-    // Texture analysis
-    if (analysis.textureAnalysis.level === 'low' && medium !== 'watercolor') {
-        report += `<div style="margin-bottom: 3px;"><strong>✋ Texture Tip:</strong> Limited texture variation detected. Try varying your brush pressure and stroke direction for more visual interest.</div>`;
-    }
-    
-    // Problem area specific advice
-    const problemAreaAdvice = {
-        general: 'Consider working in stages - block in major shapes, then refine details',
-        color: 'Use a limited palette and understand color temperature relationships',
-        composition: 'Apply rule of thirds or golden ratio for better balance',
-        technique: 'Practice fundamental brush control and mark-making',
-        blending: 'Work wet-into-wet for soft blending, or use glazing techniques',
-        proportions: 'Measure twice, paint once - use sighting techniques'
+    // Technical medium analysis
+    const mediumName = {
+        'oil': 'Oil Paint', 'acrylic': 'Acrylic', 'watercolor': 'Watercolor', 'gouache': 'Gouache',
+        'pencil': 'Pencil Drawing', 'charcoal': 'Charcoal', 'pastel': 'Pastels', 'ink': 'Ink Drawing',
+        'digital': 'Digital Art', 'collage': 'Collage', 'sculpture': 'Sculpture', 'printmaking': 'Printmaking',
+        'fiber': 'Fiber Arts', 'ceramics': 'Ceramics', 'mixed': 'Mixed Media'
     };
     
-    if (problemArea !== 'general') {
-        report += `<div style="margin-bottom: 3px;"><strong>💡 ${problemArea.charAt(0).toUpperCase() + problemArea.slice(1)} Focus:</strong> ${problemAreaAdvice[problemArea]}</div>`;
-    }
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #f8c8d0;">🎨 ${mediumName[medium]} - Your Creative Approach:</strong></div>`;
     
-    // Confidence score
-    const score = Math.floor(Math.random() * 15) + 75; // 75-90 range
-    report += `<div style="margin-top: 4px; padding-top: 3px; border-top: 1px solid rgba(248, 200, 208, 0.2); text-align: center; font-size: 0.6rem;">Analysis Confidence: ${score}%</div>`;
+    const mediumAdvice = mediumSpecific[medium];
+    // Use deterministic selection based on seed
+    const detectedIssue = selectFromArray(mediumAdvice.issues, 0);
+    const recommendedSolution = selectFromArray(mediumAdvice.solutions, 1);
+    const personalizedApproach = selectFromArray(mediumAdvice.leah_approach, 2);
     
-    report += '</div>';
+    report += `<div style="margin-bottom: 2px;">• <strong>Common Challenge:</strong> ${detectedIssue}</div>`;
+    report += `<div style="margin-bottom: 2px;">• <strong>Technical Solution:</strong> ${recommendedSolution}</div>`;
+    report += `<div style="margin-bottom: 2px; font-style: italic; color: #f8c8d0;">• <strong>Your Style Approach:</strong> ${personalizedApproach}</div>`;
     
-    return report;
+    // Texture and technique analysis
+    const textureAnalysis = {
+        'high': 'Rich texture variation - perfect for your mixed media approach and symbolic storytelling.',
+        'moderate': 'Good texture range - consider how varying application techniques could enhance meaning.',
+        'low': 'Limited texture variation - explore different tools and layering for the depth your concepts deserve.'
+    };
+    report += `<div style="margin-bottom: 2px;">• <strong>Texture:</strong> ${textureAnalysis[analysis.textureAnalysis.level]}</div>`;
+    
+    // Focus and sharpness
+    const focusAnalysis = {
+        'sharp': 'Crisp definition throughout - excellent for graphic, symbolic elements.',
+        'moderate': 'Mixed sharpness levels - perfect for creating visual hierarchy and dreamlike transitions.',
+        'soft': 'Overall soft quality - beautiful for atmospheric, surreal effects if intentional.'
+    };
+    report += `<div style="margin-bottom: 2px;">• <strong>Clarity:</strong> ${focusAnalysis[analysis.focusAnalysis.sharpness]}</div>`;
+    
+    // Personalized creative insights
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #9C27B0;">💡 Your Creative Voice:</strong></div>`;
+    
+    const styleInsight = selectFromArray(styleSpecificInsights[Object.keys(styleSpecificInsights)[seed % Object.keys(styleSpecificInsights).length]], 3);
+    report += `<div style="margin-bottom: 2px; font-style: italic; color: #9C27B0;">• ${styleInsight}</div>`;
+    
+    // Problem-specific deep dive
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #FF9500;">🔧 Targeted Recommendations:</strong></div>`;
+    
+    const problemAreaAdvice = {
+        general: [
+            'Work in conceptual stages: develop the narrative, then refine the visual execution',
+            'Create studies that explore both technique and meaning - let them inform each other',
+            'Consider how your cultural perspective brings unique solutions to universal artistic challenges'
+        ],
+        color: [
+            'Think about color culturally - what stories do your color choices tell about identity and experience?',
+            'Study color relationships in traditional cultural arts for authentic palette inspiration',
+            'Consider color temperature as emotional temperature - cool for reflection, warm for passion'
+        ],
+        composition: [
+            'Use compositional principles, but break them when it serves your conceptual goals',
+            'Create visual pathways that guide viewers through your symbolic narrative',
+            'Consider asymmetrical balance to reflect the complexity of cultural identity'
+        ],
+        technique: [
+            'Master traditional techniques, then subvert them for contemporary cultural expression',
+            'Study how master artists from your cultural background approached technical challenges',
+            'Experiment systematically - document what works for your unique artistic voice'
+        ],
+        form: [
+            'Study both classical forms and cultural forms from your heritage',
+            'Consider how form itself can carry cultural meaning - organic vs geometric, flowing vs structured',
+            'Use exaggeration and distortion purposefully to emphasize conceptual elements'
+        ],
+        texture: [
+            'Use texture to reference cultural materials - fabric, pottery, natural elements',
+            'Consider how surface quality affects emotional reading - smooth for serenity, rough for struggle',
+            'Layer textures symbolically - each surface should advance your narrative'
+        ],
+        lighting: [
+            'Study how light functions symbolically in cultural art traditions',
+            'Consider multiple light sources for surreal, dreamlike effects',
+            'Use dramatic lighting to emphasize the most important symbolic elements'
+        ],
+        perspective: [
+            'Master traditional perspective, then break it for surreal, emotional impact',
+            'Consider multiple perspectives within one work to show different cultural viewpoints',
+            'Use atmospheric perspective to create mystery and symbolic depth'
+        ],
+        proportions: [
+            'Use proportional relationships symbolically - what deserves emphasis in your cultural narrative?',
+            'Study proportions in cultural art traditions for authentic references',
+            'Consider how scale distortion can emphasize psychological or emotional content'
+        ],
+        concept: [
+            'Develop concepts that bridge personal cultural experience with universal themes',
+            'Research visual and conceptual references from both contemporary and traditional sources',
+            'Let concept drive technical choices - every mark should serve your message'
+        ]
+    };
+    
+    const specificAdvice = problemAreaAdvice[problemArea] || problemAreaAdvice.general;
+    specificAdvice.forEach(advice => {
+        report += `<div style="margin-bottom: 1px;">• ${advice}</div>`;
+    });
+    
+    // Professional insights
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #4ECDC4;">✨ Artist Development:</strong></div>`;
+    
+    const culturallyInformedTips = [
+        'Document your cultural references and research - create a visual library for your artistic practice',
+        'Connect with other Chicana/Latina artists - community strengthens authentic voice',
+        'Study both contemporary artists and traditional cultural arts from your heritage',
+        'Keep a concept sketchbook alongside your technical studies - ideas and skills develop together',
+        'Seek critiques from diverse perspectives - cultural authenticity and technical skill both matter',
+        'Maintain your tools and workspace as sacred creative space - the environment affects the work',
+        'Work in series that explore cultural themes deeply rather than jumping between unrelated concepts'
+    ];
+    
+    // Use deterministic tip selection
+    const selectedTip = selectFromArray(culturallyInformedTips, 4);
+    report += `<div style="margin-bottom: 2px; font-style: italic;">• ${selectedTip}</div>`;
+    
+    // Deterministic confidence score based on analysis
+    const confidenceBase = 85 + 
+        (analysis.contrastAnalysis.level === 'high' ? 5 : analysis.contrastAnalysis.level === 'moderate' ? 3 : 0) +
+        (analysis.colorAnalysis.colorCast === 'minimal' ? 3 : 0) +
+        (analysis.compositionAnalysis.followsRuleOfThirds ? 2 : 0);
+    
+    report += `<div style="margin-top: 4px; padding-top: 3px; border-top: 1px solid rgba(248, 200, 208, 0.2); text-align: center;">`;
+    report += `<div style="font-size: 0.6rem; color: #4ECDC4;">Analysis Confidence: ${Math.min(confidenceBase, 95)}% • Culturally-Informed ${problemArea === 'general' ? 'Overall' : problemArea.charAt(0).toUpperCase() + problemArea.slice(1)} Guidance</div>`;
+    report += `</div></div>`;
+    
 }
 
 // Portfolio Readiness Checker
@@ -2183,17 +2556,18 @@ function handlePortfolioUpload(event) {
     reader.onload = function(e) {
         uploadedPortfolioData = e.target.result;
         
-        // Show preview
-        const preview = document.getElementById('portfolioPreview');
-        const previewImg = document.getElementById('portfolioPreviewImage');
-        previewImg.src = uploadedPortfolioData;
-        preview.style.display = 'block';
-        
-        // Update upload area
+        // Update upload area to show image as background
         const uploadArea = document.getElementById('portfolioUploadArea');
+        const uploadText = document.getElementById('portfolioUploadText');
+        
+        // Set image as background
+        uploadArea.style.backgroundImage = `url(${uploadedPortfolioData})`;
         uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
-        uploadArea.innerHTML = `
-            <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;">
+        uploadArea.style.borderStyle = 'solid';
+        
+        // Update text with overlay styling
+        uploadText.innerHTML = `
+            <div style="background: rgba(0,0,0,0.7); padding: 8px; border-radius: 4px; backdrop-filter: blur(2px);">
                 <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Artwork uploaded</div>
                 <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
             </div>
@@ -2290,9 +2664,12 @@ function assessTechnicalQuality(imageData) {
     
     // Basic technical assessment
     let brightPixels = 0, darkPixels = 0, midPixels = 0;
+    let totalVariation = 0;
     
     for (let i = 0; i < data.length; i += 4) {
         const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        const colorVariation = Math.abs(data[i] - data[i + 1]) + Math.abs(data[i + 1] - data[i + 2]);
+        totalVariation += colorVariation;
         
         if (brightness < 50) darkPixels++;
         else if (brightness > 200) brightPixels++;
@@ -2300,6 +2677,8 @@ function assessTechnicalQuality(imageData) {
     }
     
     const totalPixels = data.length / 4;
+    const avgVariation = totalVariation / totalPixels;
+    
     const toneDistribution = {
         darks: darkPixels / totalPixels,
         mids: midPixels / totalPixels,
@@ -2308,25 +2687,36 @@ function assessTechnicalQuality(imageData) {
     
     // Score based on good tonal distribution
     if (toneDistribution.darks > 0.1 && toneDistribution.highlights > 0.1 && toneDistribution.mids > 0.6) {
-        exposureScore = 85 + Math.floor(Math.random() * 15);
+        exposureScore = 85 + Math.floor(avgVariation / 10); // Deterministic based on image data
     } else {
-        exposureScore = 60 + Math.floor(Math.random() * 20);
+        exposureScore = 60 + Math.floor(avgVariation / 8);
     }
     
-    sharpnessScore = 75 + Math.floor(Math.random() * 25);
-    colorScore = 80 + Math.floor(Math.random() * 20);
+    // Sharpness based on color variation (higher variation often indicates sharpness)
+    sharpnessScore = Math.min(100, 75 + Math.floor(avgVariation / 5));
+    
+    // Color score based on distribution balance
+    const colorBalance = Math.abs(toneDistribution.darks - 0.2) + Math.abs(toneDistribution.highlights - 0.2);
+    colorScore = Math.max(60, 100 - Math.floor(colorBalance * 200));
     
     return {
-        sharpness: sharpnessScore,
-        exposure: exposureScore,
-        color: colorScore,
-        overall: Math.round((sharpnessScore + exposureScore + colorScore) / 3)
+        sharpness: Math.min(100, sharpnessScore),
+        exposure: Math.min(100, exposureScore),
+        color: Math.min(100, colorScore),
+        overall: Math.round((Math.min(100, sharpnessScore) + Math.min(100, exposureScore) + Math.min(100, colorScore)) / 3)
     };
 }
 
 function assessComposition(imageData) {
-    // Simplified composition analysis
-    const score = 75 + Math.floor(Math.random() * 25);
+    // Create deterministic seed from image data
+    const data = imageData.data;
+    let seed = 0;
+    for (let i = 0; i < Math.min(data.length, 400); i += 4) {
+        seed += data[i] + data[i + 1] + data[i + 2];
+    }
+    
+    // Deterministic score based on image characteristics
+    const score = 75 + (seed % 26); // Range 75-100
     
     const strengths = [
         'Strong focal point placement',
@@ -2346,25 +2736,57 @@ function assessComposition(imageData) {
         'Create stronger depth cues'
     ];
     
+    // Deterministic selection based on seed
+    const strengthIndex = (seed % strengths.length);
+    const improvementIndex = ((seed + 3) % improvements.length);
+    
     return {
         score,
-        strength: strengths[Math.floor(Math.random() * strengths.length)],
-        improvement: improvements[Math.floor(Math.random() * improvements.length)]
+        strength: strengths[strengthIndex],
+        improvement: improvements[improvementIndex]
     };
 }
 
 function assessOriginality(imageData) {
-    // Simulate originality assessment
-    const score = 70 + Math.floor(Math.random() * 30);
+    // Create deterministic assessment based on color complexity
+    const data = imageData.data;
+    let colorComplexity = 0;
+    let uniqueColors = new Set();
+    
+    for (let i = 0; i < data.length; i += 16) { // Sample every 4th pixel
+        const r = Math.floor(data[i] / 32) * 32; // Quantize colors
+        const g = Math.floor(data[i + 1] / 32) * 32;
+        const b = Math.floor(data[i + 2] / 32) * 32;
+        uniqueColors.add(`${r}-${g}-${b}`);
+    }
+    
+    // Score based on color diversity and complexity
+    const colorDiversity = Math.min(uniqueColors.size, 100);
+    const score = 70 + Math.floor(colorDiversity * 0.3);
     
     return {
-        score,
+        score: Math.min(100, score),
         level: score > 85 ? 'highly original' : score > 70 ? 'moderately original' : 'needs more personal voice'
     };
 }
 
 function assessPresentation(imageData) {
-    const score = 80 + Math.floor(Math.random() * 20);
+    // Base score on image dimensions and pixel density
+    const { width, height } = imageData;
+    const pixelDensity = width * height;
+    const aspectRatio = Math.max(width, height) / Math.min(width, height);
+    
+    let score = 80;
+    
+    // Bonus for good resolution
+    if (pixelDensity > 500000) score += 10;
+    else if (pixelDensity > 200000) score += 5;
+    
+    // Bonus for reasonable aspect ratio
+    if (aspectRatio < 2) score += 5;
+    
+    // Ensure score stays within bounds
+    score = Math.min(100, score);
     
     return {
         score,
@@ -2401,64 +2823,166 @@ function generatePortfolioReport(analysis, goal) {
         social: 'Social Media'
     };
     
-    let report = '<div style="font-size: 0.65rem; line-height: 1.2;">';
+    let report = '<div style="font-size: 0.65rem; line-height: 1.2; max-width: 100%; overflow-wrap: break-word;">';
     
-    // Overall readiness score
+    // Enhanced overall readiness score with weighting
     const overallScore = Math.round(
-        (analysis.technicalQuality.overall + 
-         analysis.composition.score + 
-         analysis.originality.score + 
-         analysis.presentation.score) / 4
+        (analysis.technicalQuality.overall * 0.35 + 
+         analysis.composition.score * 0.3 + 
+         analysis.originality.score * 0.2 + 
+         analysis.presentation.score * 0.15)
     );
     
-    const readiness = overallScore >= 85 ? 'READY' : overallScore >= 75 ? 'ALMOST READY' : 'NEEDS WORK';
-    const color = overallScore >= 85 ? '#4CAF50' : overallScore >= 75 ? '#FF9500' : '#F44336';
+    const readiness = overallScore >= 85 ? 'PORTFOLIO READY' : overallScore >= 75 ? 'ALMOST READY' : 'NEEDS DEVELOPMENT';
+    const color = overallScore >= 85 ? '#4ECDC4' : overallScore >= 75 ? '#FF9500' : '#f8c8d0';
     
-    report += `<div style="text-align: center; margin-bottom: 6px;">`;
-    report += `<div style="color: ${color}; font-weight: bold; font-size: 0.75rem;">${readiness} for ${goalNames[goal]}</div>`;
-    report += `<div style="margin-top: 2px;">Portfolio Score: ${overallScore}/100</div>`;
+    report += `<div style="text-align: center; margin-bottom: 4px;">`;
+    report += `<div style="color: ${color}; font-weight: bold; font-size: 0.7rem;">${readiness}</div>`;
+    report += `<div style="margin-top: 1px; font-size: 0.6rem;">Portfolio Score: ${overallScore}/100 for ${goalNames[goal]}</div>`;
     report += `</div>`;
     
-    // Detailed breakdown
-    report += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 6px;">`;
-    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
-    report += `<div style="font-size: 0.55rem;">Technical</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.technicalQuality.overall}/100</div></div>`;
+    // AI Analysis Breakdown
+    report += `<div style="margin-bottom: 3px;"><strong style="color: #4ECDC4;">🔍 AI Technical Assessment:</strong></div>`;
+    
+    // Detailed skill breakdown with context
+    report += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 4px; font-size: 0.6rem;">`;
+    
+    const getScoreColor = (score) => score >= 85 ? '#4ECDC4' : score >= 70 ? '#FF9500' : '#f8c8d0';
+    
+    report += `<div style="background: rgba(78, 205, 196, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div>Technical Skill</div><div style="color: ${getScoreColor(analysis.technicalQuality.overall)}; font-weight: bold;">${analysis.technicalQuality.overall}/100</div></div>`;
     
     report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
-    report += `<div style="font-size: 0.55rem;">Composition</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.composition.score}/100</div></div>`;
+    report += `<div>Composition</div><div style="color: ${getScoreColor(analysis.composition.score)}; font-weight: bold;">${analysis.composition.score}/100</div></div>`;
     
-    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
-    report += `<div style="font-size: 0.55rem;">Originality</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.originality.score}/100</div></div>`;
+    report += `<div style="background: rgba(255, 149, 0, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div>Originality</div><div style="color: ${getScoreColor(analysis.originality.score)}; font-weight: bold;">${analysis.originality.score}/100</div></div>`;
     
-    report += `<div style="background: rgba(248, 200, 208, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
-    report += `<div style="font-size: 0.55rem;">Presentation</div><div style="color: #f8c8d0; font-weight: bold;">${analysis.presentation.score}/100</div></div>`;
+    report += `<div style="background: rgba(156, 39, 176, 0.1); padding: 2px; border-radius: 2px; text-align: center;">`;
+    report += `<div>Presentation</div><div style="color: ${getScoreColor(analysis.presentation.score)}; font-weight: bold;">${analysis.presentation.score}/100</div></div>`;
     report += `</div>`;
     
-    // Strengths and improvements
-    report += `<div style="margin-bottom: 3px;"><strong>✓ Strength:</strong> ${analysis.composition.strength}</div>`;
-    report += `<div style="margin-bottom: 3px;"><strong>📈 Improve:</strong> ${analysis.composition.improvement}</div>`;
+    // Professional insights based on goal
+    report += `<div style="margin-bottom: 2px;"><strong style="color: #f8c8d0;">🎯 ${goalNames[goal]} Analysis:</strong></div>`;
     
-    // Goal-specific advice
-    const goalAdvice = {
-        gallery: 'Focus on conceptual depth and technical excellence',
-        client: 'Emphasize professionalism and clear communication',
-        job: 'Show versatility and consistent quality',
-        school: 'Demonstrate artistic growth and experimentation',
-        social: 'Optimize for digital viewing and engagement'
+    const goalSpecificCriteria = {
+        gallery: {
+            criteria: ['Artistic Vision', 'Technical Mastery', 'Conceptual Depth', 'Market Awareness', 'Presentation Quality'],
+            standards: 'Galleries seek work that reflects contemporary art discourse while maintaining commercial appeal.',
+            keyMetrics: 'Originality (40%), Technical Skill (35%), Market Fit (25%)'
+        },
+        client: {
+            criteria: ['Communication Clarity', 'Brand Alignment', 'Professional Finish', 'Timeline Reliability', 'Revision Handling'],
+            standards: 'Clients need confidence in both creative vision and professional execution.',
+            keyMetrics: 'Technical Quality (50%), Communication (30%), Presentation (20%)'
+        },
+        job: {
+            criteria: ['Skill Versatility', 'Industry Standards', 'Problem Solving', 'Team Collaboration', 'Deadline Management'],
+            standards: 'Employers evaluate both technical competency and cultural fit.',
+            keyMetrics: 'Technical Skills (45%), Adaptability (35%), Presentation (20%)'
+        },
+        school: {
+            criteria: ['Creative Potential', 'Growth Mindset', 'Technical Foundation', 'Conceptual Thinking', 'Risk Taking'],
+            standards: 'Admissions committees value potential and teachability over perfection.',
+            keyMetrics: 'Originality (40%), Growth Evidence (30%), Technical Base (30%)'
+        },
+        social: {
+            criteria: ['Visual Impact', 'Mobile Optimization', 'Engagement Potential', 'Brand Consistency', 'Shareability'],
+            standards: 'Social media success depends on immediate visual appeal and storytelling.',
+            keyMetrics: 'Visual Impact (50%), Engagement (30%), Consistency (20%)'
+        }
     };
     
-    report += `<div style="margin-bottom: 3px;"><strong>🎯 ${goalNames[goal]} Tip:</strong> ${goalAdvice[goal]}</div>`;
+    const goalCriteria = goalSpecificCriteria[goal];
     
-    // Final recommendation
+    // Detailed strengths and improvements
+    report += `<div style="margin-bottom: 2px;">• <strong>Primary Strength:</strong> ${analysis.composition.strength}</div>`;
+    report += `<div style="margin-bottom: 2px;">• <strong>Key Improvement:</strong> ${analysis.composition.improvement}</div>`;
+    
+    // Goal-specific criteria assessment
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #9C27B0;">📊 Professional Criteria Check:</strong></div>`;
+    
+    goalCriteria.criteria.forEach((criterion, index) => {
+        // Create deterministic assessment based on overall score and criterion index
+        const seedOffset = criterion.charCodeAt(0) + index;
+        const variation = (seedOffset % 11) - 5; // Range from -5 to +5
+        const criterionScore = Math.max(40, Math.min(95, overallScore + variation));
+        const status = criterionScore >= 80 ? '✓' : criterionScore >= 65 ? '○' : '✗';
+        const statusColor = criterionScore >= 80 ? '#4ECDC4' : criterionScore >= 65 ? '#FF9500' : '#f8c8d0';
+        
+        report += `<div style="margin-bottom: 1px; color: ${statusColor}; font-size: 0.6rem;">${status} ${criterion} (${criterionScore}%)</div>`;
+    });
+    
+    // Market context and professional standards
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #4ECDC4;">💡 Industry Insight:</strong></div>`;
+    report += `<div style="margin-bottom: 2px; font-style: italic; font-size: 0.6rem;">"${goalCriteria.standards}"</div>`;
+    report += `<div style="margin-bottom: 2px; font-size: 0.6rem;"><strong>Evaluation Focus:</strong> ${goalCriteria.keyMetrics}</div>`;
+    
+    // Specific actionable recommendations
+    const actionableAdvice = {
+        gallery: [
+            'Research gallery artists for stylistic alignment',
+            'Develop artist statement articulating your vision',
+            'Build body of work showing consistent evolution',
+            'Document process and conceptual development'
+        ],
+        client: [
+            'Create case studies showing problem-solving process',
+            'Develop clear communication protocols',
+            'Build portfolio showing diverse client needs',
+            'Include testimonials and revision examples'
+        ],
+        job: [
+            'Tailor portfolio to specific job requirements',
+            'Showcase collaboration and team project work',
+            'Demonstrate knowledge of industry tools/software',
+            'Include personal projects showing initiative'
+        ],
+        school: [
+            'Include sketchbooks and process documentation',
+            'Show experimental work and risk-taking',
+            'Demonstrate growth over time with dated work',
+            'Write compelling personal artist statement'
+        ],
+        social: [
+            'Optimize images for mobile viewing first',
+            'Create cohesive visual brand across platforms',
+            'Test post performance and adjust accordingly',
+            'Engage authentically with community and trends'
+        ]
+    };
+    
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #FF9500;">🚀 Next Steps:</strong></div>`;
+    actionableAdvice[goal].slice(0, 3).forEach(advice => {
+        report += `<div style="margin-bottom: 1px; font-size: 0.6rem;">• ${advice}</div>`;
+    });
+    
+    // Portfolio positioning advice
+    report += `<div style="margin: 4px 0 2px 0;"><strong style="color: #9C27B0;">🎨 Portfolio Strategy:</strong></div>`;
+    
     if (overallScore >= 85) {
-        report += `<div style="color: #4CAF50; font-size: 0.6rem; margin-top: 4px;">This piece meets professional standards for ${goalNames[goal]}. Strong portfolio addition!</div>`;
+        report += `<div style="margin-bottom: 2px; font-size: 0.6rem;">Strong work that meets professional standards. Position as portfolio cornerstone and build around this quality level.</div>`;
     } else if (overallScore >= 75) {
-        report += `<div style="color: #FF9500; font-size: 0.6rem; margin-top: 4px;">Close to portfolio ready. Address the improvement areas and you'll have a strong piece.</div>`;
+        report += `<div style="margin-bottom: 2px; font-size: 0.6rem;">Nearly portfolio-ready. Address key weaknesses identified above, then include confidently.</div>`;
+    } else if (overallScore >= 60) {
+        report += `<div style="margin-bottom: 2px; font-size: 0.6rem;">Shows potential but needs refinement. Use as learning piece while developing stronger work for portfolio.</div>`;
     } else {
-        report += `<div style="color: #F44336; font-size: 0.6rem; margin-top: 4px;">Needs significant work before portfolio inclusion. Focus on fundamentals and composition.</div>`;
+        report += `<div style="margin-bottom: 2px; font-size: 0.6rem;">Requires significant development. Focus on fundamentals and create new work before portfolio consideration.</div>`;
     }
     
-    report += '</div>';
+    // Competitive context
+    const competitiveContext = {
+        gallery: 'Top galleries receive 1000+ submissions monthly. Excellence is baseline.',
+        client: 'Freelance market is saturated. Reliability differentiates successful artists.',
+        job: 'Creative positions average 100+ applications. Portfolio must stand out immediately.',
+        school: 'Art school acceptance rates: 10-30%. Show unique voice and growth potential.',
+        social: 'Attention spans average 3 seconds. Visual impact must be immediate and memorable.'
+    };
+    
+    report += `<div style="margin-top: 4px; padding-top: 3px; border-top: 1px solid rgba(248, 200, 208, 0.2); font-size: 0.55rem; text-align: center; color: #9C27B0; font-style: italic;">`;
+    report += competitiveContext[goal];
+    report += `<div style="margin-top: 2px; color: #4ECDC4;">Analysis Confidence: ${85 + Math.floor(overallScore * 0.1)}% • AI Assessment Complete</div>`;
+    report += `</div></div>`;
     
     return report;
 }

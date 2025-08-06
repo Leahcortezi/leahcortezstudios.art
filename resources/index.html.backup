@@ -173,6 +173,110 @@
 
                     <!-- Drying Time Calculator -->
                     <div class="tool-card">
+                        <h3>3D Unit Converter</h3>
+                        <p>Convert between different 3D modeling units, calculate volumes, and estimate material costs</p>
+                        <div class="generator-display" id="3dConverter" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <input type="number" id="3dLength" placeholder="Length" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="3dWidth" placeholder="Width" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="3dHeight" placeholder="Height" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                </div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <select id="3dFromUnit" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="mm">Millimeters</option>
+                                        <option value="cm">Centimeters</option>
+                                        <option value="in" selected>Inches</option>
+                                        <option value="ft">Feet</option>
+                                        <option value="units">Generic Units</option>
+                                    </select>
+                                    <select id="materialType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="none">No Material</option>
+                                        <option value="pla">PLA Filament</option>
+                                        <option value="abs">ABS Filament</option>
+                                        <option value="resin">UV Resin</option>
+                                        <option value="clay">Clay</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="3dResults">
+                                    Enter dimensions to calculate volume and conversions
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="calculate3DConversion()">Calculate Volume</button>
+                    </div>
+
+                    <!-- Portfolio Readiness Checker -->
+                    <div class="tool-card">
+                        <h3>Is My Piece Portfolio Ready</h3>
+                        <p>Upload your artwork to get professional portfolio assessment and improvement recommendations</p>
+                        <div class="generator-display" id="portfolioChecker" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat;" id="portfolioUploadArea">
+                                    <input type="file" id="portfolioUpload" accept="image/*" style="display: none;" onchange="handlePortfolioUpload(event)">
+                                    <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;" id="portfolioUploadText">
+                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for portfolio assessment</div>
+                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
+                                    </div>
+                                    <img id="portfolioPreviewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain; display: none;">
+                                </div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <select id="portfolioGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="gallery">Gallery Submission</option>
+                                        <option value="client">Client Presentation</option>
+                                        <option value="job">Job Application</option>
+                                        <option value="school">Art School Application</option>
+                                        <option value="social">Social Media</option>
+                                    </select>
+                                </div>
+                                <div id="portfolioAnalysis" style="font-size: 0.65rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; display: none; max-height: 100px; overflow-y: auto; word-wrap: break-word;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 4px; font-size: 0.7rem;">Portfolio Assessment:</div>
+                                    <div id="portfolioAssessment">Upload artwork to get professional portfolio evaluation...</div>
+                                </div>
+                                <div id="loadingPortfolio" style="display: none; text-align: center; padding: 8px;">
+                                    <div style="color: #f8c8d0; margin-bottom: 4px; font-size: 0.75rem;">Analyzing portfolio readiness...</div>
+                                    <div style="font-size: 0.65rem; opacity: 0.8;">Checking composition, technique, and professional standards...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="assessPortfolioReadiness()" id="assessBtn" disabled>Upload Image First</button>
+                    </div>
+
+                    <!-- Creative Prompt Generator -->
+                    <div class="tool-card">
+                        <h3>Creative Prompt Generator</h3>
+                        <p>Break through creative blocks with targeted prompts for different mediums and skill levels</p>
+                        <div class="generator-display" id="creativePrompt" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <select id="promptMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="drawing">Drawing</option>
+                                        <option value="painting">Painting</option>
+                                        <option value="digital">Digital Art</option>
+                                        <option value="sculpture">Sculpture</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="mixed-media">Mixed Media</option>
+                                        <option value="design">Graphic Design</option>
+                                    </select>
+                                    <select id="promptDifficulty" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="experimental">Experimental</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="promptResults">
+                                    <div style="font-weight: 500; color: #f8c8d0; margin-bottom: 4px;">Your Creative Prompt:</div>
+                                    <div id="generatedPrompt">Select medium and difficulty to generate a creative prompt</div>
+                                    <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 6px;" id="promptTips"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="generateCreativePrompt()">New Prompt</button>
+                    </div>
+
+                    <!-- Drying Time Calculator -->
+                    <div class="tool-card">
                         <h3>Drying Time Calculator</h3>
                         <p>Calculate optimal drying times for different paint mediums based on thickness, humidity, and temperature</p>
                         <div class="generator-display" id="dryingCalculator" style="padding: 8px; margin: 8px 0;">
@@ -224,76 +328,6 @@
                             </div>
                         </div>
                         <button class="generate-btn" onclick="calculateDryingTime()">Calculate Drying Time</button>
-                    </div>
-
-                    <!-- 3D Unit Converter -->
-                    <div class="tool-card">
-                        <h3>3D Unit Converter</h3>
-                        <p>Convert between different 3D modeling units, calculate volumes, and estimate material costs</p>
-                        <div class="generator-display" id="3dConverter" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <input type="number" id="3dLength" placeholder="Length" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="3dWidth" placeholder="Width" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="3dHeight" placeholder="Height" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="3dFromUnit" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="mm">Millimeters</option>
-                                        <option value="cm">Centimeters</option>
-                                        <option value="in" selected>Inches</option>
-                                        <option value="ft">Feet</option>
-                                        <option value="units">Generic Units</option>
-                                    </select>
-                                    <select id="materialType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="none">No Material</option>
-                                        <option value="pla">PLA Filament</option>
-                                        <option value="abs">ABS Filament</option>
-                                        <option value="resin">UV Resin</option>
-                                        <option value="clay">Clay</option>
-                                    </select>
-                                </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="3dResults">
-                                    Enter dimensions to calculate volume and conversions
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="calculate3DConversion()">Calculate Volume</button>
-                    </div>
-
-                    <!-- Commission Compatibility Matcher -->
-                    <div class="tool-card">
-                        <h3>Commission Compatibility Matcher</h3>
-                        <p>Analyze client requests to identify red flags and ensure profitable, manageable commissions</p>
-                        <div class="generator-display" id="commissionMatcher" style="padding: 6px; margin: 6px 0;">
-                            <div style="margin: 3px 0;">
-                                <div style="display: flex; gap: 3px; margin-bottom: 4px;">
-                                    <input type="number" id="projectBudget" placeholder="Budget ($)" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; min-width: 0;">
-                                    <input type="number" id="projectTimeline" placeholder="Days" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; min-width: 0;">
-                                </div>
-                                <div style="display: flex; gap: 3px; margin-bottom: 4px;">
-                                    <select id="projectType" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem;">
-                                        <option value="portrait">Portrait</option>
-                                        <option value="illustration">Illustration</option>
-                                        <option value="logo">Logo Design</option>
-                                        <option value="mural">Mural</option>
-                                        <option value="digital">Digital Art</option>
-                                        <option value="traditional">Traditional</option>
-                                    </select>
-                                    <select id="clientType" style="flex: 1; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem;">
-                                        <option value="individual">Individual</option>
-                                        <option value="small-business">Small Biz</option>
-                                        <option value="corporate">Corporate</option>
-                                        <option value="nonprofit">Non-Profit</option>
-                                    </select>
-                                </div>
-                                <textarea id="projectDescription" placeholder="Project details..." style="width: 100%; height: 32px; padding: 3px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.7rem; resize: none; font-family: inherit; margin-bottom: 4px; box-sizing: border-box;"></textarea>
-                                <div style="font-size: 0.6rem; line-height: 1.1; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 4px; max-height: 65px; overflow-y: auto; word-wrap: break-word;" id="compatibilityResults">
-                                    Enter details for analysis
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="analyzeCommissionCompatibility()">Analyze Commission</button>
                     </div>
 
                 </div>
