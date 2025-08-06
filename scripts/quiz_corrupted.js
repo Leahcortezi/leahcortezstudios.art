@@ -4,11 +4,11 @@ if (typeof console !== 'undefined') {
 
 class PortfolioQuiz {
     constructor() {
-        this.currentQuestion = 0;
+        this.cur            des            description: "You're the artist who loves the weird and wonderful. You're drawn to art that makes people do a double-take—pieces that are slightly unsettling but oddly charming. You appreciate work that pushes boundaries and makes you question what art can be. Your own creations tend to be experimental and delightfully strange.",ription: "You're the artist who finds order in chaos. You're drawn to art that feels like controlled complexity—pieces that seem intricate but have an underlying logic. You love work that makes you look closer and discover hidden patterns. Your own art tends to be methodical, even when dealing with emotional subjects.",entQuestion = 0;
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
-        // === UPDATED QUESTIONS WITH 5 MAIN ARCHETYPES ===
+                // === UPDATED QUESTIONS WITH 5 MAIN ARCHETYPES ===
         this.questions = [
             {
             id: 1,
@@ -67,7 +67,7 @@ class PortfolioQuiz {
             }
         ];
 
-        // === UPDATED ARCHETYPE RESULTS WITH RELATABLE DESCRIPTIONS ===
+        // === REWRITTEN ARCHETYPE RESULTS ===
         this.portfolioData = {
             "anointed-gaze": {
             title: "The Sleepless Sketcher",
@@ -79,7 +79,7 @@ class PortfolioQuiz {
                 strength: "Catching feelings through line work.",
                 challenge: "Not every drawing has to be a breakdown."
             },
-            description: "You're the artist who draws at 3am when you can't sleep because your brain won't shut up. You keep a sketchbook by your bed and probably have charcoal under your fingernails more often than not. People always ask if you're okay after seeing your work, and honestly, you're never quite sure how to answer that.",
+            description: "You're the artist who pours your soul onto paper. You're drawn to work that feels raw and honest—the kind of art that makes you stop breathing for a second because it captures exactly what you've been feeling but couldn't put into words. Your own work tends to be deeply personal, often created during late nights when emotions run high.",
             quote: "I draw until I disassociate. And then I draw that too.",
             image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
             path: "collections/personal/anointed-gaze/index.html"
@@ -94,7 +94,7 @@ class PortfolioQuiz {
                 strength: "Turning nostalgia into sacred art.",
                 challenge: "You can't keep every single object (even if it's cute)."
             },
-            description: "You're the artist who saves everything because 'it might be useful for a project someday.' Your studio is part art space, part museum of random family artifacts. You take photos of old objects at thrift stores even when you don't buy them, just in case you need reference material later.",
+            description: "You're the artist who sees stories in everything—old photographs, family heirlooms, forgotten objects. You're drawn to art that honors memory and tradition. You love pieces that feel like they hold someone's history, and your own work often incorporates meaningful objects that others might overlook.",
             quote: "Is it trash or an emotional relic? Yes.",
             image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
             path: "collections/personal/abuelas-altar/index.html"
@@ -109,7 +109,7 @@ class PortfolioQuiz {
                 strength: "Making chaos look gorgeous.",
                 challenge: "Sometimes you need a break from intensity."
             },
-            description: "You're the artist who goes big or goes home. You've never made anything described as 'subtle' and you're fine with that. Your workspace is covered in paint splatters, your clothes are permanently stained, and you've definitely gotten noise complaints from neighbors. When people say your art is 'a lot,' you take it as a compliment.",
+            description: "You're the artist who finds beauty in intensity and isn't afraid to go big. You're drawn to bold, dramatic work that makes people feel something—whether that's awe, discomfort, or pure emotion. You love art that takes risks and refuses to be ignored, and your own work tends to be equally unapologetic.",
             quote: "If it's not dramatic, I'm not interested.",
             image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
             path: "collections/personal/heaven-on-fire/index.html"
@@ -124,7 +124,52 @@ class PortfolioQuiz {
                 strength: "Turning identity crises into installations.",
                 challenge: "Not everything has to be that deep… probably."
             },
-            description: "You're the artist who turns every family dinner into an impromptu therapy session about identity and culture. You have strong opinions about representation in museums and probably write long Instagram captions. You've definitely made your relatives uncomfortable by asking them to pose for 'artistic documentation.'",
+            description: "You're the artist who can't help but dig deeper. You're fascinated by work that explores identity, culture, and the complicated layers of who we are. You love art that tells stories about heritage and belonging, and your own work often examines the complex relationships between past and present.",
+            quote: "I turned my generational trauma into a design concept.",
+            image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
+            path: "collections/personal/inheritance/index.html"
+            },
+            "abuelas-altar": {
+            title: "The Sentimental Shrine Builder",
+            subtitle: "Abuela's Altar",
+            category: "Personal Work",
+            archetype: {
+                essence: "Your studio smells like old candles, and you treat every found object like it has a soul.",
+                medium: "Candles, rosaries, and inherited buttons.",
+                strength: "Turning nostalgia into sacred art.",
+                challenge: "You can’t keep every single object (even if it’s cute)."
+            },
+            description: "You turn family, grief, and memory into sacred installations. You're basically a one-person museum of feelings.",
+            quote: "Is it trash or an emotional relic? Yes.",
+            image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
+            path: "collections/personal/abuelas-altar/index.html"
+            },
+            "heaven-on-fire": {
+            title: "The Beautiful Catastrophist",
+            subtitle: "Heaven on Fire",
+            category: "Personal Work",
+            archetype: {
+                essence: "You paint like you’re trying to win an emotional apocalypse.",
+                medium: "Fiery brushstrokes and paint that gets everywhere.",
+                strength: "Making chaos look gorgeous.",
+                challenge: "Sometimes you need a break from intensity."
+            },
+            description: "Your work is fire, literally and metaphorically. People say your art is “a lot” — and you say thank you.",
+            quote: "If it’s not dramatic, I’m not interested.",
+            image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
+            path: "collections/personal/heaven-on-fire/index.html"
+            },
+            "inheritance": {
+            title: "The Generational Theorist",
+            subtitle: "Inheritance",
+            category: "Personal Work",
+            archetype: {
+                essence: "You make art like a therapist with a glue stick.",
+                medium: "Yarn, old photos, family secrets.",
+                strength: "Turning identity crises into installations.",
+                challenge: "Not everything has to be that deep… probably."
+            },
+            description: "Everything you create has layers — of trauma, cultural commentary, and probably thread. You’re not just unpacking your past; you’re making a slideshow about it.",
             quote: "I turned my generational trauma into a design concept.",
             image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
             path: "collections/personal/inheritance/index.html"
@@ -139,7 +184,7 @@ class PortfolioQuiz {
                 strength: "Making destruction look intentional.",
                 challenge: "Knowing when to stop before everything breaks."
             },
-            description: "You're the artist who can't walk past interesting textures without touching them. You collect wood scraps, interesting rocks, and fabric samples 'just because.' Your hands are always slightly roughed up from your latest project, and you've definitely injured yourself in the name of art more than once.",
+            description: "Sculpting is your coping mechanism and also your gym membership. If something’s not falling apart, you probably haven’t started yet.",
             quote: "I sanded it down to the bone and then kept going.",
             image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
             path: "collections/studio/gnaw/index.html"
@@ -154,8 +199,8 @@ class PortfolioQuiz {
                 strength: "Making chaos look organized.",
                 challenge: "You might be overthinking this."
             },
-            description: "You're the artist who has a very specific organizational system that looks like chaos to everyone else. You know exactly which pile of supplies you need, and god help anyone who tries to 'clean up' your space. You probably have anxiety about your anxiety, and you channel all of that energy into intricate, obsessive work.",
-            quote: "If I can't untangle my thoughts, I'll just twist them into art.",
+            description: "Every piece is a beautifully tangled panic attack you’re lowkey proud of.",
+            quote: "If I can’t untangle my thoughts, I’ll just twist them into art.",
             image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
             path: "collections/studio/unraveling/index.html"
             },
@@ -167,9 +212,9 @@ class PortfolioQuiz {
                 essence: "You make squishy little monsters and call it art.",
                 medium: "Glowing goo, sad eyes, body horror lite™.",
                 strength: "Turning nightmares into adoptable pets.",
-                challenge: "People keep asking if you're okay (you are)."
+                challenge: "People keep asking if you’re okay (you are)."
             },
-            description: "You're the artist who makes things that make people say 'what the hell is that?' and you live for that reaction. You're probably the person who had an 'interesting' senior thesis that made your professors very nervous. You collect weird materials and your browser history is concerning but purely for artistic research.",
+            description: "You’re the person who says, “It’s cute!” while everyone else is slightly scared. Bioluminescent? Gooey? Unsettling? Yes to all of the above.",
             quote: "This one has four limbs and trauma. I love them.",
             image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
             path: "collections/studio/abyss-bloom/index.html"
@@ -179,13 +224,13 @@ class PortfolioQuiz {
             subtitle: "Collected Remains",
             category: "Studio Work",
             archetype: {
-                essence: "You collect weird little objects 'for a project.'",
+                essence: "You collect weird little objects “for a project.”",
                 medium: "Broken things with emotional potential.",
                 strength: "Finding magic in literal garbage.",
                 challenge: "Your workspace is a danger zone."
             },
-            description: "You're the artist who dumpster dives for supplies and calls it 'urban archaeology.' Your car is full of random objects you found that might become art someday. You've definitely had to explain to security guards that yes, you really do need that broken shopping cart for a sculpture.",
-            quote: "It's not hoarding if it's conceptual.",
+            description: "You never throw anything away because “it has a vibe.” Your studio is 20% art supplies and 80% haunted thrift store finds.",
+            quote: "It’s not hoarding if it’s conceptual.",
             image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
             path: "collections/studio/collected-remains/index.html"
             },
@@ -199,7 +244,7 @@ class PortfolioQuiz {
                 strength: "Making letters feel things.",
                 challenge: "Perfectionism in places no one notices but you."
             },
-            description: "You're the artist who spends 20 minutes adjusting the spacing between two words. You have strong opinions about Comic Sans and you're not afraid to share them. People think you're being picky, but you know that good design is invisible—and bad design makes you physically uncomfortable.",
+            description: "You’ve cried over bad tracking and fought someone over Helvetica. Type isn’t just design—it’s your love language (and your Roman Empire).",
             quote: "This font pairing is giving me a migraine.",
             image: "collections/design/typographic-interpretation/images/design5.jpg",
             path: "collections/design/typographic-interpretation/index-case-study.html"
@@ -214,7 +259,7 @@ class PortfolioQuiz {
                 strength: "Turning chaos into clever structure.",
                 challenge: "You start 10 projects for every 1 you finish."
             },
-            description: "You're the artist who has 47 browser tabs open for research and three different notebooks for the same project. You start ambitious projects with elaborate systems, get distracted by even more ambitious projects, and somehow manage to finish them all through pure stubborn determination and excessive coffee.",
+            description: "Your art is research. Your systems are games. Your brain is a beautiful spreadsheet with glitter.",
             quote: "This deck is about science, but also about me winning.",
             image: "collections/design/themed-playing-card-design/images/design1-2.jpg",
             path: "collections/design/themed-playing-card-design/index-case-study.html"
@@ -229,8 +274,8 @@ class PortfolioQuiz {
                 strength: "Making people feel things after they laugh.",
                 challenge: "Hiding behind the joke a little too well."
             },
-            description: "You're the artist who makes serious art but can't take yourself too seriously. You're the person cracking jokes in critique while making profound points about society. You use bright colors to discuss dark topics, and you've mastered the art of making people laugh until they suddenly realize they're having deep thoughts.",
-            quote: "Yes, it's silly. No, I'm not explaining it.",
+            description: "Everything you make is funny, sad, and weirdly brilliant. You’re the class clown with a thesis.",
+            quote: "Yes, it’s silly. No, I’m not explaining it.",
             image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
             path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
             },
@@ -242,9 +287,9 @@ class PortfolioQuiz {
                 essence: "You make protest posters for fun.",
                 medium: "Bold type, strong opinions, minimal chill.",
                 strength: "Making people read and feel things.",
-                challenge: "Subtlety is not your thing (and that's fine)."
+                challenge: "Subtlety is not your thing (and that’s fine)."
             },
-            description: "You're the artist who makes protest signs for fun and gets genuinely angry about social issues. Your Instagram stories are 50% art, 50% political rants. You've definitely gotten into arguments about art's responsibility to society, and you think 'art for art's sake' is a cop-out.",
+            description: "You’ve definitely made someone uncomfortable with your typography—and you’re proud of it. Your design isn’t just visual, it’s a weapon.",
             quote: "This typeface is yelling for a reason.",
             image: "collections/design/double-sided-poster/images/Design8.jpg",
             path: "collections/design/double-sided-poster/index-case-study.html"
@@ -257,10 +302,10 @@ class PortfolioQuiz {
                 essence: "You believe less is more, and more is… annoying.",
                 medium: "Grids, dots, shapes that whisper deep things.",
                 strength: "Maximum meaning, minimum fluff.",
-                challenge: "People don't always 'get it' (they're wrong)."
+                challenge: "People don’t always “get it” (they’re wrong)."
             },
-            description: "You're the artist who believes that if you need more than three elements, you're trying too hard. You spend hours perfecting the placement of a single line. Your friends think your workspace is suspiciously clean, and you get genuinely upset when people add unnecessary decorations to things.",
-            quote: "I reduced the concept to a single pixel. You're welcome.",
+            description: "You design like you’re allergic to clutter. Everything is stripped down to the core, and you speak in icons, not essays.",
+            quote: "I reduced the concept to a single pixel. You’re welcome.",
             image: "collections/design/reductive-symbols/images/design4.jpg",
             path: "collections/design/reductive-symbols/index-case-study.html"
             }
