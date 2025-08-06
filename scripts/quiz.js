@@ -12,13 +12,13 @@ class PortfolioQuiz {
         this.questions = [
             {
             id: 1,
-            text: "What makes you irrationally angry about design?",
+            text: "What's your biggest art pet peeve?",
             options: [
-                { text: "When fonts don't match the vibe. It's like wearing flip-flops to a wedding.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "Corporate art that feels like it was focus-grouped to death.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "People who color-coordinate their art supplies but never use them.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Pretty designs that say absolutely nothing.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "When someone calls your experimental piece 'weird' like it's a bad thing.", piece: "elements-book", weight: 3 } // Restless Experimenter
+                { text: "Bad kerning on expensive signage. Someone got PAID for that.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Instagram art that's all aesthetics, no soul.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "When someone says 'I could recreate that' like effort doesn't matter.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "Art with zero concept but perfect execution. What's the point?", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "People who stick to one medium because 'that's their thing.'", piece: "elements-book", weight: 3 } // Restless Experimenter
             ]
             },
             {
@@ -36,11 +36,11 @@ class PortfolioQuiz {
             id: 3,
             text: "What critique comment would ruin your whole week?",
             options: [
-                { text: "It's good, but something feels... off.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "This feels a bit self-indulgent, don't you think?", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "I don't get it. What's it supposed to be?", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "It's pretty, but what's your point?", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "You should focus on mastering one thing first.", piece: "playing-cards", weight: 3 } // Restless Experimenter
+                { text: "It just doesn't pop.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "This is so dark. What does it even mean?", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "My kid could do that.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "Maybe try something more commercial.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Why didn't you just use AI?", piece: "playing-cards", weight: 3 } // Restless Experimenter
             ]
             },
             {
