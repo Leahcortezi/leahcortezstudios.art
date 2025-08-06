@@ -23,13 +23,13 @@ class PortfolioQuiz {
             },
             {
             id: 2,
-            text: "Who are you at an art exhibit?",
+            text: "How do you start a new piece?",
             options: [
-                { text: "Quietly judging the wall text formatting while everyone else looks at the art.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "The one getting genuinely emotional over a piece about loss.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "Wondering what would happen if you combined three different pieces.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Reading the artist statement to see if they're actually saying something.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Taking way too many reference photos for 'inspiration later.'", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Sketches, research, color studies, then more sketches.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Wait for the feeling to hit, then follow where it leads.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "Grab whatever's nearby and see what happens.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Find the story that needs telling, then figure out how.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Try that technique I saw on TikTok at 2am.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             },
             {
@@ -45,20 +45,20 @@ class PortfolioQuiz {
             },
             {
             id: 4,
-            text: "What's your secret creative philosophy?",
+            text: "What is art's purpose?",
             options: [
-                { text: "If you're gonna do it, do it right or don't do it at all.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "Art without heart is just decoration.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "Happy accidents are better than careful plans.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "If your art doesn't piss someone off, you're playing it safe.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
-                { text: "Why stick to one medium when the world is full of possibilities?", piece: "unraveling", weight: 3 } // Restless Experimenter
+                { text: "To communicate ideas clearly and systematically.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "To help process and explore emotions safely.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "To celebrate the beauty of process and imperfection.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "To spread important messages and change minds.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
+                { text: "To push boundaries and explore what's possible.", piece: "unraveling", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 5,
             text: "What kind of art stops you in your tracks?",
             options: [
-                { text: "Something so perfectly minimal it makes your brain go quiet.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "Work with flawless concept-to-execution consistency.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
                 { text: "Work that makes you feel understood without saying a word.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
                 { text: "Pieces that look like organized chaos and somehow make perfect sense.", piece: "gnaw", weight: 3 }, // Chaotic Creator
                 { text: "Art that makes you want to text everyone you know about injustice.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
