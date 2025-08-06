@@ -924,3 +924,76 @@ body.menu-open {
     height: 35px;
   }
 }
+
+/* --------------------
+   BREADCRUMB NAVIGATION
+   -------------------- */
+
+.breadcrumb {
+  background: rgba(248, 200, 208, 0.05);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(248, 200, 208, 0.15);
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+}
+
+.breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.breadcrumb-nav a {
+  color: var(--color-primary-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.breadcrumb-nav a:hover {
+  color: var(--color-secondary-accent);
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text);
+  opacity: 0.6;
+  margin: 0 0.25rem;
+  font-weight: 300;
+}
+
+.breadcrumb-current {
+  color: var(--color-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile breadcrumb adjustments */
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 0.75rem 0;
+  }
+  
+  .breadcrumb-container {
+    padding: 0 1rem;
+  }
+  
+  .breadcrumb-nav {
+    font-size: 0.8rem;
+    gap: 0.25rem;
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 0.15rem;
+  }
+}
