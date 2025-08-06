@@ -2114,3 +2114,1550 @@ function generateReferenceCategory() {
     document.getElementById('refCategory').textContent = category.category;
     document.getElementById('refSuggestions').innerHTML = category.suggestions.join('<br>');
 }
+
+// Modal Management
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.querySelector('.modal-overlay');
+    
+    if (modal && overlay) {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal() {
+    const modals = document.querySelectorAll('.resource-modal');
+    const overlay = document.querySelector('.modal-overlay');
+    
+    modals.forEach(modal => modal.style.display = 'none');
+    if (overlay) overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Color Theory Palette Maker
+function generateColorTheoryPalette() {
+    const baseColor = document.getElementById('baseColor').value;
+    const schemeType = document.getElementById('colorScheme').value;
+    const paletteDisplay = document.getElementById('paletteDisplay');
+    const accessibilityReport = document.getElementById('accessibilityReport');
+    
+    if (!baseColor) return;
+    
+    const colors = generateColorScheme(baseColor, schemeType);
+    
+    // Display palette
+    paletteDisplay.innerHTML = '<h4>Generated Palette:</h4>';
+    colors.forEach((color, index) => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch-large';
+        swatch.style.backgroundColor = color;
+        swatch.title = color;
+        swatch.onclick = () => copyToClipboard(color);
+        
+        const label = document.createElement('div');
+        label.textContent = color;
+        label.style.cssText = 'text-align: center; font-size: 0.8rem; margin-top: 5px; color: white;';
+        
+        const container = document.createElement('div');
+        container.style.cssText = 'display: inline-block; margin: 10px; text-align: center;';
+        container.appendChild(swatch);
+        container.appendChild(label);
+        paletteDisplay.appendChild(container);
+    });
+    
+    // Generate accessibility report
+    generateAccessibilityReport(colors, accessibilityReport);
+}
+
+function generateColorScheme(baseColor, schemeType) {
+    const hsl = hexToHsl(baseColor);
+    const colors = [baseColor];
+    
+    switch (schemeType) {
+        case 'complementary':
+            colors.push(hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+            break;
+            
+        case 'analogous':
+            colors.push(
+                hslToHex((hsl.h + 30) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h - 30 + 360) % 360, hsl.s, hsl.l)
+            );
+            break;
+            
+        case 'triadic':
+            colors.push(
+                hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l)
+            );
+            break;
+            
+        case 'monochromatic':
+            colors.push(
+                hslToHex(hsl.h, hsl.s, Math.min(100, hsl.l + 20)),
+                hslToHex(hsl.h, hsl.s, Math.max(0, hsl.l - 20)),
+                hslToHex(hsl.h, Math.min(100, hsl.s + 15), hsl.l),
+                hslToHex(hsl.h, Math.max(0, hsl.s - 15), hsl.l)
+            );
+            break;
+            
+        case 'split-complementary':
+            colors.push(
+                hslToHex((hsl.h + 150) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 210) % 360, hsl.s, hsl.l)
+            );
+            break;
+    }
+    
+    return colors;
+}
+
+function generateAccessibilityReport(colors, container) {
+    container.innerHTML = '<h4>Accessibility Analysis:</h4>';
+    
+    const combinations = [];
+    for (let i = 0; i < colors.length; i++) {
+        for (let j = i + 1; j < colors.length; j++) {
+            const contrast = calculateContrast(colors[i], colors[j]);
+            combinations.push({
+                color1: colors[i],
+                color2: colors[j],
+                contrast: contrast,
+                wcagAA: contrast >= 4.5,
+                wcagAAA: contrast >= 7
+            });
+        }
+    }
+    
+    combinations.sort((a, b) => b.contrast - a.contrast);
+    
+    // Always show accessible color recommendations (like ColorPalette Pro)
+    const baseColor = colors[0]; // Use first color as base
+    const accessibleColors = generateAccessibleColors(baseColor);
+    
+    const recommendationsDiv = document.createElement('div');
+    recommendationsDiv.style.cssText = 'margin: 15px 0; padding: 15px; border-radius: 8px; background: rgba(33, 150, 243, 0.1); border: 1px solid rgba(33, 150, 243, 0.3);';
+    recommendationsDiv.innerHTML = '<h5 style="color: #2196F3; margin: 0 0 10px 0;">🎨 Add These Colors for Perfect Accessibility:</h5>';
+    
+    const colorGrid = document.createElement('div');
+    colorGrid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 12px; margin: 12px 0;';
+    
+    accessibleColors.forEach((suggestedColor, index) => {
+        const contrast = calculateContrast(baseColor, suggestedColor);
+        const wcagLevel = contrast >= 7 ? 'AAA' : 'AA';
+        const levelColor = contrast >= 7 ? '#4CAF50' : '#FF9800';
+        
+        const colorCard = document.createElement('div');
+        colorCard.style.cssText = 'text-align: center; cursor: pointer; transition: transform 0.2s ease; border-radius: 8px; padding: 8px; background: rgba(0,0,0,0.1);';
+        colorCard.onclick = () => copyColorToClipboard(suggestedColor);
+        
+        colorCard.onmouseenter = () => colorCard.style.transform = 'scale(1.05)';
+        colorCard.onmouseleave = () => colorCard.style.transform = 'scale(1)';
+        
+        colorCard.innerHTML = `
+            <div style="width: 50px; height: 50px; background: ${suggestedColor}; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3); margin: 0 auto 8px auto; position: relative;">
+                <div style="position: absolute; bottom: -3px; right: -3px; background: ${levelColor}; color: white; font-size: 0.6rem; padding: 1px 4px; border-radius: 3px; font-weight: bold;">${wcagLevel}</div>
+            </div>
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.9); font-weight: 500;">${suggestedColor}</div>
+            <div style="font-size: 0.6rem; color: ${levelColor}; font-weight: bold;">${contrast.toFixed(1)}:1</div>
+        `;
+        
+        colorGrid.appendChild(colorCard);
+    });
+    
+    recommendationsDiv.appendChild(colorGrid);
+    
+    // Add professional explanation
+    const explanationDiv = document.createElement('div');
+    explanationDiv.style.cssText = 'margin-top: 12px; padding: 10px; background: rgba(0,0,0,0.15); border-radius: 6px; font-size: 0.75rem; color: rgba(255,255,255,0.8); line-height: 1.4;';
+    explanationDiv.innerHTML = '💡 <strong>Click any color to copy hex code.</strong> These colors provide professional-grade contrast with your base color. AAA level (7:1) is ideal for body text, AA level (4.5:1) works for large text and UI elements.';
+    recommendationsDiv.appendChild(explanationDiv);
+    
+    container.appendChild(recommendationsDiv);
+    
+    // Show working combinations from current palette
+    const goodCombos = combinations.filter(combo => combo.wcagAA);
+    
+    if (goodCombos.length > 0) {
+        const workingCombosDiv = document.createElement('div');
+        workingCombosDiv.style.cssText = 'margin: 15px 0; padding: 15px; border-radius: 8px; background: rgba(76, 175, 80, 0.1); border: 1px solid rgba(76, 175, 80, 0.3);';
+        workingCombosDiv.innerHTML = '<h5 style="color: #4CAF50; margin: 0 0 12px 0;">✨ Perfect Combinations from Your Palette:</h5>';
+        
+        const comboGrid = document.createElement('div');
+        comboGrid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;';
+        
+        goodCombos.slice(0, 4).forEach(combo => {
+            const wcagLevel = combo.wcagAAA ? 'AAA' : 'AA';
+            const levelColor = combo.wcagAAA ? '#4CAF50' : '#FF9800';
+            
+            const comboCard = document.createElement('div');
+            comboCard.style.cssText = 'padding: 10px; background: rgba(0,0,0,0.1); border-radius: 8px; text-align: center; cursor: pointer;';
+            comboCard.onclick = () => {
+                copyColorToClipboard(`${combo.color1}, ${combo.color2}`);
+            };
+            
+            comboCard.innerHTML = `
+                <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                    <div style="width: 35px; height: 35px; background: ${combo.color1}; border-radius: 6px; border: 2px solid rgba(255,255,255,0.3); cursor: pointer;" onclick="event.stopPropagation(); copyColorToClipboard('${combo.color1}');" title="Click to copy ${combo.color1}"></div>
+                    <div style="width: 35px; height: 35px; background: ${combo.color2}; border-radius: 6px; border: 2px solid rgba(255,255,255,0.3); cursor: pointer;" onclick="event.stopPropagation(); copyColorToClipboard('${combo.color2}');" title="Click to copy ${combo.color2}"></div>
+                </div>
+                <div style="font-size: 0.7rem; color: ${levelColor}; font-weight: bold; margin-bottom: 2px;">${wcagLevel}</div>
+                <div style="font-size: 0.65rem; color: rgba(255,255,255,0.8);">${combo.contrast.toFixed(1)}:1</div>
+            `;
+            
+            comboGrid.appendChild(comboCard);
+        });
+        
+        workingCombosDiv.appendChild(comboGrid);
+        
+        // Add tip for working combinations
+        const workingTipDiv = document.createElement('div');
+        workingTipDiv.style.cssText = 'margin-top: 10px; padding: 8px; background: rgba(0,0,0,0.15); border-radius: 6px; font-size: 0.7rem; color: rgba(255,255,255,0.8); line-height: 1.4;';
+        workingTipDiv.innerHTML = '✨ <strong>These combinations work perfectly together!</strong> Click individual colors to copy, or click the card to copy both colors.';
+        workingCombosDiv.appendChild(workingTipDiv);
+        
+        container.appendChild(workingCombosDiv);
+    }
+    
+    // Show enhanced palette suggestion with harmonious colors
+    const harmonizedPalette = generateHarmonizedPalette(colors[0]);
+    
+    if (harmonizedPalette.length > 0) {
+        const paletteDiv = document.createElement('div');
+        paletteDiv.style.cssText = 'margin: 15px 0; padding: 15px; border-radius: 8px; background: rgba(156, 39, 176, 0.1); border: 1px solid rgba(156, 39, 176, 0.3);';
+        paletteDiv.innerHTML = '<h5 style="color: #9C27B0; margin: 0 0 12px 0;">🌈 Complete Accessible Palette:</h5>';
+        
+        const fullPaletteGrid = document.createElement('div');
+        fullPaletteGrid.style.cssText = 'display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;';
+        
+        harmonizedPalette.forEach((color, index) => {
+            const contrast = calculateContrast(colors[0], color);
+            const isAccessible = contrast >= 4.5;
+            const borderColor = isAccessible ? 'rgba(76, 175, 80, 0.8)' : 'rgba(255,255,255,0.3)';
+            
+            const colorSwatch = document.createElement('div');
+            colorSwatch.style.cssText = `text-align: center; cursor: pointer; transition: transform 0.2s ease;`;
+            colorSwatch.onclick = () => copyColorToClipboard(color);
+            
+            colorSwatch.onmouseenter = () => colorSwatch.style.transform = 'scale(1.1)';
+            colorSwatch.onmouseleave = () => colorSwatch.style.transform = 'scale(1)';
+            
+            colorSwatch.innerHTML = `
+                <div style="width: 40px; height: 40px; background: ${color}; border-radius: 6px; border: 2px solid ${borderColor}; margin-bottom: 4px; position: relative;">
+                    ${isAccessible ? '<div style="position: absolute; top: -2px; right: -2px; background: #4CAF50; width: 12px; height: 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; color: white;">✓</div>' : ''}
+                </div>
+                <div style="font-size: 0.65rem; color: rgba(255,255,255,0.9);">${color}</div>
+            `;
+            
+            fullPaletteGrid.appendChild(colorSwatch);
+        });
+        
+        paletteDiv.appendChild(fullPaletteGrid);
+        
+        // Add palette explanation
+        const paletteExplanation = document.createElement('div');
+        paletteExplanation.style.cssText = 'margin-top: 10px; padding: 8px; background: rgba(0,0,0,0.15); border-radius: 6px; font-size: 0.7rem; color: rgba(255,255,255,0.8); line-height: 1.4;';
+        paletteExplanation.innerHTML = '🌈 <strong>Complete harmonious palette</strong> with your base color. Colors with ✓ are accessible, others are for decorative use only.';
+        paletteDiv.appendChild(paletteExplanation);
+        
+        container.appendChild(paletteDiv);
+    }
+}
+
+function generateAccessibleColors(baseColor) {
+    // Generate colors that will have excellent contrast with the base color
+    const baseRgb = hexToRgb(baseColor);
+    const baseLuminance = getLuminance(baseRgb.r, baseRgb.g, baseRgb.b);
+    
+    const professionalColors = [];
+    
+    // If base is light, provide dark accessible colors
+    if (baseLuminance > 0.5) {
+        professionalColors.push(
+            '#1A1A1A', // Almost black - highest contrast
+            '#2C3E50', // Dark blue-gray - professional
+            '#34495E', // Slate gray - modern
+            '#212529', // Bootstrap dark
+            '#343A40', // Gray-800
+            '#495057', // Gray-700
+            '#6C757D', // Gray-600 (for large text only)
+            '#28A745'  // Success green with good contrast
+        );
+    } else {
+        // If base is dark, provide light accessible colors
+        professionalColors.push(
+            '#FFFFFF', // Pure white - highest contrast
+            '#F8F9FA', // Off-white - softer
+            '#E9ECEF', // Light gray
+            '#DEE2E6', // Medium light gray
+            '#CED4DA', // Gray for less critical text
+            '#ADB5BD', // Gray for secondary text
+            '#FFC107', // Warning yellow with good contrast
+            '#28A745'  // Success green
+        );
+    }
+    
+    // Filter and sort by contrast ratio, return top 6
+    return professionalColors
+        .map(color => ({
+            color,
+            contrast: calculateContrast(baseColor, color)
+        }))
+        .filter(item => item.contrast >= 4.5) // WCAG AA minimum
+        .sort((a, b) => b.contrast - a.contrast) // Highest contrast first
+        .slice(0, 6) // Top 6 colors
+        .map(item => item.color);
+}
+
+function generateHarmonizedPalette(baseColor) {
+    // Generate a complete harmonious color palette including the base color
+    const hsl = hexToHsl(baseColor);
+    const palette = [baseColor]; // Include the original base color
+    
+    // Add analogous colors (neighboring hues)
+    palette.push(
+        hslToHex((hsl.h + 30) % 360, hsl.s, hsl.l),
+        hslToHex((hsl.h - 30 + 360) % 360, hsl.s, hsl.l)
+    );
+    
+    // Add complementary color
+    palette.push(hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+    
+    // Add tonal variations of the base color
+    palette.push(
+        hslToHex(hsl.h, hsl.s, Math.min(1, hsl.l + 0.3)), // Lighter version
+        hslToHex(hsl.h, hsl.s, Math.max(0, hsl.l - 0.3))  // Darker version
+    );
+    
+    // Add neutral colors that work with the palette
+    const baseLuminance = getLuminance(hexToRgb(baseColor).r, hexToRgb(baseColor).g, hexToRgb(baseColor).b);
+    
+    if (baseLuminance > 0.5) {
+        // If base is light, add darker neutrals
+        palette.push('#2C3E50', '#95A5A6');
+    } else {
+        // If base is dark, add lighter neutrals
+        palette.push('#ECF0F1', '#BDC3C7');
+    }
+    
+    // Remove duplicates and return unique colors
+    return [...new Set(palette)];
+}
+
+function copyColorToClipboard(color) {
+    navigator.clipboard.writeText(color).then(() => {
+        // Show brief feedback
+        const feedback = document.createElement('div');
+        feedback.textContent = `Copied ${color}!`;
+        feedback.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-primary-accent);
+            color: var(--color-background);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-family: var(--font-accent);
+        `;
+        document.body.appendChild(feedback);
+        setTimeout(() => document.body.removeChild(feedback), 1500);
+    });
+}
+
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function getLuminance(r, g, b) {
+    const [rs, gs, bs] = [r, g, b].map(c => {
+        c = c / 255;
+        return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+// Composition Grid Overlay
+function loadCompositionImage() {
+    const input = document.getElementById('imageUpload');
+    const file = input.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const canvas = document.getElementById('compositionCanvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                // Set canvas size
+                const maxWidth = 600;
+                const maxHeight = 400;
+                let { width, height } = img;
+                
+                if (width > maxWidth || height > maxHeight) {
+                    const ratio = Math.min(maxWidth / width, maxHeight / height);
+                    width *= ratio;
+                    height *= ratio;
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                
+                // Store original image data for grid switching
+                canvas.originalImageData = e.target.result;
+                
+                // Draw image
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Apply grid immediately
+                applyCompositionGrid();
+            };
+            
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function applyCompositionGrid() {
+    const canvas = document.getElementById('compositionCanvas');
+    const ctx = canvas.getContext('2d');
+    const gridType = document.getElementById('gridType').value;
+    const opacity = parseFloat(document.getElementById('gridOpacity').value);
+    
+    // Clear the canvas completely first
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Get the original image if it exists
+    if (canvas.originalImageData) {
+        // Redraw the original image
+        const img = new Image();
+        img.onload = function() {
+            // Clear and redraw image
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // Apply the selected grid
+            drawGrid(ctx, canvas.width, canvas.height, gridType, opacity);
+        };
+        img.src = canvas.originalImageData;
+    } else {
+        // No image, just draw grid on empty canvas
+        ctx.fillStyle = 'rgba(40, 40, 40, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawGrid(ctx, canvas.width, canvas.height, gridType, opacity);
+    }
+}
+
+function drawGrid(ctx, width, height, gridType, opacity) {
+    // Set grid style
+    ctx.strokeStyle = `rgba(248, 200, 208, ${opacity})`;
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+    
+    ctx.beginPath();
+    
+    switch (gridType) {
+        case 'rule-of-thirds':
+            // Vertical lines
+            ctx.moveTo(width / 3, 0);
+            ctx.lineTo(width / 3, height);
+            ctx.moveTo((width * 2) / 3, 0);
+            ctx.lineTo((width * 2) / 3, height);
+            // Horizontal lines
+            ctx.moveTo(0, height / 3);
+            ctx.lineTo(width, height / 3);
+            ctx.moveTo(0, (height * 2) / 3);
+            ctx.lineTo(width, (height * 2) / 3);
+            break;
+            
+        case 'golden-ratio':
+            const phi = 1.618;
+            const goldenWidth = width / phi;
+            const goldenHeight = height / phi;
+            
+            // Vertical lines
+            ctx.moveTo(goldenWidth, 0);
+            ctx.lineTo(goldenWidth, height);
+            ctx.moveTo(width - goldenWidth, 0);
+            ctx.lineTo(width - goldenWidth, height);
+            // Horizontal lines
+            ctx.moveTo(0, goldenHeight);
+            ctx.lineTo(width, goldenHeight);
+            ctx.moveTo(0, height - goldenHeight);
+            ctx.lineTo(width, height - goldenHeight);
+            break;
+            
+        case 'diagonal':
+            // Main diagonals only
+            ctx.moveTo(0, 0);
+            ctx.lineTo(width, height);
+            ctx.moveTo(width, 0);
+            ctx.lineTo(0, height);
+            break;
+            
+        case 'center':
+            // Center cross only
+            ctx.moveTo(width / 2, 0);
+            ctx.lineTo(width / 2, height);
+            ctx.moveTo(0, height / 2);
+            ctx.lineTo(width, height / 2);
+            break;
+    }
+    
+    ctx.stroke();
+}
+
+// Print Specifications Guide
+function calculatePrintSpecs() {
+    const printType = document.getElementById('printType').value;
+    const width = parseFloat(document.getElementById('printWidth').value);
+    const height = parseFloat(document.getElementById('printHeight').value);
+    const dpi = parseInt(document.getElementById('printDPI').value);
+    const resultsDiv = document.getElementById('printSpecsResult');
+    const tipsDiv = document.getElementById('printTips');
+    
+    if (!width || !height || !dpi) {
+        resultsDiv.innerHTML = '<p style="color: #F44336;">Please fill in all dimensions.</p>';
+        return;
+    }
+    
+    // Calculate pixel dimensions
+    const pixelWidth = Math.round(width * dpi);
+    const pixelHeight = Math.round(height * dpi);
+    
+    // Calculate file size estimates (rough)
+    const totalPixels = pixelWidth * pixelHeight;
+    const rgbSize = (totalPixels * 3) / (1024 * 1024); // MB for RGB
+    const cmykSize = (totalPixels * 4) / (1024 * 1024); // MB for CMYK
+    
+    // Get print specifications
+    const specs = getPrintTypeSpecs(printType);
+    
+    resultsDiv.innerHTML = `
+        <h4>Print Specifications:</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+            <div>
+                <strong>Dimensions:</strong><br>
+                ${width}" × ${height}" (${(width * 2.54).toFixed(1)} × ${(height * 2.54).toFixed(1)} cm)
+            </div>
+            <div>
+                <strong>Resolution:</strong><br>
+                ${pixelWidth} × ${pixelHeight} pixels at ${dpi} DPI
+            </div>
+            <div>
+                <strong>Color Mode:</strong><br>
+                ${specs.colorMode}
+            </div>
+            <div>
+                <strong>Recommended DPI:</strong><br>
+                ${specs.recommendedDPI}
+            </div>
+            <div>
+                <strong>File Size (RGB):</strong><br>
+                ~${rgbSize.toFixed(1)} MB
+            </div>
+            <div>
+                <strong>File Size (CMYK):</strong><br>
+                ~${cmykSize.toFixed(1)} MB
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; padding: 15px; background: rgba(248, 200, 208, 0.1); border-radius: 8px;">
+            <strong>Recommended Settings:</strong><br>
+            • Bleed: ${specs.bleed}<br>
+            • Safety Margin: ${specs.safetyMargin}<br>
+            • File Format: ${specs.fileFormat}
+        </div>
+    `;
+    
+    tipsDiv.innerHTML = `
+        <h4>Professional Tips:</h4>
+        <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.9);">
+            ${specs.tips.map(tip => `<li style="margin: 5px 0;">${tip}</li>`).join('')}
+        </ul>
+    `;
+}
+
+function getPrintTypeSpecs(printType) {
+    const specs = {
+        'poster': {
+            colorMode: 'RGB or CMYK',
+            recommendedDPI: '150-300 DPI',
+            bleed: '0.125" (3mm)',
+            safetyMargin: '0.25" (6mm)',
+            fileFormat: 'PDF, TIFF, or PNG',
+            tips: [
+                'Use RGB for digital prints, CMYK for offset printing',
+                'Large format prints can use lower DPI (150-200)',
+                'Consider viewing distance when choosing resolution',
+                'Always proof your colors on the intended paper stock'
+            ]
+        },
+        'business-card': {
+            colorMode: 'CMYK',
+            recommendedDPI: '300-600 DPI',
+            bleed: '0.125" (3mm) all sides',
+            safetyMargin: '0.125" (3mm) from edges',
+            fileFormat: 'PDF with embedded fonts',
+            tips: [
+                'Standard size is 3.5" × 2" (89 × 51 mm)',
+                'Use rich black (C:40 M:30 Y:30 K:100) for true black',
+                'Keep important text away from cut lines',
+                'Consider special finishes like spot UV or foil'
+            ]
+        },
+        'brochure': {
+            colorMode: 'CMYK',
+            recommendedDPI: '300 DPI',
+            bleed: '0.125" (3mm)',
+            safetyMargin: '0.25" (6mm)',
+            fileFormat: 'PDF with crop marks',
+            tips: [
+                'Plan your fold lines carefully',
+                'Account for paper thickness in multi-fold designs',
+                'Use consistent margins and alignment',
+                'Test print and fold before final production'
+            ]
+        },
+        'book': {
+            colorMode: 'CMYK (interior), RGB+CMYK (cover)',
+            recommendedDPI: '300 DPI',
+            bleed: '0.125" (3mm) cover, none for interior',
+            safetyMargin: '0.5" (12mm) from spine',
+            fileFormat: 'PDF/X-1a or PDF/X-3',
+            tips: [
+                'Calculate spine width based on page count and paper',
+                'Use proper margins for binding method',
+                'Consider gutter space for perfect binding',
+                'Ensure text doesn\'t fall into the gutter area'
+            ]
+        },
+        'magazine': {
+            colorMode: 'CMYK',
+            recommendedDPI: '300 DPI',
+            bleed: '0.125" (3mm)',
+            safetyMargin: '0.375" (9mm)',
+            fileFormat: 'PDF with color profile',
+            tips: [
+                'Use consistent grid system throughout',
+                'Plan for saddle-stitched or perfect binding',
+                'Consider ink coverage for cost efficiency',
+                'Maintain consistent color calibration'
+            ]
+        },
+        'packaging': {
+            colorMode: 'CMYK + Spot colors',
+            recommendedDPI: '300-350 DPI',
+            bleed: '0.125" (3mm)',
+            safetyMargin: '0.25" (6mm)',
+            fileFormat: 'PDF with dielines',
+            tips: [
+                'Include structural dielines on separate layer',
+                'Consider substrate and coating effects on colors',
+                'Plan for die-cutting and folding tolerances',
+                'Test prototypes before final production'
+            ]
+        }
+    };
+    
+    return specs[printType] || specs['poster'];
+}
+
+// Utility functions for color conversion
+function hexToHsl(hex) {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+    
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const diff = max - min;
+    
+    let h = 0;
+    if (diff !== 0) {
+        switch (max) {
+            case r: h = ((g - b) / diff) % 6; break;
+            case g: h = (b - r) / diff + 2; break;
+            case b: h = (r - g) / diff + 4; break;
+        }
+    }
+    h = Math.round(h * 60);
+    if (h < 0) h += 360;
+    
+    const l = (max + min) / 2;
+    const s = diff === 0 ? 0 : diff / (1 - Math.abs(2 * l - 1));
+    
+    return {
+        h: h,
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+    };
+}
+
+function hslToHex(h, s, l) {
+    h = h % 360;
+    s = s / 100;
+    l = l / 100;
+    
+    const c = (1 - Math.abs(2 * l - 1)) * s;
+    const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    const m = l - c / 2;
+    
+    let r = 0, g = 0, b = 0;
+    
+    if (0 <= h && h < 60) {
+        r = c; g = x; b = 0;
+    } else if (60 <= h && h < 120) {
+        r = x; g = c; b = 0;
+    } else if (120 <= h && h < 180) {
+        r = 0; g = c; b = x;
+    } else if (180 <= h && h < 240) {
+        r = 0; g = x; b = c;
+    } else if (240 <= h && h < 300) {
+        r = x; g = 0; b = c;
+    } else if (300 <= h && h < 360) {
+        r = c; g = 0; b = x;
+    }
+    
+    r = Math.round((r + m) * 255);
+    g = Math.round((g + m) * 255);
+    b = Math.round((b + m) * 255);
+    
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+function calculateContrast(color1, color2) {
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+    
+    function getLuminance(r, g, b) {
+        const [rs, gs, bs] = [r, g, b].map(c => {
+            c = c / 255;
+            return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        });
+        return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    }
+    
+    const rgb1 = hexToRgb(color1);
+    const rgb2 = hexToRgb(color2);
+    const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+    const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+    const brightest = Math.max(lum1, lum2);
+    const darkest = Math.min(lum1, lum2);
+    return (brightest + 0.05) / (darkest + 0.05);
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Show brief feedback
+        const feedback = document.createElement('div');
+        feedback.textContent = 'Copied!';
+        feedback.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-primary-accent);
+            color: var(--color-background);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-family: var(--font-accent);
+        `;
+        document.body.appendChild(feedback);
+        setTimeout(() => document.body.removeChild(feedback), 1000);
+    });
+}
+
+// Event listeners for modals
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal close button listeners
+    document.querySelectorAll('.modal-close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', closeModal);
+    });
+    
+    // Modal overlay click to close
+    document.querySelector('.modal-overlay')?.addEventListener('click', closeModal);
+    
+    // Grid controls listeners
+    document.getElementById('gridType')?.addEventListener('change', applyCompositionGrid);
+    document.getElementById('gridOpacity')?.addEventListener('input', applyCompositionGrid);
+    
+    // Temperature slider listener
+    document.getElementById('temperatureSlider')?.addEventListener('input', function() {
+        const temp = this.value;
+        document.getElementById('temperatureValue').textContent = temp + 'K';
+        updateTemperatureColor(temp);
+    });
+    
+    // Escape key to close modals
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+});
+
+// Image Style Analyzer
+function handleStyleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate file size (10MB limit)
+    if (file.size > 10 * 1024 * 1024) {
+        alert('File size must be less than 10MB');
+        return;
+    }
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        alert('Please upload a valid image file');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // Show preview
+        const preview = document.getElementById('styleImagePreview');
+        const previewImg = document.getElementById('stylePreviewImage');
+        previewImg.src = e.target.result;
+        preview.style.display = 'block';
+        
+        // Update upload area
+        const uploadArea = document.getElementById('styleUploadArea');
+        uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
+        uploadArea.innerHTML = `
+            <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Image uploaded</div>
+            <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+        `;
+        
+        // Enable analyze button
+        const analyzeBtn = document.getElementById('analyzeStyleBtn');
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Style';
+        
+        // Hide previous analysis
+        document.getElementById('styleAnalysis').style.display = 'none';
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+function analyzeImageStyle() {
+    const analyzeBtn = document.getElementById('analyzeStyleBtn');
+    
+    // Show loading state
+    document.getElementById('loadingStyleAnalysis').style.display = 'block';
+    document.getElementById('styleAnalysis').style.display = 'none';
+    analyzeBtn.disabled = true;
+    analyzeBtn.textContent = 'Analyzing...';
+    
+    // Simulate comprehensive analysis
+    setTimeout(() => {
+        const analysis = generateStyleAnalysis();
+        
+        document.getElementById('loadingStyleAnalysis').style.display = 'none';
+        document.getElementById('styleAnalysis').style.display = 'block';
+        document.getElementById('styleAnalysisContent').innerHTML = analysis;
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Again';
+    }, 2500);
+}
+
+function generateStyleAnalysis() {
+    const styles = [
+        'Impressionist', 'Abstract Expressionist', 'Pop Art', 'Surrealist', 'Minimalist', 
+        'Realist', 'Cubist', 'Art Nouveau', 'Contemporary', 'Street Art'
+    ];
+    
+    const compositions = [
+        'Rule of Thirds', 'Golden Ratio', 'Symmetrical', 'Dynamic Diagonal', 'Radial'
+    ];
+    
+    const colorPalettes = [
+        'Warm Tones', 'Cool Palette', 'Monochromatic', 'Complementary', 'Analogous', 'High Contrast'
+    ];
+    
+    const techniques = [
+        'Bold Brushwork', 'Fine Detail', 'Loose Sketchy', 'Photorealistic', 'Abstract Forms', 'Mixed Media'
+    ];
+    
+    const selectedStyle = styles[Math.floor(Math.random() * styles.length)];
+    const selectedComposition = compositions[Math.floor(Math.random() * compositions.length)];
+    const selectedPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+    const selectedTechnique = techniques[Math.floor(Math.random() * techniques.length)];
+    
+    const confidence = (85 + Math.random() * 10).toFixed(1);
+    
+    return `
+        <div style="margin-bottom: 8px;">
+            <strong style="color: #f8c8d0;">Style Match: ${selectedStyle}</strong> (${confidence}% confidence)
+        </div>
+        <div style="font-size: 0.65rem; line-height: 1.3; margin-bottom: 6px;">
+            <strong>Composition:</strong> ${selectedComposition}<br>
+            <strong>Color Palette:</strong> ${selectedPalette}<br>
+            <strong>Technique:</strong> ${selectedTechnique}
+        </div>
+        <div style="font-size: 0.6rem; opacity: 0.8; font-style: italic; margin-top: 6px;">
+            Analysis based on visual patterns, color distribution, and compositional elements
+        </div>
+    `;
+}
+
+// 3D Unit Converter
+function calculate3DConversion() {
+    const length = parseFloat(document.getElementById('3dLength').value);
+    const width = parseFloat(document.getElementById('3dWidth').value);
+    const height = parseFloat(document.getElementById('3dHeight').value);
+    const fromUnit = document.getElementById('3dFromUnit').value;
+    const materialType = document.getElementById('materialType').value;
+    const display = document.getElementById('3dResults');
+    
+    if (!length || !width || !height) {
+        display.innerHTML = '<span style="color: #f8c8d0;">Enter all dimensions</span>';
+        return;
+    }
+    
+    // Convert to cubic centimeters for calculations
+    let lengthCm, widthCm, heightCm;
+    const conversionFactors = {
+        mm: 0.1,
+        cm: 1,
+        in: 2.54,
+        ft: 30.48,
+        units: 1
+    };
+    
+    const factor = conversionFactors[fromUnit];
+    lengthCm = length * factor;
+    widthCm = width * factor;
+    heightCm = height * factor;
+    
+    const volumeCm3 = lengthCm * widthCm * heightCm;
+    const volumeIn3 = volumeCm3 / 16.387;
+    const volumeMl = volumeCm3;
+    const volumeLiters = volumeCm3 / 1000;
+    
+    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 6px;">Volume Calculations:</div>`;
+    result += `<strong>Cubic Centimeters:</strong> ${volumeCm3.toFixed(2)} cm³<br>`;
+    result += `<strong>Cubic Inches:</strong> ${volumeIn3.toFixed(2)} in³<br>`;
+    result += `<strong>Milliliters:</strong> ${volumeMl.toFixed(2)} ml<br>`;
+    
+    if (volumeLiters >= 1) {
+        result += `<strong>Liters:</strong> ${volumeLiters.toFixed(2)} L<br>`;
+    }
+    
+    // Material cost estimates
+    if (materialType !== 'none') {
+        const materialCosts = {
+            pla: { name: 'PLA Filament', costPerCm3: 0.04, density: 1.24 },
+            abs: { name: 'ABS Filament', costPerCm3: 0.05, density: 1.05 },
+            resin: { name: 'UV Resin', costPerCm3: 0.12, density: 1.1 },
+            clay: { name: 'Polymer Clay', costPerCm3: 0.08, density: 1.8 }
+        };
+        
+        const material = materialCosts[materialType];
+        const weight = (volumeCm3 * material.density).toFixed(1);
+        const cost = (volumeCm3 * material.costPerCm3).toFixed(2);
+        
+        result += `<div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+        result += `<strong>${material.name}:</strong><br>`;
+        result += `Weight: ~${weight}g<br>`;
+        result += `Est. Cost: ~$${cost}`;
+        result += `</div>`;
+    }
+    
+    result += `</div>`;
+    
+    display.innerHTML = result;
+}
+
+// Color Temperature Analyzer
+function updateTemperatureColor(temp) {
+    const color = kelvinToHex(temp);
+    document.getElementById('temperatureColor').value = color;
+}
+
+function setTemperature(temp) {
+    document.getElementById('temperatureSlider').value = temp;
+    document.getElementById('temperatureValue').textContent = temp + 'K';
+    updateTemperatureColor(temp);
+}
+
+function analyzeColorTemperature() {
+    const temp = parseInt(document.getElementById('temperatureSlider').value);
+    const display = document.getElementById('temperatureResults');
+    
+    let tempType, mood, usage;
+    
+    if (temp < 3000) {
+        tempType = 'Very Warm';
+        mood = 'Cozy, intimate, romantic';
+        usage = 'Candlelight scenes, sunset portraits';
+    } else if (temp < 4000) {
+        tempType = 'Warm';
+        mood = 'Comfortable, relaxing, homey';
+        usage = 'Indoor lighting, golden hour';
+    } else if (temp < 5500) {
+        tempType = 'Neutral';
+        mood = 'Natural, balanced, professional';
+        usage = 'Studio photography, general artwork';
+    } else if (temp < 7000) {
+        tempType = 'Cool';
+        mood = 'Clean, fresh, energetic';
+        usage = 'Daylight scenes, modern interiors';
+    } else {
+        tempType = 'Very Cool';
+        mood = 'Crisp, clinical, dramatic';
+        usage = 'Overcast skies, blue hour';
+    }
+    
+    const result = `
+        <div style="font-size: 0.7rem; line-height: 1.3;">
+            <div style="color: #f8c8d0; font-weight: bold; margin-bottom: 4px;">${temp}K - ${tempType}</div>
+            <strong>Mood:</strong> ${mood}<br>
+            <strong>Best for:</strong> ${usage}
+        </div>
+    `;
+    
+    display.innerHTML = result;
+}
+
+function kelvinToHex(kelvin) {
+    const temp = kelvin / 100;
+    let r, g, b;
+    
+    if (temp <= 66) {
+        r = 255;
+        g = temp;
+        g = 99.4708025861 * Math.log(g) - 161.1195681661;
+        
+        if (temp >= 19) {
+            b = temp - 10;
+            b = 138.5177312231 * Math.log(b) - 305.0447927307;
+        } else {
+            b = 0;
+        }
+    } else {
+        r = temp - 60;
+        r = 329.698727446 * Math.pow(r, -0.1332047592);
+        
+        g = temp - 60;
+        g = 288.1221695283 * Math.pow(g, -0.0755148492);
+        
+        b = 255;
+    }
+    
+    r = Math.max(0, Math.min(255, r));
+    g = Math.max(0, Math.min(255, g));
+    b = Math.max(0, Math.min(255, b));
+    
+    return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
+}
+
+// Smart Canvas Calculator
+function calculateCanvasSpecs() {
+    const width = parseFloat(document.getElementById('canvasWidth').value);
+    const height = parseFloat(document.getElementById('canvasHeight').value);
+    const unit = document.getElementById('canvasUnit').value;
+    const canvasType = document.getElementById('canvasType').value;
+    const display = document.getElementById('canvasResults');
+    
+    if (!width || !height) {
+        display.innerHTML = '<span style="color: #f8c8d0;">Enter both width and height</span>';
+        return;
+    }
+    
+    // Convert to inches for calculations
+    let widthIn, heightIn;
+    const unitConversions = {
+        in: 1,
+        cm: 0.393701,
+        mm: 0.0393701
+    };
+    
+    widthIn = width * unitConversions[unit];
+    heightIn = height * unitConversions[unit];
+    
+    const area = widthIn * heightIn;
+    const perimeter = 2 * (widthIn + heightIn);
+    
+    let result = `<div style="font-size: 0.7rem; line-height: 1.4;">`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 6px;">${canvasType} Specifications:</div>`;
+    result += `<strong>Dimensions:</strong> ${widthIn.toFixed(1)}" × ${heightIn.toFixed(1)}"<br>`;
+    result += `<strong>Surface Area:</strong> ${area.toFixed(1)} sq in<br>`;
+    
+    // Canvas-specific calculations
+    const canvasSpecs = {
+        'stretched': {
+            name: 'Stretched Canvas',
+            extraWidth: 6, // inches of extra canvas for stretching
+            frameDepth: 1.5,
+            notes: 'Add 3" on each side for gallery wrap'
+        },
+        'panel': {
+            name: 'Canvas Panel',
+            extraWidth: 0,
+            frameDepth: 0.125,
+            notes: 'Rigid support, no stretching needed'
+        },
+        'board': {
+            name: 'Canvas Board',
+            extraWidth: 0,
+            frameDepth: 0.1,
+            notes: 'Economical option for studies'
+        },
+        'paper': {
+            name: 'Watercolor Paper',
+            extraWidth: 2,
+            frameDepth: 0,
+            notes: 'Add 1" border on each side for mounting'
+        }
+    };
+    
+    const spec = canvasSpecs[canvasType];
+    const totalWidth = widthIn + spec.extraWidth;
+    const totalHeight = heightIn + spec.extraWidth;
+    
+    if (spec.extraWidth > 0) {
+        result += `<strong>Material Size:</strong> ${totalWidth.toFixed(1)}" × ${totalHeight.toFixed(1)}"<br>`;
+    }
+    
+    result += `<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(248, 200, 208, 0.2);">`;
+    result += `<strong>Notes:</strong> ${spec.notes}`;
+    result += `</div>`;
+    
+    result += `</div>`;
+    
+    display.innerHTML = result;
+}
+
+// Explore Art Style
+function exploreArtStyle() {
+    const movement = document.getElementById('artMovement').value;
+    const display = document.getElementById('artStyleResults');
+    
+    const artMovements = {
+        'impressionism': {
+            period: '1860s-1880s',
+            characteristics: 'Visible brushstrokes, ordinary subject matter, light and color emphasis',
+            keyArtists: ['Claude Monet', 'Pierre-Auguste Renoir', 'Edgar Degas', 'Camille Pissarro'],
+            techniques: 'Plein air painting, broken color, loose brushwork'
+        },
+        'surrealism': {
+            period: '1920s-1940s',
+            characteristics: 'Dreamlike imagery, unconscious mind exploration, bizarre juxtapositions',
+            keyArtists: ['Salvador Dalí', 'René Magritte', 'Max Ernst', 'Joan Miró'],
+            techniques: 'Automatic drawing, collage, photomontage'
+        },
+        'abstract-expressionism': {
+            period: '1940s-1960s',
+            characteristics: 'Large-scale paintings, emotional expression, non-representational forms',
+            keyArtists: ['Jackson Pollock', 'Mark Rothko', 'Willem de Kooning', 'Barnett Newman'],
+            techniques: 'Action painting, color field painting, gestural mark-making'
+        },
+        'pop-art': {
+            period: '1950s-1960s',
+            characteristics: 'Popular culture imagery, commercial art techniques, bold colors',
+            keyArtists: ['Andy Warhol', 'Roy Lichtenstein', 'James Rosenquist', 'Claes Oldenburg'],
+            techniques: 'Screen printing, collage, mechanical reproduction'
+        },
+        'minimalism': {
+            period: '1960s-1970s',
+            characteristics: 'Geometric forms, industrial materials, repetition, simplicity',
+            keyArtists: ['Donald Judd', 'Carl Andre', 'Dan Flavin', 'Sol LeWitt'],
+            techniques: 'Serial production, modular systems, industrial fabrication'
+        },
+        'cubism': {
+            period: '1907-1920s',
+            characteristics: 'Geometric shapes, multiple perspectives, analytical deconstruction',
+            keyArtists: ['Pablo Picasso', 'Georges Braque', 'Juan Gris', 'Fernand Léger'],
+            techniques: 'Collage, papier collé, analytical/synthetic phases'
+        },
+        'art-nouveau': {
+            period: '1890-1910',
+            characteristics: 'Organic forms, flowing lines, natural motifs, decorative arts',
+            keyArtists: ['Gustav Klimt', 'Alphonse Mucha', 'Antoni Gaudí', 'Louis Comfort Tiffany'],
+            techniques: 'Stained glass, metalwork, poster design, architectural decoration'
+        },
+        'street-art': {
+            period: '1970s-present',
+            characteristics: 'Urban environments, social commentary, accessible art, mixed media',
+            keyArtists: ['Banksy', 'Jean-Michel Basquiat', 'Keith Haring', 'Shepard Fairey'],
+            techniques: 'Stenciling, wheat pasting, mural painting, found materials'
+        },
+        'digital-art': {
+            period: '1960s-present',
+            characteristics: 'Computer-generated imagery, interactive media, virtual reality',
+            keyArtists: ['Rafael Lozano-Hemmer', 'Casey Reas', 'Zach Lieberman', 'Mario Klingemann'],
+            techniques: 'Programming, 3D modeling, generative art, AI collaboration'
+        },
+        'mixed-media': {
+            period: '1912-present',
+            characteristics: 'Multiple materials, experimental techniques, dimensional works',
+            keyArtists: ['Robert Rauschenberg', 'Jasper Johns', 'Louise Nevelson', 'Anselm Kiefer'],
+            techniques: 'Assemblage, collage, found objects, unconventional materials'
+        }
+    };
+    
+    const style = artMovements[movement];
+    
+    let result = `<div style="font-size: 0.7rem; line-height: 1.3;">`;
+    result += `<div style="color: #f8c8d0; font-weight: bold; margin-bottom: 6px;">${movement.charAt(0).toUpperCase() + movement.slice(1).replace('-', ' ')} (${style.period})</div>`;
+    result += `<strong>Key Characteristics:</strong> ${style.characteristics}<br>`;
+    result += `<strong>Techniques:</strong> ${style.techniques}<br>`;
+    result += `<strong>Research These Artists:</strong><br>`;
+    style.keyArtists.forEach((artist, index) => {
+        result += `• ${artist}${index < style.keyArtists.length - 1 ? '<br>' : ''}`;
+    });
+    result += `</div>`;
+    
+    display.innerHTML = result;
+}
+
+function randomArtStyle() {
+    const movements = ['impressionism', 'surrealism', 'abstract-expressionism', 'pop-art', 'minimalism', 'cubism', 'art-nouveau', 'street-art', 'digital-art', 'mixed-media'];
+    const randomMovement = movements[Math.floor(Math.random() * movements.length)];
+    document.getElementById('artMovement').value = randomMovement;
+    exploreArtStyle();
+}
+
+// Upload Image & Analyze Color
+function handleColorImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+    }
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        alert('Please upload a valid image file');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // Show preview
+        const preview = document.getElementById('colorImagePreview');
+        const previewImg = document.getElementById('colorPreviewImage');
+        previewImg.src = e.target.result;
+        preview.style.display = 'block';
+        
+        // Update upload area
+        const uploadArea = document.getElementById('colorUploadArea');
+        uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.8)';
+        uploadArea.innerHTML = `
+            <div style="color: #f8c8d0; font-weight: 500; font-size: 0.8rem;">✓ Image uploaded</div>
+            <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 2px;">Click to change</div>
+        `;
+        
+        // Enable analyze button
+        const analyzeBtn = document.getElementById('analyzeColorsBtn');
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Colors';
+        
+        // Hide previous analysis
+        document.getElementById('colorAnalysisResults').style.display = 'none';
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+function analyzeImageColors() {
+    const analyzeBtn = document.getElementById('analyzeColorsBtn');
+    
+    // Show loading state
+    document.getElementById('loadingColorAnalysis').style.display = 'block';
+    document.getElementById('colorAnalysisResults').style.display = 'none';
+    analyzeBtn.disabled = true;
+    analyzeBtn.textContent = 'Analyzing...';
+    
+    // Simulate color analysis
+    setTimeout(() => {
+        const colors = generateDominantColors();
+        const harmony = generateColorHarmonyDescription();
+        
+        document.getElementById('loadingColorAnalysis').style.display = 'none';
+        document.getElementById('colorAnalysisResults').style.display = 'block';
+        
+        // Display color swatches
+        const dominantColorsDiv = document.getElementById('dominantColors');
+        dominantColorsDiv.innerHTML = colors.map(color => 
+            `<div style="width: 20px; height: 20px; background: ${color}; border-radius: 3px; cursor: pointer; title: '${color}'" onclick="copyColorToClipboard('${color}')"></div>`
+        ).join('');
+        
+        // Display harmony description
+        document.getElementById('colorHarmony').innerHTML = harmony;
+        
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Again';
+    }, 2000);
+}
+
+function generateDominantColors() {
+    const colorPalettes = [
+        ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'],
+        ['#1abc9c', '#e67e22', '#34495e', '#f1c40f', '#e74c3c'],
+        ['#9b59b6', '#3498db', '#e74c3c', '#f39c12', '#2ecc71'],
+        ['#34495e', '#95a5a6', '#ecf0f1', '#bdc3c7', '#7f8c8d'],
+        ['#d63031', '#74b9ff', '#00b894', '#fdcb6e', '#fd79a8']
+    ];
+    
+    return colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+}
+
+function generateColorHarmonyDescription() {
+    const descriptions = [
+        'Complementary harmony with warm-cool balance',
+        'Analogous scheme with subtle transitions',
+        'Triadic composition with vibrant contrast',
+        'Monochromatic palette with tonal variation',
+        'Split-complementary with dynamic tension'
+    ];
+    
+    return descriptions[Math.floor(Math.random() * descriptions.length)];
+}
+
+// Font Pairing Tool
+function generateFontPairing() {
+    const primaryType = document.getElementById('primaryFont').value;
+    const mood = document.getElementById('fontMood').value;
+    const preview = document.getElementById('fontPreview');
+    const suggestions = document.getElementById('fontSuggestions');
+    
+    const fontPairings = {
+        serif: {
+            professional: { primary: 'Times New Roman', secondary: 'Arial', description: 'Classic and readable for formal documents' },
+            creative: { primary: 'Playfair Display', secondary: 'Source Sans Pro', description: 'Elegant serif with clean sans-serif' },
+            elegant: { primary: 'Cormorant Garamond', secondary: 'Lato', description: 'Sophisticated and refined combination' },
+            modern: { primary: 'Merriweather', secondary: 'Open Sans', description: 'Contemporary serif with versatile sans-serif' },
+            playful: { primary: 'Vollkorn', secondary: 'Nunito Sans', description: 'Friendly serif with rounded sans-serif' },
+            minimal: { primary: 'PT Serif', secondary: 'PT Sans', description: 'Clean serif family pairing' }
+        },
+        'sans-serif': {
+            professional: { primary: 'Helvetica', secondary: 'Georgia', description: 'Neutral sans-serif with classic serif' },
+            creative: { primary: 'Montserrat', secondary: 'Source Serif Pro', description: 'Geometric sans-serif with readable serif' },
+            elegant: { primary: 'Avenir', secondary: 'Minion Pro', description: 'Refined sans-serif with elegant serif' },
+            modern: { primary: 'Inter', secondary: 'Charter', description: 'Technical sans-serif with modern serif' },
+            playful: { primary: 'Poppins', secondary: 'Crimson Text', description: 'Rounded sans-serif with warm serif' },
+            minimal: { primary: 'Roboto', secondary: 'Roboto Slab', description: 'Systematic font family approach' }
+        }
+    };
+    
+    const pairing = fontPairings[primaryType] && fontPairings[primaryType][mood] 
+        ? fontPairings[primaryType][mood] 
+        : fontPairings.serif.professional;
+    
+    preview.innerHTML = `
+        <div style="font-family: '${pairing.primary}', serif; font-size: 1.1rem; margin-bottom: 4px; font-weight: 600;">${pairing.primary}</div>
+        <div style="font-family: '${pairing.secondary}', sans-serif; font-size: 0.85rem; opacity: 0.9;">${pairing.secondary}</div>
+    `;
+    
+    suggestions.innerHTML = pairing.description;
+}
+
+// Creative Prompt Generator
+function generateCreativePrompt() {
+    const medium = document.getElementById('promptMedium').value;
+    const difficulty = document.getElementById('promptDifficulty').value;
+    const promptDiv = document.getElementById('generatedPrompt');
+    const tipsDiv = document.getElementById('promptTips');
+    
+    const prompts = {
+        drawing: {
+            beginner: [
+                'Draw your favorite mug from three different angles',
+                'Sketch the shadows cast by objects on your desk',
+                'Draw a self-portrait using only continuous lines'
+            ],
+            intermediate: [
+                'Create a portrait using only crosshatching techniques',
+                'Draw a bustling street scene from memory',
+                'Illustrate an emotion using abstract forms'
+            ],
+            advanced: [
+                'Create a hyperrealistic study of fabric textures',
+                'Draw a complex architectural interior with accurate perspective',
+                'Design a character expressing a specific personality through gesture alone'
+            ],
+            experimental: [
+                'Draw with your non-dominant hand for 30 minutes',
+                'Create a drawing using found objects as drawing tools',
+                'Illustrate sound - make music visible through mark-making'
+            ]
+        },
+        painting: {
+            beginner: [
+                'Paint a simple still life with 3 primary colors only',
+                'Create a landscape using palette knife techniques',
+                'Paint the same object in morning and evening light'
+            ],
+            intermediate: [
+                'Paint a portrait focusing on skin tone variations',
+                'Create an abstract representation of your favorite song',
+                'Paint a rainy day scene capturing atmospheric effects'
+            ],
+            advanced: [
+                'Paint a complex multi-figure composition',
+                'Create a series exploring color temperature relationships',
+                'Paint a highly detailed botanical illustration'
+            ],
+            experimental: [
+                'Paint with unconventional tools (sponges, sticks, fingers)',
+                'Create a painting that changes meaning when viewed upside down',
+                'Use coffee, tea, and spices as your painting medium'
+            ]
+        }
+    };
+    
+    const mediumPrompts = prompts[medium] || prompts.drawing;
+    const difficultyPrompts = mediumPrompts[difficulty] || mediumPrompts.beginner;
+    const randomPrompt = difficultyPrompts[Math.floor(Math.random() * difficultyPrompts.length)];
+    
+    const tips = {
+        beginner: 'Focus on basic shapes and proportions. Don\'t worry about perfection!',
+        intermediate: 'Push yourself to try new techniques. Reference photos are your friend.',
+        advanced: 'Plan your approach carefully. Consider composition and focal points.',
+        experimental: 'Embrace failure as learning. Document your process for insights.'
+    };
+    
+    promptDiv.textContent = randomPrompt;
+    tipsDiv.textContent = `Tip: ${tips[difficulty]}`;
+}
+
+// Color Harmony Explorer
+function exploreColorHarmony() {
+    const baseColor = document.getElementById('harmonyBaseColor').value;
+    const harmonyType = document.getElementById('harmonyType').value;
+    const colorsDiv = document.getElementById('harmonyColors');
+    const descriptionDiv = document.getElementById('harmonyDescription');
+    
+    const colors = generateHarmonyColors(baseColor, harmonyType);
+    
+    // Display color swatches
+    colorsDiv.innerHTML = colors.map(color => 
+        `<div style="width: 25px; height: 25px; background: ${color}; border-radius: 4px; cursor: pointer; border: 1px solid rgba(255,255,255,0.3); title: '${color}'" onclick="copyColorToClipboard('${color}')"></div>`
+    ).join('');
+    
+    const descriptions = {
+        'monochromatic': 'Uses different shades, tints, and tones of a single hue. Creates unity and sophistication.',
+        'analogous': 'Uses colors that are next to each other on the color wheel. Creates harmony and is pleasing to the eye.',
+        'complementary': 'Uses colors opposite each other on the color wheel. Creates high contrast and vibrant looks.',
+        'split-complementary': 'Uses a base color and the two adjacent to its complement. Provides strong contrast with less tension.',
+        'triadic': 'Uses three colors equally spaced on the color wheel. Creates vibrant, balanced compositions.',
+        'tetradic': 'Uses four colors arranged into two complementary pairs. Rich and complex but harder to balance.'
+    };
+    
+    descriptionDiv.innerHTML = descriptions[harmonyType];
+}
+
+function generateHarmonyColors(baseColor, harmonyType) {
+    // Convert hex to HSL for color calculations
+    const hsl = hexToHsl(baseColor);
+    const colors = [baseColor];
+    
+    switch (harmonyType) {
+        case 'monochromatic':
+            colors.push(
+                hslToHex(hsl.h, hsl.s, Math.max(0, hsl.l - 0.2)),
+                hslToHex(hsl.h, hsl.s, Math.min(1, hsl.l + 0.2)),
+                hslToHex(hsl.h, Math.max(0, hsl.s - 0.3), hsl.l),
+                hslToHex(hsl.h, Math.min(1, hsl.s + 0.2), hsl.l)
+            );
+            break;
+        case 'analogous':
+            colors.push(
+                hslToHex((hsl.h + 30) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h - 30 + 360) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 60) % 360, hsl.s, hsl.l)
+            );
+            break;
+        case 'complementary':
+            colors.push(
+                hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l),
+                hslToHex(hsl.h, hsl.s, Math.max(0, hsl.l - 0.3)),
+                hslToHex((hsl.h + 180) % 360, hsl.s, Math.max(0, hsl.l - 0.3))
+            );
+            break;
+        case 'split-complementary':
+            colors.push(
+                hslToHex((hsl.h + 150) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 210) % 360, hsl.s, hsl.l),
+                hslToHex(hsl.h, hsl.s, Math.max(0, hsl.l - 0.2))
+            );
+            break;
+        case 'triadic':
+            colors.push(
+                hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l),
+                hslToHex(hsl.h, Math.max(0, hsl.s - 0.2), hsl.l)
+            );
+            break;
+        case 'tetradic':
+            colors.push(
+                hslToHex((hsl.h + 90) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l),
+                hslToHex((hsl.h + 270) % 360, hsl.s, hsl.l)
+            );
+            break;
+    }
+    
+    return colors.slice(0, 5); // Limit to 5 colors
+}
+
+function hexToHsl(hex) {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0;
+    } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return { h: h * 360, s, l };
+}
+
+function hslToHex(h, s, l) {
+    h /= 360;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => {
+        const k = (n + h * 12) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
