@@ -1,0 +1,390 @@
+/* Resources Page Styles - Matching Site Aesthetic */
+
+.resources-main {
+    padding-top: 80px;
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-secondary-accent);
+}
+
+.hero-section h1 {
+    font-family: 'Pirata One', var(--font-headings);
+    font-size: 2.8rem;
+    color: var(--color-primary-accent) !important;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.toolkit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.toolkit-section {
+    margin-bottom: 80px;
+}
+
+/* Tools Grid Layout */
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tool-card {
+    background: linear-gradient(135deg, rgba(248, 200, 208, 0.05) 0%, rgba(126, 28, 46, 0.05) 100%);
+    border-radius: 12px;
+    padding: 35px;
+    border: 2px solid rgba(248, 200, 208, 0.2);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+    height: 450px;
+    width: 350px;
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(248, 200, 208, 0.15);
+    border-color: var(--color-primary-accent);
+    background: linear-gradient(135deg, rgba(248, 200, 208, 0.08) 0%, rgba(126, 28, 46, 0.08) 100%);
+}
+
+.tool-card h3 {
+    font-family: 'Pirata One', var(--font-headings);
+    font-size: 1.6rem;
+    color: var(--color-primary-accent) !important;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tool-card p {
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Generator Display Styles */
+.generator-display {
+    background: rgba(126, 28, 46, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    border: 1px solid rgba(248, 200, 208, 0.3);
+    backdrop-filter: blur(3px);
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.generator-display span {
+    color: var(--color-primary-accent);
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Button Styles */
+.generate-btn {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%);
+    color: var(--color-background);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 25px;
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(248, 200, 208, 0.2);
+    margin-top: auto;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(248, 200, 208, 0.4);
+    background: linear-gradient(135deg, var(--color-secondary-accent) 0%, var(--color-primary-accent) 100%);
+}
+
+.secondary-btn {
+    background: rgba(248, 200, 208, 0.2);
+    color: var(--color-primary-accent);
+    border: 1px solid var(--color-primary-accent);
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.secondary-btn:hover {
+    background: var(--color-primary-accent);
+    color: var(--color-background);
+}
+
+/* Dice Results - Force exact sizing */
+.tool-card .dice-results {
+    margin: 6px 0 !important;
+    flex-shrink: 1;
+    overflow: hidden;
+    max-height: 120px;
+}
+
+.tool-card .dice-result {
+    background: rgba(248, 200, 208, 0.1) !important;
+    padding: 3px 6px !important;
+    margin: 3px 0 !important;
+    border-radius: 3px;
+    border-left: 2px solid var(--color-primary-accent);
+    backdrop-filter: blur(2px);
+}
+
+.tool-card .dice-result strong {
+    color: var(--color-primary-accent) !important;
+    font-family: var(--font-accent) !important;
+    font-size: 0.7rem !important;
+}
+
+.tool-card .dice-result span {
+    color: var(--color-text) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 500;
+    font-size: 0.7rem !important;
+}
+
+/* Color Display */
+.color-display {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.color-swatch {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 3px solid var(--color-primary-accent);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-names {
+    text-align: center;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 15px;
+}
+
+
+
+/* Timer Styles - Clean and compact */
+.tool-card .timer-display {
+    background: rgba(0, 0, 0, 0.4) !important;
+    padding: 16px !important;
+    border-radius: 8px;
+    margin: 12px 0 !important;
+    text-align: center;
+    border: 1px solid rgba(248, 200, 208, 0.3);
+    flex-shrink: 0;
+}
+
+.tool-card .timer-time {
+    font-family: var(--font-accent) !important;
+    font-size: 1.7rem !important;
+    font-weight: bold;
+    margin-bottom: 8px !important;
+    color: var(--color-primary-accent) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.tool-card .timer-prompt {
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+}
+
+.tool-card .timer-controls {
+    display: flex !important;
+    gap: 12px !important;
+    margin-top: auto !important;
+    flex-shrink: 0;
+}
+
+.tool-card .timer-controls .generate-btn {
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, var(--color-secondary-accent) 100%) !important;
+    color: var(--color-background) !important;
+    flex: 1 !important;
+    margin-top: 0 !important;
+    padding: 12px 18px !important;
+    font-size: 0.9rem !important;
+}
+
+.tool-card .timer-controls .secondary-btn {
+    background: rgba(248, 200, 208, 0.2) !important;
+    color: var(--color-primary-accent) !important;
+    border: 1px solid var(--color-primary-accent) !important;
+    flex: 1 !important;
+    padding: 12px 18px !important;
+    font-size: 0.9rem !important;
+}
+
+
+
+/* Mobile Shake Feature */
+.mobile-feature {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.shake-card {
+    background: linear-gradient(135deg, rgba(126, 28, 46, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+    border: 2px solid var(--color-primary-accent);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+}
+
+.shake-card h3 {
+    font-family: 'Pirata One', var(--font-headings);
+    color: var(--color-primary-accent) !important;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.shake-card p {
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+}
+
+.inspiration-display {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text);
+    border: 1px solid rgba(248, 200, 208, 0.3);
+}
+
+.shake-card .generate-btn {
+    background: rgba(248, 200, 208, 0.9);
+    color: var(--color-background);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .tool-card {
+        padding: 25px;
+    }
+    
+    .color-display {
+        gap: 12px;
+    }
+    
+    .color-swatch {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .timer-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .shake-card {
+        padding: 30px 20px;
+    }
+}
+
+/* Animation for shake effect */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+.shaking {
+    animation: shake 0.6s ease-in-out;
+}
+
+/* Loading animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(248, 200, 208, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(248, 200, 208, 0.6); }
+}
+
+.loading {
+    animation: pulse 1.5s infinite, glow 2s infinite;
+}

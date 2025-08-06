@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Resources & Creative Tools - Leah Cortez Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/resources.css">
+    <link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo/logo2.png" alt="Leah Cortez Studio" class="logo-img">
+            </a>
+            <ul class="nav-menu nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="../collections/index.html">Portfolio</a></li>
+                <li><a href="../cv/index.html">CV</a></li>
+                <li><a href="index.html">Resources</a></li>
+                <li><a href="../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Menu" class="hamburger-icon">
+            </div>
+        </div>
+    </nav>
+
+    <main class="resources-main">
+        <div class="hero-section">
+            <h1>Creative Studio Resources</h1>
+            <p class="hero-subtitle">Professional tools and interactive utilities designed to enhance your artistic workflow and inspire new ideas</p>
+        </div>
+
+        <div class="toolkit-container">
+            
+            <!-- Tools Section -->
+            <section class="toolkit-section">
+                <div class="tools-grid">
+                    
+                    <!-- 10-Minute Sketch Timer -->
+                    <div class="tool-card timer-card">
+                        <h3>Quick Sketch Timer</h3>
+                        <p>Time-limited challenges to break perfectionism</p>
+                        <div class="timer-display">
+                            <div class="timer-time" id="timer-display">10:00</div>
+                            <div class="timer-prompt" id="timer-prompt">Draw the last thing you ate, but make it dramatic</div>
+                        </div>
+                        <div class="timer-controls">
+                            <button class="generate-btn" onclick="startTimer()">Start Timer</button>
+                            <button class="secondary-btn" onclick="newTimerPrompt()">New Prompt</button>
+                        </div>
+                    </div>
+
+                    <!-- Daily Creative Challenge -->
+                    <div class="tool-card">
+                        <h3>Daily Creative Challenge</h3>
+                        <p>Get a new creative challenge every day - perfect for building a consistent art practice</p>
+                        <div class="generator-display" id="dailyChallenge" style="padding: 8px; margin: 8px 0;">
+                            <div style="text-align: center; margin: 10px 0;">
+                                <div style="font-size: 0.9rem; color: #f8c8d0; margin-bottom: 8px;" id="challengeDate">Today's Challenge</div>
+                                <div style="font-weight: 500; line-height: 1.3; font-size: 0.85rem;" id="todaysChallenge">Click to reveal today's creative challenge</div>
+                                <div style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;" id="challengeTag">#ArtChallenge</div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="generateDailyChallenge()">Today's Challenge</button>
+                    </div>
+
+                    <!-- Spinning Challenge Wheel -->
+                    <div class="tool-card">
+                        <h3>Spinning Challenge Wheel</h3>
+                        <p>Watch the wheel spin and land on creative challenges and constraints</p>
+                        <div class="generator-display" id="spinningWheel" style="padding: 8px; margin: 8px 0;">
+                            <div style="text-align: center; margin: 10px 0;">
+                                <div style="position: relative; display: inline-block;">
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(from 0deg, #f8c8d0 0deg 45deg, #7e1c2e 45deg 90deg, #d4a5a5 90deg 135deg, #8b3a3a 135deg 180deg, #f8c8d0 180deg 225deg, #7e1c2e 225deg 270deg, #d4a5a5 270deg 315deg, #8b3a3a 315deg 360deg); margin: 0 auto; position: relative; transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);" id="wheelCircle">
+                                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: bold; font-size: 0.7rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">SPIN</div>
+                                    </div>
+                                    <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #f8c8d0;"></div>
+                                </div>
+                                <div style="font-weight: 500; margin: 10px 0; min-height: 35px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;" id="wheelResult">Click to spin the wheel!</div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="spinWheel()">Spin Wheel</button>
+                    </div>
+
+                    <!-- Fake Client Brief Generator -->
+                    <div class="tool-card">
+                        <h3>Fake Client Brief Generator</h3>
+                        <p>Generate realistic client briefs to practice professional design work and overcome art block</p>
+                        <div class="generator-display" id="clientBrief" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="font-weight: bold; color: #f8c8d0; margin-bottom: 6px; font-size: 0.9rem;" id="clientName">Moonlight Café</div>
+                                <div style="font-size: 0.75rem; line-height: 1.3; margin-bottom: 6px;" id="projectType">Logo Design Project</div>
+                                <div style="font-size: 0.7rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 70px; overflow-y: auto;" id="briefDetails">
+                                    Create a cozy, welcoming logo for our late-night café. Target audience: students and night workers. Colors: warm earth tones. Style: modern but friendly. Must work on signage and coffee cups.
+                                </div>
+                                <div style="font-size: 0.65rem; margin-top: 4px; opacity: 0.8;" id="briefDeadline">Deadline: 2 weeks • Budget: $800</div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="generateClientBrief()">New Brief</button>
+                    </div>
+
+                    <!-- Artist Inspiration Generator -->
+                    <div class="tool-card">
+                        <h3>Artist Inspiration Engine</h3>
+                        <p>Discover famous artists, their techniques, and create art inspired by masters</p>
+                        <div class="generator-display" id="artistInspiration" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="font-weight: bold; color: #f8c8d0; margin-bottom: 6px; font-size: 0.9rem;" id="artistName">Vincent van Gogh</div>
+                                <div style="font-size: 0.75rem; line-height: 1.2; margin-bottom: 6px;" id="artistTechnique">
+                                    <strong>Signature Style:</strong> Bold, swirling brushstrokes<br>
+                                    <strong>Try This:</strong> Create thick, expressive marks
+                                </div>
+                                <div style="font-size: 0.7rem; font-style: italic; max-height: 40px; overflow-y: auto;" id="inspirationPrompt">Paint a landscape using only bold, curved brushstrokes</div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="generateArtistInspiration()">Meet New Artist</button>
+                    </div>
+
+                    <!-- Art Style Generator -->
+                    <div class="tool-card">
+                        <h3>Art Style Explorer</h3>
+                        <p>Explore different artistic styles with key characteristics and techniques</p>
+                        <div class="generator-display" id="artStyleExplorer" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="font-weight: bold; color: #f8c8d0; margin-bottom: 6px; font-size: 0.9rem;" id="styleName">Impressionism</div>
+                                <div style="font-size: 0.75rem; line-height: 1.2;" id="styleDetails">
+                                    <strong>Key Features:</strong> Loose brushstrokes, emphasis on light<br>
+                                    <strong>Colors:</strong> Pure, unmixed colors<br>
+                                    <strong>Subject:</strong> Everyday scenes, landscapes
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="generateArtStyle()">Explore New Style</button>
+                    </div>
+
+                    <!-- AI Art Critique Tool -->
+                    <div class="tool-card">
+                        <h3>Rate My Piece</h3>
+                        <p>Upload your artwork and get AI-powered feedback on composition, color, technique, and style</p>
+                        <div class="generator-display" id="artCritique" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 8px; transition: all 0.3s ease;" id="uploadArea">
+                                    <input type="file" id="artworkUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                                    <div onclick="document.getElementById('artworkUpload').click()" style="cursor: pointer;">
+                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork</div>
+                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
+                                    </div>
+                                </div>
+                                <div id="imagePreview" style="display: none; margin-bottom: 8px; text-align: center;">
+                                    <img id="previewImage" style="max-width: 100%; max-height: 80px; border-radius: 4px; object-fit: contain;">
+                                </div>
+                                <div id="aiAnalysis" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none; max-height: 120px; overflow-y: auto;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">AI Analysis Results:</div>
+                                    <div id="analysisContent">Upload an image to get AI feedback...</div>
+                                </div>
+                                <div id="loadingAnalysis" style="display: none; text-align: center; padding: 12px;">
+                                    <div style="color: #f8c8d0; margin-bottom: 6px; font-size: 0.8rem;">Analyzing artwork...</div>
+                                    <div style="font-size: 0.7rem; opacity: 0.8;">Please wait...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="analyzeArtwork()" id="analyzeBtn" disabled>Upload Image First</button>
+                    </div>
+
+                    <!-- Color Harmony Generator -->
+                    <div class="tool-card">
+                        <h3>Color Harmony Generator</h3>
+                        <p>Generate professional color schemes using color theory principles</p>
+                        <div class="generator-display" id="colorHarmony" style="padding: 8px; margin: 8px 0;">
+                            <div style="display: flex; gap: 6px; margin: 8px 0; align-items: center;">
+                                <input type="color" id="baseColor" value="#e74c3c" style="width: 45px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                <select id="harmonyType" style="flex: 1; padding: 5px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.8rem;">
+                                    <option value="complementary">Complementary</option>
+                                    <option value="triadic">Triadic</option>
+                                    <option value="analogous">Analogous</option>
+                                    <option value="split">Split-Complementary</option>
+                                </select>
+                            </div>
+                            <div id="harmonyResult" style="font-size: 0.8rem;">Select base color and harmony type</div>
+                        </div>
+                        <button class="generate-btn" onclick="generateColorHarmony()">Generate Harmony</button>
+                    </div>
+
+                    <!-- Color Contrast Checker -->
+                    <div class="tool-card">
+                        <h3>Color Contrast Checker</h3>
+                        <p>Check if your text and background colors meet accessibility standards (WCAG)</p>
+                        <div class="generator-display" id="contrastChecker" style="padding: 8px; margin: 8px 0;">
+                            <div style="display: flex; gap: 6px; margin: 8px 0;">
+                                <input type="color" id="textColor" value="#000000" style="width: 45px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                <input type="color" id="bgColor" value="#ffffff" style="width: 45px; height: 30px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 4px;">
+                                <div style="flex: 1; padding: 6px; font-size: 0.8rem;">Text on Background</div>
+                            </div>
+                            <div id="contrastResult" style="font-size: 0.8rem;">Select colors to check contrast</div>
+                        </div>
+                        <button class="generate-btn" onclick="checkContrast()">Check Contrast</button>
+                    </div>
+
+                    <!-- Font Pairing Helper -->
+                    <div class="tool-card">
+                        <h3>Font Pairing Helper</h3>
+                        <p>Get professional font combinations for your projects with reasoning behind each pairing</p>
+                        <div class="generator-display" id="fontPairing" style="padding: 8px; margin: 8px 0; font-size: 0.85rem; line-height: 1.3; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <span>Click to generate font combinations...</span>
+                        </div>
+                        <button class="generate-btn" onclick="generateFontPairing()">Generate Pairing</button>
+                    </div>
+
+                    <!-- Pricing Estimator -->
+                    <div class="tool-card">
+                        <h3>Pricing Estimator</h3>
+                        <p>Quick commission rate calculator to help price your artistic work fairly</p>
+                        <div class="generator-display" id="pricingCalculator" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 6px; margin-bottom: 6px; align-items: center;">
+                                    <input type="number" id="hourlyRate" placeholder="$/hr" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="estimatedHours" placeholder="Hours" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                </div>
+                                <div style="display: flex; gap: 6px; margin-bottom: 8px; align-items: center;">
+                                    <input type="number" id="materialCost" placeholder="Materials $" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <select id="complexityMultiplier" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="1">Simple</option>
+                                        <option value="1.3">Medium</option>
+                                        <option value="1.6">Complex</option>
+                                        <option value="2">Very Complex</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="pricingResults">
+                                    Enter your rates to calculate commission pricing
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="calculatePricing()">Calculate Price</button>
+                    </div>
+
+                    <!-- Print Calculator -->
+                    <div class="tool-card">
+                        <h3>Print Size Calculator</h3>
+                        <p>Calculate print dimensions, DPI requirements, and file sizes for professional printing</p>
+                        <div class="generator-display" id="printCalculator" style="padding: 8px; margin: 8px 0;">
+                            <div style="margin: 5px 0;">
+                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
+                                    <input type="number" id="printWidth" placeholder="W" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <input type="number" id="printHeight" placeholder="H" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
+                                    <select id="printUnit" style="padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 40px;">
+                                        <option value="in">in</option>
+                                        <option value="cm">cm</option>
+                                        <option value="mm">mm</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <select id="printDPI" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="72">72 DPI (Web)</option>
+                                        <option value="150">150 DPI (Draft)</option>
+                                        <option value="300" selected>300 DPI (Print)</option>
+                                        <option value="600">600 DPI (High Quality)</option>
+                                    </select>
+                                </div>
+                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 80px; overflow-y: auto;" id="printResults">
+                                    Enter dimensions to calculate print specifications
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn" onclick="calculatePrint()">Calculate</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="../images/logo/logo4white.png" alt="Leah Cortez Logo" class="footer-logo" loading="lazy">
+            <p class="copyright">Leah Cortez © 2025</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/resources.js"></script>
+</body>
+</html>
