@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Resources & Creative Tools - Leah Cortez Studios</title>
+    <title>Creative Tools & Resources - Leah Cortez Studios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
 
     <main class="resources-main">
         <div class="hero-section">
-            <h1>Creative Studio Resources</h1>
-            <p class="hero-subtitle">Essential creative tools to enhance your artistic workflow - streamlined and focused on what matters most</p>
+            <h1>Creative Tools & Resources</h1>
+            <p class="hero-subtitle">Practical tools for artists, crafters, and creative minds - simple calculators and guides to make your projects easier</p>
         </div>
 
         <div class="toolkit-container">
@@ -47,225 +47,83 @@
             <section class="toolkit-section">
                 <div class="tools-grid">
                     
-                    <!-- Creative Prompt Generator -->
+                    <!-- Font Pairing Guide -->
                     <div class="tool-card">
-                        <h3>Creative Prompt Generator</h3>
-                        <p>Break through creative blocks with targeted prompts for different mediums and skill levels</p>
-                        <div class="generator-display" id="creativePrompt" style="padding: 8px; margin: 8px 0;">
+                        <h3>Font Pairing Helper</h3>
+                        <p>Find perfect font combinations for your design projects - get professional typography choices instantly</p>
+                        <div class="generator-display" id="fontPairingGuide" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="promptMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="drawing">Drawing</option>
-                                        <option value="painting">Painting</option>
-                                        <option value="digital">Digital Art</option>
-                                        <option value="sculpture">Sculpture</option>
-                                        <option value="photography">Photography</option>
-                                        <option value="mixed-media">Mixed Media</option>
-                                        <option value="design">Graphic Design</option>
+                                    <select id="designStyle" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="modern">Modern & Clean</option>
+                                        <option value="classic">Classic & Elegant</option>
+                                        <option value="playful">Fun & Playful</option>
+                                        <option value="professional">Professional</option>
+                                        <option value="artistic">Creative & Artistic</option>
                                     </select>
-                                    <select id="promptDifficulty" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="beginner">Beginner</option>
-                                        <option value="intermediate">Intermediate</option>
-                                        <option value="advanced">Advanced</option>
-                                        <option value="experimental">Experimental</option>
+                                    <select id="projectType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="poster">Poster/Flyer</option>
+                                        <option value="logo">Logo Design</option>
+                                        <option value="website">Website</option>
+                                        <option value="presentation">Presentation</option>
+                                        <option value="invitation">Invitation</option>
                                     </select>
                                 </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="promptResults">
-                                    <div style="font-weight: 500; color: #f8c8d0; margin-bottom: 4px;">Your Creative Prompt:</div>
-                                    <div id="generatedPrompt">Select medium and difficulty to generate a creative prompt</div>
-                                    <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 6px;" id="promptTips"></div>
+                                <div id="fontPairResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; max-height: 120px; overflow-y: auto;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Font Recommendations:</div>
+                                    <div id="fontPairContent">Select your style and project type to see font combinations</div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="generateCreativePrompt()">New Prompt</button>
+                        <button class="generate-btn" onclick="generateFontPairs()">Get Font Pairs</button>
                     </div>
 
-                    <!-- Fix My Piece Diagnostic Tool -->
+                    <!-- Design Layout Helper -->
                     <div class="tool-card">
-                        <h3>Fix My Piece</h3>
-                        <p>Upload your artwork to identify technical issues and get specific solutions across all art mediums</p>
-                        <div class="generator-display" id="styleAnalyzer" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 30px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative;" id="styleUploadArea">
-                                    <input type="file" id="styleUpload" accept="image/*" style="display: none;" onchange="handleStyleUpload(event)">
-                                    <div onclick="document.getElementById('styleUpload').click()" style="cursor: pointer;" id="styleUploadText">
-                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for diagnostic</div>
-                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="paintingMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="oil">Oil Paint</option>
-                                        <option value="acrylic">Acrylic</option>
-                                        <option value="watercolor">Watercolor</option>
-                                        <option value="gouache">Gouache</option>
-                                        <option value="pencil">Pencil Drawing</option>
-                                        <option value="charcoal">Charcoal</option>
-                                        <option value="pastel">Pastels</option>
-                                        <option value="ink">Ink Drawing</option>
-                                        <option value="digital">Digital Art</option>
-                                        <option value="collage">Collage</option>
-                                        <option value="sculpture">Sculpture</option>
-                                        <option value="printmaking">Printmaking</option>
-                                        <option value="fiber">Fiber Arts</option>
-                                        <option value="ceramics">Ceramics</option>
-                                        <option value="mixed">Mixed Media</option>
-                                    </select>
-                                    <select id="problemArea" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="general">General Issues</option>
-                                        <option value="color">Color Problems</option>
-                                        <option value="composition">Composition</option>
-                                        <option value="technique">Technique</option>
-                                        <option value="form">Form & Structure</option>
-                                        <option value="texture">Texture & Surface</option>
-                                        <option value="lighting">Light & Shadow</option>
-                                        <option value="perspective">Perspective</option>
-                                        <option value="proportions">Proportions</option>
-                                        <option value="concept">Concept & Meaning</option>
-                                    </select>
-                                </div>
-                                <div id="diagnosticResults" style="font-size: 0.65rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; display: none; max-height: 100px; overflow-y: auto; word-wrap: break-word;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 4px; font-size: 0.7rem;">Diagnostic Results:</div>
-                                    <div id="diagnosticContent">Upload artwork to identify technical issues and get solutions...</div>
-                                </div>
-                                <div id="loadingDiagnostic" style="display: none; text-align: center; padding: 8px;">
-                                    <div style="color: #f8c8d0; margin-bottom: 4px; font-size: 0.75rem;">Analyzing artwork techniques...</div>
-                                    <div style="font-size: 0.65rem; opacity: 0.8;">Identifying issues and preparing solutions...</div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="runPaintingDiagnostic()" id="diagnosticBtn" disabled>Upload Artwork First</button>
-                    </div>
-
-                    <!-- Portfolio Readiness Checker -->
-                    <div class="tool-card">
-                        <h3>Is My Piece Portfolio Ready</h3>
-                        <p>Upload your artwork to get professional portfolio assessment and improvement recommendations</p>
-                        <div class="generator-display" id="portfolioChecker" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="border: 2px dashed rgba(248, 200, 208, 0.5); border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 30px; transition: all 0.3s ease; min-height: 80px; display: flex; align-items: center; justify-content: center; position: relative;" id="portfolioUploadArea">
-                                    <input type="file" id="portfolioUpload" accept="image/*" style="display: none;" onchange="handlePortfolioUpload(event)">
-                                    <div onclick="document.getElementById('portfolioUpload').click()" style="cursor: pointer;" id="portfolioUploadText">
-                                        <div style="color: #f8c8d0; font-weight: 500; font-size: 0.9rem; margin-bottom: 6px;">Click to upload artwork for portfolio assessment</div>
-                                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 3px;">JPG, PNG, GIF • Max 5MB</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="portfolioGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="gallery">Gallery Submission</option>
-                                        <option value="client">Client Presentation</option>
-                                        <option value="job">Job Application</option>
-                                        <option value="school">Art School Application</option>
-                                        <option value="social">Social Media</option>
-                                    </select>
-                                </div>
-                                <div id="portfolioAnalysis" style="font-size: 0.65rem; line-height: 1.2; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; display: none; max-height: 100px; overflow-y: auto; word-wrap: break-word;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 4px; font-size: 0.7rem;">Portfolio Assessment:</div>
-                                    <div id="portfolioAssessment">Upload artwork to get professional portfolio evaluation...</div>
-                                </div>
-                                <div id="loadingPortfolio" style="display: none; text-align: center; padding: 8px;">
-                                    <div style="color: #f8c8d0; margin-bottom: 4px; font-size: 0.75rem;">Analyzing portfolio readiness...</div>
-                                    <div style="font-size: 0.65rem; opacity: 0.8;">Checking composition, technique, and professional standards...</div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="assessPortfolioReadiness()" id="assessBtn" disabled>Upload Image First</button>
-                    </div>
-
-                    <!-- Drying Time Calculator -->
-                    <div class="tool-card">
-                        <h3>Drying Time Calculator</h3>
-                        <p>Calculate optimal drying times for different paint mediums based on thickness, humidity, and temperature</p>
-                        <div class="generator-display" id="dryingCalculator" style="padding: 8px; margin: 8px 0;">
+                        <h3>Layout Composition Guide</h3>
+                        <p>Learn design principles and get layout suggestions based on your content and goals</p>
+                        <div class="generator-display" id="layoutHelper" style="padding: 8px; margin: 8px 0;">
                             <div style="margin: 5px 0;">
                                 <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <select id="dryingMedium" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="oil">Oil Paint</option>
-                                        <option value="acrylic">Acrylic Paint</option>
-                                        <option value="watercolor">Watercolor</option>
-                                        <option value="gouache">Gouache</option>
-                                        <option value="tempera">Tempera</option>
-                                        <option value="encaustic">Encaustic Wax</option>
+                                    <select id="contentType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="text-heavy">Lots of Text</option>
+                                        <option value="image-heavy">Lots of Images</option>
+                                        <option value="balanced">Text + Images</option>
+                                        <option value="minimal">Minimal Content</option>
                                     </select>
-                                    <select id="paintThickness" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="thin">Thin Layer</option>
-                                        <option value="medium">Medium Layer</option>
-                                        <option value="thick">Thick/Impasto</option>
-                                        <option value="heavy">Heavy Texture</option>
+                                    <select id="layoutGoal" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="inform">Inform/Educate</option>
+                                        <option value="sell">Sell/Promote</option>
+                                        <option value="inspire">Inspire/Motivate</option>
+                                        <option value="entertain">Entertain</option>
                                     </select>
                                 </div>
                                 <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <div style="flex: 1;">
-                                        <label style="font-size: 0.7rem; color: #f8c8d0; display: block; margin-bottom: 2px;">Temperature (°F)</label>
-                                        <input type="number" id="temperature" value="70" min="32" max="100" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <label style="font-size: 0.7rem; color: #f8c8d0; display: block; margin-bottom: 2px;">Humidity (%)</label>
-                                        <input type="number" id="humidity" value="45" min="10" max="90" style="width: 100%; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                    </div>
-                                </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="airflow" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="still">Still Air</option>
-                                        <option value="gentle">Gentle Breeze</option>
-                                        <option value="fan">Fan/Ventilation</option>
+                                    <select id="layoutFormat" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="portrait">Portrait (Tall)</option>
+                                        <option value="landscape">Landscape (Wide)</option>
+                                        <option value="square">Square</option>
                                     </select>
-                                    <select id="surface" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="canvas">Canvas</option>
-                                        <option value="paper">Paper</option>
-                                        <option value="wood">Wood Panel</option>
-                                        <option value="metal">Metal</option>
-                                        <option value="plastic">Plastic</option>
+                                    <select id="audienceType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                        <option value="casual">Casual/Personal</option>
+                                        <option value="business">Business/Formal</option>
+                                        <option value="creative">Creative/Artistic</option>
+                                        <option value="youth">Young Audience</option>
                                     </select>
                                 </div>
-                                <div id="dryingResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
-                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Estimated Drying Times:</div>
-                                    <div id="dryingContent">Click calculate to get drying time estimates...</div>
+                                <div id="layoutResults" style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px; display: none;">
+                                    <div style="color: #f8c8d0; font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">Layout Recommendations:</div>
+                                    <div id="layoutContent">Select your options to get layout suggestions</div>
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn" onclick="calculateDryingTime()">Calculate Drying Time</button>
+                        <button class="generate-btn" onclick="generateLayoutAdvice()">Get Layout Ideas</button>
                     </div>
 
-                    <!-- 3D Unit Converter -->
+                    <!-- Project Price Helper -->
                     <div class="tool-card">
-                        <h3>3D Unit Converter</h3>
-                        <p>Convert between different 3D modeling units, calculate volumes, and estimate material costs</p>
-                        <div class="generator-display" id="3dConverter" style="padding: 8px; margin: 8px 0;">
-                            <div style="margin: 5px 0;">
-                                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                                    <input type="number" id="3dLength" placeholder="Length" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="3dWidth" placeholder="Width" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                    <input type="number" id="3dHeight" placeholder="Height" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem; min-width: 0;">
-                                </div>
-                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
-                                    <select id="3dFromUnit" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="mm">Millimeters</option>
-                                        <option value="cm">Centimeters</option>
-                                        <option value="in" selected>Inches</option>
-                                        <option value="ft">Feet</option>
-                                        <option value="units">Generic Units</option>
-                                    </select>
-                                    <select id="materialType" style="flex: 1; padding: 4px; background: rgba(0,0,0,0.3); border: 1px solid rgba(248, 200, 208, 0.3); color: white; border-radius: 4px; font-size: 0.75rem;">
-                                        <option value="none">No Material</option>
-                                        <option value="pla">PLA Filament</option>
-                                        <option value="abs">ABS Filament</option>
-                                        <option value="resin">UV Resin</option>
-                                        <option value="clay">Clay</option>
-                                    </select>
-                                </div>
-                                <div style="font-size: 0.7rem; line-height: 1.3; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 4px; max-height: 100px; overflow-y: auto;" id="3dResults">
-                                    Enter dimensions to calculate volume and conversions
-                                </div>
-                            </div>
-                        </div>
-                        <button class="generate-btn" onclick="calculate3DConversion()">Calculate Volume</button>
-                    </div>
-
-                    <!-- Commission Compatibility Matcher -->
-                    <div class="tool-card">
-                        <h3>Commission Compatibility Matcher</h3>
-                        <p>Analyze client requests to identify red flags and ensure profitable, manageable commissions</p>
+                        <h3>Project Price Helper</h3>
+                        <p>Get guidance on pricing your artwork fairly - helps both artists and clients understand reasonable costs and timelines</p>
                         <div class="generator-display" id="commissionMatcher" style="padding: 6px; margin: 6px 0;">
                             <div style="margin: 3px 0;">
                                 <div style="display: flex; gap: 3px; margin-bottom: 4px;">
@@ -305,20 +163,20 @@
                 <div class="modal-buttons-grid">
                     <button class="modal-trigger-btn" onclick="openModal('colorTheoryModal')">
                         <img src="../icons/starburst.svg" alt="Color Theory" class="modal-btn-icon">
-                        <span class="modal-btn-text">Color Theory Palette Maker</span>
-                        <span class="modal-btn-desc">Create accessible palettes with color theory principles</span>
+                        <span class="modal-btn-text">Color Palette Maker</span>
+                        <span class="modal-btn-desc">Create beautiful color combinations that work well together for any project</span>
                     </button>
                     
-                    <button class="modal-trigger-btn" onclick="openModal('imageAnalyzerModal')">
-                        <img src="../icons/starburst.svg" alt="Reference Analyzer" class="modal-btn-icon">
-                        <span class="modal-btn-text">Reference Image Analyzer</span>
-                        <span class="modal-btn-desc">Extract colors, analyze composition, and get lighting insights from photos</span>
+                    <button class="modal-trigger-btn" onclick="openModal('designDecisionModal')">
+                        <img src="../icons/starburst.svg" alt="Design Decisions" class="modal-btn-icon">
+                        <span class="modal-btn-text">Design Decision Helper</span>
+                        <span class="modal-btn-desc">Get guidance on colors, fonts, and layouts for any creative project</span>
                     </button>
                     
                     <button class="modal-trigger-btn" onclick="openModal('printSpecModal')">
                         <img src="../icons/starburst.svg" alt="Print Specs" class="modal-btn-icon">
-                        <span class="modal-btn-text">Print Specifications Guide</span>
-                        <span class="modal-btn-desc">Interactive guide for professional printing requirements</span>
+                        <span class="modal-btn-text">Print Planning Guide</span>
+                        <span class="modal-btn-desc">Get the right sizes and settings for printing your artwork professionally</span>
                     </button>
                 </div>
             </section>
@@ -510,73 +368,154 @@
         </div>
     </div>
 
-    <!-- Reference Image Analyzer Modal -->
-    <div id="imageAnalyzerModal" class="resource-modal" role="dialog" aria-labelledby="analyzer-modal-title" aria-modal="true">
-        <div class="modal-content" style="max-width: 900px;">
+    <!-- Art Supply Calculator Modal -->
+    <div id="designDecisionModal" class="resource-modal" role="dialog" aria-labelledby="design-decision-title" aria-modal="true">
+        <div class="modal-content" style="max-width: 800px;">
             <div class="modal-header">
-                <h2 id="analyzer-modal-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">📷 Reference Image Analyzer</h2>
+                <h2 id="design-decision-title" style="color: #f8c8d0; font-family: 'Pirata One', serif; margin: 0; flex: 1;">🎨 Design Decision Helper</h2>
                 <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 
-                <!-- Upload Area -->
-                <div style="margin-bottom: 25px; padding: 20px; background: rgba(248, 200, 208, 0.1); border-radius: 8px; border: 2px dashed rgba(248, 200, 208, 0.3);">
-                    <div style="text-align: center;">
-                        <input type="file" id="referenceImageInput" accept="image/*" style="display: none;" onchange="analyzeReferenceImage()">
-                        <label for="referenceImageInput" style="cursor: pointer; display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; border-radius: 8px; font-weight: bold; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            📁 Choose Reference Image
-                        </label>
-                        <p style="margin: 10px 0 0 0; font-size: 0.9rem; opacity: 0.8;">Upload a photo to extract colors, analyze composition, and get lighting insights</p>
+                <!-- Project Type Selection -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">Tell us about your project:</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">What are you creating?</label>
+                            <select id="designProjectType" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
+                                <option value="logo">Logo or Brand Identity</option>
+                                <option value="poster">Poster or Flyer</option>
+                                <option value="website">Website or App</option>
+                                <option value="presentation">Presentation or Slides</option>
+                                <option value="invitation">Invitation or Card</option>
+                                <option value="social">Social Media Post</option>
+                                <option value="packaging">Product Packaging</option>
+                                <option value="artwork">Artwork or Illustration</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">Who's your audience?</label>
+                            <select id="designAudience" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
+                                <option value="professional">Business/Professional</option>
+                                <option value="casual">Friends/Family/Casual</option>
+                                <option value="youth">Kids/Teens</option>
+                                <option value="seniors">Older Adults</option>
+                                <option value="creative">Artists/Creatives</option>
+                                <option value="general">General Public</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">What feeling do you want to create?</label>
+                        <select id="designMood" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
+                            <option value="trustworthy">Trustworthy & Professional</option>
+                            <option value="friendly">Friendly & Approachable</option>
+                            <option value="exciting">Exciting & Energetic</option>
+                            <option value="calm">Calm & Peaceful</option>
+                            <option value="luxurious">Luxurious & Premium</option>
+                            <option value="fun">Fun & Playful</option>
+                            <option value="serious">Serious & Authoritative</option>
+                            <option value="creative">Creative & Artistic</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- Results Area -->
-                <div id="analysisResults" style="display: none;">
+                <!-- Canvas/Surface Calculator -->
+                                <!-- Generate Recommendations Button -->
+                <div style="text-align: center; margin: 25px 0;">
+                    <button onclick="generateDesignRecommendations()" style="padding: 15px 30px; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                        ✨ Get Design Recommendations
+                    </button>
+                </div>
+
+                <!-- Results Sections -->
+                <div id="designRecommendations" style="display: none;">
                     
-                    <!-- Image Preview -->
-                    <div style="margin-bottom: 25px; text-align: center;">
-                        <img id="previewImage" style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        
-                        <!-- Color Palette -->
-                        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">🎨 Dominant Colors</h3>
-                            <div id="colorPalette" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;">
-                                <!-- Colors will be populated here -->
-                            </div>
-                            <div style="text-align: center;">
-                                <button onclick="exportExtractedPalette()" class="modal-generate-btn" style="font-size: 0.85rem; padding: 8px 16px;">💾 Export Palette</button>
-                            </div>
+                    <!-- Color Recommendations -->
+                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">🎨 Color Palette Recommendations</h3>
+                        <div id="colorRecommendations" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Color recommendations will be populated here -->
                         </div>
-
-                        <!-- Composition Analysis -->
-                        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">📐 Composition</h3>
-                            <div id="compositionAnalysis" style="font-size: 0.9rem; line-height: 1.5;">
-                                <!-- Analysis will be populated here -->
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Lighting Analysis -->
-                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; margin-top: 20px;">
-                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">💡 Lighting Insights</h3>
-                        <div id="lightingAnalysis" style="font-size: 0.9rem; line-height: 1.5;">
-                            <!-- Lighting analysis will be populated here -->
+                        <div id="colorSwatches" style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                            <!-- Color swatches will be displayed here -->
                         </div>
                     </div>
 
-                    <!-- Art Tips -->
+                    <!-- Typography Recommendations -->
+                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">📝 Typography Recommendations</h3>
+                        <div id="typographyRecommendations" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Typography recommendations will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Layout Recommendations -->
+                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">📐 Layout & Composition Tips</h3>
+                        <div id="layoutRecommendations" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Layout recommendations will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- General Design Tips -->
+                    <div style="background: rgba(78, 205, 196, 0.1); border-radius: 8px; padding: 20px;">
+                        <h3 style="color: #4ECDC4; margin: 0 0 15px 0;">💡 Pro Design Tips</h3>
+                        <div id="designTips" style="font-size: 0.9rem; line-height: 1.5;">
+                            <!-- General tips will be populated here -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Paint Calculator -->
+                <div id="paintSection" class="calculator-section">
+                    <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">🎨 Paint Needed</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">Paint Type</label>
+                            <select id="paintType" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
+                                <option value="acrylic">Acrylic Paint</option>
+                                <option value="oil">Oil Paint</option>
+                                <option value="watercolor">Watercolor</option>
+                                <option value="gouache">Gouache</option>
+                                <option value="tempera">Tempera</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #f8c8d0;">Coverage Style</label>
+                            <select id="coverageStyle" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid rgba(248, 200, 208, 0.3); background: rgba(0,0,0,0.3); color: white;">
+                                <option value="light">Light Coverage</option>
+                                <option value="medium">Medium Coverage</option>
+                                <option value="heavy">Heavy/Thick Coverage</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculate Button -->
+                <div style="text-align: center; margin: 25px 0;">
+                    <button onclick="calculateSupplies()" style="padding: 15px 30px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                        🧮 Calculate Supplies
+                    </button>
+                </div>
+
+                <!-- Results -->
+                <div id="supplyResults" style="display: none;">
+                    <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 20px;">
+                        <h3 style="color: #f8c8d0; margin: 0 0 15px 0;">� Supply List</h3>
+                        <div id="supplyBreakdown" style="font-size: 0.9rem; line-height: 1.6;">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                    
                     <div style="background: rgba(78, 205, 196, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;">
-                        <h3 style="color: #4ECDC4; margin: 0 0 15px 0;">✨ Artist Tips</h3>
-                        <div id="artistTips" style="font-size: 0.9rem; line-height: 1.5;">
+                        <h3 style="color: #4ECDC4; margin: 0 0 15px 0;">💡 Money-Saving Tips</h3>
+                        <div id="savingTips" style="font-size: 0.9rem; line-height: 1.5;">
                             <!-- Tips will be populated here -->
                         </div>
                     </div>
-
                 </div>
                 
             </div>
@@ -640,6 +579,7 @@
         </div>
     </footer>
 
+    <script src="../scripts/main.js"></script>
     <script src="../scripts/resources.js"></script>
 </body>
 </html>
