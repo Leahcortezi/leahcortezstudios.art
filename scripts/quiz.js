@@ -1,5 +1,5 @@
 if (typeof console !== 'undefined') {
-    console.log("🔄 Quiz.js loaded - Version 1754411000 - Trademarked Archetype Personalities  !");
+    console.log("🔄 Quiz.js loaded - Version 1754411000 - Updated 5-Question Quiz with Better UX !");
 }
 
 class PortfolioQuiz {
@@ -8,94 +8,61 @@ class PortfolioQuiz {
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
-        // === REWRITTEN QUESTIONS & ANSWERS ===
+                // === UPDATED QUESTIONS & ANSWERS ===
         this.questions = [
             {
             id: 1,
-            text: "What do you do when you’re deep in burnout?",
+            text: "What's your biggest art-school pet peeve?",
             options: [
-                { text: "Mindlessly sketch haunted eyes in the corner of the page until you cry or pass out.", piece: "anointed-gaze", weight: 3 },
-                { text: "Light a candle. Rearrange sentimental junk. Cry. Repeat.", piece: "abuelas-altar", weight: 3 },
-                { text: "Start a painting. Hate it. Set it on fire emotionally (maybe literally).", piece: "heaven-on-fire", weight: 3 },
-                { text: "Hot glue weird stuff together and whisper ‘you are my son’ to it.", piece: "abyss-bloom", weight: 3 },
-                { text: "Clean your desk. Make a to-do list about making art. Don’t make art.", piece: "typographic-interpretation", weight: 3 }
+                { text: "When someone says 'it's giving AI' and they're right.", piece: "elements-book", weight: 3 },
+                { text: "Bad kerning. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 },
+                { text: "Critique where no one talks but the professor.", piece: "double-sided-poster", weight: 3 },
+                { text: "People who throw away 'scraps.' I needed those.", piece: "collected-remains", weight: 3 },
+                { text: "When people act like emotional art is cringe.", piece: "anointed-gaze", weight: 3 }
             ]
             },
             {
             id: 2,
-            text: "What’s your real art process?",
+            text: "Who are you in the gallery?",
             options: [
-                { text: "Break stuff to see what’s inside. Repeat until it’s good or a mess.", piece: "gnaw", weight: 3 },
-                { text: "Invent a whole fake system so you feel in control. Chaos = tamed.", piece: "playing-cards", weight: 3 },
-                { text: "Pick up trash and decide it's meaningful now.", piece: "collected-remains", weight: 3 },
-                { text: "Delete 90% of it until it’s one dot with a deep backstory.", piece: "reductive-symbols", weight: 3 },
-                { text: "Make a joke design. Accidentally make it profound.", piece: "elements-book", weight: 3 }
+                { text: "Reading every wall label and then judging the kerning.", piece: "typographic-interpretation", weight: 3 },
+                { text: "Touching stuff you're not supposed to (gently).", piece: "gnaw", weight: 3 },
+                { text: "Tearing up in front of a piece and pretending it's allergies.", piece: "inheritance", weight: 3 },
+                { text: "Saying 'my kid could do that' sarcastically, but kinda meaning it.", piece: "elements-book", weight: 3 },
+                { text: "Taking a blurry pic of the one corner that inspired you.", piece: "abuelas-altar", weight: 3 }
             ]
             },
             {
             id: 3,
-            text: "What critique would absolutely ruin your week?",
+            text: "What would destroy you in a critique?",
             options: [
-                { text: "You’re a little... much.", piece: "anointed-gaze", weight: 3 },
-                { text: "This feels like you're just working through your trauma.", piece: "inheritance", weight: 3 },
-                { text: "Are you okay? This is kinda disturbing.", piece: "abyss-bloom", weight: 3 },
-                { text: "This feels clean but soulless.", piece: "typographic-interpretation", weight: 3 },
-                { text: "This looks like a school project. Was it?", piece: "elements-book", weight: 3 }
+                { text: "This looks like it came from Canva.", piece: "typographic-interpretation", weight: 3 },
+                { text: "You use trauma like a design element.", piece: "inheritance", weight: 3 },
+                { text: "This feels... unfinished. On purpose?", piece: "collected-remains", weight: 3 },
+                { text: "This feels like it's trying to be funny. Is it?", piece: "elements-book", weight: 3 },
+                { text: "Have you ever tried making happy art?", piece: "anointed-gaze", weight: 3 }
             ]
             },
             {
             id: 4,
-            text: "What do your hands crave?",
+            text: "What do you secretly believe about art?",
             options: [
-                { text: "Wire. Thread. Anything I can twist into my emotions.", piece: "unraveling", weight: 3 },
-                { text: "Messy paint. Fire. Brushes that snap in half dramatically.", piece: "heaven-on-fire", weight: 3 },
-                { text: "Junk from the street with good vibes.", piece: "collected-remains", weight: 3 },
-                { text: "A ruler, a pencil, and complete control over everything.", piece: "typographic-interpretation", weight: 3 },
-                { text: "Ritual objects and family heirlooms I found in a box.", piece: "abuelas-altar", weight: 3 }
+                { text: "Art should hit you in the gut, not the brain.", piece: "heaven-on-fire", weight: 3 },
+                { text: "It's all about the process and the mess, baby.", piece: "gnaw", weight: 3 },
+                { text: "If it doesn't make people feel something, what's the point?", piece: "anointed-gaze", weight: 3 },
+                { text: "Good design should never have to explain itself.", piece: "reductive-symbols", weight: 3 },
+                { text: "Every object has meaning. Even the weird ones.", piece: "collected-remains", weight: 3 }
             ]
             },
             {
             id: 5,
-            text: "In critique, people always say you...",
+            text: "What's your vibe while making stuff?",
             options: [
-                { text: "Draw like you're trying to summon something.", piece: "anointed-gaze", weight: 3 },
-                { text: "Somehow made it about social justice again (slay).", piece: "double-sided-poster", weight: 3 },
-                { text: "Break every rule, but with a plan?", piece: "playing-cards", weight: 3 },
-                { text: "Turn your mental breakdowns into beautiful knots.", piece: "unraveling", weight: 3 },
-                { text: "Get emotional about fonts. And make us care too.", piece: "typographic-interpretation", weight: 3 }
-            ]
-            },
-            {
-            id: 6,
-            text: "When you’re creatively blocked…",
-            options: [
-                { text: "Invent a joke idea that accidentally changes your life.", piece: "elements-book", weight: 3 },
-                { text: "Collect weird objects and hope they start a conversation.", piece: "collected-remains", weight: 3 },
-                { text: "Reduce everything until it’s basically just ✦ ✦ ✦.", piece: "reductive-symbols", weight: 3 },
-                { text: "Draw something ugly on purpose and end up loving it.", piece: "anointed-gaze", weight: 3 },
-                { text: "Recreate a childhood memory but make it weird and gooey.", piece: "abyss-bloom", weight: 3 }
-            ]
-            },
-            {
-            id: 7,
-            text: "Your dream studio would have…",
-            options: [
-                { text: "A mess of half-finished sculptures and suspicious tools.", piece: "gnaw", weight: 3 },
-                { text: "A glowing shelf of memory, vibes, and emotional dust.", piece: "abuelas-altar", weight: 3 },
-                { text: "Shelves labeled by font category. Precision is self-care.", piece: "typographic-interpretation", weight: 3 },
-                { text: "Posters that scream design IS political.", piece: "double-sided-poster", weight: 3 },
-                { text: "Drawers full of wire, texture scraps, and slightly cursed ribbon.", piece: "unraveling", weight: 3 }
-            ]
-            },
-            {
-            id: 8,
-            text: "Art should…",
-            options: [
-                { text: "Unpack trauma and turn it into something less heavy.", piece: "inheritance", weight: 3 },
-                { text: "Yell at people in bold type and cool colors.", piece: "double-sided-poster", weight: 3 },
-                { text: "Make you laugh, then feel weird, then think.", piece: "elements-book", weight: 3 },
-                { text: "Say everything with the smallest shape possible.", piece: "reductive-symbols", weight: 3 },
-                { text: "Honor the overlooked stuff that’s full of meaning.", piece: "collected-remains", weight: 3 }
+                { text: "Replaying childhood trauma like a podcast.", piece: "inheritance", weight: 3 },
+                { text: "Covered in paint. Also maybe crying.", piece: "heaven-on-fire", weight: 3 },
+                { text: "Tying wire like it's a puzzle that unlocks your brain.", piece: "unraveling", weight: 3 },
+                { text: "Hot gluing eyes on things at 2am.", piece: "abyss-bloom", weight: 3 },
+                { text: "Naming your layers 'final_FINAL2_reallyfinal.psd'.", piece: "playing-cards", weight: 3 }
             ]
             }
         ];
