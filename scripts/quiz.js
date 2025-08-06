@@ -14,55 +14,55 @@ class PortfolioQuiz {
             id: 1,
             text: "What makes you irrationally angry about design?",
             options: [
-                { text: "Bad spacing. I'm physically in pain.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "When people act like emotional art is cringe.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "People who throw away 'scraps.' I needed those.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Art that doesn't say anything important.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "When someone says 'it's giving AI' and they're right.", piece: "elements-book", weight: 3 } // Restless Experimenter
+                { text: "When fonts don't match the vibe. It's like wearing flip-flops to a wedding.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "Corporate art that feels like it was focus-grouped to death.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "People who color-coordinate their art supplies but never use them.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "Pretty designs that say absolutely nothing.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "When someone calls your experimental piece 'weird' like it's a bad thing.", piece: "elements-book", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 2,
-            text: "Who are you in the gallery?",
+            text: "Who are you at an art exhibit?",
             options: [
-                { text: "Reading every wall label and then judging the kerning.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "Tearing up in front of a piece and pretending it's allergies.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "Touching stuff you're not supposed to (gently).", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Looking for the political message in everything.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Taking notes on techniques to try later.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Quietly judging the wall text formatting while everyone else looks at the art.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
+                { text: "The one getting genuinely emotional over a piece about loss.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "Wondering what would happen if you combined three different pieces.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Reading the artist statement to see if they're actually saying something.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Taking way too many reference photos for 'inspiration later.'", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 3,
-            text: "What would destroy you in a critique?",
+            text: "What critique comment would ruin your whole week?",
             options: [
-                { text: "This looks like it came from Canva.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "You use trauma like a design element.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "This feels... unfinished. On purpose?", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Your message is too heavy-handed.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Pick a style and stick with it.", piece: "playing-cards", weight: 3 } // Restless Experimenter
+                { text: "It's good, but something feels... off.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "This feels a bit self-indulgent, don't you think?", piece: "inheritance", weight: 3 }, // Emotional Alchemist
+                { text: "I don't get it. What's it supposed to be?", piece: "collected-remains", weight: 3 }, // Chaotic Creator
+                { text: "It's pretty, but what's your point?", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "You should focus on mastering one thing first.", piece: "playing-cards", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 4,
-            text: "What do you secretly believe about art?",
+            text: "What's your secret creative philosophy?",
             options: [
-                { text: "Good design should never have to explain itself.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "If it doesn't make people feel something, what's the point?", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "It's all about the process and the mess, baby.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Art should hit you in the gut, not the brain.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
-                { text: "Every medium has something different to teach you.", piece: "unraveling", weight: 3 } // Restless Experimenter
+                { text: "If you're gonna do it, do it right or don't do it at all.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "Art without heart is just decoration.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "Happy accidents are better than careful plans.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "If your art doesn't piss someone off, you're playing it safe.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
+                { text: "Why stick to one medium when the world is full of possibilities?", piece: "unraveling", weight: 3 } // Restless Experimenter
             ]
             },
             {
             id: 5,
             text: "What kind of art stops you in your tracks?",
             options: [
-                { text: "Something so clean and perfect it makes you weep.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "Pieces that punch you in the feelings unexpectedly.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "Work that looks like beautiful controlled chaos.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Art that makes you want to change the world.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Something you've never seen done before.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Something so perfectly minimal it makes your brain go quiet.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "Work that makes you feel understood without saying a word.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
+                { text: "Pieces that look like organized chaos and somehow make perfect sense.", piece: "gnaw", weight: 3 }, // Chaotic Creator
+                { text: "Art that makes you want to text everyone you know about injustice.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
+                { text: "Something that makes you go 'wait, you can DO that?'", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
             ]
             }
         ];
