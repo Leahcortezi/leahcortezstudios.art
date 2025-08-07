@@ -41,52 +41,54 @@
         <!-- Navigation Tabs -->
         <section class="community-nav">
             <div class="tab-container">
-                <button class="tab-btn active" data-tab="challenges">Art Challenges</button>
+                <button class="tab-btn active" data-tab="prompts">Daily Prompts</button>
                 <button class="tab-btn" data-tab="resources">Resources</button>
-                <button class="tab-btn" data-tab="prompts">Daily Prompts</button>
                 <button class="tab-btn" data-tab="tools">Artist Tools</button>
                 <button class="tab-btn" data-tab="showcase">Community Showcase</button>
             </div>
         </section>
 
-        <!-- Art Challenges Tab -->
-        <section class="tab-content active" id="challenges">
+        <!-- Daily Prompts Tab -->
+        <section class="tab-content active" id="prompts">
             <div class="content-container">
-                <h2>Monthly Art Challenges</h2>
+                <h2>Today's Creative Prompt</h2>
                 
-                <!-- Current Challenge -->
-                <div class="current-challenge">
-                    <div class="challenge-header">
-                        <h3>Current Challenge: "Cultural Roots"</h3>
-                        <div class="challenge-timer">
-                            <span id="timeLeft">12 days left</span>
-                        </div>
-                    </div>
-                    <div class="challenge-content">
-                        <p>Create artwork that explores your cultural heritage and identity. Use mixed media, symbolism, or personal narratives to express your roots.</p>
-                        <div class="challenge-details">
-                            <div class="detail">
-                                <strong>Medium:</strong> Any (digital, traditional, mixed media)
-                            </div>
-                            <div class="detail">
-                                <strong>Size:</strong> No restrictions
-                            </div>
-                            <div class="detail">
-                                <strong>Theme:</strong> Cultural identity, heritage, family stories
+                <div class="prompt-generator">
+                <div class="today-prompt">
+                    <div class="prompt-card">
+                        <div class="prompt-countdown">
+                            <div class="countdown-timer">
+                                <div class="time-segment">
+                                    <span class="time-value" id="hours">00</span>
+                                    <span class="time-label">Hours</span>
+                                </div>
+                                <div class="time-segment">
+                                    <span class="time-value" id="minutes">00</span>
+                                    <span class="time-label">Minutes</span>
+                                </div>
+                                <div class="time-segment">
+                                    <span class="time-value" id="seconds">00</span>
+                                    <span class="time-label">Seconds</span>
+                                </div>
                             </div>
                         </div>
-                        <button class="join-challenge-btn">Join Challenge</button>
-                    </div>
-                </div>
-
-                <!-- Past Challenges -->
-                <div class="past-challenges">
-                    <h3>Recent Past Challenges</h3>
-                    <div class="challenge-grid" id="pastChallengesGrid">
-                        <!-- Past challenges will be populated by JavaScript -->
+                        
+                        <div class="prompt-text" id="dailyPrompt">
+                            Create a bold artwork that explores the concept of memory through mixed media.
+                        </div>
+                        <div class="prompt-tags">
+                            <span class="tag">daily</span>
+                            <span class="tag">creative</span>
+                            <span class="tag">artistic</span>
+                        </div>
+                        <div class="prompt-actions">
+                            <button class="new-prompt-btn" onclick="generateNewPrompt()">Refresh Tags</button>
+                            <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </section>
 
         <!-- Resources Tab -->
@@ -159,50 +161,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Daily Prompts Tab -->
-        <section class="tab-content" id="prompts">
-            <div class="content-container">
-                <h2>Today's Creative Prompt</h2>
-                
-                <div class="prompt-generator">
-                    <div class="today-prompt">
-                        <div class="prompt-card">
-                            <div class="prompt-countdown">
-                                <div class="countdown-timer">
-                                    <div class="time-segment">
-                                        <span class="time-value" id="hours">00</span>
-                                        <span class="time-label">Hours</span>
-                                    </div>
-                                    <div class="time-segment">
-                                        <span class="time-value" id="minutes">00</span>
-                                        <span class="time-label">Minutes</span>
-                                    </div>
-                                    <div class="time-segment">
-                                        <span class="time-value" id="seconds">00</span>
-                                        <span class="time-label">Seconds</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="prompt-text" id="dailyPrompt">
-                                Create a bold artwork that explores the concept of memory through mixed media.
-                            </div>
-                            <div class="prompt-tags">
-                                <span class="tag">daily</span>
-                                <span class="tag">creative</span>
-                                <span class="tag">artistic</span>
-                            </div>
-                            <div class="prompt-actions">
-                                <button class="new-prompt-btn" onclick="generateNewPrompt()">Refresh with New Elements</button>
-                                <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Artist Tools Tab -->
         <section class="tab-content" id="tools">
@@ -296,7 +254,7 @@
                     <button class="filter-btn active" data-filter="all">All Work</button>
                     <button class="filter-btn" data-filter="featured">Featured</button>
                     <button class="filter-btn" data-filter="recent">Recent</button>
-                    <button class="filter-btn" data-filter="challenges">Challenge Entries</button>
+                    <button class="filter-btn" data-filter="challenges">Technique Entries</button>
                 </div>
 
                 <div class="showcase-grid">
@@ -305,7 +263,7 @@
                         <div class="showcase-overlay">
                             <h4>Urban Dreams</h4>
                             <p>by Maria Santos</p>
-                            <span class="challenge-tag">Cultural Roots Challenge</span>
+                            <span class="challenge-tag">Mixed Media Technique</span>
                         </div>
                     </div>
                     <!-- More showcase items would be populated dynamically -->
@@ -396,6 +354,50 @@
 
     <!-- JavaScript for interactivity -->
     <script>
+    // Enhanced Artist Carousel functionality
+    let currentSlideIndex = 0;
+    const totalSlides = 6; // Updated for 6 artist cards
+    const slideWidth = 400; // Updated card width + gap
+
+    function moveCarousel(direction) {
+        const carousel = document.getElementById('artistCarousel');
+        const dots = document.querySelectorAll('.dot');
+        
+        currentSlideIndex += direction;
+        
+        // Loop carousel
+        if (currentSlideIndex >= totalSlides) {
+            currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+            currentSlideIndex = totalSlides - 1;
+        }
+        
+        // Move carousel
+        const translateX = -currentSlideIndex * slideWidth;
+        carousel.style.transform = `translateX(${translateX}px)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlideIndex);
+        });
+    }
+
+    function currentSlide(slideNumber) {
+        const carousel = document.getElementById('artistCarousel');
+        const dots = document.querySelectorAll('.dot');
+        
+        currentSlideIndex = slideNumber - 1;
+        
+        // Move carousel
+        const translateX = -currentSlideIndex * slideWidth;
+        carousel.style.transform = `translateX(${translateX}px)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlideIndex);
+        });
+    }
+
     // Tab functionality
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -427,29 +429,29 @@
     ];
 
     const promptVariables = {
-        adjective: ["bold", "delicate", "mysterious", "vibrant", "melancholic", "ethereal", "dramatic", "serene", "chaotic", "harmonious", "surreal", "intimate", "powerful", "fragile", "luminous"],
-        concept: ["memory", "identity", "transformation", "connection", "isolation", "growth", "decay", "hope", "fear", "love", "time", "dreams", "reality", "freedom", "belonging"],
-        medium: ["watercolor and ink", "digital collage", "mixed media", "charcoal and pastels", "acrylic paint", "pen and ink", "photography manipulation", "textile art", "sculpture elements", "found objects"],
-        style: ["expressionist", "surreal", "minimalist", "maximalist", "impressionist", "abstract", "photorealistic", "folk art inspired", "contemporary", "vintage"],
-        emotion: ["nostalgia", "wonder", "longing", "joy", "contemplation", "excitement", "peacefulness", "intensity", "curiosity", "melancholy", "empowerment", "vulnerability"],
-        technique: ["layering techniques", "negative space", "bold color contrasts", "subtle gradients", "textural elements", "geometric patterns", "organic forms", "light and shadow play"],
-        subject: ["a forgotten object", "a cultural symbol", "a family memory", "a natural element", "an architectural detail", "a personal ritual", "a childhood story", "an ancestral tradition"],
-        element: ["modern technology", "ancient wisdom", "natural forces", "urban landscapes", "mythical creatures", "everyday magic", "hidden stories", "silent voices"],
-        setting: ["dreamlike landscape", "urban environment", "natural sanctuary", "liminal space", "familiar place made strange", "imaginary realm", "historical context", "futuristic world"],
-        artistic_approach: ["symbolic representation", "abstract interpretation", "narrative storytelling", "color psychology", "textural exploration", "geometric abstraction", "organic flow", "cultural fusion"],
-        concept1: ["tradition", "progress", "nature", "humanity", "past", "future", "individual", "community", "silence", "voice"],
-        concept2: ["innovation", "heritage", "technology", "spirituality", "present", "memory", "collective", "personal", "sound", "expression"],
-        narrative_theme: ["cultural heritage", "personal growth", "family legacy", "environmental change", "social connection", "inner journey", "creative awakening", "community bonds"],
-        everyday_object: ["a kitchen utensil", "a piece of clothing", "a plant", "a book", "a window", "a chair", "a photograph", "a key", "a mirror", "a door"],
-        transformation: ["magical", "ancient", "futuristic", "living", "transparent", "monumental", "delicate", "powerful", "sacred", "revolutionary"],
-        texture_inspiration: ["tree bark", "flowing water", "weathered stone", "fabric patterns", "skin", "metal oxidation", "flower petals", "sand dunes", "rain on glass", "aged paper"],
-        color_mood: ["warm and earthy", "cool and calming", "bold and energetic", "muted and contemplative", "monochromatic", "high contrast", "pastel harmony", "jewel-toned", "earth-based", "sunset inspired"],
-        time_period: ["golden hour", "blue hour", "midnight", "dawn", "stormy afternoon", "quiet morning", "busy evening", "peaceful night"],
-        time_of_day: ["spring", "summer", "autumn", "winter", "rainy season", "dry season"],
-        abstract_concept: ["music", "silence", "time", "gravity", "wind", "emotion", "memory", "dreams", "thoughts", "energy"],
-        physical_quality: ["tangible", "visible", "textured", "colorful", "fragrant", "moving", "solid", "flowing", "glowing", "growing"],
-        natural_element: ["water", "fire", "earth", "air", "lightning", "mist", "sunlight", "shadows", "roots", "seeds"],
-        metaphor: ["a bridge", "a voice", "a guardian", "a storyteller", "a teacher", "a healer", "a messenger", "a sanctuary", "a journey", "a celebration"]
+        adjective: ["monochromatic", "layered", "delicate", "textured", "geometric", "organic", "minimalist", "maximalist", "fragmented", "flowing", "angular", "soft-edged", "high-contrast", "muted", "luminous", "weathered", "pristine", "distressed", "ethereal", "grounded"],
+        concept: ["memory", "identity", "transformation", "connection", "isolation", "growth", "decay", "hope", "fear", "love", "time", "dreams", "reality", "freedom", "belonging", "heritage", "legacy", "journey", "awakening", "reflection"],
+        medium: ["watercolor and ink", "digital collage", "mixed media", "charcoal and pastels", "acrylic paint", "pen and ink", "photography manipulation", "textile art", "sculpture elements", "found objects", "gouache", "oil pastels", "printmaking", "fabric and thread", "clay and pigment"],
+        style: ["expressionist", "surreal", "minimalist", "maximalist", "impressionist", "abstract", "photorealistic", "folk art inspired", "contemporary", "vintage", "brutalist", "art nouveau", "cubist", "pointillist", "graffiti-inspired"],
+        emotion: ["nostalgia", "wonder", "longing", "joy", "contemplation", "excitement", "peacefulness", "intensity", "curiosity", "melancholy", "empowerment", "vulnerability", "serenity", "passion", "tranquility"],
+        technique: ["layering techniques", "negative space", "bold color contrasts", "subtle gradients", "textural buildup", "geometric patterns", "organic forms", "light and shadow play", "cross-hatching", "stippling", "glazing", "scumbling", "impasto", "dry brush", "wet-on-wet"],
+        subject: ["a forgotten object", "a cultural symbol", "a family memory", "a natural element", "an architectural detail", "a personal ritual", "a childhood story", "an ancestral tradition", "a seasonal change", "a quiet moment"],
+        element: ["modern technology", "ancient wisdom", "natural forces", "urban landscapes", "mythical creatures", "everyday magic", "hidden stories", "silent voices", "cultural patterns", "temporal shifts"],
+        setting: ["dreamlike landscape", "urban environment", "natural sanctuary", "liminal space", "familiar place made strange", "imaginary realm", "historical context", "futuristic world", "intimate interior", "vast expanse"],
+        artistic_approach: ["symbolic representation", "abstract interpretation", "narrative storytelling", "color psychology", "textural exploration", "geometric abstraction", "organic flow", "cultural fusion", "emotional mapping", "visual metaphor"],
+        concept1: ["tradition", "progress", "nature", "humanity", "past", "future", "individual", "community", "silence", "voice", "structure", "chaos", "permanence", "change", "visible"],
+        concept2: ["innovation", "heritage", "technology", "spirituality", "present", "memory", "collective", "personal", "sound", "expression", "freedom", "order", "transience", "stability", "hidden"],
+        narrative_theme: ["cultural heritage", "personal growth", "family legacy", "environmental change", "social connection", "inner journey", "creative awakening", "community bonds", "generational wisdom", "artistic evolution"],
+        everyday_object: ["a kitchen utensil", "a piece of clothing", "a plant", "a book", "a window", "a chair", "a photograph", "a key", "a mirror", "a door", "a cup", "a letter", "a tool", "a toy", "a stone"],
+        transformation: ["luminous", "transparent", "living", "crystalline", "fluid", "architectural", "musical", "temporal", "ethereal", "monumental", "delicate", "powerful", "sacred", "revolutionary", "elemental"],
+        texture_inspiration: ["tree bark", "flowing water", "weathered stone", "fabric weave", "skin", "metal patina", "flower petals", "sand dunes", "rain patterns", "aged paper", "rust", "moss", "scales", "feathers", "crystal formations"],
+        color_mood: ["monochromatic earth tones", "vibrant jewel palette", "muted pastels", "high contrast black and white", "warm sunset hues", "cool oceanic blues", "metallic accents", "desert sand palette", "forest greens", "urban grays"],
+        time_period: ["golden hour", "blue hour", "midnight", "dawn", "stormy afternoon", "quiet morning", "busy evening", "peaceful night", "twilight", "midday sun"],
+        time_of_day: ["spring awakening", "summer abundance", "autumn transition", "winter stillness", "rainy season", "dry season", "harvest time", "growing season"],
+        abstract_concept: ["rhythm", "silence", "momentum", "gravity", "resonance", "emotion", "memory", "dreams", "thoughts", "energy", "balance", "tension", "harmony", "discord", "flow"],
+        physical_quality: ["tangible", "translucent", "textured", "smooth", "rough", "layered", "solid", "flowing", "glowing", "growing", "fragmented", "unified", "dense", "airy", "structured"],
+        natural_element: ["water", "fire", "earth", "air", "lightning", "mist", "sunlight", "shadows", "roots", "seeds", "wind", "rain", "snow", "stone", "wood"],
+        metaphor: ["a bridge", "a voice", "a guardian", "a storyteller", "a teacher", "a healer", "a messenger", "a sanctuary", "a journey", "a celebration", "a mirror", "a vessel", "a pathway", "a threshold", "a tapestry"]
     };
 
     let currentDailyPrompt = null;
@@ -505,7 +507,16 @@
         if (!tagContainer) return;
         
         // Generate random tags based on the prompt
-        const allTags = ["daily", "creative", "artistic", "expressive", "personal", "cultural", "emotional", "visual", "narrative", "symbolic"];
+        const allTags = [
+            "expressive", "contemplative", "intuitive", "structured", "fluid", "bold", "subtle", "raw", "refined", "experimental",
+            "atmospheric", "graphic", "gestural", "precise", "spontaneous", "controlled", "loose", "tight", "dynamic", "static",
+            "warm", "cool", "contrast", "harmony", "layered", "simplified", "complex", "minimal", "rich", "spare",
+            "organic", "geometric", "smooth", "textured", "light", "shadow", "vibrant", "muted", "soft", "hard",
+            "personal", "universal", "intimate", "expansive", "focused", "scattered", "grounded", "floating", "heavy", "weightless",
+            "traditional", "contemporary", "nostalgic", "futuristic", "earthy", "ethereal", "industrial", "natural", "urban", "rural",
+            "playful", "serious", "dreamy", "sharp", "flowing", "angular", "curved", "linear", "circular", "fragmented",
+            "unified", "balanced", "asymmetrical", "rhythmic", "chaotic", "ordered", "open", "contained", "transparent", "opaque"
+        ];
         const randomTags = [];
         
         // Select 3-4 random tags
@@ -521,8 +532,8 @@
     }
 
     function generateNewPrompt() {
-        // This function now allows users to get a new randomized version of today's prompt
-        generateDailyPrompt();
+        // Only refresh the tags, keep the same prompt for the day
+        updatePromptTags();
     }
 
     function addPromptToHistory(prompt) {

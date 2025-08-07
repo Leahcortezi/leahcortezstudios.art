@@ -108,17 +108,589 @@ const monthlyArtChallenges = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Community Garden loaded');
-    initializeCommunityGarden();
-    loadCommunityStats();
-    updateMonthlyChallenge();
-    updatePastChallenges();
-    updateChallengeTimer();
-    checkForMonthlyUpdate();
-    
-    // Check for monthly updates daily
-    setInterval(checkForMonthlyUpdate, 1000 * 60 * 60 * 24); // Check every 24 hours
+    // Initialize all enhanced features
+    initPathwaySelector();
+    initResourceTabs();
+    initWeeklyProgress();
+    initLearningPathways();
+    initChallengeAnalytics();
+    initEnhancedInspiration();
+    initTechniquePicker();
+    initInspirationCarousel();
+    initCommunityPrompts();
 });
+
+// Enhanced Inspiration Carousel
+function initInspirationCarousel() {
+    const carousel = document.querySelector('.inspiration-cards');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (!carousel) return;
+    
+    let currentSlide = 0;
+    const cards = document.querySelectorAll('.inspiration-card');
+    const totalCards = cards.length;
+    
+    // Create carousel data for demo
+    const inspirationData = [
+        {
+            title: "Abuela's Wisdom",
+            artist: "Maria Santos",
+            technique: "Photo Collage",
+            description: "Layering family photographs with traditional patterns to show generational connection.",
+            prompt: "Combine old family photos with cultural symbols from your heritage"
+        },
+        {
+            title: "Dual Heritage",
+            artist: "Alex Chen-Rodriguez",
+            technique: "Mixed Media",
+            description: "Using split compositions to represent navigating between two cultures.",
+            prompt: "Create a visual representation of your multicultural identity"
+        },
+        {
+            title: "Migration Story",
+            artist: "Fatima Al-Zahra",
+            technique: "Digital Collage",
+            description: "Mapping personal journey through symbolic landscapes and objects.",
+            prompt: "Tell your family's migration story through symbolic imagery"
+        }
+    ];
+    
+    function updateCarousel() {
+        cards.forEach((card, index) => {
+            card.style.display = index === currentSlide ? 'block' : 'none';
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update featured card
+        cards.forEach(card => card.classList.remove('featured'));
+        if (cards[currentSlide]) {
+            cards[currentSlide].classList.add('featured');
+        }
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalCards;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalCards) % totalCards;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+    
+    // Auto-rotate every 5 seconds
+    setInterval(nextSlide, 5000);
+    
+    // Initialize
+    updateCarousel();
+}
+
+// Interactive Technique Picker
+function initTechniquePicker() {
+    const techniqueOptions = document.querySelectorAll('.technique-option');
+    const selectBtns = document.querySelectorAll('.select-technique-btn');
+    
+    // Add hover effects and selection handling
+    techniqueOptions.forEach((option, index) => {
+        const btn = option.querySelector('.select-technique-btn');
+        
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectTechnique(option, index);
+            });
+        }
+        
+        // Add interactive hover effects
+        option.addEventListener('mouseenter', () => {
+            option.style.transform = 'translateY(-8px)';
+        });
+        
+        option.addEventListener('mouseleave', () => {
+            option.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+function selectTechnique(optionElement, index) {
+    const difficulty = optionElement.dataset.difficulty;
+    const techniques = optionElement.querySelectorAll('.tech-tag');
+    const techList = Array.from(techniques).map(tech => tech.textContent);
+    
+    // Visual feedback
+    optionElement.style.background = 'rgba(248, 200, 208, 0.15)';
+    optionElement.style.borderColor = 'var(--color-primary-accent)';
+    
+    // Store selection in localStorage
+    const selection = {
+        difficulty: difficulty,
+        techniques: techList,
+        timestamp: new Date().toISOString(),
+        optionIndex: index
+    };
+    
+    localStorage.setItem('selectedTechnique', JSON.stringify(selection));
+    
+    // Show confirmation
+    showTechniqueConfirmation(selection);
+    
+    // Track analytics
+    trackTechniqueSelection(selection);
+}
+
+function showTechniqueConfirmation(selection) {
+    const confirmationHTML = `
+        <div class="technique-confirmation" style="
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(18, 18, 18, 0.95);
+            border: 2px solid var(--color-primary-accent);
+            border-radius: 20px;
+            padding: 2rem;
+            z-index: 1000;
+            text-align: center;
+            max-width: 400px;
+        ">
+            <h4 style="color: var(--color-primary-accent); margin-bottom: 1rem;">
+                Technique Selected!
+            </h4>
+            <p style="color: var(--color-text); margin-bottom: 1.5rem;">
+                You've chosen the <strong>${selection.difficulty}</strong> level path.
+                Your techniques: ${selection.techniques.join(', ')}
+            </p>
+            <button onclick="this.parentElement.remove()" style="
+                background: var(--color-primary-accent);
+                color: white;
+                border: none;
+                padding: 0.8rem 2rem;
+                border-radius: 25px;
+                cursor: pointer;
+                font-family: var(--font-accent);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            ">
+                Start Creating!
+            </button>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', confirmationHTML);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        const confirmation = document.querySelector('.technique-confirmation');
+        if (confirmation) confirmation.remove();
+    }, 5000);
+}
+
+// Community Inspiration Prompts
+function initCommunityPrompts() {
+    const promptTags = document.querySelectorAll('.prompt-tag');
+    
+    promptTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            selectPrompt(tag);
+        });
+    });
+}
+
+function selectPrompt(tagElement) {
+    const prompt = tagElement.textContent;
+    
+    // Visual feedback
+    tagElement.style.background = 'var(--color-primary-accent)';
+    tagElement.style.color = 'white';
+    
+    // Store selection
+    const promptSelection = {
+        prompt: prompt,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem('selectedPrompt', JSON.stringify(promptSelection));
+    
+    // Show in action
+    showPromptInAction(prompt);
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+        tagElement.style.background = '';
+        tagElement.style.color = '';
+    }, 2000);
+}
+
+function showPromptInAction(prompt) {
+    const actionDiv = document.createElement('div');
+    actionDiv.className = 'prompt-action';
+    actionDiv.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--color-primary-accent);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        z-index: 1000;
+        animation: slideInUp 0.3s ease;
+    `;
+    
+    actionDiv.innerHTML = `
+        <strong>Inspiration Selected:</strong><br>
+        "${prompt}"
+    `;
+    
+    document.body.appendChild(actionDiv);
+    
+    setTimeout(() => {
+        actionDiv.remove();
+    }, 4000);
+}
+
+// Enhanced Inspiration Features
+function initEnhancedInspiration() {
+    // Initialize preview gallery
+    initPreviewGallery();
+    
+    // Initialize technique steps interaction
+    initTechniqueSteps();
+    
+    // Initialize inspiration card interactions
+    initInspirationCards();
+}
+
+function initPreviewGallery() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainPreview = document.querySelector('.preview-image.main');
+    
+    thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+            // Visual feedback
+            thumbnails.forEach(t => t.style.background = 'rgba(18, 18, 18, 0.6)');
+            thumb.style.background = 'rgba(248, 200, 208, 0.2)';
+            
+            // Update main preview (would normally load different image)
+            if (mainPreview) {
+                const placeholder = mainPreview.querySelector('.placeholder-preview');
+                if (placeholder) {
+                    placeholder.style.background = 'linear-gradient(135deg, rgba(248, 200, 208, 0.2), rgba(126, 28, 46, 0.2))';
+                    
+                    setTimeout(() => {
+                        placeholder.style.background = '';
+                    }, 1000);
+                }
+            }
+        });
+    });
+}
+
+function initTechniqueSteps() {
+    const steps = document.querySelectorAll('.technique-step');
+    
+    steps.forEach((step, index) => {
+        step.addEventListener('click', () => {
+            expandTechniqueStep(step, index);
+        });
+        
+        // Mini resource buttons
+        const resourceBtns = step.querySelectorAll('.mini-resource-btn');
+        resourceBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showResourceModal(btn.textContent);
+            });
+        });
+    });
+}
+
+function expandTechniqueStep(stepElement, index) {
+    const isExpanded = stepElement.classList.contains('expanded');
+    
+    // Collapse all steps
+    document.querySelectorAll('.technique-step').forEach(step => {
+        step.classList.remove('expanded');
+        step.style.background = '';
+    });
+    
+    if (!isExpanded) {
+        stepElement.classList.add('expanded');
+        stepElement.style.background = 'rgba(248, 200, 208, 0.1)';
+        
+        // Add expanded content
+        showStepDetails(stepElement, index);
+    }
+}
+
+function showStepDetails(stepElement, index) {
+    const stepDetails = [
+        {
+            title: "Photo Preparation",
+            details: "Select meaningful family photos and scan at high resolution. Consider the emotional weight and visual composition of each image.",
+            tips: ["Use photos with good contrast", "Consider black and white conversions", "Keep originals safe"]
+        },
+        {
+            title: "Cultural Research",
+            details: "Research traditional patterns, symbols, and colors from your cultural background. Document their meanings and significance.",
+            tips: ["Interview family members", "Visit cultural centers", "Research online archives"]
+        },
+        {
+            title: "Layering Techniques",
+            details: "Learn digital and physical layering methods to combine photos with cultural elements seamlessly.",
+            tips: ["Start with low opacity", "Use blend modes", "Consider texture overlays"]
+        }
+    ];
+    
+    const detail = stepDetails[index];
+    if (detail) {
+        const existingDetails = stepElement.querySelector('.step-details');
+        if (existingDetails) existingDetails.remove();
+        
+        const detailsHTML = `
+            <div class="step-details" style="
+                margin-top: 1rem;
+                padding: 1rem;
+                background: rgba(18, 18, 18, 0.6);
+                border-radius: 10px;
+                border-left: 3px solid var(--color-primary-accent);
+            ">
+                <p style="margin-bottom: 1rem; font-style: italic;">${detail.details}</p>
+                <h6 style="color: var(--color-primary-accent); margin-bottom: 0.5rem;">Pro Tips:</h6>
+                <ul style="margin: 0; padding-left: 1.5rem;">
+                    ${detail.tips.map(tip => `<li style="margin-bottom: 0.3rem; color: var(--color-text);">${tip}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+        
+        stepElement.querySelector('.step-content').insertAdjacentHTML('beforeend', detailsHTML);
+    }
+}
+
+function initInspirationCards() {
+    const cards = document.querySelectorAll('.inspiration-card');
+    
+    cards.forEach(card => {
+        const actionBtns = card.querySelectorAll('.inspiration-btn');
+        
+        actionBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = btn.textContent.toLowerCase();
+                handleInspirationAction(action, card);
+            });
+        });
+    });
+}
+
+function handleInspirationAction(action, cardElement) {
+    const cardTitle = cardElement.querySelector('h6').textContent;
+    
+    switch(action) {
+        case 'try technique':
+            showTechniqueGuide(cardTitle);
+            break;
+        case 'save inspiration':
+            saveInspiration(cardTitle);
+            break;
+        case 'view process':
+            showArtistProcess(cardTitle);
+            break;
+        default:
+            console.log(`Action: ${action} for ${cardTitle}`);
+    }
+}
+
+function showTechniqueGuide(artworkTitle) {
+    const guideHTML = `
+        <div class="technique-guide-modal" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        ">
+            <div style="
+                background: rgba(18, 18, 18, 0.95);
+                border: 2px solid var(--color-primary-accent);
+                border-radius: 20px;
+                padding: 2rem;
+                max-width: 600px;
+                max-height: 80vh;
+                overflow-y: auto;
+            ">
+                <h3 style="color: var(--color-primary-accent); margin-bottom: 1rem;">
+                    Technique Guide: ${artworkTitle}
+                </h3>
+                <div style="color: var(--color-text); line-height: 1.6;">
+                    <p>This technique combines traditional photo collage with cultural storytelling...</p>
+                    <h4 style="color: var(--color-primary-accent); margin: 1.5rem 0 1rem;">Materials Needed:</h4>
+                    <ul style="margin-bottom: 1.5rem;">
+                        <li>Family photographs</li>
+                        <li>Cultural pattern references</li>
+                        <li>Digital editing software or physical materials</li>
+                    </ul>
+                    <h4 style="color: var(--color-primary-accent); margin: 1.5rem 0 1rem;">Step by Step:</h4>
+                    <ol>
+                        <li style="margin-bottom: 0.5rem;">Gather meaningful family photographs</li>
+                        <li style="margin-bottom: 0.5rem;">Research traditional patterns from your culture</li>
+                        <li style="margin-bottom: 0.5rem;">Create composition sketches</li>
+                        <li style="margin-bottom: 0.5rem;">Layer elements with intentional meaning</li>
+                    </ol>
+                </div>
+                <button onclick="this.closest('.technique-guide-modal').remove()" style="
+                    background: var(--color-primary-accent);
+                    color: white;
+                    border: none;
+                    padding: 1rem 2rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    margin-top: 1.5rem;
+                    width: 100%;
+                    font-family: var(--font-accent);
+                    text-transform: uppercase;
+                ">
+                    Close Guide
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', guideHTML);
+}
+
+function saveInspiration(artworkTitle) {
+    const saved = JSON.parse(localStorage.getItem('savedInspiration') || '[]');
+    const inspiration = {
+        title: artworkTitle,
+        savedAt: new Date().toISOString()
+    };
+    
+    saved.push(inspiration);
+    localStorage.setItem('savedInspiration', JSON.stringify(saved));
+    
+    // Show confirmation
+    showNotification(`"${artworkTitle}" saved to your inspiration board!`);
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--color-primary-accent);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        z-index: 1000;
+        animation: slideInRight 0.3s ease;
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+function showResourceModal(resourceType) {
+    const modalHTML = `
+        <div class="resource-modal" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        ">
+            <div style="
+                background: rgba(18, 18, 18, 0.95);
+                border: 2px solid var(--color-primary-accent);
+                border-radius: 20px;
+                padding: 2rem;
+                max-width: 500px;
+            ">
+                <h3 style="color: var(--color-primary-accent); margin-bottom: 1rem;">
+                    ${resourceType} Resources
+                </h3>
+                <p style="color: var(--color-text); margin-bottom: 1.5rem;">
+                    Here you'll find curated resources for ${resourceType.toLowerCase()}, including tutorials, 
+                    tools, and community examples.
+                </p>
+                <button onclick="this.closest('.resource-modal').remove()" style="
+                    background: var(--color-primary-accent);
+                    color: white;
+                    border: none;
+                    padding: 1rem 2rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    width: 100%;
+                    font-family: var(--font-accent);
+                    text-transform: uppercase;
+                ">
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Analytics for enhanced features
+function trackTechniqueSelection(selection) {
+    const analytics = JSON.parse(localStorage.getItem('challengeAnalytics') || '{}');
+    
+    if (!analytics.techniqueSelections) {
+        analytics.techniqueSelections = [];
+    }
+    
+    analytics.techniqueSelections.push(selection);
+    localStorage.setItem('challengeAnalytics', JSON.stringify(analytics));
+}
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+`;
+document.head.appendChild(style);
 
 /**
  * Update the monthly art challenge based on current month
@@ -675,4 +1247,326 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeCommunityGarden);
 } else {
     initializeCommunityGarden();
+}
+
+/**
+ * Initialize Enhanced Challenge Features
+ */
+function initializeEnhancedFeatures() {
+    // Initialize pathway selection
+    initializePathwaySelector();
+    
+    // Initialize resource tabs
+    initializeResourceTabs();
+    
+    // Initialize week progress tracking
+    initializeWeekProgress();
+    
+    // Initialize learning tracking
+    initializeLearningTracking();
+}
+
+/**
+ * Initialize learning pathway selector
+ */
+function initializePathwaySelector() {
+    const pathwayCards = document.querySelectorAll('.pathway-card');
+    
+    pathwayCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Remove active class from all cards
+            pathwayCards.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked card
+            card.classList.add('active');
+            
+            // Save selection to localStorage
+            const pathType = card.dataset.path;
+            localStorage.setItem('selectedLearningPath', pathType);
+            
+            // Update resources based on selection
+            updateResourcesForPath(pathType);
+            
+            // Show notification
+            const pathName = card.querySelector('h5').textContent;
+            showNotification(`🎯 Learning path updated: ${pathName}`);
+        });
+    });
+    
+    // Load saved pathway selection
+    const savedPath = localStorage.getItem('selectedLearningPath');
+    if (savedPath) {
+        const savedCard = document.querySelector(`[data-path="${savedPath}"]`);
+        if (savedCard) {
+            pathwayCards.forEach(c => c.classList.remove('active'));
+            savedCard.classList.add('active');
+        }
+    }
+}
+
+/**
+ * Initialize resource tab functionality
+ */
+function initializeResourceTabs() {
+    const resourceTabButtons = document.querySelectorAll('.resource-tab-btn');
+    const resourceTabContents = document.querySelectorAll('.resource-tab-content');
+    
+    resourceTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabName = button.dataset.tab;
+            
+            // Remove active class from all tabs
+            resourceTabButtons.forEach(btn => btn.classList.remove('active'));
+            resourceTabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            button.classList.add('active');
+            const targetContent = document.getElementById(tabName);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+            
+            // Track tab usage
+            trackResourceTabUsage(tabName);
+        });
+    });
+}
+
+/**
+ * Initialize week progress tracking
+ */
+function initializeWeekProgress() {
+    const weekCards = document.querySelectorAll('.week-card');
+    const currentWeek = getCurrentChallengeWeek();
+    
+    // Update progress dots based on current week
+    weekCards.forEach((card, index) => {
+        const weekNumber = index + 1;
+        const progressDot = card.querySelector('.progress-dot');
+        
+        if (weekNumber <= currentWeek) {
+            progressDot.classList.add('active');
+        }
+        
+        // Add click handler for week card interaction
+        card.addEventListener('click', () => {
+            if (weekNumber <= currentWeek) {
+                // Show week details or resources
+                showWeekDetails(weekNumber);
+            } else {
+                showNotification(`🗓️ Week ${weekNumber} will unlock later in the month!`);
+            }
+        });
+    });
+}
+
+/**
+ * Get current week of the monthly challenge
+ */
+function getCurrentChallengeWeek() {
+    const currentDate = new Date();
+    const dayOfMonth = currentDate.getDate();
+    
+    // Calculate week based on day of month (roughly)
+    if (dayOfMonth <= 7) return 1;
+    if (dayOfMonth <= 14) return 2;
+    if (dayOfMonth <= 21) return 3;
+    return 4;
+}
+
+/**
+ * Show week details modal or expand content
+ */
+function showWeekDetails(weekNumber) {
+    const weekDetails = {
+        1: {
+            title: "Foundation Week",
+            description: "Learn the basics of mixed media preparation and photo integration techniques.",
+            resources: [
+                "📺 Mixed Media Basics Tutorial (8 min)",
+                "📖 Photo Transfer Techniques Guide",
+                "💡 Setting Up Your Workspace Tips"
+            ],
+            assignment: "Practice photo transfer technique with one family photo"
+        },
+        2: {
+            title: "Exploration Week", 
+            description: "Experiment with different layering methods using your family photos.",
+            resources: [
+                "📺 Layering Methods Tutorial (12 min)",
+                "🖼️ Family Photo Integration Examples",
+                "💡 Color Harmony in Mixed Media"
+            ],
+            assignment: "Create 3 small test pieces using different layering approaches"
+        },
+        3: {
+            title: "Integration Week",
+            description: "Combine your learned techniques into a cohesive cultural narrative piece.",
+            resources: [
+                "📺 Storytelling Through Art (15 min)",
+                "📖 Cultural Symbol Research Guide",
+                "🎨 Composition Planning Worksheet"
+            ],
+            assignment: "Plan and start your final cultural roots artwork"
+        },
+        4: {
+            title: "Final Challenge Week",
+            description: "Complete your cultural roots artwork and prepare for submission.",
+            resources: [
+                "📺 Finishing Techniques (10 min)",
+                "📸 Artwork Photography Tips",
+                "📝 Artist Statement Template"
+            ],
+            assignment: "Complete and submit your Cultural Roots artwork"
+        }
+    };
+    
+    const week = weekDetails[weekNumber];
+    if (week) {
+        showNotification(`📚 Week ${weekNumber}: ${week.title} - ${week.description}`);
+        
+        // Could expand to show a modal with full week details
+        console.log('Week details:', week);
+    }
+}
+
+/**
+ * Initialize learning progress tracking
+ */
+function initializeLearningTracking() {
+    // Track video views
+    const videoCards = document.querySelectorAll('.video-card');
+    videoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const videoTitle = card.querySelector('h5').textContent;
+            trackVideoView(videoTitle);
+            
+            // Add visual feedback
+            card.style.background = 'rgba(248, 200, 208, 0.1)';
+            setTimeout(() => {
+                card.style.background = '';
+            }, 2000);
+        });
+    });
+    
+    // Track resource downloads
+    const resourceLinks = document.querySelectorAll('.resource-link');
+    resourceLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const resourceName = link.textContent;
+            trackResourceAccess(resourceName);
+            showNotification(`📚 Resource accessed: ${resourceName}`);
+        });
+    });
+}
+
+/**
+ * Update resources based on selected learning path
+ */
+function updateResourcesForPath(pathType) {
+    // This could dynamically update the resource tabs content
+    // based on the selected learning path (traditional, digital, hybrid)
+    console.log(`Updating resources for path: ${pathType}`);
+    
+    // Example: Update video recommendations
+    const videoGrid = document.querySelector('.video-grid');
+    if (videoGrid && pathType) {
+        // Add path-specific class for styling
+        videoGrid.className = `video-grid path-${pathType}`;
+    }
+}
+
+/**
+ * Track resource tab usage for analytics
+ */
+function trackResourceTabUsage(tabName) {
+    const usage = JSON.parse(localStorage.getItem('resourceTabUsage') || '{}');
+    usage[tabName] = (usage[tabName] || 0) + 1;
+    localStorage.setItem('resourceTabUsage', JSON.stringify(usage));
+    
+    console.log(`Resource tab usage:`, usage);
+}
+
+/**
+ * Track video views for progress tracking
+ */
+function trackVideoView(videoTitle) {
+    const views = JSON.parse(localStorage.getItem('videoViews') || '[]');
+    views.push({
+        title: videoTitle,
+        timestamp: new Date().toISOString(),
+        challenge: 'Cultural Roots' // Current challenge
+    });
+    localStorage.setItem('videoViews', JSON.stringify(views));
+    
+    console.log(`Video viewed: ${videoTitle}`);
+}
+
+/**
+ * Track resource access for learning analytics
+ */
+function trackResourceAccess(resourceName) {
+    const accesses = JSON.parse(localStorage.getItem('resourceAccesses') || '[]');
+    accesses.push({
+        resource: resourceName,
+        timestamp: new Date().toISOString(),
+        challenge: 'Cultural Roots'
+    });
+    localStorage.setItem('resourceAccesses', JSON.stringify(accesses));
+    
+    console.log(`Resource accessed: ${resourceName}`);
+}
+
+/**
+ * Get learning progress summary
+ */
+function getLearningProgress() {
+    const videoViews = JSON.parse(localStorage.getItem('videoViews') || '[]');
+    const resourceAccesses = JSON.parse(localStorage.getItem('resourceAccesses') || '[]');
+    const selectedPath = localStorage.getItem('selectedLearningPath');
+    
+    return {
+        videosWatched: videoViews.length,
+        resourcesAccessed: resourceAccesses.length,
+        learningPath: selectedPath,
+        currentWeek: getCurrentChallengeWeek(),
+        progressPercentage: Math.min((videoViews.length + resourceAccesses.length) * 10, 100)
+    };
+}
+
+/**
+ * Show learning progress to user
+ */
+function showLearningProgress() {
+    const progress = getLearningProgress();
+    const message = `
+🎓 Your Learning Progress:
+• Videos watched: ${progress.videosWatched}
+• Resources accessed: ${progress.resourcesAccessed}
+• Current week: ${progress.currentWeek}/4
+• Learning path: ${progress.learningPath || 'Not selected'}
+• Progress: ${progress.progressPercentage}%
+    `;
+    
+    alert(message);
+}
+
+/**
+ * Reset learning progress (for testing or new challenge)
+ */
+function resetLearningProgress() {
+    localStorage.removeItem('videoViews');
+    localStorage.removeItem('resourceAccesses');
+    localStorage.removeItem('resourceTabUsage');
+    localStorage.removeItem('selectedLearningPath');
+    
+    // Reset UI
+    const pathwayCards = document.querySelectorAll('.pathway-card');
+    pathwayCards.forEach(card => card.classList.remove('active'));
+    
+    const progressDots = document.querySelectorAll('.progress-dot');
+    progressDots.forEach(dot => dot.classList.remove('active'));
+    
+    showNotification('🔄 Learning progress reset for new challenge!');
 }
