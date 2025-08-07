@@ -30,181 +30,716 @@
         </div>
     </nav>
 
-    <main class="community-main">
-        
+    <main>
         <!-- Hero Section -->
-        <div class="garden-hero">
-            <h1>Community Garden</h1>
-            <p class="hero-subtitle">Where creativity blooms and artists grow together</p>
-        </div>
-
-        <!-- Garden Info -->
-        <div class="garden-info">
-            <div class="info-card">
-                <h3>Plant Your Art</h3>
-                <p>Share your creative work and watch our garden grow with diverse artistic expressions</p>
+        <section class="community-hero">
+            <div class="hero-content">
+                <h1>Community</h1>
             </div>
-            <div class="info-card">
-                <h3>Connect & Grow</h3>
-                <p>Link your Instagram to connect with fellow artists and build lasting creative relationships</p>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <section class="community-nav">
+            <div class="tab-container">
+                <button class="tab-btn active" data-tab="challenges">Art Challenges</button>
+                <button class="tab-btn" data-tab="resources">Resources</button>
+                <button class="tab-btn" data-tab="prompts">Daily Prompts</button>
+                <button class="tab-btn" data-tab="tools">Artist Tools</button>
+                <button class="tab-btn" data-tab="showcase">Community Showcase</button>
             </div>
-            <div class="info-card">
-                <h3>Bloom Together</h3>
-                <p>Get inspired by others' work and inspire them with your unique creative vision</p>
-            </div>
-        </div>
+        </section>
 
-        <!-- Submit Form -->
-        <div class="submit-section">
-            <h2>Plant Your Creative Work</h2>
-            <div class="submit-form-container">
-                <form id="artSubmissionForm" class="art-submission-form">
-                    
-                    <!-- Artist Info -->
-                    <div class="form-group">
-                        <label for="artistName">Your Artist Name *</label>
-                        <input type="text" id="artistName" name="artistName" required placeholder="How should we credit you?">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="instagramHandle">Instagram Handle</label>
-                        <input type="text" id="instagramHandle" name="instagramHandle" placeholder="@yourusername (optional)">
-                    </div>
-
-                    <!-- Artwork Info -->
-                    <div class="form-group">
-                        <label for="artworkTitle">Artwork Title *</label>
-                        <input type="text" id="artworkTitle" name="artworkTitle" required placeholder="What's your piece called?">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="artworkDescription">Tell us about your piece</label>
-                        <textarea id="artworkDescription" name="artworkDescription" placeholder="What inspired this work? What medium did you use? Share your creative story..." rows="4"></textarea>
-                    </div>
-
-                    <!-- Medium/Category -->
-                    <div class="form-group">
-                        <label for="artMedium">Medium/Style *</label>
-                        <select id="artMedium" name="artMedium" required>
-                            <option value="">Choose your medium...</option>
-                            <option value="painting">Painting</option>
-                            <option value="drawing">Drawing/Sketch</option>
-                            <option value="digital">Digital Art</option>
-                            <option value="photography">Photography</option>
-                            <option value="sculpture">Sculpture</option>
-                            <option value="mixed-media">Mixed Media</option>
-                            <option value="illustration">Illustration</option>
-                            <option value="graphic-design">Graphic Design</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <!-- Image Upload -->
-                    <div class="form-group">
-                        <label for="artworkImage">Upload Your Artwork *</label>
-                        <div class="file-upload-area" onclick="document.getElementById('artworkImage').click();">
-                            <p>Click to select your image</p>
-                            <p class="upload-note">JPG, PNG, or GIF (max 5MB)</p>
+        <!-- Art Challenges Tab -->
+        <section class="tab-content active" id="challenges">
+            <div class="content-container">
+                <h2>Monthly Art Challenges</h2>
+                
+                <!-- Current Challenge -->
+                <div class="current-challenge">
+                    <div class="challenge-header">
+                        <h3>Current Challenge: "Cultural Roots"</h3>
+                        <div class="challenge-timer">
+                            <span id="timeLeft">12 days left</span>
                         </div>
-                        <input type="file" id="artworkImage" name="artworkImage" accept="image/*" required style="display: none;" onchange="previewImage(this)">
-                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    <div class="challenge-content">
+                        <p>Create artwork that explores your cultural heritage and identity. Use mixed media, symbolism, or personal narratives to express your roots.</p>
+                        <div class="challenge-details">
+                            <div class="detail">
+                                <strong>Medium:</strong> Any (digital, traditional, mixed media)
+                            </div>
+                            <div class="detail">
+                                <strong>Size:</strong> No restrictions
+                            </div>
+                            <div class="detail">
+                                <strong>Theme:</strong> Cultural identity, heritage, family stories
+                            </div>
+                        </div>
+                        <button class="join-challenge-btn">Join Challenge</button>
+                    </div>
+                </div>
+
+                <!-- Past Challenges -->
+                <div class="past-challenges">
+                    <h3>Recent Past Challenges</h3>
+                    <div class="challenge-grid" id="pastChallengesGrid">
+                        <!-- Past challenges will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Tab -->
+        <section class="tab-content" id="resources">
+            <div class="content-container">
+                <h2>Free Artist Resources</h2>
+                
+                <div class="resource-categories">
+                    <div class="resource-category">
+                        <h3>Technique Guides</h3>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <h4>Mixed Media Layering Techniques</h4>
+                                <p>Step-by-step guide to creating depth in mixed media work</p>
+                                <a href="#" class="download-btn">Download PDF</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Color Theory for Emotional Impact</h4>
+                                <p>Using color psychology in your artwork</p>
+                                <a href="#" class="download-btn">Download PDF</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Digital Collage Workflow</h4>
+                                <p>My personal process for creating digital compositions</p>
+                                <a href="#" class="download-btn">Download PDF</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Submission Guidelines -->
-                    <div class="guidelines">
-                        <h4>Garden Guidelines</h4>
-                        <ul>
-                            <li>Share original artwork only</li>
-                            <li>Keep descriptions positive and inspiring</li>
-                            <li>All skill levels welcome - from first sketches to masterpieces!</li>
-                            <li>Be respectful and supportive of fellow artists</li>
-                            <li>We reserve the right to moderate submissions</li>
-                        </ul>
+                    <div class="resource-category">
+                        <h3>Reference Materials</h3>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <h4>Chicana Art Movement Timeline</h4>
+                                <p>Historical context and key figures in Chicana art</p>
+                                <a href="#" class="download-btn">View Resource</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Symbolism in Mexican Folk Art</h4>
+                                <p>Cultural symbols and their meanings</p>
+                                <a href="#" class="download-btn">View Resource</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Texture Reference Library</h4>
+                                <p>High-res textures for your artwork</p>
+                                <a href="#" class="download-btn">Browse Library</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="submit-btn">
-                        Plant My Art in the Garden
+                    <div class="resource-category">
+                        <h3>Business & Career</h3>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <h4>Artist Statement Template</h4>
+                                <p>Framework for writing compelling artist statements</p>
+                                <a href="#" class="download-btn">Download Template</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Portfolio Presentation Guide</h4>
+                                <p>How to present your work professionally</p>
+                                <a href="#" class="download-btn">Download Guide</a>
+                            </div>
+                            <div class="resource-item">
+                                <h4>Commission Pricing Calculator</h4>
+                                <p>Tool to help price your artwork fairly</p>
+                                <a href="#" class="download-btn">Use Calculator</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Prompts Tab -->
+        <section class="tab-content" id="prompts">
+            <div class="content-container">
+                <h2>Today's Creative Prompt</h2>
+                
+                <div class="prompt-generator">
+                    <div class="today-prompt">
+                        <div class="prompt-card">
+                            <div class="prompt-countdown">
+                                <div class="countdown-timer">
+                                    <div class="time-segment">
+                                        <span class="time-value" id="hours">00</span>
+                                        <span class="time-label">Hours</span>
+                                    </div>
+                                    <div class="time-segment">
+                                        <span class="time-value" id="minutes">00</span>
+                                        <span class="time-label">Minutes</span>
+                                    </div>
+                                    <div class="time-segment">
+                                        <span class="time-value" id="seconds">00</span>
+                                        <span class="time-label">Seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prompt-text" id="dailyPrompt">
+                                Create a bold artwork that explores the concept of memory through mixed media.
+                            </div>
+                            <div class="prompt-tags">
+                                <span class="tag">daily</span>
+                                <span class="tag">creative</span>
+                                <span class="tag">artistic</span>
+                            </div>
+                            <div class="prompt-actions">
+                                <button class="new-prompt-btn" onclick="generateNewPrompt()">Refresh with New Elements</button>
+                                <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artist Tools Tab -->
+        <section class="tab-content" id="tools">
+            <div class="content-container">
+                <h2>Interactive Artist Tools</h2>
+                
+                <div class="tools-grid">
+                    <!-- Color Palette Generator -->
+                    <div class="tool-card">
+                        <h3>Color Palette Generator</h3>
+                        <p>Generate harmonious color schemes for your artwork</p>
+                        <div class="tool-interface">
+                            <div class="color-display" id="colorPalette">
+                                <div class="color-swatch" style="background: #7E1C2E;"></div>
+                                <div class="color-swatch" style="background: #F8C8D0;"></div>
+                                <div class="color-swatch" style="background: #2A1810;"></div>
+                                <div class="color-swatch" style="background: #D4A574;"></div>
+                                <div class="color-swatch" style="background: #8B4513;"></div>
+                            </div>
+                            <button class="tool-btn" onclick="generatePalette()">Generate New Palette</button>
+                        </div>
+                    </div>
+
+                    <!-- Composition Helper -->
+                    <div class="tool-card">
+                        <h3>Composition Guide</h3>
+                        <p>Visualize composition rules and guidelines</p>
+                        <div class="tool-interface">
+                            <div class="composition-canvas" id="compositionCanvas">
+                                <div class="grid-overlay" id="gridOverlay"></div>
+                            </div>
+                            <select id="compositionType">
+                                <option value="rule-of-thirds">Rule of Thirds</option>
+                                <option value="golden-ratio">Golden Ratio</option>
+                                <option value="diagonal">Dynamic Diagonals</option>
+                                <option value="center">Centered Composition</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Texture Pattern Generator -->
+                    <div class="tool-card">
+                        <h3>Texture Generator</h3>
+                        <p>Create seamless patterns and textures</p>
+                        <div class="tool-interface">
+                            <canvas id="textureCanvas" width="200" height="200"></canvas>
+                            <div class="texture-controls">
+                                <button onclick="generateTexture('noise')">Noise</button>
+                                <button onclick="generateTexture('organic')">Organic</button>
+                                <button onclick="generateTexture('geometric')">Geometric</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Art Progress Tracker -->
+                    <div class="tool-card">
+                        <h3>Progress Tracker</h3>
+                        <p>Track your artistic development and goals</p>
+                        <div class="tool-interface">
+                            <div class="progress-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">15</span>
+                                    <span class="stat-label">Pieces this month</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">3</span>
+                                    <span class="stat-label">New techniques learned</span>
+                                </div>
+                            </div>
+                            <button class="tool-btn">Add Today's Work</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Showcase Tab -->
+        <section class="tab-content" id="showcase">
+            <div class="content-container">
+                <h2>Community Showcase</h2>
+                
+                <!-- Submit Work Button -->
+                <div class="submit-work-header">
+                    <button class="submit-work-btn" onclick="openSubmissionModal()">
+                        Submit Your Work
                     </button>
+                    <p class="submit-work-subtitle">Share your artwork with our creative community</p>
+                </div>
+                
+                <div class="showcase-filters">
+                    <button class="filter-btn active" data-filter="all">All Work</button>
+                    <button class="filter-btn" data-filter="featured">Featured</button>
+                    <button class="filter-btn" data-filter="recent">Recent</button>
+                    <button class="filter-btn" data-filter="challenges">Challenge Entries</button>
+                </div>
 
+                <div class="showcase-grid">
+                    <div class="showcase-item" data-category="featured">
+                        <img src="../images/community/placeholder1.jpg" alt="Community artwork">
+                        <div class="showcase-overlay">
+                            <h4>Urban Dreams</h4>
+                            <p>by Maria Santos</p>
+                            <span class="challenge-tag">Cultural Roots Challenge</span>
+                        </div>
+                    </div>
+                    <!-- More showcase items would be populated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Artwork Submission Modal -->
+    <div id="submissionModal" class="modal" onclick="closeSubmissionModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>Share Your Artwork</h3>
+                <button class="modal-close" onclick="closeSubmissionModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
+                
+                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" id="artworkSubmissionForm">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Community Artwork Submission">
+                    <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="artistName">Your Name*</label>
+                            <input type="text" id="artistName" name="name" placeholder="Your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artistInstagram">Instagram Handle</label>
+                            <input type="text" id="artistInstagram" name="instagram" placeholder="@yourusername">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="artworkTitle">Artwork Title*</label>
+                            <input type="text" id="artworkTitle" name="artwork_title" placeholder="Enter your artwork title" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artMedium">Medium/Technique</label>
+                            <input type="text" id="artMedium" name="medium" placeholder="e.g., Mixed media, Digital art, Oil on canvas">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artworkDescription">Artwork Description*</label>
+                        <textarea id="artworkDescription" name="description" placeholder="Tell us about your artwork - inspiration, process, meaning, or story behind it..." rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artworkFile">Upload Your Artwork*</label>
+                        <div class="file-upload-area" onclick="document.getElementById('artworkFile').click()">
+                            <input type="file" id="artworkFile" name="artwork" accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" style="display: none;" required onchange="previewSubmissionImage(this)">
+                            <p>Click to upload your artwork</p>
+                            <p class="upload-note">Supported formats: PNG, JPEG, GIF, WebP (Max 10MB)</p>
+                        </div>
+                        <div id="submissionImagePreview" class="image-preview"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="submission-guidelines">
+                            <h4>Submission Guidelines</h4>
+                            <ul>
+                                <li>High-resolution images preferred (minimum 1200px width)</li>
+                                <li>Original artwork only - respect copyright</li>
+                                <li>Appropriate content that aligns with our community values</li>
+                                <li>Include proper attribution if referencing other artists</li>
+                                <li>By submitting, you grant permission to feature your work</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-btn" onclick="closeSubmissionModal()">Cancel</button>
+                        <button type="submit" class="submit-artwork-btn">
+                            Submit Artwork for Review
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
+    </div>
 
-        <!-- Community Gallery -->
-        <div class="community-gallery">
-            <h2>Our Growing Garden</h2>
-            <p class="gallery-subtitle">Beautiful works planted by our creative community</p>
+    <!-- JavaScript for interactivity -->
+    <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabName = btn.dataset.tab;
             
-            <div class="gallery-grid" id="communityGallery">
-                
-                <!-- Sample placeholder artwork -->
-                <div class="artwork-card sample">
-                    <div class="artwork-image">
-                        <div class="placeholder-art">
-                            <p>Your art could bloom here!</p>
-                        </div>
-                    </div>
-                    <div class="artwork-info">
-                        <h4>Be the First to Plant</h4>
-                        <p class="artist-name">Share your creative work</p>
-                        <span class="art-medium">All mediums welcome</span>
-                    </div>
-                </div>
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab and corresponding content
+            btn.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        });
+    });
 
-                <div class="artwork-card sample">
-                    <div class="artwork-image">
-                        <div class="placeholder-art">
-                            <p>Help our garden grow!</p>
-                        </div>
-                    </div>
-                    <div class="artwork-info">
-                        <h4>Creative Inspiration</h4>
-                        <p class="artist-name">Submit your artwork above</p>
-                        <span class="art-medium">Join our community</span>
-                    </div>
-                </div>
+    // Daily Prompt Generator with randomized adjectives and keywords
+    const promptTemplates = [
+        "Create a {adjective} artwork that explores the concept of {concept} through {medium}",
+        "Design a {style} piece that captures the feeling of {emotion} using {technique}",
+        "Illustrate a {adjective} scene where {subject} meets {element} in a {setting}",
+        "Express the relationship between {concept1} and {concept2} through {artistic_approach}",
+        "Create a {adjective} composition that tells the story of {narrative_theme}",
+        "Design a piece that transforms {everyday_object} into something {transformation}",
+        "Explore the texture of {texture_inspiration} through {medium}",
+        "Create a {color_mood} artwork inspired by the {time_period} of {time_of_day}",
+        "Illustrate how {abstract_concept} would look if it were {physical_quality}",
+        "Design a piece where {natural_element} becomes {metaphor}"
+    ];
 
-                <div class="artwork-card sample">
-                    <div class="artwork-image">
-                        <div class="placeholder-art">
-                            <p>Every artist started somewhere</p>
-                        </div>
-                    </div>
-                    <div class="artwork-info">
-                        <h4>Share Your Journey</h4>
-                        <p class="artist-name">Connect with fellow creatives</p>
-                        <span class="art-medium">Grow together</span>
-                    </div>
-                </div>
+    const promptVariables = {
+        adjective: ["bold", "delicate", "mysterious", "vibrant", "melancholic", "ethereal", "dramatic", "serene", "chaotic", "harmonious", "surreal", "intimate", "powerful", "fragile", "luminous"],
+        concept: ["memory", "identity", "transformation", "connection", "isolation", "growth", "decay", "hope", "fear", "love", "time", "dreams", "reality", "freedom", "belonging"],
+        medium: ["watercolor and ink", "digital collage", "mixed media", "charcoal and pastels", "acrylic paint", "pen and ink", "photography manipulation", "textile art", "sculpture elements", "found objects"],
+        style: ["expressionist", "surreal", "minimalist", "maximalist", "impressionist", "abstract", "photorealistic", "folk art inspired", "contemporary", "vintage"],
+        emotion: ["nostalgia", "wonder", "longing", "joy", "contemplation", "excitement", "peacefulness", "intensity", "curiosity", "melancholy", "empowerment", "vulnerability"],
+        technique: ["layering techniques", "negative space", "bold color contrasts", "subtle gradients", "textural elements", "geometric patterns", "organic forms", "light and shadow play"],
+        subject: ["a forgotten object", "a cultural symbol", "a family memory", "a natural element", "an architectural detail", "a personal ritual", "a childhood story", "an ancestral tradition"],
+        element: ["modern technology", "ancient wisdom", "natural forces", "urban landscapes", "mythical creatures", "everyday magic", "hidden stories", "silent voices"],
+        setting: ["dreamlike landscape", "urban environment", "natural sanctuary", "liminal space", "familiar place made strange", "imaginary realm", "historical context", "futuristic world"],
+        artistic_approach: ["symbolic representation", "abstract interpretation", "narrative storytelling", "color psychology", "textural exploration", "geometric abstraction", "organic flow", "cultural fusion"],
+        concept1: ["tradition", "progress", "nature", "humanity", "past", "future", "individual", "community", "silence", "voice"],
+        concept2: ["innovation", "heritage", "technology", "spirituality", "present", "memory", "collective", "personal", "sound", "expression"],
+        narrative_theme: ["cultural heritage", "personal growth", "family legacy", "environmental change", "social connection", "inner journey", "creative awakening", "community bonds"],
+        everyday_object: ["a kitchen utensil", "a piece of clothing", "a plant", "a book", "a window", "a chair", "a photograph", "a key", "a mirror", "a door"],
+        transformation: ["magical", "ancient", "futuristic", "living", "transparent", "monumental", "delicate", "powerful", "sacred", "revolutionary"],
+        texture_inspiration: ["tree bark", "flowing water", "weathered stone", "fabric patterns", "skin", "metal oxidation", "flower petals", "sand dunes", "rain on glass", "aged paper"],
+        color_mood: ["warm and earthy", "cool and calming", "bold and energetic", "muted and contemplative", "monochromatic", "high contrast", "pastel harmony", "jewel-toned", "earth-based", "sunset inspired"],
+        time_period: ["golden hour", "blue hour", "midnight", "dawn", "stormy afternoon", "quiet morning", "busy evening", "peaceful night"],
+        time_of_day: ["spring", "summer", "autumn", "winter", "rainy season", "dry season"],
+        abstract_concept: ["music", "silence", "time", "gravity", "wind", "emotion", "memory", "dreams", "thoughts", "energy"],
+        physical_quality: ["tangible", "visible", "textured", "colorful", "fragrant", "moving", "solid", "flowing", "glowing", "growing"],
+        natural_element: ["water", "fire", "earth", "air", "lightning", "mist", "sunlight", "shadows", "roots", "seeds"],
+        metaphor: ["a bridge", "a voice", "a guardian", "a storyteller", "a teacher", "a healer", "a messenger", "a sanctuary", "a journey", "a celebration"]
+    };
 
-            </div>
+    let currentDailyPrompt = null;
+    let promptDate = null;
 
-            <!-- Load More Button -->
-            <div class="load-more-section">
-                <button class="load-more-btn" onclick="loadMoreArtwork()">
-                    See More Beautiful Work
-                </button>
-            </div>
-        </div>
+    function generateDailyPrompt() {
+        const today = new Date().toDateString();
+        
+        // Check if we already have a prompt for today
+        const storedPrompt = localStorage.getItem('dailyPrompt');
+        const storedDate = localStorage.getItem('promptDate');
+        
+        if (storedPrompt && storedDate === today) {
+            // Use existing prompt for today
+            currentDailyPrompt = storedPrompt;
+            document.getElementById('dailyPrompt').textContent = currentDailyPrompt;
+            updatePromptTags();
+            return;
+        }
+        
+        // Generate new prompt for today
+        const template = promptTemplates[Math.floor(Math.random() * promptTemplates.length)];
+        let prompt = template;
+        
+        // Replace placeholders with random words
+        const placeholderRegex = /{(\w+)}/g;
+        prompt = prompt.replace(placeholderRegex, (match, key) => {
+            if (promptVariables[key]) {
+                const options = promptVariables[key];
+                return options[Math.floor(Math.random() * options.length)];
+            }
+            return match;
+        });
+        
+        currentDailyPrompt = prompt;
+        
+        // Store in localStorage
+        localStorage.setItem('dailyPrompt', prompt);
+        localStorage.setItem('promptDate', today);
+        
+        // Update display
+        document.getElementById('dailyPrompt').textContent = prompt;
+        updatePromptTags();
+        
+        // Add to history if it's a new day
+        if (storedDate !== today) {
+            addPromptToHistory(prompt);
+        }
+    }
 
-        <!-- Community Stats -->
-        <div class="garden-stats">
-            <div class="stat-card">
-                <div class="stat-number" id="totalArtworks">0</div>
-                <div class="stat-label">Artworks Planted</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalArtists">0</div>
-                <div class="stat-label">Creative Gardeners</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalConnections">0</div>
-                <div class="stat-label">Instagram Connections</div>
-            </div>
-        </div>
+    function updatePromptTags() {
+        const tagContainer = document.querySelector('.prompt-tags');
+        if (!tagContainer) return;
+        
+        // Generate random tags based on the prompt
+        const allTags = ["daily", "creative", "artistic", "expressive", "personal", "cultural", "emotional", "visual", "narrative", "symbolic"];
+        const randomTags = [];
+        
+        // Select 3-4 random tags
+        const tagCount = Math.floor(Math.random() * 2) + 3; // 3 or 4 tags
+        while (randomTags.length < tagCount) {
+            const randomTag = allTags[Math.floor(Math.random() * allTags.length)];
+            if (!randomTags.includes(randomTag)) {
+                randomTags.push(randomTag);
+            }
+        }
+        
+        tagContainer.innerHTML = randomTags.map(tag => `<span class="tag">${tag}</span>`).join('');
+    }
 
-    </main>
+    function generateNewPrompt() {
+        // This function now allows users to get a new randomized version of today's prompt
+        generateDailyPrompt();
+    }
+
+    function addPromptToHistory(prompt) {
+        const historyContainer = document.getElementById('promptHistory');
+        if (!historyContainer) return;
+        
+        const promptElement = document.createElement('div');
+        promptElement.className = 'prompt-history-item';
+        promptElement.innerHTML = `
+            <p>${prompt}</p>
+            <small>${new Date().toLocaleDateString()}</small>
+        `;
+        historyContainer.insertBefore(promptElement, historyContainer.firstChild);
+        
+        // Keep only last 7 prompts
+        while (historyContainer.children.length > 7) {
+            historyContainer.removeChild(historyContainer.lastChild);
+        }
+        
+        // Save history to localStorage
+        const history = Array.from(historyContainer.children).map(item => ({
+            prompt: item.querySelector('p').textContent,
+            date: item.querySelector('small').textContent
+        }));
+        localStorage.setItem('promptHistory', JSON.stringify(history));
+    }
+
+    function loadPromptHistory() {
+        const historyContainer = document.getElementById('promptHistory');
+        if (!historyContainer) return;
+        
+        const savedHistory = localStorage.getItem('promptHistory');
+        if (savedHistory) {
+            const history = JSON.parse(savedHistory);
+            history.forEach(item => {
+                const promptElement = document.createElement('div');
+                promptElement.className = 'prompt-history-item';
+                promptElement.innerHTML = `
+                    <p>${item.prompt}</p>
+                    <small>${item.date}</small>
+                `;
+                historyContainer.appendChild(promptElement);
+            });
+        }
+    }
+
+    // Artwork submission image preview
+    function previewSubmissionImage(input) {
+        const preview = document.getElementById('submissionImagePreview');
+        const uploadArea = document.querySelector('.file-upload-area');
+        const file = input.files[0];
+        
+        if (file) {
+            // Validate file size (10MB limit)
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size must be less than 10MB. Please choose a smaller image.');
+                input.value = '';
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = `
+                    <img src="${e.target.result}" alt="Artwork preview" style="max-width: 300px; max-height: 300px; border-radius: 12px; border: 2px solid rgba(248, 200, 208, 0.3); object-fit: cover;">
+                    <p style="color: #f8c8d0; margin-top: 15px; font-size: 0.9rem;">✅ Image selected: ${file.name}</p>
+                    <button type="button" onclick="clearSubmissionImage()" style="background: rgba(126, 28, 46, 0.2); border: 1px solid #f8c8d0; color: #f8c8d0; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-top: 10px;">Remove Image</button>
+                `;
+            };
+            reader.readAsDataURL(file);
+            
+            // Update upload area styling
+            uploadArea.style.borderColor = '#f8c8d0';
+            uploadArea.style.background = 'rgba(248, 200, 208, 0.1)';
+            uploadArea.innerHTML = '<p style="color: #f8c8d0;">📸 Image selected! Click to change</p>';
+        }
+    }
+
+    function clearSubmissionImage() {
+        const preview = document.getElementById('submissionImagePreview');
+        const uploadArea = document.querySelector('.file-upload-area');
+        const fileInput = document.getElementById('artworkFile');
+        
+        preview.innerHTML = '';
+        uploadArea.style.borderColor = 'rgba(248, 200, 208, 0.4)';
+        uploadArea.style.background = 'rgba(248, 200, 208, 0.02)';
+        uploadArea.innerHTML = `
+            <p>Click to upload your artwork</p>
+            <p class="upload-note">Supported formats: PNG, JPEG, GIF, WebP (Max 10MB)</p>
+        `;
+        fileInput.value = '';
+    }
+
+    // Modal functionality
+    function openSubmissionModal() {
+        document.getElementById('submissionModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeSubmissionModal(event) {
+        if (event && event.target !== event.currentTarget) return; // Only close if clicking on backdrop
+        
+        document.getElementById('submissionModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+        
+        // Reset form
+        const form = document.getElementById('artworkSubmissionForm');
+        if (form) {
+            form.reset();
+            clearSubmissionImage();
+        }
+    }
+
+    // Create artwork from prompt
+    function createFromPrompt() {
+        const currentPrompt = document.getElementById('dailyPrompt').textContent;
+        openSubmissionModal();
+        
+        // Pre-fill the description with the prompt
+        setTimeout(() => {
+            const descriptionField = document.getElementById('artworkDescription');
+            if (descriptionField) {
+                descriptionField.value = `Inspired by today's prompt: "${currentPrompt}"\n\n`;
+                descriptionField.focus();
+                // Move cursor to the end
+                descriptionField.setSelectionRange(descriptionField.value.length, descriptionField.value.length);
+            }
+        }, 100);
+    }
+
+    // Countdown timer for next prompt
+    function updateCountdown() {
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0); // Set to midnight
+        
+        const timeUntilTomorrow = tomorrow.getTime() - now.getTime();
+        
+        const hours = Math.floor(timeUntilTomorrow / (1000 * 60 * 60));
+        const minutes = Math.floor((timeUntilTomorrow % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeUntilTomorrow % (1000 * 60)) / 1000);
+        
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        
+        if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
+        if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
+        if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
+        
+        // If we've reached tomorrow, generate a new prompt
+        if (timeUntilTomorrow <= 0) {
+            generateDailyPrompt();
+        }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeSubmissionModal();
+        }
+    });
+
+    // Color palette generator
+    function generatePalette() {
+        const palette = document.getElementById('colorPalette');
+        const swatches = palette.querySelectorAll('.color-swatch');
+        
+        swatches.forEach(swatch => {
+            const hue = Math.floor(Math.random() * 360);
+            const saturation = Math.floor(Math.random() * 50) + 30; // 30-80%
+            const lightness = Math.floor(Math.random() * 40) + 30; // 30-70%
+            swatch.style.background = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        });
+    }
+
+    // Composition guide
+    document.getElementById('compositionType').addEventListener('change', (e) => {
+        const grid = document.getElementById('gridOverlay');
+        const type = e.target.value;
+        
+        grid.className = `grid-overlay ${type}`;
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+        // Set daily prompt (stays same for 24 hours)
+        generateDailyPrompt();
+        
+        // Start countdown timer
+        updateCountdown();
+        setInterval(updateCountdown, 1000); // Update every second
+        
+        // Initialize stats with animation
+        animateNumbers();
+    });
+
+    function animateNumbers() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current);
+            }, 30);
+        });
+    }
+    </script>
+    
+    <!-- Community JavaScript -->
+    <script src="../scripts/community.js"></script>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -213,8 +748,5 @@
             <p class="copyright">Leah Cortez © 2025</p>
         </div>
     </footer>
-
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/community.js"></script>
 </body>
 </html>

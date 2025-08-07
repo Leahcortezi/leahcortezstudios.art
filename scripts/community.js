@@ -7,11 +7,330 @@
 let communityArtworks = [];
 let submissionCount = 0;
 
+// Monthly Art Challenges - Updates automatically on the 1st of each month
+const monthlyArtChallenges = [
+    {
+        title: "New Beginnings",
+        description: "Create artwork that represents fresh starts, transformation, or rebirth. Explore themes of renewal and growth.",
+        theme: "Renewal, transformation, new perspectives",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 0 // January
+    },
+    {
+        title: "Love & Connection",
+        description: "Express the many forms of love - romantic, familial, self-love, or love for your community and culture.",
+        theme: "Love, relationships, emotional bonds",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions", 
+        month: 1 // February
+    },
+    {
+        title: "Cultural Roots",
+        description: "Create artwork that explores your cultural heritage and identity. Use mixed media, symbolism, or personal narratives to express your roots.",
+        theme: "Cultural identity, heritage, family stories",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 2 // March
+    },
+    {
+        title: "Spring Awakening",
+        description: "Capture the energy of spring renewal through art. Focus on growth, blooming, and the awakening of nature.",
+        theme: "Growth, renewal, nature's awakening",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 3 // April
+    },
+    {
+        title: "Mother Earth",
+        description: "Honor the earth and our relationship with nature. Create pieces that celebrate or raise awareness about environmental themes.",
+        theme: "Nature, environment, earth connection",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 4 // May
+    },
+    {
+        title: "Summer Dreams",
+        description: "Explore the warmth and energy of summer through your art. Capture memories, dreams, or the feeling of endless possibilities.",
+        theme: "Summer energy, dreams, warm memories",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 5 // June
+    },
+    {
+        title: "Freedom & Independence",
+        description: "Create artwork that explores personal freedom, independence, or liberation from constraints.",
+        theme: "Freedom, independence, breaking barriers",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 6 // July
+    },
+    {
+        title: "Harvest Reflections",
+        description: "Reflect on the fruits of your labor, personal growth, or life's abundance through artistic expression.",
+        theme: "Harvest, abundance, reflection",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 7 // August
+    },
+    {
+        title: "Back to Roots",
+        description: "As autumn arrives, create art that connects you to your foundations, traditions, or ancestral wisdom.",
+        theme: "Traditions, ancestral wisdom, foundations",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 8 // September
+    },
+    {
+        title: "Transformation",
+        description: "Capture the changing season and personal transformations. Explore themes of change and metamorphosis.",
+        theme: "Change, metamorphosis, personal growth",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 9 // October
+    },
+    {
+        title: "Gratitude & Reflection",
+        description: "Create artwork that expresses gratitude and reflection on the year's journey and blessings.",
+        theme: "Gratitude, reflection, thankfulness",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 10 // November
+    },
+    {
+        title: "Year's End Magic",
+        description: "Celebrate the magic of endings and new beginnings. Create art that captures the spirit of the year's close.",
+        theme: "Endings, new beginnings, year-end magic",
+        medium: "Any (digital, traditional, mixed media)",
+        size: "No restrictions",
+        month: 11 // December
+    }
+];
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Community Garden loaded');
     initializeCommunityGarden();
     loadCommunityStats();
+    updateMonthlyChallenge();
+    updatePastChallenges();
+    updateChallengeTimer();
+    checkForMonthlyUpdate();
+    
+    // Check for monthly updates daily
+    setInterval(checkForMonthlyUpdate, 1000 * 60 * 60 * 24); // Check every 24 hours
 });
+
+/**
+ * Update the monthly art challenge based on current month
+ */
+function updateMonthlyChallenge() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentChallenge = monthlyArtChallenges[currentMonth];
+    
+    if (!currentChallenge) return;
+    
+    // Update challenge title
+    const titleElement = document.querySelector('.challenge-header h3');
+    if (titleElement) {
+        titleElement.textContent = `Current Challenge: "${currentChallenge.title}"`;
+    }
+    
+    // Update challenge description
+    const descriptionElement = document.querySelector('.challenge-content p');
+    if (descriptionElement) {
+        descriptionElement.textContent = currentChallenge.description;
+    }
+    
+    // Update challenge details
+    const details = document.querySelectorAll('.detail');
+    if (details.length >= 3) {
+        details[0].innerHTML = `<strong>Medium:</strong> ${currentChallenge.medium}`;
+        details[1].innerHTML = `<strong>Size:</strong> ${currentChallenge.size}`;
+        details[2].innerHTML = `<strong>Theme:</strong> ${currentChallenge.theme}`;
+    }
+}
+
+/**
+ * Update the challenge timer to show days remaining in current month
+ */
+function updateChallengeTimer() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+    
+    // Get the first day of next month
+    const nextMonth = new Date(currentYear, currentMonth + 1, 1);
+    
+    // Calculate time difference
+    const timeDiff = nextMonth - currentDate;
+    const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    
+    // Update timer display
+    const timerElement = document.getElementById('timeLeft');
+    if (timerElement) {
+        if (daysLeft === 1) {
+            timerElement.textContent = '1 day left';
+        } else {
+            timerElement.textContent = `${daysLeft} days left`;
+        }
+    }
+    
+    // Set up daily updates
+    setTimeout(updateChallengeTimer, 1000 * 60 * 60 * 24); // Update every 24 hours
+}
+
+/**
+ * Get challenge for specific month (useful for past challenges display)
+ */
+function getChallengeForMonth(monthIndex) {
+    return monthlyArtChallenges[monthIndex];
+}
+
+/**
+ * Populate past challenges display
+ */
+function updatePastChallenges() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const pastChallengesGrid = document.getElementById('pastChallengesGrid');
+    
+    if (!pastChallengesGrid) return;
+    
+    // Clear existing content
+    pastChallengesGrid.innerHTML = '';
+    
+    // Get the last 3 months (excluding current month)
+    const pastMonths = [];
+    for (let i = 1; i <= 3; i++) {
+        let monthIndex = currentMonth - i;
+        let year = currentDate.getFullYear();
+        
+        // Handle year wrap-around
+        if (monthIndex < 0) {
+            monthIndex += 12;
+            year--;
+        }
+        
+        pastMonths.push({
+            challenge: monthlyArtChallenges[monthIndex],
+            monthIndex: monthIndex,
+            year: year
+        });
+    }
+    
+    // Create cards for past challenges
+    pastMonths.forEach((item, index) => {
+        const challenge = item.challenge;
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        // Generate random participant count for demo
+        const participantCount = Math.floor(Math.random() * 50) + 30;
+        
+        const card = document.createElement('div');
+        card.className = 'challenge-card';
+        card.innerHTML = `
+            <h4>${challenge.title}</h4>
+            <p>${challenge.description.substring(0, 80)}${challenge.description.length > 80 ? '...' : ''}</p>
+            <small style="color: var(--color-primary-accent); font-size: 0.75rem; opacity: 0.8;">${monthNames[item.monthIndex]} ${item.year}</small>
+            <span class="participants">${participantCount} participants</span>
+        `;
+        
+        pastChallengesGrid.appendChild(card);
+    });
+}
+
+/**
+ * Check if it's the first day of the month and update challenge if needed
+ */
+function checkForMonthlyUpdate() {
+    const currentDate = new Date();
+    const dayOfMonth = currentDate.getDate();
+    
+    // Check if it's the first day of the month
+    if (dayOfMonth === 1) {
+        // Check if we've already updated for this month
+        const lastUpdate = localStorage.getItem('lastChallengeUpdate');
+        const currentMonthYear = `${currentDate.getMonth()}-${currentDate.getFullYear()}`;
+        
+        if (lastUpdate !== currentMonthYear) {
+            // Update the challenge
+            updateMonthlyChallenge();
+            updatePastChallenges();
+            
+            // Store that we've updated for this month
+            localStorage.setItem('lastChallengeUpdate', currentMonthYear);
+            
+            // Show notification about new challenge
+            setTimeout(() => {
+                showNotification('🎨 New monthly art challenge is now available!');
+            }, 2000);
+            
+            // Add visual indicator to challenge section
+            addNewChallengeIndicator();
+        }
+    }
+}
+
+/**
+ * Add visual indicator for new challenge
+ */
+function addNewChallengeIndicator() {
+    const challengeHeader = document.querySelector('.challenge-header h3');
+    if (challengeHeader && !challengeHeader.querySelector('.new-badge')) {
+        const badge = document.createElement('span');
+        badge.className = 'new-badge';
+        badge.textContent = 'NEW!';
+        badge.style.cssText = `
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        `;
+        
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.1); opacity: 0.8; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        challengeHeader.appendChild(badge);
+        
+        // Remove badge after 7 days
+        setTimeout(() => {
+            if (badge.parentNode) {
+                badge.remove();
+            }
+        }, 7 * 24 * 60 * 60 * 1000);
+    }
+}
+
+/**
+ * Manual function to preview next month's challenge (for testing)
+ */
+function previewNextChallenge() {
+    const currentDate = new Date();
+    const nextMonth = (currentDate.getMonth() + 1) % 12;
+    const nextChallenge = monthlyArtChallenges[nextMonth];
+    
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    alert(`Next Challenge (${monthNames[nextMonth]}): "${nextChallenge.title}"\n\n${nextChallenge.description}`);
+}
 
 /**
  * Initialize the community garden functionality
