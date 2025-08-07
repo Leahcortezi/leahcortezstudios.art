@@ -14,55 +14,55 @@ class PortfolioQuiz {
             id: 1,
             text: "What's your biggest art pet peeve?",
             options: [
-                { text: "Losing your best file version because 'FinalFinal_V2_REAL.zip' wasn't the real one.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "Someone watching you draw and saying: 'Draw me!'", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "People touching your work without asking.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "'It's just a font, right?' No, it's 3 hours of research and 47 iterations.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "When people ask what medium you used and get confused by your 12-part answer.", piece: "elements-book", weight: 3 } // Restless Experimenter
+                { text: "Art that's overly simple - like someone just splashed paint and called it deep.", piece: "reductive-symbols", weight: 3 }, // Values technical skill/complexity
+                { text: "Art that's just pretty to look at but has zero emotional depth or meaning.", piece: "inheritance", weight: 3 }, // Needs emotional substance
+                { text: "Perfectly polished art that feels soulless - where's the human touch?", piece: "gnaw", weight: 3 }, // Values authenticity/rawness
+                { text: "Art that ignores real world problems and stays in its safe little bubble.", piece: "double-sided-poster", weight: 3 }, // Wants social relevance
+                { text: "Art that's exactly like everything else - no originality or risk-taking.", piece: "abyss-bloom", weight: 3 } // Values uniqueness/innovation
             ]
             },
             {
             id: 2,
-            text: "How do you start a new piece?",
+            text: "How do you usually create?",
             options: [
-                { text: "Sketches, research, color studies, then more sketches.", piece: "typographic-interpretation", weight: 3 }, // Perfectionist
-                { text: "Wait for the feeling to hit, then follow where it leads.", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "Grab whatever's nearby and see what happens.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Find the story that needs telling, then figure out how.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Try that technique I saw on TikTok at 2am.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Plan everything out first - sketches, references, color swatches, the works.", piece: "typographic-interpretation", weight: 3 }, // Methodical planner
+                { text: "Start when inspiration strikes and let my emotions guide the process.", piece: "inheritance", weight: 3 }, // Intuitive emotional creator
+                { text: "Jump in with whatever's around and figure it out as I go.", piece: "gnaw", weight: 3 }, // Spontaneous experimenter
+                { text: "Find something I care about deeply, then find the best way to express it.", piece: "double-sided-poster", weight: 3 }, // Message-driven
+                { text: "Try new techniques constantly - tutorials, experiments, happy accidents.", piece: "abyss-bloom", weight: 3 } // Technique explorer
             ]
             },
             {
             id: 3,
-            text: "What critique comment would ruin your whole week?",
+            text: "What feedback would hurt your feelings the most?",
             options: [
-                { text: "It just doesn't pop.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "This is so dark. What does it even mean?", piece: "inheritance", weight: 3 }, // Emotional Alchemist
-                { text: "My kid could do that.", piece: "collected-remains", weight: 3 }, // Chaotic Creator
-                { text: "Maybe try something more commercial.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Why didn't you just use AI?", piece: "playing-cards", weight: 3 } // Restless Experimenter
+                { text: "\"It's not quite there yet\" - when you thought it was perfect.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
+                { text: "\"I don't get it\" - when it means everything to you.", piece: "inheritance", weight: 3 }, // Personal expression
+                { text: "\"It looks unfinished\" - but that's exactly how you wanted it.", piece: "collected-remains", weight: 3 }, // Process-focused
+                { text: "\"It's pretty but what's the point?\" - missing the whole message.", piece: "double-sided-poster", weight: 3 }, // Purpose-driven
+                { text: "\"Weird for the sake of being weird\" - when you're genuinely exploring.", piece: "playing-cards", weight: 3 } // Experimental
             ]
             },
             {
             id: 4,
-            text: "What is art's purpose?",
+            text: "Why do you make art?",
             options: [
-                { text: "To communicate ideas clearly and systematically.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "To help process and explore emotions safely.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "To celebrate the beauty of process and imperfection.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "To spread important messages and change minds.", piece: "heaven-on-fire", weight: 3 }, // Activist Artist
-                { text: "To push boundaries and explore what's possible.", piece: "unraveling", weight: 3 } // Restless Experimenter
+                { text: "To master my craft and create something technically beautiful.", piece: "reductive-symbols", weight: 3 }, // Skill mastery
+                { text: "To process my feelings and connect with others who feel the same.", piece: "anointed-gaze", weight: 3 }, // Emotional processing
+                { text: "To celebrate the beauty in everyday chaos and imperfection.", piece: "gnaw", weight: 3 }, // Finding beauty in process
+                { text: "To say something important that needs to be heard.", piece: "heaven-on-fire", weight: 3 }, // Message delivery
+                { text: "To explore possibilities and see what happens when I try new things.", piece: "unraveling", weight: 3 } // Exploration/discovery
             ]
             },
             {
             id: 5,
-            text: "When you scroll through art online, what makes you actually stop and save it?",
+            text: "What draws you to a piece of art?",
             options: [
-                { text: "Clean lines and perfect composition that makes you want to reorganize your entire life.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "Something raw that hits you right in the feelings before you even know what it is.", piece: "anointed-gaze", weight: 3 }, // Emotional Alchemist
-                { text: "Messy, layered pieces where you discover new details every time you look.", piece: "gnaw", weight: 3 }, // Chaotic Creator
-                { text: "Bold work that makes a statement and doesn't care who's uncomfortable.", piece: "double-sided-poster", weight: 3 }, // Activist Artist
-                { text: "Weird experimental stuff that makes you go down a 2-hour rabbit hole.", piece: "abyss-bloom", weight: 3 } // Restless Experimenter
+                { text: "Incredible skill and craftsmanship that makes you wonder 'how did they do that?'", piece: "reductive-symbols", weight: 3 }, // Technical appreciation
+                { text: "Something that hits you emotionally before you even understand why.", piece: "anointed-gaze", weight: 3 }, // Emotional connection
+                { text: "Pieces with layers and textures you want to touch and explore forever.", piece: "gnaw", weight: 3 }, // Tactile/process interest
+                { text: "Bold work that makes a statement and sparks important conversations.", piece: "double-sided-poster", weight: 3 }, // Impact-focused
+                { text: "Unique, experimental pieces that make you see things differently.", piece: "abyss-bloom", weight: 3 } // Innovation appreciation
             ]
             }
         ];
