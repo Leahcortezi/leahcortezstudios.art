@@ -2077,7 +2077,9 @@
     padding: 40px 40px 40px;
     text-align: center;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
     transition: all 0.3s ease;
     position: relative;
     backdrop-filter: blur(5px);
@@ -2092,9 +2094,9 @@
 
 /* Countdown Timer Styles - Professional Badge */
 .prompt-countdown {
-    position: absolute;
-    top: -35px;
-    right: 20px;
+    position: absolute; 
+    top: -15px;
+    right: -15px;
     z-index: 1000;
 }
 
@@ -2111,6 +2113,7 @@
     border-radius: 20px;
     font-size: 0.8rem;
     position: relative;
+    white-space: nowrap;
 }
 
 .countdown-timer:hover {
