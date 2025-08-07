@@ -73,11 +73,11 @@ class PortfolioQuiz {
             title: "The Sleepless Sketcher",
             subtitle: "Anointed Gaze",
             category: "Personal Work",
-            archetype: {
-                essence: "You sketch like you're possessed. Emotional? Maybe. Haunted? Definitely.",
-                medium: "Charcoal. Pencil. Crying on the page.",
-                strength: "Catching feelings through line work.",
-                challenge: "Not every drawing has to be a breakdown."
+            personality: {
+                vibe: "3AM creative energy with emotional intensity",
+                tools: "Sketchbooks, charcoal, and existential dread",
+                superpower: "Turning feelings into powerful line work",
+                kryptonite: "People asking 'are you okay?' after seeing your art"
             },
             description: "You're the artist who draws at 3am when you can't sleep because your brain won't shut up. You keep a sketchbook by your bed and probably have charcoal under your fingernails more often than not. People always ask if you're okay after seeing your work, and honestly, you're never quite sure how to answer that.",
             quote: "I draw until I disassociate. And then I draw that too.",
@@ -88,11 +88,11 @@ class PortfolioQuiz {
             title: "The Sentimental Shrine Builder",
             subtitle: "Abuela's Altar",
             category: "Personal Work",
-            archetype: {
-                essence: "Your studio smells like old candles, and you treat every found object like it has a soul.",
-                medium: "Candles, rosaries, and inherited buttons.",
-                strength: "Turning nostalgia into sacred art.",
-                challenge: "You can't keep every single object (even if it's cute)."
+            personality: {
+                vibe: "Nostalgic collector with spiritual energy",
+                tools: "Found objects, family heirlooms, and meaningful junk",
+                superpower: "Turning random stuff into emotional altars",
+                kryptonite: "Minimalists who want to 'declutter' your space"
             },
             description: "You're the artist who saves everything because 'it might be useful for a project someday.' Your studio is part art space, part museum of random family artifacts. You take photos of old objects at thrift stores even when you don't buy them, just in case you need reference material later.",
             quote: "Is it trash or an emotional relic? Yes.",
@@ -103,11 +103,11 @@ class PortfolioQuiz {
             title: "The Beautiful Catastrophist",
             subtitle: "Heaven on Fire",
             category: "Personal Work",
-            archetype: {
-                essence: "You paint like you're trying to win an emotional apocalypse.",
-                medium: "Fiery brushstrokes and paint that gets everywhere.",
-                strength: "Making chaos look gorgeous.",
-                challenge: "Sometimes you need a break from intensity."
+            personality: {
+                vibe: "Big emotions, bigger paint splatters",
+                tools: "Every color that exists, preferably at once",
+                superpower: "Making dramatic chaos look absolutely stunning",
+                kryptonite: "Anyone who suggests you 'tone it down'"
             },
             description: "You're the artist who goes big or goes home. You've never made anything described as 'subtle' and you're fine with that. Your workspace is covered in paint splatters, your clothes are permanently stained, and you've definitely gotten noise complaints from neighbors. When people say your art is 'a lot,' you take it as a compliment.",
             quote: "If it's not dramatic, I'm not interested.",
@@ -118,13 +118,13 @@ class PortfolioQuiz {
             title: "The Generational Theorist",
             subtitle: "Inheritance",
             category: "Personal Work",
-            archetype: {
-                essence: "You make art like a therapist with a glue stick.",
-                medium: "Yarn, old photos, family secrets.",
-                strength: "Turning identity crises into installations.",
-                challenge: "Not everything has to be that deep… probably."
+            personality: {
+                vibe: "Deep thinker with family therapy vibes",
+                tools: "Old photos, cultural artifacts, and emotional baggage",
+                superpower: "Making personal trauma relatable to literally everyone",
+                kryptonite: "Small talk at family gatherings"
             },
-            description: "You're the artist who turns every family dinner into an impromptu therapy session about identity and culture. You have strong opinions about representation in museums and probably write long Instagram captions. You've definitely made your relatives uncomfortable by asking them to pose for 'artistic documentation.'",
+            description: "You're the artist who turns every family dinner into an impromptu therapy session about identity and culture. You have strong opinions about whose stories get told in museums and probably write long Instagram captions. You've definitely made your relatives uncomfortable by asking them to pose for your 'art project about heritage.'",
             quote: "I turned my generational trauma into a design concept.",
             image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
             path: "collections/personal/inheritance/index.html"
@@ -133,11 +133,11 @@ class PortfolioQuiz {
             title: "The Raw Materialist",
             subtitle: "Gnaw",
             category: "Studio Work",
-            archetype: {
-                essence: "You carve, shred, and rip your way to the truth.",
-                medium: "Anything breakable, bendable, or biteable.",
-                strength: "Making destruction look intentional.",
-                challenge: "Knowing when to stop before everything breaks."
+            personality: {
+                vibe: "Hands-on creator who feels textures deeply",
+                tools: "Anything rough, broken, or ready to be transformed",
+                superpower: "Making beautiful destruction look intentional",
+                kryptonite: "People who say 'don't touch the art'"
             },
             description: "You're the artist who can't walk past interesting textures without touching them. You collect wood scraps, interesting rocks, and fabric samples 'just because.' Your hands are always slightly roughed up from your latest project, and you've definitely injured yourself in the name of art more than once.",
             quote: "I sanded it down to the bone and then kept going.",
@@ -148,11 +148,11 @@ class PortfolioQuiz {
             title: "The Emotional Engineer",
             subtitle: "Unraveling",
             category: "Studio Work",
-            archetype: {
-                essence: "You sculpt your anxiety into wire, knots, and small controlled messes.",
-                medium: "Wire, thread, unresolved feelings.",
-                strength: "Making chaos look organized.",
-                challenge: "You might be overthinking this."
+            personality: {
+                vibe: "Organized chaos with anxious perfectionist energy",
+                tools: "Wire, thread, and all your unresolved feelings",
+                superpower: "Turning mental tangles into physical art",
+                kryptonite: "People who try to 'fix' your perfectly imperfect system"
             },
             description: "You're the artist who has a very specific organizational system that looks like chaos to everyone else. You know exactly which pile of supplies you need, and god help anyone who tries to 'clean up' your space. You probably have anxiety about your anxiety, and you channel all of that energy into intricate, obsessive work.",
             quote: "If I can't untangle my thoughts, I'll just twist them into art.",
@@ -163,11 +163,11 @@ class PortfolioQuiz {
             title: "The Weird Creature Kid",
             subtitle: "Abyss Bloom",
             category: "Studio Work",
-            archetype: {
-                essence: "You make squishy little monsters and call it art.",
-                medium: "Glowing goo, sad eyes, body horror lite™.",
-                strength: "Turning nightmares into adoptable pets.",
-                challenge: "People keep asking if you're okay (you are)."
+            personality: {
+                vibe: "Delightfully disturbing with wholesome monster energy",
+                tools: "Unconventional materials and nightmare fuel",
+                superpower: "Making the unsettling somehow adorable",
+                kryptonite: "People who ask 'but what is it supposed to be?'"
             },
             description: "You're the artist who makes things that make people say 'what the hell is that?' and you live for that reaction. You're probably the person who had an 'interesting' senior thesis that made your professors very nervous. You collect weird materials and your browser history is concerning but purely for artistic research.",
             quote: "This one has four limbs and trauma. I love them.",
@@ -178,14 +178,14 @@ class PortfolioQuiz {
             title: "The Trash Archaeologist",
             subtitle: "Collected Remains",
             category: "Studio Work",
-            archetype: {
-                essence: "You collect weird little objects 'for a project.'",
-                medium: "Broken things with emotional potential.",
-                strength: "Finding magic in literal garbage.",
-                challenge: "Your workspace is a danger zone."
+            personality: {
+                vibe: "Urban explorer with hoarding tendencies (but make it art)",
+                tools: "Literally anything you find on the ground",
+                superpower: "Seeing potential in everyone else's garbage",
+                kryptonite: "Security guards and 'no trespassing' signs"
             },
             description: "You're the artist who dumpster dives for supplies and calls it 'urban archaeology.' Your car is full of random objects you found that might become art someday. You've definitely had to explain to security guards that yes, you really do need that broken shopping cart for a sculpture.",
-            quote: "It's not hoarding if it's conceptual.",
+            quote: "It's not hoarding if it becomes art.",
             image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
             path: "collections/studio/collected-remains/index.html"
             },
@@ -193,11 +193,11 @@ class PortfolioQuiz {
             title: "The Kerning Critic",
             subtitle: "Typographic Interpretation",
             category: "Design Work",
-            archetype: {
-                essence: "You see fonts the way some people see auras.",
-                medium: "Grids, rulers, and passive-aggressive typefaces.",
-                strength: "Making letters feel things.",
-                challenge: "Perfectionism in places no one notices but you."
+            personality: {
+                vibe: "Type nerd with strong opinions about spacing",
+                tools: "Fonts, grids, and design rules you actually follow",
+                superpower: "Making letters communicate emotions",
+                kryptonite: "Comic Sans and people who don't understand why kerning matters"
             },
             description: "You're the artist who spends 20 minutes adjusting the spacing between two words. You have strong opinions about Comic Sans and you're not afraid to share them. People think you're being picky, but you know that good design is invisible—and bad design makes you physically uncomfortable.",
             quote: "This font pairing is giving me a migraine.",
@@ -208,11 +208,11 @@ class PortfolioQuiz {
             title: "The Organized Chaos Theorist",
             subtitle: "Scientific Revolution Playing Cards",
             category: "Design Work",
-            archetype: {
-                essence: "You have 14 sketchbooks, 37 tabs open, and one very specific system that only you understand.",
-                medium: "Color codes, timelines, trivia.",
-                strength: "Turning chaos into clever structure.",
-                challenge: "You start 10 projects for every 1 you finish."
+            personality: {
+                vibe: "Research rabbit-hole enthusiast with project ADD",
+                tools: "47 browser tabs, color-coded everything, and excessive coffee",
+                superpower: "Turning information overload into clever design systems",
+                kryptonite: "Deadlines and people who want 'just a simple version'"
             },
             description: "You're the artist who has 47 browser tabs open for research and three different notebooks for the same project. You start ambitious projects with elaborate systems, get distracted by even more ambitious projects, and somehow manage to finish them all through pure stubborn determination and excessive coffee.",
             quote: "This deck is about science, but also about me winning.",
@@ -223,13 +223,13 @@ class PortfolioQuiz {
             title: "The Conceptual Clown",
             subtitle: "Elements & Principles Book Cover",
             category: "Design Work",
-            archetype: {
-                essence: "You love to make people laugh—then immediately regret it by hitting them with deep meaning.",
-                medium: "Bright colors, visual puns, chaotic joy.",
-                strength: "Making people feel things after they laugh.",
-                challenge: "Hiding behind the joke a little too well."
+            personality: {
+                vibe: "Secretly serious artist hiding behind bright colors and jokes",
+                tools: "Visual puns, inappropriate color combinations, and hidden meanings",
+                superpower: "Making people laugh before hitting them with deep thoughts",
+                kryptonite: "People who take your work at face value and miss the point"
             },
-            description: "You're the artist who makes serious art but can't take yourself too seriously. You're the person cracking jokes in critique while making profound points about society. You use bright colors to discuss dark topics, and you've mastered the art of making people laugh until they suddenly realize they're having deep thoughts.",
+            description: "You're the artist who makes serious art but can't take yourself too seriously. You're the person cracking jokes in art class while making smart points about the world. You use bright colors to discuss dark topics, and you've mastered the art of making people laugh until they suddenly realize they're having deep thoughts.",
             quote: "Yes, it's silly. No, I'm not explaining it.",
             image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
             path: "collections/design/elements-and-principles-book-cover/index-case-study.html"
@@ -238,13 +238,13 @@ class PortfolioQuiz {
             title: "The Design Vigilante",
             subtitle: "Double-Sided Poster",
             category: "Design Work",
-            archetype: {
-                essence: "You make protest posters for fun.",
-                medium: "Bold type, strong opinions, minimal chill.",
-                strength: "Making people read and feel things.",
-                challenge: "Subtlety is not your thing (and that's fine)."
+            personality: {
+                vibe: "Social justice warrior with design skills and zero chill",
+                tools: "Bold fonts, strong opinions, and righteous anger",
+                superpower: "Making people care about things through good design",
+                kryptonite: "Apathetic people and 'keep politics out of art' comments"
             },
-            description: "You're the artist who makes protest signs for fun and gets genuinely angry about social issues. Your Instagram stories are 50% art, 50% political rants. You've definitely gotten into arguments about art's responsibility to society, and you think 'art for art's sake' is a cop-out.",
+            description: "You're the artist who makes protest signs for fun and gets genuinely angry about social issues. Your Instagram stories are 50% art, 50% political rants. You've definitely gotten into arguments about whether art should always have a message, and you think 'art for art's sake' is a cop-out.",
             quote: "This typeface is yelling for a reason.",
             image: "collections/design/double-sided-poster/images/Design8.jpg",
             path: "collections/design/double-sided-poster/index-case-study.html"
@@ -253,11 +253,11 @@ class PortfolioQuiz {
             title: "The Shape Whisperer",
             subtitle: "Reductive Symbols",
             category: "Design Work",
-            archetype: {
-                essence: "You believe less is more, and more is… annoying.",
-                medium: "Grids, dots, shapes that whisper deep things.",
-                strength: "Maximum meaning, minimum fluff.",
-                challenge: "People don't always 'get it' (they're wrong)."
+            personality: {
+                vibe: "Minimalist perfectionist who believes less is always more",
+                tools: "Clean lines, negative space, and extreme restraint",
+                superpower: "Saying everything with almost nothing",
+                kryptonite: "People who want to 'add just one more thing'"
             },
             description: "You're the artist who believes that if you need more than three elements, you're trying too hard. You spend hours perfecting the placement of a single line. Your friends think your workspace is suspiciously clean, and you get genuinely upset when people add unnecessary decorations to things.",
             quote: "I reduced the concept to a single pixel. You're welcome.",
@@ -487,18 +487,18 @@ class PortfolioQuiz {
                     <div class="result-text">
                         <h2 class="result-title">${result.title}</h2>
                         <h3 class="result-subtitle">${result.subtitle}</h3>
-                        <div class="archetype-summary">
-                            <div class="archetype-trait">
-                                <strong>Essence:</strong> ${result.archetype.essence}
+                        <div class="personality-summary">
+                            <div class="personality-trait">
+                                <strong>Your Vibe:</strong> ${result.personality.vibe}
                             </div>
-                            <div class="archetype-trait">
-                                <strong>Medium:</strong> ${result.archetype.medium}
+                            <div class="personality-trait">
+                                <strong>Your Tools:</strong> ${result.personality.tools}
                             </div>
-                            <div class="archetype-trait">
-                                <strong>Strength:</strong> ${result.archetype.strength}
+                            <div class="personality-trait">
+                                <strong>Your Superpower:</strong> ${result.personality.superpower}
                             </div>
-                            <div class="archetype-trait">
-                                <strong>Challenge:</strong> ${result.archetype.challenge}
+                            <div class="personality-trait">
+                                <strong>Your Kryptonite:</strong> ${result.personality.kryptonite}
                             </div>
                         </div>
                         <p class="result-description">${result.description}</p>
