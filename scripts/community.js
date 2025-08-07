@@ -8,7 +8,7 @@ let communityArtworks = [];
 let submissionCount = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🌸 Community Garden loaded');
+    console.log('Community Garden loaded');
     initializeCommunityGarden();
     loadCommunityStats();
 });
@@ -87,7 +87,7 @@ function processSubmission(submission) {
     setTimeout(() => {
         submission.approved = true;
         displayNewArtwork(submission);
-        showNotification('🌸 Your artwork has been planted in our garden!');
+        showNotification('Your artwork has been planted in our garden!');
     }, 2000);
 }
 
