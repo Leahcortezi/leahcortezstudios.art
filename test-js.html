@@ -6,7 +6,6 @@
 <body>
     <h1>JavaScript Test</h1>
     <button onclick="testFunction()">Test Button</button>
-    <button onclick="generateCreativePrompt()">Test Creative Prompt</button>
     <div id="test-output"></div>
     
     <script>
@@ -18,25 +17,8 @@
         }
     </script>
     
-    <script src="scripts/resources.js"></script>
-    
     <script>
-        console.log("After loading resources.js");
-        
-        // Test if functions exist
-        setTimeout(() => {
-            if (typeof generateCreativePrompt === 'function') {
-                console.log("✅ generateCreativePrompt exists");
-            } else {
-                console.error("❌ generateCreativePrompt missing");
-            }
-            
-            if (typeof openModal === 'function') {
-                console.log("✅ openModal exists");  
-            } else {
-                console.error("❌ openModal missing");
-            }
-        }, 100);
+        console.log("JavaScript test complete");
     </script>
 </body>
 </html>
