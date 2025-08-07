@@ -2,16 +2,19 @@
 
 .community-main {
     padding-top: 80px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+    background: #1a1a1a;
     min-height: 100vh;
+    position: relative;
+    z-index: 2;
 }
 
 /* Hero Section */
 .garden-hero {
     text-align: center;
     padding: 60px 20px;
-    background: linear-gradient(135deg, rgba(248, 200, 208, 0.1), rgba(126, 28, 46, 0.1));
+    background: rgba(126, 28, 46, 0.1);
     margin-bottom: 50px;
+    border-radius: 0;
 }
 
 .garden-hero h1 {
