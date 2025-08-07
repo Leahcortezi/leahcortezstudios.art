@@ -2,7 +2,7 @@
 
 .community-main {
     padding-top: 80px;
-    background: #1a1a1a;
+    background: transparent;
     min-height: 100vh;
     position: relative;
     z-index: 2;
@@ -78,11 +78,6 @@
 .info-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(248, 200, 208, 0.1);
-}
-
-.info-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
 }
 
 .info-card h3 {
@@ -177,11 +172,6 @@
     background: rgba(248, 200, 208, 0.05);
 }
 
-.upload-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
 .file-upload-area p {
     color: #f8c8d0;
     margin: 5px 0;
@@ -231,9 +221,10 @@
 }
 
 .guidelines li::before {
-    content: "🌸";
+    content: "•";
     position: absolute;
     left: 0;
+    color: #f8c8d0;
 }
 
 /* Submit Button */
@@ -257,10 +248,6 @@
 .submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(248, 200, 208, 0.4);
-}
-
-.btn-icon {
-    font-size: 1.2rem;
 }
 
 /* Community Gallery */
@@ -329,11 +316,6 @@
     color: #f8c8d0;
     text-align: center;
     padding: 20px;
-}
-
-.art-icon {
-    font-size: 3rem;
-    margin-bottom: 10px;
 }
 
 .artwork-info {
@@ -427,14 +409,6 @@
     color: #ddd;
     font-size: 0.9rem;
     margin-bottom: 10px;
-}
-
-.stat-icon {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.5rem;
-    opacity: 0.5;
 }
 
 /* Call to Action */
