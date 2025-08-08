@@ -155,8 +155,22 @@
         }
 
         .form-group select option {
-            background: var(--color-background);
-            color: var(--color-text);
+            background: rgba(0, 0, 0, 0.9) !important;
+            color: var(--color-text) !important;
+        }
+
+        /* Fix for webkit browsers (Safari/Chrome) dropdown backgrounds */
+        .form-group select {
+            background: rgba(0, 0, 0, 0.3) !important;
+            color: var(--color-text) !important;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f8c8d0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
         }
 
         .form-group textarea {
@@ -247,12 +261,32 @@
             font-weight: 600;
             z-index: 10000;
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
             max-width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(248, 200, 208, 0.3);
         }
 
         .notification.show {
             transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification.error {
+            background: var(--color-secondary-accent);
+            color: var(--color-text);
+            border: 1px solid rgba(126, 28, 46, 0.5);
+        }
+
+        .notification.success {
+            background: var(--color-primary-accent);
+            color: var(--color-background);
+            border: 1px solid rgba(248, 200, 208, 0.5);
+        }
+
+        .notification.hide {
+            transform: translateX(100%);
+            opacity: 0;
         }
 
         .webhook-info {
@@ -460,15 +494,59 @@
             document.getElementById('approvalTime').value = now.toLocaleTimeString();
         });
 
-        // Form submission handler
+        // Form submission handler with better validation
         document.getElementById('approvalForm').addEventListener('submit', function(e) {
-            const artistName = document.getElementById('artistName').value;
-            const artworkTitle = document.getElementById('artworkTitle').value;
+            const artistName = document.getElementById('artistName').value.trim();
+            const artistEmail = document.getElementById('artistEmail').value.trim();
+            const artworkTitle = document.getElementById('artworkTitle').value.trim();
             const imageFile = document.getElementById('artworkFile').files[0];
             
-            if (!artistName || !artworkTitle || !imageFile) {
+            // Clear any existing notifications first
+            if (currentNotification) {
+                hideNotification(currentNotification);
+            }
+            
+            // Validation checks with specific error messages
+            if (!artistName) {
                 e.preventDefault();
-                showNotification('⚠️ Please fill in all required fields and select an image');
+                showNotification('⚠️ Artist name is required', 'error');
+                document.getElementById('artistName').focus();
+                return;
+            }
+            
+            if (!artistEmail) {
+                e.preventDefault();
+                showNotification('⚠️ Artist email is required', 'error');
+                document.getElementById('artistEmail').focus();
+                return;
+            }
+            
+            if (!artworkTitle) {
+                e.preventDefault();
+                showNotification('⚠️ Artwork title is required', 'error');
+                document.getElementById('artworkTitle').focus();
+                return;
+            }
+            
+            if (!imageFile) {
+                e.preventDefault();
+                showNotification('⚠️ Please select an image file to upload', 'error');
+                document.getElementById('artworkFile').focus();
+                return;
+            }
+            
+            // Validate file type
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+            if (!allowedTypes.includes(imageFile.type)) {
+                e.preventDefault();
+                showNotification('⚠️ Please select a valid image file (JPG, PNG, GIF, or WebP)', 'error');
+                return;
+            }
+            
+            // Validate file size (max 10MB)
+            if (imageFile.size > 10 * 1024 * 1024) {
+                e.preventDefault();
+                showNotification('⚠️ Image file must be smaller than 10MB', 'error');
                 return;
             }
             
@@ -477,7 +555,7 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '🚀 Submitting & Adding to Showcase...';
             
-            showNotification('✅ Approval submitted! Artwork will appear in the community showcase shortly.');
+            showNotification('✅ Approval submitted! Artwork will appear in the community showcase shortly.', 'success');
             
             // Reset form after a delay (FormSubmit will redirect)
             setTimeout(() => {
@@ -500,26 +578,68 @@
             }
         });
 
-        // Notification function
-        function showNotification(message) {
-            // Remove existing notification
+        // Improved notification system to prevent overlapping
+        let notificationQueue = [];
+        let currentNotification = null;
+
+        function showNotification(message, type = 'success') {
+            // Add to queue if there's a current notification
+            if (currentNotification) {
+                notificationQueue.push({ message, type });
+                return;
+            }
+            
+            displayNotification(message, type);
+        }
+
+        function displayNotification(message, type) {
+            // Remove any existing notifications first
             const existing = document.querySelector('.notification');
-            if (existing) existing.remove();
+            if (existing) {
+                existing.classList.add('hide');
+                setTimeout(() => existing.remove(), 300);
+            }
             
             // Create new notification
             const notification = document.createElement('div');
-            notification.className = 'notification';
+            notification.className = `notification ${type}`;
             notification.textContent = message;
             document.body.appendChild(notification);
+            currentNotification = notification;
             
-            // Show notification
+            // Show notification with delay for smooth animation
             setTimeout(() => notification.classList.add('show'), 100);
             
             // Hide notification after 4 seconds
             setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => notification.remove(), 300);
+                if (notification === currentNotification) {
+                    hideNotification(notification);
+                }
             }, 4000);
+        }
+
+        function hideNotification(notification) {
+            if (notification) {
+                notification.classList.remove('show');
+                notification.classList.add('hide');
+                
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                    
+                    // Clear current notification
+                    if (currentNotification === notification) {
+                        currentNotification = null;
+                    }
+                    
+                    // Show next notification in queue
+                    if (notificationQueue.length > 0) {
+                        const next = notificationQueue.shift();
+                        setTimeout(() => displayNotification(next.message, next.type), 200);
+                    }
+                }, 300);
+            }
         }
     </script>
 </body>
