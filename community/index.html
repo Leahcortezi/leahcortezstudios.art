@@ -58,7 +58,7 @@
                         <div class="prompt-countdown">
                             <div class="countdown-timer">
                                 <div class="time-segment">
-                                    <span class="time-value" id="hours">00</span>
+                                    <span class="time-value" id="hours">24</span>
                                     <span class="time-label">Hours</span>
                                 </div>
                                 <div class="time-segment">
@@ -232,11 +232,10 @@
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
                 
-                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
+                <form method="POST" action="https://formsubmit.co/97d276af598369e77984bb3ce5ffbca3" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
                     <input type="hidden" name="_subject" value="Community Artwork Submission for Review">
-                    <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
+                    <input type="hidden" name="_next" value="file:///Users/billyjoel/Documents/leahcortezstudios.art/community/index.html">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
                     
                     <!-- Detailed submission info for review -->
                     <input type="hidden" name="submission_type" value="Community Artwork Submission">
@@ -740,14 +739,33 @@
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         
+        console.log('Updating countdown:', { hours, minutes, seconds, timeRemaining });
+        
         // Update individual time elements
         const hoursElement = document.getElementById('hours');
         const minutesElement = document.getElementById('minutes');
         const secondsElement = document.getElementById('seconds');
         
-        if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
-        if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
-        if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
+        if (hoursElement) {
+            hoursElement.textContent = hours.toString().padStart(2, '0');
+            console.log('Updated hours to:', hours);
+        } else {
+            console.error('Hours element not found');
+        }
+        
+        if (minutesElement) {
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+            console.log('Updated minutes to:', minutes);
+        } else {
+            console.error('Minutes element not found');
+        }
+        
+        if (secondsElement) {
+            secondsElement.textContent = seconds.toString().padStart(2, '0');
+            console.log('Updated seconds to:', seconds);
+        } else {
+            console.error('Seconds element not found');
+        }
     }
 
     // Show notification messages
@@ -803,6 +821,13 @@
         tomorrow.setHours(0, 0, 0, 0); // Set to midnight
         
         const timeUntilTomorrow = tomorrow.getTime() - now.getTime();
+        
+        console.log('Countdown calculation:', {
+            now: now.toString(),
+            tomorrow: tomorrow.toString(),
+            timeUntilTomorrow,
+            hours: Math.floor(timeUntilTomorrow / (1000 * 60 * 60))
+        });
         
         // If we've reached midnight (or past), generate a new prompt
         if (timeUntilTomorrow <= 1000) { // Within 1 second of midnight
@@ -881,7 +906,11 @@
         
         // Start countdown timer immediately
         try {
+            console.log('Starting countdown timer...');
             updateCountdown();
+            // Call it again after a short delay to ensure it runs
+            setTimeout(updateCountdown, 100);
+            // Start the regular interval
             setInterval(updateCountdown, 1000); // Update every second
         } catch (error) {
             console.error('Error with countdown:', error);
