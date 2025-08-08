@@ -42,8 +42,7 @@
         <section class="community-nav">
             <div class="tab-container">
                 <button class="tab-btn active" data-tab="prompts">Daily Prompts</button>
-                <button class="tab-btn" data-tab="resources">Resources</button>
-                <button class="tab-btn" data-tab="tools">Artist Tools</button>
+                <button class="tab-btn" data-tab="community-hub">Community Hub</button>
                 <button class="tab-btn" data-tab="showcase">Community Showcase</button>
             </div>
         </section>
@@ -91,147 +90,56 @@
         </div>
         </section>
 
-        <!-- Resources Tab -->
-        <section class="tab-content" id="resources">
+        <!-- Community Hub Tab -->
+        <section class="tab-content" id="community-hub">
             <div class="content-container">
-                <h2>Free Artist Resources</h2>
-                
-                <div class="resource-categories">
-                    <div class="resource-category">
-                        <h3>Technique Guides</h3>
-                        <div class="resource-list">
-                            <div class="resource-item">
-                                <h4>Mixed Media Layering Techniques</h4>
-                                <p>Step-by-step guide to creating depth in mixed media work</p>
-                                <a href="#" class="download-btn">Download PDF</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Color Theory for Emotional Impact</h4>
-                                <p>Using color psychology in your artwork</p>
-                                <a href="#" class="download-btn">Download PDF</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Digital Collage Workflow</h4>
-                                <p>My personal process for creating digital compositions</p>
-                                <a href="#" class="download-btn">Download PDF</a>
-                            </div>
-                        </div>
-                    </div>
+                <h2>Community Hub for Emerging Artists</h2>
+                <p class="hub-subtitle">Build your artistic presence from the ground up</p>
 
-                    <div class="resource-category">
-                        <h3>Reference Materials</h3>
-                        <div class="resource-list">
-                            <div class="resource-item">
-                                <h4>Chicana Art Movement Timeline</h4>
-                                <p>Historical context and key figures in Chicana art</p>
-                                <a href="#" class="download-btn">View Resource</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Symbolism in Mexican Folk Art</h4>
-                                <p>Cultural symbols and their meanings</p>
-                                <a href="#" class="download-btn">View Resource</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Texture Reference Library</h4>
-                                <p>High-res textures for your artwork</p>
-                                <a href="#" class="download-btn">Browse Library</a>
-                            </div>
-                        </div>
+                <!-- Feature Cards -->
+                <div class="community-features">
+                    <div class="feature-card">
+                        <h3>Start Your Journey</h3>
+                        <p>Focus on getting started with online presence and finding your voice</p>
+                        <button class="feature-btn" onclick="openStarterGuide()">Get Started</button>
                     </div>
-
-                    <div class="resource-category">
-                        <h3>Business & Career</h3>
-                        <div class="resource-list">
-                            <div class="resource-item">
-                                <h4>Artist Statement Template</h4>
-                                <p>Framework for writing compelling artist statements</p>
-                                <a href="#" class="download-btn">Download Template</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Portfolio Presentation Guide</h4>
-                                <p>How to present your work professionally</p>
-                                <a href="#" class="download-btn">Download Guide</a>
-                            </div>
-                            <div class="resource-item">
-                                <h4>Commission Pricing Calculator</h4>
-                                <p>Tool to help price your artwork fairly</p>
-                                <a href="#" class="download-btn">Use Calculator</a>
-                            </div>
-                        </div>
+                    <div class="feature-card">
+                        <h3>Growth Strategies</h3>
+                        <p>Simple, realistic tactics for building an audience authentically</p>
+                        <button class="feature-btn" onclick="openGrowthTips()">Learn More</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Share Your Story</h3>
+                        <p>Develop your unique artistic voice and compelling narrative</p>
+                        <button class="feature-btn" onclick="openStoryGuide()">Tell Your Story</button>
                     </div>
                 </div>
-            </div>
 
-        <!-- Artist Tools Tab -->
-        <section class="tab-content" id="tools">
-            <div class="content-container">
-                <h2>Interactive Artist Tools</h2>
-                
-                <div class="tools-grid">
-                    <!-- Color Palette Generator -->
-                    <div class="tool-card">
-                        <h3>Color Palette Generator</h3>
-                        <p>Generate harmonious color schemes for your artwork</p>
-                        <div class="tool-interface">
-                            <div class="color-display" id="colorPalette">
-                                <div class="color-swatch" style="background: #7E1C2E;"></div>
-                                <div class="color-swatch" style="background: #F8C8D0;"></div>
-                                <div class="color-swatch" style="background: #2A1810;"></div>
-                                <div class="color-swatch" style="background: #D4A574;"></div>
-                                <div class="color-swatch" style="background: #8B4513;"></div>
-                            </div>
-                            <button class="tool-btn" onclick="generatePalette()">Generate New Palette</button>
-                        </div>
-                    </div>
-
-                    <!-- Composition Helper -->
-                    <div class="tool-card">
-                        <h3>Composition Guide</h3>
-                        <p>Visualize composition rules and guidelines</p>
-                        <div class="tool-interface">
-                            <div class="composition-canvas" id="compositionCanvas">
-                                <div class="grid-overlay" id="gridOverlay"></div>
-                            </div>
-                            <select id="compositionType">
-                                <option value="rule-of-thirds">Rule of Thirds</option>
-                                <option value="golden-ratio">Golden Ratio</option>
-                                <option value="diagonal">Dynamic Diagonals</option>
-                                <option value="center">Centered Composition</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Texture Pattern Generator -->
-                    <div class="tool-card">
-                        <h3>Texture Generator</h3>
-                        <p>Create seamless patterns and textures</p>
-                        <div class="tool-interface">
-                            <canvas id="textureCanvas" width="200" height="200"></canvas>
-                            <div class="texture-controls">
-                                <button onclick="generateTexture('noise')">Noise</button>
-                                <button onclick="generateTexture('organic')">Organic</button>
-                                <button onclick="generateTexture('geometric')">Geometric</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Art Progress Tracker -->
-                    <div class="tool-card">
-                        <h3>Progress Tracker</h3>
-                        <p>Track your artistic development and goals</p>
-                        <div class="tool-interface">
-                            <div class="progress-stats">
-                                <div class="stat-item">
-                                    <span class="stat-value">15</span>
-                                    <span class="stat-label">Pieces this month</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value">3</span>
-                                    <span class="stat-label">New techniques learned</span>
-                                </div>
-                            </div>
-                            <button class="tool-btn">Add Today's Work</button>
-                        </div>
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Building From Zero</h3>
+                    <p class="solo-subtitle">Actions you can take today, even without followers</p>
+                    <div class="action-grid">
+                        <button class="action-card" onclick="documentWork()">
+                            <span class="action-icon">📸</span>
+                            <span>Document Your Process</span>
+                            <small>Take photos of work in progress</small>
+                        </button>
+                        <button class="action-card" onclick="exploreHashtags()">
+                            <span class="action-icon">#️⃣</span>
+                            <span>Research Art Hashtags</span>
+                            <small>Find where your style fits</small>
+                        </button>
+                        <button class="action-card" onclick="studyArtists()">
+                            <span class="action-icon">🔍</span>
+                            <span>Study Similar Artists</span>
+                            <small>Learn from others in your medium</small>
+                        </button>
+                        <button class="action-card" onclick="writeAboutArt()">
+                            <span class="action-icon">✍️</span>
+                            <span>Write About Your Art</span>
+                            <small>Practice describing your work</small>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -249,33 +157,135 @@
                     </button>
                     <p class="submit-work-subtitle">Share your artwork with our creative community</p>
                 </div>
-                
+
+                <!-- Showcase Filters -->
                 <div class="showcase-filters">
-                    <button class="filter-btn active" data-filter="all">All Work</button>
-                    <button class="filter-btn" data-filter="featured">Featured</button>
-                    <button class="filter-btn" data-filter="recent">Recent</button>
-                    <button class="filter-btn" data-filter="challenges">Technique Entries</button>
+                    <div class="filter-section">
+                        <label>Filter:</label>
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="newest">Newest</button>
+                        <button class="filter-btn" data-filter="popular">Most Popular</button>
+                        <button class="filter-btn" data-filter="featured">Featured</button>
+                        <button class="filter-btn" data-filter="prompt">Prompt Responses</button>
+                    </div>
+                    
+                    <div class="medium-section">
+                        <label>Medium:</label>
+                        <select class="medium-filter" onchange="filterByMedium(this.value)">
+                            <option value="all">All Mediums</option>
+                            <option value="mixed-media">Mixed Media</option>
+                            <option value="digital">Digital Art</option>
+                            <option value="oil">Oil Painting</option>
+                            <option value="watercolor">Watercolor</option>
+                            <option value="acrylic">Acrylic</option>
+                            <option value="charcoal">Charcoal</option>
+                        </select>
+                    </div>
                 </div>
 
+                <!-- Gallery Grid -->
                 <div class="showcase-grid">
-                    <div class="showcase-item" data-category="featured">
-                        <img src="../images/community/placeholder1.jpg" alt="Community artwork">
+                    <div class="showcase-item" data-category="all recent" data-medium="mixed-media" data-likes="12" data-date="2025-08-07">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #f8c8d0);"></div>
                         <div class="showcase-overlay">
-                            <h4>Urban Dreams</h4>
-                            <p>by Maria Santos</p>
-                            <span class="challenge-tag">Mixed Media Technique</span>
+                            <h4>Untitled #1</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Mixed Media</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="1">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">12</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <!-- More showcase items would be populated dynamically -->
+                    
+                    <div class="showcase-item" data-category="all featured" data-medium="digital" data-likes="8" data-date="2025-08-06">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, #f8c8d0, #7e1c2e);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #2</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Digital Art</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="2">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">8</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all prompt" data-medium="oil" data-likes="15" data-date="2025-08-05">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #7e1c2e, #333);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #3</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Oil Painting</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="3">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">15</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all recent" data-medium="watercolor" data-likes="6" data-date="2025-08-04">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #f8c8d0, #666);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #4</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Watercolor</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="4">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">6</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all featured" data-medium="acrylic" data-likes="20" data-date="2025-08-03">
+                        <div class="placeholder-image" style="background: linear-gradient(90deg, #7e1c2e, #f8c8d0);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #5</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Acrylic</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="5">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">20</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all prompt" data-medium="charcoal" data-likes="11" data-date="2025-08-02">
+                        <div class="placeholder-image" style="background: linear-gradient(180deg, #f8c8d0, #7e1c2e);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #6</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Charcoal</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="6">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">11</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Artwork Submission Modal -->
-    <div id="submissionModal" class="modal" onclick="closeSubmissionModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-header">
+     <section class="community-submission" id="submission">
+        <div class="content-container">
+
+         <div id="submissionModal" class="modal" onclick="closeSubmissionModal(event)">
+             <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
                 <h3>Share Your Artwork</h3>
                 <button class="modal-close" onclick="closeSubmissionModal()">&times;</button>
             </div>
@@ -283,138 +293,143 @@
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
                 
-                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" id="artworkSubmissionForm">
-                    <!-- FormSubmit Configuration -->
+                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form">
                     <input type="hidden" name="_subject" value="New Community Artwork Submission">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="artistName">Your Name*</label>
-                            <input type="text" id="artistName" name="name" placeholder="Your full name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="artistInstagram">Instagram Handle</label>
-                            <input type="text" id="artistInstagram" name="instagram" placeholder="@yourusername">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="artworkTitle">Artwork Title*</label>
-                            <input type="text" id="artworkTitle" name="artwork_title" placeholder="Enter your artwork title" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="artMedium">Medium/Technique</label>
-                            <input type="text" id="artMedium" name="medium" placeholder="e.g., Mixed media, Digital art, Oil on canvas">
-                        </div>
+                    <div class="form-group">
+                        <label for="artistName">Your Name*</label>
+                        <input type="text" id="artistName" name="name" placeholder="Your full name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="artworkDescription">Artwork Description*</label>
-                        <textarea id="artworkDescription" name="description" placeholder="Tell us about your artwork - inspiration, process, meaning, or story behind it..." rows="4" required></textarea>
+                        <label for="artistEmail">Email*</label>
+                        <input type="email" id="artistEmail" name="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artworkTitle">Artwork Title*</label>
+                        <input type="text" id="artworkTitle" name="artwork_title" placeholder="Enter your artwork title" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="artworkFile">Upload Your Artwork*</label>
-                        <div class="file-upload-area" onclick="document.getElementById('artworkFile').click()">
-                            <input type="file" id="artworkFile" name="artwork" accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" style="display: none;" required onchange="previewSubmissionImage(this)">
-                            <p>Click to upload your artwork</p>
-                            <p class="upload-note">Supported formats: PNG, JPEG, GIF, WebP (Max 10MB)</p>
-                        </div>
-                        <div id="submissionImagePreview" class="image-preview"></div>
+                        <input type="file" id="artworkFile" name="artwork" accept="image/*" required>
                     </div>
                     
                     <div class="form-group">
-                        <div class="submission-guidelines">
-                            <h4>Submission Guidelines</h4>
-                            <ul>
-                                <li>High-resolution images preferred (minimum 1200px width)</li>
-                                <li>Original artwork only - respect copyright</li>
-                                <li>Appropriate content that aligns with our community values</li>
-                                <li>Include proper attribution if referencing other artists</li>
-                                <li>By submitting, you grant permission to feature your work</li>
-                            </ul>
-                        </div>
+                        <label for="artworkDescription">Description (Optional)</label>
+                        <textarea id="artworkDescription" name="description" placeholder="Tell us about your artwork..." rows="3"></textarea>
                     </div>
                     
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" onclick="closeSubmissionModal()">Cancel</button>
-                        <button type="submit" class="submit-artwork-btn">
-                            Submit Artwork for Review
-                        </button>
+                        <button type="submit" class="submit-btn" onclick="handleFormSubmission(event)">Submit Artwork</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript for interactivity -->
     <script>
-    // Enhanced Artist Carousel functionality
-    let currentSlideIndex = 0;
-    const totalSlides = 6; // Updated for 6 artist cards
-    const slideWidth = 400; // Updated card width + gap
-
-    function moveCarousel(direction) {
-        const carousel = document.getElementById('artistCarousel');
-        const dots = document.querySelectorAll('.dot');
+    // Form submission handler
+    function handleFormSubmission(event) {
+        event.preventDefault();
         
-        currentSlideIndex += direction;
+        const form = document.querySelector('.artwork-submission-form');
+        const formData = new FormData(form);
         
-        // Loop carousel
-        if (currentSlideIndex >= totalSlides) {
-            currentSlideIndex = 0;
-        } else if (currentSlideIndex < 0) {
-            currentSlideIndex = totalSlides - 1;
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const title = formData.get('artwork_title');
+        const description = formData.get('description');
+        const file = formData.get('artwork');
+        
+        if (file && file.size > 0) {
+            // Create a new artwork entry in the showcase
+            addArtworkToShowcase(name, title, description, file);
+            
+            // Submit to FormSubmit (this will redirect)
+            form.submit();
+        } else {
+            alert('Please select an artwork file to upload.');
         }
-        
-        // Move carousel
-        const translateX = -currentSlideIndex * slideWidth;
-        carousel.style.transform = `translateX(${translateX}px)`;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlideIndex);
-        });
     }
 
-    function currentSlide(slideNumber) {
-        const carousel = document.getElementById('artistCarousel');
-        const dots = document.querySelectorAll('.dot');
+    function addArtworkToShowcase(artistName, artworkTitle, description, file) {
+        const grid = document.querySelector('.showcase-grid');
         
-        currentSlideIndex = slideNumber - 1;
+        // Generate unique ID for new artwork
+        const newArtworkId = 'user-' + Date.now();
         
-        // Move carousel
-        const translateX = -currentSlideIndex * slideWidth;
-        carousel.style.transform = `translateX(${translateX}px)`;
+        // Initialize like count for new artwork
+        artworkLikeCounts[newArtworkId] = 0;
+        localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
         
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlideIndex);
-        });
+        // Create new artwork item
+        const newItem = document.createElement('div');
+        newItem.className = 'showcase-item';
+        newItem.setAttribute('data-category', 'all recent');
+        newItem.setAttribute('data-medium', 'mixed-media');
+        newItem.setAttribute('data-likes', '0');
+        newItem.setAttribute('data-date', new Date().toISOString().split('T')[0]);
+        
+        // Create image preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            newItem.innerHTML = `
+                <img src="${e.target.result}" alt="Submitted artwork" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="showcase-overlay">
+                    <h4>${artworkTitle}</h4>
+                    <p>by ${artistName}</p>
+                    <span class="challenge-tag">New Submission</span>
+                    <div class="artwork-stats">
+                        <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${newArtworkId}">
+                            <span class="heart">♡</span>
+                            <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add to beginning of grid
+            grid.insertBefore(newItem, grid.firstChild);
+            
+            // Show success message
+            showLikeMessage('Artwork submitted successfully!');
+        };
+        
+        reader.readAsDataURL(file);
     }
 
     // Tab functionality
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tabName = btn.dataset.tab;
-            
-            // Remove active class from all tabs and content
-            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
-                el.classList.remove('active');
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Tab functionality loaded');
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                console.log('Tab clicked:', tabName);
+                
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab and corresponding content
+                btn.classList.add('active');
+                const targetSection = document.getElementById(tabName);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    console.log('Activated section:', tabName);
+                } else {
+                    console.error('Section not found:', tabName);
+                }
             });
-            
-            // Add active class to clicked tab and corresponding content
-            btn.classList.add('active');
-            document.getElementById(tabName).classList.add('active');
         });
     });
 
-    // Daily Prompt Generator with randomized adjectives and keywords
+    // Daily Prompt Generator with randomized adjectives and keywords  
     const promptTemplates = [
         "Create a {adjective} artwork that explores the concept of {concept} through {medium}",
         "Design a {style} piece that captures the feeling of {emotion} using {technique}",
@@ -646,6 +661,70 @@
         }
     }
 
+    // Resource Modal Functions
+    function openResourceModal(modalType) {
+        const modalIds = {
+            'invoiceTemplate': 'invoiceTemplateModal',
+            'photoGuide': 'photoGuideModal',
+            'colorTheory': 'colorTheoryModal',
+            'compositionGuide': 'compositionGuideModal',
+            'softwareComparison': 'softwareComparisonModal',
+            'drawingExercises': 'drawingExercisesModal',
+            'budgetGuide': 'budgetGuideModal',
+            'workspaceGuide': 'workspaceGuideModal',
+            'styleDevelopment': 'styleDevelopmentModal',
+            'printPlanning': 'printPlanningModal',
+            'referencePhotos': 'referencePhotosModal'
+        };
+        
+        const modalId = modalIds[modalType];
+        if (modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeResourceModal(event) {
+        if (event && event.target !== event.currentTarget) return;
+        
+        // Close all resource modals
+        const modals = [
+            'invoiceTemplateModal', 'photoGuideModal', 'colorTheoryModal', 
+            'compositionGuideModal', 'softwareComparisonModal', 'drawingExercisesModal', 
+            'budgetGuideModal', 'workspaceGuideModal', 'styleDevelopmentModal', 'printPlanningModal', 
+            'referencePhotosModal'
+        ];
+        modals.forEach(modalId => {
+            document.getElementById(modalId).style.display = 'none';
+        });
+        document.body.style.overflow = 'auto';
+    }
+
+    // Pricing Calculator Function
+    function calculatePrice() {
+        const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
+        const hoursWorked = parseFloat(document.getElementById('hoursWorked').value) || 0;
+        const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+        const overheadPercent = parseFloat(document.getElementById('overheadPercent').value) || 0;
+        const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
+        const sizeMultiplier = parseFloat(document.getElementById('sizeMultiplier').value) || 1;
+
+        const laborCost = hoursWorked * hourlyRate;
+        const subtotal = materialCost + laborCost;
+        const overheadCost = subtotal * (overheadPercent / 100);
+        const costTotal = subtotal + overheadCost;
+        const profitAmount = costTotal * (profitMargin / 100);
+        const basePrice = costTotal + profitAmount;
+        const finalPrice = basePrice * sizeMultiplier;
+
+        // Update display
+        document.getElementById('materialTotal').textContent = materialCost.toFixed(2);
+        document.getElementById('laborTotal').textContent = laborCost.toFixed(2);
+        document.getElementById('overheadTotal').textContent = overheadCost.toFixed(2);
+        document.getElementById('profitTotal').textContent = profitAmount.toFixed(2);
+        document.getElementById('finalPrice').textContent = finalPrice.toFixed(2);
+    }
+
     // Create artwork from prompt
     function createFromPrompt() {
         const currentPrompt = document.getElementById('dailyPrompt').textContent;
@@ -694,6 +773,7 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeSubmissionModal();
+            closeResourceModal();
         }
     });
 
@@ -729,6 +809,9 @@
         
         // Initialize stats with animation
         animateNumbers();
+        
+        // Initialize showcase filters
+        initializeShowcaseFilters();
     });
 
     function animateNumbers() {
@@ -747,10 +830,790 @@
             }, 30);
         });
     }
+
+    // Art Block Breaker Functions
+    function openBlockBuster(type) {
+        // Hide all generators first
+        document.querySelectorAll('.interactive-generator').forEach(gen => {
+            gen.style.display = 'none';
+        });
+        
+        // Map the type to the correct ID
+        const generatorMap = {
+            'color': 'colorMoodGenerator',
+            'style': 'styleFusionGenerator', 
+            'subject': 'subjectTransformer',
+            'technique': 'techniqueMixer'
+        };
+        
+        // Show the selected generator
+        const generatorId = generatorMap[type];
+        const generator = document.getElementById(generatorId);
+        if (generator) {
+            generator.style.display = 'block';
+            generator.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Update active state
+        document.querySelectorAll('.buster-card').forEach(card => {
+            card.classList.remove('active');
+        });
+        event.target.closest('.buster-card').classList.add('active');
+    }
+
+    function generateMoodPalette() {
+        const energy = document.getElementById('energySlider').value;
+        const emotion = document.getElementById('emotionSlider').value;
+        const complexity = document.getElementById('complexitySlider').value;
+        const colorCount = document.getElementById('colorCount').value;
+        
+        // Color palettes based on mood
+        const palettes = {
+            energetic: ['#FF6B35', '#F7931E', '#FFD23F', '#06FFA5', '#118AB2'],
+            calm: ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51'],
+            mysterious: ['#2D1B69', '#11213F', '#0F3460', '#16537E', '#533A7B'],
+            vibrant: ['#E63946', '#F77F00', '#FCBF49', '#06FFA5', '#277DA1'],
+            earthy: ['#8B4513', '#D2691E', '#CD853F', '#F4A460', '#DEB887'],
+            monochrome: ['#000000', '#404040', '#808080', '#C0C0C0', '#FFFFFF']
+        };
+        
+        // Select palette based on emotion value
+        let selectedPalette;
+        if (emotion < 20) selectedPalette = palettes.calm;
+        else if (emotion < 40) selectedPalette = palettes.earthy;
+        else if (emotion < 60) selectedPalette = palettes.mysterious;
+        else if (emotion < 80) selectedPalette = palettes.vibrant;
+        else selectedPalette = palettes.energetic;
+        
+        // Shuffle and select colors
+        const shuffled = [...selectedPalette].sort(() => 0.5 - Math.random());
+        const finalColors = shuffled.slice(0, colorCount);
+        
+        // Display the palette
+        const paletteContainer = document.getElementById('moodPaletteResult');
+        paletteContainer.innerHTML = finalColors.map(color => 
+            '<div class="color-swatch" style="background-color: ' + color + ';" title="' + color + '"></div>'
+        ).join('');
+        
+        // Show result
+        document.getElementById('colorResult').style.display = 'block';
+        
+        // Generate mood description
+        const moodDesc = document.getElementById('moodDescription');
+        const energyDesc = energy < 30 ? 'low-energy' : energy < 70 ? 'balanced' : 'high-energy';
+        const emotionDesc = emotion < 30 ? 'serene' : emotion < 70 ? 'warm' : 'intense';
+        moodDesc.textContent = `This ${energyDesc}, ${emotionDesc} palette encourages ${getCreativePrompt(energy, emotion)}.`;
+    }
+
+    function getCreativePrompt(energy, emotion) {
+        const prompts = {
+            low_serene: 'contemplative mark-making and gentle textures',
+            low_warm: 'soft blending and subtle color transitions',
+            low_intense: 'dramatic contrasts with controlled application',
+            balanced_serene: 'harmonious composition with mindful placement',
+            balanced_warm: 'expressive brushwork and confident strokes',
+            balanced_intense: 'bold statements with purposeful restraint',
+            high_serene: 'dynamic movement within peaceful themes',
+            high_warm: 'energetic expression with joyful abandon',
+            high_intense: 'explosive creativity and fearless experimentation'
+        };
+        
+        const energyKey = energy < 30 ? 'low' : energy < 70 ? 'balanced' : 'high';
+        const emotionKey = emotion < 30 ? 'serene' : emotion < 70 ? 'warm' : 'intense';
+        
+        return prompts[`${energyKey}_${emotionKey}`] || 'creative exploration';
+    }
+
+    function generateStyleFusion() {
+        const primary = document.getElementById('primaryMovement').value;
+        const secondary = document.getElementById('secondaryInfluence').value;
+        const technique = document.getElementById('techniqueFocus').value;
+        
+        const fusionResult = document.getElementById('fusionResult');
+        const keyPoints = document.getElementById('styleKeyPoints');
+        
+        // Generate fusion description
+        const descriptions = {
+            impressionism: 'capturing light and movement with loose brushwork',
+            expressionism: 'conveying emotion through bold color and distorted forms',
+            abstract: 'exploring pure form, color, and composition',
+            realism: 'precise observation and detailed representation',
+            surrealism: 'blending dreams and reality in unexpected ways',
+            minimalism: 'using essential elements for maximum impact'
+        };
+        
+        const techniques = {
+            color: 'Focus on color relationships, temperature, and harmony',
+            texture: 'Explore surface quality, mark-making, and tactile elements',
+            composition: 'Emphasize visual flow, balance, and spatial relationships',
+            light: 'Study illumination, shadow, and atmospheric effects'
+        };
+        
+        fusionResult.textContent = `${primary.charAt(0).toUpperCase() + primary.slice(1)} meets ${secondary} - ${descriptions[primary]} while ${descriptions[secondary]}.`;
+        
+        keyPoints.innerHTML = `
+            <li><strong>Primary Approach:</strong> ${descriptions[primary]}</li>
+            <li><strong>Secondary Influence:</strong> ${descriptions[secondary]}</li>
+            <li><strong>Technical Focus:</strong> ${techniques[technique]}</li>
+            <li><strong>Fusion Goal:</strong> Create a unique voice that bridges both styles</li>
+        `;
+        
+        document.getElementById('styleResult').style.display = 'block';
+    }
+
+    function generateSubjectTransform() {
+        // This function is called when user clicks the transform button
+        // The subject should already be set by one of the input methods
+        let subject = '';
+        
+        // Check which method is active
+        const activeMethod = document.querySelector('.input-tab.active').dataset.method;
+        
+        if (activeMethod === 'random') {
+            const randomSubjects = [
+                'old bicycle', 'morning coffee', 'stormy sky', 'sleeping cat', 'city reflection',
+                'garden gate', 'vintage chair', 'autumn leaf', 'flowing water', 'empty room',
+                'bird in flight', 'weathered hands', 'distant mountains', 'urban alley', 'floating balloon'
+            ];
+            subject = randomSubjects[Math.floor(Math.random() * randomSubjects.length)];
+        } else if (activeMethod === 'custom') {
+            subject = document.getElementById('customSubject').value || 'your chosen subject';
+        } else {
+            subject = 'something from your immediate surroundings';
+        }
+        
+        const transformations = [
+            `Reimagine ${subject} as if viewed through water`,
+            `Show ${subject} from an ant's perspective`,
+            `Depict ${subject} in the style of a child's drawing`,
+            `Transform ${subject} into pure geometric shapes`,
+            `Render ${subject} as it might appear in a dream`,
+            `Show only the shadows cast by ${subject}`,
+            `Depict ${subject} as if it were made of light`,
+            `Transform ${subject} into an abstract emotion`,
+            `Show ${subject} through the eyes of someone who's never seen it before`,
+            `Reimagine ${subject} as a landscape element`
+        ];
+        
+        const randomTransform = transformations[Math.floor(Math.random() * transformations.length)];
+        
+        document.getElementById('transformResult').textContent = randomTransform;
+        document.getElementById('subjectResult').style.display = 'block';
+    }
+
+    // Additional functions for Subject Transformer
+    function switchInputMethod(method) {
+        // Update tab states
+        document.querySelectorAll('.input-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelector(`[data-method="${method}"]`).classList.add('active');
+        
+        // Show/hide method sections
+        document.querySelectorAll('.input-method').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(method + 'Method').style.display = 'block';
+    }
+
+    function getRandomSubject() {
+        const subjects = [
+            'old bicycle', 'morning coffee', 'stormy sky', 'sleeping cat', 'city reflection',
+            'garden gate', 'vintage chair', 'autumn leaf', 'flowing water', 'empty room',
+            'bird in flight', 'weathered hands', 'distant mountains', 'urban alley', 'floating balloon',
+            'forgotten toy', 'crumpled paper', 'street lamp', 'puddle reflection', 'wind chime'
+        ];
+        const randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
+        
+        document.getElementById('randomSubjectDisplay').textContent = randomSubject;
+        document.getElementById('randomSubjectResult').style.display = 'block';
+    }
+
+    function previewCustomSubject() {
+        const input = document.getElementById('customSubject').value;
+        if (input.trim()) {
+            document.getElementById('customSubjectDisplay').textContent = input;
+            document.getElementById('customSubjectResult').style.display = 'block';
+        } else {
+            document.getElementById('customSubjectResult').style.display = 'none';
+        }
+    }
+
+    function selectSurrounding(item) {
+        document.getElementById('surroundingsDisplay').textContent = item;
+        document.getElementById('surroundingsResult').style.display = 'block';
+        
+        // Update button states
+        document.querySelectorAll('.surrounding-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        event.target.classList.add('selected');
+    }
+
+    function closeBlockBuster() {
+        document.querySelectorAll('.interactive-generator').forEach(gen => {
+            gen.style.display = 'none';
+        });
+        document.querySelectorAll('.buster-card').forEach(card => {
+            card.classList.remove('active');
+        });
+    }
+
+    function generateTechniqueMix() {
+        const medium = document.getElementById('primaryMedium').value;
+        const experimental = document.getElementById('experimentalFactor').value;
+        
+        const techniques = {
+            watercolor: ['wet-on-wet bleeding', 'salt texture effects', 'masking fluid resist', 'layered glazing'],
+            acrylic: ['impasto texture', 'color mixing on canvas', 'glazing techniques', 'palette knife work'],
+            oil: ['alla prima painting', 'scumbling effects', 'glazing layers', 'broken color technique'],
+            digital: ['custom brush creation', 'layer blending modes', 'digital collage', 'texture overlays'],
+            mixed: ['collage integration', 'resist techniques', 'found object inclusion', 'multimedia layering']
+        };
+        
+        const experimental_factors = {
+            low: 'subtle variations on traditional methods',
+            medium: 'combining two complementary techniques',
+            high: 'bold experimentation with unconventional tools'
+        };
+        
+        const selectedTechniques = techniques[medium] || techniques.mixed;
+        const randomTechnique = selectedTechniques[Math.floor(Math.random() * selectedTechniques.length)];
+        
+        document.getElementById('techniqueResult').innerHTML = `
+            <h4>Today's Technique Challenge:</h4>
+            <p><strong>Primary Method:</strong> ${randomTechnique}</p>
+            <p><strong>Experimental Approach:</strong> ${experimental_factors[experimental]}</p>
+            <p><strong>Bonus Challenge:</strong> Try this technique with your non-dominant hand for the first 5 minutes</p>
+        `;
+        
+        document.getElementById('mixResult').style.display = 'block';
+    }
+
+    // Community Hub Functions
+    function openDiscussions() {
+        alert('Artist Discussions feature coming soon! Join our community to participate in creative conversations.');
+    }
+
+    function openLearning() {
+        alert('Learning Circle feature coming soon! Share and discover tutorials, tips, and techniques.');
+    }
+
+    function openChallenges() {
+        alert('Weekly Challenges feature coming soon! Participate in themed art challenges with the community.');
+    }
+
+    function openBuddySystem() {
+        alert('Art Buddy System feature coming soon! Find accountability partners and artistic mentors.');
+    }
+
+    function shareProgress() {
+        alert('Share Progress feature coming soon! Show your artistic journey with the community.');
+    }
+
+    function askForFeedback() {
+        alert('Ask for Feedback feature coming soon! Get constructive criticism from fellow artists.');
+    }
+
+    // Solo Artist Building Functions - Detailed Guidance
+    function documentWork() {
+        alert('📸 Document Your Creative Process:\n\n• Take photos at different stages (sketch, halfway, finished)\n• Note what techniques and materials you used\n• Record your thoughts, decisions, and happy accidents\n• Save these for future social media posts\n• Include your workspace and tools occasionally\n• Capture details that show your unique approach\n\nTip: Good documentation is the foundation of building an authentic online presence. People love seeing the journey, not just the destination!');
+    }
+
+    function exploreHashtags() {
+        alert('#️⃣ Research Art Hashtags Strategy:\n\n• Look up #[yourmedia]art (e.g., #watercolorart, #oilpainting)\n• Find hashtags with 10k-100k posts (sweet spot for visibility)\n• Check what successful artists in your style use\n• Mix popular and niche hashtags (70/30 split)\n• Save 15-20 relevant hashtags for easy copying\n• Avoid banned or overly generic hashtags\n\nTip: Good hashtags help the RIGHT people find your work. Quality engagement beats quantity!');
+    }
+
+    function studyArtists() {
+        alert('🔍 Study Artists in Your Medium:\n\n• Find 5-10 artists whose style resonates with you\n• Note what techniques and approaches they use\n• Observe how they photograph and present their work\n• See how they describe their process and inspiration\n• Follow their artistic journey for ongoing inspiration\n• Notice what makes their work distinctive\n\nTip: Study successful artists to learn professional practices, but never copy. Let them inspire your unique voice!');
+    }
+
+    function writeAboutArt() {
+        alert('✍️ Practice Writing About Your Art:\n\n• Describe your process in simple, relatable terms\n• Share what inspired this particular piece\n• Mention specific challenges you faced and overcame\n• Explain techniques you used or experimented with\n• Keep notes and drafts for future social media captions\n• Practice storytelling, not just describing\n\nTip: People connect with stories and vulnerability. Share your genuine experience, and others will relate to your artistic journey!');
+    }
+
+    function addPersonalGoal() {
+        const goal = prompt('What small creative goal would you like to set?\n\nExamples:\n• Take progress photos of 3 finished pieces\n• Write artist bio draft (2-3 paragraphs)\n• Research 5 local art groups or online communities\n• Complete one small painting this week\n• Practice describing my work in 2-3 sentences\n• Set up better lighting for photo documentation\n\nYour goal:');
+        if (goal && goal.trim()) {
+            alert('🎯 Goal Added Successfully!\n\n"' + goal + '"\n\nRemember: Small, consistent steps lead to significant progress. You\'ve got this! Breaking big dreams into small, actionable goals is how every successful artist builds their practice.');
+        }
+    }
+
+    // Community Showcase Functions
+    function submitArtwork() {
+        alert('🎨 Submit Your Artwork:\n\nWe\'re building a supportive community showcase for emerging artists!\n\nTo be featured:\n• Share your artistic journey and growth\n• Include 2-3 of your best pieces\n• Tell us about your creative process\n• Describe challenges you\'ve overcome\n\nFeatures will highlight authentic stories of artistic development. Stay tuned for submission guidelines!');
+    }
+
+    // Gallery Filter Functionality
+    function initializeShowcaseFilters() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const showcaseItems = document.querySelectorAll('.showcase-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter items
+                showcaseItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeIn 0.3s ease-in';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Submission Modal Functions
+    function openSubmissionModal() {
+        const modal = document.getElementById('submissionModal');
+        if (modal) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeSubmissionModal(event) {
+        const modal = document.getElementById('submissionModal');
+        if (modal && (!event || event.target === modal || event.target.classList.contains('modal-close') || event.target.classList.contains('cancel-btn'))) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form
+            const form = document.getElementById('artworkSubmissionForm');
+            if (form) {
+                form.reset();
+                const preview = document.getElementById('submissionImagePreview');
+                if (preview) preview.innerHTML = '';
+            }
+        }
+    }
+
+    function previewSubmissionImage(input) {
+        const preview = document.getElementById('submissionImagePreview');
+        if (input.files && input.files[0] && preview) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = `
+                    <div class="preview-container">
+                        <img src="${e.target.result}" alt="Artwork preview" style="max-width: 200px; max-height: 200px; border-radius: 8px;">
+                        <p class="preview-filename">${input.files[0].name}</p>
+                    </div>
+                `;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function shareProgress() {
+        alert('📸 Share Your Progress:\n\nDocument and share your artistic journey:\n\n• Take photos of works in progress\n• Share technique discoveries\n• Post about creative challenges\n• Show your workspace evolution\n• Celebrate small wins\n\nYour progress inspires other emerging artists. Every step forward matters!');
+    }
+
+    function connectArtists() {
+        alert('🤝 Connect with Fellow Artists:\n\nBuild meaningful artistic relationships:\n\n• Follow artists in your medium\n• Engage genuinely with their work\n• Share encouraging comments\n• Ask thoughtful questions\n• Offer constructive support\n\nAuthentic connections lead to lasting friendships and mutual growth!');
+    }
+
+    function shareResources() {
+        alert('📚 Share Learning Resources:\n\nHelp the community grow together:\n\n• Recommend helpful tutorials\n• Share technique discoveries\n• Suggest useful art supplies\n• Post about inspiring books/videos\n• Offer tips you\'ve learned\n\nKnowledge shared multiplies. Your insights could be exactly what another artist needs!');
+    }
+
+    // Feature Guide Functions - Enhanced for Emerging Artists
+    function openStarterGuide() {
+        alert('🌱 Getting Started Guide:\n\n1. Set up a simple, well-lit workspace\n2. Choose your preferred medium and stick with it initially\n3. Take high-quality photos of your current work\n4. Write a brief artist statement (1-2 paragraphs)\n5. Research where artists in your style gather online\n6. Start documenting your process\n\nRemember: Start small, stay consistent, and be authentic to your voice!');
+    }
+
+    function openGrowthTips() {
+        alert('📈 Growth Strategies for Small Accounts:\n\n• Post consistently (even works in progress count!)\n• Use 10-15 relevant hashtags per post\n• Engage genuinely with other artists before self-promoting\n• Share your process, not just final pieces\n• Tell stories about your inspiration and challenges\n• Be patient - authentic growth takes time\n• Focus on quality connections over quantity\n\nAuthenticity beats perfection every time!');
+    }
+
+    function openStoryGuide() {
+        alert('📖 Craft Your Artist Story:\n\n• What first drew you to art?\n• What themes or subjects fascinate you?\n• What techniques are you currently exploring?\n• What challenges inspire your creative growth?\n• What do you hope viewers feel from your work?\n• What\'s your artistic background or journey?\n\nYour unique perspective and journey are your greatest strengths. Share them openly!');
+    }
+
+    function openCommunityList() {
+        alert('🤝 Find Your Artistic Tribe:\n\n• Instagram: Search #[yourmedium]artist hashtags\n• Reddit: r/ArtCrit, r/learnart, r/[yourmedium]\n• Discord: Join art servers in your specific style\n• Local: Check libraries, coffee shops, art centers\n• Facebook: Search for local artist groups\n• Online forums: DeviantArt, ArtStation communities\n\nTip: Start engaging and supporting others before promoting your own work!');
+    }
+
+    function shareInspiration() {
+        alert('Share Inspiration feature coming soon! Post references, ideas, and creative sparks.');
+    }
+
+    // Showcase Filtering and Liking System
+    let userId = localStorage.getItem('userId') || generateUserId();
+    let likedArtwork = JSON.parse(localStorage.getItem(`likedArtwork_${userId}`) || '[]');
+    let artworkLikeCounts = JSON.parse(localStorage.getItem('artworkLikeCounts') || '{}');
+    let userLikeTimestamps = JSON.parse(localStorage.getItem(`userLikeTimestamps_${userId}`) || '{}');
+    let artworkLikers = JSON.parse(localStorage.getItem('artworkLikers') || '{}'); // Track who liked what
+    let currentFilter = 'all';
+    let currentMediumFilter = 'all';
+
+    // Initialize like counts for placeholders (but don't allow new likes)
+    const PLACEHOLDER_IDS = ['1', '2', '3', '4', '5', '6'];
+    const SPAM_PREVENTION_DELAY = 2000; // 2 seconds between likes
+
+    function generateUserId() {
+        const id = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('userId', id);
+        return id;
+    }
+
+    function hasUserLikedArtwork(artworkId) {
+        // Check if this specific user has already liked this artwork
+        return likedArtwork.includes(artworkId) || 
+               (artworkLikers[artworkId] && artworkLikers[artworkId].includes(userId));
+    }
+
+    function initializeLikeCounts() {
+        // Set initial like counts for placeholders if not already set
+        if (!artworkLikeCounts['1']) artworkLikeCounts['1'] = 12;
+        if (!artworkLikeCounts['2']) artworkLikeCounts['2'] = 8;
+        if (!artworkLikeCounts['3']) artworkLikeCounts['3'] = 15;
+        if (!artworkLikeCounts['4']) artworkLikeCounts['4'] = 6;
+        if (!artworkLikeCounts['5']) artworkLikeCounts['5'] = 20;
+        if (!artworkLikeCounts['6']) artworkLikeCounts['6'] = 11;
+        
+        localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
+    }
+
+    function canUserLike(artworkId) {
+        const now = Date.now();
+        const lastLikeTime = userLikeTimestamps[artworkId] || 0;
+        
+        // Check if enough time has passed since last like action
+        if (now - lastLikeTime < SPAM_PREVENTION_DELAY) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    function isPlaceholder(artworkId) {
+        return PLACEHOLDER_IDS.includes(artworkId);
+    }
+
+    function toggleLike(button) {
+        const artworkId = button.getAttribute('data-artwork-id');
+        
+        // Prevent liking placeholders
+        if (isPlaceholder(artworkId)) {
+            showLikeMessage('Placeholder artworks cannot be liked. Submit your own work to receive likes!');
+            return;
+        }
+        
+        // Prevent spam clicking
+        if (!canUserLike(artworkId)) {
+            showLikeMessage('Please wait before liking again.');
+            return;
+        }
+        
+        const likeCountSpan = button.querySelector('.like-count');
+        const heartSpan = button.querySelector('.heart');
+        
+        // Initialize like count if it doesn't exist
+        if (!artworkLikeCounts[artworkId]) {
+            artworkLikeCounts[artworkId] = 0;
+        }
+        
+        // Initialize likers array if it doesn't exist
+        if (!artworkLikers[artworkId]) {
+            artworkLikers[artworkId] = [];
+        }
+        
+        let currentLikes = artworkLikeCounts[artworkId];
+        const hasLiked = hasUserLikedArtwork(artworkId);
+        
+        if (hasLiked) {
+            // Unlike - remove like
+            likedArtwork = likedArtwork.filter(id => id !== artworkId);
+            artworkLikers[artworkId] = artworkLikers[artworkId].filter(id => id !== userId);
+            button.classList.remove('liked');
+            heartSpan.textContent = '♡';
+            artworkLikeCounts[artworkId] = Math.max(0, currentLikes - 1);
+            showLikeMessage('Like removed');
+        } else {
+            // Like - add like (only if not already liked by this user)
+            if (!hasUserLikedArtwork(artworkId)) {
+                likedArtwork.push(artworkId);
+                artworkLikers[artworkId].push(userId);
+                button.classList.add('liked');
+                heartSpan.textContent = '♥';
+                artworkLikeCounts[artworkId] = currentLikes + 1;
+                showLikeMessage('Artwork liked!');
+            } else {
+                // User has already liked this artwork
+                showLikeMessage('You have already liked this artwork!');
+                return;
+            }
+        }
+        
+        // Update display
+        likeCountSpan.textContent = artworkLikeCounts[artworkId];
+        
+        // Update the data attribute for sorting
+        button.closest('.showcase-item').setAttribute('data-likes', artworkLikeCounts[artworkId]);
+        
+        // Record timestamp for spam prevention
+        userLikeTimestamps[artworkId] = Date.now();
+        
+        // Save to localStorage with user-specific keys
+        localStorage.setItem(`likedArtwork_${userId}`, JSON.stringify(likedArtwork));
+        localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
+        localStorage.setItem('artworkLikers', JSON.stringify(artworkLikers));
+        localStorage.setItem(`userLikeTimestamps_${userId}`, JSON.stringify(userLikeTimestamps));
+        
+        // Add visual feedback
+        button.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            button.style.transform = 'scale(1)';
+        }, 150);
+        
+        // Prevent double clicking by temporarily disabling
+        button.disabled = true;
+        setTimeout(() => {
+            button.disabled = false;
+        }, 500);
+    }
+
+    function showLikeMessage(message) {
+        // Create or update like message
+        let messageEl = document.getElementById('like-message');
+        if (!messageEl) {
+            messageEl = document.createElement('div');
+            messageEl.id = 'like-message';
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-primary-accent);
+                color: var(--color-background);
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                z-index: 1000;
+                font-size: 0.9rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
+                transform: translateX(100%);
+            `;
+            document.body.appendChild(messageEl);
+        }
+        
+        messageEl.textContent = message;
+        messageEl.style.transform = 'translateX(0)';
+        
+        setTimeout(() => {
+            messageEl.style.transform = 'translateX(100%)';
+        }, 2000);
+    }
+
+    function filterShowcase(filterType) {
+        currentFilter = filterType;
+        
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-filter') === filterType) {
+                btn.classList.add('active');
+            }
+        });
+        
+        applyFilters();
+    }
+
+    function filterByMedium(medium) {
+        currentMediumFilter = medium;
+        applyFilters();
+    }
+
+    function applyFilters() {
+        const items = document.querySelectorAll('.showcase-item');
+        
+        // Add filtering class for smooth transition
+        items.forEach(item => {
+            item.classList.add('filtering');
+        });
+        
+        setTimeout(() => {
+            items.forEach(item => {
+                const categories = item.getAttribute('data-category').split(' ');
+                const medium = item.getAttribute('data-medium');
+                
+                let showItem = true;
+                
+                // Apply category filter
+                if (currentFilter !== 'all' && !categories.includes(currentFilter)) {
+                    showItem = false;
+                }
+                
+                // Apply medium filter
+                if (currentMediumFilter !== 'all' && medium !== currentMediumFilter) {
+                    showItem = false;
+                }
+                
+                if (showItem) {
+                    item.style.display = 'block';
+                    item.classList.remove('hidden');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.add('hidden');
+                }
+                
+                // Remove filtering class
+                item.classList.remove('filtering');
+            });
+            
+            // Apply sorting after filtering
+            sortShowcase();
+        }, 150);
+    }
+
+    function sortShowcase() {
+        const grid = document.querySelector('.showcase-grid');
+        const items = Array.from(grid.querySelectorAll('.showcase-item:not(.hidden)'));
+        
+        if (currentFilter === 'newest') {
+            items.sort((a, b) => new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date')));
+        } else if (currentFilter === 'popular') {
+            items.sort((a, b) => parseInt(b.getAttribute('data-likes')) - parseInt(a.getAttribute('data-likes')));
+        }
+        
+        // Re-append sorted items
+        items.forEach(item => grid.appendChild(item));
+    }
+
+    // Initialize liked artwork on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize like counts
+        initializeLikeCounts();
+        
+        // Set up filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterShowcase(this.getAttribute('data-filter'));
+            });
+        });
+        
+        // Initialize liked states and update like counts from storage
+        document.querySelectorAll('.showcase-item').forEach(item => {
+            const artworkId = item.querySelector('[data-artwork-id]')?.getAttribute('data-artwork-id');
+            if (artworkId && artworkLikeCounts[artworkId] !== undefined) {
+                const likeCountSpan = item.querySelector('.like-count');
+                const button = item.querySelector('.like-btn');
+                
+                // Update like count display from stored data
+                likeCountSpan.textContent = artworkLikeCounts[artworkId];
+                item.setAttribute('data-likes', artworkLikeCounts[artworkId]);
+                
+                // Set liked state if this specific user has liked this artwork
+                if (hasUserLikedArtwork(artworkId)) {
+                    button.classList.add('liked');
+                    button.querySelector('.heart').textContent = '♥';
+                }
+                
+                // Add visual indicator for placeholders
+                if (isPlaceholder(artworkId)) {
+                    button.style.opacity = '0.6';
+                    button.title = 'Placeholder artworks cannot be liked';
+                    button.style.cursor = 'not-allowed';
+                }
+            }
+        });
+        
+        // Initialize with 'all' filter
+        filterShowcase('all');
+    });
     </script>
     
     <!-- Community JavaScript -->
     <script src="../scripts/community.js"></script>
+    
+    <!-- Main Navigation Script -->
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-links');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on nav links
+                document.querySelectorAll('.nav-links li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Emergency Tab Fix -->
+    <script>
+    window.addEventListener('load', function() {
+        console.log('Emergency tab script loaded');
+        
+        // Force remove active from all first
+        document.querySelectorAll('.tab-content').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Show prompts tab by default
+        const promptsTab = document.getElementById('prompts');
+        if (promptsTab) {
+            promptsTab.classList.add('active');
+        }
+        
+        // Add click handlers with force
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const targetId = this.getAttribute('data-tab');
+                console.log('Emergency script - Tab clicked:', targetId);
+                
+                // Force hide all tabs
+                document.querySelectorAll('.tab-content').forEach(section => {
+                    section.style.display = 'none';
+                    section.classList.remove('active');
+                });
+                
+                // Force remove active from all buttons
+                document.querySelectorAll('.tab-btn').forEach(button => {
+                    button.classList.remove('active');
+                });
+                
+                // Force show target tab
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                    targetSection.classList.add('active');
+                    this.classList.add('active');
+                    console.log('Emergency script - Showed:', targetId);
+                } else {
+                    console.error('Emergency script - Target not found:', targetId);
+                }
+            }, true);
+        });
+    });
+    </script>
 
     <!-- Footer -->
     <footer class="main-footer">
