@@ -9204,3 +9204,935 @@ input[type="checkbox"]:checked + .checkmark::after {
         border-radius: 12px;
     }
 }
+
+/* Simplified Community Features - More Engaging Design */
+
+/* Updated Welcome Section */
+.main-welcome {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.main-welcome h2 {
+    font-family: var(--font-headings);
+    color: var(--color-primary-accent);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.main-welcome p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.quick-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.stat strong {
+    color: var(--color-primary-accent);
+    font-size: 1.2rem;
+}
+
+/* Quick Actions Bar */
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.action-btn.primary {
+    background: var(--color-primary-accent);
+    color: white;
+}
+
+.action-btn:not(.primary) {
+    background: rgba(248, 200, 208, 0.1);
+    color: var(--color-primary-accent);
+    border: 2px solid rgba(248, 200, 208, 0.2);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(126, 28, 46, 0.2);
+}
+
+/* Live Activity Section */
+.live-activity {
+    margin-bottom: 3rem;
+}
+
+.live-activity h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.featured-post {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.user-info strong {
+    color: var(--color-primary-accent);
+    display: block;
+}
+
+.post-time {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    display: block;
+}
+
+.post-badge {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-top: 0.3rem;
+    display: inline-block;
+}
+
+.post-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.post-engagement {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.engagement-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.engagement-btn:hover {
+    color: var(--color-primary-accent);
+}
+
+.activity-stream {
+    background: rgba(248, 200, 208, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    font-size: 1.2rem;
+}
+
+.activity-time {
+    margin-left: auto;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Challenge Spotlight */
+.challenge-spotlight {
+    background: linear-gradient(135deg, rgba(126, 28, 46, 0.05), rgba(248, 200, 208, 0.05));
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.challenge-header h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin: 0;
+}
+
+.challenge-timer {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.challenge-content h4 {
+    color: var(--color-primary-accent);
+    margin-bottom: 0.8rem;
+}
+
+.challenge-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.submission-previews {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mini-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.more-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background: rgba(126, 28, 46, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-accent);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.join-challenge-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.join-challenge-btn:hover {
+    background: #5d1520;
+    transform: translateY(-2px);
+}
+
+/* Showcase Section */
+.showcase-section {
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin: 0;
+}
+
+.view-all-btn {
+    background: transparent;
+    color: var(--color-primary-accent);
+    border: 2px solid var(--color-primary-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background: var(--color-primary-accent);
+    color: white;
+}
+
+.mini-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.artwork-thumb {
+    width: 100%;
+    height: 150px;
+    border-radius: 12px 12px 0 0;
+}
+
+.artwork-info {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artist {
+    color: var(--color-primary-accent);
+    font-weight: bold;
+}
+
+.likes {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Daily Prompts Styling */
+.todays-prompt {
+    background: linear-gradient(135deg, rgba(126, 28, 46, 0.05), rgba(248, 200, 208, 0.05));
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.prompt-header h2 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin: 0;
+}
+
+.countdown-mini {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.prompt-text-large {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-primary-accent);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+}
+
+.prompt-inspiration {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.prompt-inspiration h4 {
+    color: var(--color-primary-accent);
+    margin-bottom: 1rem;
+}
+
+.inspiration-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.inspo-tag {
+    background: rgba(248, 200, 208, 0.2);
+    color: var(--color-primary-accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(248, 200, 208, 0.3);
+}
+
+.prompt-actions-simple {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.big-action-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.big-action-btn:hover {
+    background: #5d1520;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(126, 28, 46, 0.3);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--color-primary-accent);
+    border: 2px solid var(--color-primary-accent);
+    padding: 1.2rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: var(--color-primary-accent);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Prompt Responses */
+.prompt-responses {
+    margin-bottom: 3rem;
+}
+
+.prompt-responses h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.responses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.response-card {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.response-image {
+    margin-bottom: 1rem;
+}
+
+.response-info strong {
+    color: var(--color-primary-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.response-info p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.response-stats {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.add-response-simple {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.response-input-simple {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid rgba(248, 200, 208, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: var(--font-body);
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #5d1520;
+    transform: translateY(-2px);
+}
+
+/* Challenges Page Styling */
+.current-challenge {
+    background: linear-gradient(135deg, rgba(126, 28, 46, 0.08), rgba(248, 200, 208, 0.08));
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+.challenge-badge {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.current-challenge h2 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.current-challenge p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.challenge-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item strong {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--color-primary-accent);
+    font-weight: bold;
+}
+
+.stat-item span {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.challenge-examples {
+    margin: 2rem 0;
+}
+
+.challenge-examples h4 {
+    color: var(--color-primary-accent);
+    margin-bottom: 1rem;
+}
+
+.example-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.example-card {
+    background: rgba(248, 200, 208, 0.2);
+    color: var(--color-primary-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.join-big-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.join-big-btn:hover {
+    background: #5d1520;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(126, 28, 46, 0.3);
+}
+
+/* Challenge Submissions */
+.challenge-submissions h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.submissions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.submission-item {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.submission-item:hover {
+    transform: translateY(-5px);
+}
+
+.submission-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.submission-info h4 {
+    color: var(--color-primary-accent);
+    margin-bottom: 0.5rem;
+}
+
+.submission-info p {
+    color: var(--color-text-secondary);
+    margin-bottom: 0.8rem;
+}
+
+.submission-likes {
+    color: var(--color-primary-accent);
+    font-weight: bold;
+}
+
+/* Mini Challenges */
+.mini-challenges h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.mini-challenge-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.mini-challenge {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.mini-challenge:hover {
+    transform: translateY(-2px);
+}
+
+.mini-icon {
+    font-size: 2rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.mini-content {
+    flex: 1;
+}
+
+.mini-content strong {
+    color: var(--color-primary-accent);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.mini-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mini-btn:hover {
+    background: #5d1520;
+    transform: translateY(-2px);
+}
+
+/* Free Stuff Page */
+.free-stuff-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.free-stuff-header h2 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.downloads-available h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.download-card {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+}
+
+.download-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.download-card h4 {
+    color: var(--color-primary-accent);
+    margin-bottom: 1rem;
+}
+
+.download-now-btn {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.download-now-btn:hover {
+    background: #5d1520;
+    transform: translateY(-2px);
+}
+
+/* Coming Soon Simple */
+.coming-soon-simple h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.coming-soon-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.coming-item {
+    background: rgba(248, 200, 208, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.coming-icon {
+    font-size: 2rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.coming-info {
+    flex: 1;
+}
+
+.coming-info strong {
+    color: var(--color-primary-accent);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.eta {
+    background: var(--color-primary-accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Resource Requests */
+.resource-requests h3 {
+    color: var(--color-primary-accent);
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+}
+
+.request-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.request-btn {
+    background: rgba(248, 200, 208, 0.1);
+    color: var(--color-primary-accent);
+    border: 2px solid rgba(248, 200, 208, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.request-btn:hover {
+    background: rgba(248, 200, 208, 0.2);
+    border-color: var(--color-primary-accent);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .quick-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .prompt-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .challenge-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .example-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mini-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .submissions-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -31,99 +31,536 @@
     </nav>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section with Welcome -->
         <section class="community-hero">
             <div class="hero-content">
-                <h1>Community</h1>
+                <h1>Community Garden</h1>
+                <div class="welcome-purpose">
+                    <div class="main-welcome">
+                        <h2>Where Art Meets Identity</h2>
+                        <p>A creative space for artists exploring culture, identity, and self-expression. Share your work, get inspired by daily prompts, and connect with fellow creators who understand the journey.</p>
+                        <div class="quick-stats">
+                            <span class="stat"><strong>127</strong> Active Artists</span>
+                            <span class="stat"><strong>892</strong> Artworks Shared</span>
+                            <span class="stat"><strong>Daily</strong> New Prompts</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Navigation Tabs -->
         <section class="community-nav">
             <div class="tab-container">
-                <button class="tab-btn active" data-tab="prompts">Daily Prompts</button>
-                <button class="tab-btn" data-tab="showcase">Community Showcase</button>
-                <button class="tab-btn" data-tab="resources">Resources</button>
+                <button class="tab-btn active" data-tab="feed">Community Feed</button>
+                <button class="tab-btn" data-tab="prompts">Daily Prompt</button>
+                <button class="tab-btn" data-tab="challenges">Challenges</button>
+                <button class="tab-btn" data-tab="resources">Free Stuff</button>
             </div>
         </section>
 
-        <!-- Daily Prompts Tab -->
-        <section class="tab-content active" id="prompts">
+        <!-- Community Feed Tab (Main) -->
+        <section class="tab-content active" id="feed">
             <div class="content-container">
-                <h2>Today's Creative Prompt</h2>
                 
-                <div class="prompt-generator">
-                <div class="today-prompt">
-                    <div class="prompt-card">
-                        <div class="prompt-countdown">
-                            <div class="countdown-timer">
-                                <div class="time-segment">
-                                    <span class="time-value" id="hours">--</span>
-                                    <span class="time-label">Hours</span>
-                                </div>
-                                <div class="time-segment">
-                                    <span class="time-value" id="minutes">--</span>
-                                    <span class="time-label">Minutes</span>
-                                </div>
-                                <div class="time-segment">
-                                    <span class="time-value" id="seconds">--</span>
-                                    <span class="time-label">Seconds</span>
-                                </div>
-                                </div>
+                <!-- Submit Work Button -->
+                <div class="submit-work-header">
+                    <button class="submit-work-btn" onclick="openSubmissionModal()">
+                        Submit Your Work
+                    </button>
+                    <p class="submit-work-subtitle">Share your artwork with our creative community</p>
+                </div>
+
+                <!-- Showcase Filters -->
+                <div class="showcase-filters">
+                    <button class="filter-toggle" onclick="toggleFilters()">Show Filters</button>
+                    <div class="filters-content">
+                        <div class="filter-section">
+                            <label>Filter:</label>
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="newest">Newest</button>
+                            <button class="filter-btn" data-filter="popular">Most Popular</button>
+                            <button class="filter-btn" data-filter="prompt">Prompt Responses</button>
+                        </div>
+                        
+                        <div class="medium-section">
+                            <label>Medium:</label>
+                            <select class="medium-filter" onchange="filterByMedium(this.value)">
+                                <option value="all">All Mediums</option>
+                                <option value="mixed-media">Mixed Media</option>
+                                <option value="digital">Digital Art</option>
+                                <option value="oil">Oil Painting</option>
+                                <option value="watercolor">Watercolor</option>
+                                <option value="acrylic">Acrylic</option>
+                                <option value="charcoal">Charcoal</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="showcase-grid" id="showcaseGrid">
+                    <!-- This will be populated with approved submissions -->
+                    <div class="showcase-item placeholder-item" data-category="all recent" data-medium="mixed-media" data-likes="0" data-date="2025-08-07">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #f8c8d0);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Your Art Here</h4>
+                            <p>Submit your work to be featured!</p>
+                            <span class="challenge-tag">Submit Now</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn disabled">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">0</span>
+                                </button>
                             </div>
-                        <div class="prompt-text" id="dailyPrompt">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Daily Prompts Tab -->
+        <section class="tab-content" id="prompts">
+            <div class="content-container">
+                
+                <!-- Today's Prompt Card -->
+                <div class="todays-prompt">
+                    <div class="prompt-header">
+                        <h2>Today's Creative Prompt</h2>
+                        <div class="countdown-mini">
+                            <span>Next prompt in: </span>
+                            <span id="hours-mini">--</span>h 
+                            <span id="minutes-mini">--</span>m 
+                            <span id="seconds-mini">--</span>s
+                        </div>
+                    </div>
+                    
+                    <div class="prompt-main">
+                        <div class="prompt-text-large" id="dailyPrompt">
                             Create an artwork inspired by nature's patterns and textures
                         </div>
-                        <div class="prompt-tags">
-                            <span class="tag">daily</span>
-                            <span class="tag">creative</span>
-                            <span class="tag">artistic</span>
+                        
+                        <div class="prompt-inspiration">
+                            <h4>Need inspiration?</h4>
+                            <div class="inspiration-tags">
+                                <span class="inspo-tag">Tree bark textures</span>
+                                <span class="inspo-tag">Leaf veins</span>
+                                <span class="inspo-tag">Rock formations</span>
+                                <span class="inspo-tag">Water ripples</span>
+                            </div>
                         </div>
-                        <div class="prompt-actions">
-                            <button class="new-prompt-btn" onclick="refreshPromptTags()">Refresh Tags</button>
-                            <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
+                        
+                        <div class="prompt-actions-simple">
+                            <button class="big-action-btn" onclick="createFromPrompt()">
+                                Create & Share
+                            </button>
+                            <button class="secondary-btn" onclick="savePromptForLater()">
+                                Save for Later
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        </section>
+
+        <!-- Challenges Tab -->
+        <section class="tab-content" id="challenges">
+            <div class="content-container">
+                
+                <!-- Current Challenge -->
+                <div class="current-challenge">
+                    <div class="challenge-badge">ACTIVE CHALLENGE</div>
+                    <h2>Sacred Chaos: Modern Lotería Cards</h2>
+                    <p>Create a Lotería card that represents your cultural identity or personal story. Blend traditional iconography with your own contemporary symbols.</p>
+                    
+                    <div class="challenge-stats">
+                        <div class="stat-item">
+                            <strong>12</strong>
+                            <span>Participants</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>3</strong>
+                            <span>Days Left</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>$50</strong>
+                            <span>Art Supply Prize</span>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-examples">
+                        <h4>Example Ideas:</h4>
+                        <div class="example-cards">
+                            <span class="example-card">La Música</span>
+                            <span class="example-card">La Tecnología</span>
+                            <span class="example-card">El Barrio</span>
+                            <span class="example-card">La Resistencia</span>
+                        </div>
+                    </div>
+                    
+                    <button class="join-big-btn" onclick="joinMainChallenge()">
+                        Join Challenge
+                    </button>
+                </div>
+
+                <!-- Mini Challenges -->
+                <div class="mini-challenges">
+                    <h3>Quick Challenges (5-10 min)</h3>
+                    <div class="mini-challenge-list">
+                        <div class="mini-challenge">
+                            <span class="mini-icon"></span>
+                            <div class="mini-content">
+                                <strong>Blind Contour Drawing</strong>
+                                <p>Draw your hand without looking at the paper</p>
+                            </div>
+                            <button class="mini-btn" onclick="startMiniChallenge('blind-contour')">Try It</button>
+                        </div>
+                        
+                        <div class="mini-challenge">
+                            <span class="mini-icon"></span>
+                            <div class="mini-content">
+                                <strong>3-Color Limit</strong>
+                                <p>Create something using only 3 colors</p>
+                            </div>
+                            <button class="mini-btn" onclick="startMiniChallenge('three-color')">Try It</button>
+                        </div>
+                        
+                        <div class="mini-challenge">
+                            <span class="mini-icon"></span>
+                            <div class="mini-content">
+                                <strong>Word to Image</strong>
+                                <p>Turn today's word "Harmony" into art</p>
+                            </div>
+                            <button class="mini-btn" onclick="startMiniChallenge('word-art')">Try It</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Exclusive Content Tab -->
+        <section class="tab-content" id="exclusive">
+            <div class="content-container">
+                <h2>Exclusive Member Content</h2>
+                
+                <!-- Behind-the-Scenes -->
+                <div class="exclusive-section">
+                    <h3>Behind-the-Scenes</h3>
+                    <div class="bts-grid">
+                        <div class="bts-item">
+                            <div class="bts-thumbnail">
+                                <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #333);"></div>
+                                <span class="content-type">Video</span>
+                            </div>
+                            <h4>Creating "Entre Mundos" - Process Shots</h4>
+                            <p>Watch the transformation from sketch to final piece, including color mixing and layering techniques.</p>
+                            <span class="exclusive-badge">New</span>
+                        </div>
+                        <div class="bts-item">
+                            <div class="bts-thumbnail">
+                                <div class="placeholder-image" style="background: linear-gradient(45deg, #f8c8d0, #7e1c2e);"></div>
+                                <span class="content-type">Photo Series</span>
+                            </div>
+                            <h4>Studio Setup & Sacred Spaces</h4>
+                            <p>A look into how I arrange my workspace for different creative energies and projects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Early Previews -->
+                <div class="exclusive-section">
+                    <h3>Early Previews</h3>
+                    <div class="preview-gallery">
+                        <div class="preview-item">
+                            <div class="preview-image">
+                                <div class="placeholder-image" style="background: linear-gradient(135deg, #333, #f8c8d0);"></div>
+                                <span class="preview-badge">Coming Soon</span>
+                            </div>
+                            <h4>New Collection: "Digital Altars"</h4>
+                            <p>Exploring sacred technology and digital worship spaces. Release: September 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Downloadable Content -->
+                <div class="exclusive-section">
+                    <h3>Free Downloads</h3>
+                    <div class="downloads-grid">
+                        <div class="download-item">
+                            <h4>Sacred Chaos Mobile Wallpapers</h4>
+                            <p>High-resolution wallpapers featuring signature artwork details</p>
+                            <button class="download-btn">Download Pack</button>
+                        </div>
+                        <div class="download-item">
+                            <h4>Lotería Coloring Pages</h4>
+                            <p>Print-at-home coloring pages inspired by traditional Mexican imagery</p>
+                            <button class="download-btn">Download PDF</button>
+                        </div>
+                        <div class="download-item">
+                            <h4>Identity Journal Stickers</h4>
+                            <p>Digital sticker pack for journaling and creative projects</p>
+                            <button class="download-btn">Download Pack</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
 
-        <!-- Resources Tab -->
-        <section class="tab-content" id="resources">
+        <!-- Discussion Tab -->
+        <section class="tab-content" id="discussion">
             <div class="content-container">
-                <h2>Free Printable Packs</h2>
+                <h2>Community Discussion</h2>
                 
-                <!-- Welcome Section -->
-                <div class="welcome-section">
-                    <div class="welcome-content">
-                        <h3>Free Printable Packs - Coming Soon!</h3>
-                        <p>I'm currently creating a collection of artistic printables designed for creative minds. Perfect for relaxation, art practice, and making your own mini publications.</p>
-                        <p><strong>Coming Soon:</strong> Print-at-home creative resources you can download directly from my site.</p>
+                <!-- Prompt Responses -->
+                <div class="discussion-section">
+                    <h3>Today's Prompt Responses</h3>
+                    <div class="responses-container">
+                        <div class="response-item">
+                            <div class="response-header">
+                                <strong>@alexart92</strong>
+                                <span class="response-time">2 hours ago</span>
+                            </div>
+                            <p>"I interpreted today's nature prompt by creating a piece about urban moss growing through concrete cracks. Sometimes the most beautiful patterns emerge from resistance."</p>
+                            <div class="response-actions">
+                                <button class="like-response">♡ 5</button>
+                                <button class="reply-btn">Reply</button>
+                            </div>
+                        </div>
+                        <div class="response-item">
+                            <div class="response-header">
+                                <strong>@creativemind</strong>
+                                <span class="response-time">4 hours ago</span>
+                            </div>
+                            <p>"Working on a mixed media piece using dried flowers and metallic paint. The contrast between organic and industrial feels so right for this prompt."</p>
+                            <div class="response-actions">
+                                <button class="like-response">♡ 3</button>
+                                <button class="reply-btn">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-response">
+                        <textarea placeholder="Share your interpretation of today's prompt..." class="response-input"></textarea>
+                        <button class="submit-response-btn">Share Response</button>
                     </div>
                 </div>
 
-                <!-- Coming Soon Resources -->
-                <div class="coming-soon-section">
-                    <h3>Preview: What's Being Created</h3>
-                    <div class="preview-grid">
-                        <div class="preview-item">
-                            <h4>Flash Style Coloring Sheets</h4>
-                            <p>Bold, iconic flash art designs perfect for practicing traditional tattoo coloring techniques</p>
-                            <span class="coming-soon-badge">Coming Soon</span>
+                <!-- Topic Boards -->
+                <div class="discussion-section">
+                    <h3>Discussion Boards</h3>
+                    <div class="topic-boards">
+                        <div class="board-item">
+                            <h4>Art & Identity</h4>
+                            <p>Exploring how personal and cultural identity shapes our creative expression</p>
+                            <div class="board-stats">
+                                <span>23 discussions</span>
+                                <span>•</span>
+                                <span>Last post 1 hour ago</span>
+                            </div>
                         </div>
-                        <div class="preview-item">
-                            <h4>DIY Zine Sets</h4>
-                            <p>Complete zine creation kits with templates, covers, and step-by-step assembly guides</p>
-                            <span class="coming-soon-badge">Coming Soon</span>
+                        <div class="board-item">
+                            <h4>Creative Struggles</h4>
+                            <p>A supportive space to discuss artistic blocks, imposter syndrome, and growth challenges</p>
+                            <div class="board-stats">
+                                <span>18 discussions</span>
+                                <span>•</span>
+                                <span>Last post 3 hours ago</span>
+                            </div>
                         </div>
-                        <div class="preview-item">
-                            <h4>And Many More...</h4>
-                            <p>Custom requests, seasonal themes, and experimental creative tools</p>
-                            <span class="coming-soon-badge">In Development</span>
+                        <div class="board-item">
+                            <h4>Symbol Spotting</h4>
+                            <p>Share and discuss symbols, meanings, and cultural iconography in art</p>
+                            <div class="board-stats">
+                                <span>31 discussions</span>
+                                <span>•</span>
+                                <span>Last post 30 minutes ago</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Artwork Interpretations -->
+                <div class="discussion-section">
+                    <h3>Artwork Interpretations</h3>
+                    <div class="interpretation-feature">
+                        <div class="featured-artwork">
+                            <div class="artwork-image">
+                                <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #f8c8d0);"></div>
+                            </div>
+                            <div class="artwork-info">
+                                <h4>"Abuela's Altar" - Leah Cortez</h4>
+                                <p>Share your interpretation of this piece. What symbols speak to you? What memories does it evoke?</p>
+                            </div>
+                        </div>
+                        <div class="interpretations">
+                            <div class="interpretation-item">
+                                <strong>@culturalroots:</strong> "The candles remind me of my grandmother's prayers every morning. There's something universal about these sacred domestic spaces."
+                            </div>
+                            <div class="interpretation-item">
+                                <strong>@mixedmediamaker:</strong> "I love how the gold accents elevate everyday objects into something sacred. It's about finding the divine in the familiar."
+                            </div>
+                        </div>
+                        <textarea placeholder="Share your interpretation..." class="interpretation-input"></textarea>
+                        <button class="submit-interpretation-btn">Add Interpretation</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events & Updates Tab -->
+        <section class="tab-content" id="events">
+            <div class="content-container">
+                <h2>Events & Updates</h2>
+                
+                <!-- Upcoming Events -->
+                <div class="events-section">
+                    <h3>Upcoming Events</h3>
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">Aug</span>
+                                <span class="day">15</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Live Q&A: Art & Cultural Identity</h4>
+                                <p>Join me for a live discussion about navigating cultural identity through artistic expression. Bring your questions!</p>
+                                <div class="event-meta">
+                                    <span>7:00 PM PST</span>
+                                    <span>•</span>
+                                    <span>Instagram Live</span>
+                                </div>
+                                <button class="event-remind-btn">Set Reminder</button>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">Sep</span>
+                                <span class="day">02</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Local Exhibition: "Sacred Spaces"</h4>
+                                <p>Come see new work in person at Gallery Moderna. Opening reception includes artist talk and community meet-up.</p>
+                                <div class="event-meta">
+                                    <span>6:00 PM - 9:00 PM</span>
+                                    <span>•</span>
+                                    <span>Los Angeles, CA</span>
+                                </div>
+                                <button class="event-rsvp-btn">RSVP</button>
+                            </div>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">Sep</span>
+                                <span class="day">20</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Virtual Community Meetup</h4>
+                                <p>Monthly check-in with community members. Share works in progress, get feedback, and connect with fellow artists.</p>
+                                <div class="event-meta">
+                                    <span>5:00 PM PST</span>
+                                    <span>•</span>
+                                    <span>Zoom Link</span>
+                                </div>
+                                <button class="event-join-btn">Join Waitlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Updates -->
+                <div class="updates-section">
+                    <h3>Recent Updates</h3>
+                    <div class="updates-list">
+                        <div class="update-item">
+                            <div class="update-date">Aug 7, 2025</div>
+                            <h4>New Community Features Launched!</h4>
+                            <p>Added member spotlight, monthly challenges, and interactive mood polls. Explore all the new ways to connect and create together.</p>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-date">Aug 1, 2025</div>
+                            <h4>August Challenge Announced</h4>
+                            <p>This month we're creating modern Lotería cards! Check out the Interactive Hub for full details and inspiration.</p>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-date">Jul 28, 2025</div>
+                            <h4>Community Showcase Improvements</h4>
+                            <p>Enhanced filtering options and improved submission process. Submissions are now faster and easier than ever.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Stuff Tab -->
+        <section class="tab-content" id="resources">
+            <div class="content-container">
+                
+                <div class="free-stuff-header">
+                    <h2>🎁 Free Creative Resources</h2>
+                    <p>Downloads, inspiration, and tools to fuel your artistic journey</p>
+                </div>
+
+                <!-- Available Downloads -->
+                <div class="downloads-available">
+                    <h3>📥 Available Now</h3>
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <div class="download-icon"></div>
+                            <h4>Sacred Chaos Wallpapers</h4>
+                            <p>Mobile & desktop wallpapers featuring artwork details</p>
+                            <button class="download-now-btn" onclick="downloadPack('wallpapers')">
+                                Download Pack
+                            </button>
+                        </div>
+                        
+                        <div class="download-card">
+                            <div class="download-icon"></div>
+                            <h4>Weekly Prompt Journal</h4>
+                            <p>Printable weekly planner with creative prompts</p>
+                            <button class="download-now-btn" onclick="downloadPack('journal')">
+                                Download PDF
+                            </button>
+                        </div>
+                        
+                        <div class="download-card">
+                            <div class="download-icon"></div>
+                            <h4>Digital Sticker Pack</h4>
+                            <p>Identity-themed stickers for journaling & creative projects</p>
+                            <button class="download-now-btn" onclick="downloadPack('stickers')">
+                                Download Pack
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="coming-soon-simple">
+                    <h3>🔮 Coming This Month</h3>
+                    <div class="coming-soon-list">
+                        <div class="coming-item">
+                            <span class="coming-icon"></span>
+                            <div class="coming-info">
+                                <strong>Lotería Coloring Pages</strong>
+                                <p>Modern takes on traditional cards</p>
+                            </div>
+                            <span class="eta">Aug 15</span>
+                        </div>
+                        
+                        <div class="coming-item">
+                            <span class="coming-icon">📖</span>
+                            <div class="coming-info">
+                                <strong>DIY Zine Kit</strong>
+                                <p>Complete templates & assembly guide</p>
+                            </div>
+                            <span class="eta">Aug 22</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -706,7 +1143,7 @@
             // Update upload area styling
             uploadArea.style.borderColor = '#f8c8d0';
             uploadArea.style.background = 'rgba(248, 200, 208, 0.1)';
-            uploadArea.innerHTML = '<p style="color: #f8c8d0;">📸 Image selected! Click to change</p>';
+            uploadArea.innerHTML = '<p style="color: #f8c8d0;">Image selected! Click to change</p>';
         }
     }
 
@@ -1248,7 +1685,7 @@
 
     // Solo Artist Building Functions - Detailed Guidance
     function documentWork() {
-        alert('📸 Document Your Creative Process:\n\n• Take photos at different stages (sketch, halfway, finished)\n• Note what techniques and materials you used\n• Record your thoughts, decisions, and happy accidents\n• Save these for future social media posts\n• Include your workspace and tools occasionally\n• Capture details that show your unique approach\n\nTip: Good documentation is the foundation of building an authentic online presence. People love seeing the journey, not just the destination!');
+        alert('Document Your Creative Process:\n\n• Take photos at different stages (sketch, halfway, finished)\n• Note what techniques and materials you used\n• Record your thoughts, decisions, and happy accidents\n• Save these for future social media posts\n• Include your workspace and tools occasionally\n• Capture details that show your unique approach\n\nTip: Good documentation is the foundation of building an authentic online presence. People love seeing the journey, not just the destination!');
     }
 
     function exploreHashtags() {
@@ -1266,17 +1703,24 @@
     function addPersonalGoal() {
         const goal = prompt('What small creative goal would you like to set?\n\nExamples:\n• Take progress photos of 3 finished pieces\n• Write artist bio draft (2-3 paragraphs)\n• Research 5 local art groups or online communities\n• Complete one small painting this week\n• Practice describing my work in 2-3 sentences\n• Set up better lighting for photo documentation\n\nYour goal:');
         if (goal && goal.trim()) {
-            alert('🎯 Goal Added Successfully!\n\n"' + goal + '"\n\nRemember: Small, consistent steps lead to significant progress. You\'ve got this! Breaking big dreams into small, actionable goals is how every successful artist builds their practice.');
+            alert('Goal Added Successfully!\n\n"' + goal + '"\n\nRemember: Small, consistent steps lead to significant progress. You\'ve got this! Breaking big dreams into small, actionable goals is how every successful artist builds their practice.');
         }
     }
 
     // Community Showcase Functions
     function submitArtwork() {
-        alert('🎨 Submit Your Artwork:\n\nWe\'re building a supportive community showcase for emerging artists!\n\nTo be featured:\n• Share your artistic journey and growth\n• Include 2-3 of your best pieces\n• Tell us about your creative process\n• Describe challenges you\'ve overcome\n\nFeatures will highlight authentic stories of artistic development. Stay tuned for submission guidelines!');
+        alert('Submit Your Artwork:\n\nWe\'re building a supportive community showcase for emerging artists!\n\nTo be featured:\n• Share your artistic journey and growth\n• Include 2-3 of your best pieces\n• Tell us about your creative process\n• Describe challenges you\'ve overcome\n\nFeatures will highlight authentic stories of artistic development. Stay tuned for submission guidelines!');
     }
 
     // Gallery Filter Functionality
     function initializeShowcaseFilters() {
+        // Prevent double initialization
+        if (window.filtersInitialized) {
+            console.log('Filters already initialized, skipping...');
+            return;
+        }
+        
+        console.log('Initializing showcase filters...');
         const filterButtons = document.querySelectorAll('.filter-btn');
         const showcaseItems = document.querySelectorAll('.showcase-item');
         
@@ -1288,17 +1732,142 @@
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Filter items
-                showcaseItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
-                        item.style.display = 'block';
-                        item.style.animation = 'fadeIn 0.3s ease-in';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                // Apply combined filters
+                applyShowcaseFilters();
             });
         });
+        
+        // Initialize filters on load
+        applyShowcaseFilters();
+        window.filtersInitialized = true;
+        console.log('Filters initialized successfully');
+    }
+    
+    function applyShowcaseFilters() {
+        const showcaseItems = document.querySelectorAll('.showcase-item');
+        const activeFilterBtn = document.querySelector('.filter-btn.active');
+        const mediumFilter = document.querySelector('.medium-filter');
+        
+        const categoryFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+        const mediumValue = mediumFilter ? mediumFilter.value : 'all';
+        
+        let visibleCount = 0;
+        
+        showcaseItems.forEach(item => {
+            const itemCategories = item.getAttribute('data-category') || '';
+            const itemMedium = item.getAttribute('data-medium') || '';
+            
+            // Check category filter
+            const matchesCategory = categoryFilter === 'all' || itemCategories.includes(categoryFilter);
+            
+            // Check medium filter
+            const matchesMedium = mediumValue === 'all' || itemMedium === mediumValue;
+            
+            // Show/hide item
+            if (matchesCategory && matchesMedium) {
+                item.style.display = 'block';
+                item.style.animation = 'fadeIn 0.3s ease-in';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // Show no results message if needed
+        updateNoResultsMessage(visibleCount);
+    }
+    
+    function filterByMedium(medium) {
+        applyShowcaseFilters();
+    }
+    
+    function updateNoResultsMessage(visibleCount) {
+        const showcaseGrid = document.getElementById('showcaseGrid');
+        let noResultsMessage = showcaseGrid.querySelector('.no-results-message');
+        
+        if (visibleCount === 0) {
+            if (!noResultsMessage) {
+                noResultsMessage = document.createElement('div');
+                noResultsMessage.className = 'no-results-message';
+                noResultsMessage.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 2rem; color: #7e1c2e;';
+                noResultsMessage.innerHTML = `
+                    <h3>No artwork matches your filters</h3>
+                    <p>Try selecting different filter options or submit your own work!</p>
+                    <button class="submit-btn" onclick="openSubmissionModal()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #7e1c2e; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit Your Art</button>
+                `;
+                showcaseGrid.appendChild(noResultsMessage);
+            }
+        } else {
+            if (noResultsMessage) {
+                noResultsMessage.remove();
+            }
+        }
+    }
+    
+    function toggleFilters() {
+        const filtersContent = document.querySelector('.filters-content');
+        const filterToggle = document.querySelector('.filter-toggle');
+        
+        if (filtersContent.style.display === 'none' || !filtersContent.style.display) {
+            filtersContent.style.display = 'flex';
+            filterToggle.textContent = 'Hide Filters';
+        } else {
+            filtersContent.style.display = 'none';
+            filterToggle.textContent = 'Show Filters';
+        }
+    }
+    
+    // Load approved submissions from your backend/approval system
+    function loadApprovedSubmissions() {
+        // For now, this is a placeholder
+        // In the future, you can connect this to your backend API
+        // that stores approved submissions from FormSubmit
+        
+        // Example of how you might load submissions:
+        /*
+        fetch('/api/approved-submissions')
+            .then(response => response.json())
+            .then(submissions => {
+                submissions.forEach(submission => {
+                    addApprovedSubmission(submission);
+                });
+            })
+            .catch(error => {
+                console.log('No additional submissions yet');
+            });
+        */
+    }
+    
+    // Function to add an approved submission to the gallery
+    function addApprovedSubmission(submission) {
+        const showcaseGrid = document.getElementById('showcaseGrid');
+        
+        const submissionElement = document.createElement('div');
+        submissionElement.className = 'showcase-item';
+        submissionElement.dataset.category = submission.category || 'all recent';
+        submissionElement.dataset.medium = submission.medium || 'mixed-media';
+        submissionElement.dataset.likes = submission.likes || '0';
+        submissionElement.dataset.date = submission.date || new Date().toISOString().split('T')[0];
+        
+        submissionElement.innerHTML = `
+            <img src="${submission.image_url}" alt="${submission.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+            <div class="showcase-overlay">
+                <h4>${submission.title}</h4>
+                <p><a href="https://instagram.com/${submission.instagram_handle}" target="_blank" rel="noopener noreferrer" class="instagram-link">@${submission.instagram_handle}</a></p>
+                <span class="challenge-tag">${submission.medium_display || submission.medium}</span>
+                <div class="artwork-stats">
+                    <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${submission.id}">
+                        <span class="heart">♡</span>
+                        <span class="like-count" style="display: none;">${submission.likes || 0}</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        showcaseGrid.appendChild(submissionElement);
+        
+        // Reapply filters to include new submission
+        applyShowcaseFilters();
     }
 
     // Submission Modal Functions
@@ -1343,7 +1912,7 @@
     }
 
     function shareProgress() {
-        alert('📸 Share Your Progress:\n\nDocument and share your artistic journey:\n\n• Take photos of works in progress\n• Share technique discoveries\n• Post about creative challenges\n• Show your workspace evolution\n• Celebrate small wins\n\nYour progress inspires other emerging artists. Every step forward matters!');
+        alert('Share Your Progress:\n\nDocument and share your artistic journey:\n\n• Take photos of works in progress\n• Share technique discoveries\n• Post about creative challenges\n• Show your workspace evolution\n• Celebrate small wins\n\nYour progress inspires other emerging artists. Every step forward matters!');
     }
 
     function connectArtists() {
@@ -1709,55 +2278,36 @@
         });
     </script>
 
-    <!-- Emergency Tab Fix -->
+    <!-- Proper Tab Initialization -->
     <script>
     window.addEventListener('load', function() {
-        console.log('Emergency tab script loaded');
+        console.log('Tab initialization script loaded');
         
-        // Force remove active from all first
+        // Ensure community feed is the default active tab
         document.querySelectorAll('.tab-content').forEach(section => {
             section.classList.remove('active');
         });
         
-        // Show prompts tab by default
-        const promptsTab = document.getElementById('prompts');
-        if (promptsTab) {
-            promptsTab.classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        // Set community feed as default
+        const feedTab = document.getElementById('feed');
+        const feedBtn = document.querySelector('[data-tab="feed"]');
+        
+        if (feedTab && feedBtn) {
+            feedTab.classList.add('active');
+            feedBtn.classList.add('active');
         }
         
-        // Add click handlers with force
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        tabButtons.forEach((btn, index) => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const targetId = this.getAttribute('data-tab');
-                console.log('Emergency script - Tab clicked:', targetId);
-                
-                // Force hide all tabs
-                document.querySelectorAll('.tab-content').forEach(section => {
-                    section.style.display = 'none';
-                    section.classList.remove('active');
-                });
-                
-                // Force remove active from all buttons
-                document.querySelectorAll('.tab-btn').forEach(button => {
-                    button.classList.remove('active');
-                });
-                
-                // Force show target tab
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                    targetSection.classList.add('active');
-                    this.classList.add('active');
-                    console.log('Emergency script - Showed:', targetId);
-                } else {
-                    console.error('Emergency script - Target not found:', targetId);
-                }
-            }, true);
-        });
+        // Initialize filters after a delay to avoid conflicts
+        setTimeout(() => {
+            if (typeof initializeShowcaseFilters === 'function' && !window.filtersInitialized) {
+                initializeShowcaseFilters();
+                window.filtersInitialized = true;
+            }
+        }, 1000);
     });
 
     // Authentication System
@@ -2029,7 +2579,7 @@
 
     function postCollaboration() {
         if (!checkRateLimit('postCollab')) return;
-        showNotification('📋 Collaboration posting form sent to your email for review and approval.');
+        showNotification('Collaboration posting form sent to your email for review and approval.');
     }
 
     function rsvpToEvent(eventId) {
@@ -2386,6 +2936,165 @@
 
     <!-- Include main script for floating icons -->
     <script src="../scripts/main.js"></script>
+
+    <!-- Simplified Community JavaScript -->
+    <script>
+        // Tab switching
+        function switchToTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the selected tab content
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            // Add active class to the clicked button
+            const targetBtn = document.querySelector(`[data-tab="${tabName}"]`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+        }
+
+        // Quick Actions
+        function quickMoodCheck() {
+            const moods = ['🕊️ Lace - Delicate & intricate', '🌹 Thorns - Bold & protective', '✨ Halo - Sacred & luminous'];
+            const randomMood = moods[Math.floor(Math.random() * moods.length)];
+            showNotification(`Today's mood: ${randomMood}`);
+        }
+
+        // Community Engagement
+        function likePost(button) {
+            const countSpan = button.querySelector('.count');
+            const currentCount = parseInt(countSpan.textContent);
+            countSpan.textContent = currentCount + 1;
+            button.style.color = 'var(--color-primary-accent)';
+            showNotification('❤️ Post liked!');
+        }
+
+        function openArtworkModal(artworkId) {
+            showNotification('Opening artwork details...');
+            // In real implementation, this would open a modal with artwork details
+        }
+
+        function joinWeeklyChallenge() {
+            showNotification('� Welcome to the Sacred Chaos challenge! Check your email for details.');
+        }
+
+        // Prompt Functions
+        function savePromptForLater() {
+            const promptText = document.getElementById('dailyPrompt').textContent;
+            localStorage.setItem('savedPrompt_' + Date.now(), promptText);
+            showNotification('📌 Prompt saved to your collection!');
+        }
+
+        function submitPromptResponse() {
+            const responseInput = document.querySelector('.response-input-simple');
+            if (responseInput && responseInput.value.trim()) {
+                showNotification('💭 Your response has been shared with the community!');
+                responseInput.value = '';
+            } else {
+                showNotification('⚠️ Please write a response before submitting.');
+            }
+        }
+
+        // Challenge Functions
+        function joinMainChallenge() {
+            showNotification('🎨 You\'ve joined the Sacred Chaos challenge! Details sent to your email.');
+        }
+
+        function startMiniChallenge(challengeType) {
+            const challenges = {
+                'blind-contour': 'Mini challenge started! Draw your hand without looking at the paper.',
+                'three-color': '🎨 Mini challenge started! Create something using only 3 colors.',
+                'word-art': '📝 Mini challenge started! Turn the word "Harmony" into art.'
+            };
+            showNotification(challenges[challengeType] || '✨ Mini challenge started!');
+        }
+
+        // Resources Functions
+        function downloadPack(packType) {
+            const packs = {
+                'wallpapers': '🎨 Sacred Chaos Wallpapers',
+                'journal': '� Weekly Prompt Journal',
+                'stickers': '✨ Digital Sticker Pack'
+            };
+            showNotification(`📦 Downloading ${packs[packType] || 'resource pack'}...`);
+            // In real implementation, this would trigger actual download
+        }
+
+        function requestResource(resourceType) {
+            const resources = {
+                'coloring': '🎨 More Coloring Pages',
+                'templates': '📐 Design Templates', 
+                'tutorials': '📹 Video Tutorials',
+                'other': '💡 Custom Request'
+            };
+            showNotification(`📝 Request submitted for: ${resources[resourceType] || 'resource'}!`);
+        }
+
+        // Timer Functions for Mini Countdown
+        function updateMiniTimer() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const diff = tomorrow - now;
+            
+            if (diff > 0) {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                const hoursEl = document.getElementById('hours-mini');
+                const minutesEl = document.getElementById('minutes-mini');
+                const secondsEl = document.getElementById('seconds-mini');
+                
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+
+        // Initialize Enhanced Community Features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click listeners for tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchToTab(tabName);
+                });
+            });
+            
+            // Initialize community features only once
+            setTimeout(() => {
+                if (typeof initializeShowcaseFilters === 'function') {
+                    initializeShowcaseFilters();
+                }
+                if (typeof loadApprovedSubmissions === 'function') {
+                    loadApprovedSubmissions();
+                }
+            }, 500);
+            
+            // Start mini timer
+            updateMiniTimer();
+            setInterval(updateMiniTimer, 1000);
+            
+            // Add some dynamic activity to make it feel alive
+            setTimeout(() => {
+                showNotification('Welcome to the Community Garden! Check out the artwork gallery and submit your own!');
+            }, 2000);
+        });
+    </script>
 
     <!-- Simple Timer Script - No Dependencies -->
     <script>
