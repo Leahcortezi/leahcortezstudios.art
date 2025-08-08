@@ -10,16 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Security: Simple API key check
-$valid_api_key = 'lcstudios_api_2025_secure'; // Change this to something secure
-$provided_key = $_SERVER['HTTP_AUTHORIZATION'] ?? $_GET['api_key'] ?? $_POST['api_key'] ?? '';
-
-if ($provided_key !== $valid_api_key) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Unauthorized']);
-    exit();
-}
-
 // Only allow POST requests for adding artwork
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -27,11 +17,60 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-// Get JSON input
-$input = json_decode(file_get_contents('php://input'), true);
+// Check if this is a FormSubmit webhook or direct API call
+$is_formsubmit_webhook = isset($_POST['artist_name']) && isset($_POST['approval_status']);
+
+if ($is_formsubmit_webhook) {
+    // Handle FormSubmit webhook data
+    $input = $_POST;
+    
+    // Log FormSubmit webhook for debugging
+    $webhook_log = date('Y-m-d H:i:s') . " - FormSubmit webhook received\n";
+    $webhook_log .= "POST data: " . print_r($_POST, true) . "\n";
+    $webhook_log .= "FILES data: " . print_r($_FILES, true) . "\n\n";
+    file_put_contents('../data/webhook_log.txt', $webhook_log, FILE_APPEND | LOCK_EX);
+    
+    // Handle file upload from FormSubmit
+    $image_url = '';
+    if (isset($_FILES['artwork']) && $_FILES['artwork']['error'] === UPLOAD_ERR_OK) {
+        $upload_dir = '../images/community/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true);
+        }
+        
+        $file_extension = strtolower(pathinfo($_FILES['artwork']['name'], PATHINFO_EXTENSION));
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        
+        if (in_array($file_extension, $allowed_extensions)) {
+            $new_filename = 'artwork_' . time() . '_' . rand(1000, 9999) . '.' . $file_extension;
+            $upload_path = $upload_dir . $new_filename;
+            
+            if (move_uploaded_file($_FILES['artwork']['tmp_name'], $upload_path)) {
+                $image_url = 'https://leahcortezstudios.art/images/community/' . $new_filename;
+            }
+        }
+    }
+    
+    // Set the image URL in input data
+    $input['image_url'] = $image_url;
+    
+} else {
+    // Handle direct API call with JSON
+    $input = json_decode(file_get_contents('php://input'), true);
+    
+    // Security: Simple API key check for direct API calls
+    $valid_api_key = 'lcstudios_api_2025_secure';
+    $provided_key = $_SERVER['HTTP_AUTHORIZATION'] ?? $_GET['api_key'] ?? $input['api_key'] ?? '';
+    
+    if ($provided_key !== $valid_api_key) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Unauthorized']);
+        exit();
+    }
+}
 
 // Validate required fields
-$required_fields = ['artist_name', 'artwork_title', 'image_url'];
+$required_fields = ['artist_name', 'artwork_title'];
 foreach ($required_fields as $field) {
     if (empty($input[$field])) {
         http_response_code(400);
@@ -40,22 +79,31 @@ foreach ($required_fields as $field) {
     }
 }
 
+// For FormSubmit webhooks, image_url might be empty if upload failed
+if (!$is_formsubmit_webhook && empty($input['image_url'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing required field: image_url']);
+    exit();
+}
+
 // Prepare artwork data
 $artwork_data = [
-    'id' => 'api-' . time() . '-' . rand(1000, 9999),
+    'id' => ($is_formsubmit_webhook ? 'approved-' : 'api-') . time() . '-' . rand(1000, 9999),
     'artist_name' => sanitize_input($input['artist_name']),
+    'artist_email' => sanitize_input($input['artist_email'] ?? ''),
     'artwork_title' => sanitize_input($input['artwork_title']),
-    'description' => sanitize_input($input['description'] ?? ''),
-    'medium' => sanitize_input($input['medium'] ?? 'mixed-media'),
-    'category' => sanitize_input($input['category'] ?? 'personal'),
-    'image_url' => filter_var($input['image_url'], FILTER_VALIDATE_URL),
+    'description' => sanitize_input($input['artwork_description'] ?? $input['description'] ?? ''),
+    'medium' => sanitize_input($input['artwork_medium'] ?? $input['medium'] ?? 'mixed-media'),
+    'category' => sanitize_input($input['artwork_category'] ?? $input['category'] ?? 'personal'),
+    'image_url' => $input['image_url'] ?? '',
     'date_added' => date('Y-m-d'),
     'status' => 'approved',
-    'likes' => 0
+    'likes' => 0,
+    'approval_method' => $is_formsubmit_webhook ? 'formsubmit_webhook' : 'direct_api'
 ];
 
-// Validate image URL
-if (!$artwork_data['image_url']) {
+// Only validate image URL for direct API calls
+if (!$is_formsubmit_webhook && !filter_var($artwork_data['image_url'], FILTER_VALIDATE_URL)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid image URL']);
     exit();
