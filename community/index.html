@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         <div class="prompt-text" id="dailyPrompt">
-                            Generating today's creative prompt...
+                            Create an artwork inspired by nature's patterns and textures
                         </div>
                         <div class="prompt-tags">
                             <span class="tag">daily</span>
@@ -635,20 +635,18 @@
         localStorage.setItem('dailyPrompt', prompt);
         localStorage.setItem('promptDate', today);
         
-        // Update display
+        // Update display immediately
         const promptElement = document.getElementById('dailyPrompt');
         if (promptElement) {
             promptElement.textContent = prompt;
-            console.log('Updated prompt display');
+            console.log('Updated prompt display with:', prompt);
         } else {
             console.error('Prompt element not found!');
         }
         updatePromptTags();
         
         // Add to history if it's a new day
-        if (storedDate !== today) {
-            addPromptToHistory(prompt);
-        }
+        addPromptToHistory(prompt);
     }
 
     function updatePromptTags() {
@@ -917,11 +915,13 @@
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', () => {
-        // Clear old prompt data for testing
-        // localStorage.removeItem('dailyPrompt');
-        // localStorage.removeItem('promptDate');
+        console.log('Community page loaded - initializing...');
         
-        // Set daily prompt (stays same for 24 hours)
+        // Force clear old data for fresh start
+        localStorage.removeItem('dailyPrompt');
+        localStorage.removeItem('promptDate');
+        
+        // Generate fresh prompt
         try {
             console.log('Starting prompt generation...');
             generateDailyPrompt();
@@ -934,7 +934,7 @@
             }
         }
         
-        // Start countdown timer
+        // Start countdown timer immediately
         try {
             updateCountdown();
             setInterval(updateCountdown, 1000); // Update every second
