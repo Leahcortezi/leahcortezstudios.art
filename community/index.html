@@ -253,9 +253,14 @@
             
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
+                <div style="background: rgba(248, 200, 208, 0.1); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+                    <strong>📧 Note:</strong> Having trouble receiving confirmation emails? This might be a FormSubmit verification issue. 
+                    <a href="../test-formsubmit.html" target="_blank" style="color: #f8c8d0; text-decoration: underline;">Test the form</a> or 
+                    <a href="../verify-formsubmit.html" target="_blank" style="color: #f8c8d0; text-decoration: underline;">verify email setup</a>.
+                </div>
                 
                 <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
-                    <input type="hidden" name="_subject" value=" Community Artwork Submission for Review">
+                    <input type="hidden" name="_subject" value="🎨 Community Artwork Submission for Review">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
@@ -406,7 +411,6 @@
     <script>
     // Form submission handler
     async function handleFormSubmission(event) {
-        event.preventDefault(); // Prevent default form submission
         console.log('Form submission started');
         
         const form = event.target;
@@ -433,6 +437,7 @@
         
         // Validate required fields
         if (!name || !instagram || !title) {
+            event.preventDefault();
             showNotification('⚠️ Please fill out all required fields (Name, Instagram Handle, and Artwork Title).', 'error');
             return false;
         }
@@ -440,17 +445,20 @@
         // Validate Instagram handle format
         const instagramPattern = /^@?[A-Za-z0-9._]{1,30}$/;
         if (!instagramPattern.test(instagram)) {
+            event.preventDefault();
             showNotification('⚠️ Please enter a valid Instagram handle (e.g., @yourhandle or yourhandle).', 'error');
             return false;
         }
         
         if (!file || file.size === 0) {
+            event.preventDefault();
             showNotification('⚠️ Please select an artwork file to upload.', 'error');
             return false;
         }
         
         // Check file size (10MB limit)
         if (file.size > 10 * 1024 * 1024) {
+            event.preventDefault();
             showNotification('⚠️ File size must be less than 10MB. Please choose a smaller image.', 'error');
             return false;
         }
@@ -466,7 +474,7 @@
         if (!normalizedInstagram.startsWith('@')) {
             normalizedInstagram = '@' + normalizedInstagram;
         }
-        formData.set('artist_instagram', normalizedInstagram);
+        document.getElementById('artistInstagram').value = normalizedInstagram;
         
         // Show loading state
         const submitBtn = form.querySelector('.submit-btn');
@@ -475,7 +483,7 @@
         submitBtn.disabled = true;
         
         // Show immediate feedback since FormSubmit will redirect
-        showNotification('Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!', 'success');
+        showNotification('🎨 Thank you for your submission! Your artwork has been sent for review. If this is the first submission to this email, FormSubmit may require email verification. Check back soon!', 'success');
         
         // Close modal and reset form
         setTimeout(() => {
