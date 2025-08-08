@@ -1,0 +1,91 @@
+{
+  "zapier_template": {
+    "name": "Leah Cortez Studios - Email Artwork Approval",
+    "description": "Automatically approve artwork submissions by replying APPROVE to emails",
+    "triggers": [
+      {
+        "app": "Gmail",
+        "event": "New Email Matching Search",
+        "config": {
+          "search_string": "subject:\"Community Artwork Submission for Review\" from:contact@leahcortezstudios.art",
+          "label": "Check for approval replies"
+        }
+      }
+    ],
+    "filters": [
+      {
+        "condition": "Only continue if...",
+        "rules": [
+          {
+            "field": "Body Plain",
+            "operator": "contains",
+            "value": "APPROVE",
+            "case_sensitive": false
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "config": {
+          "url": "https://yourdomain.com/api/add-artwork.php",
+          "method": "POST",
+          "headers": {
+            "Authorization": "lcstudios_api_2025_secure",
+            "Content-Type": "application/json"
+          },
+          "data": {
+            "artist_name": "{{1__Body_Plain__extract_artist_name}}",
+            "artwork_title": "{{1__Body_Plain__extract_artwork_title}}",
+            "description": "{{1__Body_Plain__extract_description}}",
+            "medium": "{{1__Body_Plain__extract_medium}}",
+            "category": "{{1__Body_Plain__extract_category}}",
+            "image_url": "{{1__Attachments__0__download_url}}"
+          }
+        }
+      }
+    ]
+  },
+  "data_extraction_patterns": {
+    "artist_name": {
+      "pattern": "artist_name:\\s*(.+)",
+      "example": "artist_name: John Doe"
+    },
+    "artwork_title": {
+      "pattern": "artwork_title:\\s*(.+)",
+      "example": "artwork_title: Beautiful Sunset"
+    },
+    "description": {
+      "pattern": "artwork_description:\\s*([\\s\\S]*?)(?=\\n\\w+:|$)",
+      "example": "artwork_description: This piece represents..."
+    },
+    "medium": {
+      "pattern": "artwork_medium:\\s*(.+)",
+      "example": "artwork_medium: digital"
+    },
+    "category": {
+      "pattern": "artwork_category:\\s*(.+)",
+      "example": "artwork_category: personal"
+    }
+  },
+  "webhook_payload_example": {
+    "artist_name": "Jane Smith",
+    "artwork_title": "Digital Landscape",
+    "description": "A beautiful digital painting of a mountain landscape",
+    "medium": "digital",
+    "category": "personal",
+    "image_url": "https://example.com/uploaded-image.jpg"
+  },
+  "setup_checklist": [
+    "✅ Upload API files to your web server",
+    "✅ Change API key in add-artwork.php",
+    "✅ Test API endpoint with test.php",
+    "✅ Set up Zapier/Make.com webhook",
+    "✅ Configure email parsing patterns",
+    "✅ Test with a sample submission",
+    "✅ Reply APPROVE to test email",
+    "✅ Verify artwork appears in showcase"
+  ]
+}

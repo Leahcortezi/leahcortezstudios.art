@@ -253,18 +253,26 @@
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
                 
                 <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
-                    <input type="hidden" name="_subject" value="New Community Artwork Submission">
+                    <input type="hidden" name="_subject" value="🎨 Community Artwork Submission for Review">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    
+                    <!-- Detailed submission info for review -->
+                    <input type="hidden" name="submission_type" value="Community Artwork Submission">
+                    <input type="hidden" name="submission_date" id="submissionDate">
+                    <input type="hidden" name="submission_time" id="submissionTime">
+                    <input type="hidden" name="review_status" value="PENDING REVIEW">
+                    <input type="hidden" name="instructions" value="Review this artwork submission and add to community showcase if approved.">
                     
                     <div class="form-group">
                         <label for="artistName">Your Name*</label>
-                        <input type="text" id="artistName" name="name" placeholder="Your full name" required>
+                        <input type="text" id="artistName" name="artist_name" placeholder="Your full name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="artistEmail">Email*</label>
-                        <input type="email" id="artistEmail" name="email" placeholder="your@email.com" required>
+                        <input type="email" id="artistEmail" name="artist_email" placeholder="your@email.com" required>
                     </div>
                     
                     <div class="form-group">
@@ -279,7 +287,34 @@
                     
                     <div class="form-group">
                         <label for="artworkDescription">Description (Optional)</label>
-                        <textarea id="artworkDescription" name="description" placeholder="Tell us about your artwork..." rows="3"></textarea>
+                        <textarea id="artworkDescription" name="artwork_description" placeholder="Tell us about your artwork, inspiration, medium used..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artworkMedium">Medium/Technique</label>
+                        <select id="artworkMedium" name="artwork_medium">
+                            <option value="">Select medium (optional)</option>
+                            <option value="digital">Digital Art</option>
+                            <option value="traditional">Traditional Art</option>
+                            <option value="mixed-media">Mixed Media</option>
+                            <option value="photography">Photography</option>
+                            <option value="sculpture">Sculpture</option>
+                            <option value="textile">Textile Art</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artworkCategory">Category</label>
+                        <select id="artworkCategory" name="artwork_category">
+                            <option value="">Select category (optional)</option>
+                            <option value="daily-prompt">Daily Prompt Response</option>
+                            <option value="personal">Personal Work</option>
+                            <option value="commission">Commission Work</option>
+                            <option value="study">Study/Practice</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     
                     <div class="modal-footer">
@@ -375,13 +410,24 @@
         const form = event.target;
         const formData = new FormData(form);
         
-        const name = formData.get('name');
-        const email = formData.get('email');
+        // Populate submission date and time
+        const now = new Date();
+        document.getElementById('submissionDate').value = now.toLocaleDateString();
+        document.getElementById('submissionTime').value = now.toLocaleTimeString();
+        
+        // Update formData with the populated fields
+        formData.set('submission_date', now.toLocaleDateString());
+        formData.set('submission_time', now.toLocaleTimeString());
+        
+        const name = formData.get('artist_name');
+        const email = formData.get('artist_email');
         const title = formData.get('artwork_title');
-        const description = formData.get('description');
+        const description = formData.get('artwork_description');
+        const medium = formData.get('artwork_medium');
+        const category = formData.get('artwork_category');
         const file = formData.get('artwork');
         
-        console.log('Form data:', { name, email, title, file: file ? file.name : 'No file' });
+        console.log('Form data:', { name, email, title, medium, category, file: file ? file.name : 'No file' });
         
         // Validate required fields
         if (!name || !email || !title) {
@@ -399,6 +445,12 @@
             showNotification('⚠️ File size must be less than 10MB. Please choose a smaller image.');
             return false;
         }
+        
+        // Add additional context to the submission
+        formData.append('file_size', (file.size / 1024 / 1024).toFixed(2) + ' MB');
+        formData.append('file_type', file.type);
+        formData.append('browser_info', navigator.userAgent);
+        formData.append('review_instructions', 'REVIEW REQUIRED: Please review this artwork submission and manually add to the community showcase if approved.');
         
         // Show loading state
         const submitBtn = form.querySelector('.submit-btn');
@@ -2002,6 +2054,179 @@
                 }
             }, 300);
         }, 4000);
+    }
+    
+    // Admin Functions for Manual Artwork Addition
+    function addApprovedArtwork(artworkData) {
+        const grid = document.querySelector('.showcase-grid');
+        if (!grid) {
+            console.error('Showcase grid not found');
+            return false;
+        }
+        
+        // Generate unique ID for approved artwork
+        const artworkId = 'approved-' + Date.now();
+        
+        // Initialize like count
+        if (typeof artworkLikeCounts !== 'undefined') {
+            artworkLikeCounts[artworkId] = 0;
+            localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
+        }
+        
+        // Create new artwork item
+        const newItem = document.createElement('div');
+        newItem.className = 'showcase-item';
+        newItem.setAttribute('data-category', `${artworkData.category || 'other'} all recent`);
+        newItem.setAttribute('data-medium', artworkData.medium || 'mixed-media');
+        newItem.setAttribute('data-likes', '0');
+        newItem.setAttribute('data-date', new Date().toISOString().split('T')[0]);
+        
+        // Set innerHTML with the artwork content
+        newItem.innerHTML = `
+            <img src="${artworkData.imageUrl}" alt="${artworkData.title}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="showcase-overlay">
+                <h4>${artworkData.title}</h4>
+                <p>by ${artworkData.artistName}</p>
+                <span class="challenge-tag">${getCategoryDisplayName(artworkData.category)}</span>
+                <div class="artwork-stats">
+                    <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${artworkId}">
+                        <span class="heart">♡</span>
+                        <span class="like-count">0</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Add to beginning of grid
+        grid.insertBefore(newItem, grid.firstChild);
+        
+        console.log('Approved artwork added to showcase:', artworkData);
+        return true;
+    }
+    
+    function getCategoryDisplayName(category) {
+        const categoryNames = {
+            'daily-prompt': 'Daily Prompt',
+            'personal': 'Personal Work',
+            'commission': 'Commission',
+            'study': 'Study',
+            'collaboration': 'Collaboration',
+            'other': 'Community Art'
+        };
+        return categoryNames[category] || 'Community Art';
+    }
+    
+    // Admin console command for quick addition
+    // Usage in browser console: quickAddArtwork({title: "Art Title", artistName: "Artist", imageUrl: "data:image...", category: "personal"})
+    function quickAddArtwork(data) {
+        if (!data.title || !data.artistName || !data.imageUrl) {
+            console.error('Missing required fields: title, artistName, imageUrl');
+            return false;
+        }
+        
+        const success = addApprovedArtwork(data);
+        if (success) {
+            showNotification(`✅ Added "${data.title}" by ${data.artistName} to showcase!`);
+            // Switch to showcase tab to show the new artwork
+            const showcaseTab = document.querySelector('[data-tab="showcase"]');
+            if (showcaseTab) showcaseTab.click();
+        }
+        return success;
+    }
+    
+    // Check for pending admin additions on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load approved artworks from API
+        loadApprovedArtworks();
+        
+        // Check if there's a pending artwork addition from admin panel
+        const pendingArtwork = localStorage.getItem('pendingApprovalArtwork');
+        if (pendingArtwork) {
+            try {
+                const artworkData = JSON.parse(pendingArtwork);
+                if (addApprovedArtwork(artworkData)) {
+                    showNotification(`✅ Approved artwork "${artworkData.title}" has been added!`);
+                    localStorage.removeItem('pendingApprovalArtwork');
+                }
+            } catch (e) {
+                console.error('Error processing pending artwork:', e);
+                localStorage.removeItem('pendingApprovalArtwork');
+            }
+        }
+    });
+    
+    // Load approved artworks from API/data file
+    async function loadApprovedArtworks() {
+        try {
+            const response = await fetch('../data/approved_artworks.json');
+            if (response.ok) {
+                const approvedArtworks = await response.json();
+                displayApprovedArtworks(approvedArtworks);
+            }
+        } catch (error) {
+            console.log('No approved artworks file found yet, or error loading:', error);
+        }
+    }
+    
+    // Display approved artworks in the showcase
+    function displayApprovedArtworks(artworks) {
+        const grid = document.querySelector('.showcase-grid');
+        if (!grid || !Array.isArray(artworks)) return;
+        
+        artworks.forEach(artwork => {
+            // Check if artwork already exists to avoid duplicates
+            const existingArtwork = grid.querySelector(`[data-artwork-id="${artwork.id}"]`);
+            if (existingArtwork) return;
+            
+            // Initialize like count if not present
+            if (typeof artworkLikeCounts !== 'undefined') {
+                artworkLikeCounts[artwork.id] = artwork.likes || 0;
+                localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
+            }
+            
+            // Create new artwork item
+            const newItem = document.createElement('div');
+            newItem.className = 'showcase-item';
+            newItem.setAttribute('data-category', `${artwork.category || 'other'} all recent`);
+            newItem.setAttribute('data-medium', artwork.medium || 'mixed-media');
+            newItem.setAttribute('data-likes', artwork.likes || '0');
+            newItem.setAttribute('data-date', artwork.date_added);
+            newItem.setAttribute('data-artwork-id', artwork.id);
+            
+            newItem.innerHTML = `
+                <img src="${artwork.image_url}" alt="${artwork.artwork_title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                <div class="showcase-overlay">
+                    <h4>${artwork.artwork_title}</h4>
+                    <p>by ${artwork.artist_name}</p>
+                    <span class="challenge-tag">${getCategoryDisplayName(artwork.category)}</span>
+                    <div class="artwork-stats">
+                        <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${artwork.id}">
+                            <span class="heart">♡</span>
+                            <span class="like-count">${artwork.likes || 0}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add to showcase grid
+            grid.appendChild(newItem);
+        });
+        
+        console.log(`Loaded ${artworks.length} approved artworks`);
+    }
+    
+    // Refresh approved artworks (useful for admin)
+    function refreshApprovedArtworks() {
+        // Clear existing API artworks
+        const grid = document.querySelector('.showcase-grid');
+        if (grid) {
+            const apiArtworks = grid.querySelectorAll('[data-artwork-id^="api-"]');
+            apiArtworks.forEach(item => item.remove());
+        }
+        
+        // Reload from API
+        loadApprovedArtworks();
+        showNotification('🔄 Refreshed approved artworks from email approvals!');
     }
     </script>
 
