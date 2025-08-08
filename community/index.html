@@ -431,18 +431,18 @@
         
         // Validate required fields
         if (!name || !email || !title) {
-            showNotification('⚠️ Please fill out all required fields (Name, Email, and Artwork Title).');
+            showNotification('⚠️ Please fill out all required fields (Name, Email, and Artwork Title).', 'error');
             return false;
         }
         
         if (!file || file.size === 0) {
-            showNotification('⚠️ Please select an artwork file to upload.');
+            showNotification('⚠️ Please select an artwork file to upload.', 'error');
             return false;
         }
         
         // Check file size (10MB limit)
         if (file.size > 10 * 1024 * 1024) {
-            showNotification('⚠️ File size must be less than 10MB. Please choose a smaller image.');
+            showNotification('⚠️ File size must be less than 10MB. Please choose a smaller image.', 'error');
             return false;
         }
         
@@ -469,7 +469,7 @@
             
             if (response.ok) {
                 // Show thank you message
-                showNotification('🎨 Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!');
+                showNotification('🎨 Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!', 'success');
                 
                 // Close modal and reset form
                 closeSubmissionModal();
@@ -486,7 +486,7 @@
             
         } catch (error) {
             console.error('Submission error:', error);
-            showNotification('❌ There was an error submitting your artwork. Please try again.');
+            showNotification('❌ There was an error submitting your artwork. Please try again.', 'error');
             
             // Reset button state
             submitBtn.textContent = originalText;
@@ -1819,30 +1819,30 @@
         
         // Validation
         if (!email || !name) {
-            showNotification('⚠️ Please fill in all required fields');
+            showNotification('⚠️ Please fill in all required fields', 'error');
             return;
         }
         
         if (!robotCheck) {
-            showNotification('⚠️ Please verify you are not a robot');
+            showNotification('⚠️ Please verify you are not a robot', 'error');
             return;
         }
         
         if (captchaAnswer !== correctAnswer) {
-            showNotification('⚠️ Incorrect captcha answer. Please try again.');
+            showNotification('⚠️ Incorrect captcha answer. Please try again.', 'error');
             generateCaptcha();
             document.getElementById('captchaAnswer').value = '';
             return;
         }
         
         if (!rulesAccepted) {
-            showNotification('⚠️ Please accept the community guidelines');
+            showNotification('⚠️ Please accept the community guidelines', 'error');
             return;
         }
         
         // Content filtering
         if (containsInappropriateContent(name)) {
-            showNotification('⚠️ Display name contains inappropriate content');
+            showNotification('⚠️ Display name contains inappropriate content', 'error');
             return;
         }
         
@@ -1866,7 +1866,7 @@
             pendingActionData = null;
         }
         
-        showNotification(`🎉 Welcome to the community, ${name}!`);
+        showNotification(`🎉 Welcome to the community, ${name}!`, 'success');
     }
 
     // Reset login form
@@ -1900,7 +1900,7 @@
         const lastAction = localStorage.getItem(rateLimitKey);
         
         if (lastAction && (now - parseInt(lastAction)) < 60000) { // 1 minute cooldown
-            showNotification('⏰ Please wait before performing this action again');
+            showNotification('⏰ Please wait before performing this action again', 'error');
             return false;
         }
         
@@ -1911,7 +1911,7 @@
     // Action implementations
     function applyToCollaboration(projectId) {
         if (!checkRateLimit('collaboration')) return;
-        showNotification('📝 Collaboration application submitted! The project organizer will contact you via email.');
+        showNotification('📝 Collaboration application submitted! The project organizer will contact you via email.', 'success');
     }
 
     function joinArtTrade() {
@@ -2008,49 +2008,103 @@
         showNotification('🏷️ Prompt tags have been refreshed!');
     }
     
-    // Simple notification function
-    function showNotification(message) {
+    // Improved notification system to prevent overlapping
+    let notificationQueue = [];
+    let currentNotification = null;
+
+    function showNotification(message, type = 'info') {
+        // Add to queue if there's a current notification
+        if (currentNotification) {
+            notificationQueue.push({ message, type });
+            return;
+        }
+        
+        displayNotification(message, type);
+    }
+
+    function displayNotification(message, type) {
+        // Remove any existing notifications first
+        const existing = document.querySelector('.community-notification');
+        if (existing) {
+            existing.remove();
+        }
+        
         // Create notification element
         const notification = document.createElement('div');
+        notification.className = 'community-notification';
+        
+        // Set styles based on type
+        let backgroundColor, textColor;
+        if (type === 'error') {
+            backgroundColor = 'var(--color-secondary-accent)';
+            textColor = 'var(--color-text)';
+        } else if (type === 'success') {
+            backgroundColor = 'var(--color-primary-accent)';
+            textColor = 'var(--color-background)';
+        } else {
+            backgroundColor = 'var(--color-secondary-accent)';
+            textColor = 'var(--color-primary-accent)';
+        }
+        
         notification.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--color-secondary-accent);
-            color: var(--color-primary-accent);
+            background: ${backgroundColor};
+            color: ${textColor};
             padding: 1rem 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             z-index: 10000;
             font-family: var(--font-accent);
             font-size: 0.9rem;
+            font-weight: 600;
             max-width: 300px;
-            animation: slideIn 0.3s ease-out;
+            border: 1px solid rgba(248, 200, 208, 0.3);
+            transform: translateX(100%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
         `;
         notification.textContent = message;
-        
-        // Add animation styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
+        currentNotification = notification;
         
         // Add to page
         document.body.appendChild(notification);
         
-        // Remove after 4 seconds
+        // Show notification with delay for smooth animation
         setTimeout(() => {
-            notification.style.animation = 'slideIn 0.3s ease-out reverse';
+            notification.style.transform = 'translateX(0)';
+            notification.style.opacity = '1';
+        }, 100);
+        
+        // Hide notification after 4 seconds
+        setTimeout(() => {
+            hideNotification(notification);
+        }, 4000);
+    }
+
+    function hideNotification(notification) {
+        if (notification && notification.parentNode) {
+            notification.style.transform = 'translateX(100%)';
+            notification.style.opacity = '0';
+            
             setTimeout(() => {
                 if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
+                    notification.remove();
+                }
+                
+                // Clear current notification
+                if (currentNotification === notification) {
+                    currentNotification = null;
+                }
+                
+                // Show next notification in queue
+                if (notificationQueue.length > 0) {
+                    const next = notificationQueue.shift();
+                    setTimeout(() => displayNotification(next.message, next.type), 200);
                 }
             }, 300);
-        }, 4000);
+        }
     }
     
     // Admin Functions for Manual Artwork Addition

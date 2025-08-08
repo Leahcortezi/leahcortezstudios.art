@@ -12,9 +12,24 @@
     <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
     
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css?v=20250808-2">
     
     <style>
+        /* CACHE BUSTER - Updated Aug 8, 2025 - Version 2 */
+        
+        /* NUCLEAR option for dropdown styling - force everything */
+        * {
+            box-sizing: border-box;
+        }
+        
+        select,
+        select *,
+        select option,
+        select optgroup {
+            background: rgba(0, 0, 0, 0.9) !important;
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            color: #ffffff !important;
+        }
         /* Page-specific styles */
         .admin-main {
             padding-top: var(--nav-height);
@@ -127,9 +142,56 @@
             letter-spacing: 0.5px;
         }
 
-        .form-group input,
-        .form-group textarea,
+        /* AGGRESSIVE dropdown styling fixes */
         .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(248, 200, 208, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3) !important;
+            color: var(--color-text) !important;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Remove default styling completely */
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            
+            /* Custom dropdown arrow */
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f8c8d0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 12px center !important;
+            background-size: 16px !important;
+            padding-right: 40px !important;
+        }
+
+        .form-group select option {
+            background: rgba(0, 0, 0, 0.95) !important;
+            color: #ffffff !important;
+            padding: 8px !important;
+        }
+
+        /* Force dark background on focus */
+        .form-group select:focus option {
+            background: rgba(0, 0, 0, 0.95) !important;
+            color: #ffffff !important;
+        }
+
+        /* Additional browser-specific fixes */
+        select::-ms-expand {
+            display: none;
+        }
+
+        select option:checked {
+            background: rgba(248, 200, 208, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        /* Input and textarea specific styling */
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid rgba(248, 200, 208, 0.3);
@@ -152,25 +214,6 @@
         .form-group input::placeholder,
         .form-group textarea::placeholder {
             color: rgba(255, 255, 255, 0.5);
-        }
-
-        .form-group select option {
-            background: rgba(0, 0, 0, 0.9) !important;
-            color: var(--color-text) !important;
-        }
-
-        /* Fix for webkit browsers (Safari/Chrome) dropdown backgrounds */
-        .form-group select {
-            background: rgba(0, 0, 0, 0.3) !important;
-            color: var(--color-text) !important;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f8c8d0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 40px;
         }
 
         .form-group textarea {
@@ -419,29 +462,58 @@
 
                     <div class="form-group">
                         <label for="medium">Medium/Technique</label>
-                        <select id="medium" name="artwork_medium">
-                            <option value="">Select medium (copy from email)</option>
-                            <option value="digital">Digital Art</option>
-                            <option value="traditional">Traditional Art</option>
-                            <option value="mixed-media">Mixed Media</option>
-                            <option value="photography">Photography</option>
-                            <option value="sculpture">Sculpture</option>
-                            <option value="textile">Textile Art</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <div class="custom-select-wrapper">
+                            <select id="medium" name="artwork_medium" style="display: none;">
+                                <option value="">Select medium (copy from email)</option>
+                                <option value="digital">Digital Art</option>
+                                <option value="traditional">Traditional Art</option>
+                                <option value="mixed-media">Mixed Media</option>
+                                <option value="photography">Photography</option>
+                                <option value="sculpture">Sculpture</option>
+                                <option value="textile">Textile Art</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="custom-select" data-target="medium">
+                                <div class="custom-select-trigger">Select medium (copy from email)</div>
+                                <div class="custom-options">
+                                    <div class="custom-option" data-value="">Select medium (copy from email)</div>
+                                    <div class="custom-option" data-value="digital">Digital Art</div>
+                                    <div class="custom-option" data-value="traditional">Traditional Art</div>
+                                    <div class="custom-option" data-value="mixed-media">Mixed Media</div>
+                                    <div class="custom-option" data-value="photography">Photography</div>
+                                    <div class="custom-option" data-value="sculpture">Sculpture</div>
+                                    <div class="custom-option" data-value="textile">Textile Art</div>
+                                    <div class="custom-option" data-value="other">Other</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select id="category" name="artwork_category">
-                            <option value="">Select category (copy from email)</option>
-                            <option value="daily-prompt">Daily Prompt Response</option>
-                            <option value="personal">Personal Work</option>
-                            <option value="commission">Commission Work</option>
-                            <option value="study">Study/Practice</option>
-                            <option value="collaboration">Collaboration</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <div class="custom-select-wrapper">
+                            <select id="category" name="artwork_category" style="display: none;">
+                                <option value="">Select category (copy from email)</option>
+                                <option value="daily-prompt">Daily Prompt Response</option>
+                                <option value="personal">Personal Work</option>
+                                <option value="commission">Commission Work</option>
+                                <option value="study">Study/Practice</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="custom-select" data-target="category">
+                                <div class="custom-select-trigger">Select category (copy from email)</div>
+                                <div class="custom-options">
+                                    <div class="custom-option" data-value="">Select category (copy from email)</div>
+                                    <div class="custom-option" data-value="daily-prompt">Daily Prompt Response</div>
+                                    <div class="custom-option" data-value="personal">Personal Work</div>
+                                    <div class="custom-option" data-value="commission">Commission Work</div>
+                                    <div class="custom-option" data-value="study">Study/Practice</div>
+                                    <div class="custom-option" data-value="collaboration">Collaboration</div>
+                                    <div class="custom-option" data-value="other">Other</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -578,39 +650,46 @@
             }
         });
 
-        // Improved notification system to prevent overlapping
+        // IMPROVED notification system - force clear all first
         let notificationQueue = [];
         let currentNotification = null;
 
+        function clearAllNotifications() {
+            // Force remove ALL notifications immediately
+            const allNotifications = document.querySelectorAll('.notification');
+            allNotifications.forEach(n => {
+                if (n.parentNode) n.parentNode.removeChild(n);
+            });
+            currentNotification = null;
+            notificationQueue = [];
+        }
+
         function showNotification(message, type = 'success') {
-            // Add to queue if there's a current notification
-            if (currentNotification) {
-                notificationQueue.push({ message, type });
-                return;
-            }
+            // Always clear existing notifications first
+            clearAllNotifications();
             
+            // Display immediately
             displayNotification(message, type);
         }
 
-        function displayNotification(message, type) {
-            // Remove any existing notifications first
-            const existing = document.querySelector('.notification');
-            if (existing) {
-                existing.classList.add('hide');
-                setTimeout(() => existing.remove(), 300);
-            }
-            
+        function displayNotification(message, type) {            
             // Create new notification
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.textContent = message;
+            notification.style.transform = 'translateX(100%)';
+            notification.style.opacity = '0';
             document.body.appendChild(notification);
             currentNotification = notification;
             
-            // Show notification with delay for smooth animation
-            setTimeout(() => notification.classList.add('show'), 100);
+            // Force immediate show
+            requestAnimationFrame(() => {
+                notification.style.transform = 'translateX(0)';
+                notification.style.opacity = '1';
+                notification.classList.add('show');
+            });
             
-            // Hide notification after 4 seconds
+            // Auto-hide after 4 seconds
             setTimeout(() => {
                 if (notification === currentNotification) {
                     hideNotification(notification);
@@ -619,24 +698,16 @@
         }
 
         function hideNotification(notification) {
-            if (notification) {
-                notification.classList.remove('show');
-                notification.classList.add('hide');
+            if (notification && notification.parentNode) {
+                notification.style.transform = 'translateX(100%)';
+                notification.style.opacity = '0';
                 
                 setTimeout(() => {
                     if (notification.parentNode) {
-                        notification.remove();
+                        notification.parentNode.removeChild(notification);
                     }
-                    
-                    // Clear current notification
                     if (currentNotification === notification) {
                         currentNotification = null;
-                    }
-                    
-                    // Show next notification in queue
-                    if (notificationQueue.length > 0) {
-                        const next = notificationQueue.shift();
-                        setTimeout(() => displayNotification(next.message, next.type), 200);
                     }
                 }, 300);
             }
