@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify FormSubmit Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .info {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verify FormSubmit Email</h1>
+        
+        <div class="info">
+            <strong>Purpose:</strong> This form will send a verification email to your FormSubmit address. 
+            After submitting, check your email (including spam folder) for a verification link from FormSubmit.
+        </div>
+        
+        <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art">
+            <!-- FormSubmit configuration -->
+            <input type="hidden" name="_subject" value="FormSubmit Email Verification Test">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="file:///Users/billyjoel/Documents/leahcortezstudios.art/verify-email.html?success=true">
+            
+            <div class="form-group">
+                <label for="test-name">Your Name:</label>
+                <input type="text" id="test-name" name="test_name" value="Email Verification Test" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="test-message">Test Message:</label>
+                <textarea id="test-message" name="test_message" rows="4" required>This is a test submission to verify the FormSubmit email integration for Leah Cortez Studios community form.</textarea>
+            </div>
+            
+            <button type="submit">Send Verification Email</button>
+        </form>
+        
+        <script>
+            // Check if form was submitted successfully
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <h1>✅ Verification Email Sent!</h1>
+                        <div class="info">
+                            <p><strong>Next Steps:</strong></p>
+                            <ol>
+                                <li>Check your email: <strong>contact@leahcortezstudios.art</strong></li>
+                                <li>Look in spam/junk folder if not in inbox</li>
+                                <li>Click the verification link from FormSubmit</li>
+                                <li>After verification, your community form will work!</li>
+                            </ol>
+                        </div>
+                        <p><a href="/community/">← Back to Community Page</a></p>
+                    </div>
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>
