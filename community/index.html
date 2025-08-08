@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         <div class="prompt-text" id="dailyPrompt">
-                            Loading today's creative prompt...
+                            Generating today's creative prompt...
                         </div>
                         <div class="prompt-tags">
                             <span class="tag">daily</span>
@@ -795,10 +795,14 @@
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         
-        const countdownElement = document.getElementById('countdown');
-        if (countdownElement) {
-            countdownElement.textContent = `Next prompt in: ${hours}h ${minutes}m ${seconds}s`;
-        }
+        // Update individual time elements
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        
+        if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
+        if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
+        if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
     }
 
     // Show notification messages
@@ -878,20 +882,6 @@
         } else {
             updateCountdownDisplay(timeUntilTomorrow);
         }
-    }
-
-    function updateCountdownDisplay(timeRemaining) {
-        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-        
-        const hoursElement = document.getElementById('hours');
-        const minutesElement = document.getElementById('minutes');
-        const secondsElement = document.getElementById('seconds');
-        
-        if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
-        if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
-        if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
     }
 
     // Close modal with Escape key
