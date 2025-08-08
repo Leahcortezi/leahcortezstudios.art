@@ -883,35 +883,52 @@
         // Start countdown timer immediately
         console.log('Initializing timer...');
         
-        // Simple timer function
-        function startTimer() {
-            const updateTimer = () => {
-                const now = new Date();
-                const midnight = new Date(now);
-                midnight.setDate(midnight.getDate() + 1);
-                midnight.setHours(0, 0, 0, 0);
-                
-                const timeLeft = midnight.getTime() - now.getTime();
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                // Force update elements
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-                
-                console.log(`Timer updated: ${hours}:${minutes}:${seconds}`);
-            };
+        // Test if DOM elements exist
+        setTimeout(() => {
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
             
-            // Update immediately
-            updateTimer();
-            // Then update every second
-            setInterval(updateTimer, 1000);
-        }
-        
-        // Start the timer
-        startTimer();
+            console.log('Timer elements check:', {
+                hours: hoursEl ? 'found' : 'NOT FOUND',
+                minutes: minutesEl ? 'found' : 'NOT FOUND', 
+                seconds: secondsEl ? 'found' : 'NOT FOUND'
+            });
+            
+            if (hoursEl && minutesEl && secondsEl) {
+                // Elements found, start timer
+                hoursEl.textContent = 'OK';
+                minutesEl.textContent = 'OK';
+                secondsEl.textContent = 'OK';
+                
+                console.log('Set test values, starting actual timer...');
+                
+                // Simple timer function
+                function updateTimer() {
+                    const now = new Date();
+                    const midnight = new Date(now);
+                    midnight.setDate(midnight.getDate() + 1);
+                    midnight.setHours(0, 0, 0, 0);
+                    
+                    const timeLeft = midnight.getTime() - now.getTime();
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    hoursEl.textContent = String(hours).padStart(2, '0');
+                    minutesEl.textContent = String(minutes).padStart(2, '0');
+                    secondsEl.textContent = String(seconds).padStart(2, '0');
+                    
+                    console.log(`Timer: ${hours}:${minutes}:${seconds}`);
+                }
+                
+                // Start immediately and repeat
+                updateTimer();
+                setInterval(updateTimer, 1000);
+            } else {
+                console.error('Timer elements not found in DOM');
+            }
+        }, 500); // Wait 500ms for DOM to be ready
         
         // Initialize stats with animation
         try {
@@ -2369,6 +2386,38 @@
 
     <!-- Include main script for floating icons -->
     <script src="../scripts/main.js"></script>
+
+    <!-- Simple Timer Script - No Dependencies -->
+    <script>
+        function simpleUpdateTimer() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const diff = tomorrow - now;
+            
+            if (diff > 0) {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+                
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+        
+        // Start immediately
+        setTimeout(() => {
+            simpleUpdateTimer();
+            setInterval(simpleUpdateTimer, 1000);
+        }, 100);
+    </script>
 
     <!-- Footer -->
     <footer class="main-footer">
