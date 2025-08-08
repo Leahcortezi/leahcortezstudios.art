@@ -1525,6 +1525,56 @@ body {
         min-width: 80px;
         text-align: center;
     }
+    
+    /* Mobile-friendly showcase - no hover required */
+    .showcase-overlay {
+        transform: translateY(0) !important;
+        position: relative !important;
+        background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(0, 0, 0, 0.98)) !important;
+        border-top: 2px solid rgba(248, 200, 208, 0.2) !important;
+        min-height: auto !important;
+        padding: 1rem !important;
+        margin-top: 0.5rem;
+        border-radius: 0 0 12px 12px;
+    }
+    
+    .showcase-item {
+        background: rgba(18, 18, 18, 0.3);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(248, 200, 208, 0.15);
+    }
+    
+    .placeholder-image {
+        border-radius: 12px 12px 0 0 !important;
+    }
+    
+    .showcase-overlay h4 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .showcase-overlay p {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .artwork-stats {
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+    }
+    
+    .like-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        border-radius: 15px;
+    }
+    
+    .challenge-tag {
+        font-size: 0.6rem !important;
+        padding: 0.1rem 0.3rem !important;
+        max-width: 70px !important;
+    }
 }
 
 .artwork-stats {

@@ -284,7 +284,7 @@
                     
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" onclick="closeSubmissionModal()">Cancel</button>
-                        <button type="submit" class="submit-btn" onclick="handleFormSubmission(event)">Submit Artwork</button>
+                        <button type="button" class="submit-btn" onclick="handleFormSubmission(event)">Submit Artwork</button>
                     </div>
                 </form>
             </div>
@@ -369,7 +369,7 @@
     <script>
     // Form submission handler
     function handleFormSubmission(event) {
-        event.preventDefault();
+        console.log('Form submission started');
         
         const form = document.querySelector('.artwork-submission-form');
         const formData = new FormData(form);
@@ -380,14 +380,46 @@
         const description = formData.get('description');
         const file = formData.get('artwork');
         
-        if (file && file.size > 0) {
+        console.log('Form data:', { name, email, title, file: file ? file.name : 'No file' });
+        
+        // Validate required fields
+        if (!name || !email || !title) {
+            alert('Please fill out all required fields (Name, Email, and Artwork Title).');
+            return;
+        }
+        
+        if (!file || file.size === 0) {
+            alert('Please select an artwork file to upload.');
+            return;
+        }
+        
+        // Check file size (10MB limit)
+        if (file.size > 10 * 1024 * 1024) {
+            alert('File size must be less than 10MB. Please choose a smaller image.');
+            return;
+        }
+        
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        try {
+            console.log('About to add artwork to showcase and submit form');
+            
             // Create a new artwork entry in the showcase
             addArtworkToShowcase(name, title, description, file);
             
-            // Submit to FormSubmit (this will redirect)
+            // Submit the actual form to FormSubmit
             form.submit();
-        } else {
-            alert('Please select an artwork file to upload.');
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('There was an error submitting your artwork. Please try again.');
+            
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         }
     }
 
