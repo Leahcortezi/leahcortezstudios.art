@@ -1570,3 +1570,348 @@ function resetLearningProgress() {
     
     showNotification('🔄 Learning progress reset for new challenge!');
 }
+
+/**
+ * Community Hub Interactive Functions
+ */
+
+// Poll System
+let pollData = {
+    'digital-painting': 23,
+    'color-theory': 31,
+    'composition': 18,
+    'mixed-media': 14
+};
+
+function initializePoll() {
+    // Check if user has already voted
+    const hasVoted = localStorage.getItem('pollVoted');
+    if (hasVoted) {
+        updatePollDisplay(true);
+    }
+    
+    // Add click handlers to poll options
+    document.querySelectorAll('.poll-option').forEach(option => {
+        option.addEventListener('click', handlePollVote);
+    });
+}
+
+function handlePollVote(event) {
+    const hasVoted = localStorage.getItem('pollVoted');
+    if (hasVoted) {
+        showNotification('⚠️ You have already voted in this poll!');
+        return;
+    }
+    
+    const optionElement = event.currentTarget;
+    const option = optionElement.dataset.option;
+    
+    // Increment vote count
+    pollData[option]++;
+    
+    // Mark as voted
+    localStorage.setItem('pollVoted', 'true');
+    localStorage.setItem('userVote', option);
+    
+    // Update display
+    updatePollDisplay(true);
+    showNotification('✅ Your vote has been recorded!');
+}
+
+function updatePollDisplay(showResults = false) {
+    const totalVotes = Object.values(pollData).reduce((sum, votes) => sum + votes, 0);
+    
+    Object.keys(pollData).forEach(option => {
+        const optionElement = document.querySelector(`[data-option="${option}"]`);
+        const voteCountElement = optionElement.querySelector('.vote-count');
+        const percentage = ((pollData[option] / totalVotes) * 100).toFixed(1);
+        
+        voteCountElement.textContent = showResults ? `${pollData[option]} (${percentage}%)` : pollData[option];
+        
+        if (showResults) {
+            optionElement.classList.add('voted');
+            optionElement.style.setProperty('--vote-percentage', `${percentage}%`);
+        }
+    });
+    
+    // Update total votes
+    const pollStats = document.querySelector('.poll-stats');
+    if (pollStats) {
+        pollStats.textContent = `Total votes: ${totalVotes}`;
+    }
+}
+
+// Theme Challenge System
+function joinThemeChallenge() {
+    const userId = getUserId();
+    const challengeParticipants = JSON.parse(localStorage.getItem('challengeParticipants') || '[]');
+    
+    if (!challengeParticipants.includes(userId)) {
+        challengeParticipants.push(userId);
+        localStorage.setItem('challengeParticipants', JSON.stringify(challengeParticipants));
+        showNotification('🎨 You\'ve joined the Urban Solitude challenge!');
+        
+        // Update UI
+        const joinBtn = document.querySelector('.theme-btn:not(.secondary)');
+        if (joinBtn) {
+            joinBtn.textContent = 'Joined!';
+            joinBtn.style.background = 'linear-gradient(135deg, #2e7d32, #4caf50)';
+        }
+    } else {
+        showNotification('✅ You\'re already participating in this challenge!');
+    }
+}
+
+function viewThemeGallery() {
+    // Switch to Community Showcase tab and filter by theme
+    switchTab('showcase');
+    setTimeout(() => {
+        const themeFilter = document.querySelector('[data-filter="featured"]');
+        if (themeFilter) {
+            themeFilter.click();
+        }
+        showNotification('📸 Viewing Urban Solitude submissions...');
+    }, 300);
+}
+
+// Community Board System
+let communityPosts = [
+    {
+        id: 1,
+        author: 'Alex_Artist',
+        content: 'Just finished my first urban landscape! The contrast between bustling streets and quiet moments really speaks to me. Anyone else exploring cityscapes?',
+        time: '2h ago',
+        replies: 3,
+        supports: 7
+    },
+    {
+        id: 2,
+        author: 'Maya_Creates',
+        content: 'Struggling with color harmony in my latest piece. Any tips for creating mood without overwhelming the composition?',
+        time: '4h ago',
+        replies: 8,
+        supports: 12
+    },
+    {
+        id: 3,
+        author: 'Jordan_Sketches',
+        content: 'Love seeing everyone\'s progress! There\'s something magical about this community - we\'re all growing together. Keep creating! ✨',
+        time: '6h ago',
+        replies: 15,
+        supports: 23
+    }
+];
+
+function replyToPost(postId) {
+    const post = communityPosts.find(p => p.id === postId);
+    if (post) {
+        const replyText = prompt(`Reply to ${post.author}:`);
+        if (replyText && replyText.trim()) {
+            showNotification(`💬 Reply sent to ${post.author}!`);
+        }
+    }
+}
+
+function supportPost(postId) {
+    const userId = getUserId();
+    const supportKey = `support_${postId}_${userId}`;
+    
+    if (localStorage.getItem(supportKey)) {
+        showNotification('💝 You already supported this post!');
+        return;
+    }
+    
+    const post = communityPosts.find(p => p.id === postId);
+    if (post) {
+        post.supports++;
+        localStorage.setItem(supportKey, 'true');
+        
+        // Update UI
+        const supportBtn = document.querySelector(`[onclick="supportPost(${postId})"]`);
+        if (supportBtn) {
+            supportBtn.textContent = `💝 Support (${post.supports})`;
+            supportBtn.style.color = 'var(--color-primary-accent)';
+        }
+        
+        showNotification('💝 Post supported!');
+    }
+}
+
+function addNewPost() {
+    const postContent = prompt('Share something with the community:');
+    if (postContent && postContent.trim()) {
+        const userId = getUserId();
+        const newPost = {
+            id: Date.now(),
+            author: `Artist_${userId.slice(0, 6)}`,
+            content: postContent.trim(),
+            time: 'just now',
+            replies: 0,
+            supports: 0
+        };
+        
+        communityPosts.unshift(newPost);
+        refreshCommunityBoard();
+        showNotification('📝 Your post has been added to the community board!');
+    }
+}
+
+function refreshCommunityBoard() {
+    const boardPosts = document.querySelector('.board-posts');
+    if (!boardPosts) return;
+    
+    boardPosts.innerHTML = communityPosts.map(post => `
+        <div class="board-post">
+            <div class="post-header">
+                <span class="post-author">${post.author}</span>
+                <span class="post-time">${post.time}</span>
+            </div>
+            <div class="post-content">${post.content}</div>
+            <div class="post-actions">
+                <button class="post-action" onclick="replyToPost(${post.id})">💬 Reply (${post.replies})</button>
+                <button class="post-action" onclick="supportPost(${post.id})">💝 Support (${post.supports})</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Trending Topics System
+let trendingTopics = [
+    { tag: '#UrbanSolitude2025', posts: 47 },
+    { tag: '#ColorTheoryChallenge', posts: 23 },
+    { tag: '#MixedMediaMagic', posts: 18 },
+    { tag: '#BeginnerFriendly', posts: 31 },
+    { tag: '#DigitalPainting', posts: 15 }
+];
+
+function updateTrendingTopics() {
+    // Simulate trending topic updates
+    trendingTopics.forEach(topic => {
+        if (Math.random() > 0.7) {
+            topic.posts += Math.floor(Math.random() * 3);
+        }
+    });
+    
+    // Sort by post count
+    trendingTopics.sort((a, b) => b.posts - a.posts);
+    
+    // Update UI
+    const trendingList = document.querySelector('.trending-list');
+    if (trendingList) {
+        trendingList.innerHTML = trendingTopics.map(topic => `
+            <div class="trending-item">
+                <span class="trending-tag">${topic.tag}</span>
+                <span class="trending-count">${topic.posts} posts</span>
+            </div>
+        `).join('');
+    }
+}
+
+// Quick Actions System
+function startCollaboration() {
+    const collaborationTypes = [
+        'Art Trade - Exchange artwork with another artist',
+        'Skill Share - Teach something, learn something new',
+        'Joint Project - Work together on a larger piece',
+        'Feedback Partnership - Regular constructive feedback'
+    ];
+    
+    const type = collaborationTypes[Math.floor(Math.random() * collaborationTypes.length)];
+    showNotification(`🤝 Collaboration Match: ${type}`);
+}
+
+function getRandomPrompt() {
+    const prompts = [
+        'Draw your ideal creative workspace',
+        'Create art inspired by your morning routine',
+        'Illustrate a memory from childhood',
+        'Design a character based on your personality',
+        'Paint the mood of your favorite song',
+        'Draw what hope looks like to you',
+        'Create art using only three colors',
+        'Illustrate a dream you remember vividly'
+    ];
+    
+    const prompt = prompts[Math.floor(Math.random() * prompts.length)];
+    showNotification(`🎨 Today's Prompt: ${prompt}`);
+}
+
+function shareProgress() {
+    const progressTypes = [
+        'Work in Progress',
+        'Before & After',
+        'Process Video',
+        'Technique Breakdown',
+        'Inspiration Board'
+    ];
+    
+    const type = progressTypes[Math.floor(Math.random() * progressTypes.length)];
+    showNotification(`📸 Share as: ${type}`);
+}
+
+function openQAForum() {
+    showNotification('❓ Q&A Forum: Ask questions, share knowledge, help others grow!');
+}
+
+function requestFeedback() {
+    showNotification('🔍 Feedback Request: Get constructive feedback from the community!');
+}
+
+function browseResources() {
+    // Switch to resources or learning section
+    showNotification('📚 Opening community resources...');
+}
+
+// Community Stats System
+let communityStats = {
+    activeArtists: 847,
+    artworks: 1243,
+    comments: 3592,
+    collaborations: 156
+};
+
+function updateCommunityStats() {
+    // Simulate real-time updates
+    if (Math.random() > 0.8) {
+        communityStats.activeArtists += Math.floor(Math.random() * 3);
+        communityStats.artworks += Math.floor(Math.random() * 5);
+        communityStats.comments += Math.floor(Math.random() * 10);
+        communityStats.collaborations += Math.floor(Math.random() * 2);
+    }
+    
+    // Update UI
+    const statsElements = {
+        '.stat-item:nth-child(1) .stat-number': communityStats.activeArtists,
+        '.stat-item:nth-child(2) .stat-number': communityStats.artworks,
+        '.stat-item:nth-child(3) .stat-number': communityStats.comments,
+        '.stat-item:nth-child(4) .stat-number': communityStats.collaborations
+    };
+    
+    Object.entries(statsElements).forEach(([selector, value]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.textContent = value.toLocaleString();
+        }
+    });
+}
+
+// Initialize Community Hub
+function initializeCommunityHub() {
+    initializePoll();
+    refreshCommunityBoard();
+    updateTrendingTopics();
+    updateCommunityStats();
+    
+    // Set up periodic updates
+    setInterval(updateTrendingTopics, 30000); // Update every 30 seconds
+    setInterval(updateCommunityStats, 45000); // Update every 45 seconds
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the community page and hub tab is active
+    if (document.querySelector('#community-hub')) {
+        initializeCommunityHub();
+    }
+});
+

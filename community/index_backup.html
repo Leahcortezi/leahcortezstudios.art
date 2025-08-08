@@ -69,28 +69,9 @@
                                     <span class="time-value" id="seconds">00</span>
                                     <span class="time-label">Seconds</span>
                                 </div>
-                                <script>
-                                    // Countdown to midnight (next day)
-                                    function updateCountdownToMidnight() {
-                                        const now = new Date();
-                                        const midnight = new Date(now);
-                                        midnight.setDate(midnight.getDate() + 1);
-                                        midnight.setHours(0, 0, 0, 0);
-
-                                        const diff = midnight - now;
-                                        const hours = Math.floor(diff / (1000 * 60 * 60));
-                                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                                        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                                        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                                        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                                        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                                    }
-                                    setInterval(updateCountdownToMidnight, 1000);
-                                    updateCountdownToMidnight();
-                                </script>
-                                </div>
                             </div>
+                        </div>
+                        
                         <div class="prompt-text" id="dailyPrompt">
                             Create a bold artwork that explores the concept of memory through mixed media.
                         </div>
@@ -117,32 +98,139 @@
                 <!-- Welcome Section -->
                 <div class="welcome-section">
                     <div class="welcome-content">
-                        <h3>Free Printable Packs - Coming Soon!</h3>
-                        <p>I'm currently creating a collection of artistic printables designed for creative minds. Perfect for relaxation, art practice, and making your own mini publications.</p>
-                        <p><strong>Coming Soon:</strong> Print-at-home creative resources you can download directly from my site.</p>
+                        <h3>Creative Printables & Activity Packs</h3>
+                        <p>Download fun, artistic printables designed for creative minds. Perfect for relaxation, art practice, or making your own mini publications.</p>
+                        <p><strong>Print at home</strong> and enjoy analog creativity. <strong>Share with friends</strong> - all our printables are free to download and distribute!</p>
                     </div>
                 </div>
 
-                <!-- Coming Soon Resources -->
-                <div class="coming-soon-section">
-                    <h3>Preview: What's Being Created</h3>
-                    <div class="preview-grid">
-                        <div class="preview-item">
-                            <h4>Flash Style Coloring Sheets</h4>
-                            <p>Bold, iconic flash art designs perfect for practicing traditional tattoo coloring techniques</p>
-                            <span class="coming-soon-badge">Coming Soon</span>
-                        </div>
-                        <div class="preview-item">
-                            <h4>DIY Zine Sets</h4>
-                            <p>Complete zine creation kits with templates, covers, and step-by-step assembly guides</p>
-                            <span class="coming-soon-badge">Coming Soon</span>
-                        </div>
-                        <div class="preview-item">
-                            <h4>And Many More...</h4>
-                            <p>Custom requests, seasonal themes, and experimental creative tools</p>
-                            <span class="coming-soon-badge">In Development</span>
+                <!-- Resources Grid -->
+                <div class="resources-grid">
+                    
+                    <!-- Coloring & Drawing -->
+                    <div class="resource-category">
+                        <h3>Coloring & Drawing Packs</h3>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">�</div>
+                                <div class="resource-content">
+                                    <h5>Gothic Mandala Coloring Pack</h5>
+                                    <p>12 intricate mandala designs with gothic motifs - roses, moons, and ornate patterns for mindful coloring</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('gothic-mandalas')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🌸</div>
+                                <div class="resource-content">
+                                    <h5>Botanical Line Art Collection</h5>
+                                    <p>8 detailed botanical illustrations ready to color - perfect for practicing color theory and shading</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('botanical-coloring')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🏛️</div>
+                                <div class="resource-content">
+                                    <h5>Architecture Sketch Prompts</h5>
+                                    <p>Drawing practice sheets with architectural elements, perspective guides, and building details to copy</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('architecture-sketches')">Download PDF</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- DIY Zines & Journals -->
+                    <div class="hub-section resource-category">
+                        <h4>📖 DIY Zines & Journals</h4>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">✂️</div>
+                                <div class="resource-content">
+                                    <h5>Make Your Own Art Zine Kit</h5>
+                                    <p>Cut-and-fold templates for creating 8-page mini zines - includes covers, layouts, and assembly instructions</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('zine-kit')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">�</div>
+                                <div class="resource-content">
+                                    <h5>Artist's Daily Journal Pages</h5>
+                                    <p>Printable journal sheets with prompts, sketch spaces, and mood trackers designed for creative minds</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('daily-journal')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">📚</div>
+                                <div class="resource-content">
+                                    <h5>Vintage-Style Collage Papers</h5>
+                                    <p>Printable vintage patterns, textures, and decorative elements for analog collage and scrapbooking</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('collage-papers')">Download PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paper Crafts & Games -->
+                    <div class="hub-section resource-category">
+                        <h4>✂️ Paper Crafts & Activities</h4>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">🎭</div>
+                                <div class="resource-content">
+                                    <h5>Art History Trading Cards</h5>
+                                    <p>Cut-out trading cards featuring famous artworks and artists - collect, color, and learn art history</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('art-trading-cards')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🎲</div>
+                                <div class="resource-content">
+                                    <h5>Creative Prompt Dice</h5>
+                                    <p>Print, cut, and fold paper dice with creative prompts - roll for instant art inspiration</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('prompt-dice')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">�</div>
+                                <div class="resource-content">
+                                    <h5>Geometric Pattern Templates</h5>
+                                    <p>Cut-out stencils and patterns for creating geometric art - includes sacred geometry and Art Deco designs</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('geometric-templates')">Download PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stickers & Ephemera -->
+                    <div class="hub-section resource-category">
+                        <h4>🌟 Stickers & Decorative Packs</h4>
+                        <div class="resource-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">⭐</div>
+                                <div class="resource-content">
+                                    <h5>Printable Art Sticker Sheets</h5>
+                                    <p>Cute stickers featuring art supplies, motivational quotes, and creative symbols - perfect for planners</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('art-stickers')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">💌</div>
+                                <div class="resource-content">
+                                    <h5>Vintage-Style Letter Writing Set</h5>
+                                    <p>Decorative letterheads, envelope templates, and wax seal designs for analog correspondence</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('letter-set')">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🏷️</div>
+                                <div class="resource-content">
+                                    <h5>Artistic Gift Tags & Labels</h5>
+                                    <p>Beautiful printable tags and labels with artistic motifs - perfect for gift wrapping and organizing</p>
+                                    <button class="resource-btn" onclick="downloadPrintable('gift-tags')">Download PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -167,6 +255,7 @@
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="newest">Newest</button>
                         <button class="filter-btn" data-filter="popular">Most Popular</button>
+                        <button class="filter-btn" data-filter="featured">Featured</button>
                         <button class="filter-btn" data-filter="prompt">Prompt Responses</button>
                     </div>
                     
@@ -186,46 +275,91 @@
 
                 <!-- Gallery Grid -->
                 <div class="showcase-grid">
-                    <div class="showcase-item" data-category="all recent" data-medium="mixed-media" data-likes="0" data-date="2025-08-07">
+                    <div class="showcase-item" data-category="all recent" data-medium="mixed-media" data-likes="12" data-date="2025-08-07">
                         <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #f8c8d0);"></div>
                         <div class="showcase-overlay">
-                            <h4>Memory & Time</h4>
-                            <p>by Alex Rivera</p>
+                            <h4>Untitled #1</h4>
+                            <p>by John Doe</p>
                             <span class="challenge-tag">Mixed Media</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="1">
                                     <span class="heart">♡</span>
-                                    <span class="like-count" style="display: none;">0</span>
+                                    <span class="like-count">12</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="showcase-item" data-category="all recent" data-medium="digital" data-likes="0" data-date="2025-08-06">
+                    <div class="showcase-item" data-category="all featured" data-medium="digital" data-likes="8" data-date="2025-08-06">
                         <div class="placeholder-image" style="background: linear-gradient(135deg, #f8c8d0, #7e1c2e);"></div>
                         <div class="showcase-overlay">
-                            <h4>Digital Dreams</h4>
-                            <p>by Sam Chen</p>
+                            <h4>Untitled #2</h4>
+                            <p>by John Doe</p>
                             <span class="challenge-tag">Digital Art</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="2">
                                     <span class="heart">♡</span>
-                                    <span class="like-count" style="display: none;">0</span>
+                                    <span class="like-count">8</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="showcase-item" data-category="all prompt" data-medium="oil" data-likes="0" data-date="2025-08-05">
+                    <div class="showcase-item" data-category="all prompt" data-medium="oil" data-likes="15" data-date="2025-08-05">
                         <div class="placeholder-image" style="background: linear-gradient(45deg, #7e1c2e, #333);"></div>
                         <div class="showcase-overlay">
-                            <h4>Urban Solitude</h4>
-                            <p>by Jordan Blake</p>
+                            <h4>Untitled #3</h4>
+                            <p>by John Doe</p>
                             <span class="challenge-tag">Oil Painting</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="3">
                                     <span class="heart">♡</span>
-                                    <span class="like-count" style="display: none;">0</span>
+                                    <span class="like-count">15</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all recent" data-medium="watercolor" data-likes="6" data-date="2025-08-04">
+                        <div class="placeholder-image" style="background: linear-gradient(45deg, #f8c8d0, #666);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #4</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Watercolor</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="4">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">6</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all featured" data-medium="acrylic" data-likes="20" data-date="2025-08-03">
+                        <div class="placeholder-image" style="background: linear-gradient(90deg, #7e1c2e, #f8c8d0);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #5</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Acrylic</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="5">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">20</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-item" data-category="all prompt" data-medium="charcoal" data-likes="11" data-date="2025-08-02">
+                        <div class="placeholder-image" style="background: linear-gradient(180deg, #f8c8d0, #7e1c2e);"></div>
+                        <div class="showcase-overlay">
+                            <h4>Untitled #6</h4>
+                            <p>by John Doe</p>
+                            <span class="challenge-tag">Charcoal</span>
+                            <div class="artwork-stats">
+                                <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="6">
+                                    <span class="heart">♡</span>
+                                    <span class="like-count">11</span>
                                 </button>
                             </div>
                         </div>
@@ -437,16 +571,6 @@
     // Tab functionality
     document.addEventListener('DOMContentLoaded', function() {
         console.log('Tab functionality loaded');
-        
-        // Initialize poll
-        initializePoll();
-        
-        // Add poll form listener
-        const pollForm = document.getElementById('printablePoll');
-        if (pollForm) {
-            pollForm.addEventListener('submit', submitPoll);
-        }
-        
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabName = btn.dataset.tab;
@@ -562,37 +686,29 @@
         const tagContainer = document.querySelector('.prompt-tags');
         if (!tagContainer) return;
         
-        // Define tag categories to prevent clashing
-        const tagCategories = {
-            style: ["expressive", "contemplative", "intuitive", "experimental", "atmospheric", "gestural", "spontaneous", "personal", "intimate", "dreamy", "playful", "nostalgic"],
-            approach: ["structured", "fluid", "loose", "controlled", "focused", "grounded", "balanced", "rhythmic", "open", "unified"],
-            quality: ["bold", "subtle", "raw", "refined", "precise", "dynamic", "layered", "simplified", "rich", "spare"],
-            mood: ["warm", "ethereal", "earthy", "flowing", "weightless", "expansive", "traditional", "contemporary", "natural", "urban"],
-            form: ["organic", "geometric", "smooth", "textured", "angular", "curved", "linear", "circular", "fragmented", "contained"]
-        };
+        // Generate random tags based on the prompt
+        const allTags = [
+            "expressive", "contemplative", "intuitive", "structured", "fluid", "bold", "subtle", "raw", "refined", "experimental",
+            "atmospheric", "graphic", "gestural", "precise", "spontaneous", "controlled", "loose", "tight", "dynamic", "static",
+            "warm", "cool", "contrast", "harmony", "layered", "simplified", "complex", "minimal", "rich", "spare",
+            "organic", "geometric", "smooth", "textured", "light", "shadow", "vibrant", "muted", "soft", "hard",
+            "personal", "universal", "intimate", "expansive", "focused", "scattered", "grounded", "floating", "heavy", "weightless",
+            "traditional", "contemporary", "nostalgic", "futuristic", "earthy", "ethereal", "industrial", "natural", "urban", "rural",
+            "playful", "serious", "dreamy", "sharp", "flowing", "angular", "curved", "linear", "circular", "fragmented",
+            "unified", "balanced", "asymmetrical", "rhythmic", "chaotic", "ordered", "open", "contained", "transparent", "opaque"
+        ];
+        const randomTags = [];
         
-        const selectedTags = [];
-        const usedCategories = [];
-        
-        // Select 3-4 tags from different categories to avoid clashing
+        // Select 3-4 random tags
         const tagCount = Math.floor(Math.random() * 2) + 3; // 3 or 4 tags
-        const categoryKeys = Object.keys(tagCategories);
-        
-        while (selectedTags.length < tagCount && usedCategories.length < categoryKeys.length) {
-            const randomCategoryIndex = Math.floor(Math.random() * categoryKeys.length);
-            const categoryKey = categoryKeys[randomCategoryIndex];
-            
-            // Skip if we've already used this category
-            if (usedCategories.includes(categoryKey)) continue;
-            
-            const categoryTags = tagCategories[categoryKey];
-            const randomTag = categoryTags[Math.floor(Math.random() * categoryTags.length)];
-            
-            selectedTags.push(randomTag);
-            usedCategories.push(categoryKey);
+        while (randomTags.length < tagCount) {
+            const randomTag = allTags[Math.floor(Math.random() * allTags.length)];
+            if (!randomTags.includes(randomTag)) {
+                randomTags.push(randomTag);
+            }
         }
         
-        tagContainer.innerHTML = selectedTags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        tagContainer.innerHTML = randomTags.map(tag => `<span class="tag">${tag}</span>`).join('');
     }
 
     function generateNewPrompt() {
@@ -713,6 +829,246 @@
         }
     }
 
+    // Printable Download Functions
+    function downloadPrintable(printableType) {
+        const printableInfo = {
+            'gothic-mandalas': {
+                title: 'Gothic Mandala Coloring Pack',
+                description: '12 intricate mandala designs featuring gothic motifs including roses, moons, ornate patterns, and mystical symbols. Perfect for relaxation and mindful coloring.',
+                pages: '12 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'Intermediate to Advanced'
+            },
+            'botanical-coloring': {
+                title: 'Botanical Line Art Collection',
+                description: '8 detailed botanical illustrations of flowers, leaves, and plants. Beautiful line art perfect for practicing color theory, shading techniques, and botanical studies.',
+                pages: '8 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'Beginner to Intermediate'
+            },
+            'architecture-sketches': {
+                title: 'Architecture Sketch Prompts',
+                description: 'Drawing practice sheets featuring architectural elements, perspective guides, building details, and structural studies to improve your drawing skills.',
+                pages: '10 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'Intermediate'
+            },
+            'zine-kit': {
+                title: 'Make Your Own Art Zine Kit',
+                description: 'Complete kit for creating 8-page mini zines. Includes multiple cover designs, layout templates, and step-by-step folding instructions.',
+                pages: '6 template sheets',
+                format: 'PDF (US Letter)',
+                difficulty: 'Beginner'
+            },
+            'daily-journal': {
+                title: "Artist's Daily Journal Pages",
+                description: 'Printable journal sheets with creative prompts, sketch spaces, mood trackers, and reflection areas designed specifically for artists and creative minds.',
+                pages: '15 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            },
+            'collage-papers': {
+                title: 'Vintage-Style Collage Papers',
+                description: 'Collection of printable vintage patterns, textures, decorative borders, and ephemera perfect for analog collage, scrapbooking, and mixed media art.',
+                pages: '20 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            },
+            'art-trading-cards': {
+                title: 'Art History Trading Cards',
+                description: 'Cut-out trading cards featuring famous artworks, artists, and art movements. Educational and fun - collect, color, and learn art history.',
+                pages: '12 card sheets',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            },
+            'prompt-dice': {
+                title: 'Creative Prompt Dice',
+                description: 'Print, cut, and fold paper dice with creative prompts for subjects, mediums, styles, and techniques. Roll for instant art inspiration.',
+                pages: '4 dice templates',
+                format: 'PDF (US Letter)',
+                difficulty: 'Beginner'
+            },
+            'geometric-templates': {
+                title: 'Geometric Pattern Templates',
+                description: 'Cut-out stencils and templates for creating geometric art including sacred geometry, Art Deco patterns, and mandala guides.',
+                pages: '8 template sheets',
+                format: 'PDF (US Letter)',
+                difficulty: 'Intermediate'
+            },
+            'art-stickers': {
+                title: 'Printable Art Sticker Sheets',
+                description: 'Cute stickers featuring art supplies, motivational quotes, palette icons, and creative symbols. Perfect for decorating planners and sketchbooks.',
+                pages: '6 sticker sheets',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            },
+            'letter-set': {
+                title: 'Vintage-Style Letter Writing Set',
+                description: 'Decorative letterheads, envelope templates, wax seal designs, and writing paper for beautiful analog correspondence.',
+                pages: '12 pages',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            },
+            'gift-tags': {
+                title: 'Artistic Gift Tags & Labels',
+                description: 'Beautiful printable tags and labels with artistic motifs, floral designs, and elegant typography for gift wrapping and organizing.',
+                pages: '8 sheets',
+                format: 'PDF (US Letter)',
+                difficulty: 'All levels'
+            }
+        };
+        
+        const printable = printableInfo[printableType];
+        if (printable) {
+            showPrintableModal(printable.title, printable.description, printable.pages, printable.format, printable.difficulty, printableType);
+        }
+    }
+
+    function showPrintableModal(title, description, pages, format, difficulty, printableType) {
+        const modal = document.createElement('div');
+        modal.className = 'printable-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay" onclick="closePrintableModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📄 ${title}</h3>
+                    <button class="modal-close" onclick="closePrintableModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="printable-description">${description}</p>
+                    <div class="printable-details">
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <strong>📋 Pages:</strong> ${pages}
+                            </div>
+                            <div class="detail-item">
+                                <strong>📄 Format:</strong> ${format}
+                            </div>
+                            <div class="detail-item">
+                                <strong>⭐ Level:</strong> ${difficulty}
+                            </div>
+                            <div class="detail-item">
+                                <strong>🖨️ Print:</strong> At home on regular paper
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="print-tips">
+                        <h4>💡 Printing Tips:</h4>
+                        <ul>
+                            <li>Use standard 8.5" x 11" paper (US Letter size)</li>
+                            <li>Print in color or black & white - both work great!</li>
+                            <li>For coloring pages, heavier paper (cardstock) works best</li>
+                            <li>Check "Actual Size" or "100%" in your printer settings</li>
+                        </ul>
+                    </div>
+                    
+                    <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" class="printable-form">
+                        <input type="hidden" name="_subject" value="Printable Download Request: ${title}">
+                        <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/thank-you.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="printable_type" value="${printableType}">
+                        <input type="hidden" name="printable_title" value="${title}">
+                        
+                        <div class="form-group">
+                            <label for="downloaderName">Your Name*</label>
+                            <input type="text" id="downloaderName" name="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="downloaderEmail">Email Address*</label>
+                            <input type="email" id="downloaderEmail" name="email" placeholder="your@email.com" required>
+                            <small class="email-note">We'll send the download link here - no spam, ever!</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="intendedUse">How will you use this printable?</label>
+                            <select id="intendedUse" name="intended_use">
+                                <option value="">Select use (optional)</option>
+                                <option value="personal-relaxation">Personal relaxation & mindfulness</option>
+                                <option value="art-practice">Art practice & skill building</option>
+                                <option value="gifts">Making gifts for others</option>
+                                <option value="teaching">Teaching or workshops</option>
+                                <option value="crafting">Crafting & mixed media projects</option>
+                                <option value="planning">Planner decoration & organizing</option>
+                                <option value="other">Other creative use</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" value="yes">
+                                <span class="checkmark"></span>
+                                Send me new printables and creative inspiration (optional)
+                            </label>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="cancel-btn" onclick="closePrintableModal()">Cancel</button>
+                            <button type="submit" class="download-btn">
+                                📥 Get Free Printable
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePrintableModal() {
+        const modal = document.querySelector('.printable-modal');
+        if (modal) {
+            modal.remove();
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Pricing Calculator Function
+    function calculatePrice() {
+        const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
+        const hoursWorked = parseFloat(document.getElementById('hoursWorked').value) || 0;
+        const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+        const overheadPercent = parseFloat(document.getElementById('overheadPercent').value) || 0;
+        const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
+        const sizeMultiplier = parseFloat(document.getElementById('sizeMultiplier').value) || 1;
+
+        const laborCost = hoursWorked * hourlyRate;
+        const subtotal = materialCost + laborCost;
+        const overheadCost = subtotal * (overheadPercent / 100);
+        const costTotal = subtotal + overheadCost;
+        const profitAmount = costTotal * (profitMargin / 100);
+        const basePrice = costTotal + profitAmount;
+        const finalPrice = basePrice * sizeMultiplier;
+
+        // Update display
+        document.getElementById('materialTotal').textContent = materialCost.toFixed(2);
+        document.getElementById('laborTotal').textContent = laborCost.toFixed(2);
+        document.getElementById('overheadTotal').textContent = overheadCost.toFixed(2);
+        document.getElementById('profitTotal').textContent = profitAmount.toFixed(2);
+        document.getElementById('finalPrice').textContent = finalPrice.toFixed(2);
+    }
+
+    // Create artwork from prompt
+    function createFromPrompt() {
+        const currentPrompt = document.getElementById('dailyPrompt').textContent;
+        openSubmissionModal();
+        
+        // Pre-fill the description with the prompt
+        setTimeout(() => {
+            const descriptionField = document.getElementById('artworkDescription');
+            if (descriptionField) {
+                descriptionField.value = `Inspired by today's prompt: "${currentPrompt}"\n\n`;
+                descriptionField.focus();
+                // Move cursor to the end
+                descriptionField.setSelectionRange(descriptionField.value.length, descriptionField.value.length);
+            }
+        }, 100);
+    }
+
     // Countdown timer for next prompt
     function updateCountdown() {
         const now = new Date();
@@ -722,24 +1078,9 @@
         
         const timeUntilTomorrow = tomorrow.getTime() - now.getTime();
         
-        // If we've reached tomorrow, generate a new prompt and reset countdown
-        if (timeUntilTomorrow <= 0) {
-            generateDailyPrompt();
-            // Recalculate for the new day
-            const newTomorrow = new Date(now);
-            newTomorrow.setDate(newTomorrow.getDate() + 1);
-            newTomorrow.setHours(0, 0, 0, 0);
-            const newTimeUntilTomorrow = newTomorrow.getTime() - now.getTime();
-            updateCountdownDisplay(newTimeUntilTomorrow);
-        } else {
-            updateCountdownDisplay(timeUntilTomorrow);
-        }
-    }
-
-    function updateCountdownDisplay(timeRemaining) {
-        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        const hours = Math.floor(timeUntilTomorrow / (1000 * 60 * 60));
+        const minutes = Math.floor((timeUntilTomorrow % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeUntilTomorrow % (1000 * 60)) / 1000);
         
         const hoursElement = document.getElementById('hours');
         const minutesElement = document.getElementById('minutes');
@@ -748,6 +1089,11 @@
         if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
         if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
         if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
+        
+        // If we've reached tomorrow, generate a new prompt
+        if (timeUntilTomorrow <= 0) {
+            generateDailyPrompt();
+        }
     }
 
     // Close modal with Escape key
@@ -1919,9 +2265,6 @@
         console.log('Resource clicked:', clickData);
     }
     </script>
-
-    <!-- Include main script for floating icons -->
-    <script src="../scripts/main.js"></script>
 
     <!-- Footer -->
     <footer class="main-footer">
