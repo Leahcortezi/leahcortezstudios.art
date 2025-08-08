@@ -369,6 +369,7 @@
     <script>
     // Form submission handler
     function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent default form submission
         console.log('Form submission started');
         
         const form = event.target;
@@ -384,18 +385,18 @@
         
         // Validate required fields
         if (!name || !email || !title) {
-            alert('Please fill out all required fields (Name, Email, and Artwork Title).');
+            showNotification('⚠️ Please fill out all required fields (Name, Email, and Artwork Title).');
             return false;
         }
         
         if (!file || file.size === 0) {
-            alert('Please select an artwork file to upload.');
+            showNotification('⚠️ Please select an artwork file to upload.');
             return false;
         }
         
         // Check file size (10MB limit)
         if (file.size > 10 * 1024 * 1024) {
-            alert('File size must be less than 10MB. Please choose a smaller image.');
+            showNotification('⚠️ File size must be less than 10MB. Please choose a smaller image.');
             return false;
         }
         
@@ -406,34 +407,37 @@
         submitBtn.disabled = true;
         
         try {
-            console.log('About to add artwork to showcase');
+            console.log('Submitting artwork for review');
             
-            // Create a new artwork entry in the showcase first
-            addArtworkToShowcase(name, title, description, file);
+            // Submit to FormSubmit for email notification and review
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Show thank you message
+                    showNotification('Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!');
+                    
+                    // Close modal and reset form
+                    closeSubmissionModal();
+                    form.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            }).catch(err => {
+                console.error('Submission error:', err);
+                showNotification('There was an error submitting your artwork. Please try again.');
+            }).finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
             
-            // Show success message immediately
-            showNotification('✅ Your artwork has been added to the showcase!');
-            
-            // Close modal and reset form
-            closeSubmissionModal();
-            form.reset();
-            
-            // Reset button state
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-            // Switch to showcase tab
-            setTimeout(() => {
-                document.querySelector('[data-tab="showcase"]').click();
-            }, 500);
-            
-            // Let the form submit normally to FormSubmit for email notification
-            // but don't wait for it since the user experience is already complete
-            return true;
+            return false; // Prevent any additional form submission
             
         } catch (error) {
             console.error('Submission error:', error);
-            alert('There was an error adding your artwork. Please try again.');
+            showNotification('There was an error submitting your artwork. Please try again.');
             
             // Reset button state
             submitBtn.textContent = originalText;
@@ -441,52 +445,6 @@
             
             return false;
         }
-    }
-
-    function addArtworkToShowcase(artistName, artworkTitle, description, file) {
-        const grid = document.querySelector('.showcase-grid');
-        
-        // Generate unique ID for new artwork
-        const newArtworkId = 'user-' + Date.now();
-        
-        // Initialize like count for new artwork
-        artworkLikeCounts[newArtworkId] = 0;
-        localStorage.setItem('artworkLikeCounts', JSON.stringify(artworkLikeCounts));
-        
-        // Create new artwork item
-        const newItem = document.createElement('div');
-        newItem.className = 'showcase-item';
-        newItem.setAttribute('data-category', 'all recent');
-        newItem.setAttribute('data-medium', 'mixed-media');
-        newItem.setAttribute('data-likes', '0');
-        newItem.setAttribute('data-date', new Date().toISOString().split('T')[0]);
-        
-        // Create image preview
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            newItem.innerHTML = `
-                <img src="${e.target.result}" alt="Submitted artwork" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="showcase-overlay">
-                    <h4>${artworkTitle}</h4>
-                    <p>by ${artistName}</p>
-                    <span class="challenge-tag">New Submission</span>
-                    <div class="artwork-stats">
-                        <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${newArtworkId}">
-                            <span class="heart">♡</span>
-                            <span class="like-count">0</span>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // Add to beginning of grid
-            grid.insertBefore(newItem, grid.firstChild);
-            
-            // Show success message
-            showLikeMessage('Artwork submitted successfully!');
-        };
-        
-        reader.readAsDataURL(file);
     }
 
     // Tab functionality
@@ -751,21 +709,6 @@
         modal.classList.add('show');
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    function closeSubmissionModal(event) {
-        if (event && event.target !== event.currentTarget) return; // Only close if clicking on backdrop
-        
-        const modal = document.getElementById('submissionModal');
-        modal.classList.remove('show');
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-        
-        // Reset form
-        const form = document.querySelector('.artwork-submission-form');
-        if (form) {
-            form.reset();
-        }
     }
 
     // Countdown timer for next prompt
