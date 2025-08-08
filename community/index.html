@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                         <div class="prompt-text" id="dailyPrompt">
-                            Create a bold artwork that explores the concept of memory through mixed media.
+                            Loading today's creative prompt...
                         </div>
                         <div class="prompt-tags">
                             <span class="tag">daily</span>
@@ -100,7 +100,7 @@
                             <span class="tag">artistic</span>
                         </div>
                         <div class="prompt-actions">
-                            <button class="new-prompt-btn" onclick="generateNewPrompt()">Refresh Tags</button>
+                            <button class="new-prompt-btn" onclick="refreshPromptTags()">Refresh Tags</button>
                             <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
                 
-                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="handleFormSubmission(event)">
+                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
                     <input type="hidden" name="_subject" value="New Community Artwork Submission">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
@@ -369,7 +369,6 @@
     <script>
     // Form submission handler
     function handleFormSubmission(event) {
-        event.preventDefault(); // Prevent default form submission
         console.log('Form submission started');
         
         const form = event.target;
@@ -407,64 +406,41 @@
         submitBtn.disabled = true;
         
         try {
-            console.log('About to add artwork to showcase and submit form');
+            console.log('About to add artwork to showcase');
             
-            // Create a new artwork entry in the showcase
+            // Create a new artwork entry in the showcase first
             addArtworkToShowcase(name, title, description, file);
             
-            // Create a new FormData for the actual submission
-            const submissionData = new FormData();
-            submissionData.append('_subject', 'New Community Artwork Submission');
-            submissionData.append('_next', window.location.origin + '/community/#showcase');
-            submissionData.append('_captcha', 'false');
-            submissionData.append('name', name);
-            submissionData.append('email', email);
-            submissionData.append('artwork_title', title);
-            submissionData.append('description', description);
-            submissionData.append('artwork', file);
+            // Show success message immediately
+            showNotification('✅ Your artwork has been added to the showcase!');
             
-            // Submit via fetch to avoid page reload
-            fetch('https://formsubmit.co/contact@leahcortezstudios.art', {
-                method: 'POST',
-                body: submissionData
-            }).then(response => {
-                console.log('Form submitted successfully');
-                closeSubmissionModal();
-                
-                // Reset form
-                form.reset();
-                
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Show success message
-                alert('Thank you! Your artwork has been submitted successfully.');
-                
-                // Switch to showcase tab
-                setTimeout(() => {
-                    document.querySelector('[data-tab="showcase"]').click();
-                }, 500);
-            }).catch(error => {
-                console.error('Submission error:', error);
-                
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                alert('There was an error submitting your artwork. Please try again.');
-            });
-            
-        } catch (error) {
-            console.error('Submission error:', error);
-            alert('There was an error submitting your artwork. Please try again.');
+            // Close modal and reset form
+            closeSubmissionModal();
+            form.reset();
             
             // Reset button state
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
+            
+            // Switch to showcase tab
+            setTimeout(() => {
+                document.querySelector('[data-tab="showcase"]').click();
+            }, 500);
+            
+            // Let the form submit normally to FormSubmit for email notification
+            // but don't wait for it since the user experience is already complete
+            return true;
+            
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('There was an error adding your artwork. Please try again.');
+            
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            return false;
         }
-        
-        return false;
     }
 
     function addArtworkToShowcase(artistName, artworkTitle, description, file) {
@@ -2032,6 +2008,12 @@
         }, 100);
         
         showNotification('✨ Submission form opened with today\'s prompt! Add your artwork details.');
+    }
+    
+    // Refresh prompt tags only
+    function refreshPromptTags() {
+        updatePromptTags();
+        showNotification('🏷️ Prompt tags have been refreshed!');
     }
     
     // Simple notification function
