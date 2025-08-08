@@ -226,12 +226,20 @@
 
         <!-- API Management Section -->
         <div class="admin-section">
-            <h2 class="section-title">Email Approval API</h2>
+            <h2 class="section-title">FormSubmit Webhook System</h2>
             <div style="background: rgba(212, 175, 55, 0.1); border: 2px solid var(--color-accent); border-radius: 10px; padding: 20px;">
-                <h3 style="color: var(--color-accent); margin-bottom: 15px;">🚀 Automated Email Approval System</h3>
-                <p style="margin-bottom: 15px;">Reply "APPROVE" to submission emails to automatically add artwork to showcase!</p>
+                <h3 style="color: var(--color-accent); margin-bottom: 15px;">🚀 FormSubmit Webhook Approval System</h3>
+                <p style="margin-bottom: 15px;">Simple, reliable artwork approval using FormSubmit webhooks - no Zapier needed!</p>
                 
                 <div style="display: grid; gap: 15px;">
+                    <div class="form-row">
+                        <label>Quick Approval Tool:</label>
+                        <button onclick="window.open('quick-approval.html', '_blank')" class="btn btn-save">Open Approval Tool</button>
+                    </div>
+                    <div class="form-row">
+                        <label>Test Webhook System:</label>
+                        <button onclick="window.open('test-webhook.html', '_blank')" class="btn btn-save">Test FormSubmit Webhook</button>
+                    </div>
                     <div class="form-row">
                         <label>API Status:</label>
                         <button onclick="testAPI()" class="btn btn-save">Test API Connection</button>
@@ -245,8 +253,8 @@
                         <button onclick="refreshCommunityShowcase()" class="btn btn-save">Refresh Community Page</button>
                     </div>
                     <div class="form-row">
-                        <label>API Logs:</label>
-                        <button onclick="viewAPILogs()" class="btn btn-save">View Activity Log</button>
+                        <label>Webhook Logs:</label>
+                        <button onclick="viewWebhookLogs()" class="btn btn-save">View Webhook Activity</button>
                     </div>
                 </div>
                 
@@ -256,12 +264,13 @@
                 </div>
                 
                 <div style="margin-top: 20px; padding: 15px; background: rgba(139, 69, 19, 0.2); border-radius: 8px;">
-                    <h4 style="color: var(--color-accent); margin-bottom: 10px;">Setup Instructions:</h4>
+                    <h4 style="color: var(--color-accent); margin-bottom: 10px;">How FormSubmit Webhook Works:</h4>
                     <ol style="color: var(--color-text); line-height: 1.6;">
-                        <li>Set up Zapier/Make.com webhook (see <code>/api/README.md</code>)</li>
-                        <li>Configure email parsing to extract submission details</li>
-                        <li>Test with manual API call below</li>
-                        <li>Reply "APPROVE" to any submission email to activate</li>
+                        <li><strong>Receive submission email</strong> from community form</li>
+                        <li><strong>Copy details</strong> into the Quick Approval Tool</li>
+                        <li><strong>Submit form</strong> - FormSubmit sends webhook to your API</li>
+                        <li><strong>Artwork automatically appears</strong> in community showcase</li>
+                        <li><strong>No external services needed</strong> - just FormSubmit's built-in webhook</li>
                     </ol>
                 </div>
             </div>
@@ -443,6 +452,24 @@
                 showNotification('No approved artworks yet or error loading', 'error');
                 document.getElementById('apiResults').style.display = 'block';
                 document.getElementById('apiResponseText').textContent = 'No approved artworks file found yet.';
+            }
+        }
+
+        async function viewWebhookLogs() {
+            try {
+                const response = await fetch('../data/webhook_log.txt');
+                if (response.ok) {
+                    const logs = await response.text();
+                    document.getElementById('apiResults').style.display = 'block';
+                    document.getElementById('apiResponseText').textContent = logs || 'No webhook activity logged yet.';
+                    showNotification('Webhook logs loaded');
+                } else {
+                    throw new Error('No webhook log file found');
+                }
+            } catch (error) {
+                showNotification('No webhook logs yet or error loading', 'error');
+                document.getElementById('apiResults').style.display = 'block';
+                document.getElementById('apiResponseText').textContent = 'No webhook logs found yet. Submit a test through the FormSubmit webhook system to generate logs.';
             }
         }
 
