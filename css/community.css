@@ -1374,6 +1374,46 @@ body {
     flex-wrap: wrap;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.filter-toggle {
+    display: none;
+    background: var(--color-primary-accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-family: var(--font-headings);
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.filter-toggle:hover {
+    background: var(--color-secondary-accent);
+}
+
+.filter-toggle::after {
+    content: ' ▼';
+    transition: transform 0.3s ease;
+}
+
+.filter-toggle.active::after {
+    transform: rotate(180deg);
+}
+
+.filters-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .filter-section,
@@ -1455,8 +1495,23 @@ body {
     .showcase-filters {
         flex-direction: column;
         align-items: stretch;
-        gap: 1.5rem;
+        gap: 1rem;
         padding: 1.5rem;
+    }
+    
+    .filter-toggle {
+        display: block;
+    }
+    
+    .filters-content {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .filters-content.active {
+        display: flex;
     }
     
     .filter-section,

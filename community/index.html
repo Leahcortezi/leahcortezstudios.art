@@ -162,25 +162,28 @@
 
                 <!-- Showcase Filters -->
                 <div class="showcase-filters">
-                    <div class="filter-section">
-                        <label>Filter:</label>
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="newest">Newest</button>
-                        <button class="filter-btn" data-filter="popular">Most Popular</button>
-                        <button class="filter-btn" data-filter="prompt">Prompt Responses</button>
-                    </div>
-                    
-                    <div class="medium-section">
-                        <label>Medium:</label>
-                        <select class="medium-filter" onchange="filterByMedium(this.value)">
-                            <option value="all">All Mediums</option>
-                            <option value="mixed-media">Mixed Media</option>
-                            <option value="digital">Digital Art</option>
-                            <option value="oil">Oil Painting</option>
-                            <option value="watercolor">Watercolor</option>
-                            <option value="acrylic">Acrylic</option>
-                            <option value="charcoal">Charcoal</option>
-                        </select>
+                    <button class="filter-toggle" onclick="toggleFilters()">Show Filters</button>
+                    <div class="filters-content">
+                        <div class="filter-section">
+                            <label>Filter:</label>
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="newest">Newest</button>
+                            <button class="filter-btn" data-filter="popular">Most Popular</button>
+                            <button class="filter-btn" data-filter="prompt">Prompt Responses</button>
+                        </div>
+                        
+                        <div class="medium-section">
+                            <label>Medium:</label>
+                            <select class="medium-filter" onchange="filterByMedium(this.value)">
+                                <option value="all">All Mediums</option>
+                                <option value="mixed-media">Mixed Media</option>
+                                <option value="digital">Digital Art</option>
+                                <option value="oil">Oil Painting</option>
+                                <option value="watercolor">Watercolor</option>
+                                <option value="acrylic">Acrylic</option>
+                                <option value="charcoal">Charcoal</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -1404,6 +1407,20 @@
         });
         
         applyFilters();
+    }
+
+    function toggleFilters() {
+        const filtersContent = document.querySelector('.filters-content');
+        const toggleBtn = document.querySelector('.filter-toggle');
+        
+        filtersContent.classList.toggle('active');
+        toggleBtn.classList.toggle('active');
+        
+        if (filtersContent.classList.contains('active')) {
+            toggleBtn.textContent = 'Hide Filters';
+        } else {
+            toggleBtn.textContent = 'Show Filters';
+        }
     }
 
     function filterByMedium(medium) {
