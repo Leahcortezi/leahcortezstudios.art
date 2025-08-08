@@ -383,8 +383,7 @@
 
     <script>
     // Form submission handler
-    async function handleFormSubmission(event) {
-        event.preventDefault(); // Prevent default to handle file conversion first
+    function handleFormSubmission(event) {
         console.log('Form submission started');
         
         const form = event.target;
@@ -407,6 +406,7 @@
         
         // Validate required fields
         if (!name || !instagram || !title) {
+            event.preventDefault();
             showNotification('Please fill out all required fields (Name, Instagram Handle, and Artwork Title).', 'error');
             return false;
         }
@@ -414,99 +414,44 @@
         // Validate Instagram handle format
         const instagramPattern = /^@?[A-Za-z0-9._]{1,30}$/;
         if (!instagramPattern.test(instagram)) {
+            event.preventDefault();
             showNotification('Please enter a valid Instagram handle (e.g., @yourhandle or yourhandle).', 'error');
             return false;
         }
         
         if (!file || file.size === 0) {
+            event.preventDefault();
             showNotification('Please select an artwork file to upload.', 'error');
             return false;
         }
         
-        // Check file size (3MB limit for base64 embedding)
-        if (file.size > 3 * 1024 * 1024) {
-            showNotification('File size must be less than 3MB for email viewing. Please choose a smaller image.', 'error');
+        // Check file size (10MB limit)
+        if (file.size > 10 * 1024 * 1024) {
+            event.preventDefault();
+            showNotification('File size must be less than 10MB. Please choose a smaller image.', 'error');
             return false;
         }
         
+        // Normalize Instagram handle (ensure it starts with @)
+        let normalizedInstagram = instagram.trim();
+        if (!normalizedInstagram.startsWith('@')) {
+            normalizedInstagram = '@' + normalizedInstagram;
+        }
+        document.getElementById('artistInstagram').value = normalizedInstagram;
+        
         // Show loading state
         const submitBtn = form.querySelector('.submit-btn');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Processing Image...';
-        submitBtn.disabled = true;
-        
-        try {
-            // Convert image to base64
-            const base64Image = await convertFileToBase64(file);
-            
-            // Normalize Instagram handle
-            let normalizedInstagram = instagram.trim();
-            if (!normalizedInstagram.startsWith('@')) {
-                normalizedInstagram = '@' + normalizedInstagram;
-            }
-            
-            // Create an HTML email with embedded image
-            const emailContent = `
-<h2>New Artwork Submission</h2>
-<p><strong>Artist Name:</strong> ${name}</p>
-<p><strong>Instagram:</strong> <a href="https://instagram.com/${normalizedInstagram.replace('@', '')}">${normalizedInstagram}</a></p>
-<p><strong>Artwork Title:</strong> ${title}</p>
-<p><strong>Medium:</strong> ${medium || 'Not specified'}</p>
-<p><strong>Category:</strong> ${category || 'Not specified'}</p>
-<p><strong>Description:</strong> ${description || 'No description provided'}</p>
-<p><strong>File Name:</strong> ${file.name}</p>
-<p><strong>File Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</p>
-<p><strong>Submission Date:</strong> ${now.toLocaleDateString()} at ${now.toLocaleTimeString()}</p>
-
-<h3>Artwork Image:</h3>
-<img src="${base64Image}" style="max-width: 600px; height: auto; border: 1px solid #ddd; border-radius: 8px;" alt="${title}">
-
-<p><em>Right-click the image above to save it to your computer.</em></p>
-            `.trim();
-            
-            // Add the HTML content to a hidden field
-            const htmlContentInput = document.createElement('input');
-            htmlContentInput.type = 'hidden';
-            htmlContentInput.name = 'email_content';
-            htmlContentInput.value = emailContent;
-            form.appendChild(htmlContentInput);
-            
-            // Update the description to include image info
-            const descriptionInput = form.querySelector('[name="artwork_description"]');
-            descriptionInput.value = `${description || 'No description provided'}\n\n[IMAGE EMBEDDED BELOW IN EMAIL]`;
-            
-            submitBtn.textContent = 'Sending...';
-            
-            // Submit the form
-            form.submit();
-            
-            // Show success message
-            showNotification('Artwork submitted successfully! Your submission has been sent for review.', 'success');
-            
-            // Close modal after short delay
-            setTimeout(() => {
-                closeSubmissionModal();
-                form.reset();
-            }, 2000);
-            
-        } catch (error) {
-            console.error('Processing error:', error);
-            showNotification('Failed to process image. Please try again.', 'error');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
+        if (submitBtn) {
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
         }
         
-        return false;
-    }
-    
-    // Convert file to base64 data URL
-    function convertFileToBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
+        // Show immediate feedback - but don't close modal yet
+        showNotification('Submitting your artwork...', 'info');
+        
+        // Allow normal form submission to FormSubmit
+        console.log('Allowing form submission to FormSubmit');
+        return true;
     }
 
     // Tab functionality
