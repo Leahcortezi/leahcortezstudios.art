@@ -1861,6 +1861,34 @@ body {
     white-space: nowrap;
 }
 
+/* Instagram link styling */
+.instagram-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    display: inline-block;
+    position: relative;
+}
+
+.instagram-link:hover {
+    color: #f8c8d0 !important;
+    transform: translateY(-1px);
+}
+
+.instagram-link::before {
+    content: '📸';
+    margin-right: 0.3rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.instagram-link:hover::before {
+    opacity: 1;
+}
+
 .challenge-tag {
     display: inline-block;
     background: linear-gradient(135deg, rgba(126, 28, 46, 0.8), rgba(248, 200, 208, 0.2));

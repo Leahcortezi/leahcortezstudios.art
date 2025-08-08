@@ -195,7 +195,7 @@
                         <div class="placeholder-image" style="background: linear-gradient(135deg, #7e1c2e, #f8c8d0);"></div>
                         <div class="showcase-overlay">
                             <h4>Memory & Time</h4>
-                            <p>by Alex Rivera</p>
+                            <p><a href="https://instagram.com/alexrivera.art" target="_blank" rel="noopener noreferrer" class="instagram-link">@alexrivera.art</a></p>
                             <span class="challenge-tag">Mixed Media</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="1">
@@ -210,7 +210,7 @@
                         <div class="placeholder-image" style="background: linear-gradient(135deg, #f8c8d0, #7e1c2e);"></div>
                         <div class="showcase-overlay">
                             <h4>Digital Dreams</h4>
-                            <p>by Sam Chen</p>
+                            <p><a href="https://instagram.com/samchen_art" target="_blank" rel="noopener noreferrer" class="instagram-link">@samchen_art</a></p>
                             <span class="challenge-tag">Digital Art</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="2">
@@ -225,7 +225,7 @@
                         <div class="placeholder-image" style="background: linear-gradient(45deg, #7e1c2e, #333);"></div>
                         <div class="showcase-overlay">
                             <h4>Urban Solitude</h4>
-                            <p>by Jordan Blake</p>
+                            <p><a href="https://instagram.com/jordanblake.creates" target="_blank" rel="noopener noreferrer" class="instagram-link">@jordanblake.creates</a></p>
                             <span class="challenge-tag">Oil Painting</span>
                             <div class="artwork-stats">
                                 <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="3">
@@ -273,8 +273,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="artistEmail">Email*</label>
-                        <input type="email" id="artistEmail" name="artist_email" placeholder="your@email.com" required>
+                        <label for="artistInstagram">Instagram Handle*</label>
+                        <input type="text" id="artistInstagram" name="artist_instagram" placeholder="@yourhandle" required pattern="^@?[A-Za-z0-9._]{1,30}$" title="Enter your Instagram handle (with or without @)">
                     </div>
                     
                     <div class="form-group">
@@ -422,18 +422,25 @@
         formData.set('submission_time', now.toLocaleTimeString());
         
         const name = formData.get('artist_name');
-        const email = formData.get('artist_email');
+        const instagram = formData.get('artist_instagram');
         const title = formData.get('artwork_title');
         const description = formData.get('artwork_description');
         const medium = formData.get('artwork_medium');
         const category = formData.get('artwork_category');
         const file = formData.get('artwork');
         
-        console.log('Form data:', { name, email, title, medium, category, file: file ? file.name : 'No file' });
+        console.log('Form data:', { name, instagram, title, medium, category, file: file ? file.name : 'No file' });
         
         // Validate required fields
-        if (!name || !email || !title) {
-            showNotification('⚠️ Please fill out all required fields (Name, Email, and Artwork Title).', 'error');
+        if (!name || !instagram || !title) {
+            showNotification('⚠️ Please fill out all required fields (Name, Instagram Handle, and Artwork Title).', 'error');
+            return false;
+        }
+        
+        // Validate Instagram handle format
+        const instagramPattern = /^@?[A-Za-z0-9._]{1,30}$/;
+        if (!instagramPattern.test(instagram)) {
+            showNotification('⚠️ Please enter a valid Instagram handle (e.g., @yourhandle or yourhandle).', 'error');
             return false;
         }
         
@@ -454,48 +461,30 @@
         formData.append('browser_info', navigator.userAgent);
         formData.append('review_instructions', 'REVIEW REQUIRED: Please review this artwork submission and manually add to the community showcase if approved.');
         
+        // Normalize Instagram handle (ensure it starts with @)
+        let normalizedInstagram = instagram.trim();
+        if (!normalizedInstagram.startsWith('@')) {
+            normalizedInstagram = '@' + normalizedInstagram;
+        }
+        formData.set('artist_instagram', normalizedInstagram);
+        
         // Show loading state
         const submitBtn = form.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
         
-        try {
-            console.log('Submitting artwork for review');
-            
-            // Submit to FormSubmit for email notification and review
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData
-            });
-            
-            if (response.ok) {
-                // Show thank you message
-                showNotification('🎨 Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!', 'success');
-                
-                // Close modal and reset form
-                closeSubmissionModal();
-                form.reset();
-            } else {
-                throw new Error('Submission failed');
-            }
-            
-            // Reset button state
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-            return false; // Prevent any additional form submission
-            
-        } catch (error) {
-            console.error('Submission error:', error);
-            showNotification('❌ There was an error submitting your artwork. Please try again.', 'error');
-            
-            // Reset button state
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-            return false;
-        }
+        // Show immediate feedback since FormSubmit will redirect
+        showNotification('🎨 Thank you for your submission! We\'ll review your artwork and it will appear in the showcase once approved. Check back soon!', 'success');
+        
+        // Close modal and reset form
+        setTimeout(() => {
+            closeSubmissionModal();
+            form.reset();
+        }, 1000);
+        
+        // Let FormSubmit handle the actual submission
+        return true; // Allow normal form submission to FormSubmit
     }
 
     // Tab functionality
@@ -2183,7 +2172,7 @@
             <img src="${artworkData.imageUrl}" alt="${artworkData.title}" style="width: 100%; height: 100%; object-fit: cover;">
             <div class="showcase-overlay">
                 <h4>${artworkData.title}</h4>
-                <p>by ${artworkData.artistName}</p>
+                <p><a href="https://instagram.com/${(artworkData.artist_instagram || '@unknown').replace('@', '')}" target="_blank" rel="noopener noreferrer" class="instagram-link">${artworkData.artist_instagram || '@unknown'}</a></p>
                 <span class="challenge-tag">${getCategoryDisplayName(artworkData.category)}</span>
                 <div class="artwork-stats">
                     <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${artworkId}">
@@ -2214,16 +2203,16 @@
     }
     
     // Admin console command for quick addition
-    // Usage in browser console: quickAddArtwork({title: "Art Title", artistName: "Artist", imageUrl: "data:image...", category: "personal"})
+    // Usage in browser console: quickAddArtwork({title: "Art Title", artist_instagram: "@artist", imageUrl: "data:image...", category: "personal"})
     function quickAddArtwork(data) {
-        if (!data.title || !data.artistName || !data.imageUrl) {
-            console.error('Missing required fields: title, artistName, imageUrl');
+        if (!data.title || !data.artist_instagram || !data.imageUrl) {
+            console.error('Missing required fields: title, artist_instagram, imageUrl');
             return false;
         }
         
         const success = addApprovedArtwork(data);
         if (success) {
-            showNotification(`✅ Added "${data.title}" by ${data.artistName} to showcase!`);
+            showNotification(`✅ Added "${data.title}" by ${data.artist_instagram} to showcase!`);
             // Switch to showcase tab to show the new artwork
             const showcaseTab = document.querySelector('[data-tab="showcase"]');
             if (showcaseTab) showcaseTab.click();
@@ -2294,7 +2283,7 @@
                 <img src="${artwork.image_url}" alt="${artwork.artwork_title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                 <div class="showcase-overlay">
                     <h4>${artwork.artwork_title}</h4>
-                    <p>by ${artwork.artist_name}</p>
+                    <p><a href="https://instagram.com/${artwork.artist_instagram?.replace('@', '')}" target="_blank" rel="noopener noreferrer" class="instagram-link">${artwork.artist_instagram}</a></p>
                     <span class="challenge-tag">${getCategoryDisplayName(artwork.category)}</span>
                     <div class="artwork-stats">
                         <button class="like-btn" onclick="toggleLike(this)" data-artwork-id="${artwork.id}">

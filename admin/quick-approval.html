@@ -446,8 +446,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="artistEmail">Artist Email*</label>
-                        <input type="email" id="artistEmail" name="artist_email" required placeholder="Copy from submission email">
+                        <label for="artistInstagram">Artist Instagram Handle*</label>
+                        <input type="text" id="artistInstagram" name="artist_instagram" required placeholder="@handle from submission email" pattern="^@?[A-Za-z0-9._]{1,30}$">
                     </div>
 
                     <div class="form-group">
@@ -569,7 +569,7 @@
         // Form submission handler with better validation
         document.getElementById('approvalForm').addEventListener('submit', function(e) {
             const artistName = document.getElementById('artistName').value.trim();
-            const artistEmail = document.getElementById('artistEmail').value.trim();
+            const artistInstagram = document.getElementById('artistInstagram').value.trim();
             const artworkTitle = document.getElementById('artworkTitle').value.trim();
             const imageFile = document.getElementById('artworkFile').files[0];
             
@@ -586,10 +586,19 @@
                 return;
             }
             
-            if (!artistEmail) {
+            if (!artistInstagram) {
                 e.preventDefault();
-                showNotification('⚠️ Artist email is required', 'error');
-                document.getElementById('artistEmail').focus();
+                showNotification('⚠️ Artist Instagram handle is required', 'error');
+                document.getElementById('artistInstagram').focus();
+                return;
+            }
+            
+            // Validate Instagram handle format
+            const instagramPattern = /^@?[A-Za-z0-9._]{1,30}$/;
+            if (!instagramPattern.test(artistInstagram)) {
+                e.preventDefault();
+                showNotification('⚠️ Please enter a valid Instagram handle (e.g., @yourhandle or yourhandle)', 'error');
+                document.getElementById('artistInstagram').focus();
                 return;
             }
             

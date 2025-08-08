@@ -43,6 +43,7 @@ The webhook should send this JSON structure:
 ```json
 {
   "artist_name": "{{extracted_from_original_email}}",
+  "artist_instagram": "{{extracted_from_original_email}}",
   "artwork_title": "{{extracted_from_original_email}}",
   "description": "{{extracted_from_original_email}}",
   "medium": "{{extracted_from_original_email}}",
@@ -56,6 +57,7 @@ The webhook should send this JSON structure:
 Your automation should extract these fields from the ORIGINAL submission email:
 
 - **Artist Name**: Look for "artist_name: " or "Name: "
+- **Artist Instagram**: Look for "artist_instagram: " or "Instagram: " or "@"
 - **Artwork Title**: Look for "artwork_title: " or "Title: "
 - **Description**: Look for "artwork_description: " or "Description: "
 - **Medium**: Look for "artwork_medium: " or "Medium: "

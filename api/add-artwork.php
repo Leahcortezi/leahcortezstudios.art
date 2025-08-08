@@ -90,7 +90,7 @@ if (!$is_formsubmit_webhook && empty($input['image_url'])) {
 $artwork_data = [
     'id' => ($is_formsubmit_webhook ? 'approved-' : 'api-') . time() . '-' . rand(1000, 9999),
     'artist_name' => sanitize_input($input['artist_name']),
-    'artist_email' => sanitize_input($input['artist_email'] ?? ''),
+    'artist_instagram' => sanitize_input($input['artist_instagram'] ?? ''),
     'artwork_title' => sanitize_input($input['artwork_title']),
     'description' => sanitize_input($input['artwork_description'] ?? $input['description'] ?? ''),
     'medium' => sanitize_input($input['artwork_medium'] ?? $input['medium'] ?? 'mixed-media'),
@@ -131,7 +131,7 @@ if (!is_dir('../data')) {
 // Save updated showcase data
 if (file_put_contents($showcase_file, json_encode($showcase_data, JSON_PRETTY_PRINT))) {
     // Log the addition
-    $log_entry = date('Y-m-d H:i:s') . " - Added artwork: '{$artwork_data['artwork_title']}' by {$artwork_data['artist_name']}\n";
+    $log_entry = date('Y-m-d H:i:s') . " - Added artwork: '{$artwork_data['artwork_title']}' by {$artwork_data['artist_name']} ({$artwork_data['artist_instagram']})\n";
     file_put_contents('../data/api_log.txt', $log_entry, FILE_APPEND | LOCK_EX);
     
     // Success response
