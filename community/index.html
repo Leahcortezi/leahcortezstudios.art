@@ -907,10 +907,38 @@
         // Start countdown timer immediately
         try {
             console.log('Starting countdown timer...');
+            
+            // Test if elements exist
+            const testHours = document.getElementById('hours');
+            const testMinutes = document.getElementById('minutes');
+            const testSeconds = document.getElementById('seconds');
+            
+            console.log('Timer elements found:', {
+                hours: !!testHours,
+                minutes: !!testMinutes,
+                seconds: !!testSeconds
+            });
+            
+            // Force update the timer manually first
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const timeUntilTomorrow = tomorrow.getTime() - now.getTime();
+            
+            const hours = Math.floor(timeUntilTomorrow / (1000 * 60 * 60));
+            const minutes = Math.floor((timeUntilTomorrow % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeUntilTomorrow % (1000 * 60)) / 1000);
+            
+            console.log('Manual calculation:', { hours, minutes, seconds });
+            
+            if (testHours) testHours.textContent = hours.toString().padStart(2, '0');
+            if (testMinutes) testMinutes.textContent = minutes.toString().padStart(2, '0');
+            if (testSeconds) testSeconds.textContent = seconds.toString().padStart(2, '0');
+            
+            // Now start the regular timer
             updateCountdown();
-            // Call it again after a short delay to ensure it runs
             setTimeout(updateCountdown, 100);
-            // Start the regular interval
             setInterval(updateCountdown, 1000); // Update every second
         } catch (error) {
             console.error('Error with countdown:', error);
