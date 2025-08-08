@@ -231,14 +231,9 @@
             
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
-                <div style="background: rgba(248, 200, 208, 0.1); border: 1px solid rgba(248, 200, 208, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 20px; font-size: 0.9rem;">
-                    <strong>📧 Note:</strong> Having trouble receiving confirmation emails? This might be a FormSubmit verification issue. 
-                    <a href="../test-formsubmit.html" target="_blank" style="color: #f8c8d0; text-decoration: underline;">Test the form</a> or 
-                    <a href="../verify-formsubmit.html" target="_blank" style="color: #f8c8d0; text-decoration: underline;">verify email setup</a>.
-                </div>
                 
                 <form method="POST" action="https://formsubmit.co/97d276af598369e77984bb3ce5ffbca3" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="return handleFormSubmission(event)">
-                    <input type="hidden" name="_subject" value="🎨 Community Artwork Submission for Review">
+                    <input type="hidden" name="_subject" value="Community Artwork Submission for Review">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
@@ -464,7 +459,7 @@
             submissionData.append('image_data', imageDataUrl);
             
             // Add FormSubmit configuration
-            submissionData.append('_subject', '🎨 Community Artwork Submission - ' + title);
+            submissionData.append('_subject', 'Community Artwork Submission - ' + title);
             submissionData.append('_next', 'https://leahcortezstudios.art/community/#showcase');
             submissionData.append('_captcha', 'false');
             submissionData.append('_template', 'box');
@@ -478,7 +473,7 @@
             });
             
             if (response.ok) {
-                showNotification('🎨 Artwork submitted successfully! Your submission has been sent for review.', 'success');
+                showNotification('Artwork submitted successfully! Your submission has been sent for review.', 'success');
                 form.reset();
                 closeSubmissionModal();
             } else {
@@ -1932,30 +1927,30 @@
         
         // Validation
         if (!email || !name) {
-            showNotification('⚠️ Please fill in all required fields', 'error');
+            showNotification('Please fill in all required fields', 'error');
             return;
         }
         
         if (!robotCheck) {
-            showNotification('⚠️ Please verify you are not a robot', 'error');
+            showNotification('Please verify you are not a robot', 'error');
             return;
         }
         
         if (captchaAnswer !== correctAnswer) {
-            showNotification('⚠️ Incorrect captcha answer. Please try again.', 'error');
+            showNotification('Incorrect captcha answer. Please try again.', 'error');
             generateCaptcha();
             document.getElementById('captchaAnswer').value = '';
             return;
         }
         
         if (!rulesAccepted) {
-            showNotification('⚠️ Please accept the community guidelines', 'error');
+            showNotification('Please accept the community guidelines', 'error');
             return;
         }
         
         // Content filtering
         if (containsInappropriateContent(name)) {
-            showNotification('⚠️ Display name contains inappropriate content', 'error');
+            showNotification('Display name contains inappropriate content', 'error');
             return;
         }
         
@@ -2029,7 +2024,7 @@
 
     function joinArtTrade() {
         if (!checkRateLimit('artTrade')) return;
-        showNotification('🎨 You\'ve joined the art trading circle! You\'ll receive pairing details via email.');
+        showNotification('You\'ve joined the art trading circle! You\'ll receive pairing details via email.');
     }
 
     function submitToZine() {
