@@ -99,6 +99,8 @@
                             <span class="tag">creative</span>
                             <span class="tag">artistic</span>
                         </div>
+                        <!-- Debug button - remove this later -->
+                        <button onclick="generateDailyPrompt()" style="margin-top: 10px; padding: 5px 10px; background: var(--color-primary-accent); color: var(--color-background); border: none; border-radius: 5px; cursor: pointer;">🔄 Generate New Prompt</button>
                         <div class="prompt-actions">
                             <button class="new-prompt-btn" onclick="refreshPromptTags()">Refresh Tags</button>
                             <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
@@ -576,16 +578,23 @@
     let promptDate = null;
 
     function generateDailyPrompt() {
+        console.log('Generating daily prompt...');
         const today = new Date().toDateString();
         
         // Check if we already have a prompt for today
         const storedPrompt = localStorage.getItem('dailyPrompt');
         const storedDate = localStorage.getItem('promptDate');
         
+        console.log('Stored prompt:', storedPrompt, 'Stored date:', storedDate, 'Today:', today);
+        
         if (storedPrompt && storedDate === today) {
             // Use existing prompt for today
             currentDailyPrompt = storedPrompt;
-            document.getElementById('dailyPrompt').textContent = currentDailyPrompt;
+            const promptElement = document.getElementById('dailyPrompt');
+            if (promptElement) {
+                promptElement.textContent = currentDailyPrompt;
+                console.log('Used stored prompt:', currentDailyPrompt);
+            }
             updatePromptTags();
             return;
         }
@@ -594,24 +603,35 @@
         const template = promptTemplates[Math.floor(Math.random() * promptTemplates.length)];
         let prompt = template;
         
+        console.log('Selected template:', template);
+        
         // Replace placeholders with random words
         const placeholderRegex = /{(\w+)}/g;
         prompt = prompt.replace(placeholderRegex, (match, key) => {
             if (promptVariables[key]) {
                 const options = promptVariables[key];
-                return options[Math.floor(Math.random() * options.length)];
+                const selected = options[Math.floor(Math.random() * options.length)];
+                console.log('Replacing', match, 'with', selected);
+                return selected;
             }
             return match;
         });
         
         currentDailyPrompt = prompt;
+        console.log('Generated new prompt:', prompt);
         
         // Store in localStorage
         localStorage.setItem('dailyPrompt', prompt);
         localStorage.setItem('promptDate', today);
         
         // Update display
-        document.getElementById('dailyPrompt').textContent = prompt;
+        const promptElement = document.getElementById('dailyPrompt');
+        if (promptElement) {
+            promptElement.textContent = prompt;
+            console.log('Updated prompt display');
+        } else {
+            console.error('Prompt element not found!');
+        }
         updatePromptTags();
         
         // Add to history if it's a new day
@@ -828,18 +848,44 @@
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', () => {
+        // Clear old prompt data for testing
+        // localStorage.removeItem('dailyPrompt');
+        // localStorage.removeItem('promptDate');
+        
         // Set daily prompt (stays same for 24 hours)
-        generateDailyPrompt();
+        try {
+            console.log('Starting prompt generation...');
+            generateDailyPrompt();
+        } catch (error) {
+            console.error('Error generating daily prompt:', error);
+            // Fallback prompt
+            const promptElement = document.getElementById('dailyPrompt');
+            if (promptElement) {
+                promptElement.textContent = "Create an artwork that explores the concept of transformation through mixed media";
+            }
+        }
         
         // Start countdown timer
-        updateCountdown();
-        setInterval(updateCountdown, 1000); // Update every second
+        try {
+            updateCountdown();
+            setInterval(updateCountdown, 1000); // Update every second
+        } catch (error) {
+            console.error('Error with countdown:', error);
+        }
         
         // Initialize stats with animation
-        animateNumbers();
+        try {
+            animateNumbers();
+        } catch (error) {
+            console.error('Error animating numbers:', error);
+        }
         
         // Initialize showcase filters
-        initializeShowcaseFilters();
+        try {
+            initializeShowcaseFilters();
+        } catch (error) {
+            console.error('Error initializing showcase filters:', error);
+        }
     });
 
     function animateNumbers() {
