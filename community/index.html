@@ -252,7 +252,7 @@
             <div class="modal-body">
                 <p class="modal-subtitle">Upload your artwork to be featured in our community showcase</p>
                 
-                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form">
+                <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data" class="artwork-submission-form" onsubmit="handleFormSubmission(event)">
                     <input type="hidden" name="_subject" value="New Community Artwork Submission">
                     <input type="hidden" name="_next" value="https://leahcortezstudios.art/community/#showcase">
                     <input type="hidden" name="_captcha" value="false">
@@ -284,7 +284,7 @@
                     
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" onclick="closeSubmissionModal()">Cancel</button>
-                        <button type="button" class="submit-btn" onclick="handleFormSubmission(event)">Submit Artwork</button>
+                        <button type="submit" class="submit-btn">Submit Artwork</button>
                     </div>
                 </form>
             </div>
@@ -369,9 +369,10 @@
     <script>
     // Form submission handler
     function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent default form submission
         console.log('Form submission started');
         
-        const form = document.querySelector('.artwork-submission-form');
+        const form = event.target;
         const formData = new FormData(form);
         
         const name = formData.get('name');
@@ -385,22 +386,22 @@
         // Validate required fields
         if (!name || !email || !title) {
             alert('Please fill out all required fields (Name, Email, and Artwork Title).');
-            return;
+            return false;
         }
         
         if (!file || file.size === 0) {
             alert('Please select an artwork file to upload.');
-            return;
+            return false;
         }
         
         // Check file size (10MB limit)
         if (file.size > 10 * 1024 * 1024) {
             alert('File size must be less than 10MB. Please choose a smaller image.');
-            return;
+            return false;
         }
         
         // Show loading state
-        const submitBtn = document.querySelector('.submit-btn');
+        const submitBtn = form.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
@@ -411,8 +412,49 @@
             // Create a new artwork entry in the showcase
             addArtworkToShowcase(name, title, description, file);
             
-            // Submit the actual form to FormSubmit
-            form.submit();
+            // Create a new FormData for the actual submission
+            const submissionData = new FormData();
+            submissionData.append('_subject', 'New Community Artwork Submission');
+            submissionData.append('_next', window.location.origin + '/community/#showcase');
+            submissionData.append('_captcha', 'false');
+            submissionData.append('name', name);
+            submissionData.append('email', email);
+            submissionData.append('artwork_title', title);
+            submissionData.append('description', description);
+            submissionData.append('artwork', file);
+            
+            // Submit via fetch to avoid page reload
+            fetch('https://formsubmit.co/contact@leahcortezstudios.art', {
+                method: 'POST',
+                body: submissionData
+            }).then(response => {
+                console.log('Form submitted successfully');
+                closeSubmissionModal();
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success message
+                alert('Thank you! Your artwork has been submitted successfully.');
+                
+                // Switch to showcase tab
+                setTimeout(() => {
+                    document.querySelector('[data-tab="showcase"]').click();
+                }, 500);
+            }).catch(error => {
+                console.error('Submission error:', error);
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                alert('There was an error submitting your artwork. Please try again.');
+            });
+            
         } catch (error) {
             console.error('Submission error:', error);
             alert('There was an error submitting your artwork. Please try again.');
@@ -421,6 +463,8 @@
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         }
+        
+        return false;
     }
 
     function addArtworkToShowcase(artistName, artworkTitle, description, file) {
@@ -1966,6 +2010,73 @@
         
         // In a real implementation, this would send to analytics
         console.log('Resource clicked:', clickData);
+    }
+    
+    // Create from prompt functionality
+    function createFromPrompt() {
+        // Get the current prompt text
+        const promptText = document.getElementById('dailyPrompt').textContent;
+        
+        // Pre-fill the submission form with the prompt
+        openSubmissionModal();
+        
+        // Add prompt reference to the description field
+        setTimeout(() => {
+            const descriptionField = document.getElementById('artworkDescription');
+            if (descriptionField) {
+                descriptionField.value = `Inspired by today's prompt: "${promptText.trim()}"\n\n`;
+                descriptionField.focus();
+                // Position cursor after the prompt reference
+                descriptionField.setSelectionRange(descriptionField.value.length, descriptionField.value.length);
+            }
+        }, 100);
+        
+        showNotification('✨ Submission form opened with today\'s prompt! Add your artwork details.');
+    }
+    
+    // Simple notification function
+    function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-secondary-accent);
+            color: var(--color-primary-accent);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10000;
+            font-family: var(--font-accent);
+            font-size: 0.9rem;
+            max-width: 300px;
+            animation: slideIn 0.3s ease-out;
+        `;
+        notification.textContent = message;
+        
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Remove after 4 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideIn 0.3s ease-out reverse';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 4000);
     }
     </script>
 
