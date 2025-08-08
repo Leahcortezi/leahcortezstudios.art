@@ -69,26 +69,6 @@
                                     <span class="time-value" id="seconds">00</span>
                                     <span class="time-label">Seconds</span>
                                 </div>
-                                <script>
-                                    // Countdown to midnight (next day)
-                                    function updateCountdownToMidnight() {
-                                        const now = new Date();
-                                        const midnight = new Date(now);
-                                        midnight.setDate(midnight.getDate() + 1);
-                                        midnight.setHours(0, 0, 0, 0);
-
-                                        const diff = midnight - now;
-                                        const hours = Math.floor(diff / (1000 * 60 * 60));
-                                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                                        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                                        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                                        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                                        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                                    }
-                                    setInterval(updateCountdownToMidnight, 1000);
-                                    updateCountdownToMidnight();
-                                </script>
                                 </div>
                             </div>
                         <div class="prompt-text" id="dailyPrompt">
@@ -99,8 +79,6 @@
                             <span class="tag">creative</span>
                             <span class="tag">artistic</span>
                         </div>
-                        <!-- Debug button - remove this later -->
-                        <button onclick="generateDailyPrompt()" style="margin-top: 10px; padding: 5px 10px; background: var(--color-primary-accent); color: var(--color-background); border: none; border-radius: 5px; cursor: pointer;">🔄 Generate New Prompt</button>
                         <div class="prompt-actions">
                             <button class="new-prompt-btn" onclick="refreshPromptTags()">Refresh Tags</button>
                             <button class="create-from-prompt-btn" onclick="createFromPrompt()">Create from this Prompt</button>
@@ -777,7 +755,64 @@
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
-    // Countdown timer for next prompt
+    // Helper function to update countdown display
+    function updateCountdownDisplay(timeRemaining) {
+        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        const countdownElement = document.getElementById('countdown');
+        if (countdownElement) {
+            countdownElement.textContent = `Next prompt in: ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+
+    // Show notification messages
+    function showNotification(message, type = 'info') {
+        // Create notification element if it doesn't exist
+        let notification = document.getElementById('notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: bold;
+                z-index: 1000;
+                max-width: 300px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+        }
+        
+        // Set styles based on type
+        if (type === 'success') {
+            notification.style.backgroundColor = '#4CAF50';
+        } else if (type === 'error') {
+            notification.style.backgroundColor = '#f44336';
+        } else {
+            notification.style.backgroundColor = '#2196F3';
+        }
+        
+        notification.textContent = message;
+        
+        // Slide in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Hide after 5 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+        }, 5000);
+    }
+
+    // Countdown timer for next prompt with automatic update
     function updateCountdown() {
         const now = new Date();
         const tomorrow = new Date(now);
@@ -786,10 +821,21 @@
         
         const timeUntilTomorrow = tomorrow.getTime() - now.getTime();
         
-        // If we've reached tomorrow, generate a new prompt and reset countdown
-        if (timeUntilTomorrow <= 0) {
+        // If we've reached midnight (or past), generate a new prompt
+        if (timeUntilTomorrow <= 1000) { // Within 1 second of midnight
+            console.log('Midnight reached! Generating new prompt...');
+            
+            // Clear old prompt data to force new generation
+            localStorage.removeItem('dailyPrompt');
+            localStorage.removeItem('promptDate');
+            
+            // Generate new prompt
             generateDailyPrompt();
-            // Recalculate for the new day
+            
+            // Show notification about new prompt
+            showNotification('A new daily prompt has arrived! Start creating!', 'success');
+            
+            // Recalculate countdown for the new day
             const newTomorrow = new Date(now);
             newTomorrow.setDate(newTomorrow.getDate() + 1);
             newTomorrow.setHours(0, 0, 0, 0);
