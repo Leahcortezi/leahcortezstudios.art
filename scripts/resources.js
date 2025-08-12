@@ -460,9 +460,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const shufflePaletteBtn = document.getElementById('shufflePalette');
 
     if (shufflePaletteBtn) {
+        console.log('Shuffle button found, adding event listener');
         shufflePaletteBtn.addEventListener('click', () => {
+            console.log('Shuffle button clicked');
             smartShufflePalette();
         });
+    } else {
+        console.log('Shuffle button not found!');
     }
 
     function getCurrentPalette() {
@@ -471,12 +475,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function smartShufflePalette() {
+        console.log('smartShufflePalette called');
         const currentColors = getCurrentPalette();
+        console.log('Current colors:', currentColors);
         const newColors = [...currentColors];
         
         // For each unlocked color, randomly choose what to do (only variations of existing color)
         currentColors.forEach((color, index) => {
             if (!lockedColors.has(index)) {
+                console.log(`Processing unlocked color ${index}: ${color}`);
                 const variation = Math.random();
                 
                 if (variation < 0.33) {
@@ -490,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             b: Math.round(rgb.b + (255 - rgb.b) * factor)
                         };
                         newColors[index] = rgbToHex(tintedRgb.r, tintedRgb.g, tintedRgb.b);
+                        console.log(`Generated tint: ${newColors[index]}`);
                     }
                 } else if (variation < 0.66) {
                     // Generate shade (darker)
@@ -502,6 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             b: Math.round(rgb.b * (1 - factor))
                         };
                         newColors[index] = rgbToHex(shadedRgb.r, shadedRgb.g, shadedRgb.b);
+                        console.log(`Generated shade: ${newColors[index]}`);
                     }
                 } else {
                     // Generate tone (adjust saturation)
@@ -509,11 +518,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (hsl) {
                         const newSaturation = Math.max(10, hsl[1] - 30 + Math.random() * 60);
                         newColors[index] = hslToHex(hsl[0], newSaturation, hsl[2]);
+                        console.log(`Generated tone: ${newColors[index]}`);
                     }
                 }
+            } else {
+                console.log(`Color ${index} is locked, skipping`);
             }
         });
         
+        console.log('Updating palette with new colors:', newColors);
         updateColorPalette(newColors);
     }
 
