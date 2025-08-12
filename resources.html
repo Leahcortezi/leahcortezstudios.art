@@ -55,16 +55,33 @@
                 
                 <div class="color-generator">
                     <div class="color-controls">
-                        <button id="generateColors" class="generate-btn">Generate Palette</button>
+                        <div class="color-input-group">
+                            <label for="baseColorPicker">Base Color:</label>
+                            <input type="color" id="baseColorPicker" value="#f8c8d0" class="base-color-picker">
+                            <span class="color-input-label">or</span>
+                            <input type="file" id="paletteImageUpload" accept="image/*" style="display: none;">
+                            <button id="uploadImageBtn" class="action-btn small">Upload Image</button>
+                        </div>
+                        
                         <select id="colorScheme" class="color-scheme-select">
                             <option value="monochromatic">Monochromatic</option>
                             <option value="analogous">Analogous</option>
                             <option value="complementary">Complementary</option>
                             <option value="triadic">Triadic</option>
-                            <option value="emotional">Emotional</option>
-                            <option value="seasonal">Seasonal</option>
+                            <option value="tetradic">Tetradic</option>
+                            <option value="splitComplementary">Split Complementary</option>
+                            <option value="emotional">Emotional Palette</option>
+                            <option value="seasonal">Seasonal Colors</option>
                             <option value="accessible">High Contrast</option>
+                            <option value="vintage">Vintage</option>
+                            <option value="modern">Modern</option>
+                            <option value="nature">Nature Inspired</option>
+                            <option value="sunset">Sunset Vibes</option>
+                            <option value="ocean">Ocean Blues</option>
+                            <option value="forest">Forest Greens</option>
                         </select>
+                        
+                        <button id="generateColors" class="generate-btn">Generate Palette</button>
                         <button id="checkAccessibility" class="action-btn">Check Accessibility</button>
                     </div>
                     
@@ -72,22 +89,58 @@
                         <div class="color-swatch" data-color="#f8c8d0">
                             <div class="color-display" style="background-color: #f8c8d0;"></div>
                             <span class="color-code">#f8c8d0</span>
+                            <button class="lock-btn" data-index="0" title="Lock this color">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </button>
                         </div>
                         <div class="color-swatch" data-color="#d4a5b0">
                             <div class="color-display" style="background-color: #d4a5b0;"></div>
                             <span class="color-code">#d4a5b0</span>
+                            <button class="lock-btn" data-index="1" title="Lock this color">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </button>
                         </div>
                         <div class="color-swatch" data-color="#b08290">
                             <div class="color-display" style="background-color: #b08290;"></div>
                             <span class="color-code">#b08290</span>
+                            <button class="lock-btn" data-index="2" title="Lock this color">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </button>
                         </div>
                         <div class="color-swatch" data-color="#8c5f70">
                             <div class="color-display" style="background-color: #8c5f70;"></div>
                             <span class="color-code">#8c5f70</span>
+                            <button class="lock-btn" data-index="3" title="Lock this color">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </button>
                         </div>
                         <div class="color-swatch" data-color="#683c50">
                             <div class="color-display" style="background-color: #683c50;"></div>
                             <span class="color-code">#683c50</span>
+                            <button class="lock-btn" data-index="4" title="Lock this color">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="color-variations">
+                        <div class="variation-controls">
+                            <button id="shufflePalette" class="action-btn primary">Shuffle Palette</button>
                         </div>
                     </div>
                     

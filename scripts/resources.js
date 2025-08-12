@@ -19,6 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const exportCSSBtn = document.getElementById('exportCSS');
     const checkAccessibilityBtn = document.getElementById('checkAccessibility');
     const accessibilityReport = document.getElementById('accessibilityReport');
+    const baseColorPicker = document.getElementById('baseColorPicker');
+    const paletteImageUpload = document.getElementById('paletteImageUpload');
+    const uploadImageBtn = document.getElementById('uploadImageBtn');
+
+    // Lock state for color palette
+    let lockedColors = new Set();
+
+    // Enhanced color generation functions
+    function hexToHsl(hex) {
+        const r = parseInt(hex.slice(1, 3), 16) / 255;
+        const g = parseInt(hex.slice(3, 5), 16) / 255;
+        const b = parseInt(hex.slice(5, 7), 16) / 255;
+
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if (max === min) {
+            h = s = 0;
+        } else {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+
+        return [h * 360, s * 100, l * 100];
+    }
 
     // Enhanced color generation functions
     function hslToHex(h, s, l) {
@@ -32,11 +64,162 @@ document.addEventListener('DOMContentLoaded', () => {
         return `#${f(0)}${f(8)}${f(4)}`;
     }
 
-    function generateColorPalette(scheme) {
-        const baseHue = Math.random() * 360;
+    function generateColorPalette(scheme, baseColor = null) {
+        let baseHue, baseSaturation, baseLightness;
+        
+        if (baseColor) {
+            const [h, s, l] = hexToHsl(baseColor);
+            baseHue = h;
+            baseSaturation = s;
+            baseLightness = l;
+        } else {
+            baseHue = Math.random() * 360;
+            baseSaturation = 60 + Math.random() * 30;
+            baseLightness = 50 + Math.random() * 20;
+        }
+
         const colors = [];
 
         switch (scheme) {
+            case 'monochromatic':
+                for (let i = 0; i < 5; i++) {
+                    const lightness = 20 + (i * 15);
+                    colors.push(hslToHex(baseHue, baseSaturation, lightness));
+                }
+                break;
+            
+            case 'analogous':
+                for (let i = 0; i < 5; i++) {
+                    const hue = (baseHue + (i * 25) - 50) % 360;
+                    const lightness = baseLightness + (Math.random() * 20 - 10);
+                    colors.push(hslToHex(hue < 0 ? hue + 360 : hue, baseSaturation, Math.max(10, Math.min(90, lightness))));
+                }
+                break;
+            
+            case 'complementary':
+                const complementaryHue = (baseHue + 180) % 360;
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness - 20));
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness));
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness + 20));
+                colors.push(hslToHex(complementaryHue, baseSaturation, baseLightness - 10));
+                colors.push(hslToHex(complementaryHue, baseSaturation, baseLightness + 10));
+                break;
+            
+            case 'triadic':
+                const triad1 = (baseHue + 120) % 360;
+                const triad2 = (baseHue + 240) % 360;
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness));
+                colors.push(hslToHex(baseHue, baseSaturation * 0.8, baseLightness + 15));
+                colors.push(hslToHex(triad1, baseSaturation, baseLightness - 10));
+                colors.push(hslToHex(triad1, baseSaturation * 0.9, baseLightness + 10));
+                colors.push(hslToHex(triad2, baseSaturation, baseLightness));
+                break;
+            
+            case 'tetradic':
+                const tetra1 = (baseHue + 90) % 360;
+                const tetra2 = (baseHue + 180) % 360;
+                const tetra3 = (baseHue + 270) % 360;
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness));
+                colors.push(hslToHex(tetra1, baseSaturation * 0.8, baseLightness + 10));
+                colors.push(hslToHex(tetra2, baseSaturation * 0.9, baseLightness - 15));
+                colors.push(hslToHex(tetra3, baseSaturation * 0.7, baseLightness + 5));
+                colors.push(hslToHex(baseHue, baseSaturation * 0.5, baseLightness + 25));
+                break;
+            
+            case 'splitComplementary':
+                const split1 = (baseHue + 150) % 360;
+                const split2 = (baseHue + 210) % 360;
+                colors.push(hslToHex(baseHue, baseSaturation, baseLightness));
+                colors.push(hslToHex(baseHue, baseSaturation * 0.7, baseLightness + 20));
+                colors.push(hslToHex(split1, baseSaturation * 0.8, baseLightness - 10));
+                colors.push(hslToHex(split2, baseSaturation * 0.8, baseLightness - 10));
+                colors.push(hslToHex(baseHue, baseSaturation * 0.3, baseLightness + 30));
+                break;
+
+            case 'vintage':
+                // Muted, warm vintage colors
+                const vintageColors = [
+                    { h: 25, s: 45, l: 55 },    // Dusty orange
+                    { h: 45, s: 40, l: 65 },    // Muted yellow
+                    { h: 15, s: 35, l: 45 },    // Brown
+                    { h: 200, s: 30, l: 60 },   // Dusty blue
+                    { h: 0, s: 25, l: 75 }      // Warm gray
+                ];
+                vintageColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
+            case 'modern':
+                // Clean, bright modern colors
+                const modernColors = [
+                    { h: 200, s: 100, l: 50 },  // Bright blue
+                    { h: 160, s: 85, l: 45 },   // Teal
+                    { h: 50, s: 100, l: 60 },   // Bright yellow
+                    { h: 300, s: 75, l: 55 },   // Purple
+                    { h: 0, s: 0, l: 95 }       // Near white
+                ];
+                modernColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
+            case 'nature':
+                // Earth tones and natural colors
+                const natureColors = [
+                    { h: 100, s: 40, l: 35 },   // Forest green
+                    { h: 30, s: 60, l: 25 },    // Earth brown
+                    { h: 60, s: 70, l: 80 },    // Light yellow
+                    { h: 200, s: 70, l: 70 },   // Sky blue
+                    { h: 15, s: 80, l: 40 }     // Rust
+                ];
+                natureColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
+            case 'sunset':
+                // Warm sunset colors
+                const sunsetColors = [
+                    { h: 15, s: 90, l: 60 },    // Orange
+                    { h: 45, s: 100, l: 70 },   // Golden yellow
+                    { h: 350, s: 85, l: 55 },   // Pink-red
+                    { h: 280, s: 60, l: 45 },   // Purple
+                    { h: 25, s: 70, l: 30 }     // Deep orange
+                ];
+                sunsetColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
+            case 'ocean':
+                // Ocean blues and teals
+                const oceanColors = [
+                    { h: 195, s: 100, l: 30 },  // Deep blue
+                    { h: 180, s: 70, l: 45 },   // Teal
+                    { h: 200, s: 85, l: 60 },   // Ocean blue
+                    { h: 210, s: 40, l: 80 },   // Light blue
+                    { h: 170, s: 30, l: 85 }    // Seafoam
+                ];
+                oceanColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
+            case 'forest':
+                // Forest greens and earth tones
+                const forestColors = [
+                    { h: 120, s: 60, l: 25 },   // Dark green
+                    { h: 100, s: 50, l: 40 },   // Moss green
+                    { h: 80, s: 40, l: 55 },    // Sage
+                    { h: 30, s: 70, l: 30 },    // Brown
+                    { h: 60, s: 30, l: 70 }     // Light sage
+                ];
+                forestColors.forEach(color => {
+                    colors.push(hslToHex(color.h, color.s, color.l));
+                });
+                break;
+
             case 'emotional':
                 // Joy, Calm, Energy, Creativity, Trust
                 const emotions = [
@@ -68,53 +251,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 // High contrast colors that meet WCAG AA standards
                 colors.push('#000000', '#ffffff', '#0066cc', '#ffff00', '#ff0000');
                 break;
-            
-            case 'monochromatic':
-                const baseSaturation = 60 + Math.random() * 30;
-                for (let i = 0; i < 5; i++) {
-                    const lightness = 20 + (i * 15);
-                    colors.push(hslToHex(baseHue, baseSaturation, lightness));
-                }
-                break;
-            
-            case 'analogous':
-                const analogousSaturation = 60 + Math.random() * 30;
-                for (let i = 0; i < 5; i++) {
-                    const hue = (baseHue + (i * 30)) % 360;
-                    const lightness = 40 + Math.random() * 30;
-                    colors.push(hslToHex(hue, analogousSaturation, lightness));
-                }
-                break;
-            
-            case 'complementary':
-                const complementaryHue = (baseHue + 180) % 360;
-                const compSaturation = 60 + Math.random() * 30;
-                colors.push(hslToHex(baseHue, compSaturation, 30));
-                colors.push(hslToHex(baseHue, compSaturation, 50));
-                colors.push(hslToHex(baseHue, compSaturation, 70));
-                colors.push(hslToHex(complementaryHue, compSaturation, 40));
-                colors.push(hslToHex(complementaryHue, compSaturation, 60));
-                break;
-            
-            case 'triadic':
-                const triad1 = (baseHue + 120) % 360;
-                const triad2 = (baseHue + 240) % 360;
-                const triadSaturation = 60 + Math.random() * 30;
-                colors.push(hslToHex(baseHue, triadSaturation, 50));
-                colors.push(hslToHex(baseHue, triadSaturation, 70));
-                colors.push(hslToHex(triad1, triadSaturation, 50));
-                colors.push(hslToHex(triad1, triadSaturation, 70));
-                colors.push(hslToHex(triad2, triadSaturation, 50));
-                break;
         }
 
         return colors;
     }
 
+    // Image palette extraction function
+    function extractPaletteFromImage(imageFile) {
+        return new Promise((resolve) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = () => {
+                const size = 100; // Reduce image size for faster processing
+                canvas.width = size;
+                canvas.height = size;
+                
+                ctx.drawImage(img, 0, 0, size, size);
+                const imageData = ctx.getImageData(0, 0, size, size);
+                const data = imageData.data;
+                
+                // Simple color extraction - get colors from different regions
+                const colors = [];
+                const regions = [
+                    { x: 10, y: 10 },   // Top-left
+                    { x: 80, y: 10 },   // Top-right
+                    { x: 50, y: 50 },   // Center
+                    { x: 10, y: 80 },   // Bottom-left
+                    { x: 80, y: 80 }    // Bottom-right
+                ];
+                
+                regions.forEach(region => {
+                    const index = (region.y * size + region.x) * 4;
+                    const r = data[index];
+                    const g = data[index + 1];
+                    const b = data[index + 2];
+                    
+                    const hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+                    colors.push(hex);
+                });
+                
+                resolve(colors);
+            };
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(imageFile);
+        });
+    }
+
+    // Image upload functionality
+    if (uploadImageBtn && paletteImageUpload) {
+        uploadImageBtn.addEventListener('click', () => {
+            paletteImageUpload.click();
+        });
+
+        paletteImageUpload.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                try {
+                    const colors = await extractPaletteFromImage(file);
+                    updateColorPalette(colors);
+                    showNotification('Palette extracted from image!');
+                } catch (error) {
+                    showNotification('Error extracting colors from image.');
+                }
+            }
+        });
+    }
+
     function updateColorPalette(colors) {
         const swatches = colorPalette.querySelectorAll('.color-swatch');
         colors.forEach((color, index) => {
-            if (swatches[index]) {
+            if (swatches[index] && !lockedColors.has(index)) {
                 const display = swatches[index].querySelector('.color-display');
                 const code = swatches[index].querySelector('.color-code');
                 display.style.backgroundColor = color;
@@ -159,8 +371,51 @@ document.addEventListener('DOMContentLoaded', () => {
     if (generateColorsBtn && colorSchemeSelect) {
         generateColorsBtn.addEventListener('click', () => {
             const scheme = colorSchemeSelect.value;
-            const colors = generateColorPalette(scheme);
+            const baseColor = baseColorPicker ? baseColorPicker.value : null;
+            const colors = generateColorPalette(scheme, baseColor);
             updateColorPalette(colors);
+        });
+    }
+
+    // Lock button functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.lock-btn')) {
+            const btn = e.target.closest('.lock-btn');
+            const index = parseInt(btn.dataset.index);
+            toggleLock(index);
+        }
+    });
+
+    function toggleLock(index) {
+        const swatches = colorPalette.querySelectorAll('.color-swatch');
+        const swatch = swatches[index];
+        const lockBtn = swatch.querySelector('.lock-btn');
+        
+        if (lockedColors.has(index)) {
+            lockedColors.delete(index);
+            swatch.classList.remove('locked');
+            lockBtn.classList.remove('locked');
+            lockBtn.title = 'Lock this color';
+        } else {
+            lockedColors.add(index);
+            swatch.classList.add('locked');
+            lockBtn.classList.add('locked');
+            lockBtn.title = 'Unlock this color';
+        }
+    }
+
+    // Update palette when base color changes
+    if (baseColorPicker) {
+        baseColorPicker.addEventListener('change', () => {
+            const scheme = colorSchemeSelect.value;
+            const baseColor = baseColorPicker.value;
+            
+            // Only auto-generate for color theory schemes, not preset palettes
+            const autoGenerateSchemes = ['monochromatic', 'analogous', 'complementary', 'triadic', 'tetradic', 'splitComplementary'];
+            if (autoGenerateSchemes.includes(scheme)) {
+                const colors = generateColorPalette(scheme, baseColor);
+                updateColorPalette(colors);
+            }
         });
     }
 
@@ -199,6 +454,67 @@ document.addEventListener('DOMContentLoaded', () => {
             accessibilityReport.innerHTML = reportHTML;
             accessibilityReport.classList.add('show');
         });
+    }
+
+    // Add smart shuffle palette functionality
+    const shufflePaletteBtn = document.getElementById('shufflePalette');
+
+    if (shufflePaletteBtn) {
+        shufflePaletteBtn.addEventListener('click', () => {
+            smartShufflePalette();
+        });
+    }
+
+    function getCurrentPalette() {
+        return Array.from(colorPalette.querySelectorAll('.color-swatch'))
+            .map(swatch => swatch.getAttribute('data-color'));
+    }
+
+    function smartShufflePalette() {
+        const currentColors = getCurrentPalette();
+        const newColors = [...currentColors];
+        
+        // For each unlocked color, randomly choose what to do (only variations of existing color)
+        currentColors.forEach((color, index) => {
+            if (!lockedColors.has(index)) {
+                const variation = Math.random();
+                
+                if (variation < 0.33) {
+                    // Generate tint (lighter)
+                    const rgb = hexToRgb(color);
+                    if (rgb) {
+                        const factor = 0.2 + Math.random() * 0.5; // 20-70% lighter
+                        const tintedRgb = {
+                            r: Math.round(rgb.r + (255 - rgb.r) * factor),
+                            g: Math.round(rgb.g + (255 - rgb.g) * factor),
+                            b: Math.round(rgb.b + (255 - rgb.b) * factor)
+                        };
+                        newColors[index] = rgbToHex(tintedRgb.r, tintedRgb.g, tintedRgb.b);
+                    }
+                } else if (variation < 0.66) {
+                    // Generate shade (darker)
+                    const rgb = hexToRgb(color);
+                    if (rgb) {
+                        const factor = 0.2 + Math.random() * 0.5; // 20-70% darker
+                        const shadedRgb = {
+                            r: Math.round(rgb.r * (1 - factor)),
+                            g: Math.round(rgb.g * (1 - factor)),
+                            b: Math.round(rgb.b * (1 - factor))
+                        };
+                        newColors[index] = rgbToHex(shadedRgb.r, shadedRgb.g, shadedRgb.b);
+                    }
+                } else {
+                    // Generate tone (adjust saturation)
+                    const hsl = hexToHsl(color);
+                    if (hsl) {
+                        const newSaturation = Math.max(10, hsl[1] - 30 + Math.random() * 60);
+                        newColors[index] = hslToHex(hsl[0], newSaturation, hsl[2]);
+                    }
+                }
+            }
+        });
+        
+        updateColorPalette(newColors);
     }
 
     if (exportCSSBtn) {
