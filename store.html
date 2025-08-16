@@ -29,8 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
     
     <!-- Stylesheet Links -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/store.css?v=9">
 </head>
 <body>
     <!-- Navigation -->
@@ -89,43 +89,47 @@
                 <div class="collections-horizontal">
                     <div class="collection-card" onclick="window.location.href='shop-all.html?category=prints'">
                         <div class="collection-image">
-                            <img src="https://via.placeholder.com/280x200/8b4a6b/ffffff?text=Art+Prints" alt="Art Prints">
+                            <img src="images/shop/print.png" alt="Art Prints">
                         </div>
                         <div class="collection-info">
                             <h3>Art Prints</h3>
-                            <p>Limited edition prints celebrating culture and identity</p>
+                            <p>Original artwork and creative designs</p>
                         </div>
                     </div>
                     
                     <div class="collection-card" onclick="window.location.href='shop-all.html?category=stickers'">
                         <div class="collection-image">
-                            <img src="https://via.placeholder.com/280x200/f59e0b/ffffff?text=Stickers" alt="Stickers">
+                            <img src="images/shop/sticker.png" alt="Stickers">
                         </div>
                         <div class="collection-info">
                             <h3>Stickers</h3>
-                            <p>Vinyl designs for laptops, journals, and more</p>
+                            <p>Unique designs for self-expression</p>
                         </div>
                     </div>
                     
                     <div class="collection-card" onclick="window.location.href='shop-all.html?category=pins'">
                         <div class="collection-image">
-                            <img src="https://via.placeholder.com/280x200/7e1c2e/ffffff?text=Embroidered+Pins" alt="Embroidered Felt Pins">
+                            <img src="images/shop/pin.png" alt="Embroidered Felt Pins">
                         </div>
                         <div class="collection-info">
                             <h3>Embroidered Felt Pins</h3>
-                            <p>Handmade embroidered pins with sacred heart motifs</p>
+                            <p>Handcrafted wearable art pieces</p>
                         </div>
                     </div>
                     
                     <div class="collection-card" onclick="window.location.href='shop-all.html?category=buttons'">
                         <div class="collection-image">
-                            <img src="https://via.placeholder.com/280x200/666666/ffffff?text=Buttons" alt="Custom Buttons">
+                            <img src="images/shop/button.png" alt="Custom Buttons">
                         </div>
                         <div class="collection-info">
                             <h3>Custom Buttons</h3>
-                            <p>Unique designs celebrating artistic expression</p>
+                            <p>Artistic designs and creative expressions</p>
                         </div>
                     </div>
+                </div>
+                
+                <div class="shop-all-container">
+                    <a href="shop-all.html" class="cta-button primary">Shop All Products</a>
                 </div>
             </div>
         </section>
@@ -329,6 +333,201 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Cart functionality
+        class ShoppingCart {
+            constructor() {
+                this.items = JSON.parse(localStorage.getItem('cartItems')) || [];
+                this.init();
+            }
+
+            init() {
+                this.updateCartDisplay();
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                // Toggle cart sidebar
+                document.getElementById('cartToggle').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.toggleCart();
+                });
+
+                // Close cart
+                document.getElementById('cartClose').addEventListener('click', () => {
+                    this.closeCart();
+                });
+
+                // Close cart when clicking overlay
+                document.getElementById('cartOverlay').addEventListener('click', () => {
+                    this.closeCart();
+                });
+
+                // Checkout button
+                document.getElementById('checkoutBtn').addEventListener('click', () => {
+                    this.checkout();
+                });
+            }
+
+            toggleCart() {
+                const sidebar = document.getElementById('cartSidebar');
+                const overlay = document.getElementById('cartOverlay');
+                
+                if (sidebar.classList.contains('open')) {
+                    this.closeCart();
+                } else {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            closeCart() {
+                const sidebar = document.getElementById('cartSidebar');
+                const overlay = document.getElementById('cartOverlay');
+                
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            addItem(item) {
+                const existingItem = this.items.find(cartItem => cartItem.id === item.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.items.push({ ...item, quantity: 1 });
+                }
+                
+                this.saveCart();
+                this.updateCartDisplay();
+                this.showAddedMessage(item.title);
+            }
+
+            removeItem(itemId) {
+                this.items = this.items.filter(item => item.id !== itemId);
+                this.saveCart();
+                this.updateCartDisplay();
+            }
+
+            updateCartDisplay() {
+                const cartCount = document.getElementById('cartCount');
+                const cartItems = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+
+                // Update cart count
+                const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+
+                // Update cart items display
+                if (this.items.length === 0) {
+                    cartItems.innerHTML = `
+                        <div class="empty-cart">
+                            <p>Your cart is empty</p>
+                            <a href="shop-all.html" class="continue-shopping">Continue Shopping</a>
+                        </div>
+                    `;
+                } else {
+                    cartItems.innerHTML = this.items.map(item => `
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.title}">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.title}</div>
+                                <div class="cart-item-price">$${item.price} × ${item.quantity}</div>
+                            </div>
+                            <button class="cart-item-remove" onclick="cart.removeItem('${item.id}')">&times;</button>
+                        </div>
+                    `).join('');
+                }
+
+                // Update total
+                const total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = total.toFixed(2);
+            }
+
+            saveCart() {
+                localStorage.setItem('cartItems', JSON.stringify(this.items));
+            }
+
+            showAddedMessage(itemTitle) {
+                // Show a brief "added to cart" message
+                const message = document.createElement('div');
+                message.className = 'cart-added-message';
+                message.textContent = `${itemTitle} added to cart!`;
+                message.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #f8c8d0;
+                    color: #1a1a1a;
+                    padding: 1rem 1.5rem;
+                    border-radius: 8px;
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.remove();
+                }, 3000);
+            }
+
+            checkout() {
+                if (this.items.length === 0) {
+                    alert('Your cart is empty!');
+                    return;
+                }
+
+                // For now, redirect to Ko-fi or show checkout message
+                alert('Redirecting to Ko-fi checkout...\n\nThis will integrate with your Ko-fi store for secure payment processing.');
+                
+                // Future: Integrate with Ko-fi API
+                // window.open('https://ko-fi.com/your-store-checkout', '_blank');
+            }
+        }
+
+        // Initialize cart
+        const cart = new ShoppingCart();
+
+        // Add CSS for cart message animation
+        const cartStyle = document.createElement('style');
+        cartStyle.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(cartStyle);
     </script>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <p>Your cart is empty</p>
+                    <a href="shop-all.html" class="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Checkout with Ko-fi</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
 </body>
 </html>
