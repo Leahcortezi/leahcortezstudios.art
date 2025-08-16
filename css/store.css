@@ -313,7 +313,6 @@
 }
 
 .collection-card:hover .collection-image {
-    box-shadow: 0 16px 48px rgba(248, 200, 208, 0.2);
     transform: scale(1.02);
 }
 
@@ -452,6 +451,169 @@
     .hero-actions {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Shop All Page Styling */
+.shop-hero {
+    padding: 60px 2rem 40px;
+    background: transparent;
+    text-align: center;
+}
+
+.shop-header-content h1 {
+    font-family: 'Pirata One', serif;
+    font-size: 3rem;
+    color: #f8c8d0;
+    margin-bottom: 1rem;
+}
+
+.shop-header-content p {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.2rem;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.category-filter {
+    padding: 20px 2rem;
+    background: rgba(248, 200, 208, 0.02);
+    border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid rgba(248, 200, 208, 0.3);
+    color: #aaa;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #f8c8d0;
+    color: #7e1c2e;
+    border-color: #f8c8d0;
+}
+
+.all-products-section {
+    padding: 40px 2rem 80px;
+}
+
+.coming-soon-all {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.coming-soon-all .notice-content {
+    background: rgba(248, 200, 208, 0.05);
+    border: 1px solid rgba(248, 200, 208, 0.1);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+}
+
+.coming-soon-all h2 {
+    font-family: 'Pirata One', serif;
+    font-size: 2.5rem;
+    color: #f8c8d0;
+    margin-bottom: 1.5rem;
+}
+
+.collection-links {
+    margin: 2.5rem 0;
+}
+
+.collection-links h3 {
+    font-family: 'Pirata One', serif;
+    font-size: 1.5rem;
+    color: #f8c8d0;
+    margin-bottom: 1rem;
+}
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.collection-link {
+    background: rgba(126, 28, 46, 0.1);
+    border: 1px solid rgba(248, 200, 208, 0.3);
+    color: #f8c8d0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.collection-link:hover {
+    background: #f8c8d0;
+    color: #7e1c2e;
+    border-color: #f8c8d0;
+}
+
+.category-section {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-family: 'Pirata One', serif;
+    font-size: 2rem;
+    color: #f8c8d0;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(248, 200, 208, 0.2);
+    padding-bottom: 1rem;
+}
+
+.products-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Responsive Design for Shop All */
+@media (max-width: 768px) {
+    .shop-header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .quick-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .products-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .coming-soon-all .notice-content {
+        padding: 2rem 1.5rem;
     }
 }
 

@@ -81,7 +81,7 @@ The `ko-fi-integration.js` file handles:
 ## Collection Pages:
 - `shop-prints.html` - Art Prints Collection
 - `shop-stickers.html` - Stickers Collection  
-- `shop-pins.html` - Enamel Pins Collection
+- `shop-pins.html` - Embroidered Felt Pins Collection
 - `shop-buttons.html` - Custom Buttons Collection
 
 ## Benefits of Ko-fi Integration:
