@@ -66,39 +66,54 @@
 }
 
 .cta-button {
-    padding: 1rem 2rem;
-    border-radius: 6px;
+    display: inline-block;
+    margin: 0.5rem;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1rem;
+    color: #f8c8d0;
+    background: rgba(126,28,46,0.07);
+    border: 2px solid #f8c8d0;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(126,28,46,0.08);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background: #7e1c2e;
+    color: #f8c8d0;
+    border-color: #7e1c2e;
+    box-shadow: 0 4px 16px rgba(126,28,46,0.15);
+    transform: translateY(-2px) scale(1.04);
 }
 
 .cta-button.primary {
-    background: var(--accent-orange);
-    color: white;
-    border: none;
+    background: #7e1c2e;
+    color: #f8c8d0;
+    border-color: #7e1c2e;
 }
 
 .cta-button.primary:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
+    background: rgba(126,28,46,0.9);
+    transform: translateY(-2px) scale(1.04);
 }
 
 .cta-button.secondary {
-    background: transparent;
-    color: var(--accent-orange);
-    border: 2px solid var(--accent-orange);
+    background: rgba(126,28,46,0.07);
+    color: #f8c8d0;
+    border: 2px solid #f8c8d0;
 }
 
 .cta-button.secondary:hover {
-    background: var(--accent-orange);
-    color: white;
+    background: #7e1c2e;
+    color: #f8c8d0;
+    border-color: #7e1c2e;
 }
 
 /* Featured Product Card */
@@ -164,6 +179,118 @@
     font-size: 1.3rem;
     font-weight: bold;
     color: var(--accent-orange);
+}
+
+/* Shop Section */
+.shop-section {
+    padding: 60px 2rem;
+    background: transparent;
+}
+
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.shop-header h2 {
+    font-family: 'Pirata One', serif;
+    font-size: 2.5rem;
+    color: #f8c8d0;
+    margin: 0;
+}
+
+.shop-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1rem;
+    color: #f8c8d0;
+    background: rgba(126,28,46,0.07);
+    border: 2px solid #f8c8d0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(126,28,46,0.08);
+}
+
+.shop-all-btn:hover {
+    background: #7e1c2e;
+    color: #f8c8d0;
+    border-color: #7e1c2e;
+    box-shadow: 0 4px 16px rgba(126,28,46,0.15);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.star-icon {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.shop-item {
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.shop-item:hover {
+    transform: translateY(-4px);
+    border-color: #f8c8d0;
+    box-shadow: 0 4px 16px rgba(248, 200, 208, 0.15);
+}
+
+.shop-image {
+    height: 200px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.shop-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.shop-item:hover .shop-image img {
+    transform: scale(1.05);
+}
+
+.shop-item h3 {
+    font-family: 'Pirata One', serif;
+    font-size: 1.5rem;
+    color: #f8c8d0;
+    margin: 1rem 0 0.5rem 0;
+    padding: 0 1rem;
+}
+
+.shop-item p {
+    font-family: 'IM Fell English', serif;
+    color: #ccc;
+    margin: 0;
+    padding: 0 1rem 1.5rem 1rem;
+    font-size: 1rem;
 }
 
 /* Collections Section */
@@ -2068,6 +2195,17 @@
     
     .hero-title {
         font-size: 2.5rem;
+    }
+    
+    .shop-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .shop-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
     }
     
     .collections-grid {
