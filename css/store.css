@@ -16,28 +16,49 @@
     display: none;
 }
 
-/* Hero Section - Clean */
+/* Hero Section - Editorial Layout */
 .store-hero {
-    padding: 80px 2rem;
+    padding: 100px 2rem 80px;
     position: relative;
     z-index: 1;
+    background: transparent;
 }
 
 .hero-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    text-align: center;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 500px;
 }
 
 .hero-content {
     color: var(--text-primary);
+    text-align: left;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .hero-title {
     font-family: 'Pirata One', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--accent-orange);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.1;
 }
 
@@ -47,19 +68,22 @@
     margin-bottom: 2rem;
     font-weight: 300;
     font-style: italic;
+    line-height: 1.4;
 }
 
 .hero-description p {
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
 }
 
 .hero-actions {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
 }
 
 .cta-button {
@@ -227,7 +251,7 @@
 
 /* Shop Section */
 .shop-section {
-    padding: 60px 2rem;
+    padding: 80px 2rem;
     background: transparent;
 }
 
@@ -238,68 +262,389 @@
 
 .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .section-header h2 {
     font-family: 'Pirata One', serif;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #f8c8d0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-header p {
     font-family: 'IM Fell English', serif;
-    font-size: 1.1rem;
-    color: #ccc;
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-.shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* Collections Horizontal Layout */
+.collections-horizontal {
+    display: flex;
     gap: 2rem;
-    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
 }
 
-.shop-item {
-    background: rgba(248, 200, 208, 0.05);
-    border: 1px solid rgba(248, 200, 208, 0.2);
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
+.collection-card {
+    flex: 0 0 280px;
+    background: transparent;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    position: relative;
 }
 
-.shop-item:hover {
-    background: rgba(248, 200, 208, 0.1);
-    border-color: rgba(248, 200, 208, 0.4);
-    transform: translateY(-2px);
+.collection-card:hover {
+    transform: translateY(-8px);
 }
 
-.shop-image {
-    margin-bottom: 1rem;
+.collection-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
 }
 
-.shop-image img {
+.collection-card:hover .collection-image {
+    box-shadow: 0 16px 48px rgba(248, 200, 208, 0.2);
+    transform: scale(1.02);
+}
+
+.collection-image img {
     width: 100%;
-    max-width: 150px;
-    height: 150px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
 }
 
-.shop-item h3 {
+.collection-card:hover .collection-image img {
+    transform: scale(1.05);
+}
+
+.collection-info {
+    text-align: center;
+}
+
+.collection-info h3 {
     font-family: 'Pirata One', serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #f8c8d0;
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
-.shop-item p {
+.collection-card:hover .collection-info h3 {
+    color: #fff;
+}
+
+.collection-info p {
     font-family: 'IM Fell English', serif;
     font-size: 1rem;
     color: #aaa;
+    transition: color 0.3s ease;
+    line-height: 1.5;
+}
+
+.collection-card:hover .collection-info p {
+    color: #ccc;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 1024px) {
+    .collections-horizontal {
+        gap: 1.5rem;
+    }
+    
+    .collection-card {
+        flex: 0 0 250px;
+    }
+    
+    .store-information .info-grid-horizontal {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-description p {
+        max-width: 100%;
+    }
+    
+    .hero-image img {
+        height: 350px;
+    }
+    
+    .collections-horizontal {
+        gap: 1rem;
+    }
+    
+    .collection-card {
+        flex: 0 0 220px;
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .collection-header h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-section {
+        padding: 60px 1rem;
+    }
+    
+    .store-hero {
+        padding: 60px 1rem 40px;
+    }
+    
+    .collection-section {
+        padding: 40px 1rem;
+    }
+    
+    .collections-horizontal {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .collection-card {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-image img {
+        height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Collection Pages Styling */
+.collection-hero {
+    padding: 60px 2rem 40px;
+    background: transparent;
+}
+
+.collection-breadcrumb {
+    margin-bottom: 2rem;
+}
+
+.collection-breadcrumb a {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #f8c8d0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.collection-breadcrumb a:hover {
+    color: #fff;
+}
+
+.collection-header-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.collection-header-content h1 {
+    font-family: 'Pirata One', serif;
+    font-size: 3rem;
+    color: #f8c8d0;
+    margin-bottom: 1rem;
+}
+
+.collection-header-content p {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.2rem;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.products-section {
+    padding: 40px 2rem 80px;
+}
+
+.coming-soon-notice {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.notice-content {
+    background: rgba(248, 200, 208, 0.05);
+    border: 1px solid rgba(248, 200, 208, 0.1);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+}
+
+.notice-content h2 {
+    font-family: 'Pirata One', serif;
+    font-size: 2.5rem;
+    color: #f8c8d0;
+    margin-bottom: 1.5rem;
+}
+
+.notice-content p {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.ko-fi-ready {
+    background: rgba(126, 28, 46, 0.1);
+    border: 1px solid rgba(248, 200, 208, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.ko-fi-ready p {
+    margin: 0;
+    color: #f8c8d0;
+    font-weight: 500;
+}
+
+.notify-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.ko-fi-buy-btn {
+    background: #f8c8d0;
+    color: #7e1c2e;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.ko-fi-buy-btn:hover {
+    background: #7e1c2e;
+    color: #f8c8d0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(248, 200, 208, 0.3);
+}
+
+/* Responsive Design for Collection Pages */
+@media (max-width: 768px) {
+    .collection-header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .notice-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .notify-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Collection Sections */
+.collection-section {
+    padding: 60px 2rem;
+    background: rgba(248, 200, 208, 0.02);
+    border-top: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.collection-section:nth-child(even) {
+    background: transparent;
+}
+
+.collection-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.collection-header h2 {
+    font-family: 'Pirata One', serif;
+    font-size: 2.2rem;
+    color: #f8c8d0;
+    margin-bottom: 1rem;
+}
+
+.collection-header p {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.collection-notice {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(126, 28, 46, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.collection-notice p {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 /* About Preview Section */
@@ -1465,6 +1810,14 @@
     color: var(--accent-orange);
 }
 
+.store-information .info-grid-horizontal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .store-information .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2129,7 +2482,8 @@
         font-size: 2.2rem;
     }
     
-    .store-information .info-grid {
+    .store-information .info-grid,
+    .store-information .info-grid-horizontal {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
