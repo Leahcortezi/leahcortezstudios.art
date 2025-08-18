@@ -2,13 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="vie                                     <div class="practice-item">
-                            <h3>Academic Evolution</h3>
-                            <p>College printmaking and mixed media exploration—building my artistic reputation while staying rooted in Hispanic traditions and community stories.</p>
-                        </div>       <div class="practice-item">
-                            <h3>Spiritual Protection Art</h3>
-                            <p>Sacred heart pins and spiritual designs inspired by my mother's bruja practices and our devotion to Virgen de Guadalupe—art as protection and reverence.</p>
-                        </div>t" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About the Creator - Leah Cortez Studios</title>
     <meta name="description" content="Learn about Leah Cortez, an independent Hispanic artist from Corpus Christi creating authentic art that gives voice and representation to the Hispanic community.">
     
@@ -28,18 +22,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="store.html" class="logo">
                 <img src="images/logo/logo2.png" alt="Leah Cortez Studio" class="logo-img">
             </a>
             <ul class="nav-menu nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="collections/index.html">Collections</a></li>
-                <li><a href="bio/index.html">Bio</a></li>
-                <li><a href="community/index.html">Community</a></li>
-                <li><a href="cv/index.html">CV</a></li>
-                <li><a href="resources/index.html">Resources</a></li>
-                <li><a href="contact/index.html">Contact</a></li>
-                <li><a href="store.html" class="current">Store</a></li>
+                <li><a href="store.html">Home</a></li>
+                <li><a href="shop-all.html">Shop</a></li>
+                <li><a href="about-creator.html" class="current">About Creator</a></li>
+                <li><a href="#" class="cart-link" id="cartToggle">
+                    <span class="cart-icon">♦</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                    Cart
+                </a></li>
             </ul>
             <div class="hamburger">
                 <img src="icons/flower.svg" alt="Menu" class="hamburger-icon">
@@ -91,7 +85,7 @@
                     
                     <div class="practice-grid">
                         <div class="practice-item">
-                            <h3>� Spiritual Protection Art</h3>
+                            <h3>Spiritual Protection Art</h3>
                             <p>Sacred heart pins and spiritual designs inspired by my mother's bruja practices and our devotion to Virgen de Guadalupe—art as protection and reverence.</p>
                         </div>
                         
@@ -101,26 +95,8 @@
                         </div>
                         
                         <div class="practice-item">
-                            <h3>� Academic Evolution</h3>
+                            <h3>Academic Evolution</h3>
                             <p>College printmaking and mixed media exploration—building my artistic reputation while staying rooted in Hispanic traditions and community stories.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Philosophy Section -->
-        <section class="community-connection">
-            <div class="container">
-                <div class="community-content">
-                    <h2>Art as Inheritance & Resistance</h2>
-                    
-                    <div class="philosophy-content">
-                        <p class="philosophy-statement">My art functions as <strong>inheritance</strong> (carrying forward cultural symbols), <strong>ritual</strong> (created with intention and reverence), <strong>play</strong> (bringing joy and experimentation), and <strong>resistance</strong> (claiming space for Hispanic voices).</p>
-                        
-                        <div class="studio-info">
-                            <h3>Leah Cortez Studios</h3>
-                            <p>Building a professional practice that celebrates Hispanic culture in modern creative spaces. My vision is to become a cultural design leader who shows that traditional symbols and contemporary techniques can create meaningful, authentic art.</p>
                         </div>
                     </div>
                 </div>
@@ -147,14 +123,85 @@
         </section>
     </main>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            <div class="cart-total">
+                <div class="total-line">
+                    <span>Total: $<span id="cartTotal">0.00</span></span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">Checkout with Ko-fi</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
-            <img src="images/logo/logo2.png" alt="Leah Cortez Studio" class="footer-logo">
-            <p class="copyright">© 2025 Leah Cortez Studio. All rights reserved.</p>
+            <img src="images/logo/logo4white.png" alt="Leah Cortez Logo" class="footer-logo" loading="lazy">
+            <p class="copyright">Leah Cortez © 2025</p>
         </div>
     </footer>
 
     <script src="scripts/main.js"></script>
+    
+    <!-- Cart JavaScript -->
+    <script>
+        // Cart functionality (simplified version for About Creator page)
+        let cart = JSON.parse(localStorage.getItem('leahCortezCart')) || [];
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cartCount) cartCount.textContent = cart.length;
+            
+            if (cartItems) {
+                cartItems.innerHTML = cart.length === 0 ? 
+                    '<div class="empty-cart">Your cart is empty</div>' :
+                    cart.map(item => `
+                        <div class="cart-item">
+                            <span>${item.name}</span>
+                            <span>$${item.price}</span>
+                        </div>
+                    `).join('');
+            }
+            
+            if (cartTotal) {
+                const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+                cartTotal.textContent = total.toFixed(2);
+            }
+        }
+
+        // Cart toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartToggle = document.getElementById('cartToggle');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartClose = document.getElementById('cartClose');
+            
+            if (cartToggle) {
+                cartToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    cartSidebar.classList.add('active');
+                });
+            }
+            
+            if (cartClose) {
+                cartClose.addEventListener('click', function() {
+                    cartSidebar.classList.remove('active');
+                });
+            }
+            
+            updateCartDisplay();
+        });
+    </script>
 </body>
 </html>
