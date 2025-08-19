@@ -456,7 +456,7 @@ function generateRandomFloatingIcons() {
   const currentPath = window.location.pathname;
   const iconPath = currentPath.includes('/bio/') || currentPath.includes('/collections/') || 
                    currentPath.includes('/cv/') || currentPath.includes('/contact/') || 
-                   currentPath.includes('/community/') ? '../icons/' : 'icons/';
+                   currentPath.includes('/community/') || currentPath.includes('/shop/') ? '../icons/' : 'icons/';
   
   // Generate random positions
   const positions = [];
