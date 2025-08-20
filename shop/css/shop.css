@@ -111,23 +111,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-container {
     width: 100%;
-    max-width: none;
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
+    height: 80px;
 }
 
 /* Mobile Hamburger Menu */
 .mobile-menu-toggle {
-    position: absolute;
-    left: 2rem;
+    position: relative;
+    left: 0;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
     transition: background-color 0.3s ease;
     display: block;
@@ -139,15 +140,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hamburger-icon {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     filter: brightness(5) invert(1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0.9;
 }
 
 .mobile-menu-toggle:hover .hamburger-icon {
-    transform: scale(1.15) rotate(15deg);
+    transform: scale(1.1) rotate(15deg);
     opacity: 1;
     filter: brightness(6) invert(1);
 }
@@ -160,17 +161,16 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 100;
 }
 
-/* Cart Icon - Made Bigger */
+/* Cart Icon - Right side of navigation */
 .cart-icon {
-    position: fixed;
-    right: 2rem;
-    top: 1.5rem;
+    position: relative;
     color: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 12px;
+    padding: 8px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -745,7 +745,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .cart-icon {
         position: fixed;
-        right: 1rem;
+        right: 2rem;
         top: 1.5rem;
     }
     
