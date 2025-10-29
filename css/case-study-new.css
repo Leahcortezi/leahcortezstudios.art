@@ -1,0 +1,504 @@
+/* 
+   Case Study Styles - 2025 Update
+   Leah Cortez Studio
+   ---
+   Open, fluid layout design
+*/
+
+:root {
+  --max-width: 1400px;
+  --section-spacing: 5rem;
+  --content-spacing: 2.5rem;
+  --border-radius: 8px;
+  --text-width: 800px;
+}
+
+/* Base Layout */
+.case-study-page {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.case-study-hero {
+  padding: 4rem 0 3rem;
+  margin-bottom: var(--section-spacing);
+  width: 100%;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: var(--text-width);
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.project-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  color: var(--color-primary-accent);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* Section Layout */
+.case-study-section {
+  margin-bottom: var(--section-spacing);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header {
+  margin-bottom: var(--content-spacing);
+  max-width: var(--text-width);
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.85;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* Overview Section */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.overview-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.detail-item {
+  transition: transform 0.3s ease;
+}
+
+.detail-item h4 {
+  font-size: 1rem;
+  color: var(--color-primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.detail-item p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.overview-impact {
+  max-width: var(--text-width);
+}
+
+.overview-impact h4 {
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
+
+.overview-impact p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Process Section */
+.process-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.process-steps {
+  display: grid;
+  gap: 4rem;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.step-number {
+  font-size: 4rem;
+  color: var(--color-primary-accent);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.step-content h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
+
+.step-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.step-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.step-content li {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.step-content li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+/* Solution Section */
+.solution-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.solution-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.solution-details {
+  max-width: var(--text-width);
+}
+
+.solution-details h3 {
+  font-size: 1.8rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1.5rem;
+}
+
+.solution-details h4 {
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  margin: 2rem 0 1rem;
+}
+
+.solution-details p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.solution-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.solution-details li {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.solution-details li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+/* Results Section */
+.results-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: var(--text-width);
+}
+
+.results-outcomes h3,
+.results-learning h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1.5rem;
+}
+
+.results-learning h4 {
+  font-size: 1.2rem;
+  color: var(--color-primary-accent);
+  margin: 2rem 0 1rem;
+}
+
+.results-outcomes p,
+.results-learning p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.results-outcomes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.results-outcomes li {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.results-outcomes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+.results-learning ul {
+  list-style: none;
+  padding: 0;
+}
+
+.results-learning li {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.results-learning li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+/* Navigation */
+.case-study-navigation {
+  margin-top: var(--section-spacing);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--color-primary-accent);
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1rem 2rem;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  :root {
+    --section-spacing: 4rem;
+    --content-spacing: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .case-study-page {
+    padding: 0 1.5rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-image {
+    justify-content: center;
+    order: -1;
+  }
+
+  .overview-grid,
+  .process-content,
+  .solution-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .overview-details {
+    grid-template-columns: 1fr;
+  }
+
+  .results-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-spacing: 3rem;
+    --content-spacing: 1.5rem;
+  }
+
+  .case-study-page {
+    padding: 0 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .process-step {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .step-number {
+    font-size: 3rem;
+  }
+
+  .detail-item h4,
+  .overview-impact h4 {
+    font-size: 1.1rem;
+  }
+
+  .detail-item p,
+  .overview-impact p,
+  .step-content p,
+  .solution-details p,
+  .results-outcomes p,
+  .results-learning p {
+    font-size: 1.1rem;
+  }
+}
