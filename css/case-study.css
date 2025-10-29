@@ -181,22 +181,54 @@
 /* Content Sections */
 .overview-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--content-spacing);
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
 }
 
-.overview-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+.historical-context,
+.movement-traits {
+  max-width: 100%;
 }
 
-.detail-item {
-  background: rgba(248, 200, 208, 0.05);
-  padding: 1.25rem;
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(248, 200, 208, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.historical-context h2,
+.movement-traits h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary-accent);
+}
+
+.historical-context p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.historical-context p strong {
+  color: var(--color-primary-accent);
+}
+
+.movement-traits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movement-traits li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.movement-traits li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+.movement-traits li strong {
+  color: var(--color-primary-accent);
 }
 
 .detail-item:hover {
@@ -218,20 +250,57 @@
   opacity: 0.9;
 }
 
-.overview-impact {
-  background: rgba(248, 200, 208, 0.05);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid rgba(248, 200, 208, 0.1);
+.concept-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: start;
 }
 
-.overview-impact h4 {
-  font-family: var(--font-accent);
-  font-size: 1rem;
+.concept-info h3 {
+  font-size: 1.2rem;
   color: var(--color-primary-accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.concept-info h3:first-child {
+  margin-top: 0;
+}
+
+.concept-info p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.concept-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.concept-info li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.concept-info li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-accent);
+}
+
+.reflection {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.concept-image img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .overview-impact p {
