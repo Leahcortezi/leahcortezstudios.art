@@ -88,6 +88,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* Ensure all elements inherit the dark theme */
@@ -121,36 +123,113 @@ h1, h2, h3, h4, h5, h6 {
     height: 80px;
 }
 
-/* Mobile Hamburger Menu */
-.mobile-menu-toggle {
-    position: relative;
-    left: 0;
-    background: none;
-    border: none;
+/* Mobile Hamburger Menu - Visible on all screen sizes */
+.hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s ease;
     cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-    display: block;
+    background: transparent;
+    border: none;
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
     z-index: 1001;
+    outline: none;
 }
 
-.mobile-menu-toggle:hover {
-    background: rgba(248, 200, 208, 0.1);
+.hamburger:hover {
+    background: transparent;
 }
 
 .hamburger-icon {
-    width: 32px;
-    height: 32px;
-    filter: brightness(5) invert(1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.9;
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: contain;
+    object-position: center;
 }
 
-.mobile-menu-toggle:hover .hamburger-icon {
+.hamburger:hover .hamburger-icon {
     transform: scale(1.1) rotate(15deg);
+    filter: brightness(0) invert(1);
+}
+
+/* Mobile Navigation Dropdown (matching main site but left-aligned) */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    border-right: 1px solid rgba(248, 200, 208, 0.2);
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.mobile-nav.active {
+    display: flex;
+    transform: translateX(0);
     opacity: 1;
-    filter: brightness(6) invert(1);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.mobile-nav-links li {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-nav-links .nav-link {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    text-align: left;
+    border: none;
+    outline: none;
+}
+
+.mobile-nav-links .nav-link:hover,
+.mobile-nav-links .nav-link.active {
+    color: #f8c8d0;
+    transform: translateX(10px);
+}
+
+/* Ensure no gaps on mobile nav */
+.mobile-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: -1;
 }
 
 /* Centered Logo */
@@ -166,7 +245,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cart Icon - Right side of navigation */
 .cart-icon {
-    position: relative;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
     color: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -209,14 +290,89 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
 }
 
+/* Navigation Links - Hidden by default, shown via hamburger */
 .nav-links {
-    display: flex;
+    display: none;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 3rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: center;
-    align-items: center;
+    padding: 2rem;
+    border-left: 1px solid rgba(248, 200, 208, 0.2);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.nav-links.active {
+    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.nav-links li {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.nav-links a {
+    display: block;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    text-align: right;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #f8c8d0;
+    text-decoration: none;
+    background: none;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #7e1c2e;
+    text-decoration: underline;
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.nav-links a.active {
+    color: #7e1c2e;
+    text-decoration: underline;
+}
+
+/* Backdrop overlay when menu is open */
+.nav-links.active::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* Rotate hamburger icon when menu is open */
+.nav-links.active ~ .hamburger .hamburger-icon {
+    transform: rotate(180deg);
 }
 
 /* Mobile Navigation */
@@ -334,20 +490,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #f5c6d6;
     margin: 0;
     letter-spacing: 1.5px;
-}
-
-.cart-icon {
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 8px;
-    border-radius: 4px;
-}
-
-.cart-icon:hover {
-    color: #f8c8d0;
-    background: rgba(248, 200, 208, 0.1);
 }
 
 .cart-count {
@@ -731,108 +873,28 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
 }
 
-/* Responsive */
+/* Responsive - Mobile adjustments */
 @media (max-width: 768px) {
     .header-container {
         padding: 0 1rem;
         justify-content: center;
+        position: relative;
     }
     
-    .mobile-menu-toggle {
-        display: block;
+    .hamburger {
         left: 1rem;
     }
     
     .cart-icon {
         position: fixed;
-        right: 2rem;
-        top: 1.5rem;
+        right: 1rem;
+        top: 1rem;
+        z-index: 100;
     }
     
-    /* Mobile Navigation Menu - Matching Main Site Exactly */
-    #mobile-nav {
-        position: fixed;
-        top: 0;
-        right: -280px;
-        width: 280px;
-        height: 100vh;
-        background-color: #000000;
-        border-left: 2px solid #7e1c2e;
-        z-index: 1000;
-        transform: translateX(0);
-        opacity: 1;
-        visibility: hidden;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        padding-top: 6rem;
+    .desktop-nav {
+        display: none;
     }
-    
-    #mobile-nav.active {
-        right: 0;
-        visibility: visible;
-    }
-    
-    /* Backdrop overlay when menu is open */
-    #mobile-nav.active::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: calc(100vw - 280px);
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.3);
-        z-index: -1;
-    }
-    
-    #mobile-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    #mobile-nav li {
-        margin: 0;
-        width: 100%;
-        margin-bottom: 1.5rem;
-    }
-    
-    #mobile-nav a {
-        display: block;
-        width: 100%;
-        padding: 1.2rem 2rem;
-        text-align: right;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        color: #f8c8d0;
-        text-decoration: none;
-        background: none;
-        border: none;
-        border-radius: 0;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        font-family: 'IBM Plex Mono', monospace;
-    }
-    
-    #mobile-nav a:hover,
-    #mobile-nav a:focus {
-        color: #7e1c2e;
-        text-decoration: underline;
-        background: none;
-        transform: none;
-        box-shadow: none;
-    }
-    
-    #mobile-nav a.active {
-        color: #7e1c2e;
-        text-decoration: underline;
-    }
-    
     .desktop-nav {
         display: none;
     }
