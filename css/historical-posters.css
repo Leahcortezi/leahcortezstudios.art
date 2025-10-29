@@ -1,0 +1,179 @@
+/* Historical Posters Case Study Styles */
+
+/* Reset margins for sections */
+section {
+    margin: 0;
+    padding: 0;
+}
+
+/* Movement Info Layout */
+.movement-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin: 6rem auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.movement-info h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary-accent);
+    margin-bottom: 2.5rem;
+    font-weight: normal;
+}
+
+.movement-info p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+}
+
+.movement-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.movement-info li {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.movement-info li::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+    color: var(--color-primary-accent);
+}
+
+/* My Concept Section */
+.my-concept {
+    margin: 8rem auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.my-concept h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary-accent);
+    margin-bottom: 3rem;
+    font-weight: normal;
+}
+
+.my-concept h3 {
+    font-size: 1.8rem;
+    color: var(--color-primary-accent);
+    margin: 4rem 0 2rem;
+    font-weight: normal;
+}
+
+.my-concept p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 900px;
+    color: var(--color-text);
+}
+
+.my-concept ul {
+    list-style: none;
+    padding: 0;
+    margin: 3rem 0;
+}
+
+.my-concept li {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    padding-left: 2rem;
+    position: relative;
+    max-width: 900px;
+}
+
+.my-concept li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-accent);
+}
+
+.concept-image {
+    width: 100%;
+    max-width: 900px;
+    margin: 5rem 0;
+    display: block;
+}
+
+/* Strong text styling */
+strong {
+    color: var(--color-primary-accent);
+    font-weight: normal;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .movement-info {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .my-concept {
+        margin: 6rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .movement-info h2,
+    .my-concept h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .my-concept h3 {
+        font-size: 1.5rem;
+        margin: 3rem 0 1.5rem;
+    }
+
+    .movement-info p,
+    .my-concept p,
+    .movement-info li,
+    .my-concept li {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .concept-image {
+        margin: 4rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .movement-info,
+    .my-concept {
+        padding: 0 1rem;
+    }
+
+    .movement-info h2,
+    .my-concept h2 {
+        font-size: 1.6rem;
+    }
+
+    .my-concept h3 {
+        font-size: 1.4rem;
+    }
+
+    .movement-info p,
+    .my-concept p,
+    .movement-info li,
+    .my-concept li {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
