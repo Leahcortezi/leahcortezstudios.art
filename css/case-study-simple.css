@@ -1,0 +1,143 @@
+/* 
+   Historical Case Study Styles - 2025 Update
+   Leah Cortez Studio
+   ---
+   Simplified portfolio piece layout
+*/
+
+:root {
+  --max-width: 900px;
+  --section-spacing: 2rem;
+  --content-padding: 1rem;
+}
+
+/* Base Layout */
+.case-study-page {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem var(--content-padding);
+  line-height: 1.6;
+  font-family: var(--font-body);
+}
+
+/* Hero Section */
+.case-study-hero {
+  margin-bottom: var(--section-spacing);
+  text-align: center;
+}
+
+.hero-content {
+  margin: 0 auto;
+}
+
+.hero-text h1 {
+  font-family: var(--font-headings);
+  font-size: 2.5rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.meta-tag {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary-accent);
+}
+
+.hero-image {
+  margin-top: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Main Content */
+.case-study-section {
+  margin-bottom: var(--section-spacing);
+}
+
+.section-header h2 {
+  font-family: var(--font-headings);
+  font-size: 1.8rem;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
+
+.case-study-section p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+/* Project Images */
+.solution-image {
+  margin: 2rem 0;
+}
+
+.solution-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Historical Posters Navigation */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(248, 200, 208, 0.1);
+}
+
+.nav-link {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-secondary-accent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
