@@ -2,16 +2,14 @@
    Case Study Styles - 2025 Update
    Leah Cortez Studio
    ---
-   Refined, focused layout with improved readability
+   Focused, professional layout with consistent branding
 */
 
 :root {
-  --max-width: 1200px;
-  --content-width: 800px;
-  --section-spacing: 4rem;
-  --content-spacing: 2rem;
-  --border-radius: 8px;
-  --content-padding: 2rem;
+  --max-width: 900px;
+  --section-spacing: 3rem;
+  --content-padding: 1.5rem;
+  --border-radius: 0;
   --background-light: rgba(248, 200, 208, 0.03);
   --border-light: rgba(248, 200, 208, 0.1);
 }
@@ -23,6 +21,7 @@
   margin: 0 auto;
   padding: 0 var(--content-padding);
   line-height: 1.6;
+  font-family: var(--font-body);
 }
 
 /* Hero Section */
@@ -42,20 +41,21 @@
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
+  font-family: var(--font-headings);
+  font-size: 2.5rem;
   color: var(--color-primary-accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.2;
-  font-weight: 600;
 }
 
 .hero-subtitle {
-  font-family: var(--font-body);
-  font-size: 1.4rem;
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
   color: var(--color-text);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   opacity: 0.9;
-  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .project-meta {
