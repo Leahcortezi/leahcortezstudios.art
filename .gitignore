@@ -11,3 +11,9 @@ build/
 # Ignore OS-specific files
 .DS_Store
 Thumbs.db
+
+# Ignore large video files
+*.mp4
+*.mov
+*.avi
+collections/motion/
