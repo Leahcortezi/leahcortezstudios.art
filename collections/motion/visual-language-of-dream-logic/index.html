@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Visual Language of Dream Logic | Leah Cortez Studio</title>
+    <meta name="description" content="Visual Language of Dream Logic - A motion design exploration of surreal dreamscapes and symbolic narratives.">
+    <meta name="keywords" content="motion design, video art, dream logic, surrealism, animation, Leah Cortez">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Visual Language of Dream Logic | Leah Cortez Studio">
+    <meta property="og:description" content="A motion design exploration of surreal dreamscapes and symbolic narratives.">
+    <meta property="og:image" content="https://vumbnail.com/1136665326.jpg">
+    <meta property="og:url" content="https://leahcortezstudio.art/collections/motion/visual-language-of-dream-logic/">
+    <meta property="og:type" content="video.other">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Visual Language of Dream Logic | Leah Cortez Studio">
+    <meta name="twitter:description" content="A motion design exploration of surreal dreamscapes.">
+    <meta name="twitter:image" content="https://vumbnail.com/1136665326.jpg">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../../../icons/favicon.ico?v=2025" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../icons/favicon.ico?v=2025" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/work.css">
+    
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        
+        .fullscreen-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--accent-font);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .fullscreen-btn:hover {
+            background: #7e1c2e;
+            transform: translateY(-2px);
+        }
+        
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fullscreen-modal.active {
+            display: flex;
+        }
+        
+        .fullscreen-video-wrapper {
+            position: relative;
+            width: 95vw;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fullscreen-video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            max-width: calc(95vh * 16/9);
+            max-height: 95vh;
+        }
+        
+        .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-fullscreen:hover {
+            background: var(--primary-color);
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <img src="../../../images/logo/logo2.png" alt="Leah Cortez" class="logo-img" loading="lazy">
+            </a>
+            <ul class="nav-menu nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../bio/index.html">Bio</a></li>
+                <li><a href="../../../collections/index.html">Portfolio</a></li>
+                <li><a href="../../../cv/index.html">CV</a></li>
+                <li><a href="../../../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../../../icons/flower.svg" alt="Menu" class="hamburger-icon" loading="lazy">
+            </div>
+        </div>
+    </nav>
+
+    <main class="work-page">
+        <div class="work-container">
+            <div class="work-image-column">
+                <div class="video-container">
+                    <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/1136665326?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <button class="fullscreen-btn" onclick="openFullscreen()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                    View Fullscreen
+                </button>
+            </div>
+            <div class="work-details-column">
+                <h1>Visual Language of Dream Logic</h1>
+                <div class="work-meta">
+                    <span class="meta-item"><strong>Medium:</strong> Motion Design</span>
+                    <span class="meta-item"><strong>Year:</strong> 2025</span>
+                    <span class="meta-item"><strong>Duration:</strong> 3:56</span>
+                </div>
+                <div class="work-description">
+                    <h2>Project Overview</h2>
+                    <p><em>Visual Language of Dream Logic</em> is a motion design exploration that translates the non-linear, symbolic nature of dreams into moving image. Through experimental animation techniques and surreal visual metaphors, this work investigates how unconscious narratives construct meaning beyond rational language.</p>
+                    
+                    <p>The piece employs shifting perspectives, temporal distortions, and layered imagery to evoke the disorienting yet profound experience of dream states—where logic dissolves and intuitive understanding emerges through symbolic association rather than linear narrative.</p>
+                    
+                    <h2>Note</h2>
+                    <p><em>This video was created for academic and artistic study. It explores the visual language of dream logic using short excerpts from films, music, and media. This project is non-commercial and all rights remain with the original creators. My contribution focuses on editing, concept development, and visual interpretation.</em></p>
+                </div>
+                <div class="work-navigation">
+                    <a href="../../index.html" class="all-work">Back to Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen Modal -->
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
+        <div class="fullscreen-video-wrapper">
+            <iframe id="fullscreenPlayer" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="../../../images/logo/logo4white.png" alt="Leah Cortez Logo" class="footer-logo" loading="lazy">
+            <p class="copyright">Leah Cortez © 2025</p>
+        </div>
+    </footer>
+    
+    <script src="../../../scripts/main.js" defer></script>
+    
+    <script>
+        function openFullscreen() {
+            const modal = document.getElementById('fullscreenModal');
+            const fullscreenPlayer = document.getElementById('fullscreenPlayer');
+            fullscreenPlayer.src = 'https://player.vimeo.com/video/1136665326?autoplay=1&badge=0';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFullscreen() {
+            const modal = document.getElementById('fullscreenModal');
+            const fullscreenPlayer = document.getElementById('fullscreenPlayer');
+            fullscreenPlayer.src = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside video
+        document.getElementById('fullscreenModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
