@@ -75,13 +75,19 @@
             <div class="grid-sizer"></div>
             
             <!-- Motion -->
-            <div class="masonry-item motion horizontal" data-category="motion">
-                <a href="https://vimeo.com/1136665326" target="_blank" rel="noopener noreferrer">
+            <div class="masonry-item motion square" data-category="motion">
+                <div class="video-thumbnail" onclick="openVideoModal()">
                     <div class="lace-wrapper">
-                        <iframe src="https://player.vimeo.com/video/1136665326?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Visual Language of Dream Logic web" loading="lazy"></iframe>
+                        <img class="project-image" src="https://vumbnail.com/1136665326.jpg" alt="Visual Language of Dream Logic" loading="lazy">
+                        <div class="play-button">
+                            <svg width="80" height="80" viewBox="0 0 80 80">
+                                <circle cx="40" cy="40" r="35" fill="rgba(255,255,255,0.9)" stroke="#7E1C2E" stroke-width="2"/>
+                                <polygon points="32,25 32,55 55,40" fill="#7E1C2E"/>
+                            </svg>
+                        </div>
                     </div>
                     <p class="caption">Visual Language of Dream Logic</p>
-                </a>
+                </div>
             </div>
             
             <!-- Design -->
@@ -302,6 +308,48 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="../scripts/main.js"></script>
+    
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-video-modal" onclick="closeVideoModal()">&times;</span>
+            <div class="video-wrapper">
+                <iframe id="vimeoPlayer" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('vimeoPlayer');
+            iframe.src = 'https://player.vimeo.com/video/1136665326?autoplay=1';
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('vimeoPlayer');
+            iframe.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
