@@ -12,57 +12,57 @@ class PortfolioQuiz {
         this.questions = [
             {
             id: 1,
-            text: "What's your biggest art pet peeve?",
+            text: "What's your creative energy right now?",
             options: [
-                { text: "Art that's overly simple - like someone just splashed paint and called it deep.", piece: "reductive-symbols", weight: 3 }, // Values technical skill/complexity
-                { text: "Art that's just pretty to look at but has zero emotional depth or meaning.", piece: "inheritance", weight: 3 }, // Needs emotional substance
-                { text: "Perfectly polished art that feels soulless - where's the human touch?", piece: "gnaw", weight: 3 }, // Values authenticity/rawness
-                { text: "Art that ignores real world problems and stays in its safe little bubble.", piece: "double-sided-poster", weight: 3 }, // Wants social relevance
-                { text: "Art that's exactly like everything else - no originality or risk-taking.", piece: "abyss-bloom", weight: 3 } // Values uniqueness/innovation
+                { text: "Dark, emotional, and introspective - channeling feelings into powerful imagery", piece: "anointed-gaze", weight: 3 },
+                { text: "Bold, dramatic, and unapologetically loud - making statements that can't be ignored", piece: "heaven-on-fire", weight: 3 },
+                { text: "Deeply personal and culturally rooted - exploring identity and heritage", piece: "inheritance", weight: 3 },
+                { text: "Experimental and tactile - getting hands-on with materials and textures", piece: "abyss-bloom", weight: 3 },
+                { text: "Message-driven and socially conscious - using design to spark important conversations", piece: "endangered-species", weight: 3 }
             ]
             },
             {
             id: 2,
-            text: "How do you usually create?",
+            text: "What draws you to art?",
             options: [
-                { text: "Plan everything out first - sketches, references, color swatches, the works.", piece: "typographic-interpretation", weight: 3 }, // Methodical planner
-                { text: "Start when inspiration strikes and let my emotions guide the process.", piece: "inheritance", weight: 3 }, // Intuitive emotional creator
-                { text: "Jump in with whatever's around and figure it out as I go.", piece: "gnaw", weight: 3 }, // Spontaneous experimenter
-                { text: "Find something I care about deeply, then find the best way to express it.", piece: "double-sided-poster", weight: 3 }, // Message-driven
-                { text: "Try new techniques constantly - tutorials, experiments, happy accidents.", piece: "abyss-bloom", weight: 3 } // Technique explorer
+                { text: "Raw emotional expression - art that hits you in the chest before your brain catches up", piece: "anointed-gaze", weight: 3 },
+                { text: "Visual impact - bold compositions and colors that demand attention", piece: "heaven-on-fire", weight: 3 },
+                { text: "Narrative depth - stories about identity, memory, and belonging", piece: "inheritance", weight: 3 },
+                { text: "Unusual materials and processes - the weird, the strange, the unexpected", piece: "abyss-bloom", weight: 3 },
+                { text: "Purpose and meaning - work that advocates for change and awareness", piece: "endangered-species", weight: 3 }
             ]
             },
             {
             id: 3,
-            text: "What feedback would hurt your feelings the most?",
+            text: "How do you want people to feel when they see your work?",
             options: [
-                { text: "\"It's not quite there yet\" - when you thought it was perfect.", piece: "reductive-symbols", weight: 3 }, // Perfectionist
-                { text: "\"I don't get it\" - when it means everything to you.", piece: "inheritance", weight: 3 }, // Personal expression
-                { text: "\"It looks unfinished\" - but that's exactly how you wanted it.", piece: "collected-remains", weight: 3 }, // Process-focused
-                { text: "\"It's pretty but what's the point?\" - missing the whole message.", piece: "double-sided-poster", weight: 3 }, // Purpose-driven
-                { text: "\"Weird for the sake of being weird\" - when you're genuinely exploring.", piece: "playing-cards", weight: 3 } // Experimental
+                { text: "Seen and understood - like someone finally put their unspoken feelings into form", piece: "anointed-gaze", weight: 3 },
+                { text: "Overwhelmed (in a good way) - like they just witnessed something intense", piece: "heaven-on-fire", weight: 3 },
+                { text: "Reflective - thinking about their own stories, family, and roots", piece: "inheritance", weight: 3 },
+                { text: "Curious and intrigued - wanting to look closer and figure it out", piece: "feathers-along-bend", weight: 3 },
+                { text: "Motivated to act - inspired to care about the world around them", piece: "endangered-species", weight: 3 }
             ]
             },
             {
             id: 4,
-            text: "Why do you make art?",
+            text: "What's your ideal creative process?",
             options: [
-                { text: "To master my craft and create something technically beautiful.", piece: "reductive-symbols", weight: 3 }, // Skill mastery
-                { text: "To process my feelings and connect with others who feel the same.", piece: "anointed-gaze", weight: 3 }, // Emotional processing
-                { text: "To celebrate the beauty in everyday chaos and imperfection.", piece: "gnaw", weight: 3 }, // Finding beauty in process
-                { text: "To say something important that needs to be heard.", piece: "heaven-on-fire", weight: 3 }, // Message delivery
-                { text: "To explore possibilities and see what happens when I try new things.", piece: "unraveling", weight: 3 } // Exploration/discovery
+                { text: "Late nights sketching when emotions are running high", piece: "anointed-gaze", weight: 3 },
+                { text: "Going all-in with color and chaos until something clicks", piece: "heaven-on-fire", weight: 3 },
+                { text: "Researching stories, gathering references, and building layered meaning", piece: "abuelas-altar", weight: 3 },
+                { text: "Experimenting with materials and letting accidents guide the way", piece: "abyss-bloom", weight: 3 },
+                { text: "Finding a cause that matters and designing something that communicates it powerfully", piece: "insane-grain", weight: 3 }
             ]
             },
             {
             id: 5,
-            text: "What draws you to a piece of art?",
+            text: "What kind of project excites you most?",
             options: [
-                { text: "Incredible skill and craftsmanship that makes you wonder 'how did they do that?'", piece: "reductive-symbols", weight: 3 }, // Technical appreciation
-                { text: "Something that hits you emotionally before you even understand why.", piece: "anointed-gaze", weight: 3 }, // Emotional connection
-                { text: "Pieces with layers and textures you want to touch and explore forever.", piece: "gnaw", weight: 3 }, // Tactile/process interest
-                { text: "Bold work that makes a statement and sparks important conversations.", piece: "double-sided-poster", weight: 3 }, // Impact-focused
-                { text: "Unique, experimental pieces that make you see things differently.", piece: "abyss-bloom", weight: 3 } // Innovation appreciation
+                { text: "Personal work exploring complex emotions and inner experiences", piece: "anointed-gaze", weight: 3 },
+                { text: "Large-scale pieces with dramatic visual presence", piece: "heaven-on-fire", weight: 3 },
+                { text: "Cultural storytelling that honors heritage and history", piece: "abuelas-altar", weight: 3 },
+                { text: "Sculptural or mixed-media work with unusual textures", piece: "feathers-along-bend", weight: 3 },
+                { text: "Commercial design with social impact - branding for purpose", piece: "insane-grain", weight: 3 }
             ]
             }
         ];
@@ -81,8 +81,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who draws at 3am when you can't sleep because your brain won't shut up. You keep a sketchbook by your bed and probably have charcoal under your fingernails more often than not. People always ask if you're okay after seeing your work, and honestly, you're never quite sure how to answer that.",
             quote: "I draw until I disassociate. And then I draw that too.",
-            image: "collections/personal/anointed-gaze/images/JPEG/personal6.jpg",
-            path: "collections/personal/anointed-gaze/index.html"
+            image: "collections/illustration/anointed-gaze/images/JPEG/personal6.jpg",
+            path: "collections/illustration/anointed-gaze/index.html"
             },
             "abuelas-altar": {
             title: "The Sentimental Shrine Builder",
@@ -96,8 +96,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who saves everything because 'it might be useful for a project someday.' Your studio is part art space, part museum of random family artifacts. You take photos of old objects at thrift stores even when you don't buy them, just in case you need reference material later.",
             quote: "Is it trash or an emotional relic? Yes.",
-            image: "collections/studio/abuelas-altar/images/JPEG/Studio10.jpg",
-            path: "collections/personal/abuelas-altar/index.html"
+            image: "collections/illustration/abuelas-altar/images/jpeg/personal16.jpeg",
+            path: "collections/illustration/abuelas-altar/index.html"
             },
             "heaven-on-fire": {
             title: "The Beautiful Catastrophist",
@@ -111,8 +111,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who goes big or goes home. You've never made anything described as 'subtle' and you're fine with that. Your workspace is covered in paint splatters, your clothes are permanently stained, and you've definitely gotten noise complaints from neighbors. When people say your art is 'a lot,' you take it as a compliment.",
             quote: "If it's not dramatic, I'm not interested.",
-            image: "collections/personal/heaven-on-fire/images/JPEG/personal7.jpg",
-            path: "collections/personal/heaven-on-fire/index.html"
+            image: "collections/illustration/heaven-on-fire/images/JPEG/personal4.jpg",
+            path: "collections/illustration/heaven-on-fire/index.html"
             },
             "inheritance": {
             title: "The Generational Theorist",
@@ -126,8 +126,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who turns every family dinner into an impromptu therapy session about identity and culture. You have strong opinions about whose stories get told in museums and probably write long Instagram captions. You've definitely made your relatives uncomfortable by asking them to pose for your 'art project about heritage.'",
             quote: "I turned my generational trauma into a design concept.",
-            image: "collections/personal/inheritance/images/JPEG/Personal1.jpg",
-            path: "collections/personal/inheritance/index.html"
+            image: "collections/illustration/inheritance/images/JPEG/personal2.jpg",
+            path: "collections/illustration/inheritance/index.html"
             },
             "gnaw": {
             title: "The Raw Materialist",
@@ -141,8 +141,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who can't walk past interesting textures without touching them. You collect wood scraps, interesting rocks, and fabric samples 'just because.' Your hands are always slightly roughed up from your latest project, and you've definitely injured yourself in the name of art more than once.",
             quote: "I sanded it down to the bone and then kept going.",
-            image: "collections/studio/gnaw/images/JPEG/Studio6.jpg",
-            path: "collections/studio/gnaw/index.html"
+            image: "collections/illustration/gnaw/images/JPEG/personal13.jpg",
+            path: "collections/illustration/gnaw/index.html"
             },
             "unraveling": {
             title: "The Emotional Engineer",
@@ -156,8 +156,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who has a very specific organizational system that looks like chaos to everyone else. You know exactly which pile of supplies you need, and god help anyone who tries to 'clean up' your space. You probably have anxiety about your anxiety, and you channel all of that energy into intricate, obsessive work.",
             quote: "If I can't untangle my thoughts, I'll just twist them into art.",
-            image: "collections/studio/unraveling/images/JPEG/Studio5.jpg",
-            path: "collections/studio/unraveling/index.html"
+            image: "collections/illustration/unraveling/images/JPEG/personal7.jpg",
+            path: "collections/illustration/unraveling/index.html"
             },
             "abyss-bloom": {
             title: "The Weird Creature Kid",
@@ -171,8 +171,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who makes things that make people say 'what the hell is that?' and you live for that reaction. You're probably the person who had an 'interesting' senior thesis that made your professors very nervous. You collect weird materials and your browser history is concerning but purely for artistic research.",
             quote: "This one has four limbs and trauma. I love them.",
-            image: "collections/studio/abyss-bloom/images/JPEG/studio2.jpg",
-            path: "collections/studio/abyss-bloom/index.html"
+            image: "collections/illustration/abyss-bloom/images/JPEG/personal1.jpg",
+            path: "collections/illustration/abyss-bloom/index.html"
             },
             "collected-remains": {
             title: "The Trash Archaeologist",
@@ -186,8 +186,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who dumpster dives for supplies and calls it 'urban archaeology.' Your car is full of random objects you found that might become art someday. You've definitely had to explain to security guards that yes, you really do need that broken shopping cart for a sculpture.",
             quote: "It's not hoarding if it becomes art.",
-            image: "collections/studio/collected-remains/images/JPEG/Studio1.jpg",
-            path: "collections/studio/collected-remains/index.html"
+            image: "collections/illustration/collected-remains/images/JPEG/personal11.jpg",
+            path: "collections/illustration/collected-remains/index.html"
             },
             "typographic-interpretation": {
             title: "The Kerning Critic",
@@ -263,6 +263,51 @@ class PortfolioQuiz {
             quote: "I reduced the concept to a single pixel. You're welcome.",
             image: "collections/design/reductive-symbols/images/design4.jpg",
             path: "collections/design/reductive-symbols/index-case-study.html"
+            },
+            "endangered-species": {
+            title: "The Conservation Communicator",
+            subtitle: "Endangered Species Poster",
+            category: "Design Work",
+            personality: {
+                vibe: "Activist designer with urgent deadlines (because the planet is literally on fire)",
+                tools: "Bold graphics, scientific data, and guilt-inducing imagery",
+                superpower: "Making people care about causes through beautiful design",
+                kryptonite: "Climate deniers and 'but is it too political?' feedback"
+            },
+            description: "You're the artist who thinks good design should make the world better. You get genuinely emotional about environmental issues and channel that into powerful visual advocacy. You've probably had arguments with people who think 'design should just look nice' and you low-key judge brands that don't care about sustainability.",
+            quote: "This poster will haunt you until you donate.",
+            image: "collections/design/endangered-species-poster/images/Disappearing Species Poster.jpg",
+            path: "collections/design/endangered-species-poster/index.html"
+            },
+            "insane-grain": {
+            title: "The Strategic Rebrander",
+            subtitle: "Insane Grain Packaging",
+            category: "Design Work",
+            personality: {
+                vibe: "Commercial designer who knows how to sell ideas (and snacks)",
+                tools: "Brand strategy, trend research, and consumer psychology",
+                superpower: "Making boring products look irresistible",
+                kryptonite: "Clients who ignore your brilliant concepts and choose the safe option"
+            },
+            description: "You're the artist who secretly loves the challenge of making mundane products exciting. You understand that design is about solving problems, not just making things pretty. You follow packaging trends religiously, analyze grocery store shelves for fun, and have strong opinions about what makes a brand successful.",
+            quote: "I can make whole grain sexy. Watch me.",
+            image: "collections/design/insane-grain-packaging/images/Snack Packaging.jpg",
+            path: "collections/design/insane-grain-packaging/index.html"
+            },
+            "feathers-along-bend": {
+            title: "The Curious Collector",
+            subtitle: "Feathers Along the Bend",
+            category: "Objects",
+            personality: {
+                vibe: "Nature-obsessed artist with cabinet of curiosities energy",
+                tools: "Found natural objects, preservation techniques, and delicate hands",
+                superpower: "Turning ephemeral moments into lasting art",
+                kryptonite: "People who don't understand why you brought home a dead bird"
+            },
+            description: "You're the artist who stops mid-hike to photograph interesting leaves. You have a collection of feathers, bones, and other natural treasures that your friends find either fascinating or deeply concerning. You understand that nature is the original artist and your job is just to present it thoughtfully.",
+            quote: "I found these by the river. Now they're immortal.",
+            image: "collections/objects/feathers-along-the-bend/images/studio8.jpg",
+            path: "collections/objects/feathers-along-the-bend/index.html"
             }
         };
 
@@ -482,7 +527,7 @@ class PortfolioQuiz {
             resultContainer.innerHTML = `
                 <div class="result-content">
                     <div class="result-image">
-                        <img src="${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
+                        <img src="/${result.image}" alt="${result.title}" loading="lazy" onerror="this.style.display='none';" />
                     </div>
                     <div class="result-text">
                         <h2 class="result-title">${result.title}</h2>
@@ -505,7 +550,7 @@ class PortfolioQuiz {
                         <blockquote class="result-quote">"${result.quote}"</blockquote>
                         
                         <div class="result-actions">
-                            <a href="${result.path}" class="quiz-btn primary">View Piece</a>
+                            <a href="/${result.path}" class="quiz-btn primary">View Piece</a>
                             <button id="retake-quiz-btn" class="quiz-btn secondary">Retake Quiz</button>
                         </div>
                     </div>
