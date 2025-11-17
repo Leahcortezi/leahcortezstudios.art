@@ -241,7 +241,7 @@ class PortfolioBuilder {
                 title: "Genesis: Reframing Eve",
                 category: "Motion",
                 path: "collections/motion/genesis-blackout-poetry/index.html",
-                image: "collections/motion/genesis-blackout-poetry/images/thumb (1).jpg",
+                image: "collections/motion/genesis-blackout-poetry/thumb (1).jpg",
                 description: "Kinetic typography reframing biblical narrative through Eve's perspective"
             }
         };
@@ -301,6 +301,10 @@ class PortfolioBuilder {
             this.selectedInterests.delete(key);
             card.classList.remove('selected');
         } else {
+            // Limit to 2 selections
+            if (this.selectedInterests.size >= 2) {
+                return;
+            }
             this.selectedInterests.add(key);
             card.classList.add('selected');
         }
@@ -312,12 +316,12 @@ class PortfolioBuilder {
         const btn = document.getElementById('show-results-btn');
         const count = this.selectedInterests.size;
 
-        if (count >= 2) {
+        if (count === 2) {
             btn.disabled = false;
             btn.textContent = `Show My Portfolio (${count} interests selected)`;
         } else {
             btn.disabled = true;
-            btn.textContent = 'Show My Portfolio (Select at least 2)';
+            btn.textContent = `Select 2 Interests (${count}/2)`;
         }
     }
 
