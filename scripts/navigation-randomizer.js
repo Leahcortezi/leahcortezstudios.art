@@ -12,11 +12,6 @@ const allWorks = [
         category: "design"
     },
     {
-        title: "Flag Design",
-        path: "collections/design/flag-design/index.html",
-        category: "design"
-    },
-    {
         title: "Themed Playing Card Design",
         path: "collections/design/themed-playing-card-design/index-case-study.html",
         category: "design"
@@ -61,11 +56,6 @@ const allWorks = [
     {
         title: "Inheritance",
         path: "collections/illustration/inheritance/index.html",
-        category: "illustration"
-    },
-    {
-        title: "Collected Remains",
-        path: "collections/illustration/collected-remains/index.html",
         category: "illustration"
     },
     {

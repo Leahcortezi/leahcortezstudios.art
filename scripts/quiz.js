@@ -174,21 +174,6 @@ class PortfolioQuiz {
             image: "collections/illustration/abyss-bloom/images/JPEG/personal1.jpg",
             path: "collections/illustration/abyss-bloom/index.html"
             },
-            "collected-remains": {
-            title: "The Trash Archaeologist",
-            subtitle: "Collected Remains",
-            category: "Studio Work",
-            personality: {
-                vibe: "Urban explorer with hoarding tendencies (but make it art)",
-                tools: "Literally anything you find on the ground",
-                superpower: "Seeing potential in everyone else's garbage",
-                kryptonite: "Security guards and 'no trespassing' signs"
-            },
-            description: "You're the artist who dumpster dives for supplies and calls it 'urban archaeology.' Your car is full of random objects you found that might become art someday. You've definitely had to explain to security guards that yes, you really do need that broken shopping cart for a sculpture.",
-            quote: "It's not hoarding if it becomes art.",
-            image: "collections/illustration/collected-remains/images/JPEG/personal11.jpg",
-            path: "collections/illustration/collected-remains/index.html"
-            },
             "typographic-interpretation": {
             title: "The Kerning Critic",
             subtitle: "Typographic Interpretation",
