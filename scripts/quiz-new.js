@@ -122,14 +122,14 @@ class PortfolioBuilder {
                 title: "Double-Sided Poster",
                 category: "Design",
                 path: "collections/design/double-sided-poster/index-case-study.html",
-                image: "collections/design/double-sided-poster/images/design2.jpg",
+                image: "collections/design/double-sided-poster/images/Design8.jpg",
                 description: "Conceptual dual-sided poster exploring contrasting design approaches"
             },
             "book-cover": {
                 title: "Elements & Principles Book Cover",
                 category: "Design",
                 path: "collections/design/elements-and-principles-book-cover/index-case-study.html",
-                image: "collections/design/elements-and-principles-book-cover/images/design7.jpg",
+                image: "collections/design/elements-and-principles-book-cover/images/Design1.jpg",
                 description: "Modernist book cover design exploring compositional theory"
             },
             "reductive-symbols": {
@@ -241,7 +241,7 @@ class PortfolioBuilder {
                 title: "Genesis: Reframing Eve",
                 category: "Motion",
                 path: "collections/motion/genesis-blackout-poetry/index.html",
-                image: "collections/motion/genesis-blackout-poetry/thumb (1).jpg",
+                image: "collections/motion/genesis-blackout-poetry/images/thumb (1).jpg",
                 description: "Kinetic typography reframing biblical narrative through Eve's perspective"
             }
         };
