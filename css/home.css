@@ -916,18 +916,51 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 500px;
 }
 
-.project-image-column img {
+.lace-wrapper-horizontal {
+  position: relative;
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.project-image-main {
+  width: 88%;
+  height: 88%;
+  object-fit: cover;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.lace-border-horizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(90deg) scale(1.15);
+  transform-origin: center;
+}
+
+.project-image-column img {
   border-radius: 12px;
   border: 2px solid rgba(126, 28, 46, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-image-column img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(126, 28, 46, 0.4);
+.lace-wrapper-horizontal:hover .project-image-main {
+  transform: scale(1.02);
+}
+
+.lace-wrapper-horizontal:hover {
+  filter: drop-shadow(0 15px 40px rgba(126, 28, 46, 0.4));
 }
 
 .project-info-column {
