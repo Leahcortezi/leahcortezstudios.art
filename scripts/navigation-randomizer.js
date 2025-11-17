@@ -2,13 +2,13 @@
 const allWorks = [
     // Design Work
     {
-        title: "Double-Sided Poster",
-        path: "collections/design/double-sided-poster/index.html",
+        title: "Endangered Species Poster",
+        path: "collections/design/endangered-species-poster/index.html",
         category: "design"
     },
     {
-        title: "Elements and Principles Book Cover",
-        path: "collections/design/elements-and-principles-book-cover/index.html",
+        title: "Insane Grain Packaging",
+        path: "collections/design/insane-grain-packaging/index.html",
         category: "design"
     },
     {
@@ -17,78 +17,95 @@ const allWorks = [
         category: "design"
     },
     {
-        title: "Letter as Form",
-        path: "collections/design/letter-as-form/index.html",
+        title: "Themed Playing Card Design",
+        path: "collections/design/themed-playing-card-design/index-case-study.html",
         category: "design"
     },
     {
-        title: "Reductive Photo Solutions",
-        path: "collections/design/reductive-photo-solutions/index.html",
+        title: "Double-Sided Poster",
+        path: "collections/design/double-sided-poster/index-case-study.html",
+        category: "design"
+    },
+    {
+        title: "Elements and Principles Book Cover",
+        path: "collections/design/elements-and-principles-book-cover/index-case-study.html",
         category: "design"
     },
     {
         title: "Reductive Symbols",
-        path: "collections/design/reductive-symbols/index.html",
+        path: "collections/design/reductive-symbols/index-case-study.html",
         category: "design"
     },
     {
-        title: "Themed Playing Card Design",
-        path: "collections/design/themed-playing-card-design/index.html",
+        title: "Reductive Photo Solutions",
+        path: "collections/design/reductive-photo-solutions/index-case-study.html",
         category: "design"
     },
     {
         title: "Typographic Interpretation",
-        path: "collections/design/typographic-interpretation/index.html",
+        path: "collections/design/typographic-interpretation/index-case-study.html",
         category: "design"
     },
     
-    // Personal Work (only include existing files)
+    // Illustration Work
     {
         title: "Anointed Gaze",
-        path: "collections/personal/anointed-gaze/index.html",
-        category: "personal"
+        path: "collections/illustration/anointed-gaze/index.html",
+        category: "illustration"
     },
     {
         title: "Heaven on Fire",
-        path: "collections/personal/heaven-on-fire/index.html",
-        category: "personal"
+        path: "collections/illustration/heaven-on-fire/index.html",
+        category: "illustration"
     },
     {
         title: "Inheritance",
-        path: "collections/personal/inheritance/index.html",
-        category: "personal"
-    },
-    
-    // Studio Work (only include existing files)
-    {
-        title: "Abuela's Altar",
-        path: "collections/studio/abuelas-altar/index.html",
-        category: "studio"
-    },
-    {
-        title: "Abyss Bloom",
-        path: "collections/studio/abyss-bloom/index.html",
-        category: "studio"
+        path: "collections/illustration/inheritance/index.html",
+        category: "illustration"
     },
     {
         title: "Collected Remains",
-        path: "collections/studio/collected-remains/index.html",
-        category: "studio"
+        path: "collections/illustration/collected-remains/index.html",
+        category: "illustration"
     },
     {
+        title: "Abuela's Altar",
+        path: "collections/illustration/abuelas-altar/index.html",
+        category: "illustration"
+    },
+    
+    // Objects Work
+    {
         title: "Feathers Along the Bend",
-        path: "collections/studio/feathers-along-the-bend/index.html",
-        category: "studio"
+        path: "collections/objects/feathers-along-the-bend/index.html",
+        category: "objects"
     },
     {
         title: "Gnaw",
-        path: "collections/studio/gnaw/index.html",
-        category: "studio"
+        path: "collections/objects/gnaw/index.html",
+        category: "objects"
     },
     {
         title: "Unraveling",
-        path: "collections/studio/unraveling/index.html",
-        category: "studio"
+        path: "collections/objects/unraveling/index.html",
+        category: "objects"
+    },
+    
+    // Motion Work
+    {
+        title: "Visual Language of Dream Logic",
+        path: "collections/motion/visual-language-of-dream-logic/index.html",
+        category: "motion"
+    },
+    {
+        title: "Reminiscent",
+        path: "collections/motion/reminiscent/index.html",
+        category: "motion"
+    },
+    {
+        title: "Genesis Blackout Poetry",
+        path: "collections/motion/genesis-blackout-poetry/index.html",
+        category: "motion"
     }
 ];
 
