@@ -6,6 +6,96 @@
   so these rules can override the global styles if necessary.
 */
 
+/* --------------------
+   LOADING SCREEN
+   -------------------- */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-icons {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.loading-icon {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+    filter: invert(88%) sepia(14%) saturate(1055%) hue-rotate(296deg) brightness(100%) contrast(94%);
+}
+
+.loading-star {
+    top: 0;
+    left: 50%;
+    animation: iconPulseStar 2s ease-in-out infinite;
+}
+
+.loading-starburst {
+    top: 50%;
+    left: 0;
+    animation: iconPulseStarburst 2s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.loading-flower {
+    top: 50%;
+    right: 0;
+    animation: iconPulseFlower 2s ease-in-out infinite;
+    animation-delay: 0.6s;
+}
+
+@keyframes iconPulseStar {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1.2) rotate(180deg);
+    }
+}
+
+@keyframes iconPulseStarburst {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(0, -50%) scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, -50%) scale(1.2) rotate(180deg);
+    }
+}
+
+@keyframes iconPulseFlower {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(0, -50%) scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, -50%) scale(1.2) rotate(180deg);
+    }
+}
 
 /* --------------------
    1. UTILITY & CONTAINER
