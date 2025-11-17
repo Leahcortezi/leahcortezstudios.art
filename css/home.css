@@ -927,10 +927,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-image-main {
   position: absolute;
-  top: 12.5%;
-  left: 6%;
-  width: 88%;
-  height: 75%;
+  top: 15%;
+  left: 7%;
+  width: 86%;
+  height: 70%;
   object-fit: cover;
   border-radius: 8px;
   z-index: 1;
@@ -943,10 +943,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   z-index: 2;
   pointer-events: none;
-  transform: rotate(90deg) scale(1.8);
+  transform: rotate(-90deg);
   transform-origin: center center;
 }
 
@@ -961,7 +961,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lace-wrapper-horizontal:hover .lace-border-horizontal {
-  transform: rotate(90deg) scale(1.85);
+  transform: rotate(-90deg) scale(1.05);
 }
 
 .project-info-column {
