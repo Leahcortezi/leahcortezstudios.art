@@ -947,7 +947,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   z-index: 2;
   pointer-events: none;
-  transform: rotate(-90deg) scale(1.8);
+  transform: rotate(-90deg) scale(1.75);
   transform-origin: center center;
 }
 
@@ -961,7 +961,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lace-wrapper-horizontal:hover .lace-border-horizontal {
-  transform: rotate(-90deg) scale(1.85);
+  transform: rotate(-90deg) scale(1.8);
 }
 
 .project-info-column {
