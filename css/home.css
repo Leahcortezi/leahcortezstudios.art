@@ -919,7 +919,7 @@ h1, h2, h3, h4, h5, h6 {
 .lace-wrapper-horizontal {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  aspect-ratio: 16 / 9;
   display: block;
   margin: 0 auto;
   overflow: visible;
@@ -952,7 +952,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-image-column img {
   border-radius: 12px;
-  border: 2px solid rgba(126, 28, 46, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
