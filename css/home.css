@@ -927,8 +927,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-image-main {
-  width: 88%;
-  height: 88%;
+  width: 85%;
+  height: 75%;
   object-fit: cover;
   border-radius: 8px;
   position: relative;
@@ -937,14 +937,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .lace-border-horizontal {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: auto;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   z-index: 2;
   pointer-events: none;
-  transform: rotate(90deg) scale(1.15);
+  transform: translate(-50%, -50%) rotate(90deg);
   transform-origin: center;
 }
 
