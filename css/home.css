@@ -885,7 +885,100 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------
-   8. TESTIMONIAL SECTION
+   8. LATEST PROJECT SECTION
+   -------------------- */
+
+.latest-project-section {
+  background: linear-gradient(135deg, rgba(126, 28, 46, 0.05) 0%, transparent 100%);
+  padding: 80px 0;
+  position: relative;
+}
+
+.latest-project-section .section-title {
+  font-family: var(--font-headings);
+  font-size: 2.5rem;
+  color: var(--color-primary-accent);
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+.latest-project-content {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-image-column {
+  flex: 1;
+  max-width: 500px;
+}
+
+.project-image-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid rgba(126, 28, 46, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-image-column img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(126, 28, 46, 0.4);
+}
+
+.project-info-column {
+  flex: 1;
+}
+
+.project-info-column h3 {
+  font-family: 'Pirata One', cursive;
+  font-size: 2.2rem;
+  color: var(--cream);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.project-category {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--burgundy);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.project-description {
+  font-family: 'IM Fell English', serif;
+  color: var(--light-gray);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.project-link {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--burgundy);
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--burgundy);
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--cream);
+  border-bottom-color: var(--cream);
+  transform: translateX(5px);
+}
+
+/* --------------------
+   9. TESTIMONIAL SECTION
    -------------------- */
 
 .testimonial-section {
@@ -1127,6 +1220,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile responsiveness for testimonial */
 @media (max-width: 768px) {
+  .latest-project-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .project-image-column {
+    max-width: 100%;
+  }
+
+  .project-info-column h3 {
+    font-size: 1.8rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
   .testimonial-section {
     padding: 80px 0; /* Increased from 60px for better breathing room */
   }
