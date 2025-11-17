@@ -201,25 +201,19 @@
                     <!-- Quiz Start Screen -->
                     <div class="quiz-start active">
                         <div class="quiz-intro">
-                            <h3>Find Your Portfolio Match</h3>
-                            <p>Discover which piece from my collection resonates with your creative vision. This personalized quiz connects your artistic preferences with my design, personal, and studio work—revealing the perfect portfolio piece for your inspiration.</p>
-                            <button id="start-quiz-btn" class="quiz-btn primary">Discover Your Match</button>
+                            <h3>Build Your Portfolio</h3>
+                            <p>Select the creative areas that interest you most, and I'll curate 3 pieces from my collection that match your vision.</p>
+                            <button id="start-quiz-btn" class="quiz-btn primary">Start Curating</button>
                         </div>
                     </div>
 
-                    <!-- Quiz Questions -->
+                    <!-- Quiz Interests Selection -->
                     <div class="quiz-questions hidden">
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill"></div>
-                            </div>
-                            <span class="progress-text">Question <span id="current-question">1</span> of <span id="total-questions">5</span></span>
-                        </div>
-
-                        <div class="question-container">
-                            <h3 id="question-text" class="question-text"></h3>
-                            <div id="answer-options" class="answer-options"></div>
-                            <button id="next-question-btn" class="quiz-btn secondary hidden">Next Question</button>
+                        <div class="interest-selector">
+                            <h3>What creative work excites you?</h3>
+                            <p class="selector-subtitle">Select 2-4 interests to discover your curated portfolio</p>
+                            <div class="interest-grid" id="interest-options"></div>
+                            <button id="show-results-btn" class="quiz-btn primary" disabled>Show My Portfolio (Select at least 2)</button>
                         </div>
                     </div>
 
@@ -269,7 +263,7 @@
 
     <!-- The 'defer' attribute ensures the script is executed after the document has been parsed -->
     <script src="scripts/main.js" defer></script>
-    <script src="scripts/quiz.js?v=1754402500" defer></script>
+    <script src="scripts/quiz-new.js?v=1754402500" defer></script>
 
     <form method="POST" action="https://formsubmit.co/contact@leahcortezstudios.art" enctype="multipart/form-data">
         <input type="hidden" name="_webhook" value="https://leahcortezstudios.art/api/add-artwork.php">
