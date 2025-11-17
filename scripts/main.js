@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (viewCvBtn && pdfModal && closePdfBtn && pdfViewer) {
     // Open PDF modal
     viewCvBtn.addEventListener('click', () => {
-      pdfViewer.src = '../documents/LeahCortez_CV.pdf';
+      pdfViewer.src = '../documents/CV.pdf';
       pdfModal.style.display = 'block';
       document.body.style.overflow = 'hidden'; // Prevent scrolling
     });
