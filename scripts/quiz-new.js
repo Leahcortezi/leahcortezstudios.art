@@ -171,14 +171,14 @@ class PortfolioBuilder {
                 title: "Anointed Gaze",
                 category: "Illustration",
                 path: "collections/illustration/anointed-gaze/index.html",
-                image: "collections/illustration/anointed-gaze/images/JPEG/Personal3.jpg",
+                image: "collections/illustration/anointed-gaze/images/JPEG/personal6.jpg",
                 description: "Surreal portrait exploring spiritual femininity and sacred imagery"
             },
             "heaven-on-fire": {
                 title: "Heaven on Fire",
                 category: "Illustration",
                 path: "collections/illustration/heaven-on-fire/index.html",
-                image: "collections/illustration/heaven-on-fire/images/JPEG/Personal2.jpg",
+                image: "collections/illustration/heaven-on-fire/images/JPEG/personal7.jpg",
                 description: "Mixed media piece exploring divine destruction and transformation"
             },
             "inheritance": {
