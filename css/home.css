@@ -127,8 +127,35 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   font-size: 1rem;
   margin-top: 0;
-  margin-bottom: 1.5rem; /* Less space below the poetic line */
+  margin-bottom: 1.5rem;
   color: #e8e8e8;
+}
+
+.capabilities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 30px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.capabilities span:not(.separator) {
+  color: var(--cream);
+  transition: color 0.3s ease;
+}
+
+.capabilities .separator {
+  color: var(--burgundy);
+  font-size: 0.8rem;
+}
+
+.capabilities span:not(.separator):hover {
+  color: var(--burgundy);
 }
 
 .btn {
@@ -706,6 +733,17 @@ h1, h2, h3, h4, h5, h6 {
       margin-left: auto;
       margin-right: auto;
       display: block;
+    }
+
+    .capabilities {
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      gap: 8px;
+      margin: 15px 0 25px;
+    }
+
+    .capabilities .separator {
+      font-size: 0.7rem;
     }
 
     /* Make background icons even more visible on mobile */
