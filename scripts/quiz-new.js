@@ -9,6 +9,7 @@ class PortfolioBuilder {
             "social-impact": {
                 title: "Social Impact & Activism",
                 icon: "🌍",
+                personality: "The Conscious Creator — You believe design should change the world, not just look pretty. You're drawn to work that makes a statement and sparks action.",
                 pieces: [
                     "endangered-species",
                     "double-sided-poster",
@@ -18,6 +19,7 @@ class PortfolioBuilder {
             "cultural-identity": {
                 title: "Cultural Identity & Heritage",
                 icon: "✨",
+                personality: "The Memory Keeper — You see art as a bridge between past and present, honoring roots while creating something new. Stories run deep in your veins.",
                 pieces: [
                     "abuelas-altar",
                     "anointed-gaze",
@@ -28,6 +30,7 @@ class PortfolioBuilder {
             "motion-animation": {
                 title: "Motion Design & Animation",
                 icon: "🎬",
+                personality: "The Movement Maker — Static images aren't enough for you. You want to see things flow, evolve, and come alive through time and space.",
                 pieces: [
                     "visual-language",
                     "reminiscent",
@@ -37,6 +40,7 @@ class PortfolioBuilder {
             "experimental": {
                 title: "Experimental & Conceptual",
                 icon: "🔮",
+                personality: "The Boundary Pusher — You love when art makes you think 'what the hell is that?' in the best way. Rules are made to be beautifully broken.",
                 pieces: [
                     "abyss-bloom",
                     "visual-language",
@@ -47,6 +51,7 @@ class PortfolioBuilder {
             "commercial-design": {
                 title: "Commercial Design & Branding",
                 icon: "💼",
+                personality: "The Strategic Stylist — You appreciate design that sells and tells a story. Beauty meets function, creativity meets commerce.",
                 pieces: [
                     "insane-grain",
                     "endangered-species",
@@ -57,6 +62,7 @@ class PortfolioBuilder {
             "typography-posters": {
                 title: "Typography & Poster Design",
                 icon: "📰",
+                personality: "The Type Obsessive — You judge every poster and menu. Letters have feelings, spacing matters, and a good layout makes your heart sing.",
                 pieces: [
                     "constructivism",
                     "dada",
@@ -68,6 +74,7 @@ class PortfolioBuilder {
             "sculptural-objects": {
                 title: "Sculptural & Found Objects",
                 icon: "🪡",
+                personality: "The Tactile Dreamer — Flat surfaces aren't enough. You need texture, dimension, and objects you can experience in three-dimensional space.",
                 pieces: [
                     "abyss-bloom",
                     "feathers-along-bend",
@@ -78,6 +85,7 @@ class PortfolioBuilder {
             "narrative-illustration": {
                 title: "Narrative Illustration",
                 icon: "🎨",
+                personality: "The Visual Storyteller — Every image should whisper secrets. You're captivated by work that carries emotional weight and symbolic depth.",
                 pieces: [
                     "anointed-gaze",
                     "heaven-on-fire",
@@ -327,6 +335,10 @@ class PortfolioBuilder {
         const container = document.querySelector('.result-container');
         const curatedPieces = this.curatePieces();
 
+        // Get personality description from primary interest
+        const primaryInterest = Array.from(this.selectedInterests)[0];
+        const personality = this.interests[primaryInterest].personality;
+
         const interestsList = Array.from(this.selectedInterests)
             .map(key => this.interests[key].title)
             .join(', ');
@@ -334,7 +346,8 @@ class PortfolioBuilder {
         container.innerHTML = `
             <div class="portfolio-result">
                 <h3>Your Curated Portfolio</h3>
-                <p class="interests-selected">Based on your interests in: <strong>${interestsList}</strong></p>
+                <p class="personality-description">${personality}</p>
+                <p class="interests-selected">Your selections: <strong>${interestsList}</strong></p>
                 
                 <div class="curated-pieces">
                     ${curatedPieces.map(piece => this.renderPieceCard(piece)).join('')}
