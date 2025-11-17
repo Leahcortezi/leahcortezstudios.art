@@ -919,48 +919,49 @@ h1, h2, h3, h4, h5, h6 {
 .lace-wrapper-horizontal {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  display: block;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .project-image-main {
-  width: 85%;
+  position: absolute;
+  top: 12.5%;
+  left: 6%;
+  width: 88%;
   height: 75%;
   object-fit: cover;
   border-radius: 8px;
-  position: relative;
   z-index: 1;
+  transition: transform 0.3s ease;
 }
 
 .lace-border-horizontal {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   z-index: 2;
   pointer-events: none;
-  transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center;
+  transform: rotate(90deg) scale(1.8);
+  transform-origin: center center;
 }
 
 .project-image-column img {
   border-radius: 12px;
   border: 2px solid rgba(126, 28, 46, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .lace-wrapper-horizontal:hover .project-image-main {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
-.lace-wrapper-horizontal:hover {
-  filter: drop-shadow(0 15px 40px rgba(126, 28, 46, 0.4));
+.lace-wrapper-horizontal:hover .lace-border-horizontal {
+  transform: rotate(90deg) scale(1.85);
 }
 
 .project-info-column {
