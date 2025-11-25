@@ -8,7 +8,7 @@ class PortfolioBuilder {
         this.interests = {
             "social-impact": {
                 title: "Social Impact & Activism",
-                icon: "🌍",
+                icon: "",
                 personality: "The Conscious Creator — You believe design should change the world, not just look pretty. You're drawn to work that makes a statement and sparks action.",
                 pieces: [
                     "endangered-species",
@@ -18,7 +18,7 @@ class PortfolioBuilder {
             },
             "cultural-identity": {
                 title: "Cultural Identity & Heritage",
-                icon: "✨",
+                icon: "",
                 personality: "The Memory Keeper — You see art as a bridge between past and present, honoring roots while creating something new. Stories run deep in your veins.",
                 pieces: [
                     "abuelas-altar",
@@ -30,7 +30,7 @@ class PortfolioBuilder {
             },
             "motion-animation": {
                 title: "Motion Design & Animation",
-                icon: "🎬",
+                icon: "",
                 personality: "The Movement Maker — Static images aren't enough for you. You want to see things flow, evolve, and come alive through time and space.",
                 pieces: [
                     "visual-language",
@@ -41,7 +41,7 @@ class PortfolioBuilder {
             },
             "experimental": {
                 title: "Experimental & Conceptual",
-                icon: "🔮",
+                icon: "",
                 personality: "The Boundary Pusher — You love when art makes you think 'what the hell is that?' in the best way. Rules are made to be beautifully broken.",
                 pieces: [
                     "abyss-bloom",
@@ -52,7 +52,7 @@ class PortfolioBuilder {
             },
             "commercial-design": {
                 title: "Commercial Design & Branding",
-                icon: "💼",
+                icon: "",
                 personality: "The Strategic Stylist — You appreciate design that sells and tells a story. Beauty meets function, creativity meets commerce.",
                 pieces: [
                     "insane-grain",
@@ -63,7 +63,7 @@ class PortfolioBuilder {
             },
             "typography-posters": {
                 title: "Typography & Poster Design",
-                icon: "📰",
+                icon: "",
                 personality: "The Type Obsessive — You judge every poster and menu. Letters have feelings, spacing matters, and a good layout makes your heart sing.",
                 pieces: [
                     "constructivism",
@@ -75,7 +75,7 @@ class PortfolioBuilder {
             },
             "sculptural-objects": {
                 title: "Sculptural & Found Objects",
-                icon: "🪡",
+                icon: "",
                 personality: "The Tactile Dreamer — Flat surfaces aren't enough. You need texture, dimension, and objects you can experience in three-dimensional space.",
                 pieces: [
                     "abyss-bloom",
@@ -86,7 +86,7 @@ class PortfolioBuilder {
             },
             "narrative-illustration": {
                 title: "Narrative Illustration",
-                icon: "🎨",
+                icon: "",
                 personality: "The Visual Storyteller — Every image should whisper secrets. You're captivated by work that carries emotional weight and symbolic depth.",
                 pieces: [
                     "anointed-gaze",
