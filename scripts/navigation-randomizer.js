@@ -96,6 +96,11 @@ const allWorks = [
         title: "Genesis Blackout Poetry",
         path: "collections/motion/genesis-blackout-poetry/index.html",
         category: "motion"
+    },
+    {
+        title: "Abuela's Ofrenda",
+        path: "collections/motion/abuelas-ofrenda/index.html",
+        category: "motion"
     }
 ];
 

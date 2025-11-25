@@ -22,6 +22,7 @@ class PortfolioBuilder {
                 personality: "The Memory Keeper — You see art as a bridge between past and present, honoring roots while creating something new. Stories run deep in your veins.",
                 pieces: [
                     "abuelas-altar",
+                    "abuelas-ofrenda",
                     "anointed-gaze",
                     "inheritance",
                     "heaven-on-fire"
@@ -34,7 +35,8 @@ class PortfolioBuilder {
                 pieces: [
                     "visual-language",
                     "reminiscent",
-                    "genesis-blackout-poetry"
+                    "genesis-blackout-poetry",
+                    "abuelas-ofrenda"
                 ]
             },
             "experimental": {
@@ -243,6 +245,13 @@ class PortfolioBuilder {
                 path: "collections/motion/genesis-blackout-poetry/index.html",
                 image: "collections/motion/genesis-blackout-poetry/thumb (1).jpg",
                 description: "Kinetic typography reframing biblical narrative through Eve's perspective"
+            },
+            "abuelas-ofrenda": {
+                title: "Abuela's Ofrenda",
+                category: "Motion",
+                path: "collections/motion/abuelas-ofrenda/index.html",
+                image: "https://vumbnail.com/1140266929.jpg",
+                description: "3D animated ofrenda exploring memory, lighting, and atmospheric design"
             }
         };
 
