@@ -1042,6 +1042,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   z-index: 1;
   transition: transform 0.3s ease;
+  background: #000;
+  display: block;
+  visibility: visible;
 }
 
 .lace-border-horizontal {
