@@ -36,6 +36,15 @@
 </head>
 <body>
 
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-icons">
+            <img src="../icons/star.svg" alt="" class="loading-icon loading-star">
+            <img src="../icons/starburst.svg" alt="" class="loading-icon loading-starburst">
+            <img src="../icons/flower.svg" alt="" class="loading-icon loading-flower">
+        </div>
+    </div>
+
     <!-- Navigation -->
     <!-- Navigation -->
     <nav>
@@ -313,6 +322,16 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="../scripts/main.js"></script>
+    <script>
+        // Hide loading screen when page is fully loaded
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        });
+    </script>
 
 </body>
 </html>
