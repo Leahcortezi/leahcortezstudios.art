@@ -1369,6 +1369,23 @@ h1, h2, h3, h4, h5, h6 {
 
   .project-image-column {
     max-width: 100%;
+    width: 100%;
+  }
+
+  .lace-wrapper-horizontal {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+  }
+
+  .project-image-main {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .lace-border-horizontal {
+    display: block !important;
+    visibility: visible !important;
   }
 
   .project-info-column h3 {
