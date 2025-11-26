@@ -663,11 +663,47 @@ function initializeTestimonialsCarousel() {
   console.log('Testimonials carousel initialized');
 }
 
-// Add testimonials carousel to DOMContentLoaded event
+  // Add testimonials carousel to DOMContentLoaded event
 document.addEventListener('DOMContentLoaded', () => {
   // ...existing initialization code...
   initializeTestimonialsCarousel();
+  
+  // Initialize keyboard navigation for work pages
+  initializeKeyboardNavigation();
 });
+
+// --------------------
+// KEYBOARD NAVIGATION FOR WORK PAGES
+// --------------------
+
+function initializeKeyboardNavigation() {
+  // Check if we're on a work page
+  const prevLink = document.querySelector('.prev-work');
+  const nextLink = document.querySelector('.next-work');
+  
+  if (!prevLink && !nextLink) return; // Not on a work page
+  
+  document.addEventListener('keydown', (e) => {
+    // Ignore if user is typing in an input, textarea, or contenteditable
+    if (e.target.matches('input, textarea, [contenteditable="true"]')) {
+      return;
+    }
+    
+    // Left arrow - previous work
+    if (e.key === 'ArrowLeft' && prevLink && prevLink.href && prevLink.href !== '#') {
+      e.preventDefault();
+      window.location.href = prevLink.href;
+    }
+    
+    // Right arrow - next work
+    if (e.key === 'ArrowRight' && nextLink && nextLink.href && nextLink.href !== '#') {
+      e.preventDefault();
+      window.location.href = nextLink.href;
+    }
+  });
+  
+  console.log('Keyboard navigation initialized');
+}
 
 // ...existing code...
 

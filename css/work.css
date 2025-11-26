@@ -6,6 +6,39 @@
 */
 
 /* --------------------
+   0. BREADCRUMB NAVIGATION
+   -------------------- */
+
+.breadcrumb {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--cream);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--cream);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.6;
+}
+
+.breadcrumb span {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* --------------------
    1. WORK PAGE CONTAINER
    -------------------- */
 
