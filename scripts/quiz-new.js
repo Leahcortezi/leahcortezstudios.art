@@ -4,6 +4,38 @@ class PortfolioBuilder {
     constructor() {
         this.selectedInterests = new Set();
         
+        // Personality combos for different interest pairs
+        this.personalityCombos = {
+            "social-impact_cultural-identity": "The Activist Storyteller — You blend advocacy with heritage, creating work that honors roots while demanding change.",
+            "social-impact_motion-animation": "The Movement Messenger — You believe change needs motion, using animation to amplify urgent stories.",
+            "social-impact_experimental": "The Revolutionary Creator — You reject rules to disrupt systems, making provocative work that demands attention.",
+            "social-impact_commercial-design": "The Strategic Activist — You weaponize design thinking for social good, proving impact and beauty can coexist.",
+            "social-impact_typography-posters": "The Visual Agitator — Bold type and fearless messaging—you make posters that stick in minds and hearts.",
+            "social-impact_sculptural-objects": "The Tactile Activist — Your work demands to be felt, not just seen—objects that carry weight and meaning.",
+            "social-impact_narrative-illustration": "The Conscious Illustrator — Every drawing tells a truth, every composition carries intention toward justice.",
+            "cultural-identity_motion-animation": "The Heritage Animator — You bring tradition to life through motion, honoring memory with modern tools.",
+            "cultural-identity_experimental": "The Cultural Alchemist — You remix tradition and experimentation, creating something ancestral yet entirely new.",
+            "cultural-identity_commercial-design": "The Identity Designer — You craft brands that honor culture while staying commercially sharp and relevant.",
+            "cultural-identity_typography-posters": "The Legacy Typographer — Letters carry lineage for you—every poster is a bridge between past and present.",
+            "cultural-identity_sculptural-objects": "The Memory Maker — Tactile, dimensional, rooted—your objects hold generations in their form.",
+            "cultural-identity_narrative-illustration": "The Heritage Illustrator — Your work whispers ancestral stories through every brushstroke and symbol.",
+            "motion-animation_experimental": "The Boundary Pusher — Static images aren't enough, and neither are rules—you want motion that surprises.",
+            "motion-animation_commercial-design": "The Strategic Animator — Motion with purpose—you make animations that sell, engage, and convert.",
+            "motion-animation_typography-posters": "The Kinetic Type Obsessive — Letters should move, messages should flow—you make typography come alive.",
+            "motion-animation_sculptural-objects": "The Dimensional Animator — Physical meets digital—you blend 3D and motion in unexpected ways.",
+            "motion-animation_narrative-illustration": "The Story Animator — Illustrations that breathe and move—your work unfolds narratives across time.",
+            "experimental_commercial-design": "The Daring Strategist — You push boundaries while staying commercially viable—weird, but it works.",
+            "experimental_typography-posters": "The Type Anarchist — Letters break rules in your hands, creating layouts that feel alive and untamed.",
+            "experimental_sculptural-objects": "The Strange Sculptor — Your objects confuse and compel—beauty in the bizarre, craft in chaos.",
+            "experimental_narrative-illustration": "The Surreal Storyteller — Your narratives twist reality, inviting viewers into worlds that shouldn't exist—but do.",
+            "commercial-design_typography-posters": "The Brand Perfectionist — Clean, strategic, impactful—you design systems that work and look flawless.",
+            "commercial-design_sculptural-objects": "The Tangible Brand Builder — You create 3D brand experiences—packaging, products, tactile identity systems.",
+            "commercial-design_narrative-illustration": "The Commercial Illustrator — Your drawings sell while telling stories—beauty that converts.",
+            "typography-posters_sculptural-objects": "The Dimensional Typographer — Flat isn't enough—you want letterforms that cast shadows and take up space.",
+            "typography-posters_narrative-illustration": "The Editorial Artist — Type and image dance together—layouts that guide eyes and stir emotions.",
+            "sculptural-objects_narrative-illustration": "The Tactile Storyteller — Your work exists between dimensions—illustrations that become objects, objects that tell stories."
+        };
+        
         // Define interests and their matching pieces
         this.interests = {
             "social-impact": {
@@ -348,19 +380,28 @@ class PortfolioBuilder {
         const container = document.querySelector('.result-container');
         const curatedPieces = this.curatePieces();
 
-        // Get personality description from primary interest
-        const primaryInterest = Array.from(this.selectedInterests)[0];
-        const personality = this.interests[primaryInterest].personality;
+        // Get personality combo based on selected interests
+        const interestKeys = Array.from(this.selectedInterests).sort();
+        const comboKey = interestKeys.join('_');
+        const personalityCombo = this.personalityCombos[comboKey] || this.interests[interestKeys[0]].personality;
 
-        const interestsList = Array.from(this.selectedInterests)
+        const interestsList = interestKeys
             .map(key => this.interests[key].title)
-            .join(', ');
+            .join(' + ');
+
+        // Create explanation for why these pieces matched
+        const explanation = this.getMatchExplanation(curatedPieces);
 
         container.innerHTML = `
             <div class="portfolio-result">
-                <h3>Your Curated Portfolio</h3>
-                <p class="personality-description">${personality}</p>
-                <p class="interests-selected">Your selections: <strong>${interestsList}</strong></p>
+                <div class="selected-interests-display">
+                    <strong>Your Interests:</strong> ${interestsList}
+                </div>
+                <h3>Your Creative Profile</h3>
+                <p class="personality-combo">${personalityCombo}</p>
+                
+                <h4>Your Curated Portfolio</h4>
+                <p class="match-explanation">${explanation}</p>
                 
                 <div class="curated-pieces">
                     ${curatedPieces.map(piece => this.renderPieceCard(piece)).join('')}
@@ -369,29 +410,64 @@ class PortfolioBuilder {
                 <div class="result-actions">
                     <a href="collections/index.html" class="quiz-btn primary">View Full Portfolio</a>
                     <button onclick="location.reload()" class="quiz-btn secondary">Start Over</button>
+                    <button onclick="navigator.clipboard.writeText(window.location.href)" class="quiz-btn secondary">Copy Link</button>
                 </div>
             </div>
         `;
     }
 
+    getMatchExplanation(pieces) {
+        const interestTitles = Array.from(this.selectedInterests)
+            .map(key => this.interests[key].title);
+        
+        const categories = [...new Set(pieces.map(p => p.category))];
+        const categoryText = categories.length === 1 
+            ? `all from ${categories[0]}` 
+            : `spanning ${categories.join(', ')}`;
+
+        return `These ${pieces.length} pieces align with your interest in <strong>${interestTitles.join(' and ')}</strong>—${categoryText}. Each one demonstrates the intersection of your creative values.`;
+    }
+
     curatePieces() {
-        // Collect all pieces from selected interests
+        // Collect all pieces from selected interests with scoring
         const pieceScores = {};
+        const pieceCategories = {};
 
         this.selectedInterests.forEach(interestKey => {
             const interest = this.interests[interestKey];
             interest.pieces.forEach(pieceKey => {
                 pieceScores[pieceKey] = (pieceScores[pieceKey] || 0) + 1;
+                pieceCategories[pieceKey] = this.pieces[pieceKey].category;
             });
         });
 
-        // Sort by score and get top 3
+        // Sort by score
         const sortedPieces = Object.entries(pieceScores)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 3)
-            .map(([key]) => this.pieces[key]);
+            .sort((a, b) => b[1] - a[1]);
 
-        return sortedPieces;
+        // Try to get diverse categories - one from each if possible
+        const selectedPieces = [];
+        const usedCategories = new Set();
+
+        // First pass: get highest scoring pieces from different categories
+        for (const [key] of sortedPieces) {
+            const category = pieceCategories[key];
+            if (!usedCategories.has(category) && selectedPieces.length < 3) {
+                selectedPieces.push(this.pieces[key]);
+                usedCategories.add(category);
+            }
+        }
+
+        // Second pass: fill remaining slots with highest scores
+        if (selectedPieces.length < 3) {
+            for (const [key] of sortedPieces) {
+                if (!selectedPieces.find(p => p === this.pieces[key]) && selectedPieces.length < 3) {
+                    selectedPieces.push(this.pieces[key]);
+                }
+            }
+        }
+
+        return selectedPieces;
     }
 
     renderPieceCard(piece) {
