@@ -28,24 +28,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pirata+One&display=swap" rel="stylesheet">
     
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="css/styles.css">
+    
     <style>
-        :root {
-            --cream: #f8f4ed;
-            --dark-bg: #1a1614;
-            --burgundy: #7e1c2e;
-            --pink: #f8c8d0;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'IBM Plex Mono', monospace;
-            background: var(--dark-bg);
-            color: var(--cream);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -55,22 +42,42 @@
             overflow-x: hidden;
         }
         
-        /* Background decorative elements */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(126, 28, 46, 0.03) 0%, transparent 50%);
-            animation: rotate 60s linear infinite;
+        /* Lace border decorative element */
+        .lace-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
             z-index: 0;
         }
         
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .lace-decoration img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+        
+        .lace-decoration img:nth-child(1) {
+            top: 5%;
+            right: 10%;
+            transform: rotate(45deg);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .lace-decoration img:nth-child(2) {
+            bottom: 10%;
+            left: 5%;
+            transform: rotate(-30deg);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(-20px) rotate(45deg); }
         }
         
         .card-container {
@@ -94,13 +101,13 @@
         
         .card-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         
         .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
             opacity: 0;
             animation: logoAppear 0.8s ease-out 0.2s forwards;
         }
@@ -108,11 +115,11 @@
         @keyframes logoAppear {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.8) rotate(-5deg);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) rotate(0deg);
             }
         }
         
@@ -120,22 +127,23 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
         }
         
         h1 {
             font-family: 'Pirata One', cursive;
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             margin-bottom: 0.5rem;
-            color: var(--pink);
+            color: var(--cream);
             letter-spacing: 1px;
         }
         
         .tagline {
-            font-size: 0.875rem;
-            color: rgba(248, 244, 237, 0.7);
+            font-size: 0.8rem;
+            color: var(--cream);
+            opacity: 0.7;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: 400;
         }
         
         .links-container {
@@ -145,10 +153,10 @@
         }
         
         .link-card {
-            background: rgba(248, 200, 208, 0.05);
-            border: 1.5px solid rgba(248, 200, 208, 0.2);
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
+            background: rgba(248, 200, 208, 0.03);
+            border: 1.5px solid rgba(248, 200, 208, 0.15);
+            border-radius: 4px;
+            padding: 1.125rem 1.25rem;
             text-decoration: none;
             color: var(--cream);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -166,15 +174,16 @@
         .link-card:nth-child(3) { animation-delay: 0.5s; }
         .link-card:nth-child(4) { animation-delay: 0.6s; }
         .link-card:nth-child(5) { animation-delay: 0.7s; }
+        .link-card:nth-child(6) { animation-delay: 0.8s; }
         
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
         
@@ -185,7 +194,7 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: rgba(248, 200, 208, 0.1);
+            background: rgba(248, 200, 208, 0.05);
             transition: width 0.3s ease;
             z-index: 0;
         }
@@ -195,17 +204,18 @@
         }
         
         .link-card:hover {
-            border-color: rgba(248, 200, 208, 0.5);
-            transform: translateX(4px);
-            background: rgba(248, 200, 208, 0.08);
+            border-color: rgba(248, 200, 208, 0.4);
+            transform: translateY(-2px);
+            background: rgba(248, 200, 208, 0.05);
         }
         
         .link-icon {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             flex-shrink: 0;
             position: relative;
             z-index: 1;
+            opacity: 0.8;
         }
         
         .link-content {
@@ -215,36 +225,56 @@
         }
         
         .link-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             margin-bottom: 0.25rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
         
         .link-description {
-            font-size: 0.75rem;
-            color: rgba(248, 244, 237, 0.6);
+            font-size: 0.7rem;
+            color: var(--cream);
+            opacity: 0.5;
             letter-spacing: 0.5px;
         }
         
         .link-arrow {
-            font-size: 1.25rem;
-            color: var(--pink);
-            transition: transform 0.3s ease;
+            font-size: 1.125rem;
+            color: var(--cream);
+            opacity: 0.6;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 1;
         }
         
         .link-card:hover .link-arrow {
             transform: translateX(4px);
+            opacity: 1;
+        }
+        
+        /* Social link special styling */
+        .link-card.social-link {
+            background: rgba(248, 200, 208, 0.05);
+            border-color: rgba(248, 200, 208, 0.25);
+        }
+        
+        .link-card.social-link:hover {
+            background: rgba(248, 200, 208, 0.08);
+            border-color: rgba(248, 200, 208, 0.5);
+        }
+        
+        .link-card.social-link .link-icon {
+            opacity: 1;
         }
         
         .footer {
             text-align: center;
-            margin-top: 3rem;
-            font-size: 0.75rem;
-            color: rgba(248, 244, 237, 0.4);
+            margin-top: 2.5rem;
+            font-size: 0.7rem;
+            color: var(--cream);
+            opacity: 0.4;
             letter-spacing: 1px;
+            font-weight: 400;
         }
         
         @media (max-width: 768px) {
@@ -257,24 +287,34 @@
             }
             
             .tagline {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
             
             .link-card {
-                padding: 1rem 1.25rem;
+                padding: 1rem 1.125rem;
             }
             
             .link-title {
-                font-size: 0.9rem;
+                font-size: 0.875rem;
             }
             
             .link-description {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+            }
+            
+            .lace-decoration {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Lace border decoration -->
+    <div class="lace-decoration">
+        <img src="icons/border1.png" alt="">
+        <img src="icons/border1.png" alt="">
+    </div>
+    
     <div class="card-container">
         <div class="card-header">
             <div class="logo">
@@ -346,6 +386,19 @@
                 <div class="link-content">
                     <div class="link-title">CV & Experience</div>
                     <div class="link-description">Professional background</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+            
+            <a href="https://www.instagram.com/leahcortezstudios/" target="_blank" rel="noopener noreferrer" class="link-card social-link">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <div class="link-content">
+                    <div class="link-title">Instagram</div>
+                    <div class="link-description">@leahcortezstudios</div>
                 </div>
                 <span class="link-arrow">→</span>
             </a>
