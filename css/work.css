@@ -362,6 +362,64 @@
   margin-bottom: 1.5rem;
 }
 
+/* Read More / Truncated Description Styles */
+.work-description.truncated .description-content {
+  position: relative;
+  max-height: 6em; /* Show ~3 lines */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.work-description.truncated .description-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5em;
+  background: linear-gradient(transparent, var(--color-background, #0d0d0d));
+  pointer-events: none;
+}
+
+.work-description.expanded .description-content {
+  max-height: 2000px;
+}
+
+.work-description.expanded .description-content::after {
+  display: none;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary-accent, #7e1c2e);
+  font-family: var(--font-accent, 'Pirata One', cursive);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.read-more-btn:hover {
+  color: var(--color-accent, #f8c8d0);
+  transform: translateX(4px);
+}
+
+.read-more-btn::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.read-more-btn.expanded::after {
+  content: "←";
+}
+
 .work-description ol {
   margin: 1rem 0 1.5rem 1.5rem;
   padding: 0;
