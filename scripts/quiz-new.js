@@ -301,7 +301,7 @@ class PortfolioBuilder {
                 title: "Reliquary Heart",
                 category: "Printmaking",
                 path: "collections/printmaking/reliquary-heart/index.html",
-                image: "collections/printmaking/Reliquary Heart.jpg",
+                image: "collections/printmaking/Reliquary.jpg",
                 description: "Relief print exploring ritual, repetition, and emotional preservation"
             },
             "the-living-room": {
