@@ -140,10 +140,10 @@ function getNavigationLinks() {
     const currentWork = getCurrentWork();
     if (!currentWork) return null;
     
-    // Create a daily seed based on the current date and current work
+    // Create a daily seed based ONLY on the current date
+    // This ensures the same order for ALL works throughout the day
     const today = new Date().toDateString();
-    const seedString = today + currentWork.path;
-    const seed = seedString.split('').reduce((a, b) => {
+    const seed = today.split('').reduce((a, b) => {
         a = ((a << 5) - a) + b.charCodeAt(0);
         return a & a;
     }, 0);
