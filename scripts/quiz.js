@@ -306,8 +306,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who thinks zines are the perfect medium because you can make whatever you want without asking permission. You're inspired by your culture and aren't afraid to let it show loudly. You probably quote your favorite artists in your work and believe design is about accumulating energy, not following rules.",
             quote: "Design is the accumulation of energy in an object.",
-            image: "collections/design/Zine/zine1.jpg",
-            path: "collections/design/Zine/index.html"
+            image: "collections/design/contemporary-contexts-zine/zine1.jpg",
+            path: "collections/design/contemporary-contexts-zine/index.html"
             },
             "mag": {
             title: "The Editorial Provocateur",
@@ -321,8 +321,8 @@ class PortfolioQuiz {
             },
             description: "You're the artist who makes editorial spreads that people actually stop to read. You understand that layout is storytelling, and you're not afraid to break the grid when it serves the message. You judge magazines by their typography and probably have strong opinions about which publications 'get it.'",
             quote: "This spread speaks louder than the article.",
-            image: "collections/design/Mag/1.jpg",
-            path: "collections/design/Mag/index.html"
+            image: "collections/design/editorial-spread/1.jpg",
+            path: "collections/design/editorial-spread/index.html"
             },
             "reliquary-heart": {
             title: "The Sacred Keeper",
