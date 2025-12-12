@@ -461,13 +461,12 @@
 
 .work-navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 4rem;
   padding: 2.5rem 0;
   border-top: 2px solid rgba(248, 200, 208, 0.15);
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .work-navigation a {
@@ -475,19 +474,19 @@
   color: var(--color-primary-accent);
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.7rem 1.25rem;
   border-radius: 2rem;
   background: rgba(126, 28, 46, 0.07);
   border: 2px solid var(--color-primary-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(126, 28, 46, 0.08);
+  flex: 0 0 auto;
 }
 
 .work-navigation a:hover {
@@ -504,26 +503,6 @@
 
 .work-navigation .all-work:hover {
   background: #7e1c2e;
-}
-
-.work-navigation .prev-work::before {
-  content: "←";
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.work-navigation .prev-work:hover::before {
-  transform: translateX(-3px);
-}
-
-.work-navigation .next-work::after {
-  content: "→";
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.work-navigation .next-work:hover::after {
-  transform: translateX(3px);
 }
 
 /* --------------------
