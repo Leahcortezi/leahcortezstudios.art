@@ -460,93 +460,70 @@
    -------------------- */
 
 .work-navigation {
-  /*
-    Uses flexbox to space out the navigation links evenly.
-  */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 4rem;
   padding: 2.5rem 0;
-  /* A top border to separate it from the description */
   border-top: 2px solid rgba(248, 200, 208, 0.15);
-  gap: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .work-navigation a {
-  /* Sets the font to the accent font */
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--cream);
+  font-family: var(--font-accent);
+  color: var(--color-primary-accent);
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 500;
-  padding: 0.875rem 1.75rem;
-  border-radius: 4px;
-  background: transparent;
-  border: 1.5px solid rgba(248, 200, 208, 0.3);
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(126, 28, 46, 0.07);
+  border: 2px solid var(--color-primary-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
-  min-height: 50px;
-  min-width: 160px;
-  text-align: center;
-  font-weight: 500;
   box-shadow: 0 2px 8px rgba(126, 28, 46, 0.08);
-  position: relative;
 }
 
 .work-navigation a:hover {
-  color: var(--cream);
-  background: rgba(248, 200, 208, 0.08);
-  border-color: rgba(248, 200, 208, 0.5);
-  transform: translateX(0) translateY(-1px);
+  background: #7e1c2e;
+  color: #f8c8d0;
+  border-color: #7e1c2e;
+  box-shadow: 0 4px 16px rgba(126, 28, 46, 0.15);
+  transform: translateY(-2px);
 }
 
 .work-navigation .all-work {
-  text-align: center;
-  font-weight: 500;
-  background: rgba(248, 200, 208, 0.05);
-  border: 1.5px solid rgba(248, 200, 208, 0.3);
-  flex: 0 1 auto;
+  background: rgba(126, 28, 46, 0.05);
 }
 
 .work-navigation .all-work:hover {
-  background: rgba(248, 200, 208, 0.1);
-  border-color: rgba(248, 200, 208, 0.5);
-  transform: translateY(-1px);
+  background: #7e1c2e;
 }
 
 .work-navigation .prev-work::before {
   content: "←";
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.8;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
 }
 
 .work-navigation .prev-work:hover::before {
-  transform: translateX(-4px);
-  opacity: 1;
+  transform: translateX(-3px);
 }
 
 .work-navigation .next-work::after {
   content: "→";
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.8;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
 }
 
 .work-navigation .next-work:hover::after {
-  transform: translateX(4px);
-  opacity: 1;
+  transform: translateX(3px);
 }
 
 /* --------------------
