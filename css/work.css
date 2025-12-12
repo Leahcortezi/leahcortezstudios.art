@@ -24,7 +24,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(30, 20, 30, 0.85);
+  background: none;
   color: var(--cream);
   border: none;
   font-size: 2.5rem;
@@ -32,8 +32,11 @@
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(126, 28, 46, 0.13);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: none;
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .gallery-arrow.left-arrow {
   left: 0.5rem;
@@ -41,10 +44,8 @@
 .gallery-arrow.right-arrow {
   right: 0.5rem;
 }
-.gallery-arrow:hover {
-  background: var(--color-primary-accent);
-  color: #fff;
-  transform: translateY(-50%) scale(1.08);
+.gallery-arrow:hover svg polyline {
+  stroke: var(--color-primary-accent);
 }
 .rotate-90 {
   transform: rotate(90deg);
