@@ -1,13 +1,11 @@
 /**
  * Portfolio Scroll Position Memory
- * Remembers scroll position when clicking "Back to Portfolio"
- * but not when using prev/next navigation
+ * Remembers scroll position when navigating between portfolio and work pages
  */
 (function() {
     'use strict';
 
     const STORAGE_KEY = 'portfolio_scroll_position';
-    const PORTFOLIO_PATH = '/collections/index.html';
 
     // On portfolio page: restore scroll position if coming back
     function restoreScrollPosition() {
@@ -28,23 +26,15 @@
         }
     }
 
-    // On work pages: save scroll position when clicking "Back to Portfolio"
+    // On work pages: save scroll position and setup Back to Portfolio links
     function setupBackToPortfolioLinks() {
         const backLinks = document.querySelectorAll('.work-navigation .all-work');
         
         backLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // Get the referrer scroll position if we came from portfolio
-                const referrer = document.referrer;
-                
-                if (referrer && referrer.includes('/collections/')) {
-                    // We came from portfolio, so we want to go back to where we were
-                    // Use history.back() instead of following the link
-                    e.preventDefault();
-                    history.back();
-                }
-                // If we didn't come from portfolio (e.g., direct link, search), 
-                // let the normal link behavior happen (goes to top of portfolio)
+                // Always navigate to the portfolio page - don't use history.back()
+                // The href is already set correctly, just let it follow the link
+                // Scroll position will be restored by restoreScrollPosition()
             });
         });
     }
