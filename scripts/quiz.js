@@ -18,7 +18,8 @@ class PortfolioQuiz {
                 { text: "Bold, dramatic, and unapologetically loud - making statements that can't be ignored", piece: "heaven-on-fire", weight: 3 },
                 { text: "Deeply personal and culturally rooted - exploring identity and heritage", piece: "inheritance", weight: 3 },
                 { text: "Experimental and tactile - getting hands-on with materials and textures", piece: "abyss-bloom", weight: 3 },
-                { text: "Message-driven and socially conscious - using design to spark important conversations", piece: "endangered-species", weight: 3 }
+                { text: "Message-driven and socially conscious - using design to spark important conversations", piece: "endangered-species", weight: 3 },
+                { text: "Ritualistic and process-driven - finding meaning in repetition and transformation", piece: "reliquary-heart", weight: 3 }
             ]
             },
             {
@@ -29,7 +30,8 @@ class PortfolioQuiz {
                 { text: "Visual impact - bold compositions and colors that demand attention", piece: "heaven-on-fire", weight: 3 },
                 { text: "Narrative depth - stories about identity, memory, and belonging", piece: "inheritance", weight: 3 },
                 { text: "Unusual materials and processes - the weird, the strange, the unexpected", piece: "abyss-bloom", weight: 3 },
-                { text: "Purpose and meaning - work that advocates for change and awareness", piece: "endangered-species", weight: 3 }
+                { text: "Purpose and meaning - work that advocates for change and awareness", piece: "endangered-species", weight: 3 },
+                { text: "The physical act of making - ink, pressure, and the magic of the press", piece: "the-living-room", weight: 3 }
             ]
             },
             {
@@ -40,7 +42,8 @@ class PortfolioQuiz {
                 { text: "Overwhelmed (in a good way) - like they just witnessed something intense", piece: "heaven-on-fire", weight: 3 },
                 { text: "Reflective - thinking about their own stories, family, and roots", piece: "inheritance", weight: 3 },
                 { text: "Curious and intrigued - wanting to look closer and figure it out", piece: "feathers-along-bend", weight: 3 },
-                { text: "Motivated to act - inspired to care about the world around them", piece: "endangered-species", weight: 3 }
+                { text: "Motivated to act - inspired to care about the world around them", piece: "endangered-species", weight: 3 },
+                { text: "Haunted in a beautiful way - like they're witnessing something being preserved or released", piece: "unbecoming", weight: 3 }
             ]
             },
             {
@@ -51,7 +54,8 @@ class PortfolioQuiz {
                 { text: "Going all-in with color and chaos until something clicks", piece: "heaven-on-fire", weight: 3 },
                 { text: "Researching stories, gathering references, and building layered meaning", piece: "abuelas-altar", weight: 3 },
                 { text: "Experimenting with materials and letting accidents guide the way", piece: "abyss-bloom", weight: 3 },
-                { text: "Finding a cause that matters and designing something that communicates it powerfully", piece: "insane-grain", weight: 3 }
+                { text: "Finding a cause that matters and designing something that communicates it powerfully", piece: "insane-grain", weight: 3 },
+                { text: "Carving, inking, pressing - meditative repetition until the image reveals itself", piece: "reliquary-heart", weight: 3 }
             ]
             },
             {
@@ -62,7 +66,8 @@ class PortfolioQuiz {
                 { text: "Large-scale pieces with dramatic visual presence", piece: "heaven-on-fire", weight: 3 },
                 { text: "Cultural storytelling that honors heritage and history", piece: "abuelas-altar", weight: 3 },
                 { text: "Sculptural or mixed-media work with unusual textures", piece: "feathers-along-bend", weight: 3 },
-                { text: "Commercial design with social impact - branding for purpose", piece: "insane-grain", weight: 3 }
+                { text: "Commercial design with social impact - branding for purpose", piece: "insane-grain", weight: 3 },
+                { text: "Prints that feel like sacred objects - combining craft with emotional weight", piece: "unbecoming", weight: 3 }
             ]
             }
         ];
