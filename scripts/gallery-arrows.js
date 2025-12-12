@@ -10,13 +10,25 @@ document.addEventListener('DOMContentLoaded', function() {
         let current = 0;
         function show(idx) {
             images.forEach((img, i) => {
-                img.style.display = (i === idx) ? 'block' : 'none';
-                img.classList.toggle('active', i === idx);
-                // Always rotate the zine poster
-                if (img.src && img.src.includes('zineposter.jpg')) {
-                    img.style.transform = 'rotate(90deg)';
+                if (i === idx) {
+                    img.style.display = 'block';
+                    img.classList.add('active');
                 } else {
+                    img.style.display = 'none';
+                    img.classList.remove('active');
+                }
+                // Always rotate and center the zine poster
+                if (img.src && img.src.includes('zineposter.jpg')) {
+                    img.style.transform = 'translate(-50%, -50%) rotate(90deg)';
+                    img.style.left = '50%';
+                    img.style.top = '50%';
+                    img.style.position = 'absolute';
+                } else {
+                    // Reset transforms for other images - they use CSS positioning
                     img.style.transform = '';
+                    img.style.left = '';
+                    img.style.top = '';
+                    img.style.position = '';
                 }
             });
         }

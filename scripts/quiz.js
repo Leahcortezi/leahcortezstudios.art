@@ -293,6 +293,81 @@ class PortfolioQuiz {
             quote: "I found these by the river. Now they're immortal.",
             image: "collections/objects/feathers-along-the-bend/images/studio8.jpg",
             path: "collections/objects/feathers-along-the-bend/index.html"
+            },
+            "zine": {
+            title: "The Cultural Chaos Chronicler",
+            subtitle: "Contemporary Contexts Zine",
+            category: "Design Work",
+            personality: {
+                vibe: "Independent publisher with DIY punk energy and Latin roots",
+                tools: "Color overload, stapler, and cultural references",
+                superpower: "Making cultural chaos look intentional and beautiful",
+                kryptonite: "People who want you to 'simplify the design'"
+            },
+            description: "You're the artist who thinks zines are the perfect medium because you can make whatever you want without asking permission. You're inspired by your culture and aren't afraid to let it show loudly. You probably quote your favorite artists in your work and believe design is about accumulating energy, not following rules.",
+            quote: "Design is the accumulation of energy in an object.",
+            image: "collections/design/zine/zine1.jpg",
+            path: "collections/design/zine/index.html"
+            },
+            "mag": {
+            title: "The Editorial Provocateur",
+            subtitle: "Editorial Spread",
+            category: "Design Work",
+            personality: {
+                vibe: "Magazine designer with bold opinions and bolder layouts",
+                tools: "Typography, white space, and cultural commentary",
+                superpower: "Making text and image work together like they're in love",
+                kryptonite: "Boring articles that give you nothing to work with"
+            },
+            description: "You're the artist who makes editorial spreads that people actually stop to read. You understand that layout is storytelling, and you're not afraid to break the grid when it serves the message. You judge magazines by their typography and probably have strong opinions about which publications 'get it.'",
+            quote: "This spread speaks louder than the article.",
+            image: "collections/design/mag/1.jpg",
+            path: "collections/design/mag/index.html"
+            },
+            "reliquary-heart": {
+            title: "The Sacred Keeper",
+            subtitle: "Reliquary Heart",
+            category: "Printmaking",
+            personality: {
+                vibe: "Spiritual artist who turns grief into sacred objects",
+                tools: "Printmaking tools, symbolism, and ancestral reverence",
+                superpower: "Making loss tangible and beautiful",
+                kryptonite: "People who say 'it's just a print'"
+            },
+            description: "You're the artist who believes in making shrines for feelings. You understand that printmaking is about repetition and ritual, and every pull from the press is a small ceremony. You collect religious imagery not for decoration but for the stories they carry, and you know how to make ordinary hearts feel holy.",
+            quote: "I printed this heart 100 times until it felt sacred.",
+            image: "collections/printmaking/reliquary-heart/reliquary-heart.jpg",
+            path: "collections/printmaking/reliquary-heart/index.html"
+            },
+            "the-living-room": {
+            title: "The Domestic Archaeologist",
+            subtitle: "The Living Room",
+            category: "Printmaking",
+            personality: {
+                vibe: "Memory keeper with nostalgic home vibes",
+                tools: "Printmaking press, found textures, and emotional architecture",
+                superpower: "Turning rooms into time capsules",
+                kryptonite: "People who think spaces are 'just spaces'"
+            },
+            description: "You're the artist who knows that rooms hold memories like books hold stories. You pay attention to the texture of wallpaper, the pattern of tile, the weight of furniture. You understand that printmaking captures a moment in time, and you're documenting the spaces that shaped you before they disappear.",
+            quote: "This room remembers everything we forgot.",
+            image: "collections/printmaking/the-living-room/the-living-room.jpg",
+            path: "collections/printmaking/the-living-room/index.html"
+            },
+            "unbecoming": {
+            title: "The Metamorphosis Witness",
+            subtitle: "Unbecoming",
+            category: "Printmaking",
+            personality: {
+                vibe: "Transformation artist with poetic decay energy",
+                tools: "Layered prints, texture building, and controlled chaos",
+                superpower: "Finding beauty in things falling apart",
+                kryptonite: "People who need everything to stay 'finished' and 'perfect'"
+            },
+            description: "You're the artist who understands that unraveling is part of the process. You know that printmaking layers and builds, and sometimes the most honest work comes from letting go of control. You're comfortable with imperfection because you've learned that transformation is rarely neat.",
+            quote: "I'm not falling apart. I'm unbecoming what I was.",
+            image: "collections/printmaking/unbecoming/Unbecoming.jpg",
+            path: "collections/printmaking/unbecoming/index.html"
             }
         };
 

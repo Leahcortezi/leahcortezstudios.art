@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Mono:ital@0;1&family=Pirata+One&display=swap');
 /* White text for subtitle or tagline */
 .white-title {
   color: #fff !important;
@@ -24,7 +25,6 @@ h1, h2, h3, h4, h5, h6 {
   - 'IM Fell English' for body text
   - 'IBM Plex Mono' for accent text
 */
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Mono:ital@0;1&family=Pirata+One&display=swap');
 
 /* --------------------
    2. CSS VARIABLES (CUSTOM PROPERTIES)
@@ -240,6 +240,14 @@ main {
   flex: 1;
   position: relative;
   z-index: 10;
+}
+
+/* Work pages (.work-page class) should have no padding/max-width restrictions
+   as they have their own .work-container layout */
+main.work-page {
+  padding: 0;
+  max-width: none;
+  width: 100%;
 }
 
 /* --------------------
