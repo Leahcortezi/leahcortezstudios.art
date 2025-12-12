@@ -103,14 +103,21 @@
 
   .arrow-gallery {
     height: 50vh;
-    min-height: 280px;
+    min-height: 300px;
     max-height: 50vh;
     margin: 1rem auto;
+    width: 100%;
+    position: relative;
+    overflow: visible;
   }
 
   .arrow-gallery .gallery-image {
     max-width: 85%;
     max-height: 45vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .gallery-arrow.left-arrow {
@@ -129,18 +136,26 @@
     flex: 0 0 60px;
     height: 60px;
   }
+
+  .work-container {
+    padding: 0 1rem;
+  }
+
+  .work-page {
+    padding: 2rem 0;
+  }
 }
 
 @media (max-width: 480px) {
   .arrow-gallery {
-    height: 40vh;
-    min-height: 220px;
-    max-height: 40vh;
+    height: 45vh;
+    min-height: 250px;
+    max-height: 45vh;
   }
 
   .arrow-gallery .gallery-image {
-    max-width: 80%;
-    max-height: 35vh;
+    max-width: 90%;
+    max-height: 40vh;
   }
 
   .gallery-arrow {
@@ -156,6 +171,11 @@
   .thumbnail-item {
     flex: 0 0 50px;
     height: 50px;
+  }
+
+  .work-container {
+    padding: 0 0.75rem;
+    gap: 1.5rem;
   }
 }
 
@@ -620,6 +640,7 @@
     */
     position: static;
     top: auto;
+    width: 100%;
   }
 
   .work-image-column,
@@ -628,6 +649,12 @@
       Both columns now take up the full width of the container.
     */
     flex-basis: 100%;
+  }
+
+  /* Ensure arrow gallery has proper height on tablet/mobile */
+  .arrow-gallery {
+    width: 100%;
+    position: relative;
   }
 
   .work-details-column h1 {
