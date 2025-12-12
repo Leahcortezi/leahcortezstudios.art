@@ -127,6 +127,17 @@ class PortfolioBuilder {
                     "abuelas-altar"
                 ]
             }
+            ,
+            "printmaking-process": {
+                title: "Printmaking Process & Ritual",
+                icon: "",
+                personality: "The Process Devotee — You find meaning in carving, inking, pressure, and repetition. The making is as important as the final image.",
+                pieces: [
+                    "reliquary-heart",
+                    "the-living-room",
+                    "unbecoming"
+                ]
+            }
         };
 
         // Portfolio pieces data
@@ -284,6 +295,28 @@ class PortfolioBuilder {
                 path: "collections/motion/abuelas-ofrenda/index.html",
                 image: "https://vumbnail.com/1140266929.jpg",
                 description: "3D animated ofrenda exploring memory, lighting, and atmospheric design"
+            }
+            ,
+            "reliquary-heart": {
+                title: "Reliquary Heart",
+                category: "Printmaking",
+                path: "collections/printmaking/reliquary-heart/index.html",
+                image: "collections/printmaking/Reliquary Heart.jpg",
+                description: "Relief print exploring ritual, repetition, and emotional preservation"
+            },
+            "the-living-room": {
+                title: "The Living Room",
+                category: "Printmaking",
+                path: "collections/printmaking/the-living-room/index.html",
+                image: "collections/printmaking/The Living Room.jpg",
+                description: "Process-centered print celebrating the tactile act of making"
+            },
+            "unbecoming": {
+                title: "Unbecoming",
+                category: "Printmaking",
+                path: "collections/printmaking/unbecoming/index.html",
+                image: "collections/printmaking/Unbecoming.jpg",
+                description: "Etching and drypoint visualizing transformation, anxiety, and resilience"
             }
         };
 
