@@ -469,17 +469,41 @@ text-decoration: underline;
 /* Mobile breakpoint */
 @media (max-width: 768px) {
   .filter-buttons {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
     gap: 0.5rem;
-    justify-content: center;
-    margin: 1.5rem 0;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .filter-buttons::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
   
   .filter-buttons button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    flex: 1 1 auto;
-    min-width: 100px;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    flex: 0 0 auto;
+    min-width: auto;
+    white-space: nowrap;
+    border-radius: 1.5rem;
+  }
+
+  .filter-buttons button::after {
+    display: none; /* Remove underline on mobile for cleaner pill look */
+  }
+
+  .filter-buttons button.active {
+    background: var(--color-secondary-accent, #7e1c2e);
+    color: var(--color-primary-accent, #f8c8d0);
+    border-color: var(--color-secondary-accent, #7e1c2e);
+    transform: none;
   }
   
   .masonry-container {
