@@ -611,14 +611,4 @@
     .work-navigation .all-work {
         max-width: 320px;
     }
-
-    .work-navigation .prev-work::before {
-        font-size: 1.1rem;
-        margin-right: 0.5rem;
-    }
-
-    .work-navigation .next-work::after {
-        font-size: 1.1rem;
-        margin-left: 0.5rem;
-    }
 }

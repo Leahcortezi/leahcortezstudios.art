@@ -207,26 +207,12 @@ function updateNavigationLinks() {
     
     if (prevLink) {
         prevLink.href = navLinks.prev.path;
-        // Update text content while preserving arrow
-        if (prevLink.innerHTML.includes('&larr;')) {
-            prevLink.innerHTML = `&larr; ${navLinks.prev.title}`;
-        } else if (prevLink.textContent.includes('←')) {
-            prevLink.innerHTML = `← ${navLinks.prev.title}`;
-        } else {
-            prevLink.textContent = `← ${navLinks.prev.title}`;
-        }
+        // Keep consistent "Previous Work" text - only update href
     }
     
     if (nextLink) {
         nextLink.href = navLinks.next.path;
-        // Update text content while preserving arrow
-        if (nextLink.innerHTML.includes('&rarr;')) {
-            nextLink.innerHTML = `${navLinks.next.title} &rarr;`;
-        } else if (nextLink.textContent.includes('→')) {
-            nextLink.innerHTML = `${navLinks.next.title} →`;
-        } else {
-            nextLink.textContent = `${navLinks.next.title} →`;
-        }
+        // Keep consistent "Next Work" text - only update href
     }
     
     console.log('Navigation updated:', {
