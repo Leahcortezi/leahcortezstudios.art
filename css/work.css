@@ -117,7 +117,7 @@
   */
   display: flex;
   align-items: flex-start; /* Aligns columns to the top */
-  gap: 4rem; /* The space between the image and the details */
+  gap: 3rem; /* The space between the image and the details */
   max-width: 1400px; /* A wider container for this layout */
   margin: 0 auto;
   padding: 0 2rem;
@@ -129,10 +129,10 @@
 
 .work-image-column {
   /*
-    This column is for the artwork image. It will take up 55% of the
-    container's width. We use flex-basis for this.
+    This column is for the artwork image. Flexible width based on content.
   */
-  flex: 0 1 55%; /* flex-grow, flex-shrink, flex-basis */
+  flex: 1 1 auto; /* Allow natural sizing */
+  max-width: 55%; /* Cap at 55% max */
   position: sticky; /* Makes the image column "stick" on the screen during scroll */
   top: 120px; /* The offset from the top, considering the nav bar */
 }
@@ -228,12 +228,12 @@
 
 .work-details-column {
   /*
-    This column is for the artwork's text details. It will take up the
-    remaining 45% of the container's width.
+    This column is for the artwork's text details. Flexible width.
   */
-  flex: 0 1 45%;
+  flex: 1 1 400px; /* Grow to fill space, min 400px base */
+  min-width: 350px;
+  max-width: 550px;
   margin-top: 120px;
-  padding-left: 1rem;
 }
 
 /* --------------------
