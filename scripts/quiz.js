@@ -67,7 +67,9 @@ class PortfolioQuiz {
                 { text: "Cultural storytelling that honors heritage and history", piece: "abuelas-altar", weight: 3 },
                 { text: "Sculptural or mixed-media work with unusual textures", piece: "feathers-along-bend", weight: 3 },
                 { text: "Commercial design with social impact - branding for purpose", piece: "insane-grain", weight: 3 },
-                { text: "Prints that feel like sacred objects - combining craft with emotional weight", piece: "unbecoming", weight: 3 }
+                { text: "Process-heavy work where the making is as meaningful as the final piece - carving, layering, pulling prints by hand", piece: "the-living-room", weight: 3 }
+            ]
+            }
             ]
             }
         ];
