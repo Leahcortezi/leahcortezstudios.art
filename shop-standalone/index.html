@@ -71,15 +71,19 @@
         }
 
         .logo {
-            font-family: var(--font-headings);
-            font-size: 1.8rem;
-            color: var(--color-primary-accent);
             text-decoration: none;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
         }
 
-        .logo:hover {
-            color: #fff;
+        .logo-img {
+            height: 50px;
+            width: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            opacity: 0.8;
         }
 
         .nav-links {
@@ -258,6 +262,25 @@
             font-style: italic;
         }
 
+        .loading-products {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-products p {
+            font-family: var(--font-accent);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .coming-soon-section {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
         /* ==========================================
            FOOTER
            ========================================== */
@@ -344,7 +367,9 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo">Leah Cortez</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo/logo2.png" alt="Leah Cortez Studio" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../collections/index.html">Portfolio</a></li>
@@ -363,59 +388,20 @@
     <!-- Shop Container -->
     <main class="shop-container">
         
-        <!-- Setup Instructions - Remove after Shopify is connected -->
-        <div class="setup-notice">
-            <h3>🛒 Shopify Setup Instructions</h3>
-            <ol>
-                <li>Go to your <strong>Shopify Admin</strong> → Sales Channels → Buy Button</li>
-                <li>Click "Create a Buy Button" and select a product</li>
-                <li>Customize the button style (use colors: <code>#f8c8d0</code> and <code>#7e1c2e</code>)</li>
-                <li>Copy the embed code and replace the placeholder <code>&lt;div class="shopify-buy-button"&gt;</code> below</li>
-                <li>Delete this setup notice when you're done!</li>
-            </ol>
+        <!-- Products will be loaded dynamically from Shopify -->
+        <div class="product-grid" id="product-grid">
+            <!-- Loading state -->
+            <div class="loading-products" id="loading-state">
+                <p>Loading products...</p>
+            </div>
         </div>
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            
-            <!-- EXAMPLE PRODUCT 1 - Replace with your actual products -->
-            <article class="product-card">
-                <img src="../images/logo/logo2.png" alt="Product placeholder" class="product-image">
-                <div class="product-info">
-                    <h2 class="product-title">Art Print</h2>
-                    <p class="product-meta">8" × 10" Giclée Print</p>
-                    <p class="product-description">High-quality archival print on museum-grade paper.</p>
-                    <p class="product-price">$25.00</p>
-                    
-                    <!-- Replace this div with Shopify Buy Button embed code -->
-                    <div class="shopify-buy-button" data-product="example-1">
-                        <button class="buy-button">Add to Cart</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- EXAMPLE PRODUCT 2 -->
-            <article class="product-card">
-                <img src="../images/logo/logo2.png" alt="Product placeholder" class="product-image">
-                <div class="product-info">
-                    <h2 class="product-title">Sticker Pack</h2>
-                    <p class="product-meta">Vinyl Die-Cut Stickers</p>
-                    <p class="product-description">Set of 5 waterproof vinyl stickers featuring my artwork.</p>
-                    <p class="product-price">$12.00</p>
-                    
-                    <!-- Replace this div with Shopify Buy Button embed code -->
-                    <div class="shopify-buy-button" data-product="example-2">
-                        <button class="buy-button">Add to Cart</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Coming Soon Placeholder -->
-            <article class="coming-soon-card">
-                <h3>More Coming Soon</h3>
-                <p>New products are on the way...</p>
-            </article>
-
+        <!-- Coming Soon - shown when no products or as placeholder -->
+        <div class="coming-soon-section" id="coming-soon" style="display: none;">
+            <div class="coming-soon-card">
+                <h3>Shop Opening Soon</h3>
+                <p>Beautiful prints and merchandise are on the way...</p>
+            </div>
         </div>
     </main>
 
@@ -424,14 +410,33 @@
         <p>Leah Cortez © 2025 — All artwork is original and protected by copyright.</p>
     </footer>
 
-    <!-- 
-    =============================================
-    SHOPIFY BUY BUTTON SDK
-    =============================================
-    Uncomment and add your Shopify domain + access token below:
-    
+    <!-- Shopify Buy Button SDK -->
     <script type="text/javascript">
+    /*
+     * =============================================
+     * SHOPIFY CONFIGURATION
+     * =============================================
+     * Replace these values with your Shopify store info:
+     * 1. Go to Shopify Admin → Settings → Apps and sales channels
+     * 2. Click "Develop apps" → Create an app
+     * 3. Configure Storefront API scopes (read products, read checkouts)
+     * 4. Install the app and copy the Storefront access token
+     */
+    const SHOPIFY_CONFIG = {
+        domain: 'YOUR-STORE.myshopify.com',  // Replace with your store domain
+        storefrontAccessToken: 'YOUR-STOREFRONT-ACCESS-TOKEN'  // Replace with your token
+    };
+
+    // Check if Shopify is configured
+    const isShopifyConfigured = !SHOPIFY_CONFIG.domain.includes('YOUR-STORE');
+
     (function () {
+        if (!isShopifyConfigured) {
+            // Show placeholder products when Shopify isn't configured yet
+            showPlaceholderProducts();
+            return;
+        }
+
         var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
         if (window.ShopifyBuy) {
             if (window.ShopifyBuy.UI) {
@@ -442,6 +447,7 @@
         } else {
             loadScript();
         }
+
         function loadScript() {
             var script = document.createElement('script');
             script.async = true;
@@ -449,19 +455,181 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
             script.onload = ShopifyBuyInit;
         }
+
         function ShopifyBuyInit() {
             var client = ShopifyBuy.buildClient({
-                domain: 'YOUR-STORE.myshopify.com',
-                storefrontAccessToken: 'YOUR-STOREFRONT-ACCESS-TOKEN',
+                domain: SHOPIFY_CONFIG.domain,
+                storefrontAccessToken: SHOPIFY_CONFIG.storefrontAccessToken,
             });
+
             ShopifyBuy.UI.onReady(client).then(function (ui) {
-                // Create components for each product here
-                // See Shopify Buy Button documentation
+                // Fetch all products and create the grid
+                client.product.fetchAll().then(function(products) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    
+                    if (products.length === 0) {
+                        document.getElementById('coming-soon').style.display = 'block';
+                        return;
+                    }
+
+                    const grid = document.getElementById('product-grid');
+                    
+                    products.forEach(function(product, index) {
+                        // Create product card
+                        const card = document.createElement('article');
+                        card.className = 'product-card';
+                        card.innerHTML = `
+                            <img src="${product.images[0] ? product.images[0].src : '../images/logo/logo2.png'}" 
+                                 alt="${product.title}" class="product-image">
+                            <div class="product-info">
+                                <h2 class="product-title">${product.title}</h2>
+                                <p class="product-meta">${product.productType || ''}</p>
+                                <p class="product-description">${product.description ? product.description.substring(0, 100) + '...' : ''}</p>
+                                <p class="product-price">$${parseFloat(product.variants[0].price.amount).toFixed(2)}</p>
+                                <div id="product-component-${index}"></div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+
+                        // Create Buy Button for this product
+                        ui.createComponent('product', {
+                            id: product.id,
+                            node: document.getElementById(`product-component-${index}`),
+                            moneyFormat: '%24%7B%7Bamount%7D%7D',
+                            options: {
+                                product: {
+                                    iframe: false,
+                                    contents: {
+                                        img: false,
+                                        title: false,
+                                        price: false,
+                                        description: false,
+                                        button: true,
+                                        quantity: false
+                                    },
+                                    styles: {
+                                        button: {
+                                            'font-family': '"IBM Plex Mono", monospace',
+                                            'font-size': '0.85rem',
+                                            'padding': '0.875rem 1.5rem',
+                                            'background-color': 'transparent',
+                                            'color': '#f8c8d0',
+                                            'border': '2px solid #f8c8d0',
+                                            'border-radius': '0',
+                                            ':hover': {
+                                                'background-color': '#7e1c2e',
+                                                'border-color': '#7e1c2e',
+                                                'color': '#f8c8d0'
+                                            }
+                                        }
+                                    },
+                                    text: {
+                                        button: 'Add to Cart'
+                                    }
+                                },
+                                cart: {
+                                    styles: {
+                                        button: {
+                                            'font-family': '"IBM Plex Mono", monospace',
+                                            'background-color': '#7e1c2e',
+                                            'color': '#f8c8d0',
+                                            ':hover': {
+                                                'background-color': '#5a1420'
+                                            }
+                                        }
+                                    }
+                                },
+                                toggle: {
+                                    styles: {
+                                        toggle: {
+                                            'background-color': '#7e1c2e',
+                                            ':hover': {
+                                                'background-color': '#5a1420'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // Add coming soon card at the end
+                    const comingSoon = document.createElement('article');
+                    comingSoon.className = 'coming-soon-card';
+                    comingSoon.innerHTML = '<h3>More Coming Soon</h3><p>New products are on the way...</p>';
+                    grid.appendChild(comingSoon);
+                });
             });
         }
+
+        function showPlaceholderProducts() {
+            const grid = document.getElementById('product-grid');
+            document.getElementById('loading-state').style.display = 'none';
+            
+            grid.innerHTML = `
+                <article class="product-card">
+                    <img src="../images/logo/logo2.png" alt="Art Print" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Art Print</h2>
+                        <p class="product-meta">8" × 10" Giclée Print</p>
+                        <p class="product-description">High-quality archival print on museum-grade paper.</p>
+                        <p class="product-price">$25.00</p>
+                        <button class="buy-button" onclick="alert('Connect Shopify to enable purchases!')">Add to Cart</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="../images/logo/logo2.png" alt="Sticker Pack" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Sticker Pack</h2>
+                        <p class="product-meta">Vinyl Die-Cut Stickers</p>
+                        <p class="product-description">Set of 5 waterproof vinyl stickers featuring my artwork.</p>
+                        <p class="product-price">$12.00</p>
+                        <button class="buy-button" onclick="alert('Connect Shopify to enable purchases!')">Add to Cart</button>
+                    </div>
+                </article>
+                <article class="coming-soon-card">
+                    <h3>Connect Shopify</h3>
+                    <p>Edit SHOPIFY_CONFIG in this file to connect your store.</p>
+                </article>
+            `;
+        }
     })();
+
+    // Also expose placeholder function globally
+    function showPlaceholderProducts() {
+        const grid = document.getElementById('product-grid');
+        if (document.getElementById('loading-state')) {
+            document.getElementById('loading-state').style.display = 'none';
+        }
+        
+        grid.innerHTML = `
+            <article class="product-card">
+                <img src="../images/logo/logo2.png" alt="Art Print" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Art Print</h2>
+                    <p class="product-meta">8" × 10" Giclée Print</p>
+                    <p class="product-description">High-quality archival print on museum-grade paper.</p>
+                    <p class="product-price">$25.00</p>
+                    <button class="buy-button" onclick="alert('Connect Shopify to enable purchases!')">Add to Cart</button>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="../images/logo/logo2.png" alt="Sticker Pack" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Sticker Pack</h2>
+                    <p class="product-meta">Vinyl Die-Cut Stickers</p>
+                    <p class="product-description">Set of 5 waterproof vinyl stickers featuring my artwork.</p>
+                    <p class="product-price">$12.00</p>
+                    <button class="buy-button" onclick="alert('Connect Shopify to enable purchases!')">Add to Cart</button>
+                </div>
+            </article>
+            <article class="coming-soon-card">
+                <h3>Connect Shopify</h3>
+                <p>Edit SHOPIFY_CONFIG in this file to connect your store.</p>
+            </article>
+        `;
+    }
     </script>
-    -->
 
 </body>
 </html>
