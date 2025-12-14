@@ -607,8 +607,79 @@
            RESPONSIVE
            ========================================== */
         @media (max-width: 768px) {
+            /* Mobile Navigation Styles */
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.98);
+                padding: 5rem 2rem 2rem;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            }
+
+            @keyframes slideIn {
+                from { transform: translateX(100%); }
+                to { transform: translateX(0); }
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            /* Backdrop overlay when menu is open */
+            .nav-links.active::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: calc(100vw - 280px);
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: -1;
+            }
+
+            .hamburger {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                background: transparent;
+                border: none;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .hamburger-icon {
+                width: 28px;
+                height: 28px;
+                transition: transform 0.3s ease;
+                filter: brightness(0) invert(1);
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .nav-links.active ~ .hamburger .hamburger-icon {
+                transform: rotate(180deg);
+            }
+
+            .cart-toggle {
+                margin-right: 0.5rem;
             }
 
             .shop-hero h1 {
@@ -628,6 +699,16 @@
                 max-width: 400px;
                 margin: 0 auto;
             }
+
+            /* Prevent body scroll when mobile menu is open */
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        /* Hamburger hidden on desktop */
+        .hamburger {
+            display: none;
         }
 
         /* ==========================================
@@ -676,10 +757,11 @@
             <a href="../index.html" class="logo">
                 <img src="../images/logo/logo2.png" alt="Leah Cortez Studio" class="logo-img">
             </a>
-            <ul class="nav-links">
+            <ul class="nav-menu nav-links">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../collections/index.html">Portfolio</a></li>
                 <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="../collections/index.html">Portfolio</a></li>
+                <li><a href="../cv/index.html">CV</a></li>
                 <li><a href="../contact/index.html">Contact</a></li>
             </ul>
             <button class="cart-toggle" id="cart-toggle" aria-label="Open cart">
@@ -690,6 +772,9 @@
                 </svg>
                 <span class="cart-count" id="cart-count">0</span>
             </button>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Menu" class="hamburger-icon" loading="lazy">
+            </div>
         </div>
     </nav>
 
@@ -918,7 +1003,46 @@
     };
 
     // Initialize cart on page load
-    document.addEventListener('DOMContentLoaded', () => Cart.init());
+    document.addEventListener('DOMContentLoaded', () => {
+        Cart.init();
+        
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+
+            // Close menu when clicking on nav links
+            const navLinksItems = navLinks.querySelectorAll('a');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                });
+            });
+
+            // Close menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+        }
+    });
 
     /*
      * =============================================
