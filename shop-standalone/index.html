@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Leah Cortez Studio</title>
+    <meta name="description" content="Shop original art prints, stickers, and merchandise from Leah Cortez Studio.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           CSS VARIABLES - Matching your site
+           ========================================== */
+        :root {
+            --color-background: #000000;
+            --color-text: #ffffff;
+            --color-primary-accent: #f8c8d0;
+            --color-secondary-accent: #7e1c2e;
+            --font-headings: 'Pirata One', cursive;
+            --font-body: 'IM Fell English', serif;
+            --font-accent: 'IBM Plex Mono', monospace;
+        }
+
+        /* ==========================================
+           RESET & BASE STYLES
+           ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 1.8rem;
+            color: var(--color-primary-accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo:hover {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
+            color: var(--color-text);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary-accent);
+        }
+
+        /* ==========================================
+           SHOP HERO
+           ========================================== */
+        .shop-hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .shop-hero h1 {
+            font-family: var(--font-headings);
+            font-size: 4rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .shop-hero p {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================
+           PRODUCT GRID
+           ========================================== */
+        .shop-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(126, 28, 46, 0.08);
+            border: 1px solid rgba(248, 200, 208, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(248, 200, 208, 0.3);
+            box-shadow: 0 10px 30px rgba(126, 28, 46, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-headings);
+            font-size: 1.4rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .product-meta {
+            font-family: var(--font-accent);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* ==========================================
+           BUY BUTTON (Shopify placeholder)
+           ========================================== */
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-primary-accent);
+            background: transparent;
+            border: 2px solid var(--color-primary-accent);
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .buy-button:hover {
+            background: var(--color-secondary-accent);
+            border-color: var(--color-secondary-accent);
+            color: var(--color-primary-accent);
+        }
+
+        /* Shopify Buy Button container styling */
+        .shopify-buy-button {
+            margin-top: 1rem;
+        }
+
+        /* ==========================================
+           COMING SOON STATE
+           ========================================== */
+        .coming-soon-card {
+            background: rgba(126, 28, 46, 0.05);
+            border: 2px dashed rgba(248, 200, 208, 0.2);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+        }
+
+        .coming-soon-card h3 {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-card p {
+            font-family: var(--font-body);
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        footer {
+            background: rgba(126, 28, 46, 0.1);
+            border-top: 1px solid rgba(248, 200, 208, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-family: var(--font-accent);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .shop-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .shop-hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .shop-container {
+                padding: 2rem 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ==========================================
+           SETUP INSTRUCTIONS (Remove after setup)
+           ========================================== */
+        .setup-notice {
+            background: linear-gradient(135deg, rgba(126, 28, 46, 0.2) 0%, rgba(126, 28, 46, 0.1) 100%);
+            border: 1px solid rgba(248, 200, 208, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .setup-notice h3 {
+            font-family: var(--font-headings);
+            color: var(--color-primary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .setup-notice ol {
+            font-family: var(--font-body);
+            margin-left: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .setup-notice li {
+            margin-bottom: 0.75rem;
+        }
+
+        .setup-notice code {
+            font-family: var(--font-accent);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Leah Cortez</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../collections/index.html">Portfolio</a></li>
+                <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="../contact/index.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="shop-hero">
+        <h1>Shop</h1>
+        <p>Original prints, stickers, and wearable art from my studio to yours.</p>
+    </section>
+
+    <!-- Shop Container -->
+    <main class="shop-container">
+        
+        <!-- Setup Instructions - Remove after Shopify is connected -->
+        <div class="setup-notice">
+            <h3>🛒 Shopify Setup Instructions</h3>
+            <ol>
+                <li>Go to your <strong>Shopify Admin</strong> → Sales Channels → Buy Button</li>
+                <li>Click "Create a Buy Button" and select a product</li>
+                <li>Customize the button style (use colors: <code>#f8c8d0</code> and <code>#7e1c2e</code>)</li>
+                <li>Copy the embed code and replace the placeholder <code>&lt;div class="shopify-buy-button"&gt;</code> below</li>
+                <li>Delete this setup notice when you're done!</li>
+            </ol>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            
+            <!-- EXAMPLE PRODUCT 1 - Replace with your actual products -->
+            <article class="product-card">
+                <img src="../images/logo/logo2.png" alt="Product placeholder" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Art Print</h2>
+                    <p class="product-meta">8" × 10" Giclée Print</p>
+                    <p class="product-description">High-quality archival print on museum-grade paper.</p>
+                    <p class="product-price">$25.00</p>
+                    
+                    <!-- Replace this div with Shopify Buy Button embed code -->
+                    <div class="shopify-buy-button" data-product="example-1">
+                        <button class="buy-button">Add to Cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- EXAMPLE PRODUCT 2 -->
+            <article class="product-card">
+                <img src="../images/logo/logo2.png" alt="Product placeholder" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Sticker Pack</h2>
+                    <p class="product-meta">Vinyl Die-Cut Stickers</p>
+                    <p class="product-description">Set of 5 waterproof vinyl stickers featuring my artwork.</p>
+                    <p class="product-price">$12.00</p>
+                    
+                    <!-- Replace this div with Shopify Buy Button embed code -->
+                    <div class="shopify-buy-button" data-product="example-2">
+                        <button class="buy-button">Add to Cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Coming Soon Placeholder -->
+            <article class="coming-soon-card">
+                <h3>More Coming Soon</h3>
+                <p>New products are on the way...</p>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Leah Cortez © 2025 — All artwork is original and protected by copyright.</p>
+    </footer>
+
+    <!-- 
+    =============================================
+    SHOPIFY BUY BUTTON SDK
+    =============================================
+    Uncomment and add your Shopify domain + access token below:
+    
+    <script type="text/javascript">
+    (function () {
+        var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+        if (window.ShopifyBuy) {
+            if (window.ShopifyBuy.UI) {
+                ShopifyBuyInit();
+            } else {
+                loadScript();
+            }
+        } else {
+            loadScript();
+        }
+        function loadScript() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+            script.onload = ShopifyBuyInit;
+        }
+        function ShopifyBuyInit() {
+            var client = ShopifyBuy.buildClient({
+                domain: 'YOUR-STORE.myshopify.com',
+                storefrontAccessToken: 'YOUR-STOREFRONT-ACCESS-TOKEN',
+            });
+            ShopifyBuy.UI.onReady(client).then(function (ui) {
+                // Create components for each product here
+                // See Shopify Buy Button documentation
+            });
+        }
+    })();
+    </script>
+    -->
+
+</body>
+</html>
