@@ -56,18 +56,18 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(248, 200, 208, 0.1);
+            height: 70px;
+            background-color: var(--color-background);
+            border-bottom: 1px solid var(--color-secondary-accent);
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
+            height: 100%;
+            width: 100%;
         }
 
         .logo {
@@ -77,33 +77,40 @@
         }
 
         .logo-img {
-            height: 50px;
+            height: 45px;
             width: auto;
-            transition: opacity 0.3s ease;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease-in-out;
         }
 
         .logo:hover .logo-img {
-            opacity: 0.8;
+            transform: scale(1.05);
         }
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
             list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
         }
 
         .nav-links a {
             font-family: var(--font-accent);
-            font-size: 0.85rem;
-            color: var(--color-text);
-            text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            color: #f5c6d6;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
         }
 
         .nav-links a:hover {
-            color: var(--color-primary-accent);
+            color: #7e1c2e;
+            border-bottom-color: #7e1c2e;
+            text-decoration: none;
         }
 
         /* Cart Icon in Nav */
