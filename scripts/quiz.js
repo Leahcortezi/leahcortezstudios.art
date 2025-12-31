@@ -1,5 +1,5 @@
 if (typeof console !== 'undefined') {
-    console.log("🔄 Quiz.js loaded - Version 1754411000 - Updated 5-Question Quiz with Better UX !");
+    console.log("🔄 Quiz.js loaded - Version 2025.1 - Improved Accuracy Quiz!");
 }
 
 class PortfolioQuiz {
@@ -8,68 +8,58 @@ class PortfolioQuiz {
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
-        // === UPDATED QUESTIONS WITH 5 MAIN ARCHETYPES ===
+        // === REWRITTEN QUESTIONS - More specific and accurate ===
         this.questions = [
             {
             id: 1,
-            text: "What's your creative energy right now?",
+            text: "Pick the mood that speaks to you most:",
             options: [
-                { text: "Dark, emotional, and introspective - channeling feelings into powerful imagery", piece: "anointed-gaze", weight: 3 },
-                { text: "Bold, dramatic, and unapologetically loud - making statements that can't be ignored", piece: "heaven-on-fire", weight: 3 },
-                { text: "Deeply personal and culturally rooted - exploring identity and heritage", piece: "inheritance", weight: 3 },
-                { text: "Experimental and tactile - getting hands-on with materials and textures", piece: "abyss-bloom", weight: 3 },
-                { text: "Message-driven and socially conscious - using design to spark important conversations", piece: "endangered-species", weight: 3 },
-                { text: "Ritualistic and process-driven - finding meaning in repetition and transformation", piece: "reliquary-heart", weight: 3 }
+                { text: "Grief, memory, and honoring those who came before", pieces: ["abuelas-altar", "reliquary-heart", "inheritance"] },
+                { text: "Rage, critique, and questioning authority", pieces: ["the-unholy-gaze", "double-sided-poster", "endangered-species"] },
+                { text: "Chaos, transformation, and embracing the messy", pieces: ["unbecoming", "heaven-on-fire", "abyss-bloom"] },
+                { text: "Quiet observation and finding beauty in small things", pieces: ["feathers-along-bend", "the-living-room", "anointed-gaze"] }
             ]
             },
             {
             id: 2,
-            text: "What draws you to art?",
+            text: "What medium calls to you?",
             options: [
-                { text: "Raw emotional expression - art that hits you in the chest before your brain catches up", piece: "anointed-gaze", weight: 3 },
-                { text: "Visual impact - bold compositions and colors that demand attention", piece: "heaven-on-fire", weight: 3 },
-                { text: "Narrative depth - stories about identity, memory, and belonging", piece: "inheritance", weight: 3 },
-                { text: "Unusual materials and processes - the weird, the strange, the unexpected", piece: "abyss-bloom", weight: 3 },
-                { text: "Purpose and meaning - work that advocates for change and awareness", piece: "endangered-species", weight: 3 },
-                { text: "Reclaiming symbols - taking back imagery that was used to control or shame", piece: "the-unholy-gaze", weight: 3 }
+                { text: "Printmaking - ink, pressure, repetition, ritual", pieces: ["reliquary-heart", "the-living-room", "unbecoming", "the-unholy-gaze"] },
+                { text: "Drawing & illustration - pencil, charcoal, direct marks", pieces: ["anointed-gaze", "abuelas-altar", "inheritance", "heaven-on-fire"] },
+                { text: "Sculpture & objects - physical materials, 3D forms", pieces: ["abyss-bloom", "feathers-along-bend", "gnaw"] },
+                { text: "Design & typography - communication, systems, purpose", pieces: ["endangered-species", "insane-grain", "double-sided-poster", "typographic-interpretation"] }
             ]
             },
             {
             id: 3,
-            text: "How do you want people to feel when they see your work?",
+            text: "Which theme hits closest to home?",
             options: [
-                { text: "Seen and understood - like someone finally put their unspoken feelings into form", piece: "anointed-gaze", weight: 3 },
-                { text: "Overwhelmed (in a good way) - like they just witnessed something intense", piece: "heaven-on-fire", weight: 3 },
-                { text: "Reflective - thinking about their own stories, family, and roots", piece: "inheritance", weight: 3 },
-                { text: "Curious and intrigued - wanting to look closer and figure it out", piece: "feathers-along-bend", weight: 3 },
-                { text: "Uncomfortable in a necessary way - confronted with truths they'd rather ignore", piece: "the-unholy-gaze", weight: 3 },
-                { text: "Haunted in a beautiful way - like they're witnessing something being preserved or released", piece: "unbecoming", weight: 3 }
+                { text: "Religion, faith, and spiritual questioning", pieces: ["the-unholy-gaze", "reliquary-heart", "abuelas-altar"] },
+                { text: "Family, ancestry, and cultural identity", pieces: ["inheritance", "abuelas-altar", "the-living-room"] },
+                { text: "Mental health, inner turmoil, and emotional processing", pieces: ["unbecoming", "anointed-gaze", "heaven-on-fire"] },
+                { text: "Nature, environment, and the physical world", pieces: ["feathers-along-bend", "endangered-species", "abyss-bloom"] },
+                { text: "Social justice, activism, and systemic critique", pieces: ["double-sided-poster", "endangered-species", "the-unholy-gaze"] }
             ]
             },
             {
             id: 4,
-            text: "What's your ideal creative process?",
+            text: "What's your relationship with darkness in art?",
             options: [
-                { text: "Late nights sketching when emotions are running high", piece: "anointed-gaze", weight: 3 },
-                { text: "Going all-in with color and chaos until something clicks", piece: "heaven-on-fire", weight: 3 },
-                { text: "Researching stories, gathering references, and building layered meaning", piece: "abuelas-altar", weight: 3 },
-                { text: "Experimenting with materials and letting accidents guide the way", piece: "abyss-bloom", weight: 3 },
-                { text: "Finding a cause that matters and designing something that communicates it powerfully", piece: "insane-grain", weight: 3 },
-                { text: "Carving, inking, pressing - meditative repetition until the image reveals itself", piece: "reliquary-heart", weight: 3 }
+                { text: "I embrace it fully - the darker the better", pieces: ["the-unholy-gaze", "unbecoming", "anointed-gaze", "gnaw"] },
+                { text: "I use it to make a point or create contrast", pieces: ["heaven-on-fire", "reliquary-heart", "double-sided-poster"] },
+                { text: "I prefer softer, more subtle approaches", pieces: ["feathers-along-bend", "the-living-room", "inheritance"] },
+                { text: "I balance dark themes with hope or beauty", pieces: ["abuelas-altar", "abyss-bloom", "endangered-species"] }
             ]
             },
             {
             id: 5,
-            text: "What kind of project excites you most?",
+            text: "Final question - what matters most to you in your work?",
             options: [
-                { text: "Personal work exploring complex emotions and inner experiences", piece: "anointed-gaze", weight: 3 },
-                { text: "Large-scale pieces with dramatic visual presence", piece: "heaven-on-fire", weight: 3 },
-                { text: "Cultural storytelling that honors heritage and history", piece: "abuelas-altar", weight: 3 },
-                { text: "Sculptural or mixed-media work with unusual textures", piece: "feathers-along-bend", weight: 3 },
-                { text: "Commercial design with social impact - branding for purpose", piece: "insane-grain", weight: 3 },
-                { text: "Process-heavy work where the making is as meaningful as the final piece - carving, layering, pulling prints by hand", piece: "the-living-room", weight: 3 }
-            ]
-            }
+                { text: "Emotional honesty - even when it's uncomfortable", pieces: ["anointed-gaze", "unbecoming", "the-unholy-gaze"] },
+                { text: "Honoring my roots and telling my story", pieces: ["abuelas-altar", "inheritance", "reliquary-heart"] },
+                { text: "Making something beautiful from something strange", pieces: ["abyss-bloom", "feathers-along-bend", "heaven-on-fire"] },
+                { text: "Using my skills to say something that matters", pieces: ["endangered-species", "double-sided-poster", "insane-grain"] },
+                { text: "The physical process - hands-on, tactile, meditative", pieces: ["the-living-room", "reliquary-heart", "gnaw"] }
             ]
             }
         ];
@@ -492,7 +482,7 @@ class PortfolioQuiz {
         const answerOptions = document.querySelector('#answer-options');
         if (answerOptions) {
             answerOptions.innerHTML = question.options.map((option, index) => `
-                <button class="option-btn quiz-btn" data-piece="${option.piece}" data-index="${index}">
+                <button class="option-btn quiz-btn" data-index="${index}">
                     ${option.text}
                 </button>
             `).join('');
@@ -542,16 +532,24 @@ class PortfolioQuiz {
 
     selectAnswer(event) {
         const button = event.target;
-        const piece = button.dataset.piece;
+        const index = button.dataset.index;
+        const question = this.questions[this.currentQuestion];
+        const selectedOption = question.options[index];
 
-        // Store answer as piece reference
-        this.answers.push(piece);
+        // Store answer
+        this.answers.push(selectedOption);
 
-        // Add score to the corresponding portfolio piece
-        if (!this.scores[piece]) {
-            this.scores[piece] = 0;
+        // Add scores to all pieces in this option (weighted by position)
+        if (selectedOption.pieces) {
+            selectedOption.pieces.forEach((piece, i) => {
+                if (!this.scores[piece]) {
+                    this.scores[piece] = 0;
+                }
+                // First piece gets 3 points, second gets 2, third gets 1
+                const weight = Math.max(3 - i, 1);
+                this.scores[piece] += weight;
+            });
         }
-        this.scores[piece]++;
 
         // Visual feedback
         button.classList.add('selected');
