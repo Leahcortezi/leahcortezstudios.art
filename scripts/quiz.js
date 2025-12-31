@@ -31,7 +31,7 @@ class PortfolioQuiz {
                 { text: "Narrative depth - stories about identity, memory, and belonging", piece: "inheritance", weight: 3 },
                 { text: "Unusual materials and processes - the weird, the strange, the unexpected", piece: "abyss-bloom", weight: 3 },
                 { text: "Purpose and meaning - work that advocates for change and awareness", piece: "endangered-species", weight: 3 },
-                { text: "The physical act of making - ink, pressure, and the magic of the press", piece: "the-living-room", weight: 3 }
+                { text: "Reclaiming symbols - taking back imagery that was used to control or shame", piece: "the-unholy-gaze", weight: 3 }
             ]
             },
             {
@@ -42,7 +42,7 @@ class PortfolioQuiz {
                 { text: "Overwhelmed (in a good way) - like they just witnessed something intense", piece: "heaven-on-fire", weight: 3 },
                 { text: "Reflective - thinking about their own stories, family, and roots", piece: "inheritance", weight: 3 },
                 { text: "Curious and intrigued - wanting to look closer and figure it out", piece: "feathers-along-bend", weight: 3 },
-                { text: "Motivated to act - inspired to care about the world around them", piece: "endangered-species", weight: 3 },
+                { text: "Uncomfortable in a necessary way - confronted with truths they'd rather ignore", piece: "the-unholy-gaze", weight: 3 },
                 { text: "Haunted in a beautiful way - like they're witnessing something being preserved or released", piece: "unbecoming", weight: 3 }
             ]
             },
@@ -375,6 +375,21 @@ class PortfolioQuiz {
             quote: "I'm not falling apart. I'm unbecoming what I was.",
             image: "collections/printmaking/unbecoming/Unbecoming.jpg",
             path: "collections/printmaking/unbecoming/index.html"
+            },
+            "the-unholy-gaze": {
+            title: "The Sacred Subversive",
+            subtitle: "The Unholy Gaze",
+            category: "Printmaking",
+            personality: {
+                vibe: "Feminist critic with religious trauma and aquatint skills",
+                tools: "Etching plates, acid baths, and righteous anger",
+                superpower: "Making the church uncomfortable with its own imagery",
+                kryptonite: "People who say 'you're reading too much into it'"
+            },
+            description: "You're the artist who grew up in church and has complicated feelings about it. You understand that religious imagery is powerful—and you're not afraid to reclaim it. You make work that questions who gets to be holy and who gets judged, and you know that the softest tones can carry the sharpest critiques.",
+            quote: "They called me unholy. So I made it my aesthetic.",
+            image: "collections/printmaking/The Unholy Gaze.jpg",
+            path: "collections/printmaking/the-unholy-gaze/index.html"
             }
         };
 
