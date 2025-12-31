@@ -1,5 +1,5 @@
 if (typeof console !== 'undefined') {
-    console.log("🔄 Quiz.js loaded - Version 2025.1 - Improved Accuracy Quiz!");
+    console.log("🔄 Quiz.js loaded - Version 2025.2 - Fixed Scoring!");
 }
 
 class PortfolioQuiz {
@@ -8,14 +8,14 @@ class PortfolioQuiz {
         this.answers = [];
         this.scores = {}; // Initialize scores object
         
-        // === REWRITTEN QUESTIONS - More specific and accurate ===
+        // === REWRITTEN QUESTIONS - Better categorization ===
         this.questions = [
             {
             id: 1,
             text: "Pick the mood that speaks to you most:",
             options: [
-                { text: "Grief, memory, and honoring those who came before", pieces: ["abuelas-altar", "reliquary-heart", "inheritance"] },
-                { text: "Rage, critique, and questioning authority", pieces: ["the-unholy-gaze", "double-sided-poster", "endangered-species"] },
+                { text: "Grief, memory, and honoring those who came before", pieces: ["abuelas-altar", "inheritance", "reliquary-heart"] },
+                { text: "Rage, critique, and challenging power structures", pieces: ["the-unholy-gaze", "double-sided-poster", "endangered-species"] },
                 { text: "Chaos, transformation, and embracing the messy", pieces: ["unbecoming", "heaven-on-fire", "abyss-bloom"] },
                 { text: "Quiet observation and finding beauty in small things", pieces: ["feathers-along-bend", "the-living-room", "anointed-gaze"] }
             ]
@@ -24,42 +24,41 @@ class PortfolioQuiz {
             id: 2,
             text: "What medium calls to you?",
             options: [
-                { text: "Printmaking - ink, pressure, repetition, ritual", pieces: ["reliquary-heart", "the-living-room", "unbecoming", "the-unholy-gaze"] },
-                { text: "Drawing & illustration - pencil, charcoal, direct marks", pieces: ["anointed-gaze", "abuelas-altar", "inheritance", "heaven-on-fire"] },
-                { text: "Sculpture & objects - physical materials, 3D forms", pieces: ["abyss-bloom", "feathers-along-bend", "gnaw"] },
-                { text: "Design & typography - communication, systems, purpose", pieces: ["endangered-species", "insane-grain", "double-sided-poster", "typographic-interpretation"] }
+                { text: "Printmaking - etching, carving, ink, pressure", pieces: ["the-unholy-gaze", "unbecoming", "reliquary-heart", "the-living-room"] },
+                { text: "Drawing & illustration - charcoal, pencil, direct marks", pieces: ["abuelas-altar", "anointed-gaze", "inheritance", "heaven-on-fire"] },
+                { text: "Sculpture & mixed media - physical materials, 3D forms", pieces: ["abyss-bloom", "feathers-along-bend", "gnaw"] },
+                { text: "Graphic design - typography, layout, visual communication", pieces: ["endangered-species", "double-sided-poster", "insane-grain", "typographic-interpretation"] }
             ]
             },
             {
             id: 3,
-            text: "Which theme hits closest to home?",
+            text: "Which theme resonates with you?",
             options: [
-                { text: "Religion, faith, and spiritual questioning", pieces: ["the-unholy-gaze", "reliquary-heart", "abuelas-altar"] },
-                { text: "Family, ancestry, and cultural identity", pieces: ["inheritance", "abuelas-altar", "the-living-room"] },
-                { text: "Mental health, inner turmoil, and emotional processing", pieces: ["unbecoming", "anointed-gaze", "heaven-on-fire"] },
-                { text: "Nature, environment, and the physical world", pieces: ["feathers-along-bend", "endangered-species", "abyss-bloom"] },
-                { text: "Social justice, activism, and systemic critique", pieces: ["double-sided-poster", "endangered-species", "the-unholy-gaze"] }
+                { text: "Feminist critique and reclaiming power", pieces: ["the-unholy-gaze", "inheritance", "anointed-gaze"] },
+                { text: "Family, ancestors, and cultural roots", pieces: ["abuelas-altar", "inheritance", "the-living-room"] },
+                { text: "Mental health and emotional processing", pieces: ["unbecoming", "anointed-gaze", "heaven-on-fire"] },
+                { text: "Environmental and social activism", pieces: ["endangered-species", "double-sided-poster", "the-unholy-gaze"] },
+                { text: "Spirituality, ritual, and sacred imagery", pieces: ["reliquary-heart", "abuelas-altar", "the-unholy-gaze"] }
             ]
             },
             {
             id: 4,
-            text: "What's your relationship with darkness in art?",
+            text: "How do you want your work to make people feel?",
             options: [
-                { text: "I embrace it fully - the darker the better", pieces: ["the-unholy-gaze", "unbecoming", "anointed-gaze", "gnaw"] },
-                { text: "I use it to make a point or create contrast", pieces: ["heaven-on-fire", "reliquary-heart", "double-sided-poster"] },
-                { text: "I prefer softer, more subtle approaches", pieces: ["feathers-along-bend", "the-living-room", "inheritance"] },
-                { text: "I balance dark themes with hope or beauty", pieces: ["abuelas-altar", "abyss-bloom", "endangered-species"] }
+                { text: "Uncomfortable - confronted with hard truths", pieces: ["the-unholy-gaze", "unbecoming", "double-sided-poster"] },
+                { text: "Emotional - connected to their own memories", pieces: ["abuelas-altar", "inheritance", "the-living-room"] },
+                { text: "Curious - drawn in by texture and detail", pieces: ["feathers-along-bend", "abyss-bloom", "reliquary-heart"] },
+                { text: "Inspired - moved to think or act differently", pieces: ["endangered-species", "heaven-on-fire", "anointed-gaze"] }
             ]
             },
             {
             id: 5,
-            text: "Final question - what matters most to you in your work?",
+            text: "What drives your creative practice?",
             options: [
-                { text: "Emotional honesty - even when it's uncomfortable", pieces: ["anointed-gaze", "unbecoming", "the-unholy-gaze"] },
-                { text: "Honoring my roots and telling my story", pieces: ["abuelas-altar", "inheritance", "reliquary-heart"] },
-                { text: "Making something beautiful from something strange", pieces: ["abyss-bloom", "feathers-along-bend", "heaven-on-fire"] },
-                { text: "Using my skills to say something that matters", pieces: ["endangered-species", "double-sided-poster", "insane-grain"] },
-                { text: "The physical process - hands-on, tactile, meditative", pieces: ["the-living-room", "reliquary-heart", "gnaw"] }
+                { text: "Challenging systems that harm people", pieces: ["the-unholy-gaze", "endangered-species", "double-sided-poster"] },
+                { text: "Processing my own emotions and experiences", pieces: ["unbecoming", "anointed-gaze", "heaven-on-fire"] },
+                { text: "Preserving stories and honoring the past", pieces: ["abuelas-altar", "inheritance", "reliquary-heart", "the-living-room"] },
+                { text: "Exploring materials and physical making", pieces: ["feathers-along-bend", "abyss-bloom", "gnaw"] }
             ]
             }
         ];
