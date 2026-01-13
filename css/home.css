@@ -885,9 +885,34 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .featured-artwork-wrapper {
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 20px;
+      padding: 0 1rem 1rem 1rem;
+      justify-content: flex-start;
+    }
+    
+    .featured-artwork-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .featured-card {
+      flex: 0 0 auto;
+      width: 200px;
+    }
+    
+    .featured-card .lace-wrapper {
+      width: 200px;
+      height: 264px;
+    }
+    
+    .featured-card .project-image {
+      width: 160px;
+      height: 224px;
     }
 
     .featured-title {
