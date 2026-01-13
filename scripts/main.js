@@ -15,40 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let msnry;
   
   function initializeMasonry() {
-    const isMobile = window.innerWidth <= 768;
-    
     if (grid) {
-      if (!isMobile) {
-        // Desktop/tablet: use Masonry
-        imagesLoaded(grid, function () {
-          if (msnry) {
-            msnry.destroy();
-          }
-          
-          msnry = new Masonry(grid, {
-            itemSelector: '.masonry-item:not(.hidden)',
-            columnWidth: '.grid-sizer',
-            gutter: 35,
-            percentPosition: true,
-            horizontalOrder: true,
-            transitionDuration: '0.4s',
-            fitWidth: false,
-            resize: true
-          });
-          
-          // Initialize filtering after Masonry is ready
-          initializeFiltering();
-        });
-      } else {
-        // Mobile: destroy Masonry and use flexbox
+      // Use Masonry on all screen sizes for Pinterest-style layout
+      imagesLoaded(grid, function () {
         if (msnry) {
           msnry.destroy();
-          msnry = null;
         }
         
-        // Initialize filtering for mobile
+        msnry = new Masonry(grid, {
+          itemSelector: '.masonry-item:not(.hidden)',
+          columnWidth: '.grid-sizer',
+          gutter: window.innerWidth <= 768 ? 10 : 35,
+          percentPosition: true,
+          horizontalOrder: true,
+          transitionDuration: '0.4s',
+          fitWidth: false,
+          resize: true
+        });
+        
+        // Initialize filtering after Masonry is ready
         initializeFiltering();
-      }
+      });
     }
   }
   
@@ -87,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       console.log('Visible items:', visibleCount);
       
-      // Update layout - only use Masonry on desktop/tablet
-      if (msnry && !isMobile) {
+      // Update Masonry layout on all screen sizes
+      if (msnry) {
         setTimeout(() => {
           // First, reloadItems to refresh Masonry's item cache
           msnry.reloadItems();
@@ -102,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
           msnry.layout();
         }, 300);
       }
-      // On mobile, the CSS flexbox handles the layout automatically
     }
 
     filterButtons.forEach(button => {
