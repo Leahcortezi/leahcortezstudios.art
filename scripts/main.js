@@ -22,16 +22,25 @@ document.addEventListener('DOMContentLoaded', () => {
           msnry.destroy();
         }
         
+        const isMobile = window.innerWidth <= 768;
+        
         msnry = new Masonry(grid, {
           itemSelector: '.masonry-item:not(.hidden)',
           columnWidth: '.grid-sizer',
-          gutter: window.innerWidth <= 768 ? 10 : 35,
+          gutter: isMobile ? 8 : 35,
           percentPosition: true,
-          horizontalOrder: true,
+          horizontalOrder: false,
           transitionDuration: '0.4s',
           fitWidth: false,
           resize: true
         });
+        
+        // Force layout after a brief delay to ensure proper column distribution
+        setTimeout(() => {
+          if (msnry) {
+            msnry.layout();
+          }
+        }, 100);
         
         // Initialize filtering after Masonry is ready
         initializeFiltering();
