@@ -505,11 +505,11 @@ text-decoration: underline;
   }
   
   .grid-sizer {
-    width: 48%;
+    width: calc(50% - 6px) !important;
   }
   
   .masonry-item {
-    width: 48% !important;
+    width: calc(50% - 6px) !important;
     margin-bottom: 1rem;
   }
 
@@ -549,11 +549,11 @@ text-decoration: underline;
   }
   
   .grid-sizer {
-    width: 48%;
+    width: calc(50% - 6px) !important;
   }
   
   .masonry-item {
-    width: 48% !important;
+    width: calc(50% - 6px) !important;
     margin-bottom: 0.75rem;
   }
 } 
