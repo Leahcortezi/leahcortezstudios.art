@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msnry = new Masonry(grid, {
           itemSelector: '.masonry-item:not(.hidden)',
           columnWidth: '.grid-sizer',
-          gutter: isMobile ? 16 : 35,
+          gutter: isMobile ? 24 : 35,
           percentPosition: true,
           horizontalOrder: false,
           transitionDuration: '0.4s',

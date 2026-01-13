@@ -458,7 +458,7 @@ text-decoration: underline;
   
   .grid-sizer,
   .masonry-item {
-    width: 46% !important;
+    width: 44% !important;
   }
   
   .masonry-item {
@@ -506,11 +506,11 @@ text-decoration: underline;
   
   .grid-sizer,
   .masonry-item {
-    width: 46% !important;
+    width: 44% !important;
   }
   
   .masonry-item {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   /* Maintain image styling on mobile and prevent pixelation */
@@ -550,11 +550,11 @@ text-decoration: underline;
   
   .grid-sizer,
   .masonry-item {
-    width: 46% !important;
+    width: 44% !important;
   }
   
   .masonry-item {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 } 
 
