@@ -457,11 +457,11 @@ text-decoration: underline;
   }
   
   .grid-sizer {
-    width: 48%;
+    width: calc(50% - 18px) !important;
   }
   
   .masonry-item {
-    width: 48% !important;
+    width: calc(50% - 18px) !important;
     margin-bottom: 2rem;
   }
 }
