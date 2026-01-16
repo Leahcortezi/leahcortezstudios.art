@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Commissions | Leah Cortez Studio</title>
+    <meta name="description" content="Commission custom artwork from Leah Cortez - charcoal drawings, digital illustration, printmaking, and design services.">
+    <meta name="keywords" content="art commissions, custom artwork, charcoal portraits, altar drawings, digital illustration, printmaking, Leah Cortez">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Commissions | Leah Cortez Studio">
+    <meta property="og:description" content="Commission custom artwork from Leah Cortez - charcoal drawings, digital illustration, printmaking, and design.">
+    <meta property="og:image" content="../images/logo/logo2.png">
+    <meta property="og:url" content="https://leahcortezstudios.art/commissions/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Commissions | Leah Cortez Studio">
+    <meta name="twitter:description" content="Commission custom artwork from Leah Cortez.">
+    <meta name="twitter:image" content="../images/logo/logo2.png">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <style>
+        /* Commissions Page Styles */
+        .commissions-page {
+            padding: 4rem 0;
+            min-height: 100vh;
+        }
+
+        .commissions-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .commissions-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .commissions-header h1 {
+            font-family: 'Pirata One', cursive;
+            font-size: 3.5rem;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .commissions-intro {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--cream);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            color: #f8c8d0;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #7e1c2e;
+            margin: 0.75rem auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(248, 200, 208, 0.03);
+            border: 1px solid rgba(248, 200, 208, 0.15);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(248, 200, 208, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(126, 28, 46, 0.15);
+        }
+
+        .service-card h3 {
+            font-family: 'Pirata One', cursive;
+            font-size: 1.5rem;
+            color: #f8c8d0;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-family: 'IM Fell English', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--cream);
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .price {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: #f8c8d0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(248, 200, 208, 0.1);
+        }
+
+        /* Process Section */
+        .process-section {
+            margin-bottom: 4rem;
+            background: rgba(126, 28, 46, 0.05);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            color: #7e1c2e;
+            min-width: 40px;
+        }
+
+        .step-content h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: #f8c8d0;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-content p {
+            font-family: 'IM Fell English', serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--cream);
+            opacity: 0.85;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(126, 28, 46, 0.05) 100%);
+            border-radius: 8px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.1rem;
+            color: var(--cream);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: #7e1c2e;
+            color: #f8c8d0;
+            border: 2px solid #7e1c2e;
+        }
+
+        .cta-button.primary:hover {
+            background: transparent;
+            color: #f8c8d0;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #f8c8d0;
+            border: 2px solid rgba(248, 200, 208, 0.3);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: #f8c8d0;
+        }
+
+        /* Note Section */
+        .note-section {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(248, 200, 208, 0.03);
+            border-left: 3px solid #7e1c2e;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note-section p {
+            font-family: 'IM Fell English', serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--cream);
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .commissions-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .commissions-intro {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .step-number {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo/logo2.png" alt="Leah Cortez Studio" class="logo-img">
+            </a>
+            <ul class="nav-menu nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="../collections/index.html">Portfolio</a></li>
+                <li><a href="../cv/index.html">CV</a></li>
+                <li><a href="../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Menu" class="hamburger-icon" loading="lazy">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="commissions-page">
+        <div class="commissions-container">
+            
+            <!-- Header -->
+            <div class="commissions-header">
+                <h1>Commissions</h1>
+                <p class="commissions-intro">
+                    I create meaningful, handcrafted artwork that honors memory, identity, and story. 
+                    Whether you're looking for a charcoal altar drawing, a custom illustration, or 
+                    a unique print, I'd love to bring your vision to life.
+                </p>
+            </div>
+
+            <!-- Services -->
+            <section class="services-section">
+                <h2 class="section-title">What I Offer</h2>
+                <div class="services-grid">
+                    
+                    <div class="service-card">
+                        <h3>Charcoal Drawings</h3>
+                        <p>Traditional charcoal portraits and altar-style memorial drawings. 
+                           Perfect for honoring loved ones, capturing family memories, or creating 
+                           devotional pieces with deep emotional resonance.</p>
+                        <div class="price">Starting at $300 (18×24")</div>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Digital Illustration</h3>
+                        <p>Custom digital artwork for personal projects, editorial use, or 
+                           social media. My style blends surrealism, cultural imagery, and 
+                           intimate storytelling.</p>
+                        <div class="price">Contact for quote</div>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Printmaking</h3>
+                        <p>Original prints using etching, aquatint, linocut, and reduction 
+                           techniques. Each piece is hand-pulled and one-of-a-kind.</p>
+                        <div class="price">Contact for quote</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Process -->
+            <section class="process-section">
+                <h2 class="section-title">How It Works</h2>
+                <div class="process-steps">
+                    
+                    <div class="process-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <h4>Reach Out</h4>
+                            <p>Send me a message describing your vision, reference images if you have them, 
+                               and any details that matter to you.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <h4>We Collaborate</h4>
+                            <p>I'll respond with questions, ideas, and a quote. We'll work together 
+                               to make sure the piece feels right before I begin.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <h4>Creation</h4>
+                            <p>I'll keep you updated with progress photos along the way. 
+                               Revisions are part of the process—your satisfaction matters.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <h4>Delivery</h4>
+                            <p>Your finished artwork will be carefully packaged and shipped, 
+                               or delivered digitally depending on the project.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cta-section">
+                <h2>Let's Create Something Together</h2>
+                <p>Have a project in mind? I'd love to hear about it. Every piece I create 
+                   is made with intention and care.</p>
+                <div class="cta-buttons">
+                    <a href="../contact/index.html" class="cta-button primary">Get in Touch</a>
+                    <a href="../collections/index.html" class="cta-button secondary">View My Work</a>
+                </div>
+            </section>
+
+            <!-- Note -->
+            <div class="note-section">
+                <p><strong>Note:</strong> Pricing varies based on size, complexity, and medium. 
+                   I'm happy to work within your budget when possible. Don't hesitate to reach out 
+                   even if you're unsure—I'm always open to discussing ideas.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="../images/logo/logo4white.png" alt="Leah Cortez Logo" class="footer-logo" loading="lazy">
+            <p class="copyright">Leah Cortez © 2025</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/page-enhancements.js" defer></script>
+</body>
+</html>
