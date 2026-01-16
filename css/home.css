@@ -1150,7 +1150,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .testimonial-section {
   background: transparent;
-  padding: 80px 0;
+  padding: 50px 0;
   position: relative;
   width: 100%;
   clear: both;
@@ -1159,10 +1159,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .testimonial-section .section-title {
   font-family: var(--font-headings);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: var(--color-primary-accent);
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position: relative;
   letter-spacing: 1px;
   width: 100%;
@@ -1183,9 +1183,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-content {
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 20px;
   position: relative;
   z-index: 2;
   width: 100%;
@@ -1193,24 +1193,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial {
-  background: rgba(248, 200, 208, 0.08);
-  border: 2px solid rgba(248, 200, 208, 0.3);
-  border-left: 6px solid var(--color-primary-accent);
-  border-radius: 12px;
-  padding: 40px 35px;
+  background: rgba(248, 200, 208, 0.06);
+  border: 1px solid rgba(248, 200, 208, 0.2);
+  border-left: 3px solid var(--color-primary-accent);
+  border-radius: 8px;
+  padding: 25px 25px;
   margin: 0 auto;
   position: relative;
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  max-width: 600px;
+  max-width: 680px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 240px;
+  min-height: auto;
 }
 
 .testimonial:hover {
@@ -1223,60 +1221,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial::before {
-  content: '❝';
+  content: '"';
   position: absolute;
-  top: -15px;
-  left: 20px;
+  top: 12px;
+  left: 12px;
   font-family: var(--font-headings);
-  font-size: 4rem;
+  font-size: 2rem;
   color: var(--color-primary-accent);
   line-height: 1;
   z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.4;
 }
 
 .testimonial::after {
-  content: '❞';
-  position: absolute;
-  bottom: -25px;
-  right: 20px;
-  font-family: var(--font-headings);
-  font-size: 4rem;
-  color: var(--color-primary-accent);
-  line-height: 1;
-  z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  content: none;
 }
 
 .testimonial p {
   font-family: var(--font-body), 'IM Fell English', serif;
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--color-text);
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   font-style: italic;
   text-align: left;
   position: relative;
   z-index: 2;
   font-weight: 400;
-  padding-left: 20px;
-  border-left: 3px solid rgba(248, 200, 208, 0.3);
+  padding-left: 0;
+  border-left: none;
 }
 
 .testimonial cite {
   font-family: var(--font-accent);
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--color-primary-accent);
   font-style: normal;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.5px;
   display: block;
   text-align: right;
   position: relative;
   z-index: 2;
-  margin-top: 15px;
-  padding-right: 20px;
+  margin-top: 8px;
+  padding-right: 0;
+  line-height: 1.4;
 }
 
 .testimonial cite::before {
@@ -1290,9 +1280,9 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 30px;
-  padding: 0 60px;
-  min-height: 320px;
+  margin-bottom: 15px;
+  padding: 0 55px;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
@@ -1320,10 +1310,10 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
-  border: 2px solid var(--color-primary-accent);
+  border: 1px solid var(--color-primary-accent);
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1331,7 +1321,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
   z-index: 3;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-arrow:hover {
@@ -1342,11 +1332,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-arrow svg {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   stroke: var(--color-primary-accent);
   transition: stroke 0.3s ease;
-  stroke-width: 2.5;
+  stroke-width: 2;
 }
 
 .carousel-arrow:hover svg {
@@ -1365,15 +1355,15 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 30px;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 2px solid var(--color-primary-accent);
+  border: 1px solid var(--color-primary-accent);
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
