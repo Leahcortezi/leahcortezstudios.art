@@ -6,13 +6,13 @@
 
     <!-- SEO and Social Sharing Tags -->
     <title>Commissions | Leah Cortez Studio</title>
-    <meta name="description" content="Commission custom artwork from Leah Cortez - charcoal drawings, digital illustration, printmaking, and design services.">
-    <meta name="keywords" content="art commissions, custom artwork, charcoal portraits, altar drawings, digital illustration, printmaking, Leah Cortez">
+    <meta name="description" content="Commission custom artwork from Leah Cortez - illustration, printmaking, graphic design, and charcoal drawings.">
+    <meta name="keywords" content="art commissions, custom artwork, charcoal portraits, illustration, printmaking, graphic design, Leah Cortez">
     <meta name="author" content="Leah Cortez">
 
     <!-- Open Graph and Twitter Card Tags -->
     <meta property="og:title" content="Commissions | Leah Cortez Studio">
-    <meta property="og:description" content="Commission custom artwork from Leah Cortez - charcoal drawings, digital illustration, printmaking, and design.">
+    <meta property="og:description" content="Commission custom artwork from Leah Cortez - illustration, printmaking, graphic design, and charcoal drawings.">
     <meta property="og:image" content="../images/logo/logo2.png">
     <meta property="og:url" content="https://leahcortezstudios.art/commissions/">
     <meta property="og:type" content="website">
@@ -39,7 +39,7 @@
         }
 
         .commissions-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -66,7 +66,7 @@
             margin: 0 auto;
         }
 
-        /* Services Section */
+        /* Services Carousel Section */
         .services-section {
             margin-bottom: 4rem;
         }
@@ -89,48 +89,133 @@
             margin: 0.75rem auto 0;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
         .service-card {
             background: rgba(248, 200, 208, 0.03);
             border: 1px solid rgba(248, 200, 208, 0.15);
-            border-radius: 8px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
             transition: all 0.3s ease;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .service-card:hover {
             border-color: rgba(248, 200, 208, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(126, 28, 46, 0.15);
+            box-shadow: 0 15px 40px rgba(126, 28, 46, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(126, 28, 46, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #f8c8d0;
         }
 
         .service-card h3 {
             font-family: 'Pirata One', cursive;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #f8c8d0;
             margin-bottom: 1rem;
         }
 
         .service-card p {
             font-family: 'IM Fell English', serif;
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--cream);
             opacity: 0.85;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .service-card .price {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #f8c8d0;
-            padding-top: 1rem;
+            padding: 1rem 0;
             border-top: 1px solid rgba(248, 200, 208, 0.1);
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(126, 28, 46, 0.3);
+            border: 2px solid rgba(248, 200, 208, 0.2);
+            color: #f8c8d0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #7e1c2e;
+            border-color: #7e1c2e;
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(248, 200, 208, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #7e1c2e;
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(248, 200, 208, 0.4);
         }
 
         /* Process Section */
@@ -138,7 +223,7 @@
             margin-bottom: 4rem;
             background: rgba(126, 28, 46, 0.05);
             padding: 3rem 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .process-steps {
@@ -184,7 +269,7 @@
             text-align: center;
             padding: 3rem 2rem;
             background: linear-gradient(135deg, rgba(126, 28, 46, 0.1) 0%, rgba(126, 28, 46, 0.05) 100%);
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .cta-section h2 {
@@ -273,8 +358,18 @@
                 font-size: 1.1rem;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
 
             .process-step {
@@ -329,39 +424,104 @@
                 <h1>Commissions</h1>
                 <p class="commissions-intro">
                     I create meaningful, handcrafted artwork that honors memory, identity, and story. 
-                    Whether you're looking for a charcoal altar drawing, a custom illustration, or 
-                    a unique print, I'd love to bring your vision to life.
+                    Whether you're looking for a custom illustration, a unique print, or a charcoal 
+                    memorial piece, I'd love to bring your vision to life.
                 </p>
             </div>
 
-            <!-- Services -->
+            <!-- Services Carousel -->
             <section class="services-section">
                 <h2 class="section-title">What I Offer</h2>
-                <div class="services-grid">
-                    
-                    <div class="service-card">
-                        <h3>Charcoal Drawings</h3>
-                        <p>Traditional charcoal portraits and altar-style memorial drawings. 
-                           Perfect for honoring loved ones, capturing family memories, or creating 
-                           devotional pieces with deep emotional resonance.</p>
-                        <div class="price">Starting at $300 (18×24")</div>
-                    </div>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        
+                        <!-- Slide 1: Illustration -->
+                        <div class="carousel-slide">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                        <path d="M2 2l7.586 7.586"></path>
+                                        <circle cx="11" cy="11" r="2"></circle>
+                                    </svg>
+                                </div>
+                                <h3>Illustration</h3>
+                                <p>Custom digital or traditional illustrations for personal projects, 
+                                   editorial work, album art, or storytelling. My style blends surrealism, 
+                                   cultural imagery, and intimate narratives rooted in identity and emotion.</p>
+                                <div class="price">Contact for quote</div>
+                            </div>
+                        </div>
 
-                    <div class="service-card">
-                        <h3>Digital Illustration</h3>
-                        <p>Custom digital artwork for personal projects, editorial use, or 
-                           social media. My style blends surrealism, cultural imagery, and 
-                           intimate storytelling.</p>
-                        <div class="price">Contact for quote</div>
-                    </div>
+                        <!-- Slide 2: Printmaking -->
+                        <div class="carousel-slide">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <h3>Printmaking</h3>
+                                <p>Original hand-pulled prints using etching, aquatint, linocut, and 
+                                   reduction techniques. Each piece is unique and made with intention. 
+                                   Perfect for collectors seeking one-of-a-kind artwork.</p>
+                                <div class="price">Contact for quote</div>
+                            </div>
+                        </div>
 
-                    <div class="service-card">
-                        <h3>Printmaking</h3>
-                        <p>Original prints using etching, aquatint, linocut, and reduction 
-                           techniques. Each piece is hand-pulled and one-of-a-kind.</p>
-                        <div class="price">Contact for quote</div>
-                    </div>
+                        <!-- Slide 3: Graphic Design -->
+                        <div class="carousel-slide">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                        <polyline points="2 17 12 22 22 17"></polyline>
+                                        <polyline points="2 12 12 17 22 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h3>Graphic Design</h3>
+                                <p>Thoughtful design for posters, zines, packaging, editorial layouts, 
+                                   and branding projects. I bring a fine art sensibility to every design, 
+                                   creating work that's bold, intentional, and visually compelling.</p>
+                                <div class="price">Contact for quote</div>
+                            </div>
+                        </div>
 
+                        <!-- Slide 4: Charcoal Drawings -->
+                        <div class="carousel-slide">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                        <line x1="16" y1="8" x2="2" y2="22"></line>
+                                        <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                    </svg>
+                                </div>
+                                <h3>Charcoal Drawings</h3>
+                                <p>Traditional charcoal portraits and altar-style memorial drawings. 
+                                   Perfect for honoring loved ones, capturing family memories, or creating 
+                                   devotional pieces with deep emotional resonance and lasting presence.</p>
+                                <div class="price">Starting at $300 (18×24")</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+                    <div class="carousel-dots" id="carouselDots">
+                        <button class="carousel-dot active" data-slide="0" aria-label="Slide 1"></button>
+                        <button class="carousel-dot" data-slide="1" aria-label="Slide 2"></button>
+                        <button class="carousel-dot" data-slide="2" aria-label="Slide 3"></button>
+                        <button class="carousel-dot" data-slide="3" aria-label="Slide 4"></button>
+                    </div>
+                    <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
                 </div>
             </section>
 
@@ -440,5 +600,70 @@
 
     <script src="../scripts/main.js"></script>
     <script src="../scripts/page-enhancements.js" defer></script>
+    
+    <!-- Carousel Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentSlide = 0;
+            const totalSlides = 4;
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+
+            // Auto-advance every 5 seconds
+            let autoPlay = setInterval(nextSlide, 5000);
+
+            // Pause on hover
+            track.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            track.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) {
+                    nextSlide();
+                } else if (touchEndX - touchStartX > 50) {
+                    prevSlide();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
