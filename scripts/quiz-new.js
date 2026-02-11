@@ -7,23 +7,16 @@ class PortfolioBuilder {
         // Personality combos for different interest pairs
         this.personalityCombos = {
             "social-impact_cultural-identity": "The Activist Storyteller — You blend advocacy with heritage, creating work that honors roots while demanding change.",
-            "social-impact_motion-animation": "The Movement Messenger — You believe change needs motion, using animation to amplify urgent stories.",
             "social-impact_experimental": "The Revolutionary Creator — You reject rules to disrupt systems, making provocative work that demands attention.",
             "social-impact_commercial-design": "The Strategic Activist — You weaponize design thinking for social good, proving impact and beauty can coexist.",
             "social-impact_typography-posters": "The Visual Agitator — Bold type and fearless messaging—you make posters that stick in minds and hearts.",
             "social-impact_sculptural-objects": "The Tactile Activist — Your work demands to be felt, not just seen—objects that carry weight and meaning.",
             "social-impact_narrative-illustration": "The Conscious Illustrator — Every drawing tells a truth, every composition carries intention toward justice.",
-            "cultural-identity_motion-animation": "The Heritage Animator — You bring tradition to life through motion, honoring memory with modern tools.",
             "cultural-identity_experimental": "The Cultural Alchemist — You remix tradition and experimentation, creating something ancestral yet entirely new.",
             "cultural-identity_commercial-design": "The Identity Designer — You craft brands that honor culture while staying commercially sharp and relevant.",
             "cultural-identity_typography-posters": "The Legacy Typographer — Letters carry lineage for you—every poster is a bridge between past and present.",
             "cultural-identity_sculptural-objects": "The Memory Maker — Tactile, dimensional, rooted—your objects hold generations in their form.",
             "cultural-identity_narrative-illustration": "The Heritage Illustrator — Your work whispers ancestral stories through every brushstroke and symbol.",
-            "motion-animation_experimental": "The Boundary Pusher — Static images aren't enough, and neither are rules—you want motion that surprises.",
-            "motion-animation_commercial-design": "The Strategic Animator — Motion with purpose—you make animations that sell, engage, and convert.",
-            "motion-animation_typography-posters": "The Kinetic Type Obsessive — Letters should move, messages should flow—you make typography come alive.",
-            "motion-animation_sculptural-objects": "The Dimensional Animator — Physical meets digital—you blend 3D and motion in unexpected ways.",
-            "motion-animation_narrative-illustration": "The Story Animator — Illustrations that breathe and move—your work unfolds narratives across time.",
             "experimental_commercial-design": "The Daring Strategist — You push boundaries while staying commercially viable—weird, but it works.",
             "experimental_typography-posters": "The Type Anarchist — Letters break rules in your hands, creating layouts that feel alive and untamed.",
             "experimental_sculptural-objects": "The Strange Sculptor — Your objects confuse and compel—beauty in the bizarre, craft in chaos.",
@@ -58,17 +51,6 @@ class PortfolioBuilder {
                     "anointed-gaze",
                     "inheritance",
                     "heaven-on-fire"
-                ]
-            },
-            "motion-animation": {
-                title: "Motion Design & Animation",
-                icon: "",
-                personality: "The Movement Maker — Static images aren't enough for you. You want to see things flow, evolve, and come alive through time and space.",
-                pieces: [
-                    "visual-language",
-                    "reminiscent",
-                    "genesis-blackout-poetry",
-                    "abuelas-ofrenda"
                 ]
             },
             "experimental": {
