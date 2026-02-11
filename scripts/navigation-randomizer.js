@@ -1,107 +1,37 @@
-// Master list of all portfolio work pieces
+// Master list of all portfolio work pieces (only what's in the gallery)
 const allWorks = [
-    // Design Work
-    {
-        title: "Endangered Species Poster",
-        path: "collections/design/endangered-species-poster/index.html",
-        category: "design"
-    },
-    {
-        title: "Insane Grain Packaging",
-        path: "collections/design/insane-grain-packaging/index.html",
-        category: "design"
-    },
-    {
-        title: "Themed Playing Card Design",
-        path: "collections/design/themed-playing-card-design/index-case-study.html",
-        category: "design"
-    },
-    {
-        title: "Double-Sided Poster",
-        path: "collections/design/double-sided-poster/index-case-study.html",
-        category: "design"
-    },
-    {
-        title: "Elements and Principles Book Cover",
-        path: "collections/design/elements-and-principles-book-cover/index-case-study.html",
-        category: "design"
-    },
-    {
-        title: "Reductive Symbols",
-        path: "collections/design/reductive-symbols/index-case-study.html",
-        category: "design"
-    },
-    {
-        title: "Reductive Photo Solutions",
-        path: "collections/design/reductive-photo-solutions/index-case-study.html",
-        category: "design"
-    },
-    {
-        title: "Typographic Interpretation",
-        path: "collections/design/typographic-interpretation/index-case-study.html",
-        category: "design"
-    },
+    // Illustration
+    { title: "Abuela's Altar", path: "collections/illustration/abuelas-altar/index.html", category: "illustration" },
+    { title: "Anointed Gaze", path: "collections/illustration/anointed-gaze/index.html", category: "illustration" },
+    { title: "Heaven on Fire", path: "collections/illustration/heaven-on-fire/index.html", category: "illustration" },
+    { title: "Inheritance", path: "collections/illustration/inheritance/index.html", category: "illustration" },
     
-    // Illustration Work
-    {
-        title: "Anointed Gaze",
-        path: "collections/illustration/anointed-gaze/index.html",
-        category: "illustration"
-    },
-    {
-        title: "Heaven on Fire",
-        path: "collections/illustration/heaven-on-fire/index.html",
-        category: "illustration"
-    },
-    {
-        title: "Inheritance",
-        path: "collections/illustration/inheritance/index.html",
-        category: "illustration"
-    },
-    {
-        title: "Abuela's Altar",
-        path: "collections/illustration/abuelas-altar/index.html",
-        category: "illustration"
-    },
+    // Printmaking
+    { title: "Reliquary Heart", path: "collections/printmaking/reliquary-heart/index.html", category: "printmaking" },
+    { title: "The Living Room", path: "collections/printmaking/the-living-room/index.html", category: "printmaking" },
+    { title: "Unbecoming", path: "collections/printmaking/unbecoming/index.html", category: "printmaking" },
+    { title: "The Unholy Gaze", path: "collections/printmaking/the-unholy-gaze/index.html", category: "printmaking" },
     
-    // Objects Work
-    {
-        title: "Feathers Along the Bend",
-        path: "collections/objects/feathers-along-the-bend/index.html",
-        category: "objects"
-    },
-    {
-        title: "Gnaw",
-        path: "collections/objects/gnaw/index.html",
-        category: "objects"
-    },
-    {
-        title: "Unraveling",
-        path: "collections/objects/unraveling/index.html",
-        category: "objects"
-    },
+    // Objects
+    { title: "Abyss Bloom", path: "collections/objects/abyss-bloom/index.html", category: "objects" },
+    { title: "Feathers Along the Bend", path: "collections/objects/feathers-along-the-bend/index.html", category: "objects" },
+    { title: "Gnaw", path: "collections/objects/gnaw/index.html", category: "objects" },
+    { title: "Unraveling", path: "collections/objects/unraveling/index.html", category: "objects" },
     
-    // Motion Work
-    {
-        title: "Visual Language of Dream Logic",
-        path: "collections/motion/visual-language-of-dream-logic/index.html",
-        category: "motion"
-    },
-    {
-        title: "Reminiscent",
-        path: "collections/motion/reminiscent/index.html",
-        category: "motion"
-    },
-    {
-        title: "Genesis Blackout Poetry",
-        path: "collections/motion/genesis-blackout-poetry/index.html",
-        category: "motion"
-    },
-    {
-        title: "Abuela's Ofrenda",
-        path: "collections/motion/abuelas-ofrenda/index.html",
-        category: "motion"
-    }
+    // Design
+    { title: "Endangered Species Poster", path: "collections/design/endangered-species-poster/index.html", category: "design" },
+    { title: "Insane Grain Packaging", path: "collections/design/insane-grain-packaging/index.html", category: "design" },
+    { title: "Contemporary Contexts Zine", path: "collections/design/contemporary-contexts-zine/index.html", category: "design" },
+    { title: "Editorial Spread", path: "collections/design/editorial-spread/index.html", category: "design" },
+    { title: "Constructivism Movement Study", path: "collections/design/constructivism/index-case-study.html", category: "design" },
+    { title: "Dada Movement Study", path: "collections/design/dada/index-case-study.html", category: "design" },
+    { title: "Grunge Movement Study", path: "collections/design/grunge/index-case-study.html", category: "design" },
+    { title: "Double-Sided Poster", path: "collections/design/double-sided-poster/index-case-study.html", category: "design" },
+    { title: "Themed Playing Card Design", path: "collections/design/themed-playing-card-design/index-case-study.html", category: "design" },
+    { title: "Futurism Movement Study", path: "collections/design/futurism/index-case-study.html", category: "design" },
+    { title: "Modernism Movement Study", path: "collections/design/modernism/index-case-study.html", category: "design" },
+    { title: "Typographic Interpretation", path: "collections/design/typographic-interpretation/index-case-study.html", category: "design" },
+    { title: "Reductive Symbols", path: "collections/design/reductive-symbols/index-case-study.html", category: "design" }
 ];
 
 // Function to shuffle array (Fisher-Yates shuffle)
