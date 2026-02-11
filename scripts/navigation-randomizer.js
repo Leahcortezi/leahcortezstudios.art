@@ -27,7 +27,6 @@ const allWorks = [
     { title: "Dada Movement Study", path: "collections/design/dada/index-case-study.html", category: "design" },
     { title: "Grunge Movement Study", path: "collections/design/grunge/index-case-study.html", category: "design" },
     { title: "Double-Sided Poster", path: "collections/design/double-sided-poster/index-case-study.html", category: "design" },
-    { title: "Themed Playing Card Design", path: "collections/design/themed-playing-card-design/index-case-study.html", category: "design" },
     { title: "Futurism Movement Study", path: "collections/design/futurism/index-case-study.html", category: "design" },
     { title: "Modernism Movement Study", path: "collections/design/modernism/index-case-study.html", category: "design" },
     { title: "Typographic Interpretation", path: "collections/design/typographic-interpretation/index-case-study.html", category: "design" },
