@@ -26,7 +26,15 @@ class PortfolioBuilder {
             "commercial-design_narrative-illustration": "The Commercial Illustrator — Your drawings sell while telling stories—beauty that converts.",
             "typography-posters_sculptural-objects": "The Dimensional Typographer — Flat isn't enough—you want letterforms that cast shadows and take up space.",
             "typography-posters_narrative-illustration": "The Editorial Artist — Type and image dance together—layouts that guide eyes and stir emotions.",
-            "sculptural-objects_narrative-illustration": "The Tactile Storyteller — Your work exists between dimensions—illustrations that become objects, objects that tell stories."
+            "sculptural-objects_narrative-illustration": "The Tactile Storyteller — Your work exists between dimensions—illustrations that become objects, objects that tell stories.",
+            "social-impact_personal-expression": "The Vulnerable Activist — You channel personal pain into public power, making work that's both deeply intimate and politically charged.",
+            "cultural-identity_personal-expression": "The Soul Archivist — Your inner world and ancestral roots intertwine, creating art that's autobiography and heritage in one.",
+            "experimental_personal-expression": "The Raw Experimenter — You process emotions through unconventional means, turning inner chaos into beautifully strange art.",
+            "commercial-design_personal-expression": "The Authentic Brand — You bring genuine emotion to commercial work, proving personal truth sells better than polish.",
+            "typography-posters_personal-expression": "The Confessional Typographer — Your letters carry weight because they carry feeling—type as therapy.",
+            "sculptural-objects_personal-expression": "The Emotional Sculptor — You give form to feelings, creating objects that externalize what words can't hold.",
+            "narrative-illustration_personal-expression": "The Diary Illustrator — Every drawing is a page from your life—raw, honest, and impossible to look away from.",
+            "printmaking-process_personal-expression": "The Ritual Processor — The repetitive act of printmaking becomes meditation, each print a step toward understanding yourself."
         };
         
         // Define interests and their matching pieces
@@ -118,6 +126,17 @@ class PortfolioBuilder {
                     "reliquary-heart",
                     "the-living-room",
                     "unbecoming"
+                ]
+            },
+            "personal-expression": {
+                title: "Personal Expression & Emotion",
+                icon: "",
+                personality: "The Vulnerable Creator — You make art to process, to heal, to understand yourself. Raw honesty is your medium, and your work hits people in the chest.",
+                pieces: [
+                    "unbecoming",
+                    "anointed-gaze",
+                    "heaven-on-fire",
+                    "gnaw"
                 ]
             }
         };
