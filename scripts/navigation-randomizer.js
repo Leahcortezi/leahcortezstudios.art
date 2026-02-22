@@ -31,7 +31,9 @@ const allWorks = [
     { title: "Futurism Movement Study", path: "collections/design/futurism/index-case-study.html", category: "design" },
     { title: "Modernism Movement Study", path: "collections/design/modernism/index-case-study.html", category: "design" },
     { title: "Typographic Interpretation", path: "collections/design/typographic-interpretation/index-case-study.html", category: "design" },
-    { title: "Reductive Symbols", path: "collections/design/reductive-symbols/index-case-study.html", category: "design" }
+    { title: "Reductive Symbols", path: "collections/design/reductive-symbols/index-case-study.html", category: "design" },
+    { title: "Threads", path: "collections/design/Threads/index.html", category: "design" },
+    { title: "City Reliquary", path: "collections/design/City Reliquary/index.html", category: "design" }
 ];
 
 // Function to shuffle array (Fisher-Yates shuffle)
