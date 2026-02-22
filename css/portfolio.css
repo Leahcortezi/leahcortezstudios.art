@@ -136,6 +136,92 @@
    1. FILTER BUTTONS
    -------------------- */
 
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+/* Year Dropdown */
+.year-dropdown {
+  position: relative;
+}
+
+.year-dropdown-toggle {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--accent-font);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.year-dropdown-toggle:hover {
+  color: #7e1c2e;
+  border-color: #7e1c2e;
+}
+
+.filter-icon {
+  font-size: 0.9rem;
+}
+
+.year-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #0a0a0a;
+  border: 1px solid var(--primary-color);
+  min-width: 140px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.year-dropdown.open .year-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.year-dropdown-menu button {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(209, 171, 182, 0.2);
+  color: var(--primary-color);
+  padding: 0.75rem 1rem;
+  font-family: var(--accent-font);
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.year-dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.year-dropdown-menu button:hover {
+  background: rgba(209, 171, 182, 0.1);
+  color: #7e1c2e;
+}
+
+.year-dropdown-menu button.active {
+  color: #7e1c2e;
+  background: rgba(126, 28, 46, 0.1);
+}
+
 .filter-buttons {
   display: flex;
   justify-content: center;
@@ -199,18 +285,6 @@
 
 .filter-buttons button:focus:not(:focus-visible) {
   outline: none;
-}
-
-/* Year Filter Buttons - Secondary styling */
-.filter-buttons.year-filters {
-  margin-top: 0.5rem;
-  gap: 0.75rem;
-}
-
-.filter-buttons.year-filters button {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  border-width: 1px;
 }
 
 /* --------------------
@@ -511,14 +585,30 @@ text-decoration: underline;
     transform: translateY(-1px);
   }
   
-  .filter-buttons.year-filters {
-    margin-top: 0.25rem;
-    gap: 0.4rem;
+  /* Mobile year dropdown */
+  .filter-row {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
   }
   
-  .filter-buttons.year-filters button {
-    padding: 0.4rem 0.7rem;
-    font-size: 0.7rem;
+  .year-dropdown {
+    align-self: flex-start;
+    margin-left: 1rem;
+  }
+  
+  .year-dropdown-toggle {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .year-dropdown-menu {
+    min-width: 120px;
+  }
+  
+  .year-dropdown-menu button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
   }
   
   .masonry-container {

@@ -69,19 +69,26 @@
     <main>
         <section class="portfolio-hero">
             <h1>My Portfolio</h1>
-            <div class="filter-buttons">
-                <button data-filter="all" class="active" type="button">All Work</button>
-                <button data-filter="illustration" type="button">Illustration</button>
-                <button data-filter="objects" type="button">Objects</button>
-                <button data-filter="design" type="button">Design</button>
-                <button data-filter="printmaking" type="button">Printmaking</button>
-            </div>
-            <div class="filter-buttons year-filters">
-                <button data-year="all" class="active" type="button">All Years</button>
-                <button data-year="2026" type="button">2026</button>
-                <button data-year="2025" type="button">2025</button>
-                <button data-year="2024" type="button">2024</button>
-                <button data-year="early" type="button">Early Work</button>
+            <div class="filter-row">
+                <div class="year-dropdown">
+                    <button class="year-dropdown-toggle" type="button">
+                        <span class="filter-icon">⊞</span> Filter
+                    </button>
+                    <div class="year-dropdown-menu">
+                        <button data-year="all" class="active" type="button">All Years</button>
+                        <button data-year="2026" type="button">2026</button>
+                        <button data-year="2025" type="button">2025</button>
+                        <button data-year="2024" type="button">2024</button>
+                        <button data-year="early" type="button">Early Work</button>
+                    </div>
+                </div>
+                <div class="filter-buttons">
+                    <button data-filter="all" class="active" type="button">All Work</button>
+                    <button data-filter="illustration" type="button">Illustration</button>
+                    <button data-filter="objects" type="button">Objects</button>
+                    <button data-filter="design" type="button">Design</button>
+                    <button data-filter="printmaking" type="button">Printmaking</button>
+                </div>
             </div>
         </section>
 
