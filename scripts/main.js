@@ -62,18 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Portfolio filtering logic
   function initializeFiltering() {
-    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const categoryButtons = document.querySelectorAll('.filter-buttons:not(.year-filters) button[data-filter]');
+    const yearButtons = document.querySelectorAll('.filter-buttons.year-filters button[data-year]');
     const masonryItems = document.querySelectorAll('.masonry-item');
+    
+    let currentCategory = 'all';
+    let currentYear = 'all';
 
-    function filterItems(category) {
-      console.log('Filtering by category:', category);
+    function filterItems() {
+      console.log('Filtering by category:', currentCategory, 'year:', currentYear);
       let visibleCount = 0;
       const isMobile = window.innerWidth <= 768;
       
       // Apply filtering immediately
       masonryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
-        if (category === 'all' || itemCategory === category) {
+        const itemYear = item.getAttribute('data-year');
+        
+        const categoryMatch = currentCategory === 'all' || itemCategory === currentCategory;
+        const yearMatch = currentYear === 'all' || itemYear === currentYear;
+        
+        if (categoryMatch && yearMatch) {
           item.classList.remove('hidden');
           visibleCount++;
         } else {
@@ -100,12 +109,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    filterButtons.forEach(button => {
+    categoryButtons.forEach(button => {
       button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        const filterCategory = button.getAttribute('data-filter');
-        filterItems(filterCategory);
+        currentCategory = button.getAttribute('data-filter');
+        filterItems();
+      });
+    });
+    
+    yearButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        yearButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentYear = button.getAttribute('data-year');
+        filterItems();
       });
     });
   }

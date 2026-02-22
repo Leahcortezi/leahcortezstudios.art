@@ -201,6 +201,18 @@
   outline: none;
 }
 
+/* Year Filter Buttons - Secondary styling */
+.filter-buttons.year-filters {
+  margin-top: 0.5rem;
+  gap: 0.75rem;
+}
+
+.filter-buttons.year-filters button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-width: 1px;
+}
+
 /* --------------------
    VIEW MORE BUTTON
    -------------------- */
@@ -497,6 +509,16 @@ text-decoration: underline;
 
   .filter-buttons button.active {
     transform: translateY(-1px);
+  }
+  
+  .filter-buttons.year-filters {
+    margin-top: 0.25rem;
+    gap: 0.4rem;
+  }
+  
+  .filter-buttons.year-filters button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
   }
   
   .masonry-container {
