@@ -63,9 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Portfolio filtering logic
   function initializeFiltering() {
     const categoryButtons = document.querySelectorAll('.filter-buttons button[data-filter]');
-    const yearDropdown = document.querySelector('.year-dropdown');
-    const yearToggle = document.querySelector('.year-dropdown-toggle');
-    const yearButtons = document.querySelectorAll('.year-dropdown-menu button[data-year]');
+    const filterBox = document.querySelector('.filter-box');
+    const filterBoxHeader = document.querySelector('.filter-box-header');
+    const filterBoxValue = document.querySelector('.filter-box-value');
+    const yearButtons = document.querySelectorAll('.filter-box-dropdown button[data-year]');
     const masonryItems = document.querySelectorAll('.masonry-item');
     
     let currentCategory = 'all';
@@ -121,17 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     
-    // Year dropdown toggle
-    if (yearToggle && yearDropdown) {
-      yearToggle.addEventListener('click', (e) => {
+    // Filter box toggle
+    if (filterBoxHeader && filterBox) {
+      filterBoxHeader.addEventListener('click', (e) => {
         e.stopPropagation();
-        yearDropdown.classList.toggle('open');
+        filterBox.classList.toggle('open');
       });
       
       // Close dropdown when clicking outside
       document.addEventListener('click', (e) => {
-        if (!yearDropdown.contains(e.target)) {
-          yearDropdown.classList.remove('open');
+        if (!filterBox.contains(e.target)) {
+          filterBox.classList.remove('open');
         }
       });
     }
@@ -143,15 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
         button.classList.add('active');
         currentYear = button.getAttribute('data-year');
         
-        // Update toggle text
-        const selectedText = currentYear === 'all' ? 'Filter' : button.textContent;
-        if (yearToggle) {
-          yearToggle.innerHTML = `<span class="filter-icon">⊞</span> ${selectedText}`;
+        // Update the displayed value
+        if (filterBoxValue) {
+          const displayText = currentYear === 'all' ? 'All' : 
+                             currentYear === 'early' ? 'Early' : currentYear;
+          filterBoxValue.textContent = displayText;
         }
         
         // Close dropdown
-        if (yearDropdown) {
-          yearDropdown.classList.remove('open');
+        if (filterBox) {
+          filterBox.classList.remove('open');
         }
         
         filterItems();

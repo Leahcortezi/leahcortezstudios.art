@@ -145,81 +145,110 @@
   padding: 0 2rem;
 }
 
-/* Year Dropdown */
-.year-dropdown {
+/* Filter Box - Adobe Stock style */
+.filter-box {
   position: relative;
+  min-width: 140px;
 }
 
-.year-dropdown-toggle {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: 0.75rem 1.25rem;
-  font-family: var(--accent-font);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.filter-box-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(209, 171, 182, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
-.year-dropdown-toggle:hover {
-  color: #7e1c2e;
-  border-color: #7e1c2e;
+.filter-box-header:hover {
+  border-color: var(--primary-color);
+  background: rgba(30, 30, 30, 0.95);
 }
 
-.filter-icon {
-  font-size: 0.9rem;
+.filter-box.open .filter-box-header {
+  border-color: var(--primary-color);
+  border-bottom-color: transparent;
 }
 
-.year-dropdown-menu {
+.filter-box-label {
+  color: rgba(209, 171, 182, 0.6);
+  font-family: var(--accent-font);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filter-box-value {
+  color: var(--primary-color);
+  font-family: var(--accent-font);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.filter-box-arrow {
+  color: rgba(209, 171, 182, 0.6);
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.filter-box.open .filter-box-arrow {
+  transform: rotate(180deg);
+}
+
+.filter-box-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #0a0a0a;
+  right: 0;
+  background: rgba(20, 20, 20, 0.98);
   border: 1px solid var(--primary-color);
-  min-width: 140px;
+  border-top: none;
   z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
-.year-dropdown.open .year-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.filter-box.open .filter-box-dropdown {
+  max-height: 300px;
 }
 
-.year-dropdown-menu button {
+.filter-box-dropdown button {
   display: block;
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(209, 171, 182, 0.2);
   color: var(--primary-color);
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
   font-family: var(--accent-font);
   font-size: 0.9rem;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(209, 171, 182, 0.1);
 }
 
-.year-dropdown-menu button:last-child {
+.filter-box-dropdown button:last-child {
   border-bottom: none;
 }
 
-.year-dropdown-menu button:hover {
+.filter-box-dropdown button:hover {
   background: rgba(209, 171, 182, 0.1);
-  color: #7e1c2e;
+  padding-left: 1.25rem;
 }
 
-.year-dropdown-menu button.active {
+.filter-box-dropdown button.active {
   color: #7e1c2e;
-  background: rgba(126, 28, 46, 0.1);
+  background: rgba(126, 28, 46, 0.15);
+}
+
+.filter-box-dropdown button.active::before {
+  content: '✓';
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .filter-buttons {
@@ -585,29 +614,33 @@ text-decoration: underline;
     transform: translateY(-1px);
   }
   
-  /* Mobile year dropdown */
+  /* Mobile filter box */
   .filter-row {
     flex-direction: column;
     gap: 0.75rem;
     align-items: stretch;
   }
   
-  .year-dropdown {
+  .filter-box {
     align-self: flex-start;
     margin-left: 1rem;
-  }
-  
-  .year-dropdown-toggle {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-  
-  .year-dropdown-menu {
     min-width: 120px;
   }
   
-  .year-dropdown-menu button {
-    padding: 0.6rem 0.8rem;
+  .filter-box-header {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .filter-box-label {
+    font-size: 0.65rem;
+  }
+  
+  .filter-box-value {
+    font-size: 0.85rem;
+  }
+  
+  .filter-box-dropdown button {
+    padding: 0.6rem 0.75rem;
     font-size: 0.8rem;
   }
   
