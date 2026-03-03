@@ -5,7 +5,7 @@ PROJECT BRIEF: Leah Cortez Portfolio Website
 - Domain: leahcortezstudio.art
 - Social Links:
   - Pinterest: https://pin.it/P7sLCI6r5
-  - Behance: https://www.behance.net/leahcortez
+  - Behance: https://www.behance.net/leahcortez1
   - Instagram (future account planned)
 - Favicon: favicon.ico (located in /icons/)
 
