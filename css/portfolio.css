@@ -382,7 +382,7 @@
   transform: translateZ(0);
 }
 
-/* When masonry is initialized, it switches to block positioning */
+/* When masonry is initialized (desktop only), it uses absolute positioning */
 .masonry-container.masonry-ready {
   display: block;
 }

@@ -16,18 +16,34 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function initializeMasonry() {
     if (grid) {
-      // Use Masonry on all screen sizes for Pinterest-style layout
+      const isMobile = window.innerWidth <= 768;
+      
+      // On mobile, use CSS flexbox layout instead of masonry for reliable two-column
+      if (isMobile) {
+        // Destroy existing masonry instance if any
+        if (msnry) {
+          msnry.destroy();
+          msnry = null;
+        }
+        grid.classList.remove('masonry-ready');
+        
+        // Wait for images to load, then initialize filtering
+        imagesLoaded(grid, function () {
+          initializeFiltering();
+        });
+        return;
+      }
+      
+      // Desktop: Use Masonry for Pinterest-style layout
       imagesLoaded(grid, function () {
         if (msnry) {
           msnry.destroy();
         }
         
-        const isMobile = window.innerWidth <= 768;
-        
         msnry = new Masonry(grid, {
           itemSelector: '.masonry-item:not(.hidden)',
           columnWidth: '.grid-sizer',
-          gutter: isMobile ? 24 : 35,
+          gutter: 35,
           percentPosition: true,
           horizontalOrder: false,
           transitionDuration: '0.4s',
