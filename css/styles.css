@@ -429,13 +429,13 @@ body.menu-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0; /* No gap between logo and text */
+  gap: 0.5rem; /* Small gap between logo and text */
 }
 
 .footer-logo {
-  /* Logo styling in footer - sized to match text width */
+  /* Logo styling in footer */
   height: auto;
-  width: 180px; /* Slightly smaller width */
+  width: 100px; /* Smaller width */
   max-width: 90%; /* Responsive safety for small screens */
   opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
@@ -446,7 +446,7 @@ body.menu-open {
 .copyright {
   /* Copyright text styling */
   margin: 0;
-  margin-top: -40px; /* Reduced negative margin */
+  margin-top: 0; /* No negative margin */
   padding: 0; /* Remove any padding */
   font-family: var(--font-accent);
   font-size: 0.9rem;
