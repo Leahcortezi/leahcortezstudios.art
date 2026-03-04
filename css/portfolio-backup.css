@@ -444,7 +444,7 @@
 }
 .filter-buttons button {
   background: transparent;
-  border: 1px solid #D4A574;
+  border: 1px solid #7e1c2e;
   color: #fff;
   margin: 5px;
   padding: 8px 16px;
@@ -452,7 +452,7 @@
   font-family: 'Playfair Display', serif;
 }
 .filter-buttons button.active {
-  background-color: #D4A574;
+  background-color: #7e1c2e;
 }
 
 /* MASONRY GRID */

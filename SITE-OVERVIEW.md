@@ -31,7 +31,7 @@
 | Name | Hex | CSS Variable | Usage |
 |------|-----|--------------|-------|
 | Black | `#000000` | `--color-background` | Backgrounds, nav, footer |
-| Warm Gold | `#D4A574` | `--color-primary-accent` | Accents, buttons, links, borders |
+| Warm Gold | `#7e1c2e` | `--color-primary-accent` | Accents, buttons, links, borders |
 | Pink | `#f8c8d0` | `--color-secondary-accent` | Highlights, hover states |
 | White | `#ffffff` | `--color-text` | Body text on dark backgrounds |
 

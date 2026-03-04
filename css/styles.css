@@ -5,7 +5,7 @@
 }
 /* Global header color for all pages */
 h1, h2, h3, h4, h5, h6 {
-  color: #D4A574 !important;
+  color: #7e1c2e !important;
 }
 /*
   Leah Cortez Studio Art - Global Stylesheet
@@ -41,8 +41,8 @@ h1, h2, h3, h4, h5, h6 {
   /* Color Palette */
   --color-background: #000000; /* Black for the site background */
   --color-text: #ffffff;       /* White for the main body text */
-  --color-primary-accent: #D4A574; /* Soft lavender for primary interactive elements */
-  --color-secondary-accent: #D4A574; /* Lavender for secondary elements and highlights */
+  --color-primary-accent: #7e1c2e; /* Soft lavender for primary interactive elements */
+  --color-secondary-accent: #7e1c2e; /* Lavender for secondary elements and highlights */
 
   /* Typography */
   --font-headings: 'Playfair Display', serif;      /* Elegant serif for all headings */
@@ -369,8 +369,8 @@ nav {
 }
 
 .nav-links a:hover {
-  color: #D4A574;
-  border-bottom-color: #D4A574;
+  color: #7e1c2e;
+  border-bottom-color: #7e1c2e;
   /* Remove text-decoration to prevent double underline */
   text-decoration: none;
 }
@@ -563,7 +563,7 @@ body.menu-open {
 
   .nav-links a:hover,
   .nav-links a:focus {
-    color: #D4A574;
+    color: #7e1c2e;
     text-decoration: underline;
     background: none;
     transform: none;
@@ -737,9 +737,9 @@ body.menu-open {
 
 .view-more-btn:hover,
 .view-more-btn:focus {
-  background: #D4A574;
+  background: #7e1c2e;
   color: #f8c8d0;
-  border-color: #D4A574;
+  border-color: #7e1c2e;
   box-shadow: 0 4px 16px rgba(126,28,46,0.15);
   transform: translateY(-2px) scale(1.04);
 }
@@ -772,7 +772,7 @@ body.menu-open {
 
 .share-modal-content {
   background: linear-gradient(145deg, #f7f3f1 0%, #f5c6d6 100%);
-  border: 3px solid #D4A574;
+  border: 3px solid #7e1c2e;
   border-radius: 20px;
   padding: 2rem;
   max-width: 500px;
@@ -830,7 +830,7 @@ body.menu-open {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  border: 2px solid #D4A574;
+  border: 2px solid #7e1c2e;
   border-radius: 12px;
   background: rgba(247, 243, 241, 0.9);
   color: #2d1b25;
@@ -843,7 +843,7 @@ body.menu-open {
 }
 
 .share-buttons button:hover {
-  background: #D4A574;
+  background: #7e1c2e;
   color: #f7f3f1;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(126, 28, 46, 0.3);
@@ -874,10 +874,10 @@ body.menu-open {
   right: 1rem;
   width: 40px;
   height: 40px;
-  border: 2px solid #D4A574;
+  border: 2px solid #7e1c2e;
   border-radius: 50%;
   background: rgba(247, 243, 241, 0.9);
-  color: #D4A574;
+  color: #7e1c2e;
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
@@ -888,7 +888,7 @@ body.menu-open {
 }
 
 .close-modal-btn:hover {
-  background: #D4A574;
+  background: #7e1c2e;
   color: #f7f3f1;
   transform: rotate(90deg);
 }
@@ -1055,7 +1055,7 @@ body.menu-open {
 .scroll-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--color-secondary-accent, #D4A574), var(--color-primary-accent, #f8c8d0));
+  background: linear-gradient(90deg, var(--color-secondary-accent, #7e1c2e), var(--color-primary-accent, #f8c8d0));
   transition: width 0.1s ease-out;
   box-shadow: 0 0 8px rgba(248, 200, 208, 0.5);
 }

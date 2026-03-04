@@ -334,7 +334,7 @@ class PortfolioQuiz {
         const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/2, height);
         gradient.addColorStop(0, '#1a0d14');
         gradient.addColorStop(0.3, '#2d1b25');
-        gradient.addColorStop(0.7, '#D4A574');
+        gradient.addColorStop(0.7, '#7e1c2e');
         gradient.addColorStop(1, '#0a0508');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
@@ -354,7 +354,7 @@ class PortfolioQuiz {
         }
         
         // Add some burgundy accent particles
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         for (let i = 0; i < 300; i++) {
             const x = Math.random() * width;
             const y = Math.random() * height;
@@ -376,7 +376,7 @@ class PortfolioQuiz {
         ctx.fillText('NOW VIEWING', width/2, 50);
         
         ctx.font = '24px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('Leah Cortez Studios', width/2, 85);
         
         // Main artwork section (large, centered)
@@ -391,7 +391,7 @@ class PortfolioQuiz {
             ctx.shadowOffsetY = 20;
             
             // Ornate frame
-            ctx.strokeStyle = '#D4A574';
+            ctx.strokeStyle = '#7e1c2e';
             ctx.lineWidth = 8;
             ctx.strokeRect(imgX - 20, imgY - 20, imgSize + 40, imgSize + 40);
             
@@ -429,7 +429,7 @@ class PortfolioQuiz {
         
         // Quiz result type (like Spotify artist name)
         ctx.font = 'bold 48px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.textAlign = 'center';
         ctx.fillText('LEAH CORTEZ STUDIOS', width/2, bottomY + 40);
         
@@ -461,7 +461,7 @@ class PortfolioQuiz {
         // Category tag
         const categoryY = subtitleY + 50;
         ctx.font = 'bold 32px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.textAlign = 'center';
         ctx.fillText(result.category.toUpperCase(), width/2, categoryY);
         
@@ -497,7 +497,7 @@ class PortfolioQuiz {
         ctx.fillText('Take the Portfolio Soul Quiz →', width - 60, height - 45);
         
         // Add decorative border
-        ctx.strokeStyle = '#D4A574';
+        ctx.strokeStyle = '#7e1c2e';
         ctx.lineWidth = 6;
         ctx.strokeRect(30, 30, width - 60, height - 60);
         
@@ -526,7 +526,7 @@ class PortfolioQuiz {
         ctx.globalAlpha = 1;
         
         // Thin maroon border
-        ctx.strokeStyle = '#D4A574';
+        ctx.strokeStyle = '#7e1c2e';
         ctx.lineWidth = 3;
         ctx.strokeRect(60, 60, width - 120, height - 120);
         
@@ -542,7 +542,7 @@ class PortfolioQuiz {
         }
         
         // Gothic star corners
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         this.drawGothicStar(ctx, 120, 120, 15);
         this.drawGothicStar(ctx, width - 120, 120, 15);
         this.drawGothicStar(ctx, 120, height - 120, 15);
@@ -561,7 +561,7 @@ class PortfolioQuiz {
         // Playing card aesthetic subtitle
         const subtitleY = titleY + (wrappedTitle.length * 65) + 50;
         ctx.font = 'italic 32px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('"' + result.category + '"', width / 2, subtitleY);
         
         // Image with gothic frame
@@ -571,7 +571,7 @@ class PortfolioQuiz {
             const imgY = subtitleY + 60;
             
             // Gothic frame
-            ctx.strokeStyle = '#D4A574';
+            ctx.strokeStyle = '#7e1c2e';
             ctx.lineWidth = 4;
             ctx.strokeRect(imgX - 10, imgY - 10, imgSize + 20, imgSize + 20);
             
@@ -595,7 +595,7 @@ class PortfolioQuiz {
         // Quote
         const quoteY = height - 180;
         ctx.font = 'italic 24px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
         
         // Footer
@@ -605,7 +605,7 @@ class PortfolioQuiz {
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         
         ctx.font = '20px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('leahcortezstudios.art', width / 2, footerY + 35);
     }
 
@@ -615,7 +615,7 @@ class PortfolioQuiz {
         // Deep burgundy gradient
         const gradient = ctx.createRadialGradient(width/2, height/3, 0, width/2, height/3, height);
         gradient.addColorStop(0, '#4A1B3A');
-        gradient.addColorStop(0.6, '#D4A574');
+        gradient.addColorStop(0.6, '#7e1c2e');
         gradient.addColorStop(1, '#2d1b25');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
@@ -683,7 +683,7 @@ class PortfolioQuiz {
             this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
             
             // Mystical corner ornaments
-            ctx.fillStyle = '#D4A574';
+            ctx.fillStyle = '#7e1c2e';
             this.drawGothicStar(ctx, imgX - 25, imgY - 25, 20);
             this.drawGothicStar(ctx, imgX + imgSize + 25, imgY - 25, 20);
             this.drawGothicStar(ctx, imgX - 25, imgY + imgSize + 25, 20);
@@ -754,7 +754,7 @@ class PortfolioQuiz {
         // Elegant subtitle
         const subtitleY = titleY + (wrappedTitle.length * 65) + 40;
         ctx.font = 'italic 32px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('"The ' + result.category.replace(' Work', '') + '"', width / 2, subtitleY);
         
         // Image with elegant frame
@@ -776,7 +776,7 @@ class PortfolioQuiz {
             this.drawImageCentered(ctx, img, imgX, imgY, imgSize, imgSize);
             
             // Elegant frame
-            ctx.strokeStyle = '#D4A574';
+            ctx.strokeStyle = '#7e1c2e';
             ctx.lineWidth = 3;
             ctx.strokeRect(imgX - 15, imgY - 15, imgSize + 30, imgSize + 30);
         }
@@ -793,7 +793,7 @@ class PortfolioQuiz {
         // Quote
         const quoteY = height - 160;
         ctx.font = 'italic 22px "IM Fell English", serif';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('"' + result.quote + '"', width / 2, quoteY);
         
         // Footer
@@ -803,7 +803,7 @@ class PortfolioQuiz {
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         
         ctx.font = '20px "IBM Plex Mono", monospace';
-        ctx.fillStyle = '#D4A574';
+        ctx.fillStyle = '#7e1c2e';
         ctx.fillText('leahcortezstudios.art', width / 2, footerY + 30);
     }
 

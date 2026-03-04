@@ -2696,9 +2696,9 @@ body {
 }
 
 .new-prompt-btn:hover {
-    background-color: #D4A574;
+    background-color: #7e1c2e;
     color: #f5c6d6;
-    border-color: #D4A574;
+    border-color: #7e1c2e;
 }
 
 .create-from-prompt-btn {
@@ -2727,9 +2727,9 @@ body {
 }
 
 .create-from-prompt-btn:hover {
-    background-color: #D4A574;
+    background-color: #7e1c2e;
     color: #f5c6d6;
-    border-color: #D4A574;
+    border-color: #7e1c2e;
 }
 
 .create-from-prompt-btn:active {
@@ -7281,7 +7281,7 @@ body {
 }
 
 .download-btn {
-    background: linear-gradient(135deg, #f8c8d0, #D4A574);
+    background: linear-gradient(135deg, #f8c8d0, #7e1c2e);
     color: #000;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -7405,7 +7405,7 @@ body {
 }
 
 .resource-btn:hover {
-    background: linear-gradient(135deg, #f8c8d0, #D4A574);
+    background: linear-gradient(135deg, #f8c8d0, #7e1c2e);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(248, 200, 208, 0.3);
 }

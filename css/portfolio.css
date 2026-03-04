@@ -164,12 +164,12 @@
 }
 
 .filter-box-header:hover {
-  border-color: #D4A574;
+  border-color: #7e1c2e;
   background: rgba(126, 28, 46, 0.08);
 }
 
 .filter-box.open .filter-box-header {
-  border-color: #D4A574;
+  border-color: #7e1c2e;
   background: rgba(126, 28, 46, 0.1);
 }
 
@@ -204,7 +204,7 @@
   left: 0;
   right: 0;
   background: #0a0a0a;
-  border: 1px solid #D4A574;
+  border: 1px solid #7e1c2e;
   border-top: 1px solid rgba(126, 28, 46, 0.3);
   z-index: 100;
   max-height: 0;
@@ -236,7 +236,7 @@
 }
 
 .filter-box-dropdown button.active {
-  color: #D4A574;
+  color: #7e1c2e;
   background: rgba(126, 28, 46, 0.12);
   font-style: italic;
 }
@@ -276,25 +276,25 @@
 }
 
 .filter-buttons button:hover {
-  color: #D4A574;
-  border-color: #D4A574;
+  color: #7e1c2e;
+  border-color: #7e1c2e;
   transform: translateY(-2px);
 }
 
 .filter-buttons button:hover::after {
   width: 80%;
-  background: #D4A574;
+  background: #7e1c2e;
 }
 
 .filter-buttons button.active {
-  color: #D4A574;
-  border-color: #D4A574;
+  color: #7e1c2e;
+  border-color: #7e1c2e;
   transform: translateY(-1px);
 }
 
 .filter-buttons button.active::after {
   width: 80%;
-  background: #D4A574;
+  background: #7e1c2e;
 }
 
 .filter-buttons button:focus {
@@ -338,14 +338,14 @@
 }
 
 #view-more-btn:hover {
-  color: #D4A574;
-  border-color: #D4A574;
+  color: #7e1c2e;
+  border-color: #7e1c2e;
   transform: translateY(-2px);
 }
 
 #view-more-btn:hover::after {
   width: 80%;
-  background: #D4A574;
+  background: #7e1c2e;
 }
 
 #view-more-btn:focus {
@@ -495,7 +495,7 @@
   top: 10px;
   right: 10px;
   background: rgba(255,255,255,0.85);
-  color: #D4A574;
+  color: #7e1c2e;
   padding: 0.45rem 1.1rem;
   font-size: 0.82rem;
   font-family: 'IBM Plex Mono', monospace;
@@ -1104,7 +1104,7 @@ text-decoration: underline;
 }
 
 .add-to-cart-btn:hover {
-  background: #D4A574;
+  background: #7e1c2e;
   transform: translateY(-1px);
 }
 
@@ -1435,7 +1435,7 @@ text-decoration: underline;
 }
 
 .quantity-controls button:hover {
-  background: #D4A574;
+  background: #7e1c2e;
 }
 
 .quantity {
@@ -1498,7 +1498,7 @@ text-decoration: underline;
 }
 
 .checkout-btn:hover {
-  background: #D4A574;
+  background: #7e1c2e;
 }
 
 .clear-cart-btn {

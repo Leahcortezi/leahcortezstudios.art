@@ -152,11 +152,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-button:hover {
     /* Background color on hover */
-    background-color: #D4A574;
+    background-color: #7e1c2e;
     /* Text color on hover - pink */
     color: #f5c6d6;
     /* Border color matches background */
-    border-color: #D4A574;
+    border-color: #7e1c2e;
     /* Ensure no shadows on hover */
     box-shadow: none;
     text-shadow: none;
@@ -269,9 +269,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn:hover {
-  background-color: #D4A574;
+  background-color: #7e1c2e;
   color: #f5c6d6;
-  border-color: #D4A574;
+  border-color: #7e1c2e;
 }
 
 /* --------------------
@@ -323,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.3rem;
   text-align: left;
   align-self: flex-start;
-  color: #D4A574;
+  color: #7e1c2e;
 }
 
 .bio-poetic {
@@ -363,7 +363,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-link:hover, .text-link:focus {
-    color: #D4A574 !important;
+    color: #7e1c2e !important;
     text-decoration: underline !important;
 }
 @media screen and (max-width: 768px) {
@@ -396,7 +396,7 @@ h1, h2, h3, h4, h5, h6 {
 .marquee-content span {
   display: inline-block;
   font-family: 'IBM Plex Mono', monospace;
-  color: #D4A574; /* Your hot pink/red tone */
+  color: #7e1c2e; /* Your hot pink/red tone */
   font-size: 1.25rem; /* larger */
   font-weight: 500;
   margin-right: 3rem; /* space between repeats */
@@ -443,7 +443,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #D4A574;
+    color: #7e1c2e;
 }
 
 .gallery-grid {
@@ -695,15 +695,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ensure contact button has proper hover effect */
 .contact-social-column .cta-button:hover {
-  background-color: #D4A574 !important;
+  background-color: #7e1c2e !important;
   color: #f5c6d6 !important;
-  border-color: #D4A574 !important;
+  border-color: #7e1c2e !important;
 }
 
 .contact-preview-section h2 {
   font-size: 3rem;
   margin-bottom: 2rem;
-  color: #D4A574;
+  color: #7e1c2e;
   font-weight: 300;
   letter-spacing: 1px;
 }
@@ -1692,11 +1692,11 @@ h1, h2, h3, h4, h5, h6 {
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, 
-    #D4A574 0%, 
+    #7e1c2e 0%, 
     #a8516e 25%,
     #f7f3f1 50%,
     #a8516e 75%,
-    #D4A574 100%);
+    #7e1c2e 100%);
   background-size: 300% 100%;
   border-radius: 6px;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
