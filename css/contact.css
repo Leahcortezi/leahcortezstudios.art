@@ -205,11 +205,11 @@
 
 .submit-btn:hover {
   /* Background color on hover - matches other buttons */
-  background-color: #7e1c2e;
+  background-color: #C7B8FF;
   /* Text color on hover - matches other buttons */
   color: #f5c6d6;
   /* Border color matches background */
-  border-color: #7e1c2e;
+  border-color: #C7B8FF;
   /* Slight scale effect on hover */
   transform: translateY(-2px);
 }

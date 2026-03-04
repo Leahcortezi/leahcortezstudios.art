@@ -1,7 +1,7 @@
 # Leah Cortez Studios — Complete Site Overview
 
 ## About the Artist
-**Leah Cortez** — Chicana graphic designer and visual artist based in Corpus Christi, Texas.
+**Leah Cortez** — Graphic designer and visual artist based in Corpus Christi, Texas.
 - **Education:** BFA Communication Design, Texas A&M University-Corpus Christi (TAMUCC), Class of 2028
 - **Website:** leahcortezstudios.art
 - **Instagram:** @leahcortez.art
@@ -31,15 +31,15 @@
 | Name | Hex | CSS Variable | Usage |
 |------|-----|--------------|-------|
 | Black | `#000000` | `--color-background` | Backgrounds, nav, footer |
-| Burgundy | `#7e1c2e` | `--color-primary-accent` | Accents, buttons, links, borders |
+| Lavender | `#C7B8FF` | `--color-primary-accent` | Accents, buttons, links, borders |
 | Pink | `#f8c8d0` | `--color-secondary-accent` | Highlights, hover states |
 | White | `#ffffff` | `--color-text` | Body text on dark backgrounds |
 
 ### Typography
 | Font | CSS Variable | Usage |
 |------|--------------|-------|
-| Pirata One | `--font-headings` | Main headings, logo, titles |
-| IM Fell English | `--font-body` | Body text, paragraphs |
+| Playfair Display | `--font-headings` | Main headings, logo, titles |
+| Inter | `--font-body` | Body text, paragraphs |
 | IBM Plex Mono | `--font-accent` | Meta info, dates, dimensions, captions |
 
 ### Font Sizes

@@ -75,7 +75,7 @@ body {
 .subtitle {
     font-family: 'Pirata One', serif;
     font-size: 2.5rem;
-    color: #7e1c2e;
+    color: #C7B8FF;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -83,7 +83,7 @@ body {
 .decorative-line {
     width: 150px;
     height: 3px;
-    background: linear-gradient(90deg, #7e1c2e, #f5c6d6, #7e1c2e);
+    background: linear-gradient(90deg, #C7B8FF, #f5c6d6, #C7B8FF);
     margin: 0 auto;
     border-radius: 2px;
     position: relative;
@@ -95,7 +95,7 @@ body {
     position: absolute;
     width: 8px;
     height: 8px;
-    background: #7e1c2e;
+    background: #C7B8FF;
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
@@ -117,7 +117,7 @@ body {
 }
 
 .main-profile-card {
-    background: linear-gradient(135deg, #7e1c2e, #2d1b25);
+    background: linear-gradient(135deg, #C7B8FF, #2d1b25);
     border-radius: 20px;
     padding: 3rem;
     max-width: 600px;
@@ -233,7 +233,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #7e1c2e, #f5c6d6);
+    background: linear-gradient(90deg, #C7B8FF, #f5c6d6);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -255,7 +255,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #7e1c2e, #2d1b25);
+    background: linear-gradient(135deg, #C7B8FF, #2d1b25);
     border-radius: 15px;
     transition: all 0.3s ease;
 }
@@ -276,7 +276,7 @@ body {
     font-family: 'Pirata One', serif;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #7e1c2e;
+    color: #C7B8FF;
 }
 
 .link-card p {
@@ -290,7 +290,7 @@ body {
 .link-url {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
-    color: #7e1c2e;
+    color: #C7B8FF;
     opacity: 0.7;
     font-weight: 500;
 }
@@ -330,7 +330,7 @@ body {
     font-family: 'Pirata One', serif;
     font-size: 2.5rem;
     text-align: center;
-    color: #7e1c2e;
+    color: #C7B8FF;
     margin-bottom: 3rem;
     position: relative;
 }
@@ -343,7 +343,7 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: linear-gradient(90deg, #7e1c2e, #f5c6d6);
+    background: linear-gradient(90deg, #C7B8FF, #f5c6d6);
     border-radius: 2px;
 }
 
@@ -471,7 +471,7 @@ nav ul {
 }
 nav a {
     text-decoration: none;
-    color: #7e1c2e;
+    color: #C7B8FF;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -486,7 +486,7 @@ nav a:hover {
 }
 
 nav a.active {
-    background: linear-gradient(135deg, #7e1c2e, #2d1b25);
+    background: linear-gradient(135deg, #C7B8FF, #2d1b25);
     color: #f5c6d6;
 }
 

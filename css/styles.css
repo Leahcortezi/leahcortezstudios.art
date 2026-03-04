@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Mono:ital@0;1&family=Pirata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=IBM+Plex+Mono:ital@0;1&display=swap');
 /* White text for subtitle or tagline */
 .white-title {
   color: #fff !important;
 }
 /* Global header color for all pages */
 h1, h2, h3, h4, h5, h6 {
-  color: #f5c6d6 !important;
+  color: #C7B8FF !important;
 }
 /*
   Leah Cortez Studio Art - Global Stylesheet
@@ -41,12 +41,12 @@ h1, h2, h3, h4, h5, h6 {
   /* Color Palette */
   --color-background: #000000; /* Black for the site background */
   --color-text: #ffffff;       /* White for the main body text */
-  --color-primary-accent: #f8c8d0; /* Soft pink for primary interactive elements */
-  --color-secondary-accent: #7e1c2e; /* Deep red for secondary elements and highlights */
+  --color-primary-accent: #C7B8FF; /* Soft lavender for primary interactive elements */
+  --color-secondary-accent: #C7B8FF; /* Lavender for secondary elements and highlights */
 
   /* Typography */
-  --font-headings: 'Pirata One', cursive;      /* Themed, gothic-style font for all headings */
-  --font-body: 'IM Fell English', serif;    /* Classic, readable serif for all paragraph text */
+  --font-headings: 'Playfair Display', serif;      /* Elegant serif for all headings */
+  --font-body: 'Inter', sans-serif;    /* Clean, modern sans-serif for all paragraph text */
   --font-accent: 'IBM Plex Mono', monospace;  /* Monospaced font for captions or special text */
 
   /* Other Layout Variables */
@@ -369,8 +369,8 @@ nav {
 }
 
 .nav-links a:hover {
-  color: #7e1c2e;
-  border-bottom-color: #7e1c2e;
+  color: #C7B8FF;
+  border-bottom-color: #C7B8FF;
   /* Remove text-decoration to prevent double underline */
   text-decoration: none;
 }
@@ -563,7 +563,7 @@ body.menu-open {
 
   .nav-links a:hover,
   .nav-links a:focus {
-    color: #7e1c2e;
+    color: #C7B8FF;
     text-decoration: underline;
     background: none;
     transform: none;
@@ -737,9 +737,9 @@ body.menu-open {
 
 .view-more-btn:hover,
 .view-more-btn:focus {
-  background: #7e1c2e;
+  background: #C7B8FF;
   color: #f8c8d0;
-  border-color: #7e1c2e;
+  border-color: #C7B8FF;
   box-shadow: 0 4px 16px rgba(126,28,46,0.15);
   transform: translateY(-2px) scale(1.04);
 }
@@ -772,7 +772,7 @@ body.menu-open {
 
 .share-modal-content {
   background: linear-gradient(145deg, #f7f3f1 0%, #f5c6d6 100%);
-  border: 3px solid #7e1c2e;
+  border: 3px solid #C7B8FF;
   border-radius: 20px;
   padding: 2rem;
   max-width: 500px;
@@ -830,7 +830,7 @@ body.menu-open {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  border: 2px solid #7e1c2e;
+  border: 2px solid #C7B8FF;
   border-radius: 12px;
   background: rgba(247, 243, 241, 0.9);
   color: #2d1b25;
@@ -843,7 +843,7 @@ body.menu-open {
 }
 
 .share-buttons button:hover {
-  background: #7e1c2e;
+  background: #C7B8FF;
   color: #f7f3f1;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(126, 28, 46, 0.3);
@@ -874,10 +874,10 @@ body.menu-open {
   right: 1rem;
   width: 40px;
   height: 40px;
-  border: 2px solid #7e1c2e;
+  border: 2px solid #C7B8FF;
   border-radius: 50%;
   background: rgba(247, 243, 241, 0.9);
-  color: #7e1c2e;
+  color: #C7B8FF;
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
@@ -888,7 +888,7 @@ body.menu-open {
 }
 
 .close-modal-btn:hover {
-  background: #7e1c2e;
+  background: #C7B8FF;
   color: #f7f3f1;
   transform: rotate(90deg);
 }
@@ -1055,7 +1055,7 @@ body.menu-open {
 .scroll-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--color-secondary-accent, #7e1c2e), var(--color-primary-accent, #f8c8d0));
+  background: linear-gradient(90deg, var(--color-secondary-accent, #C7B8FF), var(--color-primary-accent, #f8c8d0));
   transition: width 0.1s ease-out;
   box-shadow: 0 0 8px rgba(248, 200, 208, 0.5);
 }

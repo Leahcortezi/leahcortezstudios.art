@@ -999,7 +999,7 @@ function showSubmissionSuccess() {
     
     setTimeout(() => {
         submitBtn.innerHTML = originalText;
-        submitBtn.style.background = 'linear-gradient(45deg, #f8c8d0, #7e1c2e)';
+        submitBtn.style.background = 'linear-gradient(45deg, #f8c8d0, #C7B8FF)';
         submitBtn.disabled = false;
     }, 4000);
 }
@@ -1199,7 +1199,7 @@ function showNotification(message) {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: linear-gradient(45deg, #f8c8d0, #7e1c2e);
+        background: linear-gradient(45deg, #f8c8d0, #C7B8FF);
         color: white;
         padding: 15px 20px;
         border-radius: 10px;
