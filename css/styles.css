@@ -439,8 +439,8 @@ body.menu-open {
   max-width: 90%; /* Responsive safety for small screens */
   opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
-  /* Ensure logo is bright and visible on dark background */
-  filter: brightness(1.2) contrast(1.1);
+  /* Invert logo2.png to white for dark background */
+  filter: invert(1) brightness(2);
 }
 
 .copyright {
