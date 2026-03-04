@@ -435,7 +435,7 @@ body.menu-open {
 .footer-logo {
   /* Logo styling in footer */
   height: auto;
-  width: 60px; /* Smaller width */
+  width: 30px; /* Smaller width */
   max-width: 90%; /* Responsive safety for small screens */
   opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
