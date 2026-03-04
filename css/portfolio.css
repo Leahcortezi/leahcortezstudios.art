@@ -360,9 +360,15 @@
 /* --------------------
    2. MASONRY CONTAINER
    -------------------- */
-/* Masonry.js grid sizer for column width */
+/* Masonry.js grid sizer for column width - hidden in flexbox mode */
 .grid-sizer {
   width: 31%;
+  /* Hide from flexbox layout - only used by masonry JS */
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Initial flexbox layout BEFORE masonry initializes - prevents layout shift */
