@@ -469,8 +469,8 @@
 .read-more-btn {
   background: none;
   border: none;
-  color: var(--color-primary-accent, #C7B8FF);
-  font-family: var(--font-accent, 'Pirata One', cursive);
+  color: var(--color-primary-accent, #D4A574);
+  font-family: var(--font-accent, 'Playfair Display', cursive);
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 0;
@@ -567,9 +567,9 @@
 }
 
 .work-navigation a:hover {
-  background: #C7B8FF;
+  background: #D4A574;
   color: #f8c8d0;
-  border-color: #C7B8FF;
+  border-color: #D4A574;
   box-shadow: 0 4px 16px rgba(126, 28, 46, 0.15);
   transform: translateY(-2px);
 }
@@ -579,7 +579,7 @@
 }
 
 .work-navigation .all-work:hover {
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 /* --------------------

@@ -18,7 +18,7 @@ PROJECT BRIEF: Leah Cortez Portfolio Website
   - Background: #000000
   - Text: #ffffff
   - Primary Accent: #f8c8d0
-  - Secondary Accent: #C7B8FF
+  - Secondary Accent: #D4A574
 - Fonts:
   - Headings: Pirata One
   - Body Text: IM Fell English

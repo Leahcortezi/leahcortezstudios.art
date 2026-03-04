@@ -113,7 +113,7 @@
 }
 
 .portfolio-hero h1 {
-  font-family: "Pirata One", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   font-size: 3.5rem;
   color: var(--primary-color);
   margin: 0;
@@ -164,12 +164,12 @@
 }
 
 .filter-box-header:hover {
-  border-color: #C7B8FF;
+  border-color: #D4A574;
   background: rgba(126, 28, 46, 0.08);
 }
 
 .filter-box.open .filter-box-header {
-  border-color: #C7B8FF;
+  border-color: #D4A574;
   background: rgba(126, 28, 46, 0.1);
 }
 
@@ -204,7 +204,7 @@
   left: 0;
   right: 0;
   background: #0a0a0a;
-  border: 1px solid #C7B8FF;
+  border: 1px solid #D4A574;
   border-top: 1px solid rgba(126, 28, 46, 0.3);
   z-index: 100;
   max-height: 0;
@@ -236,7 +236,7 @@
 }
 
 .filter-box-dropdown button.active {
-  color: #C7B8FF;
+  color: #D4A574;
   background: rgba(126, 28, 46, 0.12);
   font-style: italic;
 }
@@ -276,25 +276,25 @@
 }
 
 .filter-buttons button:hover {
-  color: #C7B8FF;
-  border-color: #C7B8FF;
+  color: #D4A574;
+  border-color: #D4A574;
   transform: translateY(-2px);
 }
 
 .filter-buttons button:hover::after {
   width: 80%;
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 .filter-buttons button.active {
-  color: #C7B8FF;
-  border-color: #C7B8FF;
+  color: #D4A574;
+  border-color: #D4A574;
   transform: translateY(-1px);
 }
 
 .filter-buttons button.active::after {
   width: 80%;
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 .filter-buttons button:focus {
@@ -338,14 +338,14 @@
 }
 
 #view-more-btn:hover {
-  color: #C7B8FF;
-  border-color: #C7B8FF;
+  color: #D4A574;
+  border-color: #D4A574;
   transform: translateY(-2px);
 }
 
 #view-more-btn:hover::after {
   width: 80%;
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 #view-more-btn:focus {
@@ -495,7 +495,7 @@
   top: 10px;
   right: 10px;
   background: rgba(255,255,255,0.85);
-  color: #C7B8FF;
+  color: #D4A574;
   padding: 0.45rem 1.1rem;
   font-size: 0.82rem;
   font-family: 'IBM Plex Mono', monospace;
@@ -1104,7 +1104,7 @@ text-decoration: underline;
 }
 
 .add-to-cart-btn:hover {
-  background: #C7B8FF;
+  background: #D4A574;
   transform: translateY(-1px);
 }
 
@@ -1435,7 +1435,7 @@ text-decoration: underline;
 }
 
 .quantity-controls button:hover {
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 .quantity {
@@ -1498,7 +1498,7 @@ text-decoration: underline;
 }
 
 .checkout-btn:hover {
-  background: #C7B8FF;
+  background: #D4A574;
 }
 
 .clear-cart-btn {

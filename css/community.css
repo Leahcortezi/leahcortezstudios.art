@@ -171,7 +171,7 @@ body {
 .submit-section h2 {
     text-align: center;
     color: #f8c8d0;
-    font-family: 'Pirata One', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     margin-bottom: 40px;
 }
@@ -357,7 +357,7 @@ body {
 .community-gallery h2 {
     text-align: center;
     color: #f8c8d0;
-    font-family: 'Pirata One', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     margin-bottom: 15px;
 }
@@ -508,7 +508,7 @@ body {
     font-weight: bold;
     color: #f8c8d0;
     margin-bottom: 5px;
-    font-family: 'Pirata One', serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .stat-label {
@@ -2619,7 +2619,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     color: #f8c8d0;
-    font-family: 'Pirata One', serif;
+    font-family: 'Playfair Display', serif;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     line-height: 1;
 }
@@ -2696,9 +2696,9 @@ body {
 }
 
 .new-prompt-btn:hover {
-    background-color: #C7B8FF;
+    background-color: #D4A574;
     color: #f5c6d6;
-    border-color: #C7B8FF;
+    border-color: #D4A574;
 }
 
 .create-from-prompt-btn {
@@ -2727,9 +2727,9 @@ body {
 }
 
 .create-from-prompt-btn:hover {
-    background-color: #C7B8FF;
+    background-color: #D4A574;
     color: #f5c6d6;
-    border-color: #C7B8FF;
+    border-color: #D4A574;
 }
 
 .create-from-prompt-btn:active {
@@ -7281,7 +7281,7 @@ body {
 }
 
 .download-btn {
-    background: linear-gradient(135deg, #f8c8d0, #C7B8FF);
+    background: linear-gradient(135deg, #f8c8d0, #D4A574);
     color: #000;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -7405,7 +7405,7 @@ body {
 }
 
 .resource-btn:hover {
-    background: linear-gradient(135deg, #f8c8d0, #C7B8FF);
+    background: linear-gradient(135deg, #f8c8d0, #D4A574);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(248, 200, 208, 0.3);
 }
