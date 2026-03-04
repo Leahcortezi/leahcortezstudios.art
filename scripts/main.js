@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
           resize: true
         });
         
+        // Add masonry-ready class to switch from flexbox fallback to masonry positioning
+        grid.classList.add('masonry-ready');
+        
         // Force layout after a brief delay to ensure proper column distribution
         setTimeout(() => {
           if (msnry) {

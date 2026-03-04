@@ -365,13 +365,26 @@
   width: 31%;
 }
 
+/* Initial flexbox layout BEFORE masonry initializes - prevents layout shift */
 .masonry-container {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2%;
   margin: auto;
   position: relative;
   max-width: 1400px;
   padding: 2rem 1rem 1rem 1rem;
   width: 100%;
+  /* Performance optimizations for smooth scrolling */
+  contain: layout style;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* When masonry is initialized, it switches to block positioning */
+.masonry-container.masonry-ready {
+  display: block;
 }
 
 /* Ensure no extra spacing after masonry grid */
@@ -381,13 +394,20 @@
   clear: both;
 }
 
+/* Initial item width for flexbox fallback */
 .masonry-item {
   width: 31%;
   margin-bottom: 2.5rem;
   box-sizing: border-box;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 1;
   transform: translateY(0) scale(1);
+  /* Prevent layout shift before masonry */
+  flex: 0 0 31%;
+  /* GPU acceleration for smooth scrolling */
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .masonry-item.hidden {
@@ -559,11 +579,13 @@ text-decoration: underline;
   .masonry-container {
     padding: 1.5rem;
     max-width: 100%;
+    gap: 4%;
   }
   
   .grid-sizer,
   .masonry-item {
-    width: 44% !important;
+    width: 48% !important;
+    flex: 0 0 48% !important;
   }
   
   .masonry-item {
@@ -643,15 +665,22 @@ text-decoration: underline;
   .masonry-container {
     padding: 1rem 0.5rem;
     max-width: 100%;
+    gap: 4%;
+    /* Smooth mobile scrolling */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   
   .grid-sizer,
   .masonry-item {
-    width: 44% !important;
+    width: 48% !important;
+    flex: 0 0 48% !important;
   }
   
   .masonry-item {
     margin-bottom: 1.5rem;
+    /* Remove will-change on mobile for performance */
+    will-change: auto;
   }
 
   /* Maintain image styling on mobile and prevent pixelation */
@@ -687,11 +716,13 @@ text-decoration: underline;
   
   .masonry-container {
     padding: 0.5rem;
+    gap: 4%;
   }
   
   .grid-sizer,
   .masonry-item {
-    width: 44% !important;
+    width: 48% !important;
+    flex: 0 0 48% !important;
   }
   
   .masonry-item {
