@@ -15,18 +15,11 @@ const galleryOrder = [
     "collections/printmaking/unbecoming/index.html",
     "collections/printmaking/the-unholy-gaze/index.html",
     "collections/objects/feathers-along-the-bend/index.html",
-    "collections/design/constructivism/index-case-study.html",
-    "collections/design/dada/index-case-study.html",
-    "collections/design/grunge/index-case-study.html",
     "collections/design/double-sided-poster/index-case-study.html",
     "collections/design/editorial-spread/index.html",
     "collections/design/themed-playing-card-design/index-case-study.html",
-    "collections/design/futurism/index-case-study.html",
-    "collections/design/modernism/index-case-study.html",
     "collections/objects/gnaw/index.html",
-    "collections/design/typographic-interpretation/index-case-study.html",
-    "collections/objects/unraveling/index.html",
-    "collections/design/reductive-symbols/index-case-study.html"
+    "collections/objects/unraveling/index.html"
 ];
 
 // Function to get current work index from URL
