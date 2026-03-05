@@ -638,15 +638,17 @@ text-decoration: underline;
     flex-direction: column;
     gap: 0.75rem;
     align-items: flex-start;
-    padding: 0 1rem;
+    padding: 0 1.25rem;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
   
   .filter-box {
     align-self: flex-start;
     margin-left: 0;
     min-width: 120px;
+    position: relative;
+    z-index: 100;
   }
   
   .filter-box-header {
@@ -659,6 +661,10 @@ text-decoration: underline;
   
   .filter-box-value {
     font-size: 0.85rem;
+  }
+  
+  .filter-box-dropdown {
+    z-index: 101;
   }
   
   .filter-box-dropdown button {
