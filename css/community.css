@@ -549,22 +549,22 @@ body {
     text-align: center;
     font-family: var(--font-accent);
     font-size: 1.1rem;
-    color: var(--color-primary-accent);
-    background: rgba(126,28,46,0.07);
-    border: 2px solid var(--color-primary-accent);
+    color: #000000;
+    background: #f8c8d0;
+    border: 2px solid #f8c8d0;
     padding: 0.75rem 2rem;
     border-radius: 2rem;
     cursor: pointer;
     transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    box-shadow: 0 2px 8px rgba(126,28,46,0.08);
+    box-shadow: 0 2px 8px rgba(248,200,208,0.15);
     max-width: fit-content;
 }
 
 .cta-btn:hover {
-    background: var(--color-secondary-accent);
-    color: var(--color-primary-accent);
-    border-color: var(--color-secondary-accent);
-    box-shadow: 0 4px 16px rgba(126,28,46,0.15);
+    background: #e0b0b8;
+    color: #000000;
+    border-color: #e0b0b8;
+    box-shadow: 0 4px 16px rgba(248,200,208,0.25);
     transform: translateY(-2px) scale(1.04);
 }
 

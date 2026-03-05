@@ -41,8 +41,8 @@ h1, h2, h3, h4, h5, h6 {
   /* Color Palette */
   --color-background: #000000; /* Black for the site background */
   --color-text: #ffffff;       /* White for the main body text */
-  --color-primary-accent: #7e1c2e; /* Soft lavender for primary interactive elements */
-  --color-secondary-accent: #7e1c2e; /* Lavender for secondary elements and highlights */
+  --color-primary-accent: #f8c8d0; /* Pink blush for primary interactive elements */
+  --color-secondary-accent: #e0b0b8; /* Darker pink for secondary elements and highlights */
 
   /* Typography */
   --font-headings: 'Playfair Display', serif;      /* Elegant serif for all headings */

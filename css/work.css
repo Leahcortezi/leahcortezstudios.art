@@ -548,7 +548,7 @@
 
 .work-navigation a {
   font-family: var(--font-accent);
-  color: var(--color-primary-accent);
+  color: #000000;
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 0.95rem;
@@ -556,30 +556,30 @@
   letter-spacing: 0.5px;
   padding: 0.7rem 1.25rem;
   border-radius: 2rem;
-  background: rgba(126, 28, 46, 0.07);
-  border: 2px solid var(--color-primary-accent);
+  background: #f8c8d0;
+  border: 2px solid #f8c8d0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(126, 28, 46, 0.08);
+  box-shadow: 0 2px 8px rgba(248, 200, 208, 0.15);
   flex: 0 0 auto;
 }
 
 .work-navigation a:hover {
-  background: #7e1c2e;
-  color: #f8c8d0;
-  border-color: #7e1c2e;
-  box-shadow: 0 4px 16px rgba(126, 28, 46, 0.15);
+  background: #e0b0b8;
+  color: #000000;
+  border-color: #e0b0b8;
+  box-shadow: 0 4px 16px rgba(248, 200, 208, 0.15);
   transform: translateY(-2px);
 }
 
 .work-navigation .all-work {
-  background: rgba(126, 28, 46, 0.05);
+  background: rgba(248, 200, 208, 0.1);
 }
 
 .work-navigation .all-work:hover {
-  background: #7e1c2e;
+  background: #e0b0b8;
 }
 
 /* --------------------
