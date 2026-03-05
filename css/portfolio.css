@@ -705,6 +705,11 @@ text-decoration: underline;
   .masonry-item:hover .project-image {
     transform: scale(1.01) translateZ(0);
   }
+  
+  /* Smaller captions on mobile */
+  .caption {
+    font-size: 0.85rem;
+  }
 }
 
 /* Small mobile breakpoint */
