@@ -1,12 +1,11 @@
 # Leah Cortez Studios — Complete Site Overview
 
 ## About the Artist
-**Leah Cortez** — Graphic designer and visual artist based in Corpus Christi, Texas.
+**Leah Cortez** — Chicana artist and designer from Corpus Christi, South Texas.
 - **Education:** BFA Communication Design, Texas A&M University-Corpus Christi (TAMUCC), Class of 2028
 - **Website:** leahcortezstudios.art
 - **Instagram:** @leahcortez.art
 - **Behance:** behance.net/leahcortez1
-- **Shopify Store:** leah-cortez-shop.myshopify.com
 
 ---
 
@@ -15,13 +14,12 @@
 ### Main Pages
 | Page | Path | Description |
 |------|------|-------------|
-| Home | `/index.html` | Hero section, featured works, latest project, bio preview |
-| Bio | `/bio/index.html` | Artist statement, how I work, available for commissions |
-| Work (Portfolio) | `/collections/index.html` | Masonry grid gallery with category + year filters |
+| Home | `/index.html` | Hero ("A Personal Archive"), featured works, recent addition, bio preview |
+| Bio | `/bio/index.html` | Artist bio, about this archive |
+| Archive | `/collections/index.html` | Masonry grid gallery with category + year filters |
 | CV | `/cv/index.html` | Resume/curriculum vitae |
 | Contact | `/contact/index.html` | Contact form |
-| Commissions | `/commissions/index.html` | Services carousel, pricing info, process |
-| Card | `/card.html` | Link-in-bio style page (Portfolio, Commissions, Shop, Instagram) |
+| Card | `/card.html` | Link-in-bio style page (Archive, Behance, Instagram) |
 
 ---
 
@@ -179,40 +177,39 @@
 ### Main Nav (all pages)
 - Home → `index.html`
 - Bio → `bio/index.html`
-- Work → `collections/index.html`
+- Archive → `collections/index.html`
 - CV → `cv/index.html`
 - Contact → `contact/index.html`
 
 ### Breadcrumbs (work pages)
-`Home > Work > [Category] > [Title]`
+`Home > Archive > [Category] > [Title]`
 
 ### Work Navigation (prev/next)
 Uses fixed gallery order defined in `scripts/navigation-randomizer.js`
 
 ---
 
-## Current Gallery Order (20 pieces)
+## Current Gallery Order (19 pieces)
 
 1. Abuela's Altar (Illustration)
-2. Threads (Design)
-3. Reliquary Heart (Printmaking)
-4. City Reliquary (Design)
-5. Anointed Gaze (Illustration)
-6. Disappearing Species (Design)
-7. The Living Room (Printmaking)
-8. Insane Grain (Design)
-9. Abyss Bloom (Objects)
-10. Designer Tribute Zine (Design)
-11. Editorial Spreads (Design)
-12. Heaven on Fire (Illustration)
-13. Inheritance (Illustration)
-14. The Unholy Gaze (Printmaking)
-15. Double-Sided Poster (Design)
-16. Themed Playing Cards (Design)
-17. Unbecoming (Printmaking)
-18. Gnaw (Objects)
-19. Feathers Along the Bend (Objects)
-20. Unraveling (Objects)
+2. Snack Packaging / Insane Grain (Design)
+3. Inheritance (Illustration)
+4. Editorial Spreads (Design)
+5. The Unholy Gaze (Printmaking)
+6. Designer Tribute Zine (Design)
+7. Anointed Gaze (Illustration)
+8. Threads (Design)
+9. Reliquary Heart (Printmaking)
+10. City Reliquary (Design)
+11. Themed Playing Cards (Design)
+12. Disappearing Species (Design)
+13. The Living Room (Printmaking)
+14. Abyss Bloom (Objects)
+15. Heaven on Fire (Illustration)
+16. Unbecoming (Printmaking)
+17. Gnaw (Objects)
+18. Feathers Along the Bend (Objects)
+19. Unraveling (Objects)
 
 ---
 
@@ -263,13 +260,13 @@ Uses fixed gallery order defined in `scripts/navigation-randomizer.js`
 
 ## Recent Updates (March 2026)
 
-- Changed "Portfolio" to "Work" across all navigation
-- Added year filter dropdown to gallery
-- Updated bio to reflect TAMUCC BFA Communication Design, Class of 2028
-- Removed quiz from homepage
-- Updated all design work to follow Concept/Design Approach/Result format
-- Consolidated illustration/printmaking/objects to use Medium/Year/Dimensions + Project Overview
-- Fixed mobile gallery to show 2-column flexbox layout (no masonry)
-- Updated footer logo to logo3.png (inverted white, 30px)
-- Removed historical posters, HUNCH, and Apology from gallery
-- Added arrow galleries to multi-image design works
+- **Site rebranded as Personal Archive** — Changed "Work" to "Archive" across all navigation, breadcrumbs, and buttons
+- **Hero updated** — Now reads "A Personal Archive" with subtitle "Art, design, and everything in between."
+- **Homepage sections renamed** — "Featured Works" → "Featured", "Latest Project" → "Recent Addition"
+- **Bio completely rewritten** — Personal tone about growing up in South Texas, Mexican heritage, Catholic upbringing
+- **Removed "MY PROCESS" section** — Bio now has intro + "ABOUT THIS ARCHIVE"
+- **Gallery reordered** — Strongest work first with mixed mediums: Abuela's Altar, Snack Packaging, Inheritance, Editorial, Unholy Gaze, Zine, Anointed Gaze
+- **Double-Sided Poster removed** from gallery
+- **Card page updated** — Removed Shop and Commissions, added Behance link
+- **Copyright auto-updates** — JavaScript now updates year automatically each January
+- **Mobile fixes** — Year filter overflow, hero spacing, bio text alignment
