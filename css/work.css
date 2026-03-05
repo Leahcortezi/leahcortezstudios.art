@@ -675,6 +675,11 @@
     .work-description h2 {
         font-size: 1.8rem;
     }
+    
+    .work-description p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
 
     .work-navigation {
         flex-direction: column;
