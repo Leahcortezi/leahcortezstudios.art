@@ -491,6 +491,14 @@ body.menu-open {
   This media query targets screens with a maximum width of 768px (common for tablets and mobile).
 */
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1.25rem;
+  }
+
+  .logo-img {
+    height: 30px;
+  }
+
   .nav-links {
     /*
       Right-side sliding menu panel for mobile
