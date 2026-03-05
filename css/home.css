@@ -222,9 +222,18 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title {
   font-family: 'Playfair Display', cursive;
   font-size: 3rem;
-  margin-bottom: 2rem; /* More space below title before button */
+  margin-bottom: 0.5rem;
   margin-top: 0;
   line-height: 1.4;
+}
+
+.hero-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #e8e8e8;
+  font-style: italic;
 }
 
 .hero-title .line1,
