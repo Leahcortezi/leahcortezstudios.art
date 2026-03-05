@@ -575,11 +575,14 @@
 }
 
 .work-navigation .all-work {
-  background: rgba(248, 200, 208, 0.1);
+  background: transparent;
+  color: #f8c8d0;
+  border: 2px solid #f8c8d0;
 }
 
 .work-navigation .all-work:hover {
-  background: #e0b0b8;
+  background: #f8c8d0;
+  color: #000000;
 }
 
 /* --------------------
