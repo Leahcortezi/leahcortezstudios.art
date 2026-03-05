@@ -883,7 +883,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .bio-content {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       text-align: left;
       padding: 0 1.25rem;
     }
@@ -896,7 +896,7 @@ h1, h2, h3, h4, h5, h6 {
     .bio-image {
       width: 80%;
       max-width: 300px;
-      margin-left: 0;
+      margin-left: auto;
       margin-right: auto;
       display: block;
     }
@@ -940,16 +940,18 @@ h1, h2, h3, h4, h5, h6 {
 
     .featured-title {
       font-size: 2.2rem;
-      text-align: left;
-      margin-left: 0;
-      padding-left: 1.25rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
       display: block;
     }
 
     .view-all-link {
-      text-align: left;
-      margin-left: 0;
-      padding-left: 1.25rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
       display: block;
     }
 
@@ -957,7 +959,7 @@ h1, h2, h3, h4, h5, h6 {
       flex-direction: column;
       gap: 2.5rem;
       padding: 0 1.25rem;
-      align-items: flex-start;
+      align-items: center;
       text-align: center;
     }
 
