@@ -165,16 +165,6 @@
   position: relative;
 }
 
-.bio-section h2::before {
-  /*
-    Decorative element before section headings
-  */
-  content: '✦';
-  color: var(--color-secondary-accent);
-  margin-right: 0.75rem;
-  font-size: 0.9em;
-}
-
 .bio-section p {
   /*
     Section paragraph styling
