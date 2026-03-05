@@ -876,13 +876,13 @@ h1, h2, h3, h4, h5, h6 {
 
     .bio-content {
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .bio-text {
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .bio-image {
