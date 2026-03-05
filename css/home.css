@@ -220,6 +220,16 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.4;
 }
 
+.hero-title .line1,
+.hero-title .line2 {
+  display: inline;
+}
+
+.hero-title .line1::after {
+  content: '\A';
+  white-space: pre;
+}
+
 .hero-poetic {
   font-style: italic;
   font-size: 1rem;
@@ -258,20 +268,20 @@ h1, h2, h3, h4, h5, h6 {
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    background-color: var(--color-primary-accent);
-    color: var(--color-background);
+    background-color: #f8c8d0;
+    color: #000000;
     font-family: var(--font-accent);
     text-decoration: none;
     text-transform: uppercase;
-    border: 1px solid var(--color-primary-accent);
+    border: 1px solid #f8c8d0;
     border-radius: 20px;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #7e1c2e;
-  color: #f5c6d6;
-  border-color: #7e1c2e;
+  background-color: #e0b0b8;
+  color: #000000;
+  border-color: #e0b0b8;
 }
 
 /* --------------------
@@ -830,8 +840,13 @@ h1, h2, h3, h4, h5, h6 {
       margin-left: auto;
       margin-right: auto;
       display: block;
-      word-break: break-word;
-      hyphens: auto;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .hero-title .line1::after {
+      content: ' ';
+      white-space: normal;
     }
     .hero-poetic,
     .btn {
