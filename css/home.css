@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title {
   font-family: 'Playfair Display', cursive;
   font-size: 3rem;
-  margin-bottom: 10px; /* Less space below title */
+  margin-bottom: 2rem; /* More space below title before button */
   margin-top: 0;
   line-height: 1.4;
 }
