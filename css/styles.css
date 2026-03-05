@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Typography */
   --font-headings: 'Playfair Display', serif;      /* Elegant serif for all headings */
-  --font-body: 'Inter', sans-serif;    /* Clean, modern sans-serif for all paragraph text */
+  --font-body: 'IM Fell English', serif;    /* Classic serif for all paragraph text */
   --font-accent: 'IBM Plex Mono', monospace;  /* Monospaced font for captions or special text */
 
   /* Other Layout Variables */
