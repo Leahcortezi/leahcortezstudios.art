@@ -254,7 +254,7 @@ Uses fixed gallery order defined in `scripts/navigation-randomizer.js`
 
 - **Logo:** `images/logo/logo3.png` (inverted to white via CSS filter)
 - **Size:** 30px wide
-- **Copyright:** Leah Cortez © 2025
+- **Copyright:** Leah Cortez © [auto-updates via JavaScript]
 
 ---
 
