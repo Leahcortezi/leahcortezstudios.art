@@ -10,12 +10,12 @@ const galleryOrder = [
     "collections/design/Threads/index.html",
     "collections/printmaking/reliquary-heart/index.html",
     "collections/design/City Reliquary/index.html",
+    "collections/design/themed-playing-card-design/index-case-study.html",
     "collections/objects/abyss-bloom/index.html",
     "collections/design/endangered-species-poster/index.html",
     "collections/printmaking/the-living-room/index.html",
     "collections/illustration/heaven-on-fire/index.html",
     "collections/objects/feathers-along-the-bend/index.html",
-    "collections/design/themed-playing-card-design/index-case-study.html",
     "collections/printmaking/unbecoming/index.html",
     "collections/objects/gnaw/index.html",
     "collections/objects/unraveling/index.html"
