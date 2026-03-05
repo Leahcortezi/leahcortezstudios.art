@@ -518,9 +518,9 @@ body.menu-open {
     flex-direction: column;
     /* Right-align content */
     align-items: flex-end;
-    justify-content: center;
-    /* Generous padding */
-    padding: 2rem;
+    justify-content: flex-start;
+    /* Consistent padding - top accounts for nav height */
+    padding: 100px 2rem 2rem 2rem;
     /* Subtle border */
     border-left: 1px solid rgba(248, 200, 208, 0.2);
     box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
