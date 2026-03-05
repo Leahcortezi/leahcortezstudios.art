@@ -1077,6 +1077,17 @@ body.page-leaving {
   transition: opacity 0.2s ease-in-out;
 }
 
+/* Smaller body text on mobile */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+  
+  p {
+    font-size: 0.9rem;
+  }
+}
+
 /* Prevent flash of unstyled content */
 @media (prefers-reduced-motion: reduce) {
   body,
