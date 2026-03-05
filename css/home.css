@@ -152,11 +152,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-button:hover {
     /* Background color on hover */
-    background-color: #e0b0b8;
+    background-color: #7e1c2e;
     /* Text color on hover */
-    color: #000000;
+    color: #f8c8d0;
     /* Border color matches background */
-    border-color: #e0b0b8;
+    border-color: #7e1c2e;
     /* Ensure no shadows on hover */
     box-shadow: none;
     text-shadow: none;
@@ -279,9 +279,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn:hover {
-  background-color: #e0b0b8;
-  color: #000000;
-  border-color: #e0b0b8;
+  background-color: #7e1c2e;
+  color: #f8c8d0;
+  border-color: #7e1c2e;
 }
 
 /* --------------------
@@ -705,9 +705,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ensure contact button has proper hover effect */
 .contact-social-column .cta-button:hover {
-  background-color: #e0b0b8 !important;
-  color: #000000 !important;
-  border-color: #e0b0b8 !important;
+  background-color: #7e1c2e !important;
+  color: #f8c8d0 !important;
+  border-color: #7e1c2e !important;
 }
 
 .contact-preview-section h2 {

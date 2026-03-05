@@ -567,10 +567,10 @@
 }
 
 .work-navigation a:hover {
-  background: #e0b0b8;
-  color: #000000;
-  border-color: #e0b0b8;
-  box-shadow: 0 4px 16px rgba(248, 200, 208, 0.15);
+  background: #7e1c2e;
+  color: #f8c8d0;
+  border-color: #7e1c2e;
+  box-shadow: 0 4px 16px rgba(126, 28, 46, 0.15);
   transform: translateY(-2px);
 }
 
@@ -581,8 +581,8 @@
 }
 
 .work-navigation .all-work:hover {
-  background: #f8c8d0;
-  color: #000000;
+  background: #7e1c2e;
+  color: #f8c8d0;
 }
 
 /* --------------------

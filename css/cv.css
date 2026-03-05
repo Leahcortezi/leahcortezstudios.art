@@ -197,9 +197,9 @@
 }
 
 .cv-download-btn:hover {
-  background-color: #e0b0b8;
-  color: #000000;
-  border-color: #e0b0b8;
+  background-color: #7e1c2e;
+  color: #f8c8d0;
+  border-color: #7e1c2e;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
