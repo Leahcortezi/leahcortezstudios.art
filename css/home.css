@@ -118,6 +118,13 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1200px;
   /* Centers the container horizontally */
   margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
 }
 
 /*
@@ -878,6 +885,7 @@ h1, h2, h3, h4, h5, h6 {
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
+      padding: 0 1.25rem;
     }
 
     .bio-text {
@@ -888,7 +896,7 @@ h1, h2, h3, h4, h5, h6 {
     .bio-image {
       width: 80%;
       max-width: 300px;
-      margin-left: auto;
+      margin-left: 0;
       margin-right: auto;
       display: block;
     }
@@ -907,7 +915,7 @@ h1, h2, h3, h4, h5, h6 {
       scrollbar-width: none;
       -ms-overflow-style: none;
       gap: 20px;
-      padding: 0 1rem 1rem 1rem;
+      padding: 0 1.25rem 1rem 1.25rem;
       justify-content: flex-start;
     }
     
@@ -932,24 +940,24 @@ h1, h2, h3, h4, h5, h6 {
 
     .featured-title {
       font-size: 2.2rem;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: left;
+      margin-left: 0;
+      padding-left: 1.25rem;
       display: block;
     }
 
     .view-all-link {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: left;
+      margin-left: 0;
+      padding-left: 1.25rem;
       display: block;
     }
 
     .contact-content {
       flex-direction: column;
       gap: 2.5rem;
-      padding: 0 1rem;
-      align-items: center;
+      padding: 0 1.25rem;
+      align-items: flex-start;
       text-align: center;
     }
 

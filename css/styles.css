@@ -587,6 +587,7 @@ body.menu-open {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    margin-left: 1rem; /* Add space between nav content and hamburger */
     transition: all 0.3s ease;
     cursor: pointer;
     background: transparent;
