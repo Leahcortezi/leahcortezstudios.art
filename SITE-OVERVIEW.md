@@ -224,9 +224,9 @@ Uses fixed gallery order defined in `scripts/navigation-randomizer.js`
 
 ## External Integrations
 
-- **Shopify:** leah-cortez-shop.myshopify.com (linked from card.html)
+- **Behance:** behance.net/leahcortez1 (linked from card.html)
 - **Formspree/FormSubmit:** Contact form submission
-- **Google Fonts:** Pirata One, IM Fell English, IBM Plex Mono
+- **Google Fonts:** Playfair Display, IM Fell English, IBM Plex Mono
 - **GitHub Pages:** Hosting (repo: Leahcortezi/leahcortezstudios.art)
 
 ---
