@@ -18,7 +18,8 @@ const galleryOrder = [
     "collections/objects/feathers-along-the-bend/index.html",
     "collections/printmaking/unbecoming/index.html",
     "collections/objects/gnaw/index.html",
-    "collections/objects/unraveling/index.html"
+    "collections/objects/unraveling/index.html",
+    "collections/objects/remnants/index.html"
 ];
 
 // Function to get current work index from URL

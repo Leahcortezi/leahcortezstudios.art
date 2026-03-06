@@ -97,7 +97,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 - **Tablet:** 2-column masonry grid
 - **Mobile:** 2-column CSS flexbox (no masonry)
 
-### Current Gallery Order (19 pieces)
+### Current Gallery Order (20 pieces)
 1. Abuela's Altar (Illustration, 2025)
 2. Snack Packaging / Insane Grain (Design, 2025)
 3. Inheritance (Illustration, 2025)
@@ -117,6 +117,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 17. Gnaw (Sculpture, 2025)
 18. Feathers Along the Bend (Sculpture, 2025)
 19. Unraveling (Sculpture, 2025)
+20. Remnants (Sculpture, 2026)
 
 **Note:** Double-Sided Poster was removed from the gallery.
 
@@ -145,11 +146,12 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 - Disappearing Species Poster (2025)
 - Themed Playing Cards (2024)
 
-### Sculpture (4 pieces)
+### Sculpture (5 pieces)
 - Abyss Bloom (2025)
 - Gnaw (2025)
 - Feathers Along the Bend (2025)
 - Unraveling (2025)
+- Remnants (2026) — Vermiculite and Cement
 
 **Note:** Sculpture folder path is `collections/objects/` but displayed as "Sculpture" on site.
 
