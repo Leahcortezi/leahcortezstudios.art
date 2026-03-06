@@ -992,7 +992,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .contact-social-icons {
-      gap: 1.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
@@ -1008,12 +1008,20 @@ h1, h2, h3, h4, h5, h6 {
       align-items: center;
     }
 
+    .social-icon img {
+      /* Ensure consistent pink color on mobile */
+      filter: brightness(0) saturate(100%) invert(89%) sepia(15%) saturate(1040%) hue-rotate(298deg) brightness(102%) contrast(94%);
+      width: 28px;
+      height: 28px;
+    }
+
     .social-label {
       font-size: 0.75rem;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
       display: block;
+      color: #f8c8d0;
     }
 }
 
