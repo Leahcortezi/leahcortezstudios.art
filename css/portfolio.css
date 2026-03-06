@@ -113,7 +113,7 @@
 }
 
 .portfolio-hero h1 {
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Libre Baskerville", sans-serif;
   font-size: 3.5rem;
   color: var(--primary-color);
   margin: 0;
@@ -548,7 +548,7 @@
 
 .caption {
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1.1rem;
   color: #fff;
   margin: 0.2rem 0 0 0; /* Reduced from 0.5rem to bring titles closer to thumbnails */

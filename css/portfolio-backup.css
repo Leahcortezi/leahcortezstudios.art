@@ -449,7 +449,7 @@
   margin: 5px;
   padding: 8px 16px;
   cursor: pointer;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
 }
 .filter-buttons button.active {
   background-color: #7e1c2e;

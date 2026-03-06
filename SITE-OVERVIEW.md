@@ -68,7 +68,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 ### Typography
 | Font | Usage |
 |------|-------|
-| **Playfair Display** | Main headings, hero title, section titles |
+| **Libre Baskerville** | Main headings, hero title, section titles |
 | **IM Fell English** | Body text, paragraphs, bio text |
 | **IBM Plex Mono** | Meta info, dates, dimensions, filter labels, captions |
 
@@ -220,7 +220,7 @@ Links included:
 - **Behance:** behance.net/leahcortez1
 - **Instagram:** @leahcortez.art
 - **Contact Form:** FormSubmit
-- **Fonts:** Google Fonts (Playfair Display, IM Fell English, IBM Plex Mono)
+- **Fonts:** Google Fonts (Libre Baskerville, IM Fell English, IBM Plex Mono)
 - **Hosting:** GitHub Pages (Leahcortezi/leahcortezstudios.art)
 
 ---

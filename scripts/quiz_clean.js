@@ -434,7 +434,7 @@ class PortfolioQuiz {
         ctx.fillText('LEAH CORTEZ STUDIOS', width/2, bottomY + 40);
         
         // Featured piece title (like Spotify song title)
-        ctx.font = 'bold 84px "Playfair Display", cursive';
+        ctx.font = 'bold 84px "Libre Baskerville", cursive';
         ctx.fillStyle = '#f7f3f1';
         ctx.textAlign = 'center';
         ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
@@ -550,7 +550,7 @@ class PortfolioQuiz {
         
         // Title - Pirata One
         ctx.fillStyle = '#f7f3f1';
-        ctx.font = 'bold 56px "Playfair Display", serif';
+        ctx.font = 'bold 56px "Libre Baskerville", serif';
         ctx.textAlign = 'center';
         const titleY = 280;
         const wrappedTitle = this.wrapText(ctx, result.title, width - 200);
@@ -600,7 +600,7 @@ class PortfolioQuiz {
         
         // Footer
         const footerY = height - 100;
-        ctx.font = 'bold 24px "Playfair Display", serif';
+        ctx.font = 'bold 24px "Libre Baskerville", serif';
         ctx.fillStyle = '#f7f3f1';
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         
@@ -643,7 +643,7 @@ class PortfolioQuiz {
         
         // Title with ethereal glow
         ctx.fillStyle = '#f7f3f1';
-        ctx.font = 'bold 58px "Playfair Display", serif';
+        ctx.font = 'bold 58px "Libre Baskerville", serif';
         ctx.textAlign = 'center';
         ctx.shadowColor = 'rgba(126, 28, 46, 0.8)';
         ctx.shadowBlur = 25;
@@ -701,7 +701,7 @@ class PortfolioQuiz {
         
         // Footer
         const footerY = height - 90;
-        ctx.font = 'bold 28px "Playfair Display", serif';
+        ctx.font = 'bold 28px "Libre Baskerville", serif';
         ctx.fillStyle = '#f5c6d6';
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         
@@ -736,7 +736,7 @@ class PortfolioQuiz {
         
         // Title with elegant typography
         ctx.fillStyle = '#2d1b25';
-        ctx.font = 'bold 54px "Playfair Display", serif';
+        ctx.font = 'bold 54px "Libre Baskerville", serif';
         ctx.textAlign = 'center';
         ctx.shadowColor = 'rgba(212, 165, 165, 0.6)';
         ctx.shadowBlur = 10;
@@ -798,7 +798,7 @@ class PortfolioQuiz {
         
         // Footer
         const footerY = height - 90;
-        ctx.font = 'bold 26px "Playfair Display", serif';
+        ctx.font = 'bold 26px "Libre Baskerville", serif';
         ctx.fillStyle = '#2d1b25';
         ctx.fillText('LEAH CORTEZ STUDIOS', width / 2, footerY);
         

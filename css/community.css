@@ -171,7 +171,7 @@ body {
 .submit-section h2 {
     text-align: center;
     color: #f8c8d0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 2.5rem;
     margin-bottom: 40px;
 }
@@ -357,7 +357,7 @@ body {
 .community-gallery h2 {
     text-align: center;
     color: #f8c8d0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 2.5rem;
     margin-bottom: 15px;
 }
@@ -508,7 +508,7 @@ body {
     font-weight: bold;
     color: #f8c8d0;
     margin-bottom: 5px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
 }
 
 .stat-label {
@@ -2619,7 +2619,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     color: #f8c8d0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     line-height: 1;
 }

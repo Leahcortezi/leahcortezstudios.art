@@ -220,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 3rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
@@ -343,7 +343,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Info styles for bio section */
 .bio-title {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0.3rem;
@@ -457,7 +457,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: #f5c6d6;
-    font-family: 'Playfair Display', cursive;
+    font-family: 'Libre Baskerville', cursive;
 }
 
 .featured-art-section {
@@ -667,7 +667,7 @@ h1, h2, h3, h4, h5, h6 {
 .caption {
   color: white;
   margin-top: 10px;
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 16px;
   text-align: center;
 }
@@ -1144,7 +1144,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-info-column h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2.2rem;
   color: var(--cream);
   margin-bottom: 15px;
@@ -1621,7 +1621,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-header h2 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 3.2rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -1664,7 +1664,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-intro h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -1828,7 +1828,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .question-text {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2rem;
   color: var(--cream);
   text-align: center;
@@ -1966,7 +1966,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .result-text h2 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 10px;
@@ -2028,7 +2028,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .archetype-summary h4 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   color: var(--cream);
   margin-bottom: 15px;
   text-align: center;
@@ -2054,7 +2054,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .interest-selector h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2.2rem;
   color: var(--cream);
   margin-bottom: 10px;
@@ -2190,7 +2190,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-result h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -2198,7 +2198,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-result h4 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   font-size: 1.8rem;
   color: var(--cream);
   margin-top: 40px;
@@ -2329,7 +2329,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .piece-title {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   color: var(--cream);
   font-size: 1.3rem;
   margin: 10px 0;
@@ -2477,7 +2477,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-header h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   color: var(--cream);
   font-size: 2rem;
   margin-bottom: 10px;
@@ -2736,7 +2736,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .spotify-share-header h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   color: var(--cream);
   margin: 0;
   font-size: 1.8rem;
@@ -3066,7 +3066,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-modal-header h3 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Libre Baskerville', cursive;
   color: var(--cream);
   margin: 0;
   font-size: 1.8rem;
@@ -3493,7 +3493,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .instruction-content h3 {
     color: var(--burgundy-red);
-    font-family: 'Playfair Display', cursive;
+    font-family: 'Libre Baskerville', cursive;
     font-size: 1.8rem;
     margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
