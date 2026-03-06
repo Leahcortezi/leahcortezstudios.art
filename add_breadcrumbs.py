@@ -23,11 +23,11 @@ work_pages = {
     'collections/motion/visual-language-of-dream-logic/index.html': ('Motion Design', 'Visual Language of Dream Logic'),
     'collections/motion/reminiscent/index.html': ('Motion Design', 'Reminiscent'),
     
-    # Objects
-    'collections/objects/unraveling/index.html': ('Objects', 'Unraveling'),
-    'collections/objects/gnaw/index.html': ('Objects', 'Gnaw'),
-    'collections/objects/feathers-along-the-bend/index.html': ('Objects', 'Feathers Along The Bend'),
-    'collections/objects/abyss-bloom/index.html': ('Objects', 'Abyss Bloom'),
+    # Sculpture
+    'collections/objects/unraveling/index.html': ('Sculpture', 'Unraveling'),
+    'collections/objects/gnaw/index.html': ('Sculpture', 'Gnaw'),
+    'collections/objects/feathers-along-the-bend/index.html': ('Sculpture', 'Feathers Along The Bend'),
+    'collections/objects/abyss-bloom/index.html': ('Sculpture', 'Abyss Bloom'),
     
     # Design
     'collections/design/double-sided-poster/index.html': ('Design', 'Double-Sided Poster'),

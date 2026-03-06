@@ -278,7 +278,7 @@ class PortfolioQuiz {
             "feathers-along-bend": {
             title: "The Curious Collector",
             subtitle: "Feathers Along the Bend",
-            category: "Objects",
+            category: "Sculpture",
             personality: {
                 vibe: "Nature-obsessed artist with cabinet of curiosities energy",
                 tools: "Found natural objects, preservation techniques, and delicate hands",

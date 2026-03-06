@@ -15,7 +15,7 @@
 **Pages with Breadcrumbs:**
 - All Illustration work pages (8 total: Anointed Gaze, Heaven On Fire, Inheritance, Abuela's Altar, plus 4 empty placeholders)
 - All Motion work pages (4 total: Visual Language, Reminiscent, Genesis, Abuela's Ofrenda)
-- All Objects work pages (4 total: Gnaw, Unraveling, Feathers Along The Bend, Abyss Bloom)
+- All Sculpture work pages (4 total: Gnaw, Unraveling, Feathers Along The Bend, Abyss Bloom)
 - All Design work pages (13 total: historical movements, commercial projects)
 
 **Benefits:**
@@ -64,7 +64,7 @@
 - 8 Illustration pieces
 - 4 Motion pieces
 - 13 Design pieces (historical movements + commercial)
-- 4 Objects pieces
+- 4 Sculpture pieces
 - Homepage Latest Project
 - Total: 30+ descriptive alt texts added
 

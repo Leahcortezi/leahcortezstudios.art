@@ -89,7 +89,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 ## Archive (Gallery)
 
 ### Filters
-1. **Category Filter** (pill buttons): All Work, Design, Illustration, Printmaking, Objects
+1. **Category Filter** (pill buttons): All Work, Design, Illustration, Printmaking, Sculpture
 2. **Year Filter** (dropdown): All Years, 2026, 2025, 2024, Early Work
 
 ### Layout
@@ -111,12 +111,12 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 11. Themed Playing Cards (Design, 2024)
 12. Disappearing Species (Design, 2025)
 13. The Living Room (Printmaking, 2025)
-14. Abyss Bloom (Objects, 2025)
+14. Abyss Bloom (Sculpture, 2025)
 15. Heaven on Fire (Illustration, 2022)
 16. Unbecoming (Printmaking, 2025)
-17. Gnaw (Objects, 2025)
-18. Feathers Along the Bend (Objects, 2025)
-19. Unraveling (Objects, 2025)
+17. Gnaw (Sculpture, 2025)
+18. Feathers Along the Bend (Sculpture, 2025)
+19. Unraveling (Sculpture, 2025)
 
 **Note:** Double-Sided Poster was removed from the gallery.
 
@@ -145,17 +145,19 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 - Disappearing Species Poster (2025)
 - Themed Playing Cards (2024)
 
-### Objects (4 pieces)
+### Sculpture (4 pieces)
 - Abyss Bloom (2025)
 - Gnaw (2025)
 - Feathers Along the Bend (2025)
 - Unraveling (2025)
 
+**Note:** Sculpture folder path is `collections/objects/` but displayed as "Sculpture" on site.
+
 ---
 
 ## Work Page Templates
 
-### Fine Art (Illustration, Printmaking, Objects)
+### Fine Art (Illustration, Printmaking, Sculpture)
 - **Meta:** Medium, Year, Dimensions
 - **Content:** Project Overview paragraph
 

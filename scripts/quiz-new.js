@@ -243,28 +243,28 @@ class PortfolioBuilder {
             },
             "abyss-bloom": {
                 title: "Abyss Bloom",
-                category: "Objects",
+                category: "Sculpture",
                 path: "collections/objects/abyss-bloom/index.html",
                 image: "collections/objects/abyss-bloom/images/JPEG/studio2.jpg",
                 description: "Sculptural creature exploring beauty in the uncanny and grotesque"
             },
             "feathers-along-bend": {
                 title: "Feathers Along the Bend",
-                category: "Objects",
+                category: "Sculpture",
                 path: "collections/objects/feathers-along-the-bend/index.html",
                 image: "collections/objects/feathers-along-the-bend/images/JPEG/studio8.jpg",
                 description: "Found object assemblage celebrating natural curiosities"
             },
             "unraveling": {
                 title: "Unraveling",
-                category: "Objects",
+                category: "Sculpture",
                 path: "collections/objects/unraveling/index.html",
                 image: "collections/objects/unraveling/images/JPEG/Studio5.jpg",
                 description: "Wire sculpture embodying anxiety and controlled chaos"
             },
             "gnaw": {
                 title: "Gnaw",
-                category: "Objects",
+                category: "Sculpture",
                 path: "collections/objects/gnaw/index.html",
                 image: "collections/objects/gnaw/images/JPEG/Studio6.jpg",
                 description: "Sculptural exploration of consumption and transformation"
