@@ -1,5 +1,5 @@
 /*
-  Leah Cortez Studio Art - Main JavaScript File
+  Leah Cortez Studios Art - Main JavaScript File
   ---
   This file contains all the global JavaScript functionality for the website,
   such as the mobile navigation (hamburger menu), portfolio masonry layout,
