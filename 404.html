@@ -8,33 +8,43 @@
 
     <script>
         (function () {
-            const prefix = window.location.protocol === 'file:' ? '' : '/';
-            window.__archivePrefix = prefix;
+            const currentUrl = new URL(window.location.href);
+            let baseUrl;
+
+            if (currentUrl.pathname.endsWith('/404.html')) {
+                baseUrl = currentUrl.href;
+            } else {
+                baseUrl = `${currentUrl.origin}/`;
+            }
+
+            window.__archiveResolveUrl = function (relativePath) {
+                return new URL(relativePath, baseUrl).href;
+            };
 
             const faviconMain = document.createElement('link');
             faviconMain.id = 'favicon-main';
             faviconMain.rel = 'icon';
             faviconMain.type = 'image/x-icon';
-            faviconMain.href = `${prefix}icons/favicon.ico?v=2025`;
+            faviconMain.href = window.__archiveResolveUrl('icons/favicon.ico?v=2025');
             document.head.appendChild(faviconMain);
 
             const faviconShortcut = document.createElement('link');
             faviconShortcut.id = 'favicon-shortcut';
             faviconShortcut.rel = 'shortcut icon';
             faviconShortcut.type = 'image/x-icon';
-            faviconShortcut.href = `${prefix}icons/favicon.ico?v=2025`;
+            faviconShortcut.href = window.__archiveResolveUrl('icons/favicon.ico?v=2025');
             document.head.appendChild(faviconShortcut);
 
             const stylesMain = document.createElement('link');
             stylesMain.id = 'styles-main';
             stylesMain.rel = 'stylesheet';
-            stylesMain.href = `${prefix}css/styles.css`;
+            stylesMain.href = window.__archiveResolveUrl('css/styles.css');
             document.head.appendChild(stylesMain);
 
             const styles404 = document.createElement('link');
             styles404.id = 'styles-404';
             styles404.rel = 'stylesheet';
-            styles404.href = `${prefix}css/404.css`;
+            styles404.href = window.__archiveResolveUrl('css/404.css');
             document.head.appendChild(styles404);
         })();
     </script>
@@ -43,16 +53,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const prefix = window.__archivePrefix || '/';
+            const resolveUrl = window.__archiveResolveUrl || function (path) { return path; };
 
             const homeLink = document.getElementById('home-link');
             const archiveLink = document.getElementById('archive-link');
             const contactLink = document.getElementById('contact-link');
             const randomLink = document.getElementById('random-work-link');
 
-            if (homeLink) homeLink.href = `${prefix}index.html`;
-            if (archiveLink) archiveLink.href = `${prefix}collections/index.html`;
-            if (contactLink) contactLink.href = `${prefix}contact/index.html`;
+            if (homeLink) homeLink.href = resolveUrl('index.html');
+            if (archiveLink) archiveLink.href = resolveUrl('collections/index.html');
+            if (contactLink) contactLink.href = resolveUrl('contact/index.html');
 
             const randomWorks = [
                 'collections/illustration/abuelas-altar/index.html',
@@ -62,7 +72,7 @@
             ];
             if (randomLink) {
                 const pick = randomWorks[Math.floor(Math.random() * randomWorks.length)];
-                randomLink.href = `${prefix}${pick}`;
+                randomLink.href = resolveUrl(pick);
             }
         });
     </script>
@@ -80,10 +90,10 @@
             </p>
 
             <nav class="archive-404-links" aria-label="Recovery links">
-                <a id="home-link" href="/index.html">Return Home</a>
-                <a id="archive-link" href="/collections/index.html">Browse Archive</a>
-                <a id="random-work-link" href="/collections/index.html">Random Work</a>
-                <a id="contact-link" href="/contact/index.html">Contact</a>
+                <a id="home-link" href="index.html">Return Home</a>
+                <a id="archive-link" href="collections/index.html">Browse Archive</a>
+                <a id="random-work-link" href="collections/index.html">Random Work</a>
+                <a id="contact-link" href="contact/index.html">Contact</a>
             </nav>
 
             <p class="archive-404-note">Leah Cortez Studio · Personal Archive</p>
