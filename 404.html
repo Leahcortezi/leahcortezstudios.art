@@ -67,8 +67,6 @@
 </head>
 <body class="page-loaded">
     <main class="archive-404" aria-labelledby="not-found-title">
-        <div class="archive-404-grain" aria-hidden="true"></div>
-
         <section class="archive-404-card">
             <p class="archive-404-code" aria-hidden="true">404</p>
             <h1 id="not-found-title">Page Not Found</h1>
@@ -85,5 +83,15 @@
             <p class="archive-404-note">Leah Cortez Studio</p>
         </section>
     </main>
+
+    <script>
+        (function () {
+            const resolveUrl = window.__archiveResolveUrl || function (path) { return path; };
+            const sharedMainScript = document.createElement('script');
+            sharedMainScript.src = resolveUrl('scripts/main.js');
+            sharedMainScript.defer = true;
+            document.body.appendChild(sharedMainScript);
+        })();
+    </script>
 </body>
 </html>
