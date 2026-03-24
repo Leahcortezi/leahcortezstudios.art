@@ -343,16 +343,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-archive-block {
   margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(248, 200, 208, 0.35);
+  padding-top: 0.35rem;
 }
 
 .about-archive-block h3 {
   margin: 0 0 0.5rem;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.35rem;
-  color: #f5c6d6;
-  letter-spacing: 0.5px;
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--color-primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .about-archive-block p {
@@ -925,11 +926,11 @@ h1, h2, h3, h4, h5, h6 {
     .about-archive-block {
       width: 100%;
       margin-top: 1rem;
-      padding-top: 0.9rem;
+      padding-top: 0.25rem;
     }
 
     .about-archive-block h3 {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 0.4rem;
     }
 
