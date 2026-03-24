@@ -862,6 +862,19 @@ body {
         0 0 0 1px rgba(248, 200, 208, 0.1) inset,
         0 25px 60px rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(2px);
+    overflow: hidden;
+}
+
+.archive-404-card::before {
+    content: "";
+    position: absolute;
+    inset: -18% -8% auto auto;
+    width: 320px;
+    height: 320px;
+    background: url('../images/logo/logo1.png') center/contain no-repeat;
+    opacity: 0.07;
+    transform: rotate(12deg);
+    pointer-events: none;
 }
 
 .archive-404-eyebrow {
@@ -886,9 +899,21 @@ body {
     margin: 0;
     color: #fff;
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
     line-height: 1.2;
     font-weight: 500;
+}
+
+.archive-404-code {
+    margin: 0 0 0.35rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(3.5rem, 12vw, 7.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: rgba(248, 200, 208, 0.18);
+    text-shadow: 0 0 30px rgba(248, 200, 208, 0.22);
+    user-select: none;
 }
 
 .archive-404-message {
@@ -951,5 +976,11 @@ body {
 
     .archive-404-links a {
         width: 100%;
+    }
+
+    .archive-404-card::before {
+        width: 230px;
+        height: 230px;
+        inset: -15% -15% auto auto;
     }
 }
