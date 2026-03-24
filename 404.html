@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Page Not Found | Leah Cortez Studio</title>
-    <meta name="description" content="The page you tried to visit doesn't exist. Return to Leah Cortez Studio's personal archive.">
+    <title>404 — Archive Slip | Leah Cortez Studio</title>
+    <meta name="description" content="This page slipped out of the archive. Use quick links to return to Leah Cortez Studio.">
 
-    <link rel="icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
-    <link rel="shortcut icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
+    <link id="favicon-main" rel="icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
+    <link id="favicon-shortcut" rel="shortcut icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/404.css">
+    <link id="styles-main" rel="stylesheet" href="/css/styles.css">
+    <link id="styles-404" rel="stylesheet" href="/css/404.css">
+
+    <script>
+        if (window.location.protocol === 'file:') {
+            document.getElementById('favicon-main').href = 'icons/favicon.ico?v=2025';
+            document.getElementById('favicon-shortcut').href = 'icons/favicon.ico?v=2025';
+            document.getElementById('styles-main').href = 'css/styles.css';
+            document.getElementById('styles-404').href = 'css/404.css';
+            document.addEventListener('DOMContentLoaded', function () {
+                const homeLink = document.getElementById('home-link');
+                const archiveLink = document.getElementById('archive-link');
+                const contactLink = document.getElementById('contact-link');
+                if (homeLink) homeLink.href = 'index.html';
+                if (archiveLink) archiveLink.href = 'collections/index.html';
+                if (contactLink) contactLink.href = 'contact/index.html';
+            });
+        }
+    </script>
 </head>
 <body>
-    <main class="not-found-page" aria-labelledby="not-found-title">
-        <div class="void-whispers" aria-hidden="true">
-            <span class="whisper"></span>
-            <span class="whisper"></span>
-            <span class="whisper"></span>
-        </div>
+    <main class="archive-404" aria-labelledby="not-found-title">
+        <div class="archive-404-grain" aria-hidden="true"></div>
 
-        <div class="void-particles" aria-hidden="true">
-            <span class="particle"></span>
-            <span class="particle"></span>
-            <span class="particle"></span>
-            <span class="particle"></span>
-            <span class="particle"></span>
-        </div>
+        <section class="archive-404-card">
+            <p class="archive-404-eyebrow">ARCHIVE NOTICE · 404</p>
+            <h1 id="not-found-title">This page slipped out of the archive.</h1>
+            <p class="archive-404-message">
+                The link might be old, moved, or mistyped. Start from the archive and keep exploring.
+            </p>
 
-        <section class="not-found-container">
-            <h1 id="not-found-title">404</h1>
-            <p class="message">this page slipped out of the archive</p>
-            <a class="home-button" href="/index.html">Return Home</a>
+            <nav class="archive-404-links" aria-label="Recovery links">
+                <a id="home-link" href="/index.html">Return Home</a>
+                <a id="archive-link" href="/collections/index.html">Browse Archive</a>
+                <a id="contact-link" href="/contact/index.html">Contact</a>
+            </nav>
+
+            <p class="archive-404-note">Leah Cortez Studio · Personal Archive</p>
         </section>
     </main>
 </body>

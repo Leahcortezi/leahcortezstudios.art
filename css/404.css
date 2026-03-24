@@ -797,3 +797,150 @@ body {
         letter-spacing: 1px;
     }
 }
+
+/* ==========================================
+   ARCHIVE-STYLE 404 (CURRENT IMPLEMENTATION)
+   ========================================== */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: 'IM Fell English', serif;
+    overflow: auto;
+}
+
+.archive-404 {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(248, 200, 208, 0.12), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(224, 176, 184, 0.1), transparent 30%),
+        linear-gradient(145deg, #050505, #000 55%);
+    overflow: hidden;
+}
+
+.archive-404::before,
+.archive-404::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(248, 200, 208, 0.2);
+    pointer-events: none;
+}
+
+.archive-404::before {
+    inset: 1rem;
+}
+
+.archive-404::after {
+    inset: 1.75rem;
+    border-color: rgba(248, 200, 208, 0.12);
+}
+
+.archive-404-grain {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    opacity: 0.15;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.archive-404-card {
+    position: relative;
+    z-index: 1;
+    width: min(760px, 100%);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid rgba(248, 200, 208, 0.28);
+    background: rgba(7, 7, 7, 0.7);
+    box-shadow:
+        0 0 0 1px rgba(248, 200, 208, 0.1) inset,
+        0 25px 60px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.archive-404-eyebrow {
+    margin: 0 0 0.9rem;
+    color: #f8c8d0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.archive-404-card h1 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.archive-404-message {
+    margin: 1rem 0 1.75rem;
+    max-width: 60ch;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    line-height: 1.65;
+    color: #f2f2f2;
+}
+
+.archive-404-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.archive-404-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.62rem 1rem;
+    border: 1px solid #f8c8d0;
+    color: #f8c8d0;
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.archive-404-links a:hover,
+.archive-404-links a:focus-visible {
+    background: #f8c8d0;
+    color: #000;
+    outline: none;
+}
+
+.archive-404-note {
+    margin: 1.4rem 0 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(248, 200, 208, 0.75);
+}
+
+@media (max-width: 640px) {
+    .archive-404 {
+        padding: 1rem;
+    }
+
+    .archive-404::before {
+        inset: 0.5rem;
+    }
+
+    .archive-404::after {
+        inset: 1rem;
+    }
+
+    .archive-404-links a {
+        width: 100%;
+    }
+}
