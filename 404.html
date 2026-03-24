@@ -58,22 +58,10 @@
             const homeLink = document.getElementById('home-link');
             const archiveLink = document.getElementById('archive-link');
             const contactLink = document.getElementById('contact-link');
-            const randomLink = document.getElementById('random-work-link');
 
             if (homeLink) homeLink.href = resolveUrl('index.html');
             if (archiveLink) archiveLink.href = resolveUrl('collections/index.html');
             if (contactLink) contactLink.href = resolveUrl('contact/index.html');
-
-            const randomWorks = [
-                'collections/illustration/abuelas-altar/index.html',
-                'collections/design/insane-grain-packaging/index.html',
-                'collections/printmaking/the-unholy-gaze/index.html',
-                'collections/objects/remnants/index.html'
-            ];
-            if (randomLink) {
-                const pick = randomWorks[Math.floor(Math.random() * randomWorks.length)];
-                randomLink.href = resolveUrl(pick);
-            }
         });
     </script>
 </head>
@@ -82,22 +70,19 @@
         <div class="archive-404-grain" aria-hidden="true"></div>
 
         <section class="archive-404-card">
-            <p class="archive-404-eyebrow">ARCHIVE NOTICE · 404</p>
-            <p class="archive-404-catalog">CATALOG REF: LC-404-2026</p>
             <p class="archive-404-code" aria-hidden="true">404</p>
             <h1 id="not-found-title">Page Not Found</h1>
             <p class="archive-404-message">
-                This page slipped out of the archive. The link may be old, moved, or mistyped.
+                This page wandered off. The link may be old, moved, or mistyped.
             </p>
 
             <nav class="archive-404-links" aria-label="Recovery links">
                 <a id="home-link" href="index.html">Return Home</a>
                 <a id="archive-link" href="collections/index.html">Browse Archive</a>
-                <a id="random-work-link" href="collections/index.html">Random Work</a>
                 <a id="contact-link" href="contact/index.html">Contact</a>
             </nav>
 
-            <p class="archive-404-note">Leah Cortez Studio · Personal Archive</p>
+            <p class="archive-404-note">Leah Cortez Studio</p>
         </section>
     </main>
 </body>
