@@ -873,6 +873,15 @@ body {
     text-transform: uppercase;
 }
 
+.archive-404-catalog {
+    margin: -0.25rem 0 1rem;
+    color: rgba(248, 200, 208, 0.78);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
 .archive-404-card h1 {
     margin: 0;
     color: #fff;

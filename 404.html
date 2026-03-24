@@ -6,28 +6,65 @@
     <title>404 — Archive Slip | Leah Cortez Studio</title>
     <meta name="description" content="This page slipped out of the archive. Use quick links to return to Leah Cortez Studio.">
 
-    <link id="favicon-main" rel="icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
-    <link id="favicon-shortcut" rel="shortcut icon" href="/icons/favicon.ico?v=2025" type="image/x-icon">
+    <script>
+        (function () {
+            const prefix = window.location.protocol === 'file:' ? '' : '/';
+            window.__archivePrefix = prefix;
+
+            const faviconMain = document.createElement('link');
+            faviconMain.id = 'favicon-main';
+            faviconMain.rel = 'icon';
+            faviconMain.type = 'image/x-icon';
+            faviconMain.href = `${prefix}icons/favicon.ico?v=2025`;
+            document.head.appendChild(faviconMain);
+
+            const faviconShortcut = document.createElement('link');
+            faviconShortcut.id = 'favicon-shortcut';
+            faviconShortcut.rel = 'shortcut icon';
+            faviconShortcut.type = 'image/x-icon';
+            faviconShortcut.href = `${prefix}icons/favicon.ico?v=2025`;
+            document.head.appendChild(faviconShortcut);
+
+            const stylesMain = document.createElement('link');
+            stylesMain.id = 'styles-main';
+            stylesMain.rel = 'stylesheet';
+            stylesMain.href = `${prefix}css/styles.css`;
+            document.head.appendChild(stylesMain);
+
+            const styles404 = document.createElement('link');
+            styles404.id = 'styles-404';
+            styles404.rel = 'stylesheet';
+            styles404.href = `${prefix}css/404.css`;
+            document.head.appendChild(styles404);
+        })();
+    </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
-    <link id="styles-main" rel="stylesheet" href="/css/styles.css">
-    <link id="styles-404" rel="stylesheet" href="/css/404.css">
 
     <script>
-        if (window.location.protocol === 'file:') {
-            document.getElementById('favicon-main').href = 'icons/favicon.ico?v=2025';
-            document.getElementById('favicon-shortcut').href = 'icons/favicon.ico?v=2025';
-            document.getElementById('styles-main').href = 'css/styles.css';
-            document.getElementById('styles-404').href = 'css/404.css';
-            document.addEventListener('DOMContentLoaded', function () {
-                const homeLink = document.getElementById('home-link');
-                const archiveLink = document.getElementById('archive-link');
-                const contactLink = document.getElementById('contact-link');
-                if (homeLink) homeLink.href = 'index.html';
-                if (archiveLink) archiveLink.href = 'collections/index.html';
-                if (contactLink) contactLink.href = 'contact/index.html';
-            });
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const prefix = window.__archivePrefix || '/';
+
+            const homeLink = document.getElementById('home-link');
+            const archiveLink = document.getElementById('archive-link');
+            const contactLink = document.getElementById('contact-link');
+            const randomLink = document.getElementById('random-work-link');
+
+            if (homeLink) homeLink.href = `${prefix}index.html`;
+            if (archiveLink) archiveLink.href = `${prefix}collections/index.html`;
+            if (contactLink) contactLink.href = `${prefix}contact/index.html`;
+
+            const randomWorks = [
+                'collections/illustration/abuelas-altar/index.html',
+                'collections/design/insane-grain-packaging/index.html',
+                'collections/printmaking/the-unholy-gaze/index.html',
+                'collections/objects/remnants/index.html'
+            ];
+            if (randomLink) {
+                const pick = randomWorks[Math.floor(Math.random() * randomWorks.length)];
+                randomLink.href = `${prefix}${pick}`;
+            }
+        });
     </script>
 </head>
 <body>
@@ -36,6 +73,7 @@
 
         <section class="archive-404-card">
             <p class="archive-404-eyebrow">ARCHIVE NOTICE · 404</p>
+            <p class="archive-404-catalog">CATALOG REF: LC-404-2026</p>
             <h1 id="not-found-title">This page slipped out of the archive.</h1>
             <p class="archive-404-message">
                 The link might be old, moved, or mistyped. Start from the archive and keep exploring.
@@ -44,6 +82,7 @@
             <nav class="archive-404-links" aria-label="Recovery links">
                 <a id="home-link" href="/index.html">Return Home</a>
                 <a id="archive-link" href="/collections/index.html">Browse Archive</a>
+                <a id="random-work-link" href="/collections/index.html">Random Work</a>
                 <a id="contact-link" href="/contact/index.html">Contact</a>
             </nav>
 
