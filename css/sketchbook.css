@@ -1,0 +1,269 @@
+.sketchbook-page {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.sketchbook-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.draft-label {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(248, 200, 208, 0.45);
+  border-radius: 999px;
+  color: rgba(248, 200, 208, 0.9);
+  font-family: var(--font-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sketchbook-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.sketchbook-subtitle {
+  margin: 0.35rem 0 0;
+  color: rgba(232, 232, 232, 0.86);
+  font-size: 1.05rem;
+}
+
+.protocol-warning {
+  margin: 0.8rem auto 0;
+  max-width: 780px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(248, 200, 208, 0.4);
+  border-radius: 8px;
+  color: #f8c8d0;
+  background: rgba(126, 28, 46, 0.2);
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.protocol-warning code {
+  color: #fff;
+}
+
+.flipbook-shell {
+  position: relative;
+  margin: 1.25rem auto 0;
+}
+
+.book-spine {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 10px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(248, 200, 208, 0.24), rgba(126, 28, 46, 0.5));
+  box-shadow: 0 0 24px rgba(248, 200, 208, 0.2);
+  z-index: 2;
+}
+
+.flipbook {
+  width: min(980px, 100%);
+  height: auto;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.sketch-page {
+  position: relative;
+}
+
+/* Fallback stacking when JS is blocked (first page remains visible) */
+.sketch-page:first-child {
+  z-index: 50;
+}
+
+.page-content {
+  height: 100%;
+  background:
+    radial-gradient(circle at 12% 9%, rgba(126, 28, 46, 0.12), transparent 36%),
+    radial-gradient(circle at 85% 22%, rgba(248, 200, 208, 0.15), transparent 36%),
+    #f4eee3;
+  border: 1px solid rgba(126, 28, 46, 0.28);
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  align-items: stretch;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.page-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 200, 208, 0.2);
+}
+
+.page-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px dashed rgba(126, 28, 46, 0.45);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.page-note h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+}
+
+.page-note p {
+  margin: 0;
+  color: rgba(38, 22, 26, 0.88);
+  line-height: 1.65;
+}
+
+.page-cover {
+  grid-template-columns: 1fr;
+  place-items: center;
+  text-align: center;
+  padding: 2.3rem;
+}
+
+.page-cover h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 0;
+}
+
+.page-cover p {
+  margin: 0.45rem 0 0;
+  color: rgba(46, 30, 34, 0.86);
+}
+
+.scribble {
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: rgba(248, 200, 208, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.back-cover {
+  background:
+    radial-gradient(circle at 22% 20%, rgba(248, 200, 208, 0.16), transparent 34%),
+    radial-gradient(circle at 75% 78%, rgba(126, 28, 46, 0.21), transparent 38%),
+    #e6d7c9;
+}
+
+.sketchbook-page.is-enhanced .flipbook-shell {
+  perspective: 2400px;
+}
+
+.sketchbook-page.is-enhanced .book-spine {
+  display: block;
+}
+
+.sketchbook-page.is-enhanced .flipbook {
+  position: relative;
+  display: block;
+  height: min(70vh, 680px);
+  transform-style: preserve-3d;
+}
+
+.sketchbook-page.is-enhanced .sketch-page {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.85s ease;
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.sketchbook-page.is-enhanced .sketch-page.flipped {
+  transform: rotateY(-168deg);
+  box-shadow: -8px 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+.flipbook-controls {
+  margin: 1rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.flipbook-controls button {
+  background: #f8c8d0;
+  color: #000;
+  border: 1px solid #f8c8d0;
+  border-radius: 999px;
+  font-family: var(--font-accent);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.flipbook-controls button:hover:not(:disabled) {
+  background: #7e1c2e;
+  border-color: #7e1c2e;
+  color: #f8c8d0;
+}
+
+.flipbook-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#pageCounter {
+  margin: 0;
+  min-width: 120px;
+  text-align: center;
+  color: rgba(232, 232, 232, 0.86);
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .sketchbook-page.is-enhanced .flipbook {
+    height: min(66vh, 560px);
+  }
+
+  .page-content {
+    grid-template-columns: 1fr;
+  }
+
+  .page-content img {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sketchbook-page.is-enhanced .flipbook {
+    height: min(72vh, 620px);
+  }
+
+  .book-spine {
+    width: 6px;
+  }
+
+  .flipbook-controls {
+    gap: 0.6rem;
+  }
+
+  #pageCounter {
+    min-width: 92px;
+    font-size: 0.74rem;
+  }
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketchbook Draft (Static) | Leah Cortez Studios</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon" />
+  <style>
+    :root {
+      --bg: #000;
+      --ink: #f8c8d0;
+      --paper: #f4eee3;
+      --paper-ink: #2a1a1f;
+      --accent: #7e1c2e;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #fff;
+      font-family: Georgia, 'Times New Roman', serif;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+
+    .wrap { width: min(1000px, 100%); }
+
+    .head {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .head h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+    }
+
+    .head p {
+      margin: 0.35rem 0 0;
+      color: rgba(255,255,255,.85);
+      font-size: .95rem;
+    }
+
+    .flipbook {
+      border: 1px solid rgba(248, 200, 208, 0.25);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(126,28,46,.15), rgba(248,200,208,.08));
+      padding: .8rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    }
+
+    .controls-top {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: .7rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(248,200,208,.6);
+      background: transparent;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    input[type="radio"] { display: none; }
+
+    .pages {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .page {
+      display: none;
+      background: var(--paper);
+      color: var(--paper-ink);
+      border-radius: 8px;
+      border: 1px solid rgba(126,28,46,.3);
+      min-height: 520px;
+      overflow: hidden;
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .note {
+      padding: 1rem;
+      display: grid;
+      align-content: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.45);
+      border-left: 1px dashed rgba(126,28,46,.45);
+    }
+
+    .note .tag {
+      color: var(--accent);
+      font-size: .75rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      font-family: monospace;
+    }
+
+    .note h2 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 1.4rem;
+    }
+
+    .note p {
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .cover {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(248,200,208,.25), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(126,28,46,.2), transparent 40%),
+        #e9decd;
+    }
+
+    .cover h2 {
+      margin: 0;
+      color: var(--accent);
+      font-size: clamp(1.7rem, 4vw, 3rem);
+    }
+
+    .cover p { margin: .3rem 0 0; }
+
+    .nav {
+      margin-top: .75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      font-family: monospace;
+      color: rgba(255,255,255,.8);
+    }
+
+    .btn {
+      border: 1px solid var(--ink);
+      color: #000;
+      background: var(--ink);
+      border-radius: 999px;
+      padding: .45rem .8rem;
+      font-family: monospace;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+
+    #p1:checked ~ .flipbook .pages .p1,
+    #p2:checked ~ .flipbook .pages .p2,
+    #p3:checked ~ .flipbook .pages .p3,
+    #p4:checked ~ .flipbook .pages .p4,
+    #p5:checked ~ .flipbook .pages .p5,
+    #p6:checked ~ .flipbook .pages .p6 {
+      display: grid;
+      animation: fade .25s ease;
+    }
+
+    #p1:checked ~ .flipbook .controls-top label[for="p1"],
+    #p2:checked ~ .flipbook .controls-top label[for="p2"],
+    #p3:checked ~ .flipbook .controls-top label[for="p3"],
+    #p4:checked ~ .flipbook .controls-top label[for="p4"],
+    #p5:checked ~ .flipbook .controls-top label[for="p5"],
+    #p6:checked ~ .flipbook .controls-top label[for="p6"] {
+      background: var(--ink);
+    }
+
+    #p1:checked ~ .flipbook .nav .s1,
+    #p2:checked ~ .flipbook .nav .s2,
+    #p3:checked ~ .flipbook .nav .s3,
+    #p4:checked ~ .flipbook .nav .s4,
+    #p5:checked ~ .flipbook .nav .s5,
+    #p6:checked ~ .flipbook .nav .s6 { display: inline; }
+
+    .status { display: none; }
+
+    @keyframes fade {
+      from { opacity: .25; transform: translateY(4px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 760px) {
+      .page { grid-template-columns: 1fr; min-height: 600px; }
+      .note { border-left: none; border-top: 1px dashed rgba(126,28,46,.45); }
+      .pages { min-height: 600px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <h1>Sketchbook (Static Draft)</h1>
+      <p>Works as plain HTML file — no localhost required, no nav link yet.</p>
+    </header>
+
+    <input id="p1" type="radio" name="page" checked>
+    <input id="p2" type="radio" name="page">
+    <input id="p3" type="radio" name="page">
+    <input id="p4" type="radio" name="page">
+    <input id="p5" type="radio" name="page">
+    <input id="p6" type="radio" name="page">
+
+    <section class="flipbook" aria-label="Sketchbook static viewer">
+      <div class="controls-top" aria-hidden="true">
+        <label class="dot" for="p1"></label>
+        <label class="dot" for="p2"></label>
+        <label class="dot" for="p3"></label>
+        <label class="dot" for="p4"></label>
+        <label class="dot" for="p5"></label>
+        <label class="dot" for="p6"></label>
+      </div>
+
+      <div class="pages">
+        <article class="page p1">
+          <div class="cover" style="grid-column: 1 / -1;">
+            <h2>Leah Cortez — Sketchbook</h2>
+            <p>Process • symbols • mood studies</p>
+          </div>
+        </article>
+
+        <article class="page p2">
+          <img src="../collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg" alt="Abuela's Altar study">
+          <div class="note">
+            <span class="tag">Memory Study</span>
+            <h2>Abuela's Altar</h2>
+            <p>Collecting objects like relics. Testing how grief and devotion can coexist in one visual language.</p>
+          </div>
+        </article>
+
+        <article class="page p3">
+          <img src="../collections/illustration/inheritance/images/JPEG/Personal1.jpg" alt="Inheritance fragment">
+          <div class="note">
+            <span class="tag">Figure Fragment</span>
+            <h2>Inheritance</h2>
+            <p>The body as an archive. Generational tension held in posture, gesture, and gaze.</p>
+          </div>
+        </article>
+
+        <article class="page p4">
+          <img src="../collections/printmaking/Reliquary.jpg" alt="Reliquary Heart print study">
+          <div class="note">
+            <span class="tag">Symbol Test</span>
+            <h2>Reliquary Heart</h2>
+            <p>Repeating motifs to test sacred icon language and emotional rhythm.</p>
+          </div>
+        </article>
+
+        <article class="page p5">
+          <img src="../collections/objects/remnants/images/JPEG/studio1.jpg" alt="Remnants sculpture texture">
+          <div class="note">
+            <span class="tag">Material Mood</span>
+            <h2>Remnants</h2>
+            <p>Following cracks and compression first, then building narrative from surface memory.</p>
+          </div>
+        </article>
+
+        <article class="page p6">
+          <div class="cover" style="grid-column: 1 / -1;">
+            <h2>End of Draft</h2>
+            <p>More pages soon.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="nav">
+        <span class="status s1">Page 1 of 6</span>
+        <span class="status s2">Page 2 of 6</span>
+        <span class="status s3">Page 3 of 6</span>
+        <span class="status s4">Page 4 of 6</span>
+        <span class="status s5">Page 5 of 6</span>
+        <span class="status s6">Page 6 of 6</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

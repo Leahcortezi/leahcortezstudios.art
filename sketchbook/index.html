@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketchbook (Draft) | Leah Cortez Studios</title>
+    <meta name="description" content="Private sketchbook draft experience for Leah Cortez Studios.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/sketchbook.css">
+</head>
+<body>
+    <main class="sketchbook-page">
+        <header class="sketchbook-header">
+            <p class="draft-label">Unlinked Draft • Not in Navigation</p>
+            <h1>Sketchbook</h1>
+            <p class="sketchbook-subtitle">Flip through process notes, fragments, symbols, and studies.</p>
+            <p class="protocol-warning" id="protocolWarning" hidden>If this opens as <code>file://</code>, scripts may be blocked. Use <code>http://localhost:8000/sketchbook/index.html</code>.</p>
+        </header>
+
+        <section class="flipbook-shell" aria-label="Sketchbook flip-through">
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="flipbook" id="flipbook">
+                <article class="sketch-page" data-title="Cover">
+                    <div class="page-content page-cover">
+                        <p class="scribble">Leah Cortez</p>
+                        <h2>Sketchbook</h2>
+                        <p>Process • symbols • rough studies</p>
+                    </div>
+                </article>
+
+                <article class="sketch-page" data-title="Memory Study">
+                    <div class="page-content">
+                        <img src="../collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg" alt="Abuela's Altar study" loading="lazy">
+                        <div class="page-note">
+                            <h3>Memory Study</h3>
+                            <p>Collecting objects like relics. Thinking about what becomes sacred after loss.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sketch-page" data-title="Figure Fragment">
+                    <div class="page-content">
+                        <img src="../collections/illustration/inheritance/images/JPEG/Personal1.jpg" alt="Inheritance fragment" loading="lazy">
+                        <div class="page-note">
+                            <h3>Figure Fragment</h3>
+                            <p>Body as archive: inherited gestures, tension in shoulders, guarded gaze.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sketch-page" data-title="Symbol Test">
+                    <div class="page-content">
+                        <img src="../collections/printmaking/Reliquary.jpg" alt="Reliquary Heart print study" loading="lazy">
+                        <div class="page-note">
+                            <h3>Symbol Test</h3>
+                            <p>Testing icon language: heart, frame, and ritual marks as recurring motifs.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sketch-page" data-title="Material Mood">
+                    <div class="page-content">
+                        <img src="../collections/objects/remnants/images/JPEG/studio1.jpg" alt="Remnants sculpture texture" loading="lazy">
+                        <div class="page-note">
+                            <h3>Material Mood</h3>
+                            <p>Surface first. Let cracks and compression guide the emotional tone.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sketch-page" data-title="Back Cover">
+                    <div class="page-content page-cover back-cover">
+                        <p>End of draft</p>
+                        <p class="scribble">more pages soon</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="flipbook-controls">
+            <button id="prevPage" type="button" aria-label="Previous page">← Prev</button>
+            <p id="pageCounter" aria-live="polite">Page 1 of 6</p>
+            <button id="nextPage" type="button" aria-label="Next page">Next →</button>
+        </div>
+    </main>
+
+    <script src="../scripts/sketchbook.js" defer></script>
+</body>
+</html>
