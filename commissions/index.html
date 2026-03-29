@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Social Sharing Tags -->
+    <title>Commission Inquiry | Leah Cortez Studios</title>
+    <meta name="description" content="Submit a custom commission inquiry to Leah Cortez. Share your vision, budget, and timeline for a collaborative art project.">
+    <meta name="keywords" content="commission artist, custom art, graphic design commission, Leah Cortez, Corpus Christi artist">
+    <meta name="author" content="Leah Cortez">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJ5SGRQVP7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PJ5SGRQVP7');
+    </script>
+
+    <!-- Open Graph and Twitter Card Tags -->
+    <meta property="og:title" content="Commission Inquiry | Leah Cortez Studios">
+    <meta property="og:description" content="Submit a custom commission inquiry to Leah Cortez.">
+    <meta property="og:image" content="../images/logo/logo2new.png?v=2">
+    <meta property="og:url" content="https://leahcortezstudio.art/commissions/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Commission Inquiry | Leah Cortez Studios">
+    <meta name="twitter:description" content="Submit a custom commission inquiry to Leah Cortez.">
+    <meta name="twitter:image" content="../images/logo/logo2new.png?v=2">
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/favicon.ico?v=2025" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet Links -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/contact.css">
+
+    <style>
+        .commission-note {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            padding: 1rem;
+            border-left: 2px solid var(--color-primary-accent);
+            background: rgba(248, 200, 208, 0.08);
+            color: #e8e8e8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo/logo2new.png?v=2" alt="Leah Cortez Studios home" class="logo-img">
+            </a>
+            <ul class="nav-menu nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../bio/index.html">Bio</a></li>
+                <li><a href="../collections/index.html">Archive</a></li>
+                <li><a href="../cv/index.html">CV</a></li>
+                <li><a href="../contact/index.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <img src="../icons/flower.svg" alt="Open navigation menu" class="hamburger-icon" loading="lazy">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="contact-page">
+        <div class="contact-container">
+            <h1>Commission Intake</h1>
+            <p class="contact-intro">Ready to create something custom? Fill out this form to share your vision, budget, and timeline. I'll get back to you within 2–4 days to discuss the details and next steps.</p>
+
+            <div class="commission-note">
+                <strong>✦ Quick Tip:</strong> The more details you share about your vision, reference images, and timeline, the better I can tailor my response to your needs. This helps us collaborate more efficiently.
+            </div>
+
+            <!-- Commission Intake Form -->
+            <form id="commission-form" class="contact-form" action="https://formsubmit.co/contact@leahcortezstudios.art" method="POST">
+
+                <input type="hidden" name="_subject" value="New commission inquiry from Leah Cortez Studios">
+                <input type="hidden" name="_next" value="https://leahcortezstudios.art/contact/thanks.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="inquiry_type" value="Commission">
+
+                <!-- Standard Form Fields -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <!-- Commission-Specific Fields -->
+                <div class="form-group">
+                    <label for="project-title">Project Title or Brief Description</label>
+                    <input type="text" id="project-title" name="project_title" placeholder="e.g., Custom illustration for book cover, Logo redesign, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mediums">What medium(s) are you interested in?</label>
+                    <select id="mediums" name="mediums" required>
+                        <option value="">-- Select option(s) --</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="Illustration">Illustration</option>
+                        <option value="Printmaking">Printmaking</option>
+                        <option value="Sculpture">Sculpture / 3D</option>
+                        <option value="Mixed Media">Mixed Media</option>
+                        <option value="Other">Other / Not Sure</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range (USD)</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">-- Select range --</option>
+                        <option value="Under $500">Under $500</option>
+                        <option value="$500-$1000">$500–$1,000</option>
+                        <option value="$1000-$2500">$1,000–$2,500</option>
+                        <option value="$2500-$5000">$2,500–$5,000</option>
+                        <option value="$5000+">$5,000+</option>
+                        <option value="Not sure yet">Not sure yet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">When do you need this completed?</label>
+                    <select id="timeline" name="timeline" required>
+                        <option value="">-- Select timeline --</option>
+                        <option value="Within 2 weeks">Within 2 weeks (urgent)</option>
+                        <option value="1-2 months">1–2 months</option>
+                        <option value="2-3 months">2–3 months</option>
+                        <option value="3+ months">3+ months (flexible)</option>
+                        <option value="No specific deadline">No specific deadline</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspiration">Reference Images or Inspiration (optional)</label>
+                    <textarea id="inspiration" name="inspiration" rows="3" placeholder="Describe or link to images that inspire your vision..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Project Brief / Vision</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell me about your project. What's the goal? What feeling or message do you want to convey? Any specific ideas or constraints?" required></textarea>
+                </div>
+
+                <!-- Honeypot Field for Spam Protection (hidden from users) -->
+                <div class="form-group honeypot">
+                    <label for="honeypot">Do not fill this out</label>
+                    <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Submit Commission Inquiry</button>
+            </form>
+
+            <section class="contact-faq" aria-labelledby="commission-faq-title">
+                <h2 id="commission-faq-title">Commission FAQ</h2>
+
+                <details class="faq-item">
+                    <summary>What is your commission process?</summary>
+                    <p>Once you submit an inquiry, I'll respond within 2–4 days with more questions about your vision, a rate proposal, and a timeline. If we're a good fit, we'll agree on a contract and payment terms (typically 50% upfront, 50% upon completion). I'll send you sketches or comps for feedback before finalizing.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I see examples of your commissioned work?</summary>
+                    <p>Many of my commissions are confidential or under client agreements, so I can't always share them publicly. However, you can browse my archive to see my visual style, approach to different mediums, and the range of work I've done. If you'd like to discuss a specific type of project, I'm happy to share examples that are similar to what you're looking for.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What if I'm not sure about the details yet?</summary>
+                    <p>That's totally fine. Just give me as much context as you can—your gut feeling, reference images, the vibe you're going for. I love collaborating with people who are still figuring things out. My role is partly to help translate your ideas into visual form.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Do you work with tight deadlines?</summary>
+                    <p>It depends on my schedule and the scope of the project. Urgent commissions may require a rush fee. If you have a tight deadline, mention it in your inquiry and I'll let you know if I can accommodate it. I work best with timelines of at least 2–3 weeks, but let's talk.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What's your refund policy?</summary>
+                    <p>Commissions are non-refundable once work has begun, but I'm committed to making sure we're aligned every step of the way. If something isn't working, we'll iterate until it's right. If a major issue arises, we can discuss adjustments on a case-by-case basis.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Will I own the final work?</summary>
+                    <p>For most commissions, yes—you'll own the final deliverable. Usage rights and reproduction terms depend on the specific project and are outlined in the commission agreement. For example, if I create a logo for you, you own and can use the logo; if it's an illustration for editorial use, we'll define what that entails.</p>
+                </details>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="../images/logo/logo3.png" alt="Leah Cortez Studios logo" class="footer-logo" loading="lazy">
+            <p class="copyright">Leah Cortez © <span id="copyright-year">2026</span></p><script>document.getElementById("copyright-year").textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/page-enhancements.js" defer></script>
+</body>
+</html>
