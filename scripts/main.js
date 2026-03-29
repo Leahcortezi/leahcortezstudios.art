@@ -1073,9 +1073,11 @@ function initializeCuratedRelatedWorks() {
                 <img class="curated-related-thumb" src="${withBase(getThumbForHref(item.href))}" alt="${getTitleForHref(item.href)} thumbnail" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-thumb');">
               </div>
             ` : ''}
-            <span class="curated-related-lens">${item.lens}</span>
-            <h3>${getTitleForHref(item.href)}</h3>
-            <p>${item.reason}</p>
+            <div class="curated-related-copy">
+              <span class="curated-related-lens">${item.lens}</span>
+              <h3>${getTitleForHref(item.href)}</h3>
+              <p>${item.reason}</p>
+            </div>
           </a>
         `).join('')}
       </div>
