@@ -1068,6 +1068,34 @@ function initializeCuratedRelatedWorks() {
     '/collections/objects/remnants/': 'materialRemains'
   };
 
+  const relatedThumbs = {
+    '/collections/illustration/abuelas-altar/': '/collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg',
+    '/collections/design/insane-grain-packaging/': '/collections/design/insane-grain-packaging/images/snackmockup.jpg',
+    '/collections/illustration/inheritance/': '/collections/illustration/inheritance/images/JPEG/Personal1.jpg',
+    '/collections/design/editorial-spread/': '/collections/design/editorial-spread/editorial%20spread%20mockup.jpg',
+    '/collections/printmaking/the-unholy-gaze/': '/collections/printmaking/The%20Unholy%20Gaze.jpg',
+    '/collections/design/contemporary-contexts-zine/': '/collections/design/contemporary-contexts-zine/zine-mockup.jpg',
+    '/collections/illustration/anointed-gaze/': '/collections/illustration/anointed-gaze/images/JPEG/personal6.jpg',
+    '/collections/design/threads/': '/collections/design/Threads/threadsmockup.jpg',
+    '/collections/printmaking/reliquary-heart/': '/collections/printmaking/Reliquary.jpg',
+    '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/cityreliquarymockup.jpg',
+    '/collections/design/themed-playing-card-design/index-case-study.html': '/collections/design/themed-playing-card-design/images/card-mockup.jpg',
+    '/collections/objects/abyss-bloom/': '/collections/objects/abyss-bloom/images/JPEG/studio2.jpg',
+    '/collections/design/endangered-species-poster/': '/collections/design/endangered-species-poster/images/KoalaMockup.jpg',
+    '/collections/printmaking/the-living-room/': '/collections/printmaking/The%20Living%20Room.jpg',
+    '/collections/illustration/heaven-on-fire/': '/collections/illustration/heaven-on-fire/images/JPEG/personal7.jpg',
+    '/collections/objects/feathers-along-the-bend/': '/collections/objects/feathers-along-the-bend/images/JPEG/studio8.jpg',
+    '/collections/printmaking/unbecoming/': '/collections/printmaking/Unbecoming.jpg',
+    '/collections/objects/gnaw/': '/collections/objects/gnaw/images/JPEG/Studio6.jpg',
+    '/collections/objects/unraveling/': '/collections/objects/unraveling/images/JPEG/Studio5.jpg',
+    '/collections/objects/remnants/': '/collections/objects/remnants/images/JPEG/studio1.jpg'
+  };
+
+  const getThumbForHref = (href) => {
+    const normalized = normalizePath(href);
+    return relatedThumbs[normalized] || '';
+  };
+
   const setName = workToSet[currentPath] || 'entryPoint';
   const sourceItems = curatedSets[setName] || curatedSets.entryPoint;
 
@@ -1097,6 +1125,9 @@ function initializeCuratedRelatedWorks() {
       <div class="curated-related-grid">
         ${relatedItems.map((item) => `
           <a class="curated-related-card" href="${item.href}">
+            <div class="curated-related-thumb-wrap">
+              <img class="curated-related-thumb" src="${getThumbForHref(item.href)}" alt="${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-thumb');">
+            </div>
             <span class="curated-related-lens">${item.lens}</span>
             <h3>${item.title}</h3>
             <p>${item.reason}</p>
