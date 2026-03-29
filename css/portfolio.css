@@ -228,8 +228,8 @@
   left: 0;
   right: 0;
   background: #0a0a0a;
-  border: 1px solid #7e1c2e;
-  border-top: 1px solid rgba(126, 28, 46, 0.3);
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
   z-index: 100;
   max-height: 0;
   overflow: hidden;
