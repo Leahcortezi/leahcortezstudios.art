@@ -778,88 +778,20 @@ text-decoration: underline;
     border: 1px solid var(--primary-color);
   }
 
-  /* Convert category buttons to dropdown on mobile */
-  .archive-toolbar .filter-buttons {
-    position: relative;
-    display: flex;
+  /* Category filter dropdown on mobile - same structure as year filter */
+  .filter-categories {
     width: auto;
-    z-index: 100;
   }
 
-  /* Style first button as dropdown trigger - match year filter */
-  .archive-toolbar .filter-buttons button:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 0;
-    background-color: transparent;
-    color: var(--text-color);
+  .filter-categories .filter-box-header {
     cursor: pointer;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
   }
 
-  .archive-toolbar .filter-buttons button:first-child:hover {
-    background-color: rgba(248, 200, 208, 0.1);
-  }
-
-  .archive-toolbar .filter-buttons button:first-child.active {
-    background-color: rgba(248, 200, 208, 0.15);
-    border-color: #7e1c2e;
-  }
-
-  /* Dropdown arrow indicator */
-  .archive-toolbar .filter-buttons button:first-child::after {
-    content: '▼';
-    font-size: 0.6rem;
-    color: var(--primary-color);
-    transition: transform 0.2s ease;
-  }
-
-  .archive-toolbar .filter-buttons.open button:first-child::after {
-    transform: rotate(180deg);
-  }
-
-  /* Hide other buttons initially (shown only when dropdown opens) */
-  .archive-toolbar .filter-buttons button:not(:first-child) {
+  .filter-categories .filter-box-dropdown {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--primary-color);
-    border-top: none;
-    background-color: #000000;
-    color: var(--text-color);
-    cursor: pointer;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
-    text-align: left;
-    border-radius: 0;
-    width: 100%;
-    box-sizing: border-box;
-    transition: all 0.2s ease;
-    z-index: 101;
   }
 
-  .archive-toolbar .filter-buttons button:not(:first-child):hover {
-    background-color: rgba(248, 200, 208, 0.1);
-  }
-
-  .archive-toolbar .filter-buttons button:not(:first-child).active {
-    background-color: rgba(248, 200, 208, 0.15);
-    border-color: #7e1c2e;
-  }
-
-  /* Show dropdown buttons when open */
-  .archive-toolbar .filter-buttons.open button:not(:first-child) {
+  .filter-categories.open .filter-box-dropdown {
     display: block;
   }
 

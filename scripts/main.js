@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Portfolio filtering logic
   function initializeFiltering() {
-    const categoryButtons = document.querySelectorAll('.filter-buttons button[data-filter]');
-    const filterBox = document.querySelector('.filter-box');
-    const filterBoxHeader = document.querySelector('.filter-box-header');
-    const filterBoxValue = document.querySelector('.filter-box-value');
-    const yearButtons = document.querySelectorAll('.filter-box-dropdown button[data-year]');
+    const categoryButtons = document.querySelectorAll('.filter-categories .filter-box-dropdown button[data-filter]');
+    const filterBox = document.querySelector('.filter-box:not(.filter-categories)');
+    const filterBoxHeader = filterBox ? filterBox.querySelector('.filter-box-header') : null;
+    const filterBoxValue = filterBox ? filterBox.querySelector('.filter-box-value') : null;
+    const yearButtons = document.querySelectorAll('.filter-box:not(.filter-categories) .filter-box-dropdown button[data-year]');
     const archiveSearchInput = document.querySelector('#archive-search');
     const noResultsMessage = document.querySelector('#archive-no-results');
     const masonryItems = document.querySelectorAll('.masonry-item');
@@ -151,12 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
         button.classList.add('active');
         currentCategory = button.getAttribute('data-filter');
         
-        // On mobile, close dropdown and update first button text
+        // On mobile, close dropdown and update filter box value
         const isMobile = window.innerWidth <= 768;
         if (isMobile) {
-          const filterButtonsContainer = document.querySelector('.filter-buttons');
-          if (filterButtonsContainer) {
-            filterButtonsContainer.classList.remove('open');
+          const filterCategories = document.querySelector('.filter-categories');
+          if (filterCategories) {
+            filterCategories.classList.remove('open');
+            // Update displayed value
+            const filterBoxValue = filterCategories.querySelector('.filter-box-value');
+            if (filterBoxValue) {
+              filterBoxValue.textContent = button.textContent;
+            }
           }
         }
         
@@ -165,22 +170,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mobile dropdown toggle for category filters
-    const filterButtonsContainer = document.querySelector('.filter-buttons');
-    const firstFilterButton = filterButtonsContainer ? filterButtonsContainer.querySelector('button:first-child') : null;
+    const filterCategories = document.querySelector('.filter-categories');
+    const filterCategoriesHeader = filterCategories ? filterCategories.querySelector('.filter-box-header') : null;
     
-    if (firstFilterButton && filterButtonsContainer) {
-      firstFilterButton.addEventListener('click', (e) => {
+    if (filterCategoriesHeader && filterCategories) {
+      filterCategoriesHeader.addEventListener('click', (e) => {
         const isMobile = window.innerWidth <= 768;
         if (isMobile) {
-          e.preventDefault();
-          filterButtonsContainer.classList.toggle('open');
+          e.stopPropagation();
+          filterCategories.classList.toggle('open');
         }
       });
       
       // Close dropdown when clicking outside
       document.addEventListener('click', (e) => {
-        if (filterButtonsContainer && !filterButtonsContainer.contains(e.target)) {
-          filterButtonsContainer.classList.remove('open');
+        if (filterCategories && !filterCategories.contains(e.target)) {
+          filterCategories.classList.remove('open');
         }
       });
     }
