@@ -1,5 +1,5 @@
 # Leah Cortez Studios — Complete Site Overview
-**Last Updated:** March 28, 2026
+**Last Updated:** March 29, 2026
 
 ---
 
@@ -30,7 +30,7 @@
 
 This site is a **Personal Archive**, not a traditional portfolio. The branding emphasizes:
 - **Hero text:** "A Personal Archive"
-- **Subtitle:** "Not a curated portfolio. Art, design, and everything in between."
+- **Hero line:** "A personal archive of art and design exploring memory, religion, and identity."
 - **Tone:** Personal, honest, reflective — not trying to impress anyone
 
 ---
@@ -57,9 +57,9 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 | Card | `/card.html` | Link-in-bio page (Archive, Behance, Instagram only — no Shop or Commissions) |
 
 ### Homepage Sections
-1. **Hero** — "A Personal Archive" title, italicized subtitle, "BROWSE ARCHIVE" button
+1. **Hero** — "A Personal Archive" title, theme line, "BROWSE ARCHIVE" button
 2. **About the Artist** — Short bio preview with photo, "Read Full Bio →" link
-3. **Featured** — 3 highlighted works (Abuela's Altar, Inheritance, The Unholy Gaze)
+3. **Selected Works** — 3 highlighted works (Abuela's Altar, Inheritance, The Unholy Gaze)
 4. **Recent Addition** — Latest project showcase
 5. **Recognition** — Testimonials carousel
 
