@@ -308,16 +308,17 @@
 
 .archive-toolbar .filter-buttons button {
   border-width: 1px;
-  border-radius: 0;
-  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  padding: 0.65rem 1.2rem;
   font-size: 1rem;
-  text-transform: lowercase;
+  text-transform: capitalize;
   letter-spacing: 0;
   border-color: var(--primary-color);
   color: var(--primary-color);
   background: transparent;
   font-weight: normal;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .archive-toolbar .filter-buttons button:hover {
@@ -329,22 +330,14 @@
 }
 
 .archive-toolbar .filter-buttons button::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background: var(--primary-color);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+  display: none;
 }
 
 .archive-toolbar .filter-buttons button.active {
-  background: transparent;
-  border-color: var(--primary-color);
+  background: rgba(248, 200, 208, 0.15);
+  border-color: #7e1c2e;
   color: #7e1c2e;
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(126, 28, 46, 0.2);
 }
 
 .filter-buttons {
@@ -753,12 +746,12 @@ text-decoration: underline;
   }
   
   .archive-toolbar .filter-buttons button {
-    padding: 0.75rem 1.5rem;
+    padding: 0.65rem 1.2rem;
     font-size: 1rem;
     flex: 0 1 auto;
     min-width: auto;
     white-space: nowrap;
-    border-radius: 0;
+    border-radius: 999px;
   }
 
   .archive-toolbar .filter-buttons button:hover {
@@ -766,7 +759,7 @@ text-decoration: underline;
   }
 
   .archive-toolbar .filter-buttons button.active {
-    box-shadow: none;
+    box-shadow: 0 2px 8px rgba(126, 28, 46, 0.2);
   }
 }
     padding: 0.55rem 0.75rem;
