@@ -607,7 +607,85 @@
 }
 
 /* --------------------
-   6. THUMBNAIL GALLERY
+   6. CURATED RELATED WORKS
+   -------------------- */
+
+.curated-related {
+  margin: 0 auto;
+  width: min(1400px, calc(100% - 6rem));
+  padding: 0 0 3rem;
+}
+
+.curated-related-inner {
+  border-top: 1px solid rgba(248, 200, 208, 0.2);
+  padding-top: 2.2rem;
+}
+
+.curated-related h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #f8c8d0;
+}
+
+.curated-related-intro {
+  margin: 0.7rem 0 1.35rem;
+  color: rgba(232, 232, 232, 0.85);
+  font-size: 0.95rem;
+  max-width: 840px;
+}
+
+.curated-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.curated-related-card {
+  display: block;
+  text-decoration: none;
+  padding: 1rem;
+  border: 1px solid rgba(248, 200, 208, 0.25);
+  background: rgba(26, 26, 26, 0.45);
+  border-radius: 8px;
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.curated-related-card:hover,
+.curated-related-card:focus {
+  border-color: rgba(248, 200, 208, 0.65);
+  background: rgba(36, 19, 24, 0.7);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.curated-related-lens {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(248, 200, 208, 0.75);
+  margin-bottom: 0.45rem;
+}
+
+.curated-related-card h3 {
+  margin: 0 0 0.35rem;
+  color: #f8c8d0;
+  font-size: 1.02rem;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.curated-related-card p {
+  margin: 0;
+  color: rgba(232, 232, 232, 0.86);
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* --------------------
+   7. THUMBNAIL GALLERY
    -------------------- */
 
 .thumbnail-gallery {
@@ -757,6 +835,15 @@
 
     .work-navigation .next-work {
         order: 3;
+    }
+
+    .curated-related {
+      width: calc(100% - 2rem);
+      padding-bottom: 2rem;
+    }
+
+    .curated-related-grid {
+      grid-template-columns: 1fr;
     }
 
     @media (max-width: 480px) {

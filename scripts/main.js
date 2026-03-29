@@ -805,6 +805,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize keyboard navigation for work pages
   initializeKeyboardNavigation();
+
+  // Initialize curated related works section on work pages
+  initializeCuratedRelatedWorks();
 });
 
 // --------------------
@@ -838,6 +841,272 @@ function initializeKeyboardNavigation() {
   });
   
   console.log('Keyboard navigation initialized');
+}
+
+// --------------------
+// CURATED RELATED WORKS FOR WORK PAGES
+// --------------------
+
+function initializeCuratedRelatedWorks() {
+  const workPage = document.querySelector('.work-page');
+  if (!workPage) return;
+  if (workPage.querySelector('.curated-related')) return;
+
+  const normalizePath = (path) => {
+    const decoded = decodeURIComponent(path || '');
+    return decoded
+      .replace(/\/index\.html$/, '/')
+      .replace(/\/+$/, '/')
+      .toLowerCase();
+  };
+
+  const currentPath = normalizePath(window.location.pathname);
+
+  const curatedSets = {
+    devotional: [
+      {
+        href: '/collections/printmaking/reliquary-heart/index.html',
+        title: 'Reliquary Heart',
+        lens: 'Symbol',
+        reason: 'Sacred icon language transformed through print and ritual intimacy.'
+      },
+      {
+        href: '/collections/printmaking/the-unholy-gaze/index.html',
+        title: 'The Unholy Gaze',
+        lens: 'Theme',
+        reason: 'Interrogates how belief systems shape who is seen as pure or profane.'
+      },
+      {
+        href: '/collections/illustration/anointed-gaze/index.html',
+        title: 'Anointed Gaze',
+        lens: 'Mood',
+        reason: 'Quietly devotional, uneasy, and charged with spiritual tension.'
+      }
+    ],
+    inheritance: [
+      {
+        href: '/collections/illustration/abuelas-altar/index.html',
+        title: "Abuela's Altar",
+        lens: 'Theme',
+        reason: 'A lineage-centered piece where grief, care, and memory coexist.'
+      },
+      {
+        href: '/collections/objects/feathers-along-the-bend/index.html',
+        title: 'Feathers Along the Bend',
+        lens: 'Symbol',
+        reason: 'Uses fragile materials to hold presence, loss, and family memory.'
+      },
+      {
+        href: '/collections/printmaking/unbecoming/index.html',
+        title: 'Unbecoming',
+        lens: 'Mood',
+        reason: 'Carries the emotional aftermath of inherited expectations and identity rupture.'
+      }
+    ],
+    systems: [
+      {
+        href: '/collections/printmaking/the-unholy-gaze/index.html',
+        title: 'The Unholy Gaze',
+        lens: 'Theme',
+        reason: 'Centers surveillance, judgment, and power under institutional belief.'
+      },
+      {
+        href: '/collections/printmaking/unbecoming/index.html',
+        title: 'Unbecoming',
+        lens: 'Mood',
+        reason: 'Tracks the internal cost of pressure, scrutiny, and forced transformation.'
+      },
+      {
+        href: '/collections/design/contemporary-contexts-zine/index.html',
+        title: 'Designer Tribute Zine',
+        lens: 'Symbol',
+        reason: 'Editorial form used to question systems and frame critical visual narratives.'
+      }
+    ],
+    printRitual: [
+      {
+        href: '/collections/printmaking/reliquary-heart/index.html',
+        title: 'Reliquary Heart',
+        lens: 'Symbol',
+        reason: 'Ritual object and print process merge into a devotional visual language.'
+      },
+      {
+        href: '/collections/printmaking/the-living-room/index.html',
+        title: 'The Living Room',
+        lens: 'Mood',
+        reason: 'Organic dream logic creates a world that feels alive, strange, and sacred.'
+      },
+      {
+        href: '/collections/illustration/abuelas-altar/index.html',
+        title: "Abuela's Altar",
+        lens: 'Theme',
+        reason: 'Shares the same devotional impulse through memory and symbolic objects.'
+      }
+    ],
+    materialRemains: [
+      {
+        href: '/collections/objects/remnants/index.html',
+        title: 'Remnants',
+        lens: 'Theme',
+        reason: 'Material residue as evidence of memory, erosion, and time.'
+      },
+      {
+        href: '/collections/objects/unraveling/index.html',
+        title: 'Unraveling',
+        lens: 'Mood',
+        reason: 'A tense, unstable feeling held together through form and texture.'
+      },
+      {
+        href: '/collections/objects/gnaw/index.html',
+        title: 'Gnaw',
+        lens: 'Symbol',
+        reason: 'Embodies consumption, anxiety, and persistence through tactile process.'
+      }
+    ],
+    ecologyDream: [
+      {
+        href: '/collections/objects/abyss-bloom/index.html',
+        title: 'Abyss Bloom',
+        lens: 'Theme',
+        reason: 'A speculative ecosystem where beauty and threat occupy the same space.'
+      },
+      {
+        href: '/collections/printmaking/the-living-room/index.html',
+        title: 'The Living Room',
+        lens: 'Mood',
+        reason: 'Transforms environment into organism with surreal, bioluminescent energy.'
+      },
+      {
+        href: '/collections/illustration/heaven-on-fire/index.html',
+        title: 'Heaven on Fire',
+        lens: 'Symbol',
+        reason: 'Natural and spiritual imagery collide in a charged atmospheric scene.'
+      }
+    ],
+    designNarrative: [
+      {
+        href: '/collections/design/editorial-spread/index.html',
+        title: 'Editorial Spreads',
+        lens: 'Theme',
+        reason: 'Narrative pacing through typography, hierarchy, and image rhythm.'
+      },
+      {
+        href: '/collections/design/contemporary-contexts-zine/index.html',
+        title: 'Designer Tribute Zine',
+        lens: 'Symbol',
+        reason: 'Publication design used as a vessel for visual research and homage.'
+      },
+      {
+        href: '/collections/design/themed-playing-card-design/index-case-study.html',
+        title: 'Themed Playing Cards',
+        lens: 'Mood',
+        reason: 'System-based design with character, motif repetition, and worldbuilding.'
+      }
+    ],
+    brandingIdentity: [
+      {
+        href: '/collections/design/insane-grain-packaging/index.html',
+        title: 'Snack Packaging',
+        lens: 'Theme',
+        reason: 'Brand voice translated into bold visuals, tone, and product storytelling.'
+      },
+      {
+        href: '/collections/design/City Reliquary/index.html',
+        title: 'City Reliquary',
+        lens: 'Symbol',
+        reason: 'Identity system rooted in memory objects and place-based narrative.'
+      },
+      {
+        href: '/collections/design/Threads/index.html',
+        title: 'Threads',
+        lens: 'Mood',
+        reason: 'Experimental mark-making with tension between structure and movement.'
+      }
+    ],
+    entryPoint: [
+      {
+        href: '/collections/illustration/abuelas-altar/index.html',
+        title: "Abuela's Altar",
+        lens: 'Theme',
+        reason: 'For memory, ritual, and devotional symbolism.'
+      },
+      {
+        href: '/collections/printmaking/the-unholy-gaze/index.html',
+        title: 'The Unholy Gaze',
+        lens: 'Symbol',
+        reason: 'For power, scrutiny, and religious framing of the body.'
+      },
+      {
+        href: '/collections/objects/remnants/index.html',
+        title: 'Remnants',
+        lens: 'Mood',
+        reason: 'For material memory, erosion, and haunting aftermath.'
+      }
+    ]
+  };
+
+  const workToSet = {
+    '/collections/illustration/abuelas-altar/': 'devotional',
+    '/collections/design/insane-grain-packaging/': 'brandingIdentity',
+    '/collections/illustration/inheritance/': 'inheritance',
+    '/collections/design/editorial-spread/': 'designNarrative',
+    '/collections/printmaking/the-unholy-gaze/': 'systems',
+    '/collections/design/contemporary-contexts-zine/': 'designNarrative',
+    '/collections/illustration/anointed-gaze/': 'devotional',
+    '/collections/design/threads/': 'brandingIdentity',
+    '/collections/printmaking/reliquary-heart/': 'printRitual',
+    '/collections/design/city reliquary/': 'brandingIdentity',
+    '/collections/design/themed-playing-card-design/index-case-study/': 'designNarrative',
+    '/collections/objects/abyss-bloom/': 'ecologyDream',
+    '/collections/design/endangered-species-poster/': 'ecologyDream',
+    '/collections/printmaking/the-living-room/': 'ecologyDream',
+    '/collections/illustration/heaven-on-fire/': 'ecologyDream',
+    '/collections/objects/feathers-along-the-bend/': 'inheritance',
+    '/collections/printmaking/unbecoming/': 'systems',
+    '/collections/objects/gnaw/': 'materialRemains',
+    '/collections/objects/unraveling/': 'materialRemains',
+    '/collections/objects/remnants/': 'materialRemains'
+  };
+
+  const setName = workToSet[currentPath] || 'entryPoint';
+  const sourceItems = curatedSets[setName] || curatedSets.entryPoint;
+
+  const currentNormalized = normalizePath(window.location.pathname);
+  let relatedItems = sourceItems.filter((item) => normalizePath(item.href) !== currentNormalized);
+
+  if (relatedItems.length < 2) {
+    const fallback = curatedSets.entryPoint.filter((item) => normalizePath(item.href) !== currentNormalized);
+    fallback.forEach((item) => {
+      if (!relatedItems.find((existing) => normalizePath(existing.href) === normalizePath(item.href))) {
+        relatedItems.push(item);
+      }
+    });
+  }
+
+  relatedItems = relatedItems.slice(0, 3);
+  if (relatedItems.length < 2) return;
+
+  const section = document.createElement('section');
+  section.className = 'curated-related';
+  section.setAttribute('aria-labelledby', 'curated-related-title');
+
+  section.innerHTML = `
+    <div class="curated-related-inner">
+      <h2 id="curated-related-title">YOU MIGHT ALSO LIKE THIS</h2>
+      <p class="curated-related-intro">Curated connections by theme, symbol, and mood — like someone guiding you through the archive.</p>
+      <div class="curated-related-grid">
+        ${relatedItems.map((item) => `
+          <a class="curated-related-card" href="${item.href}">
+            <span class="curated-related-lens">${item.lens}</span>
+            <h3>${item.title}</h3>
+            <p>${item.reason}</p>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  workPage.appendChild(section);
 }
 
 // ...existing code...
