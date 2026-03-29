@@ -150,9 +150,40 @@ document.addEventListener('DOMContentLoaded', () => {
         categoryButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         currentCategory = button.getAttribute('data-filter');
+        
+        // On mobile, close dropdown and update first button text
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+          const filterButtonsContainer = document.querySelector('.filter-buttons');
+          if (filterButtonsContainer) {
+            filterButtonsContainer.classList.remove('open');
+          }
+        }
+        
         filterItems();
       });
     });
+
+    // Mobile dropdown toggle for category filters
+    const filterButtonsContainer = document.querySelector('.filter-buttons');
+    const firstFilterButton = filterButtonsContainer ? filterButtonsContainer.querySelector('button:first-child') : null;
+    
+    if (firstFilterButton && filterButtonsContainer) {
+      firstFilterButton.addEventListener('click', (e) => {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+          e.preventDefault();
+          filterButtonsContainer.classList.toggle('open');
+        }
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (filterButtonsContainer && !filterButtonsContainer.contains(e.target)) {
+          filterButtonsContainer.classList.remove('open');
+        }
+      });
+    }
     
     // Filter box toggle
     if (filterBoxHeader && filterBox) {
