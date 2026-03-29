@@ -141,8 +141,15 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 1.2rem 0 2rem;
   padding: 0 2rem;
+}
+
+.archive-search-row {
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  margin-top: 1.25rem;
 }
 
 /* Filter Box - Site-matched style */
@@ -243,6 +250,7 @@
 
 .archive-search-wrap {
   min-width: 260px;
+  width: min(460px, 100%);
   text-align: left;
 }
 
@@ -648,6 +656,11 @@ text-decoration: underline;
 
 /* Mobile breakpoint */
 @media (max-width: 768px) {
+  .archive-search-row {
+    padding: 0 1.25rem;
+    margin-top: 0.9rem;
+  }
+
   .filter-buttons {
     display: flex;
     flex-wrap: nowrap;
@@ -690,6 +703,7 @@ text-decoration: underline;
     padding: 0 1.25rem;
     width: 100%;
     overflow: visible;
+    margin-top: 0.8rem;
   }
   
   .filter-box {

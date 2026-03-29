@@ -271,6 +271,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const faqItems = document.querySelectorAll('.contact-faq .faq-item');
+
+  if (faqItems.length > 0) {
+    faqItems.forEach((faqItem) => {
+      faqItem.addEventListener('toggle', () => {
+        if (!faqItem.open) {
+          return;
+        }
+
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== faqItem) {
+            otherItem.open = false;
+          }
+        });
+      });
+    });
+  }
+
   /* --------------------
      3. PORTFOLIO MASONRY & FILTERING
      -------------------- */

@@ -297,7 +297,7 @@ This section maps each suggestion from the external AI audit to current site sta
 |------|--------|---------------------|
 | Press/exhibition highlights visible | ⚠️ Partial | Exhibition history exists on CV; add 1–2 highlights on Home for faster trust signals. |
 | Contact response-time expectation | ✅ Implemented | Contact page now states: “I typically respond within 2–4 days.” |
-| FAQ / commission status | ✅ Implemented | Contact page now includes current commission availability note. |
+| FAQ / commission status | ✅ Implemented | Contact page now includes a dedicated FAQ section plus current commission availability note. |
 
 ### Technical
 

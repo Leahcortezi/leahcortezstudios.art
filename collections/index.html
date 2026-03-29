@@ -68,6 +68,19 @@
     <main>
         <section class="portfolio-hero">
             <h1>Archive</h1>
+            <div class="archive-search-row">
+                <div class="archive-search-wrap">
+                    <label for="archive-search" class="archive-search-label">Search</label>
+                    <input
+                        type="search"
+                        id="archive-search"
+                        class="archive-search-input"
+                        placeholder="Search title, medium, category..."
+                        autocomplete="off"
+                        aria-label="Search archive works"
+                    >
+                </div>
+            </div>
             <div class="filter-row">
                 <div class="filter-box">
                     <div class="filter-box-header">
@@ -82,17 +95,6 @@
                         <button data-year="2024" type="button">2024</button>
                         <button data-year="early" type="button">Early Work</button>
                     </div>
-                </div>
-                <div class="archive-search-wrap">
-                    <label for="archive-search" class="archive-search-label">Search</label>
-                    <input
-                        type="search"
-                        id="archive-search"
-                        class="archive-search-input"
-                        placeholder="Search title, medium, category..."
-                        autocomplete="off"
-                        aria-label="Search archive works"
-                    >
                 </div>
                 <div class="filter-buttons">
                     <button data-filter="all" class="active" type="button">All Work</button>
