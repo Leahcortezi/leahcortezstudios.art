@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'IM Fell English', serif;
   font-size: 1.3rem;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0.7rem;
   color: #e8e8e8;
   font-style: italic;
 }
@@ -252,6 +252,75 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 1.5rem;
   color: #e8e8e8;
+}
+
+.hero-theme-line {
+  margin: 0 0 1.4rem;
+  max-width: 650px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(248, 200, 208, 0.92);
+}
+
+.start-here-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  margin-bottom: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(248, 200, 208, 0.35);
+  border-radius: 999px;
+  background: rgba(26, 26, 26, 0.45);
+}
+
+.start-here-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(248, 200, 208, 0.75);
+}
+
+.start-here-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: #f8c8d0;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.start-here-link:hover {
+  color: #7e1c2e;
+  border-bottom-color: #7e1c2e;
+}
+
+.hero-cred-line {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: rgba(232, 232, 232, 0.75);
+}
+
+@media (max-width: 768px) {
+  .hero-theme-line {
+    max-width: 92%;
+    font-size: 0.88rem;
+  }
+
+  .start-here-entry {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 14px;
+  }
+
+  .hero-cred-line {
+    max-width: 92%;
+    line-height: 1.45;
+  }
 }
 
 .capabilities {
