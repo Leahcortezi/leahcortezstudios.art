@@ -750,6 +750,7 @@ text-decoration: underline;
     cursor: pointer;
     font-family: 'IBM Plex Mono', monospace;
     transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
   .filter-categories .filter-box-dropdown button:hover {
