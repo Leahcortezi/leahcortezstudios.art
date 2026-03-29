@@ -68,40 +68,42 @@
     <main>
         <section class="portfolio-hero">
             <h1>Archive</h1>
-            <div class="archive-search-row">
-                <div class="archive-search-wrap">
-                    <label for="archive-search" class="archive-search-label">Search</label>
-                    <input
-                        type="search"
-                        id="archive-search"
-                        class="archive-search-input"
-                        placeholder="Search title, medium, category..."
-                        autocomplete="off"
-                        aria-label="Search archive works"
-                    >
-                </div>
-            </div>
-            <div class="filter-row">
-                <div class="filter-box">
-                    <div class="filter-box-header">
-                        <span class="filter-box-label">Year</span>
-                        <span class="filter-box-value">All</span>
-                        <span class="filter-box-arrow">▼</span>
-                    </div>
-                    <div class="filter-box-dropdown">
-                        <button data-year="all" class="active" type="button">All Years</button>
-                        <button data-year="2026" type="button">2026</button>
-                        <button data-year="2025" type="button">2025</button>
-                        <button data-year="2024" type="button">2024</button>
-                        <button data-year="early" type="button">Early Work</button>
+            <div class="archive-toolbar" aria-label="Archive filters and search">
+                <div class="archive-search-row">
+                    <div class="archive-search-wrap">
+                        <label for="archive-search" class="archive-search-label">Search Archive</label>
+                        <input
+                            type="search"
+                            id="archive-search"
+                            class="archive-search-input"
+                            placeholder="Search title, medium, category..."
+                            autocomplete="off"
+                            aria-label="Search archive works"
+                        >
                     </div>
                 </div>
-                <div class="filter-buttons">
-                    <button data-filter="all" class="active" type="button">All Work</button>
-                    <button data-filter="design" type="button">Design</button>
-                    <button data-filter="illustration" type="button">Illustration</button>
-                    <button data-filter="printmaking" type="button">Printmaking</button>
-                    <button data-filter="sculpture" type="button">Sculpture</button>
+                <div class="filter-row">
+                    <div class="filter-box">
+                        <div class="filter-box-header">
+                            <span class="filter-box-label">Year</span>
+                            <span class="filter-box-value">All</span>
+                            <span class="filter-box-arrow">▼</span>
+                        </div>
+                        <div class="filter-box-dropdown">
+                            <button data-year="all" class="active" type="button">All Years</button>
+                            <button data-year="2026" type="button">2026</button>
+                            <button data-year="2025" type="button">2025</button>
+                            <button data-year="2024" type="button">2024</button>
+                            <button data-year="early" type="button">Early Work</button>
+                        </div>
+                    </div>
+                    <div class="filter-buttons">
+                        <button data-filter="all" class="active" type="button">All Work</button>
+                        <button data-filter="design" type="button">Design</button>
+                        <button data-filter="illustration" type="button">Illustration</button>
+                        <button data-filter="printmaking" type="button">Printmaking</button>
+                        <button data-filter="sculpture" type="button">Sculpture</button>
+                    </div>
                 </div>
             </div>
         </section>
