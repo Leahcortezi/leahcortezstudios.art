@@ -1064,7 +1064,6 @@ function initializeCuratedRelatedWorks() {
   section.innerHTML = `
     <div class="curated-related-inner">
       <h2 id="curated-related-title">YOU MIGHT ALSO LIKE THIS</h2>
-      <p class="curated-related-intro">Curated connections by theme, symbol, and mood — like someone guiding you through the archive.</p>
       <div class="curated-related-grid">
         ${relatedItems.map((item) => `
           <a class="curated-related-card" href="${withBase(item.href)}">
