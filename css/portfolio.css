@@ -713,6 +713,57 @@ text-decoration: underline;
   .archive-toolbar .filter-buttons.open button:not(:first-child) {
     display: inline-block;
   }
+
+  /* Desktop: Show category filter as regular buttons, not dropdown */
+  .filter-categories {
+    display: contents;
+  }
+
+  .filter-categories .filter-box-header {
+    display: none;
+  }
+
+  .filter-categories .filter-box-dropdown {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    z-index: auto;
+  }
+
+  .filter-categories .filter-box-dropdown button {
+    display: inline-block;
+    border: 2px solid var(--primary-color);
+    border-radius: 999px;
+    padding: 0.65rem 1.2rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 0.3s ease;
+  }
+
+  .filter-categories .filter-box-dropdown button:hover {
+    border-color: #7e1c2e;
+    color: #7e1c2e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(248, 200, 208, 0.1);
+  }
+
+  .filter-categories .filter-box-dropdown button.active {
+    background: rgba(248, 200, 208, 0.15);
+    border-color: #7e1c2e;
+    color: #7e1c2e;
+  }
 }
 
 /* Tablet breakpoint */
