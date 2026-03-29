@@ -20,6 +20,8 @@
 ### About This Archive (from Bio Page)
 > This archive is a collection of my favorite pieces and a record of how my work continues to grow. I wanted a space where I could share the work that feels most honest to me without the pressure of trying to impress anyone.
 >
+> This archive documents how memory, religion, and identity take form over time.
+>
 > Everything here is personally curated. The work is raw, real, and reflective of different moments in my creative life. I see this archive as something that will continue to grow alongside me as I keep experimenting, collaborating, and creating new experiences.
 
 ---
@@ -30,6 +32,15 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 - **Hero text:** "A Personal Archive"
 - **Subtitle:** "Not a curated portfolio. Art, design, and everything in between."
 - **Tone:** Personal, honest, reflective — not trying to impress anyone
+
+---
+
+## Retail Presence
+
+- **Stockist:** The Whimsy Artisan Boutique (Houston, TX)
+- **Current products:** Selected prints, occasional stickers
+- **Buyer flow:** Shop visitors can discover work via printed cards and browse the archive online
+- **Inquiry guidance:** Contact form replies can confirm in-shop availability by artwork title
 
 ---
 
