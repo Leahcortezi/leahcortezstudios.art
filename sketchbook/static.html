@@ -8,58 +8,176 @@
   <link rel="icon" href="../icons/favicon.ico?v=2025" type="image/x-icon" />
   <style>
     :root {
-      --bg: #000;
+      --bg: #000000;
+      --bg-soft: #000000;
       --ink: #f8c8d0;
-      --paper: #f4eee3;
-      --paper-ink: #2a1a1f;
+      --ink-soft: #f1dce1;
       --accent: #7e1c2e;
+      --accent-soft: #b0556c;
     }
 
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: var(--bg);
+      background: #000;
       color: #fff;
       font-family: Georgia, 'Times New Roman', serif;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .wrap { width: min(1000px, 100%); }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: 74px;
+      border-bottom: 1px solid rgba(248, 200, 208, 0.35);
+      background: rgba(6, 3, 8, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .nav-container {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.3rem;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      width: auto;
+      height: 34px;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      font-size: .88rem;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-soft);
+      border-bottom-color: var(--accent-soft);
+    }
+
+    .hamburger {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .hamburger-icon {
+      width: 30px;
+      height: 30px;
+      filter: brightness(0) invert(1);
+    }
+
+    .page-main {
+      width: 100%;
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 1.2rem 1rem 1.5rem;
+    }
+
+    .floating-icons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-icon {
+      position: absolute;
+      opacity: .22;
+      width: var(--size, 36px);
+      height: var(--size, 36px);
+      animation: drift var(--dur, 13s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      will-change: transform;
+    }
+
+    .floating-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      filter: invert(88%) sepia(14%) saturate(1055%) hue-rotate(296deg) brightness(98%) contrast(94%);
+      animation: spin var(--spin, 24s) linear infinite;
+    }
+
+    .wrap {
+      width: min(1100px, 100%);
+      position: relative;
+      z-index: 2;
+    }
 
     .head {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
 
     .head h1 {
       margin: 0;
       color: var(--ink);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-shadow: 0 0 18px rgba(248, 200, 208, .2);
+      font-size: clamp(1.6rem, 4vw, 2.45rem);
     }
 
     .head p {
       margin: 0.35rem 0 0;
-      color: rgba(255,255,255,.85);
+      color: rgba(255,255,255,.88);
       font-size: .95rem;
     }
 
     .flipbook {
-      border: 1px solid rgba(248, 200, 208, 0.25);
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(126,28,46,.15), rgba(248,200,208,.08));
-      padding: .8rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      padding: 0;
+      box-shadow: none;
     }
 
     .controls-top {
       display: flex;
       justify-content: center;
-      gap: .5rem;
+      gap: .45rem;
       flex-wrap: wrap;
-      margin-bottom: .7rem;
+      margin-bottom: 1rem;
     }
 
     .dot {
@@ -70,122 +188,108 @@
       background: transparent;
       cursor: pointer;
       display: inline-block;
+      transition: transform .2s ease, background-color .2s ease;
+    }
+
+    .dot:hover {
+      transform: scale(1.1);
     }
 
     input[type="radio"] { display: none; }
 
     .pages {
-      position: relative;
-      min-height: 520px;
+      min-height: 580px;
+      display: grid;
+      place-items: center;
     }
 
-    .page {
+    .spread {
       display: none;
-      background: var(--paper);
-      color: var(--paper-ink);
-      border-radius: 8px;
-      border: 1px solid rgba(126,28,46,.3);
-      min-height: 520px;
-      overflow: hidden;
-      grid-template-columns: 1.2fr 1fr;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(.7rem, 2vw, 1.25rem);
+      padding: .5rem;
     }
 
-    .page img {
+    .photo {
+      width: min(39vw, 360px);
+      aspect-ratio: 3 / 4;
+      border: 1px solid rgba(248,200,208,.44);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: #111;
+      box-shadow:
+        0 10px 28px rgba(0,0,0,.42),
+        0 0 0 1px rgba(248, 200, 208, 0.1) inset;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .photo:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(248,200,208,.8);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,.45),
+        0 0 24px rgba(248, 200, 208, 0.14);
+    }
+
+    .photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .note {
-      padding: 1rem;
-      display: grid;
-      align-content: center;
-      gap: .5rem;
-      background: rgba(255,255,255,.45);
-      border-left: 1px dashed rgba(126,28,46,.45);
-    }
-
-    .note .tag {
-      color: var(--accent);
-      font-size: .75rem;
-      letter-spacing: .05em;
-      text-transform: uppercase;
+    .hint {
+      position: absolute;
+      left: .5rem;
+      bottom: .5rem;
+      border: 1px solid rgba(248,200,208,.7);
+      background: rgba(0,0,0,.5);
+      color: var(--ink);
+      padding: .2rem .45rem;
+      border-radius: 999px;
       font-family: monospace;
+      font-size: .72rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
     }
 
-    .note h2 {
-      margin: 0;
-      color: var(--accent);
-      font-size: 1.4rem;
-    }
-
-    .note p {
-      margin: 0;
-      line-height: 1.65;
-    }
-
-    .cover {
-      display: grid;
-      place-items: center;
+    .intro {
       text-align: center;
-      padding: 2rem;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(248,200,208,.25), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(126,28,46,.2), transparent 40%),
-        #e9decd;
+      color: var(--ink-soft);
+      font-size: .9rem;
+      margin: .2rem 0 .65rem;
+      letter-spacing: .02em;
     }
-
-    .cover h2 {
-      margin: 0;
-      color: var(--accent);
-      font-size: clamp(1.7rem, 4vw, 3rem);
-    }
-
-    .cover p { margin: .3rem 0 0; }
 
     .nav {
-      margin-top: .75rem;
+      margin-top: .9rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: .75rem;
+      gap: .55rem;
       flex-wrap: wrap;
       font-family: monospace;
-      color: rgba(255,255,255,.8);
+      color: rgba(255,255,255,.86);
     }
 
-    .btn {
-      border: 1px solid var(--ink);
-      color: #000;
-      background: var(--ink);
-      border-radius: 999px;
-      padding: .45rem .8rem;
-      font-family: monospace;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
-
-    #p1:checked ~ .flipbook .pages .p1,
-    #p2:checked ~ .flipbook .pages .p2,
-    #p3:checked ~ .flipbook .pages .p3,
-    #p4:checked ~ .flipbook .pages .p4,
-    #p5:checked ~ .flipbook .pages .p5,
-    #p6:checked ~ .flipbook .pages .p6 {
-      display: grid;
-      animation: fade .25s ease;
+    #p1:checked ~ .flipbook .pages .s1,
+    #p2:checked ~ .flipbook .pages .s2,
+    #p3:checked ~ .flipbook .pages .s3,
+    #p4:checked ~ .flipbook .pages .s4,
+    #p5:checked ~ .flipbook .pages .s5 {
+      display: flex;
+      animation: fade .2s ease;
     }
 
     #p1:checked ~ .flipbook .controls-top label[for="p1"],
     #p2:checked ~ .flipbook .controls-top label[for="p2"],
     #p3:checked ~ .flipbook .controls-top label[for="p3"],
     #p4:checked ~ .flipbook .controls-top label[for="p4"],
-    #p5:checked ~ .flipbook .controls-top label[for="p5"],
-    #p6:checked ~ .flipbook .controls-top label[for="p6"] {
+    #p5:checked ~ .flipbook .controls-top label[for="p5"] {
       background: var(--ink);
     }
 
@@ -193,28 +297,106 @@
     #p2:checked ~ .flipbook .nav .s2,
     #p3:checked ~ .flipbook .nav .s3,
     #p4:checked ~ .flipbook .nav .s4,
-    #p5:checked ~ .flipbook .nav .s5,
-    #p6:checked ~ .flipbook .nav .s6 { display: inline; }
+    #p5:checked ~ .flipbook .nav .s5 { display: inline; }
 
     .status { display: none; }
 
+    .main-footer {
+      border-top: 1px solid rgba(248, 200, 208, 0.35);
+      background: rgba(6, 3, 8, 0.85);
+      padding: .85rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      position: relative;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .footer-logo {
+      width: 30px;
+      height: auto;
+      filter: invert(1) brightness(2);
+      opacity: .95;
+    }
+
+    .copyright {
+      margin: 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .84rem;
+      color: rgba(248, 200, 208, .8);
+    }
+
     @keyframes fade {
-      from { opacity: .25; transform: translateY(4px); }
+      from { opacity: .35; transform: scale(.99); }
       to { opacity: 1; transform: none; }
     }
 
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -18px, 0); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     @media (max-width: 760px) {
-      .page { grid-template-columns: 1fr; min-height: 600px; }
-      .note { border-left: none; border-top: 1px dashed rgba(126,28,46,.45); }
-      .pages { min-height: 600px; }
+      nav { height: 68px; }
+      .nav-links { display: none; }
+      .hamburger { display: inline-flex; }
+      .page-main { padding-top: 1rem; }
+      .pages { min-height: 470px; }
+      .spread { gap: .65rem; }
+      .photo { width: min(45vw, 230px); }
+      .floating-icon { opacity: .14; }
     }
   </style>
 </head>
 <body>
+  <div class="floating-icons" aria-hidden="true">
+    <span class="floating-icon" style="left:4%; top:10%; --size:32px; --dur:11s; --delay:-1s; --spin:22s;"><img src="../icons/starburst.svg" alt=""></span>
+    <span class="floating-icon" style="left:16%; top:78%; --size:26px; --dur:13s; --delay:-5s; --spin:30s;"><img src="../icons/flower.svg" alt=""></span>
+    <span class="floating-icon" style="left:28%; top:22%; --size:42px; --dur:15s; --delay:-2s; --spin:28s;"><img src="../icons/star.svg" alt=""></span>
+    <span class="floating-icon" style="left:34%; top:88%; --size:30px; --dur:12s; --delay:-4s; --spin:35s;"><img src="../icons/starburst.svg" alt=""></span>
+    <span class="floating-icon" style="left:48%; top:8%; --size:34px; --dur:10s; --delay:-3s; --spin:26s;"><img src="../icons/flower.svg" alt=""></span>
+    <span class="floating-icon" style="left:59%; top:72%; --size:40px; --dur:14s; --delay:-6s; --spin:24s;"><img src="../icons/star.svg" alt=""></span>
+    <span class="floating-icon" style="left:70%; top:16%; --size:28px; --dur:9s; --delay:-2s; --spin:31s;"><img src="../icons/starburst.svg" alt=""></span>
+    <span class="floating-icon" style="left:78%; top:54%; --size:36px; --dur:16s; --delay:-7s; --spin:38s;"><img src="../icons/flower.svg" alt=""></span>
+    <span class="floating-icon" style="left:88%; top:84%; --size:24px; --dur:12s; --delay:-3s; --spin:21s;"><img src="../icons/star.svg" alt=""></span>
+    <span class="floating-icon" style="left:92%; top:22%; --size:34px; --dur:13s; --delay:-8s; --spin:33s;"><img src="../icons/starburst.svg" alt=""></span>
+  </div>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="Leah Cortez Studios home (placeholder)">
+        <img src="../images/logo/logo2new.png?v=2" alt="Leah Cortez Studios" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Bio</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">CV</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="hamburger" aria-hidden="true">
+        <img src="../icons/flower.svg" alt="" class="hamburger-icon">
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-main">
   <div class="wrap">
     <header class="head">
       <h1>Sketchbook (Static Draft)</h1>
-      <p>Works as plain HTML file — no localhost required, no nav link yet.</p>
+      <p>Two portrait photos per spread. Click left for previous, right for next.</p>
     </header>
 
     <input id="p1" type="radio" name="page" checked>
@@ -222,7 +404,6 @@
     <input id="p3" type="radio" name="page">
     <input id="p4" type="radio" name="page">
     <input id="p5" type="radio" name="page">
-    <input id="p6" type="radio" name="page">
 
     <section class="flipbook" aria-label="Sketchbook static viewer">
       <div class="controls-top" aria-hidden="true">
@@ -231,70 +412,82 @@
         <label class="dot" for="p3"></label>
         <label class="dot" for="p4"></label>
         <label class="dot" for="p5"></label>
-        <label class="dot" for="p6"></label>
       </div>
+      <p class="intro">Tap/click either photo to turn pages.</p>
 
       <div class="pages">
-        <article class="page p1">
-          <div class="cover" style="grid-column: 1 / -1;">
-            <h2>Leah Cortez — Sketchbook</h2>
-            <p>Process • symbols • mood studies</p>
-          </div>
+        <article class="spread s1">
+          <label class="photo" for="p5" aria-label="Previous spread">
+            <img src="./IMAGES/sketch1.jpg" alt="Sketchbook spread 1 - left">
+            <span class="hint">Previous</span>
+          </label>
+          <label class="photo" for="p2" aria-label="Next spread">
+            <img src="./IMAGES/sketch2.jpg" alt="Sketchbook spread 1 - right">
+            <span class="hint">Next</span>
+          </label>
         </article>
 
-        <article class="page p2">
-          <img src="../collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg" alt="Abuela's Altar study">
-          <div class="note">
-            <span class="tag">Memory Study</span>
-            <h2>Abuela's Altar</h2>
-            <p>Collecting objects like relics. Testing how grief and devotion can coexist in one visual language.</p>
-          </div>
+        <article class="spread s2">
+          <label class="photo" for="p1" aria-label="Previous spread">
+            <img src="./IMAGES/sketch1.jpg" alt="Sketchbook spread 2 - left">
+            <span class="hint">Previous</span>
+          </label>
+          <label class="photo" for="p3" aria-label="Next spread">
+            <img src="./IMAGES/sketch3.jpg" alt="Sketchbook spread 2 - right">
+            <span class="hint">Next</span>
+          </label>
         </article>
 
-        <article class="page p3">
-          <img src="../collections/illustration/inheritance/images/JPEG/Personal1.jpg" alt="Inheritance fragment">
-          <div class="note">
-            <span class="tag">Figure Fragment</span>
-            <h2>Inheritance</h2>
-            <p>The body as an archive. Generational tension held in posture, gesture, and gaze.</p>
-          </div>
+        <article class="spread s3">
+          <label class="photo" for="p2" aria-label="Previous spread">
+            <img src="./IMAGES/sketch2.jpg" alt="Sketchbook spread 3 - left">
+            <span class="hint">Previous</span>
+          </label>
+          <label class="photo" for="p4" aria-label="Next spread">
+            <img src="./IMAGES/sketch4.jpg" alt="Sketchbook spread 3 - right">
+            <span class="hint">Next</span>
+          </label>
         </article>
 
-        <article class="page p4">
-          <img src="../collections/printmaking/Reliquary.jpg" alt="Reliquary Heart print study">
-          <div class="note">
-            <span class="tag">Symbol Test</span>
-            <h2>Reliquary Heart</h2>
-            <p>Repeating motifs to test sacred icon language and emotional rhythm.</p>
-          </div>
+        <article class="spread s4">
+          <label class="photo" for="p3" aria-label="Previous spread">
+            <img src="./IMAGES/sketch3.jpg" alt="Sketchbook spread 4 - left">
+            <span class="hint">Previous</span>
+          </label>
+          <label class="photo" for="p5" aria-label="Next spread">
+            <img src="./IMAGES/sketch5.jpg" alt="Sketchbook spread 4 - right">
+            <span class="hint">Next</span>
+          </label>
         </article>
 
-        <article class="page p5">
-          <img src="../collections/objects/remnants/images/JPEG/studio1.jpg" alt="Remnants sculpture texture">
-          <div class="note">
-            <span class="tag">Material Mood</span>
-            <h2>Remnants</h2>
-            <p>Following cracks and compression first, then building narrative from surface memory.</p>
-          </div>
-        </article>
-
-        <article class="page p6">
-          <div class="cover" style="grid-column: 1 / -1;">
-            <h2>End of Draft</h2>
-            <p>More pages soon.</p>
-          </div>
+        <article class="spread s5">
+          <label class="photo" for="p4" aria-label="Previous spread">
+            <img src="./IMAGES/sketch4.jpg" alt="Sketchbook spread 5 - left">
+            <span class="hint">Previous</span>
+          </label>
+          <label class="photo" for="p1" aria-label="Next spread">
+            <img src="./IMAGES/sketch5.jpg" alt="Sketchbook spread 5 - right">
+            <span class="hint">Next</span>
+          </label>
         </article>
       </div>
 
       <div class="nav">
-        <span class="status s1">Page 1 of 6</span>
-        <span class="status s2">Page 2 of 6</span>
-        <span class="status s3">Page 3 of 6</span>
-        <span class="status s4">Page 4 of 6</span>
-        <span class="status s5">Page 5 of 6</span>
-        <span class="status s6">Page 6 of 6</span>
+        <span class="status s1">Spread 1 of 5</span>
+        <span class="status s2">Spread 2 of 5</span>
+        <span class="status s3">Spread 3 of 5</span>
+        <span class="status s4">Spread 4 of 5</span>
+        <span class="status s5">Spread 5 of 5</span>
       </div>
     </section>
   </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <img src="../images/logo/logo3.png" alt="Leah Cortez Studios logo" class="footer-logo">
+      <p class="copyright">Leah Cortez © 2026</p>
+    </div>
+  </footer>
 </body>
 </html>
