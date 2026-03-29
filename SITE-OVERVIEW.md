@@ -1,5 +1,5 @@
 # Leah Cortez Studios — Complete Site Overview
-**Last Updated:** March 5, 2026
+**Last Updated:** March 28, 2026
 
 ---
 
@@ -258,6 +258,61 @@ Links included:
 - **Gallery reordered** — Strongest work first, mixed mediums
 - **Double-Sided Poster removed** from gallery
 - **Card page updated** — Removed Shop/Commissions, added Behance
+
+---
+
+## AI Checklist Status (March 2026)
+
+This section maps each suggestion from the external AI audit to current site status.
+
+### Structure / Navigation
+
+| Item | Status | Notes / What to Add |
+|------|--------|---------------------|
+| Custom 404 page | ✅ Implemented | `404.html` exists, branded styling, links back to Home/Archive/Contact. |
+| Site search | ✅ Implemented | Archive page now includes keyword search input on `collections/index.html`, integrated with year/category filters. |
+| CV page for broader audiences | ⚠️ Partial | CV is strong for academics; add a short “For Inquiries” block or one-page press sheet link for curators/clients. |
+
+### SEO / Discoverability
+
+| Item | Status | Notes / What to Add |
+|------|--------|---------------------|
+| Meta descriptions | ✅ Implemented (broadly) | Main pages and many archive/work pages include unique descriptions. Keep auditing new pages. |
+| Open Graph tags | ✅ Implemented (broadly) | OG/Twitter tags are present on core pages and many work pages. |
+| Image alt text | ⚠️ Partial | Most images include alt text; continue periodic audits for quality/consistency on newly added pages. |
+| Unique page titles | ⚠️ Partial | Most pages are unique; update remaining generic labels (e.g., `Work | ...`, `Portfolio | ...`) to archive-first wording. |
+
+### Content Gaps
+
+| Item | Status | Notes / What to Add |
+|------|--------|---------------------|
+| Artist photo on homepage | ✅ Implemented | Home “About the Artist” preview includes `images/me.jpg`. |
+| Testimonials visibility | ✅ Implemented | Recognition carousel includes 3 testimonials with arrows and dots. |
+| Bio date/context line | ⚠️ Partial | Bio includes graduation timeline (2028); optionally add availability line (e.g., “available for select projects”). |
+| Multi-image work documentation | ⚠️ Partial | Some works have multiple images; standardize 2–4 images (overall + detail + context) for key pieces. |
+
+### Trust / Professionalism
+
+| Item | Status | Notes / What to Add |
+|------|--------|---------------------|
+| Press/exhibition highlights visible | ⚠️ Partial | Exhibition history exists on CV; add 1–2 highlights on Home for faster trust signals. |
+| Contact response-time expectation | ✅ Implemented | Contact page now states: “I typically respond within 2–4 days.” |
+| FAQ / commission status | ✅ Implemented | Contact page now includes current commission availability note. |
+
+### Technical
+
+| Item | Status | Notes / What to Add |
+|------|--------|---------------------|
+| Image optimization/performance | ⚠️ Partial | Lazy loading is used; still beneficial to batch-optimize large originals and generate web-sized derivatives. |
+| Analytics | ❌ Missing | Add GA4 or privacy-friendly Plausible to track traffic and page engagement. |
+| Favicon | ✅ Implemented | `icons/favicon.ico` is linked on key pages. |
+| Form confirmation flow | ✅ Implemented | Contact form now posts to FormSubmit and redirects to `contact/thanks.html`. |
+
+### Priority Implementation Order
+
+1. **Audience clarity:** Add “For Inquiries” section to CV and 1–2 exhibition highlights on Home.
+2. **Growth tracking:** Add analytics.
+3. **Performance pass:** Optimize archive/work images in batches.
 - **Themed Playing Cards images** — Updated to PNG format
 - **Copyright auto-updates** via JavaScript
 - **Mobile fixes** — Year filter overflow, contact section styling, hero spacing

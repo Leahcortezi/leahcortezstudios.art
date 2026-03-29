@@ -86,25 +86,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterBoxHeader = document.querySelector('.filter-box-header');
     const filterBoxValue = document.querySelector('.filter-box-value');
     const yearButtons = document.querySelectorAll('.filter-box-dropdown button[data-year]');
+    const archiveSearchInput = document.querySelector('#archive-search');
+    const noResultsMessage = document.querySelector('#archive-no-results');
     const masonryItems = document.querySelectorAll('.masonry-item');
     
     let currentCategory = 'all';
     let currentYear = 'all';
+    let currentSearch = '';
 
     function filterItems() {
-      console.log('Filtering by category:', currentCategory, 'year:', currentYear);
+      console.log('Filtering by category:', currentCategory, 'year:', currentYear, 'search:', currentSearch);
       let visibleCount = 0;
       const isMobile = window.innerWidth <= 768;
+      const normalizedQuery = currentSearch.trim().toLowerCase();
       
       // Apply filtering immediately
       masonryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
         const itemYear = item.getAttribute('data-year');
+        const itemImage = item.querySelector('img');
+        const itemAltText = itemImage ? (itemImage.getAttribute('alt') || '') : '';
+        const itemCaption = item.querySelector('.caption') ? item.querySelector('.caption').textContent : '';
+        const searchCorpus = `${itemCategory || ''} ${itemYear || ''} ${itemCaption || ''} ${itemAltText || ''}`.toLowerCase();
         
         const categoryMatch = currentCategory === 'all' || itemCategory === currentCategory;
         const yearMatch = currentYear === 'all' || itemYear === currentYear;
+        const searchMatch = normalizedQuery === '' || searchCorpus.includes(normalizedQuery);
         
-        if (categoryMatch && yearMatch) {
+        if (categoryMatch && yearMatch && searchMatch) {
           item.classList.remove('hidden');
           visibleCount++;
         } else {
@@ -113,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       console.log('Visible items:', visibleCount);
+
+      if (noResultsMessage) {
+        noResultsMessage.hidden = visibleCount !== 0;
+      }
       
       // Update Masonry layout on all screen sizes
       if (msnry) {
@@ -178,6 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
         filterItems();
       });
     });
+
+    if (archiveSearchInput) {
+      archiveSearchInput.addEventListener('input', () => {
+        currentSearch = archiveSearchInput.value || '';
+        filterItems();
+      });
+    }
   }
 
   /* --------------------
@@ -229,29 +249,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
       const captchaQuestion = document.querySelector('#captcha-question').innerText;
       const userAnswer = parseInt(document.querySelector('#captcha-answer').value, 10);
       const numbers = captchaQuestion.match(/\d+/g).map(Number);
       const correctAnswer = numbers[0] + numbers[1];
 
       if (userAnswer !== correctAnswer) {
+        event.preventDefault();
         alert('Incorrect answer to the security question. Please try again.');
         return;
       }
 
       const honeypot = document.querySelector('#honeypot').value;
       if (honeypot !== '') {
+        event.preventDefault();
         console.log('Honeypot field triggered. Likely a bot.');
-        alert('Thank you for your message!');
+        alert('Spam protection triggered. Please try again.');
         contactForm.reset();
         return;
       }
-
-      console.log('Form submitted (simulation).');
-      alert('Thank you for your message! Leah will get back to you soon.');
-      contactForm.reset();
     });
   }
 

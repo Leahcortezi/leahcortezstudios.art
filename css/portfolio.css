@@ -241,6 +241,55 @@
   font-style: italic;
 }
 
+.archive-search-wrap {
+  min-width: 260px;
+  text-align: left;
+}
+
+.archive-search-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--primary-color);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.archive-search-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.archive-search-input::placeholder {
+  color: rgba(248, 200, 208, 0.65);
+}
+
+.archive-search-input:focus {
+  border-color: #7e1c2e;
+  box-shadow: 0 0 0 2px rgba(126, 28, 46, 0.2);
+}
+
+.archive-no-results {
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+  text-align: center;
+  color: #f8c8d0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+
 .filter-buttons {
   display: flex;
   justify-content: center;
@@ -649,6 +698,17 @@ text-decoration: underline;
     min-width: 120px;
     position: relative;
     z-index: 100;
+  }
+
+  .archive-search-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .archive-search-input {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 0.55rem 0.75rem;
   }
   
   .filter-box-header {

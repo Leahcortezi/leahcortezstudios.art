@@ -41,6 +41,19 @@
   margin: 0 auto 3rem auto;
 }
 
+.contact-note {
+  max-width: 620px;
+  margin: -1.75rem auto 1rem auto;
+  color: #d9d9d9;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.contact-note + .contact-note {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 /* --------------------
    2. CONTACT FORM STYLES
    -------------------- */
@@ -241,6 +254,16 @@
     margin-bottom: 2rem;
     /* Slightly smaller text */
     font-size: 0.95rem;
+  }
+
+  .contact-note {
+    margin: -1rem auto 0.75rem auto;
+    font-size: 0.9rem;
+  }
+
+  .contact-note + .contact-note {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 
   .contact-form {
