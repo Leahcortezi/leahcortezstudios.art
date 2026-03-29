@@ -310,9 +310,6 @@ This section maps each suggestion from the external AI audit to current site sta
 
 ### Priority Implementation Order
 
-1. **Audience clarity:** Add “For Inquiries” section to CV and 1–2 exhibition highlights on Home.
+1. **Audience clarity:** Add "For Inquiries" section to CV and 1–2 exhibition highlights on Home.
 2. **Growth tracking:** Add analytics.
 3. **Performance pass:** Optimize archive/work images in batches.
-- **Themed Playing Cards images** — Updated to PNG format
-- **Copyright auto-updates** via JavaScript
-- **Mobile fixes** — Year filter overflow, contact section styling, hero spacing
