@@ -729,8 +729,9 @@ text-decoration: underline;
     overflow: visible;
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
     border: none;
     background: transparent;
     box-shadow: none;
@@ -740,7 +741,7 @@ text-decoration: underline;
 
   .filter-categories .filter-box-dropdown button {
     display: inline-block;
-    border: 2px solid var(--primary-color);
+    border: none;
     border-radius: 999px;
     padding: 0.65rem 1.2rem;
     font-size: 1rem;
@@ -753,16 +754,15 @@ text-decoration: underline;
   }
 
   .filter-categories .filter-box-dropdown button:hover {
-    border-color: #7e1c2e;
     color: #7e1c2e;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(248, 200, 208, 0.1);
+    transform: none;
   }
 
   .filter-categories .filter-box-dropdown button.active {
     background: rgba(248, 200, 208, 0.15);
-    border-color: #7e1c2e;
+    border: 1px solid #7e1c2e;
     color: #7e1c2e;
+    box-shadow: 0 2px 8px rgba(126, 28, 46, 0.2);
   }
 }
 
