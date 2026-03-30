@@ -166,6 +166,11 @@
   position: relative;
 }
 
+.bio-section h2.archive-subtitle {
+  font-size: 1.4rem !important;
+  line-height: 1.25;
+}
+
 .bio-section p {
   /*
     Section paragraph styling
@@ -492,6 +497,10 @@
     */
     font-size: 2.5rem;
     text-align: center;
+  }
+
+  .bio-section h2.archive-subtitle {
+    font-size: 1.25rem !important;
   }
   
   .modal-content {
