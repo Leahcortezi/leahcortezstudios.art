@@ -155,10 +155,11 @@
   /*
     Section heading styles
   */
-  font-family: var(--font-headings);
+  font-family: var(--font-headings) !important;
   font-size: 1.1rem;
   color: var(--color-primary-accent);
-  font-style: italic;
+  font-style: italic !important;
+  text-transform: none !important;
   letter-spacing: 0.03em;
   margin-bottom: 0.75rem;
   font-weight: 500;
