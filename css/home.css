@@ -378,7 +378,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-archive-block h3 {
   margin: 0 0 0.5rem;
   font-family: var(--font-headings) !important;
-  font-size: 1.1rem;
+  font-size: 2.2rem !important;
   color: var(--color-primary-accent);
   font-style: italic !important;
   text-transform: none !important;
@@ -962,7 +962,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .about-archive-block h3 {
-      font-size: 1rem;
+      font-size: 1.8rem !important;
       margin-bottom: 0.4rem;
     }
 
