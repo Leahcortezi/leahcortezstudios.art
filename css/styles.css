@@ -271,6 +271,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem; /* 1rem = 16px by default */
 }
 
+.archive-subtitle {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  text-transform: none !important;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
 p {
   /* Standard margin below paragraphs for spacing */
   margin-bottom: 1rem;
