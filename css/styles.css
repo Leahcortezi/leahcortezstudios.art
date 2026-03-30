@@ -279,6 +279,15 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.03em;
 }
 
+html body .about-archive-block h3.archive-subtitle,
+html body .bio-section h2.archive-subtitle {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  text-transform: none !important;
+  letter-spacing: 0.03em !important;
+  font-weight: 500 !important;
+}
+
 p {
   /* Standard margin below paragraphs for spacing */
   margin-bottom: 1rem;
