@@ -192,7 +192,7 @@ body {
 
 .not-found-container h1 {
     font-size: clamp(8rem, 15vw, 12rem);
-    font-family: 'Libre Baskerville', cursive;
+    font-family: var(--font-headings);
     color: #ffffff;
     margin: 0;
     margin-bottom: 20px;
@@ -807,7 +807,7 @@ body {
     min-height: 100vh;
     background: #000;
     color: #fff;
-    font-family: 'IM Fell English', serif;
+    font-family: var(--font-body);
     overflow: auto;
 }
 
@@ -858,7 +858,7 @@ body {
 .archive-404-eyebrow {
     margin: 0 0 0.9rem;
     color: #f8c8d0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.82rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -867,7 +867,7 @@ body {
 .archive-404-catalog {
     margin: -0.25rem 0 1rem;
     color: rgba(248, 200, 208, 0.78);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.74rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -878,7 +878,7 @@ body {
     position: relative;
     z-index: 1;
     color: #fff;
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: clamp(2rem, 4.8vw, 3.25rem);
     line-height: 1.2;
     font-weight: 500;
@@ -888,7 +888,7 @@ body {
     margin: 0 0 0.5rem;
     position: relative;
     z-index: 1;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: clamp(3.5rem, 12vw, 7.5rem);
     line-height: 0.84;
     letter-spacing: 0.08em;
@@ -927,7 +927,7 @@ body {
     border: 1px solid #f8c8d0;
     color: #f8c8d0;
     text-decoration: none;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -945,7 +945,7 @@ body {
     margin: 1.4rem 0 0;
     position: relative;
     z-index: 1;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;

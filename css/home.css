@@ -220,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 3rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-subtitle {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1.3rem;
   margin-top: 0;
   margin-bottom: 0.7rem;
@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-theme-line {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1.3rem;
   margin-top: 0;
   margin-bottom: 2rem;
@@ -265,7 +265,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-cred-line {
   margin: 0;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   color: rgba(232, 232, 232, 0.75);
@@ -289,7 +289,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 12px;
   margin: 20px 0 30px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   color: var(--light-gray);
   letter-spacing: 1px;
@@ -393,7 +393,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Info styles for bio section */
 .bio-title {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0.3rem;
@@ -471,7 +471,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .marquee-content span {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: #7e1c2e; /* Your hot pink/red tone */
   font-size: 1.25rem; /* larger */
   font-weight: 500;
@@ -507,7 +507,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: #f5c6d6;
-    font-family: 'Libre Baskerville', cursive;
+    font-family: var(--font-headings);
 }
 
 .featured-art-section {
@@ -710,14 +710,14 @@ h1, h2, h3, h4, h5, h6 {
 .project-title {
   color: white;
   margin-top: 10px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 14px;
 }
 
 .caption {
   color: white;
   margin-top: 10px;
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 16px;
   text-align: center;
 }
@@ -1205,7 +1205,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-info-column h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2.2rem;
   color: var(--cream);
   margin-bottom: 15px;
@@ -1213,7 +1213,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-category {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   color: var(--burgundy);
   text-transform: uppercase;
@@ -1222,7 +1222,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-description {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   line-height: 1.8;
   font-size: 1.1rem;
@@ -1231,7 +1231,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-link {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: var(--burgundy);
   text-decoration: none;
   font-size: 1rem;
@@ -1341,7 +1341,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial p {
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-size: 1.15rem;
   line-height: 1.9;
   color: var(--color-text);
@@ -1682,7 +1682,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-header h2 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 3.2rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -1691,7 +1691,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-subtitle {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1.3rem;
   color: var(--light-gray);
   max-width: 600px;
@@ -1725,7 +1725,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-intro h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -1733,7 +1733,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-intro p {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   line-height: 1.7;
   margin-bottom: 40px;
@@ -1869,7 +1869,7 @@ h1, h2, h3, h4, h5, h6 {
 .progress-text {
   color: var(--cream);
   font-size: 1rem;
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   letter-spacing: 1px;
   font-weight: 500;
   text-shadow: 
@@ -1889,7 +1889,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .question-text {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2rem;
   color: var(--cream);
   text-align: center;
@@ -1913,7 +1913,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none !important;
   letter-spacing: normal !important;
   text-align: left !important;
-  font-family: 'IM Fell English', serif !important;
+  font-family: var(--font-body) !important;
   font-size: 1.1rem !important;
   padding: 20px 25px !important;
   overflow: visible !important;
@@ -1927,7 +1927,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--light-gray);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1.1rem;
   line-height: 1.5;
   position: relative;
@@ -2027,7 +2027,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .result-text h2 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 10px;
@@ -2037,7 +2037,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .result-text h3 {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1.4rem;
   color: var(--burgundy);
   margin-bottom: 25px;
@@ -2045,7 +2045,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .result-description {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   line-height: 1.7;
   margin-bottom: 25px;
@@ -2070,7 +2070,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .result-quote {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-style: italic;
   color: var(--cream);
   margin: 0;
@@ -2089,7 +2089,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .archetype-summary h4 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   color: var(--cream);
   margin-bottom: 15px;
   text-align: center;
@@ -2097,7 +2097,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .archetype-details p {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   margin-bottom: 10px;
   font-size: 1rem;
@@ -2115,14 +2115,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .interest-selector h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2.2rem;
   color: var(--cream);
   margin-bottom: 10px;
 }
 
 .selector-subtitle {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   font-size: 1.1rem;
   margin-bottom: 40px;
@@ -2206,7 +2206,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .interest-card h4 {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: var(--cream);
   font-size: 0.95rem;
   line-height: 1.4;
@@ -2239,7 +2239,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 15px 25px;
   margin-bottom: 30px;
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: var(--cream);
   font-size: 1rem;
   letter-spacing: 0.5px;
@@ -2251,7 +2251,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-result h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 2.5rem;
   color: var(--cream);
   margin-bottom: 20px;
@@ -2259,7 +2259,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-result h4 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   font-size: 1.8rem;
   color: var(--cream);
   margin-top: 40px;
@@ -2267,7 +2267,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .personality-combo {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--cream);
   font-size: 1.2rem;
   line-height: 1.6;
@@ -2282,7 +2282,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .match-explanation {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   font-size: 1rem;
   line-height: 1.6;
@@ -2297,7 +2297,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .personality-description {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--cream);
   font-size: 1.2rem;
   line-height: 1.6;
@@ -2309,7 +2309,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .interests-selected {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: var(--light-gray);
   font-size: 0.9rem;
   margin-bottom: 40px;
@@ -2378,7 +2378,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .piece-category {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.75rem;
   color: var(--burgundy);
   background: rgba(126, 28, 46, 0.15);
@@ -2390,7 +2390,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .piece-title {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   color: var(--cream);
   font-size: 1.3rem;
   margin: 10px 0;
@@ -2398,7 +2398,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .piece-description {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -2419,7 +2419,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 15px 30px;
   border: 2px solid var(--burgundy);
   border-radius: 5px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   text-decoration: none;
   text-align: center;
@@ -2538,7 +2538,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-header h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   color: var(--cream);
   font-size: 2rem;
   margin-bottom: 10px;
@@ -2546,7 +2546,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-header p {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   font-size: 1.1rem;
   line-height: 1.5;
@@ -2581,7 +2581,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-section h4 {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--cream);
   font-size: 1.2rem;
   margin-bottom: 15px;
@@ -2604,7 +2604,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--cream);
   border: 2px solid var(--burgundy);
   border-radius: 10px;
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2644,7 +2644,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   border: none;
   color: var(--light-gray);
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.5;
   resize: none;
@@ -2658,7 +2658,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -2797,7 +2797,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .spotify-share-header h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   color: var(--cream);
   margin: 0;
   font-size: 1.8rem;
@@ -2819,7 +2819,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
 }
 
 .spotify-share-close:hover {
@@ -2851,7 +2851,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--light-gray);
   padding: 12px 20px;
   border-radius: 8px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -2907,7 +2907,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 18px 28px;
   border: 2px solid var(--burgundy);
   border-radius: 10px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -3127,7 +3127,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-modal-header h3 {
-  font-family: 'Libre Baskerville', cursive;
+  font-family: var(--font-headings);
   color: var(--cream);
   margin: 0;
   font-size: 1.8rem;
@@ -3166,7 +3166,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .share-caption {
-  font-family: 'IM Fell English', serif;
+  font-family: var(--font-body);
   color: var(--light-gray);
   line-height: 1.6;
   margin-bottom: 25px;
@@ -3193,7 +3193,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--cream);
   border: none;
   border-radius: 8px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -3232,7 +3232,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--light-gray);
   border-radius: 6px;
   text-decoration: none;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -3554,7 +3554,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .instruction-content h3 {
     color: var(--burgundy-red);
-    font-family: 'Libre Baskerville', cursive;
+    font-family: var(--font-headings);
     font-size: 1.8rem;
     margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

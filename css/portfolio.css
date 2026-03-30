@@ -113,7 +113,7 @@
 }
 
 .portfolio-hero h1 {
-  font-family: "Libre Baskerville", sans-serif;
+  font-family: var(--font-headings);
   font-size: 3.5rem;
   color: var(--primary-color);
   margin: 0;
@@ -197,14 +197,14 @@
 
 .filter-box-label {
   color: rgba(248, 200, 208, 0.7);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.8rem;
   opacity: 0.7;
 }
 
 .filter-box-value {
   color: var(--primary-color);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.95rem;
   flex: 1;
   font-weight: normal;
@@ -248,7 +248,7 @@
   border: none;
   color: var(--primary-color);
   padding: 0.65rem 1rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.85rem;
   cursor: pointer;
   text-align: left;
@@ -285,7 +285,7 @@
   padding: 0 1rem;
   text-align: center;
   color: #f8c8d0;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   letter-spacing: 0.03em;
   opacity: 0.9;
@@ -355,7 +355,7 @@
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
   padding: 0.75rem 1.5rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -599,7 +599,7 @@
   color: #7e1c2e;
   padding: 0.45rem 1.1rem;
   font-size: 0.82rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.1px;
@@ -649,7 +649,7 @@
 
 .caption {
   text-align: center;
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
   font-size: 1.1rem;
   color: #fff;
   margin: 0.2rem 0 0 0; /* Reduced from 0.5rem to bring titles closer to thumbnails */
@@ -748,7 +748,7 @@ text-decoration: underline;
     background: transparent;
     color: var(--primary-color);
     cursor: pointer;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     transition: all 0.3s ease;
     white-space: nowrap;
   }
@@ -1058,7 +1058,7 @@ text-decoration: underline;
 }
 
 .testimonial p {
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-size: 1.2rem;
   line-height: 1.7;
   color: var(--color-text);

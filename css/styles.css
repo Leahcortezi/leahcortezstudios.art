@@ -557,7 +557,7 @@ body.menu-open {
     padding: 1rem 2rem;
     text-align: right;
     /* Consistent font for mobile nav */
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 1rem;
     letter-spacing: 1.5px;
     /* Simple text styling */
@@ -800,7 +800,7 @@ body.menu-open {
 }
 
 .share-modal-content h3 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
   font-size: 1.8rem;
   color: #2d1b25;
   text-align: center;
@@ -844,7 +844,7 @@ body.menu-open {
   border-radius: 12px;
   background: rgba(247, 243, 241, 0.9);
   color: #2d1b25;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;

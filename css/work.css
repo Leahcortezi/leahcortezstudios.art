@@ -369,7 +369,7 @@
 
 .work-details-column h1 {
   /* Sets the font size for the artwork's title */
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
@@ -413,7 +413,7 @@
 
 .work-description h2 {
   /* Sets the font size for the "About The Piece" heading */
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
   font-size: 2rem;
   color: var(--color-primary-accent);
   margin-bottom: 1.5rem;
@@ -423,7 +423,7 @@
   font-size: 1.4rem;
   color: var(--color-primary-accent);
   margin: 2rem 0 1rem 0;
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -474,7 +474,7 @@
   background: none;
   border: none;
   color: var(--color-primary-accent, #7e1c2e);
-  font-family: var(--font-accent, 'Libre Baskerville', cursive);
+  font-family: var(--font-accent, var(--font-headings));
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 0;
@@ -627,7 +627,7 @@
   margin: 0 0 1rem;
   font-size: 1.35rem;
   letter-spacing: 0.08em;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   color: #f8c8d0;
 }
 
@@ -693,7 +693,7 @@
 
 .curated-related-lens {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -705,7 +705,7 @@
   margin: 0 0 0.35rem;
   color: #f8c8d0;
   font-size: 1.02rem;
-  font-family: 'Libre Baskerville', serif;
+  font-family: var(--font-headings);
 }
 
 .curated-related-card p {

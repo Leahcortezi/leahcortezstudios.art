@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     min-height: 100vh;
     line-height: 1.6;
     margin: 0;
@@ -73,7 +73,7 @@ body {
 }
 
 .subtitle {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: 2.5rem;
     color: #7e1c2e;
     margin-bottom: 2rem;
@@ -176,7 +176,7 @@ body {
 }
 
 .profile-info h2 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #f5c6d6;
@@ -184,7 +184,7 @@ body {
 }
 
 .profile-title {
-    font-family: 'IM Fell English', serif;
+    font-family: var(--font-body);
     font-size: 1.3rem;
     color: rgba(245, 198, 214, 0.9);
     margin-bottom: 1rem;
@@ -192,7 +192,7 @@ body {
 }
 
 .profile-description {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 1rem;
     line-height: 1.6;
     color: rgba(245, 198, 214, 0.8);
@@ -273,14 +273,14 @@ body {
 }
 
 .link-card h3 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: #7e1c2e;
 }
 
 .link-card p {
-    font-family: 'IM Fell English', serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     color: #2d1b25;
     margin-bottom: 1rem;
@@ -288,7 +288,7 @@ body {
 }
 
 .link-url {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.9rem;
     color: #7e1c2e;
     opacity: 0.7;
@@ -327,7 +327,7 @@ body {
 }
 
 .portfolio-showcase h2 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: 2.5rem;
     text-align: center;
     color: #7e1c2e;
@@ -398,14 +398,14 @@ body {
 }
 
 .showcase-overlay h4 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-headings);
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #f5c6d6;
 }
 
 .showcase-overlay p {
-    font-family: 'IM Fell English', serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     color: rgba(245, 198, 214, 0.9);
 }
@@ -472,7 +472,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #7e1c2e;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
@@ -528,7 +528,7 @@ nav a.active {
     margin: 0;
     margin-top: -40px;
     padding: 0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-accent);
     font-size: 0.9rem;
     color: rgba(245, 198, 214, 0.7);
     text-align: center;

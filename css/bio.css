@@ -117,7 +117,7 @@
   /*
     Sets the font size for the artist statement paragraphs for readability.
   */
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-size: 1rem;
   /*
     Improved line height for better readability and more compact text.
@@ -169,7 +169,7 @@
   /*
     Section paragraph styling
   */
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 0;
@@ -183,7 +183,7 @@
   padding: 0.75rem 1.5rem;
   background-color: #f8c8d0;
   color: #000;
-  font-family: var(--font-accent), 'IBM Plex Mono', monospace;
+  font-family: var(--font-accent), var(--font-accent);
   font-size: 0.85rem;
   font-weight: 500;
   text-decoration: none;
@@ -335,7 +335,7 @@
   /*
     Modal text styling
   */
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-text);
@@ -715,7 +715,7 @@
   padding: 0.25rem 0;
   color: var(--color-text);
   border-bottom: 1px solid rgba(248, 200, 208, 0.1);
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-weight: 400;
 }
 
@@ -739,7 +739,7 @@
 .process-step p {
   color: var(--color-text);
   line-height: 1.6;
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-weight: 400;
 }
 
@@ -759,7 +759,7 @@
 .working-section p {
   color: var(--color-text);
   line-height: 1.6;
-  font-family: var(--font-body), 'IM Fell English', serif;
+  font-family: var(--font-body), var(--font-body);
   font-weight: 400;
 }
 
