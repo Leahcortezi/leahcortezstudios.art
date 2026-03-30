@@ -284,8 +284,18 @@ html body .bio-section h2.archive-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic !important;
   text-transform: none !important;
+  font-size: 2.1rem !important;
+  line-height: 1.2 !important;
   letter-spacing: 0.03em !important;
   font-weight: 500 !important;
+}
+
+@media (max-width: 768px) {
+  html body .about-archive-block h3.archive-subtitle,
+  html body .bio-section h2.archive-subtitle {
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
+  }
 }
 
 p {
