@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Typography */
   --font-headings: 'Cormorant Garamond', serif;      /* Elegant serif for all headings */
   --font-body: 'DM Sans', sans-serif;    /* Clean sans serif for all paragraph text */
-  --font-accent: 'IBM Plex Mono', monospace;  /* Monospaced font for captions or special text */
+  --font-accent: 'DM Sans', sans-serif;  /* Accent font for captions or special text */
 
   /* Other Layout Variables */
   --nav-height: 80px; /* Standard height for the navigation bar */
