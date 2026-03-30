@@ -882,7 +882,8 @@ function initializeCuratedRelatedWorks() {
       { href: '/collections/illustration/anointed-gaze/index.html', lens: 'Mood', reason: 'A similarly intimate spiritual tension with sacred visual cues.' }
     ],
     '/collections/design/insane-grain-packaging/': [
-      { href: '/collections/design/Threads/index.html', lens: 'Theme', reason: 'Bold brand voice translated through typographic personality and form.' },
+      { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Theme', reason: 'Packaging redesign centered on concept, audience, and strong visual narrative.' },
+      { href: '/collections/design/Threads/index.html', lens: 'Symbol', reason: 'Bold brand voice translated through typographic personality and form.' },
       { href: '/collections/design/City Reliquary/index.html', lens: 'Symbol', reason: 'Identity work grounded in narrative systems and cultural reference.' },
       { href: '/collections/design/editorial-spread/index.html', lens: 'Mood', reason: 'Shares the same pacing, hierarchy, and visual confidence.' }
     ],
@@ -912,9 +913,14 @@ function initializeCuratedRelatedWorks() {
       { href: '/collections/printmaking/reliquary-heart/index.html', lens: 'Mood', reason: 'Ritual intimacy and sacred atmosphere resonate across both works.' }
     ],
     '/collections/design/threads/': [
-      { href: '/collections/design/insane-grain-packaging/index.html', lens: 'Theme', reason: 'Brand identity translated into energetic visual voice.' },
-      { href: '/collections/design/City Reliquary/index.html', lens: 'Symbol', reason: 'Identity systems driven by memory and place references.' },
-      { href: '/collections/design/editorial-spread/index.html', lens: 'Mood', reason: 'Controlled movement and hierarchy with a strong graphic pulse.' }
+      { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Theme', reason: 'Illustration-led branding with clear hierarchy and a concept-driven voice.' },
+      { href: '/collections/design/insane-grain-packaging/index.html', lens: 'Symbol', reason: 'Brand identity translated into energetic visual voice.' },
+      { href: '/collections/design/City Reliquary/index.html', lens: 'Mood', reason: 'Identity systems driven by narrative structure and visual cohesion.' }
+    ],
+    '/collections/design/space-age-wine-packaging/': [
+      { href: '/collections/design/insane-grain-packaging/index.html', lens: 'Theme', reason: 'Packaging strategy driven by clear audience positioning and concept.' },
+      { href: '/collections/design/City Reliquary/index.html', lens: 'Symbol', reason: 'Narrative identity where illustration and typographic system work together.' },
+      { href: '/collections/design/Threads/index.html', lens: 'Mood', reason: 'Expressive line quality and bold brand voice with contemporary energy.' }
     ],
     '/collections/printmaking/reliquary-heart/': [
       { href: '/collections/illustration/abuelas-altar/index.html', lens: 'Theme', reason: 'A shared ritual language around devotion, loss, and remembrance.' },
@@ -987,6 +993,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/contemporary-contexts-zine/': '/collections/design/contemporary-contexts-zine/zine-mockup.jpg',
     '/collections/illustration/anointed-gaze/': '/collections/illustration/anointed-gaze/images/JPEG/personal6.jpg',
     '/collections/design/threads/': '/collections/design/Threads/threadsmockup.jpg',
+    '/collections/design/space-age-wine-packaging/': '/collections/design/space-age-wine-packaging/images/MOCKUPFINAL.jpg',
     '/collections/printmaking/reliquary-heart/': '/collections/printmaking/Reliquary.jpg',
     '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/cityreliquarymockup.jpg',
     '/collections/design/themed-playing-card-design/': '/collections/design/themed-playing-card-design/images/card-mockup.jpg',
@@ -1010,6 +1017,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/contemporary-contexts-zine/': 'Designer Tribute Zine',
     '/collections/illustration/anointed-gaze/': 'Anointed Gaze',
     '/collections/design/threads/': 'Threads',
+    '/collections/design/space-age-wine-packaging/': 'Space Age Wine Packaging',
     '/collections/printmaking/reliquary-heart/': 'Reliquary Heart',
     '/collections/design/city reliquary/': 'City Reliquary',
     '/collections/design/themed-playing-card-design/': 'Themed Playing Cards',

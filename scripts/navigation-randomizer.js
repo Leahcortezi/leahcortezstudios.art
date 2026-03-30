@@ -8,6 +8,7 @@ const galleryOrder = [
     "collections/design/contemporary-contexts-zine/index.html",
     "collections/illustration/anointed-gaze/index.html",
     "collections/design/Threads/index.html",
+    "collections/design/space-age-wine-packaging/index.html",
     "collections/printmaking/reliquary-heart/index.html",
     "collections/design/City Reliquary/index.html",
     "collections/design/themed-playing-card-design/index-case-study.html",
