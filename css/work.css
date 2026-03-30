@@ -402,11 +402,13 @@
   border-bottom: 1px solid var(--color-secondary-accent);
 }
 
-.meta-item {
-  /* Sets the font to the accent font for a distinct look */
-  font-family: var(--font-accent);
+.meta-item,
+.meta-tag {
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .work-description h2 {
