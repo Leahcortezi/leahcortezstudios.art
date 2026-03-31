@@ -18,6 +18,7 @@ const galleryOrder = [
     "collections/illustration/heaven-on-fire/index.html",
     "collections/objects/feathers-along-the-bend/index.html",
     "collections/printmaking/unbecoming/index.html",
+    "collections/printmaking/among-the-faithful/index.html",
     "collections/objects/gnaw/index.html",
     "collections/objects/unraveling/index.html",
     "collections/objects/remnants/index.html"

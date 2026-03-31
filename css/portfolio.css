@@ -631,6 +631,11 @@
   aspect-ratio: 3/4;
 }
 
+/* Square 1:1 images */
+.masonry-item.square .lace-wrapper {
+  aspect-ratio: 1/1;
+}
+
 /* Horizontal 4:3 images */
 .masonry-item.horizontal .lace-wrapper {
   aspect-ratio: 4/3;
