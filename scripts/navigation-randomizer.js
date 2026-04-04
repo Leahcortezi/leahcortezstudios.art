@@ -14,6 +14,7 @@ const galleryOrder = [
     "collections/design/themed-playing-card-design/index-case-study.html",
     "collections/objects/abyss-bloom/index.html",
     "collections/design/endangered-species-poster/index.html",
+    "collections/design/HISTORICALPOSTERS/index.html",
     "collections/printmaking/the-living-room/index.html",
     "collections/illustration/heaven-on-fire/index.html",
     "collections/objects/feathers-along-the-bend/index.html",
