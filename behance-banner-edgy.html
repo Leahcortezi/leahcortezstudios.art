@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leah Cortez Studios - Edgy Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .banner-container {
+            width: 3200px;
+            height: 410px;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid #f8c8d0;
+            border-bottom: 3px solid #f8c8d0;
+        }
+
+        /* Glitch-style diagonal lines */
+        .glitch-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .glitch-line {
+            position: absolute;
+            background: #f8c8d0;
+            width: 100%;
+            height: 2px;
+        }
+
+        .line-1 { top: 20%; }
+        .line-2 { top: 40%; }
+        .line-3 { top: 60%; }
+        .line-4 { top: 80%; }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .text-section {
+            flex: 0 0 55%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 160px;
+            font-weight: 400;
+            color: #f8c8d0;
+            line-height: 0.8;
+            margin-bottom: 0;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+        }
+
+        .title-line {
+            width: 200px;
+            height: 4px;
+            background: #f8c8d0;
+            margin: 15px 0;
+        }
+
+        .tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            max-width: 700px;
+        }
+
+        .visual-section {
+            flex: 0 0 35%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        /* Edgy geometric abstract shapes */
+        .shape-block {
+            position: relative;
+            width: 350px;
+            height: 280px;
+        }
+
+        .edge-shape {
+            position: absolute;
+            border: 3px solid #f8c8d0;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 90px solid transparent;
+            border-right: 90px solid transparent;
+            border-bottom: 160px solid #f8c8d0;
+            top: 0;
+            right: 0;
+            opacity: 0.8;
+        }
+
+        .square-1 {
+            width: 140px;
+            height: 140px;
+            top: 80px;
+            left: 0;
+            opacity: 0.6;
+            transform: rotate(15deg);
+        }
+
+        .square-2 {
+            width: 100px;
+            height: 100px;
+            bottom: 20px;
+            right: 60px;
+            opacity: 0.4;
+            transform: rotate(-25deg);
+        }
+
+        .diagonal-line {
+            position: absolute;
+            background: #f8c8d0;
+            opacity: 0.5;
+        }
+
+        .line-slash {
+            width: 3px;
+            height: 200px;
+            bottom: 0;
+            left: 40px;
+            transform: rotate(-20deg);
+        }
+
+        .accent-cross {
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: #e0b0b8;
+            top: 50%;
+            right: 120px;
+        }
+
+        .accent-cross::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 80px;
+            background: #e0b0b8;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 1600px) {
+            .title {
+                font-size: 130px;
+                letter-spacing: 10px;
+            }
+
+            .tagline {
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+
+            .shape-block {
+                width: 280px;
+                height: 220px;
+            }
+
+            .square-1 {
+                width: 110px;
+                height: 110px;
+            }
+
+            .square-2 {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="glitch-lines">
+            <div class="glitch-line line-1"></div>
+            <div class="glitch-line line-2"></div>
+            <div class="glitch-line line-3"></div>
+            <div class="glitch-line line-4"></div>
+        </div>
+
+        <div class="content">
+            <div class="text-section">
+                <h1 class="title">LEAH<br>CORTEZ</h1>
+                <div class="title-line"></div>
+                <p class="tagline">GRAPHIC / DESIGN / PUNK</p>
+            </div>
+
+            <div class="visual-section">
+                <div class="shape-block">
+                    <div class="triangle"></div>
+                    <div class="edge-shape square-1"></div>
+                    <div class="edge-shape square-2"></div>
+                    <div class="diagonal-line line-slash"></div>
+                    <div class="accent-cross"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

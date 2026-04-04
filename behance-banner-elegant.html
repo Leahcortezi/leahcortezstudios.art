@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leah Cortez Studios - Elegant Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .banner-container {
+            width: 3200px;
+            height: 410px;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle gradient orbs */
+        .orb {
+            position: absolute;
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #f8c8d0;
+            top: -150px;
+            right: -100px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #e0b0b8;
+            bottom: -120px;
+            left: -80px;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .text-section {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 150px;
+            font-weight: 400;
+            color: #f8c8d0;
+            line-height: 1;
+            margin-bottom: 25px;
+            letter-spacing: 8px;
+        }
+
+        .title-accent {
+            font-size: 90px;
+            font-weight: 300;
+            color: #e0b0b8;
+            letter-spacing: 4px;
+        }
+
+        .tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 2;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            max-width: 600px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: #f8c8d0;
+            margin: 30px 0;
+        }
+
+        .visual-section {
+            flex: 0 0 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Elegant abstract mark */
+        .mark-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mark-circle {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid #f8c8d0;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .mark-inner-circle {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid #e0b0b8;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .mark-line {
+            position: absolute;
+            background: #f8c8d0;
+            opacity: 0.2;
+        }
+
+        .mark-line-v {
+            width: 1px;
+            height: 200px;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-0.5px);
+        }
+
+        .mark-line-h {
+            width: 200px;
+            height: 1px;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-0.5px);
+        }
+
+        .mark-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f8c8d0;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1600px) {
+            .title {
+                font-size: 120px;
+            }
+
+            .title-accent {
+                font-size: 70px;
+            }
+
+            .mark-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .mark-circle {
+                width: 220px;
+                height: 220px;
+            }
+
+            .mark-inner-circle {
+                width: 140px;
+                height: 140px;
+            }
+
+            .mark-line-v {
+                height: 160px;
+                top: 30px;
+            }
+
+            .mark-line-h {
+                width: 160px;
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <div class="content">
+            <div class="text-section">
+                <h1 class="title">LEAH<br><span class="title-accent">CORTEZ</span></h1>
+                <div class="divider"></div>
+                <p class="tagline">Graphic Design<br>Wellness & Brand</p>
+            </div>
+
+            <div class="visual-section">
+                <div class="mark-container">
+                    <div class="mark-circle"></div>
+                    <div class="mark-inner-circle"></div>
+                    <div class="mark-line mark-line-v"></div>
+                    <div class="mark-line mark-line-h"></div>
+                    <div class="mark-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

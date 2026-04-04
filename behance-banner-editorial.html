@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leah Cortez Studios - Editorial Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .banner-container {
+            width: 3200px;
+            height: 410px;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 100px;
+            position: relative;
+            overflow: hidden;
+            border-left: 8px solid #f8c8d0;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .text-section {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-family: 'Space Mono', monospace;
+            font-size: 120px;
+            font-weight: 700;
+            color: #f8c8d0;
+            line-height: 0.85;
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            max-width: 700px;
+        }
+
+        .visual-section {
+            flex: 0 0 40%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        /* Bold editorial typography composition */
+        .typography-block {
+            position: relative;
+            width: 400px;
+        }
+
+        .block-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: #f8c8d0;
+            line-height: 0.9;
+            position: absolute;
+            text-transform: uppercase;
+        }
+
+        .word-1 {
+            font-size: 140px;
+            font-weight: 700;
+            top: 0;
+            left: 0;
+            letter-spacing: -4px;
+        }
+
+        .word-2 {
+            font-size: 80px;
+            font-weight: 400;
+            top: 120px;
+            right: 0;
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .word-3 {
+            font-size: 60px;
+            font-weight: 700;
+            bottom: 20px;
+            left: 50px;
+            color: #e0b0b8;
+        }
+
+        .accent-bars {
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 4px;
+            height: 180px;
+            background: linear-gradient(180deg, #f8c8d0 0%, transparent 100%);
+        }
+
+        @media (max-width: 1600px) {
+            .title {
+                font-size: 100px;
+                letter-spacing: 6px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .word-1 {
+                font-size: 110px;
+            }
+
+            .word-2 {
+                font-size: 65px;
+            }
+
+            .word-3 {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="content">
+            <div class="text-section">
+                <h1 class="title">GRAPHIC<br>DESIGN</h1>
+                <p class="tagline">Editorial | Communication | Visual Narratives</p>
+            </div>
+
+            <div class="visual-section">
+                <div class="typography-block">
+                    <div class="block-text word-1">LEAH</div>
+                    <div class="block-text word-2">CORTEZ</div>
+                    <div class="block-text word-3">DESIGN</div>
+                    <div class="accent-bars"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
