@@ -674,10 +674,6 @@
   display: block;
 }
 
-.curated-related-thumb[src*="HISTORICALPOSTERS"] {
-  object-position: center 35%;
-}
-
 .curated-related-thumb-wrap.no-thumb {
   display: none;
 }
