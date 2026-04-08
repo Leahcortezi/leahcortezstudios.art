@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Surendra';
+  src: url('../assets/Surendra-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 /* White text for subtitle or tagline */
 .white-title {
@@ -45,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
   --color-secondary-accent: #e0b0b8; /* Darker pink for secondary elements and highlights */
 
   /* Typography */
-  --font-headings: 'Cormorant Garamond', serif;      /* Elegant serif for all headings */
+  --font-headings: 'Surendra', 'Cormorant Garamond', serif;      /* Primary custom serif for all headings */
   --font-body: 'DM Sans', sans-serif;    /* Clean sans serif for all paragraph text */
   --font-accent: 'DM Sans', sans-serif;  /* Accent font for captions or special text */
 
