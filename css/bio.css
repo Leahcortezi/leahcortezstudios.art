@@ -204,6 +204,20 @@
   transform: translateY(-2px);
 }
 
+.typeface-note {
+  margin-top: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #d7c0c6;
+  opacity: 0.82;
+}
+
+.typeface-note em {
+  font-style: normal;
+  color: var(--color-primary-accent);
+}
+
 
 /* --------------------
    3. BIO LINKS SECTION
