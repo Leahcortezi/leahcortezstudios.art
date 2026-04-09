@@ -395,7 +395,7 @@ nav {
 }
 
 .nav-links a {
-  font-family: var(--font-accent);
+  font-family: var(--font-headings);
   text-transform: uppercase;
   color: #f5c6d6;
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
@@ -592,7 +592,7 @@ body.menu-open {
     padding: 1rem 2rem;
     text-align: right;
     /* Consistent font for mobile nav */
-    font-family: var(--font-accent);
+    font-family: var(--font-headings);
     font-size: 1rem;
     letter-spacing: 1.5px;
     /* Simple text styling */
