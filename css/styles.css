@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .archive-subtitle {
   font-family: var(--font-headings) !important;
-  font-style: italic !important;
+  font-style: normal !important;
   text-transform: none !important;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -290,7 +290,7 @@ h1, h2, h3, h4, h5, h6 {
 html body .about-archive-block h3.archive-subtitle,
 html body .bio-section h2.archive-subtitle {
   font-family: var(--font-headings) !important;
-  font-style: italic !important;
+  font-style: normal !important;
   text-transform: none !important;
   font-size: 2.1rem !important;
   line-height: 1.2 !important;
