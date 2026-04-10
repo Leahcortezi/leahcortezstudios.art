@@ -16,6 +16,7 @@ Thumbs.db
 *.mp4
 *.mov
 *.avi
+*.psd
 collections/motion/*.mp4
 collections/motion/*.mov
 collections/motion/*.avi
