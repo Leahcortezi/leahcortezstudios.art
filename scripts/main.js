@@ -993,7 +993,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/contemporary-contexts-zine/': '/collections/design/contemporary-contexts-zine/mockupzine.jpg',
     '/collections/illustration/anointed-gaze/': '/collections/illustration/anointed-gaze/images/JPEG/personal6.jpg',
     '/collections/design/threads/': '/collections/design/Threads/bagmockup.jpg',
-    '/collections/design/space-age-wine-packaging/': '/collections/design/space-age-wine-packaging/images/mockupfinalfinal.jpg',
+    '/collections/design/space-age-wine-packaging/': '/collections/design/space-age-wine-packaging/images/WINEMOCKUP.jpg',
     '/collections/printmaking/reliquary-heart/': '/collections/printmaking/Reliquary.jpg',
     '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/MOCKUPSHIRT.jpg',
     '/collections/design/themed-playing-card-design/': '/collections/design/themed-playing-card-design/images/card-mockup.jpg',
