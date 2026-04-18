@@ -988,7 +988,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/illustration/abuelas-altar/': '/collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg',
     '/collections/design/insane-grain-packaging/': '/collections/design/insane-grain-packaging/images/snackmockup.jpg',
     '/collections/illustration/inheritance/': '/collections/illustration/inheritance/images/JPEG/Personal1.jpg',
-    '/collections/design/editorial-spread/': '/collections/design/editorial-spread/editorial%20spread%20mockup.jpg',
+    '/collections/design/editorial-spread/': '/collections/design/editorial-spread/mockupflash.jpg',
     '/collections/printmaking/the-unholy-gaze/': '/collections/printmaking/The%20Unholy%20Gaze.jpg',
     '/collections/design/contemporary-contexts-zine/': '/collections/design/contemporary-contexts-zine/mockupzine.jpg',
     '/collections/illustration/anointed-gaze/': '/collections/illustration/anointed-gaze/images/JPEG/personal6.jpg',
