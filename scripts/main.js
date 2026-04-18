@@ -986,7 +986,7 @@ function initializeCuratedRelatedWorks() {
 
   const relatedThumbs = {
     '/collections/illustration/abuelas-altar/': '/collections/illustration/abuelas-altar/images/JPEG/Studio10.jpg',
-    '/collections/design/insane-grain-packaging/': '/collections/design/insane-grain-packaging/images/snackmockup.jpg',
+    '/collections/design/insane-grain-packaging/': '/collections/design/insane-grain-packaging/images/_(12).jpg',
     '/collections/illustration/inheritance/': '/collections/illustration/inheritance/images/JPEG/Personal1.jpg',
     '/collections/design/editorial-spread/': '/collections/design/editorial-spread/mockupflash.jpg',
     '/collections/printmaking/the-unholy-gaze/': '/collections/printmaking/The%20Unholy%20Gaze.jpg',
