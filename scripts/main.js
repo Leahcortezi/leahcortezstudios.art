@@ -992,7 +992,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/printmaking/the-unholy-gaze/': '/collections/printmaking/The%20Unholy%20Gaze.jpg',
     '/collections/design/contemporary-contexts-zine/': '/collections/design/contemporary-contexts-zine/mockupzine.jpg',
     '/collections/illustration/anointed-gaze/': '/collections/illustration/anointed-gaze/images/JPEG/personal6.jpg',
-    '/collections/design/threads/': '/collections/design/Threads/bagsmockup.jpg',
+    '/collections/design/threads/': '/collections/design/Threads/bagmockup.jpg',
     '/collections/design/space-age-wine-packaging/': '/collections/design/space-age-wine-packaging/images/mockupfinalfinal.jpg',
     '/collections/printmaking/reliquary-heart/': '/collections/printmaking/Reliquary.jpg',
     '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/MOCKUPSHIRT.jpg',
