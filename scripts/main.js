@@ -998,7 +998,7 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/MOCKUPSHIRT.jpg',
     '/collections/design/themed-playing-card-design/': '/collections/design/themed-playing-card-design/images/card-mockup.jpg',
     '/collections/objects/abyss-bloom/': '/collections/objects/abyss-bloom/images/JPEG/studio2.jpg',
-    '/collections/design/endangered-species-poster/': '/collections/design/endangered-species-poster/images/KoalaMockup.jpg',
+    '/collections/design/endangered-species-poster/': '/collections/design/endangered-species-poster/images/postermockup.jpg',
     '/collections/printmaking/the-living-room/': '/collections/printmaking/The%20Living%20Room.jpg',
     '/collections/illustration/heaven-on-fire/': '/collections/illustration/heaven-on-fire/images/JPEG/personal7.jpg',
     '/collections/objects/feathers-along-the-bend/': '/collections/objects/feathers-along-the-bend/images/JPEG/studio8.jpg',
