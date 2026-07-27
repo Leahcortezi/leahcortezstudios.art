@@ -981,6 +981,16 @@ function initializeCuratedRelatedWorks() {
       { href: '/collections/objects/unraveling/index.html', lens: 'Theme', reason: 'Shared language of deterioration, fracture, and remains.' },
       { href: '/collections/objects/gnaw/index.html', lens: 'Symbol', reason: 'A tactile vocabulary of compression and compulsion.' },
       { href: '/collections/objects/feathers-along-the-bend/index.html', lens: 'Mood', reason: 'Quiet traces of what lingers after a moment has passed.' }
+    ],
+    '/collections/design/band-tribute-booklet/': [
+      { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Theme', reason: 'Editorial strategy with typographic systems at the core.' },
+      { href: '/collections/design/contemporary-contexts-zine/index.html', lens: 'Mood', reason: 'Multi-page narrative with grid-driven composition and visual flow.' },
+      { href: '/collections/design/custom-typeface-specimen-poster/index.html', lens: 'Symbol', reason: 'Typography as the primary design language and expressive tool.' }
+    ],
+    '/collections/design/paperback-full-cover/': [
+      { href: '/collections/design/band-tribute-booklet/index.html', lens: 'Theme', reason: 'Publication design where composition spans multiple surfaces.' },
+      { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Mood', reason: 'Complete package design balancing visual impact with functionality.' },
+      { href: '/collections/design/City Reliquary/index.html', lens: 'Symbol', reason: 'Unified identity system with cohesive narrative and visual strategy.' }
     ]
   };
 
@@ -1005,7 +1015,9 @@ function initializeCuratedRelatedWorks() {
     '/collections/printmaking/unbecoming/': '/collections/printmaking/Unbecoming.jpg',
     '/collections/objects/gnaw/': '/collections/objects/gnaw/images/JPEG/Studio6.jpg',
     '/collections/objects/unraveling/': '/collections/objects/unraveling/images/JPEG/Studio5.jpg',
-    '/collections/objects/remnants/': '/collections/objects/remnants/images/JPEG/studio1.jpg'
+    '/collections/objects/remnants/': '/collections/objects/remnants/images/JPEG/studio1.jpg',
+    '/collections/design/band-tribute-booklet/': '/collections/design/band-tribute-booklet/images/mockup.jpg',
+    '/collections/design/paperback-full-cover/': '/collections/design/paperback-full-cover/images/thumb.jpg'
   };
 
   const relatedTitles = {
@@ -1029,7 +1041,9 @@ function initializeCuratedRelatedWorks() {
     '/collections/printmaking/unbecoming/': 'Unbecoming',
     '/collections/objects/gnaw/': 'Gnaw',
     '/collections/objects/unraveling/': 'Unraveling',
-    '/collections/objects/remnants/': 'Remnants'
+    '/collections/objects/remnants/': 'Remnants',
+    '/collections/design/band-tribute-booklet/': 'Band Tribute Booklet',
+    '/collections/design/paperback-full-cover/': 'Paperback Full Cover'
   };
 
   const getThumbForHref = (href) => {
