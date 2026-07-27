@@ -187,13 +187,13 @@
                 </a>
             </div>
 
-                        <!-- SECONDARY WORK - MIXED MEDIUMS -->
+            <!-- SECONDARY WORK - MIXED MEDIUMS -->
             
             <!-- 9. Threads - Design -->
             <div class="masonry-item design square" data-category="design" data-year="2026">
                 <a href="design/Threads/index.html">
                     <div class="lace-wrapper">
-                        <img class="project-image" src="design/Threads/bagmockup.jpg" alt="Static + Animated Logotype for Threads clothing retail brand" loading="lazy" style="object-fit: cover; aspect-ratio: 1/1;">
+                            <img class="project-image" src="design/Threads/bagmockup.jpg" alt="Static + Animated Logotype for Threads clothing retail brand" loading="lazy" style="object-fit: cover; aspect-ratio: 1/1;">
                     </div>
                     <p class="caption">Static + Animated Logotype</p>
                 </a>
@@ -209,17 +209,16 @@
                 </a>
             </div>
 
-            <!-- 10.1 Band Tribute Booklet - Design -->
+            <!-- 10.5 Custom Typeface + Specimen Poster - Design -->
+            <!-- 10.2 Paperback Full Cover - Design -->
             <div class="masonry-item design square" data-category="design" data-year="2026">
-                <a href="design/band-tribute-booklet/index.html">
+                                                                                    <a href="design/paperback-full-cover/index.html">
                     <div class="lace-wrapper">
-                        <img class="project-image" src="design/band-tribute-booklet/images/mockup.jpg" alt="Band Tribute Booklet - Editorial design translating music into print" loading="lazy" style="object-fit: cover; aspect-ratio: 1/1;">
+                        <img class="project-image" src="design/paperback-full-cover/images/thumb.jpg" alt="Paperback Full Cover - Publication design integrating narrative and production" loading="lazy" style="object-fit: cover; aspect-ratio: 1/1;">
                     </div>
-                    <p class="caption">Band Tribute Booklet</p>
+                    <p class="caption">Paperback Full Cover</p>
                 </a>
             </div>
-
-            <!-- 10.2 Custom Typeface + Specimen Poster - Design -->
             <div class="masonry-item design square" data-category="design" data-year="2026">
                 <a href="design/custom-typeface-specimen-poster/index.html">
                     <div class="lace-wrapper">
@@ -238,16 +237,6 @@
                     <p class="caption">Reliquary Heart</p>
                 </a>
             </div>
-
-            <!-- 12. Paperback Full Cover - Design -->
-            <div class="masonry-item design square" data-category="design" data-year="2026">
-                <a href="design/paperback-full-cover/index.html">
-                    <div class="lace-wrapper">
-                        <img class="project-image" src="design/paperback-full-cover/images/thumb.jpg" alt="Paperback Full Cover - Publication design integrating narrative and production" loading="lazy" style="object-fit: cover; aspect-ratio: 1/1;">
-                    </div>
-                    <p class="caption">Paperback Full Cover</p>
-                </a>
-            </div>
             
             <!-- 10. City Reliquary - Design -->
             <div class="masonry-item design square" data-category="design" data-year="2026">
@@ -258,7 +247,6 @@
                     <p class="caption">Brand Identity</p>
                 </a>
             </div>
-            
             
             <!-- 11. Playing Cards - Design -->
             <div class="masonry-item design square" data-category="design" data-year="2024">
