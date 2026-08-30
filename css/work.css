@@ -42,7 +42,16 @@
   border: 2px solid rgba(248, 200, 208, 0.3);
   font-size: 2.8rem;
   padding: 0;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
+
+.gallery-arrow.left-arrow { left: 24px; }
+.gallery-arrow.right-arrow { right: 24px; }
 
 .gallery-arrow:hover {
   background: rgba(126, 28, 46, 0.85);
