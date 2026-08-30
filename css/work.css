@@ -394,8 +394,8 @@
   */
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* allow items to wrap, but keep label+value together */
-  gap: 1.25rem; /* balanced spacing between meta items */
+  flex-wrap: wrap; /* default: allow wrap on small screens */
+  gap: 1rem; /* balanced spacing between meta items */
   margin-top: 0.35rem; /* small gap under title */
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
@@ -413,7 +413,7 @@
   font-weight: 400;
   display: flex;
   align-items: center;
-  gap: 0.25rem; /* smaller gap between label and value */
+  gap: 0.2rem; /* very tight gap between label and value */
 }
 
 
@@ -771,7 +771,7 @@
 
 .meta-item strong {
   display: inline-block;
-  min-width: 80px; /* label width to align values */
+  min-width: 60px; /* tighter label width so values sit closer */
   font-weight: 600;
   text-transform: uppercase;
   color: var(--color-primary-accent); /* pink labels */
@@ -782,8 +782,8 @@
 /* Ensure deliverables value has breathing room if it's long */
 .meta-item .meta-value {
   display: inline-block;
-  max-width: 40ch;
-  white-space: normal;
+  max-width: none;
+  white-space: nowrap; /* prefer single-line for values */
 }
 
 /* Truncate long Project titles with ellipsis and show full title on hover (title attr set) */
@@ -795,12 +795,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 30ch; /* short truncation width for project titles */
+  max-width: 36ch; /* slightly wider truncation for project titles */
+}
+
+/* Truncate deliverables with ellipsis and show full text via title attribute */
+.meta-item.meta-deliverables .meta-value {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 22ch; /* adjust to fit a single-line without breaking layout */
 }
 
 /* Other meta values (Year, Deliverables) may wrap normally */
 .meta-item:not(.meta-project) .meta-value {
-  white-space: normal;
+  white-space: nowrap; /* keep other meta values on one line too */
 }
 
 /* Keep Project and Year label+value pairs from breaking apart */
@@ -813,7 +822,14 @@
 @media (max-width: 900px) {
   /* Allow wrapping on narrow screens */
   .work-meta { flex-wrap: wrap; gap: 0.75rem; }
-  .meta-item strong { min-width: 90px; }
+  .meta-item strong { min-width: 80px; }
+}
+
+/* Force metadata to remain on one line on wide screens */
+@media (min-width: 901px) {
+  .work-meta { flex-wrap: nowrap; }
+  .meta-item { white-space: nowrap; }
+  .meta-item .meta-value { white-space: nowrap; }
 }
 /* On medium screens (tablets) stack columns vertically */
 @media (max-width: 1024px) {
