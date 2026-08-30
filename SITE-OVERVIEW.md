@@ -17,7 +17,7 @@
 >
 > Growing up in South Texas, my Mexican heritage, Catholic upbringing, and the streets of downtown Corpus Christi influence everything I make. My personal work explores questions I can't stop thinking about—identity, religion, mental illness, and the uncomfortable or uncanny. I work across graphic design, printmaking, illustration, and mixed media. My work isn't made to please, it's made to linger.
 
-### About This Archive (from Bio Page)
+### About This Portfolio (from Bio Page)
 > This archive is a collection of my favorite pieces and a record of how my work continues to grow. I wanted a space where I could share the work that feels most honest to me without the pressure of trying to impress anyone.
 >
 > This archive documents how memory, religion, and identity take form over time.
@@ -28,8 +28,8 @@
 
 ## Site Concept
 
-This site is a **Personal Archive**, not a traditional portfolio. The branding emphasizes:
-- **Hero text:** "A Personal Archive"
+This site is a **Personal Portfolio**, not a traditional portfolio. The branding emphasizes:
+- **Hero text:** "A Personal Portfolio"
 - **Hero line:** "A personal archive of art and design exploring memory, religion, and identity."
 - **Tone:** Personal, honest, reflective — not trying to impress anyone
 
@@ -49,15 +49,15 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 ### Main Pages
 | Page | Path | Description |
 |------|------|-------------|
-| Home | `/index.html` | Hero ("A Personal Archive"), Featured section, Recent Addition, About the Artist preview |
-| Bio | `/bio/index.html` | Full bio + "About This Archive" section |
-| Archive | `/collections/index.html` | Masonry grid gallery with category + year filters |
+| Home | `/index.html` | Hero ("A Personal Portfolio"), Featured section, Recent Addition, About the Artist preview |
+| Bio | `/bio/index.html` | Full bio + "About This Portfolio" section |
+| Portfolio | `/collections/index.html` | Masonry grid gallery with category + year filters |
 | CV | `/cv/index.html` | Resume/curriculum vitae |
 | Contact | `/contact/index.html` | Contact form |
-| Card | `/card.html` | Link-in-bio page (Archive, Behance, Instagram only — no Shop or Commissions) |
+| Card | `/card.html` | Link-in-bio page (Portfolio, Behance, Instagram only — no Shop or Commissions) |
 
 ### Homepage Sections
-1. **Hero** — "A Personal Archive" title, theme line, "BROWSE ARCHIVE" button
+1. **Hero** — "A Personal Portfolio" title, theme line, "BROWSE ARCHIVE" button
 2. **About the Artist** — Short bio preview with photo, "Read Full Bio →" link
 3. **Selected Works** — 3 highlighted works (Abuela's Altar, Inheritance, The Unholy Gaze)
 4. **Recent Addition** — Latest project showcase
@@ -97,7 +97,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 
 ---
 
-## Archive (Gallery)
+## Portfolio (Gallery)
 
 ### Filters
 1. **Category Filter** (pill buttons): All Work, Design, Illustration, Printmaking, Sculpture
@@ -185,15 +185,15 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 ### Main Nav
 - Home → `index.html`
 - Bio → `bio/index.html`
-- Archive → `collections/index.html`
+- Portfolio → `collections/index.html`
 - CV → `cv/index.html`
 - Contact → `contact/index.html`
 
 ### Breadcrumbs (work pages)
-`Home > Archive > [Category] > [Title]`
+`Home > Portfolio > [Category] > [Title]`
 
 ### Work Navigation
-- "Back to Archive" button
+- "Back to Portfolio" button
 - Prev/Next navigation follows gallery order (defined in `navigation-randomizer.js`)
 
 ---
@@ -201,7 +201,7 @@ This site is a **Personal Archive**, not a traditional portfolio. The branding e
 ## Card Page (Link-in-Bio)
 
 Links included:
-1. **Archive** — "Explore my creative work"
+1. **Portfolio** — "Explore my creative work"
 2. **Behance** — "My portfolio" (behance.net/leahcortez1)
 3. **Instagram** — @leahcortez.art
 
@@ -260,12 +260,12 @@ Links included:
 
 ## Recent Updates (March 2026)
 
-- **Site rebranded as "A Personal Archive"** — Changed all "Work" to "Archive", "Portfolio" references removed
+- **Site rebranded as "A Personal Portfolio"** — Changed all "Work" to "Portfolio", "Portfolio" references removed
 - **Hero subtitle:** "Not a curated portfolio. Art, design, and everything in between."
 - **Homepage sections:** "Featured" + "Recent Addition"
 - **Bio completely rewritten** — Personal tone about South Texas, Mexican heritage, Catholic upbringing
 - **"My work isn't made to please, it's made to linger."**
-- **"About This Archive" section** — Explains the site as a curated personal collection
+- **"About This Portfolio" section** — Explains the site as a curated personal collection
 - **Gallery reordered** — Strongest work first, mixed mediums
 - **Double-Sided Poster removed** from gallery
 - **Card page updated** — Removed Shop/Commissions, added Behance
@@ -280,8 +280,8 @@ This section maps each suggestion from the external AI audit to current site sta
 
 | Item | Status | Notes / What to Add |
 |------|--------|---------------------|
-| Custom 404 page | ✅ Implemented | `404.html` exists, branded styling, links back to Home/Archive/Contact. |
-| Site search | ✅ Implemented | Archive page now includes keyword search input on `collections/index.html`, integrated with year/category filters. |
+| Custom 404 page | ✅ Implemented | `404.html` exists, branded styling, links back to Home/Portfolio/Contact. |
+| Site search | ✅ Implemented | Portfolio page now includes keyword search input on `collections/index.html`, integrated with year/category filters. |
 | CV page for broader audiences | ⚠️ Partial | CV is strong for academics; add a short “For Inquiries” block or one-page press sheet link for curators/clients. |
 
 ### SEO / Discoverability
