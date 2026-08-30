@@ -370,7 +370,7 @@
   /* Sets the font size for the artwork's title */
   font-family: var(--font-headings);
   font-size: 3.5rem;
-  margin-bottom: 0.25rem; /* tightened to bring metadata closer */
+  margin-bottom: 0.6rem; /* increased spacing to separate title from metadata */
 }
 
 .work-subtitle {
