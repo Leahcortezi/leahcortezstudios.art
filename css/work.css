@@ -361,7 +361,7 @@
   /* Sets the font size for the artwork's title */
   font-family: var(--font-headings);
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem; /* tightened to bring metadata closer */
 }
 
 .work-subtitle {
@@ -385,9 +385,10 @@
   */
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 1.5rem; /* Space between meta items */
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  gap: 1.25rem; /* Space between meta items */
+  margin-top: 0.35rem; /* small gap under title */
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
   /* A bottom border to separate the meta data from the description */
   border-bottom: 1px solid var(--color-secondary-accent);
 }
@@ -761,7 +762,7 @@
   display: inline-block;
   min-width: 120px; /* label width to align values */
   font-weight: 700;
-  text-transform: none;
+  text-transform: uppercase;
   color: var(--color-primary-accent); /* pink labels */
   font-family: var(--font-accent); /* use DM Sans / accent font */
   margin-right: 6px;
