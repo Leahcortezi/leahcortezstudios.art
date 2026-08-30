@@ -42,19 +42,6 @@
   border: 2px solid rgba(248, 200, 208, 0.3);
   font-size: 2.8rem;
   padding: 0;
-  .work-meta {
-    /*
-      This container holds the meta-data (Medium, Year, Dimensions).
-      It uses flexbox to lay them out and allow wrapping on small screens.
-    */
-    display: flex;
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    gap: 1rem; /* Space between meta items */
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    /* A bottom border to separate the meta data from the description */
-    border-bottom: 1px solid var(--color-secondary-accent);
-  }
 }
 
 .gallery-arrow:hover {
@@ -68,15 +55,7 @@
   height: 24px;
   filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
 }
-  .meta-item,
-  .meta-tag {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-  }
-}
+
 
 .gallery-arrow:hover svg polyline,
 .gallery-arrow:focus svg polyline {
@@ -399,42 +378,28 @@
 }
 
 .work-meta {
-  /* Minimal metadata: compact, horizontal, and unobtrusive */
+  /*
+    This container holds the meta-data (Medium, Year, Dimensions).
+    It uses flexbox to lay them out and allow wrapping on small screens.
+  */
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.6rem; /* very tight spacing */
-  margin-bottom: 0.6rem;
-  padding-bottom: 0;
-  border-bottom: none;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 1rem; /* Space between meta items */
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  /* A bottom border to separate the meta data from the description */
+  border-bottom: 1px solid var(--color-secondary-accent);
 }
 
 .meta-item,
 .meta-tag {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
-
-.meta-item strong {
-  display: inline-block;
-  min-width: 140px; /* label width to align values (reduced) */
-  font-weight: 600;
-  text-transform: none;
-  color: var(--color-primary-accent);
-  margin-right: 8px;
-}
-
-/* Responsive: allow wrapping on small screens */
-@media (max-width: 780px) {
-  .work-meta { flex-wrap: wrap; gap: 1rem; }
-  .meta-item strong { min-width: 120px; }
-}
 
 .work-description h2 {
   /* Sets the font size for the "About The Piece" heading */
