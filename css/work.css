@@ -400,8 +400,9 @@
     It uses flexbox to lay them out and allow wrapping on small screens.
   */
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 1rem; /* Space between meta items */
+  flex-direction: row; /* keep items in a horizontal row */
+  flex-wrap: nowrap;
+  gap: 2rem; /* Space between meta items */
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   /* A bottom border to separate the meta data from the description */
@@ -411,10 +412,28 @@
 .meta-item,
 .meta-tag {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+
+.meta-item strong {
+  display: inline-block;
+  min-width: 140px; /* label width to align values (reduced) */
+  font-weight: 600;
+  text-transform: none;
+  color: var(--color-primary-accent);
+  margin-right: 8px;
+}
+
+/* Responsive: allow wrapping on small screens */
+@media (max-width: 780px) {
+  .work-meta { flex-wrap: wrap; gap: 1rem; }
+  .meta-item strong { min-width: 120px; }
 }
 
 .work-description h2 {

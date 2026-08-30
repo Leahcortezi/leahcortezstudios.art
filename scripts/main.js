@@ -396,11 +396,16 @@ document.addEventListener('DOMContentLoaded', () => {
      6. MAGNIFYING GLASS EFFECT FOR WORK PAGES
      -------------------- */
 
-  const imageZoomContainers = document.querySelectorAll('.image-zoom-container');
-  console.log('Found image zoom containers:', imageZoomContainers.length);
-  
+  // Apply magnifier to both image-zoom containers (art pages) and arrow-gallery (design pages)
+  const imageZoomContainers = document.querySelectorAll('.image-zoom-container, .arrow-gallery');
+  console.log('Found image zoom containers (including galleries):', imageZoomContainers.length);
+
   imageZoomContainers.forEach((container, index) => {
-    const img = container.querySelector('img');
+    // For standard zoom container, image is direct img; for arrow-gallery, use the .gallery-image.active
+    let img = container.querySelector('img');
+    if (container.classList.contains('arrow-gallery')) {
+      img = container.querySelector('.gallery-image.active') || container.querySelector('.gallery-image');
+    }
     console.log('Processing container', index, 'with image:', img);
     
     if (img) {
@@ -411,21 +416,20 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Created magnifier for container', index);
       
       const setupMagnifier = () => {
+        if (!img) return;
         magnifier.style.backgroundImage = `url("${img.src}")`;
-        
+
         // Calculate proper background size to maintain aspect ratio
         const containerRect = container.getBoundingClientRect();
-        const zoomFactor = 3; // 3x zoom (reduced from 5x)
-        
-        // Set background size to be 3x the container size
+        const zoomFactor = 3; // 3x zoom
+
+        // Set background size to be zoomFactor times the container size
         const bgWidth = containerRect.width * zoomFactor;
         const bgHeight = containerRect.height * zoomFactor;
-        
+
         magnifier.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
-        
-        console.log('Setup magnifier with image:', img.src);
-        console.log('Container size:', containerRect.width, 'x', containerRect.height);
-        console.log('Background size:', bgWidth, 'x', bgHeight);
+
+        console.log('Setup magnifier with image:', img ? img.src : 'none');
       };
       
       // Setup when image loads
@@ -461,6 +465,18 @@ document.addEventListener('DOMContentLoaded', () => {
         magnifier.style.opacity = '0';
         console.log('Mouse left container');
       });
+
+      // If this is an arrow-gallery, listen for image changes (active class) and update magnifier background
+      if (container.classList.contains('arrow-gallery')) {
+        const observer = new MutationObserver(() => {
+          const activeImg = container.querySelector('.gallery-image.active');
+          if (activeImg) {
+            img = activeImg;
+            magnifier.style.backgroundImage = `url("${img.src}")`;
+          }
+        });
+        observer.observe(container, { attributes: true, subtree: true, childList: true });
+      }
     }
   });
 
