@@ -193,7 +193,7 @@
   */
   flex: 0 0 48%;
   position: sticky; /* Makes the image column "stick" on the screen during scroll */
-  top: 120px; /* The offset from the top, considering the nav bar */
+  top: var(--nav-height); /* Use nav height variable for consistent offset */
 }
 
 .work-image-column img {
@@ -297,7 +297,8 @@
   */
   flex: 1;
   min-width: 0; /* Prevents overflow */
-  margin-top: 120px;
+  margin-top: 0; /* align to top of container */
+  padding-top: 20px; /* small offset to clear nav */
   padding-right: 1rem; /* Extra padding to prevent text cutoff */
 }
 
