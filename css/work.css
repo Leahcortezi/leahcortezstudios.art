@@ -232,6 +232,12 @@
   object-fit: contain;
 }
 
+/* Ensure gallery images show zoom cursor on hover (design pages) */
+.work-image-column .arrow-gallery .gallery-image:hover,
+.work-image-column .arrow-gallery .gallery-image {
+  cursor: zoom-in;
+}
+
 .image-zoom-container:hover .main-image img,
 .image-zoom-container:hover #mainImage {
   transform: scale(1.015); /* Subtle zoom for main image only when magnifier is active */
