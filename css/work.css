@@ -393,8 +393,9 @@
     It uses flexbox to lay them out and allow wrapping on small screens.
   */
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 1.25rem; /* Space between meta items */
+  flex-direction: row;
+  flex-wrap: nowrap; /* keep items on a single horizontal row on desktop */
+  gap: 1rem; /* tighter space between meta items */
   margin-top: 0.35rem; /* small gap under title */
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
@@ -411,7 +412,7 @@
   font-weight: 400;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 
@@ -769,18 +770,19 @@
 
 .meta-item strong {
   display: inline-block;
-  min-width: 120px; /* label width to align values */
-  font-weight: 700;
+  min-width: 90px; /* reduced label width so values sit closer */
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--color-primary-accent); /* pink labels */
   font-family: var(--font-accent); /* use DM Sans / accent font */
-  margin-right: 6px;
+  margin-right: 4px;
 }
 
 /* Responsive: allow wrapping on small screens */
-@media (max-width: 780px) {
-  .work-meta { flex-wrap: wrap; gap: 0.5rem; }
-  .meta-item strong { min-width: 80px; }
+@media (max-width: 900px) {
+  /* Allow wrapping on narrow screens */
+  .work-meta { flex-wrap: wrap; gap: 0.75rem; }
+  .meta-item strong { min-width: 90px; }
 }
 /* On medium screens (tablets) stack columns vertically */
 @media (max-width: 1024px) {
