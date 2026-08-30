@@ -395,7 +395,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; /* allow items to wrap, but keep label+value together */
-  gap: 2rem; /* more space between meta items so values don't crowd each other */
+  gap: 1.25rem; /* balanced spacing between meta items */
   margin-top: 0.35rem; /* small gap under title */
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
