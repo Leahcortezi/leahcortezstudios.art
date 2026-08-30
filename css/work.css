@@ -385,9 +385,9 @@
   */
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 1rem; /* Space between meta items */
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  gap: 1.5rem; /* Space between meta items */
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   /* A bottom border to separate the meta data from the description */
   border-bottom: 1px solid var(--color-secondary-accent);
 }
@@ -395,10 +395,13 @@
 .meta-item,
 .meta-tag {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 
@@ -756,9 +759,11 @@
 
 .meta-item strong {
   display: inline-block;
-  min-width: 90px; /* tighter label width for minimal layout */
-  font-weight: 500;
-  color: rgba(255,255,255,0.9);
+  min-width: 120px; /* label width to align values */
+  font-weight: 700;
+  text-transform: none;
+  color: var(--color-primary-accent); /* pink labels */
+  font-family: var(--font-accent); /* use DM Sans / accent font */
   margin-right: 6px;
 }
 
