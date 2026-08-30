@@ -767,16 +767,14 @@
   .work-meta { flex-wrap: wrap; gap: 0.5rem; }
   .meta-item strong { min-width: 80px; }
 }
-    /*
-      On smaller screens (tablets), the layout stacks vertically.
-    */
+/* On medium screens (tablets) stack columns vertically */
+@media (max-width: 1024px) {
+  .work-container {
     flex-direction: column;
   }
 
   .work-image-column {
-    /*
-      The image column no longer needs to be sticky in a stacked layout.
-    */
+    /* The image column no longer needs to be sticky in a stacked layout. */
     position: static;
     top: auto;
     width: 100%;
@@ -784,9 +782,7 @@
 
   .work-image-column,
   .work-details-column {
-    /*
-      Both columns now take up the full width of the container.
-    */
+    /* Both columns now take up the full width of the container. */
     flex-basis: 100%;
   }
 
