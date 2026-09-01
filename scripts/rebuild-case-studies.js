@@ -178,7 +178,7 @@ ${scriptsHtml}
 
 function injectStandardScripts(html, filePath) {
   if (html.includes('gallery-arrows.js') && html.includes('main.js') && html.includes('page-enhancements.js')) {
-    return null;
+    return html;
   }
 
   const scriptBase = relToRepoRoot(filePath);
@@ -191,6 +191,16 @@ function injectStandardScripts(html, filePath) {
 </body>`);
   }
   return `${html}${standardScripts}`;
+}
+
+function normalizeCaseStudyPage(html, filePath) {
+  const category = categoryFromPath(filePath);
+  const title = titleCase(path.basename(path.dirname(filePath)));
+  const navHtml = buildStandardNav(filePath);
+  const breadcrumbHtml = buildStandardBreadcrumb(filePath, category, title);
+  const withNav = html.replace(/<nav>[\s\S]*?<\/nav>/i, navHtml);
+  const withBreadcrumb = withNav.replace(/<div class="breadcrumb">[\s\S]*?<\/div>/i, breadcrumbHtml);
+  return injectStandardScripts(withBreadcrumb, filePath);
 }
 
 function buildStandardNav(filePath) {
@@ -262,8 +272,8 @@ function rebuildPage(filePath) {
     return { skipped: false, content: buildPlaceholderPage(filePath) };
   }
   if (html.includes('class="case-study-page"')) {
-    const injected = injectStandardScripts(html, filePath);
-    return injected ? { skipped: false, content: injected } : { skipped: true, reason: 'already updated case-study page' };
+    const normalized = normalizeCaseStudyPage(html, filePath);
+    return normalized ? { skipped: false, content: normalized } : { skipped: true, reason: 'already updated case-study page' };
   }
   if (!html.includes('class="work-container"') || !html.includes('class="work-details-column"')) {
     return { skipped: true, reason: 'no standard work-container' };
