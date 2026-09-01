@@ -130,7 +130,11 @@ function removeBlocks(detailsHtml) {
   return removeRanges(detailsHtml, ranges).trim();
 }
 
-function buildTemplate({ navHtml, breadcrumbHtml, mainTitle, kicker, intro, metaHtml, mediaHtml, contentHtml, navLinksHtml, footerHtml, scriptsHtml }) {
+function buildTemplate({ navHtml, breadcrumbHtml, mainTitle, kicker, intro, metaHtml, mediaHtml, contentHtml, navLinksHtml, footerHtml, scriptsHtml, scriptBase }) {
+  const standardScripts = `
+<script src="${scriptBase}/scripts/main.js" defer></script>
+<script src="${scriptBase}/scripts/gallery-arrows.js" defer></script>
+<script src="${scriptBase}/scripts/page-enhancements.js" defer></script>`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,9 +170,27 @@ ${breadcrumbHtml}
         ${navLinksHtml.html}
     </main>
 ${footerHtml}
+    ${standardScripts}
 ${scriptsHtml}
 </body>
 </html>`;
+}
+
+function injectStandardScripts(html, filePath) {
+  if (html.includes('gallery-arrows.js') && html.includes('main.js') && html.includes('page-enhancements.js')) {
+    return null;
+  }
+
+  const scriptBase = relToRepoRoot(filePath);
+  const standardScripts = `
+<script src="${scriptBase}/scripts/main.js" defer></script>
+<script src="${scriptBase}/scripts/gallery-arrows.js" defer></script>
+<script src="${scriptBase}/scripts/page-enhancements.js" defer></script>`;
+  if (html.includes('</body>')) {
+    return html.replace('</body>', `${standardScripts}
+</body>`);
+  }
+  return `${html}${standardScripts}`;
 }
 
 function buildStandardNav(filePath) {
@@ -229,6 +251,7 @@ function buildPlaceholderPage(filePath) {
       <img src="${root}/images/logo/logo3.png" alt="Leah Cortez Studios logo" class="footer-logo" loading="lazy">
       <p class="copyright">Leah Cortez © <span id="copyright-year">2026</span></p><script>document.getElementById("copyright-year").textContent = new Date().getFullYear();</script>
     </div></footer>`,
+  scriptBase: root,
   scriptsHtml: '',
   });
 }
@@ -237,6 +260,10 @@ function rebuildPage(filePath) {
   const html = fs.readFileSync(filePath, 'utf8');
   if (html.trim().length === 0) {
     return { skipped: false, content: buildPlaceholderPage(filePath) };
+  }
+  if (html.includes('class="case-study-page"')) {
+    const injected = injectStandardScripts(html, filePath);
+    return injected ? { skipped: false, content: injected } : { skipped: true, reason: 'already updated case-study page' };
   }
   if (!html.includes('class="work-container"') || !html.includes('class="work-details-column"')) {
     return { skipped: true, reason: 'no standard work-container' };
@@ -287,6 +314,7 @@ function rebuildPage(filePath) {
     contentHtml: body,
     navLinksHtml,
     footerHtml,
+    scriptBase: relToRepoRoot(filePath),
     scriptsHtml,
   });
 
