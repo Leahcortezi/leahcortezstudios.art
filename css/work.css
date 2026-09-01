@@ -473,15 +473,16 @@
 
 .case-study-application-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.45fr);
+  gap: 1rem;
   align-items: stretch;
 }
 
 .case-study-application-stack {
   display: grid;
-  grid-template-columns: repeat(2, minmax(210px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(240px, auto);
+  gap: 0.9rem;
   align-content: start;
 }
 
@@ -490,11 +491,30 @@
 }
 
 .case-study-application-layout .case-study-tile.is-large {
+  grid-row: 1 / span 2;
   min-height: 100%;
+  align-self: stretch;
+}
+
+.case-study-application-stack > .case-study-tile:nth-child(1) .case-study-placeholder--small {
+  min-height: 250px;
+}
+
+.case-study-application-stack > .case-study-tile:nth-child(2) .case-study-placeholder--small {
+  min-height: 290px;
+}
+
+.case-study-application-stack > .case-study-tile:nth-child(3) .case-study-placeholder--small {
+  min-height: 250px;
+}
+
+.case-study-application-stack > .case-study-tile:nth-child(4) .case-study-placeholder--small {
+  min-height: 280px;
 }
 
 .case-study-application-stack .case-study-placeholder--small {
-  min-height: 280px;
+  min-height: 0;
+  aspect-ratio: 1 / 1.06;
 }
 
 .case-study-placeholder--hero,
@@ -636,6 +656,15 @@
   .case-study-application-layout,
   .case-study-application-stack {
     grid-template-columns: 1fr;
+  }
+
+  .case-study-application-layout .case-study-tile.is-large {
+    grid-row: auto;
+  }
+
+  .case-study-application-stack > .case-study-tile:nth-child(n) .case-study-placeholder--small {
+    min-height: 220px;
+    aspect-ratio: auto;
   }
 
   .case-study-application-stack {
