@@ -155,6 +155,18 @@ function buildPlaceholderTile(heading, body, modifier = '') {
         </article>`;
 }
 
+function buildApplicationLayout() {
+  return `<div class="case-study-application-layout">
+          ${buildPlaceholderTile('Application 1', 'Add an application, mockup, or detail image here.', 'is-large')}
+          <div class="case-study-application-stack">
+            ${buildPlaceholderTile('Application 2', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 3', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 4', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 5', 'Add a supporting square application image here.')}
+          </div>
+        </div>`;
+}
+
 function sectionCopy(sectionKey) {
   const copy = {
     brief: 'This project begins with a compact design brief that frames the audience, the visual problem, and the mood the final system should carry.',
@@ -283,13 +295,7 @@ ${breadcrumbHtml}
           <div class="case-study-section-body">
             <p>${sectionCopy('details')}</p>
           </div>
-          <div class="case-study-placeholder-grid case-study-placeholder-grid--application">
-            ${buildPlaceholderTile('Application 1', 'Add an application, mockup, or detail image here.', 'is-large')}
-            ${buildPlaceholderTile('Application 2', 'Add a supporting square application image here.')}
-            ${buildPlaceholderTile('Application 3', 'Add a supporting square application image here.')}
-            ${buildPlaceholderTile('Application 4', 'Add a supporting square application image here.')}
-            ${buildPlaceholderTile('Application 5', 'Add a supporting square application image here.')}
-          </div>
+          ${buildApplicationLayout()}
           ${contentHtml ? `<div class="case-study-section-body case-study-details-copy">${contentHtml}</div>` : ''}
         </section>
 

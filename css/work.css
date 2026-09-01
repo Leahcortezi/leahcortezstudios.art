@@ -471,36 +471,30 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.case-study-placeholder-grid--application {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: minmax(180px, auto);
-  grid-template-areas:
-    "large large two three"
-    "large large four five";
+.case-study-application-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 1.25rem;
+  align-items: stretch;
 }
 
-.case-study-placeholder-grid--application > .case-study-tile:nth-child(1) {
-  grid-area: large;
+.case-study-application-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(210px, 1fr));
+  gap: 1.25rem;
+  align-content: start;
 }
 
-.case-study-placeholder-grid--application > .case-study-tile:nth-child(2) {
-  grid-area: two;
+.case-study-application-stack .case-study-tile {
+  min-width: 0;
 }
 
-.case-study-placeholder-grid--application > .case-study-tile:nth-child(3) {
-  grid-area: three;
+.case-study-application-layout .case-study-tile.is-large {
+  min-height: 100%;
 }
 
-.case-study-placeholder-grid--application > .case-study-tile:nth-child(4) {
-  grid-area: four;
-}
-
-.case-study-placeholder-grid--application > .case-study-tile:nth-child(5) {
-  grid-area: five;
-}
-
-.case-study-tile.is-large {
-  grid-area: large;
+.case-study-application-stack .case-study-placeholder--small {
+  min-height: 280px;
 }
 
 .case-study-placeholder--hero,
@@ -638,17 +632,14 @@
 
   .case-study-placeholder-grid--two,
   .case-study-placeholder-grid--three,
-  .case-study-placeholder-grid--application {
+  .case-study-placeholder-grid--application,
+  .case-study-application-layout,
+  .case-study-application-stack {
     grid-template-columns: 1fr;
   }
 
-  .case-study-placeholder-grid--application > .case-study-tile:nth-child(n) {
-    grid-area: auto;
-  }
-
-  .case-study-tile.is-large {
-    grid-column: auto;
-    grid-row: auto;
+  .case-study-application-stack {
+    grid-template-columns: 1fr;
   }
 
   .case-study-meta-grid {
