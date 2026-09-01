@@ -210,12 +210,12 @@ ${breadcrumbHtml}
           <div class="case-study-hero-copy">
             <h1>${mainTitle}</h1>
             ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
+            ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
           </div>
           <div class="case-study-hero-side">
             <div class="case-study-hero-media">
               ${mediaHtml}
             </div>
-            ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
           </div>
         </header>
 
@@ -341,12 +341,12 @@ function normalizeCaseStudyPage(html, filePath) {
       <div class="case-study-hero-copy">
         <h1>${mainTitle}</h1>
         ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
+        ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
       </div>
       <div class="case-study-hero-side">
         <div class="case-study-hero-media">
           ${mediaHtml}
         </div>
-        ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
       </div>
     </header>`;
   rewritten = rewritten.replace(headerMatch[0], newHeader);
