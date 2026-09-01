@@ -81,10 +81,8 @@
     }
 
     // ========================================
-    // ========================================
-    // APPLICATION GRID FIX (JS fallback)
-    // Ensures the large application tile is first and spans two rows on wide screens.
-    // Some rebuilt pages can vary in DOM ordering; this enforces the intended layout.
+    // APPLICATION LAYOUT FIX (JS fallback)
+    // Ensures flexbox ordering and alignment stay consistent across rebuilt pages.
     // ========================================
     function initApplicationGridFix() {
         const debounce = (fn, wait = 100) => {
@@ -106,19 +104,24 @@
                 layout.insertBefore(large, stack);
             }
 
-            const applyGrid = () => {
+            const applyLayout = () => {
+                // Always clear stale inline grid rules from previous iterations
+                large.style.gridRow = '';
+                stack.style.gridAutoRows = '';
+
                 if (window.innerWidth >= 960) {
-                    large.style.gridRow = '1 / span 2';
-                    // ensure stack rows have a minimum so the large tile matches height
-                    stack.style.gridAutoRows = 'minmax(240px, auto)';
+                    large.style.flex = '0 0 38%';
+                    large.style.alignSelf = 'stretch';
+                    stack.style.flex = '1 1 0';
                 } else {
-                    large.style.gridRow = '';
-                    stack.style.gridAutoRows = '';
+                    large.style.flex = '';
+                    large.style.alignSelf = '';
+                    stack.style.flex = '';
                 }
             };
 
-            applyGrid();
-            window.addEventListener('resize', debounce(applyGrid, 120));
+            applyLayout();
+            window.addEventListener('resize', debounce(applyLayout, 120));
         });
     }
 
