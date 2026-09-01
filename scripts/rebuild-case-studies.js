@@ -123,6 +123,12 @@ function extractCaseStudyMedia(html) {
 }
 
 function extractCaseStudyContent(html) {
+  const workDescription = extractTagInner(html, 'div', 'work-description');
+  if (workDescription) return workDescription;
+  const projectDescription = extractTagInner(html, 'div', 'project-description');
+  if (projectDescription) return projectDescription;
+  const contentSection = extractTagInner(html, 'div', 'content-section');
+  if (contentSection) return contentSection;
   return extractTagInner(html, 'section', 'case-study-content');
 }
 
@@ -157,7 +163,6 @@ function removeBlocks(detailsHtml) {
 function buildTemplate({ navHtml, breadcrumbHtml, mainTitle, kicker, intro, metaHtml, mediaHtml, contentHtml, navLinksHtml, footerHtml, scriptsHtml, scriptBase }) {
   const standardScripts = `
 <script src="${scriptBase}/scripts/main.js" defer></script>
-<script src="${scriptBase}/scripts/gallery-arrows.js" defer></script>
 <script src="${scriptBase}/scripts/page-enhancements.js" defer></script>`;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -246,7 +251,7 @@ ${breadcrumbHtml}
             ${buildPlaceholderTile('Application 4', 'Add a supporting square application image here.')}
             ${buildPlaceholderTile('Application 5', 'Add a supporting square application image here.')}
           </div>
-          ${contentHtml ? `<div class="case-study-section-body case-study-details-copy">${contentHtml}</div>` : ''}
+          ${contentHtml ? `${contentHtml}` : ''}
         </section>
 
         ${navLinksHtml.html}
@@ -259,14 +264,13 @@ ${scriptsHtml}
 }
 
 function injectStandardScripts(html, filePath) {
-  if (html.includes('gallery-arrows.js') && html.includes('main.js') && html.includes('page-enhancements.js')) {
+  if (html.includes('main.js') && html.includes('page-enhancements.js')) {
     return html;
   }
 
   const scriptBase = relToRepoRoot(filePath);
   const standardScripts = `
 <script src="${scriptBase}/scripts/main.js" defer></script>
-<script src="${scriptBase}/scripts/gallery-arrows.js" defer></script>
 <script src="${scriptBase}/scripts/page-enhancements.js" defer></script>`;
   if (html.includes('</body>')) {
     return html.replace('</body>', `${standardScripts}
@@ -289,7 +293,7 @@ function normalizeCaseStudyPage(html, filePath) {
   const mainTitle = headerInner.match(/<h1>([\s\S]*?)<\/h1>/i)?.[1].trim() || title;
   const intro = headerInner.match(/<p class="case-study-intro">([\s\S]*?)<\/p>/i)?.[1].trim() || '';
   const metaHtml = headerInner.match(/<div class="case-study-meta-grid">[\s\S]*?<div class="work-meta">([\s\S]*?)<\/div>\s*<\/div>/i)?.[1].trim() || '';
-  const mediaHtml = extractCaseStudyMedia(withBreadcrumb) || '<div class="case-study-placeholder case-study-placeholder--hero"><span>Hero image placeholder</span><p>Add the main hero image or gallery here.</p></div>';
+  const mediaHtml = '<div class="case-study-placeholder case-study-placeholder--hero"><span>Hero image placeholder</span><p>Add the main hero image, a still, or a process visual here.</p></div>';
   const contentHtml = extractCaseStudyContent(withBreadcrumb) || '';
   let rewritten = withBreadcrumb;
   if (headerMatch) {
@@ -315,7 +319,9 @@ function normalizeCaseStudyPage(html, filePath) {
     intro,
     metaHtml,
     mediaHtml,
-    contentHtml,
+    contentHtml: contentHtml || `<div class="case-study-section-body case-study-details-copy">
+            <p>Add the project notes, final reflections, and outcome details here.</p>
+          </div>`,
     navLinksHtml: {
       html: html.match(/<nav class="case-study-next">[\s\S]*?<\/nav>/i)?.[0] || '',
       backHref: relToCollectionsIndex(filePath),
