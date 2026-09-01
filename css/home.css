@@ -201,6 +201,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35));
   /* Remove transition from here to avoid conflicts */
 }
 

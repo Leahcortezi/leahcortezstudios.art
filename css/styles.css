@@ -513,7 +513,7 @@ body.menu-open {
   max-width: 90%; /* Responsive safety for small screens */
   opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
-  /* Invert logo2.png to white for dark background */
+  /* Invert logotype.png to white for dark background */
   filter: invert(1) brightness(2);
 }
 
