@@ -614,9 +614,10 @@
   border-top: 1px solid rgba(248, 200, 208, 0.28);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: stretch;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .case-study-next .work-navigation,
@@ -644,8 +645,10 @@
   justify-content: center;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(248, 200, 208, 0.15);
+  flex: 1 1 0;
+  width: 100%;
   min-height: 44px;
-  min-width: 44px;
+  min-width: 0;
   cursor: pointer;
 }
 
@@ -745,12 +748,13 @@
   }
 
   .case-study-next {
+    flex-wrap: wrap;
     gap: 0.75rem;
   }
 
   .case-study-next a {
     flex: 1 1 auto;
-    min-width: 140px;
+    min-width: 0;
     font-size: 0.75rem;
     letter-spacing: 0.09em;
     padding: 0.72rem 1rem;
