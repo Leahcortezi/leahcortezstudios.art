@@ -154,14 +154,42 @@ ${breadcrumbHtml}
 
         <header class="case-study-hero">
             <p class="case-study-kicker">${kicker}</p>
+          <div class="case-study-hero-copy">
             <h1>${mainTitle}</h1>
             ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
+          </div>
             ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
         </header>
 
         <figure class="case-study-media">
             ${mediaHtml}
         </figure>
+
+        <section class="case-study-process">
+          <div class="case-study-process-grid">
+            <article class="case-study-process-card">
+              <span class="case-study-process-label">Sketches</span>
+              <div class="case-study-placeholder case-study-placeholder--small">
+                <span>Sketch placeholder</span>
+                <p>Add concept sketches, thumbnails, or iteration sheets here.</p>
+              </div>
+            </article>
+            <article class="case-study-process-card">
+              <span class="case-study-process-label">Process Photos</span>
+              <div class="case-study-placeholder case-study-placeholder--small">
+                <span>Process photo placeholder</span>
+                <p>Add studio, making-of, or work-in-progress images here.</p>
+              </div>
+            </article>
+            <article class="case-study-process-card">
+              <span class="case-study-process-label">Mockups</span>
+              <div class="case-study-placeholder case-study-placeholder--small">
+                <span>Mockup placeholder</span>
+                <p>Add presentation mockups, close-ups, or alternate views here.</p>
+              </div>
+            </article>
+          </div>
+        </section>
 
         <section class="case-study-content">
             ${contentHtml}
@@ -200,7 +228,58 @@ function normalizeCaseStudyPage(html, filePath) {
   const breadcrumbHtml = buildStandardBreadcrumb(filePath, category, title);
   const withNav = html.replace(/<nav>[\s\S]*?<\/nav>/i, navHtml);
   const withBreadcrumb = withNav.replace(/<div class="breadcrumb">[\s\S]*?<\/div>/i, breadcrumbHtml);
-  return injectStandardScripts(withBreadcrumb, filePath);
+
+  const headerMatch = withBreadcrumb.match(/<header class="case-study-hero">([\s\S]*?)<\/header>/i);
+  let rewritten = withBreadcrumb;
+  if (headerMatch) {
+  const headerInner = headerMatch[1];
+  const kicker = headerInner.match(/<p class="case-study-kicker">([\s\S]*?)<\/p>/i)?.[1].trim() || `Case Study · ${category}`;
+  const mainTitle = headerInner.match(/<h1>([\s\S]*?)<\/h1>/i)?.[1].trim() || title;
+  const intro = headerInner.match(/<p class="case-study-intro">([\s\S]*?)<\/p>/i)?.[1].trim() || '';
+  const metaHtml = headerInner.match(/<div class="case-study-meta-grid">[\s\S]*?<div class="work-meta">([\s\S]*?)<\/div>\s*<\/div>/i)?.[1].trim() || '';
+  const newHeader = `<header class="case-study-hero">
+      <p class="case-study-kicker">${kicker}</p>
+      <div class="case-study-hero-copy">
+        <h1>${mainTitle}</h1>
+        ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
+      </div>
+      ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
+    </header>`;
+  rewritten = rewritten.replace(headerMatch[0], newHeader);
+  }
+
+  if (!rewritten.includes('case-study-process-grid')) {
+  const processSection = `
+
+    <section class="case-study-process">
+      <div class="case-study-process-grid">
+        <article class="case-study-process-card">
+          <span class="case-study-process-label">Sketches</span>
+          <div class="case-study-placeholder case-study-placeholder--small">
+            <span>Sketch placeholder</span>
+            <p>Add concept sketches, thumbnails, or iteration sheets here.</p>
+          </div>
+        </article>
+        <article class="case-study-process-card">
+          <span class="case-study-process-label">Process Photos</span>
+          <div class="case-study-placeholder case-study-placeholder--small">
+            <span>Process photo placeholder</span>
+            <p>Add studio, making-of, or work-in-progress images here.</p>
+          </div>
+        </article>
+        <article class="case-study-process-card">
+          <span class="case-study-process-label">Mockups</span>
+          <div class="case-study-placeholder case-study-placeholder--small">
+            <span>Mockup placeholder</span>
+            <p>Add presentation mockups, close-ups, or alternate views here.</p>
+          </div>
+        </article>
+      </div>
+    </section>`;
+  rewritten = rewritten.replace(/(<figure class="case-study-media">[\s\S]*?<\/figure>)/i, `$1${processSection}`);
+  }
+
+  return injectStandardScripts(rewritten, filePath);
 }
 
 function buildStandardNav(filePath) {
