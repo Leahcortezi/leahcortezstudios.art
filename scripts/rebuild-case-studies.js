@@ -112,6 +112,30 @@ function extractMetaHtml(detailsHtml) {
   return metaBlock ? metaBlock.inner.trim() : '';
 }
 
+function extractTagInner(html, tagName, className) {
+  const pattern = new RegExp(`<${tagName}[^>]*class="${className}"[^>]*>([\\s\\S]*?)<\/${tagName}>`, 'i');
+  const match = html.match(pattern);
+  return match ? match[1].trim() : '';
+}
+
+function extractCaseStudyMedia(html) {
+  return extractTagInner(html, 'figure', 'case-study-media');
+}
+
+function extractCaseStudyContent(html) {
+  return extractTagInner(html, 'section', 'case-study-content');
+}
+
+function buildPlaceholderTile(heading, body, modifier = '') {
+  return `<article class="case-study-tile ${modifier}" aria-label="${heading}">
+          <span class="case-study-tile-heading">${heading}</span>
+          <div class="case-study-placeholder${modifier === 'is-large' ? ' case-study-placeholder--large' : ' case-study-placeholder--small'}">
+            <span>${heading} placeholder</span>
+            <p>${body}</p>
+          </div>
+        </article>`;
+}
+
 function removeBlocks(detailsHtml) {
   const ranges = [];
 
@@ -158,41 +182,71 @@ ${breadcrumbHtml}
             <h1>${mainTitle}</h1>
             ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
           </div>
-            ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
+          <div class="case-study-hero-media">
+            ${mediaHtml}
+          </div>
+          ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
         </header>
 
-        <figure class="case-study-media">
-            ${mediaHtml}
-        </figure>
-
-        <section class="case-study-process">
-          <div class="case-study-process-grid">
-            <article class="case-study-process-card">
-              <span class="case-study-process-label">Sketches</span>
-              <div class="case-study-placeholder case-study-placeholder--small">
-                <span>Sketch placeholder</span>
-                <p>Add concept sketches, thumbnails, or iteration sheets here.</p>
-              </div>
-            </article>
-            <article class="case-study-process-card">
-              <span class="case-study-process-label">Process Photos</span>
-              <div class="case-study-placeholder case-study-placeholder--small">
-                <span>Process photo placeholder</span>
-                <p>Add studio, making-of, or work-in-progress images here.</p>
-              </div>
-            </article>
-            <article class="case-study-process-card">
-              <span class="case-study-process-label">Mockups</span>
-              <div class="case-study-placeholder case-study-placeholder--small">
-                <span>Mockup placeholder</span>
-                <p>Add presentation mockups, close-ups, or alternate views here.</p>
-              </div>
-            </article>
+        <section class="case-study-section case-study-brief">
+          <div class="case-study-section-header">
+            <p class="case-study-section-label">Brief</p>
+            <h2>Project Brief</h2>
+          </div>
+          <div class="case-study-section-body">
+            ${intro ? `<p>${intro}</p>` : '<p>Add the short project brief here.</p>'}
           </div>
         </section>
 
-        <section class="case-study-content">
-            ${contentHtml}
+        <section class="case-study-section">
+          <div class="case-study-section-header">
+            <p class="case-study-section-label">Research</p>
+            <h2>Research</h2>
+          </div>
+          <div class="case-study-placeholder-grid case-study-placeholder-grid--two">
+            ${buildPlaceholderTile('Research Image 1', 'Add moodboard, reference, or research imagery here.')}
+            ${buildPlaceholderTile('Research Image 2', 'Add a second reference image or comparative source here.')}
+          </div>
+        </section>
+
+        <section class="case-study-section">
+          <div class="case-study-section-header">
+            <p class="case-study-section-label">Sketches</p>
+            <h2>Sketches and Early Iterations</h2>
+          </div>
+          <div class="case-study-placeholder-grid case-study-placeholder-grid--three">
+            ${buildPlaceholderTile('Sketch 1', 'Add thumbnail sketches or early composition studies here.')}
+            ${buildPlaceholderTile('Sketch 2', 'Add rough layout or variation studies here.')}
+            ${buildPlaceholderTile('Sketch 3', 'Add another early iteration or refinement here.')}
+          </div>
+        </section>
+
+        <section class="case-study-section">
+          <div class="case-study-section-header">
+            <p class="case-study-section-label">Concept</p>
+            <h2>Concept Development</h2>
+          </div>
+          <div class="case-study-concept-media">
+            <div class="case-study-placeholder case-study-placeholder--hero">
+              <span>Concept development image</span>
+              <p>Add one key concept image or process frame here.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-study-section case-study-details">
+          <div class="case-study-section-header">
+            <p class="case-study-section-label">Details</p>
+            <h2>Details and Application</h2>
+          </div>
+          <div class="case-study-placeholder-grid case-study-placeholder-grid--application">
+            ${buildPlaceholderTile('Application 1', 'Add an application, mockup, or detail image here.', 'is-large')}
+            ${buildPlaceholderTile('Application 2', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 3', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 4', 'Add a supporting square application image here.')}
+            ${buildPlaceholderTile('Application 5', 'Add a supporting square application image here.')}
+          </div>
+          ${contentHtml ? `<div class="case-study-section-body case-study-details-copy">${contentHtml}</div>` : ''}
         </section>
 
         ${navLinksHtml.html}
@@ -230,56 +284,48 @@ function normalizeCaseStudyPage(html, filePath) {
   const withBreadcrumb = withNav.replace(/<div class="breadcrumb">[\s\S]*?<\/div>/i, breadcrumbHtml);
 
   const headerMatch = withBreadcrumb.match(/<header class="case-study-hero">([\s\S]*?)<\/header>/i);
-  let rewritten = withBreadcrumb;
-  if (headerMatch) {
-  const headerInner = headerMatch[1];
+  const headerInner = headerMatch ? headerMatch[1] : '';
   const kicker = headerInner.match(/<p class="case-study-kicker">([\s\S]*?)<\/p>/i)?.[1].trim() || `Case Study · ${category}`;
   const mainTitle = headerInner.match(/<h1>([\s\S]*?)<\/h1>/i)?.[1].trim() || title;
   const intro = headerInner.match(/<p class="case-study-intro">([\s\S]*?)<\/p>/i)?.[1].trim() || '';
   const metaHtml = headerInner.match(/<div class="case-study-meta-grid">[\s\S]*?<div class="work-meta">([\s\S]*?)<\/div>\s*<\/div>/i)?.[1].trim() || '';
+  const mediaHtml = extractCaseStudyMedia(withBreadcrumb) || '<div class="case-study-placeholder case-study-placeholder--hero"><span>Hero image placeholder</span><p>Add the main hero image or gallery here.</p></div>';
+  const contentHtml = extractCaseStudyContent(withBreadcrumb) || '';
+  let rewritten = withBreadcrumb;
+  if (headerMatch) {
   const newHeader = `<header class="case-study-hero">
       <p class="case-study-kicker">${kicker}</p>
       <div class="case-study-hero-copy">
         <h1>${mainTitle}</h1>
         ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
       </div>
+      <div class="case-study-hero-media">
+        ${mediaHtml}
+      </div>
       ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
     </header>`;
   rewritten = rewritten.replace(headerMatch[0], newHeader);
   }
 
-  if (!rewritten.includes('case-study-process-grid')) {
-  const processSection = `
+  const replacement = buildTemplate({
+    navHtml,
+    breadcrumbHtml,
+    mainTitle: headerMatch ? headerMatch[1].match(/<h1>([\s\S]*?)<\/h1>/i)?.[1].trim() || title : title,
+    kicker: headerMatch ? headerMatch[1].match(/<p class="case-study-kicker">([\s\S]*?)<\/p>/i)?.[1].trim() || `Case Study · ${category}` : `Case Study · ${category}`,
+    intro,
+    metaHtml,
+    mediaHtml,
+    contentHtml,
+    navLinksHtml: {
+      html: html.match(/<nav class="case-study-next">[\s\S]*?<\/nav>/i)?.[0] || '',
+      backHref: relToCollectionsIndex(filePath),
+    },
+    footerHtml: html.match(/<footer class="main-footer">[\s\S]*?<\/footer>/i)?.[0] || '',
+    scriptBase: relToRepoRoot(filePath),
+    scriptsHtml: html.match(/(<script src=[\s\S]*?)<\/body>/i)?.[1] ? '' : '',
+  });
 
-    <section class="case-study-process">
-      <div class="case-study-process-grid">
-        <article class="case-study-process-card">
-          <span class="case-study-process-label">Sketches</span>
-          <div class="case-study-placeholder case-study-placeholder--small">
-            <span>Sketch placeholder</span>
-            <p>Add concept sketches, thumbnails, or iteration sheets here.</p>
-          </div>
-        </article>
-        <article class="case-study-process-card">
-          <span class="case-study-process-label">Process Photos</span>
-          <div class="case-study-placeholder case-study-placeholder--small">
-            <span>Process photo placeholder</span>
-            <p>Add studio, making-of, or work-in-progress images here.</p>
-          </div>
-        </article>
-        <article class="case-study-process-card">
-          <span class="case-study-process-label">Mockups</span>
-          <div class="case-study-placeholder case-study-placeholder--small">
-            <span>Mockup placeholder</span>
-            <p>Add presentation mockups, close-ups, or alternate views here.</p>
-          </div>
-        </article>
-      </div>
-    </section>`;
-  rewritten = rewritten.replace(/(<figure class="case-study-media">[\s\S]*?<\/figure>)/i, `$1${processSection}`);
-  }
-
-  return injectStandardScripts(rewritten, filePath);
+  return injectStandardScripts(replacement, filePath);
 }
 
 function buildStandardNav(filePath) {
