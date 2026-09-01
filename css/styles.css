@@ -407,7 +407,7 @@ nav {
 .logo-img {
   height: 35px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: none;
   transition: transform 0.4s ease-in-out;
 }
 
@@ -513,7 +513,7 @@ body.menu-open {
   max-width: 90%; /* Responsive safety for small screens */
   opacity: 1.0; /* Full opacity for maximum visibility */
   margin-bottom: 0; /* Ensure no bottom margin */
-  /* Invert logotype.png to white for dark background */
+  /* Brightness adjustment for footer logo */
   filter: invert(1) brightness(2);
 }
 
