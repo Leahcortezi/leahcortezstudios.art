@@ -122,7 +122,7 @@
   /*
     Improved line height for better readability and more compact text.
   */
-  line-height: 1.6;
+  line-height: 1.8;
   /*
     Reduced vertical space between paragraphs for more compact layout.
   */
@@ -177,7 +177,7 @@
   */
   font-family: var(--font-body), var(--font-body);
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.9;
   margin-bottom: 0;
   color: #e8e8e8;
   text-align: left;
