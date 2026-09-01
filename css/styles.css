@@ -407,6 +407,7 @@ nav {
 .logo-img {
   height: 35px;
   width: auto;
+  background: transparent;
   filter: none;
   transition: transform 0.4s ease-in-out;
 }
