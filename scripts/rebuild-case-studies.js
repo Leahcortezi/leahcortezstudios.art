@@ -118,6 +118,12 @@ function extractTagInner(html, tagName, className) {
   return match ? match[1].trim() : '';
 }
 
+function extractTagInnerByClassToken(html, tagName, classToken) {
+  const pattern = new RegExp(`<${tagName}[^>]*class="[^"]*${classToken}[^"]*"[^>]*>([\\s\\S]*?)<\/${tagName}>`, 'i');
+  const match = html.match(pattern);
+  return match ? match[1].trim() : '';
+}
+
 function extractCaseStudyMedia(html) {
   return extractTagInner(html, 'figure', 'case-study-media');
 }
@@ -129,6 +135,13 @@ function extractCaseStudyContent(html) {
   if (projectDescription) return projectDescription;
   const contentSection = extractTagInner(html, 'div', 'content-section');
   if (contentSection) return contentSection;
+  let detailsCopy = extractTagInnerByClassToken(html, 'div', 'case-study-details-copy');
+  while (detailsCopy && detailsCopy.includes('case-study-details-copy')) {
+    const nextCopy = extractTagInnerByClassToken(detailsCopy, 'div', 'case-study-details-copy');
+    if (!nextCopy) break;
+    detailsCopy = nextCopy;
+  }
+  if (detailsCopy) return detailsCopy;
   return extractTagInner(html, 'section', 'case-study-content');
 }
 
@@ -140,6 +153,17 @@ function buildPlaceholderTile(heading, body, modifier = '') {
             <p>${body}</p>
           </div>
         </article>`;
+}
+
+function sectionCopy(sectionKey) {
+  const copy = {
+    brief: 'This project begins with a compact design brief that frames the audience, the visual problem, and the mood the final system should carry.',
+    research: 'Research gathers references, tone, and context, translating outside cues into a clearer visual direction for the project.',
+    sketches: 'Early iterations trace the movement from rough marks to more deliberate structure, revealing what to keep and what to refine.',
+    concept: 'Concept development pulls the strongest signals together into a single direction with a more resolved mood and composition.',
+    details: 'Details and application place the system into its final setting, where scale, texture, and presentation give the work its finish.',
+  };
+  return copy[sectionKey] || '';
 }
 
 function removeBlocks(detailsHtml) {
@@ -187,10 +211,12 @@ ${breadcrumbHtml}
             <h1>${mainTitle}</h1>
             ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
           </div>
-          <div class="case-study-hero-media">
-            ${mediaHtml}
+          <div class="case-study-hero-side">
+            <div class="case-study-hero-media">
+              ${mediaHtml}
+            </div>
+            ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
           </div>
-          ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
         </header>
 
         <section class="case-study-section case-study-brief">
@@ -199,7 +225,8 @@ ${breadcrumbHtml}
             <h2>Project Brief</h2>
           </div>
           <div class="case-study-section-body">
-            ${intro ? `<p>${intro}</p>` : '<p>Add the short project brief here.</p>'}
+            <p>${sectionCopy('brief')}</p>
+            ${intro ? `<p>${intro}</p>` : ''}
           </div>
         </section>
 
@@ -207,6 +234,9 @@ ${breadcrumbHtml}
           <div class="case-study-section-header">
             <p class="case-study-section-label">Research</p>
             <h2>Research</h2>
+          </div>
+          <div class="case-study-section-body">
+            <p>${sectionCopy('research')}</p>
           </div>
           <div class="case-study-placeholder-grid case-study-placeholder-grid--two">
             ${buildPlaceholderTile('Research Image 1', 'Add moodboard, reference, or research imagery here.')}
@@ -219,6 +249,9 @@ ${breadcrumbHtml}
             <p class="case-study-section-label">Sketches</p>
             <h2>Sketches and Early Iterations</h2>
           </div>
+          <div class="case-study-section-body">
+            <p>${sectionCopy('sketches')}</p>
+          </div>
           <div class="case-study-placeholder-grid case-study-placeholder-grid--three">
             ${buildPlaceholderTile('Sketch 1', 'Add thumbnail sketches or early composition studies here.')}
             ${buildPlaceholderTile('Sketch 2', 'Add rough layout or variation studies here.')}
@@ -230,6 +263,9 @@ ${breadcrumbHtml}
           <div class="case-study-section-header">
             <p class="case-study-section-label">Concept</p>
             <h2>Concept Development</h2>
+          </div>
+          <div class="case-study-section-body">
+            <p>${sectionCopy('concept')}</p>
           </div>
           <div class="case-study-concept-media">
             <div class="case-study-placeholder case-study-placeholder--hero">
@@ -244,6 +280,9 @@ ${breadcrumbHtml}
             <p class="case-study-section-label">Details</p>
             <h2>Details and Application</h2>
           </div>
+          <div class="case-study-section-body">
+            <p>${sectionCopy('details')}</p>
+          </div>
           <div class="case-study-placeholder-grid case-study-placeholder-grid--application">
             ${buildPlaceholderTile('Application 1', 'Add an application, mockup, or detail image here.', 'is-large')}
             ${buildPlaceholderTile('Application 2', 'Add a supporting square application image here.')}
@@ -251,7 +290,7 @@ ${breadcrumbHtml}
             ${buildPlaceholderTile('Application 4', 'Add a supporting square application image here.')}
             ${buildPlaceholderTile('Application 5', 'Add a supporting square application image here.')}
           </div>
-          ${contentHtml ? `${contentHtml}` : ''}
+          ${contentHtml ? `<div class="case-study-section-body case-study-details-copy">${contentHtml}</div>` : ''}
         </section>
 
         ${navLinksHtml.html}
@@ -303,10 +342,12 @@ function normalizeCaseStudyPage(html, filePath) {
         <h1>${mainTitle}</h1>
         ${intro ? `<p class="case-study-intro">${intro}</p>` : ''}
       </div>
-      <div class="case-study-hero-media">
-        ${mediaHtml}
+      <div class="case-study-hero-side">
+        <div class="case-study-hero-media">
+          ${mediaHtml}
+        </div>
+        ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
       </div>
-      ${metaHtml ? `<div class="case-study-meta-grid"><div class="work-meta">${metaHtml}</div></div>` : ''}
     </header>`;
   rewritten = rewritten.replace(headerMatch[0], newHeader);
   }
@@ -319,9 +360,7 @@ function normalizeCaseStudyPage(html, filePath) {
     intro,
     metaHtml,
     mediaHtml,
-    contentHtml: contentHtml || `<div class="case-study-section-body case-study-details-copy">
-            <p>Add the project notes, final reflections, and outcome details here.</p>
-          </div>`,
+    contentHtml: '',
     navLinksHtml: {
       html: html.match(/<nav class="case-study-next">[\s\S]*?<\/nav>/i)?.[0] || '',
       backHref: relToCollectionsIndex(filePath),
