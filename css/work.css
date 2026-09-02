@@ -286,7 +286,7 @@
 
 .case-study-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 1.3fr);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 1.8fr);
   gap: 2rem;
   align-items: start;
   align-content: start;
