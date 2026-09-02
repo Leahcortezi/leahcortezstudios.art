@@ -163,10 +163,20 @@ function makeImagePlaceholder(src, alt, size) {
 }
 
 function makeMediaPlaceholder(src, alt, size) {
-  const isVideo = /\.(mp4|webm|mov)$/i.test(src.split('?')[0]);
-  const mediaTag = isVideo
-    ? `<video src="${src}" autoplay muted loop playsinline controls aria-label="${alt}" style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
-    : `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+  const cleanSrc = src.split('?')[0];
+  const isVideo = /\.(mp4|webm|mov)$/i.test(cleanSrc);
+  const ext = (cleanSrc.match(/\.([^.\/]+)$/)?.[1] || '').toLowerCase();
+  let mediaTag;
+
+  if (isVideo) {
+    const mp4Companion = ext === 'mov' ? cleanSrc.replace(/\.mov$/i, '.mp4') : null;
+    const currentType = ext === 'mov' ? 'video/quicktime' : ext === 'webm' ? 'video/webm' : 'video/mp4';
+    const mp4Source = mp4Companion ? `<source src="${mp4Companion}" type="video/mp4">` : '';
+    mediaTag = `<video autoplay muted loop playsinline controls preload="metadata" aria-label="${alt}" style="width:100%;height:100%;object-fit:cover;display:block;">\n                ${mp4Source}\n                <source src="${src}" type="${currentType}">\n              </video>`;
+  } else {
+    mediaTag = `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+  }
+
   return `<div class="case-study-placeholder case-study-placeholder--${size} case-study-placeholder--media">
               ${mediaTag}
             </div>`;
