@@ -178,7 +178,7 @@ function buildCollectionAssetsIndex() {
 
 function makeImagePlaceholder(src, alt, size) {
   return `<div class="case-study-placeholder case-study-placeholder--${size}">
-              <img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;display:block;">
             </div>`;
 }
 
@@ -192,9 +192,9 @@ function makeMediaPlaceholder(src, alt, size) {
     const mp4Companion = ext === 'mov' ? cleanSrc.replace(/\.mov$/i, '.mp4') : null;
     const currentType = ext === 'mov' ? 'video/quicktime' : ext === 'webm' ? 'video/webm' : 'video/mp4';
     const mp4Source = mp4Companion ? `<source src="${mp4Companion}" type="video/mp4">` : '';
-    mediaTag = `<video autoplay muted loop playsinline controls preload="metadata" aria-label="${alt}" style="width:100%;height:100%;object-fit:cover;display:block;">\n                ${mp4Source}\n                <source src="${src}" type="${currentType}">\n              </video>`;
+    mediaTag = `<video autoplay muted loop playsinline controls preload="metadata" aria-label="${alt}" style="width:100%;height:100%;display:block;">\n                ${mp4Source}\n                <source src="${src}" type="${currentType}">\n              </video>`;
   } else {
-    mediaTag = `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    mediaTag = `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;display:block;">`;
   }
 
   return `<div class="case-study-placeholder case-study-placeholder--${size} case-study-placeholder--media">
