@@ -266,9 +266,11 @@ function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIn
     injected = replaceFirstBlockInSection(injected, 'Sketches', '<div class="case-study-placeholder-grid', sketchesGrid);
   }
 
-  if (assets.concept) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.concept)}`;
-    const conceptImage = makeMediaPlaceholder(src, `${projectTitle} concept development`, 'hero');
+  const conceptSource = assets.concept || assets.hero;
+  if (conceptSource) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(conceptSource)}`;
+    const conceptAlt = assets.concept ? `${projectTitle} concept development` : `${projectTitle} concept development (hero fallback)`;
+    const conceptImage = makeMediaPlaceholder(src, conceptAlt, 'hero');
     injected = replaceFirstBlockInSection(injected, 'Concept', '<div class="case-study-placeholder case-study-placeholder--', conceptImage);
   }
 
