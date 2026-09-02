@@ -135,7 +135,7 @@ function buildCollectionAssetsIndex() {
     for (const file of fs.readdirSync(folderPath, { withFileTypes: true })) {
       if (!file.isFile()) continue;
       const ext = path.extname(file.name).toLowerCase();
-      if (!['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(ext)) continue;
+      if (!['.jpg', '.jpeg', '.png', '.webp', '.gif', '.mp4', '.webm', '.mov'].includes(ext)) continue;
 
       const filePath = path.join(folderPath, file.name);
       const token = path.basename(file.name, ext).toLowerCase();
@@ -163,8 +163,12 @@ function makeImagePlaceholder(src, alt, size) {
 }
 
 function makeMediaPlaceholder(src, alt, size) {
+  const isVideo = /\.(mp4|webm|mov)$/i.test(src.split('?')[0]);
+  const mediaTag = isVideo
+    ? `<video src="${src}" autoplay muted loop playsinline controls aria-label="${alt}" style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
+    : `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">`;
   return `<div class="case-study-placeholder case-study-placeholder--${size} case-study-placeholder--media">
-              <img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+              ${mediaTag}
             </div>`;
 }
 
