@@ -3,6 +3,7 @@ const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
 const collectionsRoot = path.join(repoRoot, 'collections');
+const collectionAssetsRoot = path.join(repoRoot, 'collection');
 
 function walk(dir, acc = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -83,6 +84,13 @@ function titleCase(input) {
     .trim();
 }
 
+function normalizeKey(input) {
+  return String(input || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '')
+    .trim();
+}
+
 function relToCollectionsIndex(filePath) {
   const rel = path.relative(path.dirname(filePath), path.join(collectionsRoot, 'index.html'));
   return rel.split(path.sep).join('/');
@@ -98,6 +106,120 @@ function categoryFromPath(filePath) {
   if (collectionsIndex === -1) return 'Work';
   const category = parts[collectionsIndex + 1] || 'Work';
   return titleCase(category);
+}
+
+function encodePathFromRoot(absPath) {
+  return path
+    .relative(repoRoot, absPath)
+    .split(path.sep)
+    .map((part) => encodeURIComponent(part))
+    .join('/');
+}
+
+function buildCollectionAssetsIndex() {
+  const index = new Map();
+  if (!fs.existsSync(collectionAssetsRoot)) return index;
+
+  for (const entry of fs.readdirSync(collectionAssetsRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const folderName = entry.name;
+    const folderPath = path.join(collectionAssetsRoot, folderName);
+    const assets = {};
+
+    for (const file of fs.readdirSync(folderPath, { withFileTypes: true })) {
+      if (!file.isFile()) continue;
+      const ext = path.extname(file.name).toLowerCase();
+      if (!['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(ext)) continue;
+
+      const filePath = path.join(folderPath, file.name);
+      const token = path.basename(file.name, ext).toLowerCase();
+      if (token.startsWith('hero')) assets.hero = filePath;
+      if (token.startsWith('research')) assets.research = filePath;
+      if (token.startsWith('sketch')) assets.sketches = filePath;
+      if (token.startsWith('concept')) assets.concept = filePath;
+      if (token.startsWith('application1')) assets.application1 = filePath;
+    }
+
+    index.set(normalizeKey(folderName), { folderName, assets });
+  }
+
+  return index;
+}
+
+function makeImagePlaceholder(src, alt, size) {
+  return `<div class="case-study-placeholder case-study-placeholder--${size}">
+              <img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>`;
+}
+
+function replaceFirstPlaceholderInSection(html, sectionLabel, replacementMarkup) {
+  const labelMarker = `<p class="case-study-section-label">${sectionLabel}</p>`;
+  const sectionStart = html.indexOf(labelMarker);
+  if (sectionStart === -1) return html;
+
+  const placeholderStart = html.indexOf('<div class="case-study-placeholder case-study-placeholder--', sectionStart);
+  if (placeholderStart === -1) return html;
+
+  const placeholderEnd = findMatchingClose(html, placeholderStart);
+  if (placeholderEnd === -1) return html;
+
+  return `${html.slice(0, placeholderStart)}${replacementMarkup}${html.slice(placeholderEnd)}`;
+}
+
+function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIndex) {
+  if (!collectionAssetsIndex || !collectionAssetsIndex.size) return html;
+
+  const key = normalizeKey(projectTitle);
+  const match = collectionAssetsIndex.get(key);
+  if (!match) return html;
+
+  const { assets } = match;
+  let injected = html;
+
+  if (assets.hero) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.hero)}`;
+    const heroImage = makeImagePlaceholder(src, `${projectTitle} hero image`, 'hero');
+    injected = injected.replace(
+      /(<div class="case-study-hero-media">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/header>)/i,
+      `$1\n              ${heroImage}\n            $2`
+    );
+  }
+
+  if (assets.research) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.research)}`;
+    const researchImage = makeImagePlaceholder(src, `${projectTitle} research image`, 'small');
+    injected = replaceFirstPlaceholderInSection(injected, 'Research', researchImage);
+  }
+
+  if (assets.sketches) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.sketches)}`;
+    const sketchImage = makeImagePlaceholder(src, `${projectTitle} sketches`, 'small');
+    injected = replaceFirstPlaceholderInSection(injected, 'Sketches', sketchImage);
+  }
+
+  if (assets.concept) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.concept)}`;
+    const conceptImage = makeImagePlaceholder(src, `${projectTitle} concept development`, 'hero');
+    injected = replaceFirstPlaceholderInSection(injected, 'Concept', conceptImage);
+  }
+
+  if (assets.application1) {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.application1)}`;
+    const appImage = makeImagePlaceholder(src, `${projectTitle} application`, 'large');
+    const appMarker = '<article class="case-study-tile is-large" aria-label="Application 1">';
+    const appStart = injected.indexOf(appMarker);
+    if (appStart !== -1) {
+      const placeholderStart = injected.indexOf('<div class="case-study-placeholder', appStart);
+      if (placeholderStart !== -1) {
+        const placeholderEnd = findMatchingClose(injected, placeholderStart);
+        if (placeholderEnd !== -1) {
+          injected = `${injected.slice(0, placeholderStart)}${appImage}${injected.slice(placeholderEnd)}`;
+        }
+      }
+    }
+  }
+
+  return injected;
 }
 
 function extractYear(metaHtml, headHtml) {
@@ -324,7 +446,7 @@ function injectStandardScripts(html, filePath) {
   return `${html}${standardScripts}`;
 }
 
-function normalizeCaseStudyPage(html, filePath) {
+function normalizeCaseStudyPage(html, filePath, collectionAssetsIndex) {
   const category = categoryFromPath(filePath);
   const title = titleCase(path.basename(path.dirname(filePath)));
   const navHtml = buildStandardNav(filePath);
@@ -376,7 +498,8 @@ function normalizeCaseStudyPage(html, filePath) {
     scriptsHtml: html.match(/(<script src=[\s\S]*?)<\/body>/i)?.[1] ? '' : '',
   });
 
-  return injectStandardScripts(replacement, filePath);
+  const withScripts = injectStandardScripts(replacement, filePath);
+  return injectCollectionAssets(withScripts, filePath, mainTitle, collectionAssetsIndex);
 }
 
 function buildStandardNav(filePath) {
@@ -442,13 +565,13 @@ function buildPlaceholderPage(filePath) {
   });
 }
 
-function rebuildPage(filePath) {
+function rebuildPage(filePath, collectionAssetsIndex) {
   const html = fs.readFileSync(filePath, 'utf8');
   if (html.trim().length === 0) {
     return { skipped: false, content: buildPlaceholderPage(filePath) };
   }
   if (html.includes('class="case-study-page"')) {
-    const normalized = normalizeCaseStudyPage(html, filePath);
+    const normalized = normalizeCaseStudyPage(html, filePath, collectionAssetsIndex);
     return normalized ? { skipped: false, content: normalized } : { skipped: true, reason: 'already updated case-study page' };
   }
   if (!html.includes('class="work-container"') || !html.includes('class="work-details-column"')) {
@@ -504,10 +627,14 @@ function rebuildPage(filePath) {
     scriptsHtml,
   });
 
-  return { skipped: false, content: rebuilt };
+  return {
+    skipped: false,
+    content: injectCollectionAssets(rebuilt, filePath, mainTitle, collectionAssetsIndex),
+  };
 }
 
 function main() {
+  const collectionAssetsIndex = buildCollectionAssetsIndex();
   const files = walk(collectionsRoot)
     .filter((file) => file.endsWith('.html'))
     .filter((file) => path.relative(collectionsRoot, file) !== 'index.html');
@@ -517,7 +644,7 @@ function main() {
   const skippedFiles = [];
 
   for (const file of files) {
-    const result = rebuildPage(file);
+    const result = rebuildPage(file, collectionAssetsIndex);
     if (result.skipped) {
       skipped++;
       skippedFiles.push(`${path.relative(repoRoot, file)} :: ${result.reason}`);
