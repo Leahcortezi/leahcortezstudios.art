@@ -124,7 +124,13 @@ function buildCollectionAssetsIndex() {
     if (!entry.isDirectory()) continue;
     const folderName = entry.name;
     const folderPath = path.join(collectionAssetsRoot, folderName);
-    const assets = {};
+    const assets = {
+      hero: null,
+      concept: null,
+      research: [],
+      sketches: [],
+      applications: [],
+    };
 
     for (const file of fs.readdirSync(folderPath, { withFileTypes: true })) {
       if (!file.isFile()) continue;
@@ -134,11 +140,15 @@ function buildCollectionAssetsIndex() {
       const filePath = path.join(folderPath, file.name);
       const token = path.basename(file.name, ext).toLowerCase();
       if (token.startsWith('hero')) assets.hero = filePath;
-      if (token.startsWith('research')) assets.research = filePath;
-      if (token.startsWith('sketch')) assets.sketches = filePath;
       if (token.startsWith('concept')) assets.concept = filePath;
-      if (token.startsWith('application1')) assets.application1 = filePath;
+      if (token.startsWith('research')) assets.research.push({ token, filePath });
+      if (token.startsWith('sketch')) assets.sketches.push({ token, filePath });
+      if (token.startsWith('application') || token.startsWith('app')) assets.applications.push({ token, filePath });
     }
+
+    assets.research.sort((a, b) => a.token.localeCompare(b.token, undefined, { numeric: true }));
+    assets.sketches.sort((a, b) => a.token.localeCompare(b.token, undefined, { numeric: true }));
+    assets.applications.sort((a, b) => a.token.localeCompare(b.token, undefined, { numeric: true }));
 
     index.set(normalizeKey(folderName), { folderName, assets });
   }
@@ -152,18 +162,79 @@ function makeImagePlaceholder(src, alt, size) {
             </div>`;
 }
 
-function replaceFirstPlaceholderInSection(html, sectionLabel, replacementMarkup) {
+function makeMediaPlaceholder(src, alt, size) {
+  return `<div class="case-study-placeholder case-study-placeholder--${size} case-study-placeholder--media">
+              <img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>`;
+}
+
+function buildMediaTile(heading, src, alt, modifier = '') {
+  const sizeClass = modifier === 'is-large' ? 'large' : 'small';
+  return `<article class="case-study-tile has-media ${modifier}" aria-label="${heading}">
+          <span class="case-study-tile-heading">${heading}</span>
+          ${makeMediaPlaceholder(src, alt, sizeClass)}
+        </article>`;
+}
+
+function replaceFirstBlockInSection(html, sectionLabel, blockClassPrefix, replacementMarkup) {
   const labelMarker = `<p class="case-study-section-label">${sectionLabel}</p>`;
-  const sectionStart = html.indexOf(labelMarker);
-  if (sectionStart === -1) return html;
+  const labelIndex = html.indexOf(labelMarker);
+  if (labelIndex === -1) return html;
 
-  const placeholderStart = html.indexOf('<div class="case-study-placeholder case-study-placeholder--', sectionStart);
-  if (placeholderStart === -1) return html;
+  const sectionStart = html.lastIndexOf('<section', labelIndex);
+  const sectionEnd = html.indexOf('</section>', labelIndex);
+  if (sectionStart === -1 || sectionEnd === -1) return html;
 
-  const placeholderEnd = findMatchingClose(html, placeholderStart);
-  if (placeholderEnd === -1) return html;
+  const sectionHtml = html.slice(sectionStart, sectionEnd + 10);
+  const blockStart = sectionHtml.indexOf(blockClassPrefix);
+  if (blockStart === -1) return html;
 
-  return `${html.slice(0, placeholderStart)}${replacementMarkup}${html.slice(placeholderEnd)}`;
+  const absoluteBlockStart = sectionStart + blockStart;
+  const absoluteBlockEnd = findMatchingClose(html, absoluteBlockStart);
+  if (absoluteBlockEnd === -1) return html;
+
+  return `${html.slice(0, absoluteBlockStart)}${replacementMarkup}${html.slice(absoluteBlockEnd)}`;
+}
+
+function buildSectionMediaGrid(files, filePath, projectTitle, labelPrefix) {
+  if (!files || files.length === 0) return '';
+  const tiles = files.map((entry, index) => {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(entry.filePath)}`;
+    const heading = `${labelPrefix} ${index + 1}`;
+    return buildMediaTile(heading, src, `${projectTitle} ${heading.toLowerCase()}`);
+  }).join('\n            ');
+
+  const singleClass = files.length === 1 ? ' case-study-placeholder-grid--single' : ' case-study-placeholder-grid--media';
+  return `<div class="case-study-placeholder-grid${singleClass}">
+            ${tiles}
+          </div>`;
+}
+
+function buildApplicationLayoutFromAssets(files, filePath, projectTitle) {
+  if (!files || files.length === 0) return '';
+
+  const first = files[0];
+  const firstSrc = `${relToRepoRoot(filePath)}/${encodePathFromRoot(first.filePath)}`;
+  const large = buildMediaTile('Application 1', firstSrc, `${projectTitle} application 1`, 'is-large');
+
+  if (files.length === 1) {
+    return `<div class="case-study-application-layout has-media only-one">
+          ${large}
+        </div>`;
+  }
+
+  const rest = files.slice(1).map((entry, idx) => {
+    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(entry.filePath)}`;
+    const number = idx + 2;
+    return buildMediaTile(`Application ${number}`, src, `${projectTitle} application ${number}`);
+  }).join('\n            ');
+
+  return `<div class="case-study-application-layout has-media">
+          ${large}
+          <div class="case-study-application-stack">
+            ${rest}
+          </div>
+        </div>`;
 }
 
 function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIndex) {
@@ -178,43 +249,36 @@ function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIn
 
   if (assets.hero) {
     const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.hero)}`;
-    const heroImage = makeImagePlaceholder(src, `${projectTitle} hero image`, 'hero');
+    const heroImage = makeMediaPlaceholder(src, `${projectTitle} hero image`, 'hero');
     injected = injected.replace(
       /(<div class="case-study-hero-media">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/header>)/i,
       `$1\n              ${heroImage}\n            $2`
     );
   }
 
-  if (assets.research) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.research)}`;
-    const researchImage = makeImagePlaceholder(src, `${projectTitle} research image`, 'small');
-    injected = replaceFirstPlaceholderInSection(injected, 'Research', researchImage);
+  if (assets.research.length > 0) {
+    const researchGrid = buildSectionMediaGrid(assets.research, filePath, projectTitle, 'Research');
+    injected = replaceFirstBlockInSection(injected, 'Research', '<div class="case-study-placeholder-grid', researchGrid);
   }
 
-  if (assets.sketches) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.sketches)}`;
-    const sketchImage = makeImagePlaceholder(src, `${projectTitle} sketches`, 'small');
-    injected = replaceFirstPlaceholderInSection(injected, 'Sketches', sketchImage);
+  if (assets.sketches.length > 0) {
+    const sketchesGrid = buildSectionMediaGrid(assets.sketches, filePath, projectTitle, 'Sketch');
+    injected = replaceFirstBlockInSection(injected, 'Sketches', '<div class="case-study-placeholder-grid', sketchesGrid);
   }
 
   if (assets.concept) {
     const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.concept)}`;
-    const conceptImage = makeImagePlaceholder(src, `${projectTitle} concept development`, 'hero');
-    injected = replaceFirstPlaceholderInSection(injected, 'Concept', conceptImage);
+    const conceptImage = makeMediaPlaceholder(src, `${projectTitle} concept development`, 'hero');
+    injected = replaceFirstBlockInSection(injected, 'Concept', '<div class="case-study-placeholder case-study-placeholder--', conceptImage);
   }
 
-  if (assets.application1) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.application1)}`;
-    const appImage = makeImagePlaceholder(src, `${projectTitle} application`, 'large');
-    const appMarker = '<article class="case-study-tile is-large" aria-label="Application 1">';
-    const appStart = injected.indexOf(appMarker);
-    if (appStart !== -1) {
-      const placeholderStart = injected.indexOf('<div class="case-study-placeholder', appStart);
-      if (placeholderStart !== -1) {
-        const placeholderEnd = findMatchingClose(injected, placeholderStart);
-        if (placeholderEnd !== -1) {
-          injected = `${injected.slice(0, placeholderStart)}${appImage}${injected.slice(placeholderEnd)}`;
-        }
+  if (assets.applications.length > 0) {
+    const appLayoutStart = injected.indexOf('<div class="case-study-application-layout">');
+    if (appLayoutStart !== -1) {
+      const appLayoutEnd = findMatchingClose(injected, appLayoutStart);
+      if (appLayoutEnd !== -1) {
+        const appLayout = buildApplicationLayoutFromAssets(assets.applications, filePath, projectTitle);
+        injected = `${injected.slice(0, appLayoutStart)}${appLayout}${injected.slice(appLayoutEnd)}`;
       }
     }
   }

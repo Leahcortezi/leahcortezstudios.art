@@ -576,6 +576,39 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.case-study-tile.has-media .case-study-tile-heading {
+  display: none;
+}
+
+.case-study-placeholder--media {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+}
+
+.case-study-placeholder--media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-study-placeholder-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.case-study-placeholder-grid--media {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.case-study-application-layout.only-one .case-study-tile.is-large {
+  flex: 1 1 100%;
+}
+
 .case-study-content {
   display: grid;
   gap: 1.5rem;
