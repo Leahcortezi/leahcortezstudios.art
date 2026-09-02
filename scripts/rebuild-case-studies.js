@@ -91,6 +91,26 @@ function normalizeKey(input) {
     .trim();
 }
 
+function mediaPriority(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  const priority = {
+    '.mp4': 100,
+    '.webm': 90,
+    '.mov': 80,
+    '.jpg': 70,
+    '.jpeg': 69,
+    '.png': 68,
+    '.webp': 67,
+    '.gif': 66,
+  };
+  return priority[ext] || 0;
+}
+
+function pickPreferredAsset(currentPath, candidatePath) {
+  if (!currentPath) return candidatePath;
+  return mediaPriority(candidatePath) > mediaPriority(currentPath) ? candidatePath : currentPath;
+}
+
 function relToCollectionsIndex(filePath) {
   const rel = path.relative(path.dirname(filePath), path.join(collectionsRoot, 'index.html'));
   return rel.split(path.sep).join('/');
@@ -139,8 +159,8 @@ function buildCollectionAssetsIndex() {
 
       const filePath = path.join(folderPath, file.name);
       const token = path.basename(file.name, ext).toLowerCase();
-      if (token.startsWith('hero')) assets.hero = filePath;
-      if (token.startsWith('concept')) assets.concept = filePath;
+      if (token.startsWith('hero')) assets.hero = pickPreferredAsset(assets.hero, filePath);
+      if (token.startsWith('concept')) assets.concept = pickPreferredAsset(assets.concept, filePath);
       if (token.startsWith('research')) assets.research.push({ token, filePath });
       if (token.startsWith('sketch')) assets.sketches.push({ token, filePath });
       if (token.startsWith('application') || token.startsWith('app')) assets.applications.push({ token, filePath });
