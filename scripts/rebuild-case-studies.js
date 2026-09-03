@@ -117,7 +117,8 @@ function relToCollectionsIndex(filePath) {
 }
 
 function relToRepoRoot(filePath) {
-  return path.relative(path.dirname(filePath), repoRoot).split(path.sep).join('/');
+  // Return absolute path from repo root for web deployment
+  return '';
 }
 
 function categoryFromPath(filePath) {
@@ -233,7 +234,7 @@ function replaceFirstBlockInSection(html, sectionLabel, blockClassPrefix, replac
 function buildSectionMediaGrid(files, filePath, projectTitle, labelPrefix) {
   if (!files || files.length === 0) return '';
   const tiles = files.map((entry, index) => {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(entry.filePath)}`;
+    const src = `/${encodePathFromRoot(entry.filePath)}`;
     const heading = `${labelPrefix} ${index + 1}`;
     return buildMediaTile(heading, src, `${projectTitle} ${heading.toLowerCase()}`);
   }).join('\n            ');
@@ -258,7 +259,7 @@ function buildApplicationLayoutFromAssets(files, filePath, projectTitle) {
   }
 
   const rest = files.slice(1).map((entry, idx) => {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(entry.filePath)}`;
+    const src = `/${encodePathFromRoot(entry.filePath)}`;
     const number = idx + 2;
     return buildMediaTile(`Application ${number}`, src, `${projectTitle} application ${number}`);
   }).join('\n            ');
@@ -282,7 +283,7 @@ function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIn
   let injected = html;
 
   if (assets.hero) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(assets.hero)}`;
+    const src = `/${encodePathFromRoot(assets.hero)}`;
     const heroImage = makeMediaPlaceholder(src, `${projectTitle} hero image`, 'hero');
     injected = injected.replace(
       /(<div class="case-study-hero-media">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/header>)/i,
@@ -302,7 +303,7 @@ function injectCollectionAssets(html, filePath, projectTitle, collectionAssetsIn
 
   const conceptSource = assets.concept || assets.hero;
   if (conceptSource) {
-    const src = `${relToRepoRoot(filePath)}/${encodePathFromRoot(conceptSource)}`;
+    const src = `/${encodePathFromRoot(conceptSource)}`;
     const conceptAlt = assets.concept ? `${projectTitle} concept development` : `${projectTitle} concept development (hero fallback)`;
     const conceptImage = makeMediaPlaceholder(src, conceptAlt, 'hero');
     injected = replaceFirstBlockInSection(injected, 'Concept', '<div class="case-study-placeholder case-study-placeholder--', conceptImage);
