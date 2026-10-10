@@ -670,6 +670,12 @@ function rebuildPage(filePath, collectionAssetsIndex) {
   if (html.trim().length === 0) {
     return { skipped: false, content: buildPlaceholderPage(filePath) };
   }
+  if (
+    html.includes('cs-page') ||
+    fs.existsSync(path.join(path.dirname(filePath), 'case-study.json'))
+  ) {
+    return { skipped: true, reason: 'migrated to case-study v2 (case-study.json / cs-page)' };
+  }
   if (html.includes('class="case-study-page"')) {
     const normalized = normalizeCaseStudyPage(html, filePath, collectionAssetsIndex);
     return normalized ? { skipped: false, content: normalized } : { skipped: true, reason: 'already updated case-study page' };

@@ -1,0 +1,55 @@
+{
+  "title": "Custom Typeface + Specimen Poster",
+  "category": "Typography",
+  "year": "2026",
+  "summary": "The goal of this project was to translate a historical metal or wood type specimen into a functional contemporary digital typeface.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Typeface + specimen"
+    ]
+  ],
+  "overview": {
+    "challenge": "The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use, with a strong focus on accessibility, readability, and consistency across a full character set."
+  },
+  "hero": {
+    "layout": "wide",
+    "src": "../../../collection/Custom Typeface + Specimen Poster/Hero.mp4",
+    "alt": "Looping preview of the Surendra typeface."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Sketches",
+      "placeholder": "Sketches and early iterations: image coming soon",
+      "ratio": "4/3",
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+    },
+    {
+      "type": "feature",
+      "label": "02 — Final",
+      "src": "images/cs/final.jpg",
+      "alt": "Surendra typeface mockup."
+    },
+    {
+      "type": "gallery",
+      "label": "03 — Mockups",
+      "items": [
+        {
+          "src": "images/cs/mockup-mag.jpg",
+          "alt": "Surendra magazine mockup."
+        },
+        {
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Surendra specimen mockup."
+        }
+      ],
+      "layout": "justified"
+    }
+  ]
+}

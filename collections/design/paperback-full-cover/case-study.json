@@ -1,0 +1,58 @@
+{
+  "title": "Paperback Full Cover",
+  "category": "Editorial",
+  "year": "2026",
+  "summary": "A full-wrap paperback book cover designed as a complete print package including the front cover, spine, and back cover. The project explored how typography, imagery, and composition work together across an uninterrupted surface to create a cohesive reading experience before the book is even opened.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Full-wrap cover files"
+    ]
+  ],
+  "overview": {
+    "challenge": "Most covers treat the front, spine, and back as independent design problems.",
+    "solution": "Instead, I approached the wrap as one unified narrative—where the spine becomes an integral part of the story, not an afterthought."
+  },
+  "hero": {
+    "layout": "split",
+    "src": "images/cs/hero.jpg",
+    "alt": "Paperback full cover mockup."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Sketches",
+      "placeholder": "Sketches and early iterations: image coming soon",
+      "ratio": "4/3",
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+    },
+    {
+      "type": "feature",
+      "label": "02 — Final",
+      "src": "images/cs/final.jpg",
+      "alt": "The full wrap: front cover, spine and back cover.",
+      "fit": "contain"
+    },
+    {
+      "type": "gallery",
+      "label": "03 — Mockups",
+      "items": [
+        {
+          "src": "images/cs/mockup-cover.jpg",
+          "alt": "Paperback cover mockup."
+        },
+        {
+          "placeholder": "Mockup: image coming soon",
+          "ratio": "3/2",
+          "_todo": "Add a mockup image (src, alt)."
+        }
+      ],
+      "layout": "justified"
+    }
+  ]
+}

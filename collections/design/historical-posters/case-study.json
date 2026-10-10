@@ -1,0 +1,69 @@
+{
+  "title": "Historical Posters",
+  "category": "Poster",
+  "year": "2026",
+  "summary": "A collection of poster designs inspired by historical design movements and visual traditions.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Poster designs"
+    ]
+  ],
+  "hero": {
+    "layout": "wide",
+    "src": "../../../collection/Historical Posters/Hero.mp4",
+    "alt": "Looping preview of the historical posters."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Research",
+      "src": "../../../collection/Historical Posters/Research.jpg",
+      "alt": "Research references for the poster series.",
+      "ratio": "1366/768"
+    },
+    {
+      "type": "story",
+      "imageSide": "left",
+      "label": "02 — Sketches",
+      "src": "../../../collection/Historical Posters/Sketches.jpg",
+      "alt": "Sketches and early poster studies.",
+      "ratio": "1366/768"
+    },
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "03 — Concept development",
+      "src": "images/cs/concept.jpg",
+      "alt": "Concept development for the poster series."
+    },
+    {
+      "type": "feature",
+      "label": "04 — Final",
+      "src": "images/cs/final.jpg",
+      "alt": "Final poster design."
+    },
+    {
+      "type": "gallery",
+      "label": "05 — Mockups",
+      "items": [
+        {
+          "placeholder": "Mockup: image coming soon",
+          "ratio": "4/3",
+          "_todo": "Add a mockup image (src, alt)."
+        },
+        {
+          "placeholder": "Mockup: image coming soon",
+          "ratio": "4/3",
+          "_todo": "Add a mockup image (src, alt)."
+        }
+      ],
+      "layout": "justified"
+    }
+  ]
+}

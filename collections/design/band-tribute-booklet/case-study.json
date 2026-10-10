@@ -1,0 +1,64 @@
+{
+  "title": "Band Tribute Booklet",
+  "category": "Editorial",
+  "year": "2026",
+  "summary": "A typographic editorial booklet celebrating the visual identity of a selected band. The project focused on creating a cohesive publication system that translated the band's music and personality into print through hierarchy, pacing, imagery, and expressive typography.",
+  "meta": [
+    [
+      "Tools",
+      "InDesign"
+    ],
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Booklet"
+    ]
+  ],
+  "overview": {
+    "challenge": "Rather than simply documenting the band, the goal was to balance readability with a strong visual atmosphere while maintaining consistency across every spread."
+  },
+  "hero": {
+    "layout": "wide",
+    "src": "images/cs/hero.jpg",
+    "alt": "Band Tribute Booklet mockup."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Sketches",
+      "placeholder": "Sketches and early iterations: image coming soon",
+      "ratio": "4/3",
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+    },
+    {
+      "type": "gallery",
+      "label": "02 — Final",
+      "items": [
+        {
+          "src": "images/cs/final-cover.jpg",
+          "alt": "Band Tribute Booklet cover.",
+          "fit": "contain"
+        },
+        {
+          "src": "images/cs/spread-1.jpg",
+          "alt": "Band Tribute Booklet spread 1."
+        },
+        {
+          "src": "images/cs/spread-2.jpg",
+          "alt": "Band Tribute Booklet spread 2."
+        }
+      ],
+      "layout": "justified"
+    },
+    {
+      "type": "feature",
+      "label": "03 — Mockups",
+      "placeholder": "Booklet mockup: image coming soon",
+      "_todo": "Add the booklet mockup image (src, alt)."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Editorial Spreads",
+  "category": "Editorial",
+  "year": "2025",
+  "summary": "This editorial spread was created for a project selecting an article and designing a magazine layout around it.",
+  "meta": [
+    [
+      "Tools",
+      "InDesign"
+    ],
+    [
+      "Year",
+      "2025"
+    ],
+    [
+      "Deliverables",
+      "2-page editorial"
+    ]
+  ],
+  "hero": {
+    "layout": "wide",
+    "src": "../../../collection/Editorial Spreads/Hero.mp4",
+    "alt": "Looping preview of the editorial spread."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Research",
+      "body": "I chose \"Alien Invasion or Sleep Paralysis?\" because the topic fascinated me and offered a chance to explore the visual confusion between two surreal experiences.",
+      "src": "../../../collection/Editorial Spreads/Research.jpg",
+      "alt": "Research references for the editorial spread.",
+      "ratio": "1366/768"
+    },
+    {
+      "type": "story",
+      "imageSide": "left",
+      "label": "02 — Sketches",
+      "src": "../../../collection/Editorial Spreads/Sketches.jpg",
+      "alt": "Sketches and early layout studies for the editorial spread.",
+      "ratio": "1366/768"
+    },
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "03 — Concept development",
+      "src": "../../../collection/Editorial Spreads/ConceptDevelopment.jpg",
+      "alt": "Concept development for the editorial spread.",
+      "ratio": "1366/768"
+    },
+    {
+      "type": "feature",
+      "label": "04 — Final",
+      "src": "images/cs/final.jpg",
+      "alt": "The finished two-page editorial spread.",
+      "fit": "contain"
+    },
+    {
+      "type": "gallery",
+      "label": "05 — Mockups",
+      "items": [
+        {
+          "src": "images/cs/mockup-flash.jpg",
+          "alt": "Editorial spread mockup."
+        },
+        {
+          "src": "images/cs/mockup-flip.jpg",
+          "alt": "Editorial spread flip-through mockup."
+        },
+        {
+          "src": "images/cs/spread-2.jpg",
+          "alt": "Second editorial spread."
+        }
+      ],
+      "layout": "justified"
+    }
+  ]
+}

@@ -20,3 +20,7 @@ Thumbs.db
 collections/motion/*.mp4
 collections/motion/*.mov
 collections/motion/*.avi
+
+# ...but do track the videos used by case study pages
+!collection/**/*.mp4
+!collections/design/**/*.mp4

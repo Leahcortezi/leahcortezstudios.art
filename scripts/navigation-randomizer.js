@@ -1,32 +1,9 @@
-// Gallery order - matches collections/index.html order exactly
-const galleryOrder = [
-    "collections/illustration/abuelas-altar/index.html",
-    "collections/design/insane-grain-packaging/index.html",
-    "collections/illustration/inheritance/index.html",
-    "collections/design/editorial-spread/index.html",
-    "collections/printmaking/the-unholy-gaze/index.html",
-    "collections/design/contemporary-contexts-zine/index.html",
-    "collections/illustration/anointed-gaze/index.html",
-    "collections/design/Threads/index.html",
-    "collections/design/space-age-wine-packaging/index.html",
-    "collections/design/custom-typeface-specimen-poster/index.html",
-    "collections/printmaking/reliquary-heart/index.html",
-    "collections/design/City Reliquary/index.html",
-    "collections/design/themed-playing-card-design/index-case-study.html",
-    "collections/objects/abyss-bloom/index.html",
-    "collections/design/endangered-species-poster/index.html",
-    "collections/printmaking/the-living-room/index.html",
-    "collections/illustration/heaven-on-fire/index.html",
-    "collections/objects/feathers-along-the-bend/index.html",
-    "collections/printmaking/unbecoming/index.html",
-    "collections/objects/gnaw/index.html",
-    "collections/objects/unraveling/index.html",
-    "collections/objects/remnants/index.html"
-];
+// Gallery order lives in scripts/gallery-order.json (shared with scripts/build-case-studies.js).
+let galleryOrder = [];
 
 // Function to get current work index from URL
 function getCurrentWorkIndex() {
-    const currentPath = window.location.pathname;
+    const currentPath = decodeURIComponent(window.location.pathname);
     
     // Extract the relevant part of the path starting from collections/
     const pathMatch = currentPath.match(/\/collections\/(.+)/);
@@ -70,4 +47,12 @@ function updateNavigationLinks() {
 }
 
 // Run when DOM is loaded
-document.addEventListener('DOMContentLoaded', updateNavigationLinks);
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../../../scripts/gallery-order.json')
+        .then((res) => res.json())
+        .then((order) => {
+            galleryOrder = order;
+            updateNavigationLinks();
+        })
+        .catch(() => {});
+});

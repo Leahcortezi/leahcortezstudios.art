@@ -1,0 +1,55 @@
+{
+  "title": "Static + Animated Logotype",
+  "category": "Branding",
+  "year": "2026",
+  "summary": "Threads is a contemporary clothing retail brand targeting young, fashion conscious shoppers and local trendsetters.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Logotype & motion"
+    ]
+  ],
+  "overview": {
+    "solution": "Rather than treating the name as purely metaphorical, the concept centers on the physical behavior of thread itself, how it loops, pulls, overlaps, and binds garments together."
+  },
+  "hero": {
+    "layout": "wide",
+    "src": "2304_Cort_P1_TypeAnimationFinal.mp4",
+    "alt": "The animated Threads logotype."
+  },
+  "blocks": [
+    {
+      "type": "story",
+      "imageSide": "right",
+      "label": "01 — Sketches",
+      "placeholder": "Sketches and early iterations: image coming soon",
+      "ratio": "4/3",
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+    },
+    {
+      "type": "feature",
+      "label": "02 — Final",
+      "src": "images/cs/final-signage.jpg",
+      "alt": "Threads logotype on signage."
+    },
+    {
+      "type": "gallery",
+      "label": "03 — Mockups",
+      "items": [
+        {
+          "src": "images/cs/mockup-bag.jpg",
+          "alt": "Threads logotype on a shopping bag."
+        },
+        {
+          "src": "images/cs/mockup-tag.jpg",
+          "alt": "Threads logotype on a clothing tag."
+        }
+      ],
+      "layout": "justified"
+    }
+  ]
+}
