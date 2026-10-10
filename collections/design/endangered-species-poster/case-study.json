@@ -5,6 +5,14 @@
   "summary": "This WWF poster addresses the impact of climate change on koalas, an endangered species threatened by habitat destruction and rising temperatures.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2025"
     ],
@@ -14,7 +22,9 @@
     ]
   ],
   "overview": {
-    "solution": "The design creates a symbolic visual representation merging the koala with the cause of their decline."
+    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
+    "solution": "The design creates a symbolic visual representation merging the koala with the cause of their decline.",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)"
   },
   "hero": {
     "layout": "split",
@@ -28,7 +38,9 @@
       "label": "01 — Research",
       "src": "../../../collection/Disappearing Species/Research.jpg",
       "alt": "Research references for the poster.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: what you looked at",
+      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
     },
     {
       "type": "story",
@@ -36,14 +48,17 @@
       "label": "02 — Sketches",
       "src": "../../../collection/Disappearing Species/Sketches.jpg",
       "alt": "Sketches and early poster studies.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "feature",
       "label": "03 — Final",
       "src": "images/cs/final.jpg",
       "alt": "The finished Disappearing Species poster.",
-      "fit": "contain"
+      "fit": "contain",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",

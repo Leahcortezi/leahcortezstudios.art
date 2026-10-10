@@ -1,0 +1,131 @@
+/*
+  Case Study v2 — flexible block template
+  Leah Cortez Studios
+
+  Load AFTER styles.css and work.css on case study pages:
+    <link rel="stylesheet" href="../../../css/case-study-v2.css">
+
+  Page root:
+    <main class="case-study-page cs-page">
+  Keep .case-study-page — page-enhancements.js keys the scroll-progress bar off it.
+  .cs-page cancels work.css's 1180px max-width so blocks can go full-bleed.
+*/
+
+/* ---------- Page + scoped resets ---------- */
+.case-study-page.cs-page { max-width: none; margin: 0; padding: 0; line-height: 1.6; }
+.cs-page h1, .cs-page h2, .cs-page h3,
+.cs-page p, .cs-page figure, .cs-page dl, .cs-page dd, .cs-page ol { margin: 0; }
+.cs-page ol { padding: 0; list-style: none; }
+
+.cs-wrap { max-width: 1360px; margin-left: auto; margin-right: auto; padding-left: clamp(20px, 4vw, 56px); padding-right: clamp(20px, 4vw, 56px); }
+.cs-block { padding-top: clamp(88px, 10vw, 152px); }
+
+/* ---------- Type ---------- */
+.cs-label { font-family: var(--font-accent); font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #f8c8d0; }
+.cs-kicker { font-family: var(--font-accent); font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgba(248, 200, 208, .88); }
+.cs-back { display: inline-flex; font-family: var(--font-accent); font-size: 13px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #f8c8d0; text-decoration: underline; text-underline-offset: 5px; }
+.cs-back:hover, .cs-back:focus-visible { color: #fff; }
+
+/* Headings keep the global pink (!important in styles.css) and UA bold, same as today. */
+.cs-page .cs-title { font-family: var(--font-headings); font-size: clamp(54px, 6.6vw, 104px); line-height: .92; letter-spacing: 1px; text-wrap: balance; }
+.cs-page .cs-h2 { font-family: var(--font-headings); font-size: clamp(30px, 3.4vw, 50px); line-height: 1.02; letter-spacing: 1px; text-wrap: balance; }
+
+.cs-lead { font-family: var(--font-body); font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: rgba(255, 255, 255, .92); max-width: 38ch; text-wrap: pretty; }
+.cs-body { font-family: var(--font-body); font-size: 17px; line-height: 1.7; color: rgba(255, 255, 255, .88); text-wrap: pretty; }
+.cs-caption { display: flex; gap: 12px; font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, .64); }
+.cs-caption::before { content: ""; flex: none; width: 18px; height: 1px; margin-top: .72em; background: #f8c8d0; }
+
+/* ---------- Media frame ----------
+   Box ratio comes from --ratio (set inline per image, e.g. style="--ratio: 864 / 604").
+   The image always covers the box. */
+.cs-media { position: relative; width: 100%; aspect-ratio: var(--ratio, 3 / 2); overflow: hidden; background: #000; }
+.cs-media > img,
+.cs-media > video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
+.cs-media--contain > img,
+.cs-media--contain > video { object-fit: contain; }
+
+/* ---------- Meta (Role / Tools / Year / Deliverables) ---------- */
+.cs-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+.cs-meta > div { border-top: 1px solid rgba(248, 200, 208, .24); padding: 14px 0 16px; display: flex; flex-direction: column; gap: 5px; }
+.cs-meta dt { font-family: var(--font-accent); font-size: 11.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #f8c8d0; }
+.cs-meta dd { font-family: var(--font-body); font-size: 15.5px; line-height: 1.45; color: #fff; }
+
+/* ---------- Hero · split ---------- */
+.cs-hero { padding-top: 32px; }
+.cs-hero-grid { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: stretch; gap: clamp(36px, 5vw, 80px); }
+.cs-hero-copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+.cs-hero-intro { display: flex; flex-direction: column; gap: 24px; }
+.cs-hero-media { flex: 1.45 1 440px; min-width: 0; }
+.cs-hero-media .cs-media { aspect-ratio: 1 / 1; }
+
+/* ---------- Hero · wide ---------- */
+.cs-hero--wide .cs-hero-top { margin-top: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 64px; }
+.cs-hero--wide .cs-hero-intro { flex: 1 1 420px; min-width: 0; }
+.cs-hero--wide .cs-lead { flex: 0 1 440px; max-width: none; }
+.cs-hero--wide .cs-meta { margin-top: 36px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.cs-hero--wide .cs-hero-wide-media { margin-top: 28px; aspect-ratio: 16 / 9; }
+
+/* ---------- Overview (Challenge / Solution / Outcome) ---------- */
+.cs-overview { margin-top: clamp(80px, 9vw, 136px); background: #f8c8d0; color: #000; }
+.cs-overview > .cs-wrap { padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px); }
+.cs-page .cs-overview-label { font-family: var(--font-accent); font-size: 12px; font-weight: 700; line-height: 1.6; letter-spacing: .22em; text-transform: uppercase; color: #7e1c2e !important; }
+.cs-overview-grid { margin-top: clamp(28px, 3.5vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 40px clamp(28px, 4vw, 64px); }
+.cs-overview-item { border-top: 2px solid #000; padding-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.cs-page .cs-overview-item h3 { font-family: var(--font-headings); font-size: clamp(28px, 2.6vw, 36px); line-height: 1; letter-spacing: 1px; color: #000 !important; }
+.cs-overview-item p { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: #000; text-wrap: pretty; }
+
+/* ---------- Story (text + image) ----------
+   image-right: DOM order = copy, figure
+   image-left:  DOM order = figure, copy (stacks image-first on mobile) */
+.cs-story-grid { display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(32px, 5vw, 80px); }
+.cs-story--image-left .cs-story-grid { align-items: flex-end; }
+.cs-story-copy { flex: 1 1 300px; max-width: 440px; display: flex; flex-direction: column; gap: 18px; }
+.cs-story--image-left .cs-story-copy { padding-bottom: 40px; }
+.cs-story-figure { flex: 1.7 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+
+/* ---------- Block heading (Gallery / Process / Motion) ---------- */
+.cs-block-head { display: flex; flex-direction: column; gap: 18px; margin-bottom: clamp(28px, 3vw, 44px); }
+.cs-block-head--split { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 18px 64px; }
+.cs-block-head--split > div { flex: 1 1 360px; display: flex; flex-direction: column; gap: 18px; }
+.cs-block-head--split > .cs-body { flex: 0 1 420px; }
+
+/* ---------- Feature (full-bleed) ---------- */
+.cs-feature .cs-media { aspect-ratio: 2 / 1; min-height: 320px; }
+.cs-feature-caption { padding-top: 16px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 32px; }
+.cs-feature-caption-text { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, .64); }
+
+/* ---------- Gallery ----------
+   Justified row (default): each item gets style="--grow: <width/height>" and its
+   .cs-media gets style="--ratio: <w> / <h>", so every image in the row shares one height.
+   .cs-gallery--grid: uniform 4:5 tiles, 2–3 per row. */
+.cs-gallery-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(16px, 2vw, 28px); }
+.cs-gallery-item { flex: var(--grow, 1) 1 0%; min-width: min(100%, 280px); display: flex; flex-direction: column; gap: 12px; }
+.cs-gallery--grid .cs-gallery-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.cs-gallery--grid .cs-gallery-item { min-width: 0; }
+.cs-gallery--grid .cs-media { aspect-ratio: 4 / 5; }
+
+/* ---------- Process strip ---------- */
+.cs-process-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(16px, 2vw, 24px); }
+.cs-process-step { display: flex; flex-direction: column; gap: 12px; }
+.cs-process-step .cs-media { aspect-ratio: 1 / 1; }
+.cs-process-meta { display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(248, 200, 208, .24); padding-top: 12px; }
+.cs-process-num { font-family: var(--font-headings); font-size: 22px; line-height: 1; color: #f8c8d0; }
+.cs-process-text { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, .75); }
+
+/* ---------- Motion ---------- */
+.cs-motion-figure { display: flex; flex-direction: column; gap: 14px; }
+.cs-motion .cs-media { aspect-ratio: 16 / 9; }
+
+/* ---------- Next (prev / all / next) ----------
+   styles.css styles every <nav> as the sticky site bar — undo that here. */
+nav.cs-next { position: static; z-index: auto; height: auto; display: block; background: none; border: 0; padding-top: clamp(104px, 11vw, 168px); padding-bottom: clamp(56px, 6vw, 88px); }
+.cs-next-row { border-top: 1px solid rgba(248, 200, 208, .28); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px 16px; }
+.cs-next-row a { flex: 1 1 200px; min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 999px; background: #f8c8d0; border: 2px solid #f8c8d0; color: #000; font-family: var(--font-accent); font-size: 13.6px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease; }
+.cs-next-row a.all-work { background: transparent; color: #f8c8d0; }
+.cs-next-row a:hover,
+.cs-next-row a:focus-visible { background: #7e1c2e; border-color: #7e1c2e; color: #f8c8d0; transform: translateY(-2px); outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-next-row a { transition: none; }
+  .cs-next-row a:hover, .cs-next-row a:focus-visible { transform: none; }
+}

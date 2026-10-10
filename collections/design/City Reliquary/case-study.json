@@ -5,6 +5,14 @@
   "summary": "City Reliquary is a community-driven museum devoted to preserving New York City's history through everyday objects and personal collections. Unlike traditional museums that focus on grand historical narratives, City Reliquary highlights overlooked artifacts, neighborhood stories, and urban ephemera.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2026"
     ],
@@ -18,6 +26,12 @@
     "src": "images/cs/hero.jpg",
     "alt": "City Reliquary t-shirt mockup."
   },
+  "overview": {
+    "challenge": "City Reliquary is a community-driven museum devoted to preserving New York City's history through everyday objects and personal collections. Unlike traditional museums that focus on grand historical narratives, City Reliquary highlights overlooked artifacts, neighborhood stories, and urban ephemera.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)",
+    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+  },
   "blocks": [
     {
       "type": "story",
@@ -25,13 +39,16 @@
       "label": "01 — Sketches",
       "placeholder": "Sketches and early iterations: image coming soon",
       "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final.jpg",
-      "alt": "City Reliquary signage mockup."
+      "alt": "City Reliquary signage mockup.",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",

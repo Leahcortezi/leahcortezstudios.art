@@ -5,6 +5,14 @@
   "summary": "Threads is a contemporary clothing retail brand targeting young, fashion conscious shoppers and local trendsetters.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2026"
     ],
@@ -14,10 +22,12 @@
     ]
   ],
   "overview": {
-    "solution": "Rather than treating the name as purely metaphorical, the concept centers on the physical behavior of thread itself, how it loops, pulls, overlaps, and binds garments together."
+    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
+    "solution": "Rather than treating the name as purely metaphorical, the concept centers on the physical behavior of thread itself, how it loops, pulls, overlaps, and binds garments together.",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)"
   },
   "hero": {
-    "layout": "wide",
+    "layout": "split",
     "src": "2304_Cort_P1_TypeAnimationFinal.mp4",
     "alt": "The animated Threads logotype."
   },
@@ -28,13 +38,16 @@
       "label": "01 — Sketches",
       "placeholder": "Sketches and early iterations: image coming soon",
       "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final-signage.jpg",
-      "alt": "Threads logotype on signage."
+      "alt": "Threads logotype on signage.",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",

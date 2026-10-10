@@ -5,6 +5,14 @@
   "summary": "A collection of poster designs inspired by historical design movements and visual traditions.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2026"
     ],
@@ -14,9 +22,15 @@
     ]
   ],
   "hero": {
-    "layout": "wide",
+    "layout": "split",
     "src": "../../../collection/Historical Posters/Hero.mp4",
     "alt": "Looping preview of the historical posters."
+  },
+  "overview": {
+    "challenge": "A collection of poster designs inspired by historical design movements and visual traditions.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)",
+    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
   },
   "blocks": [
     {
@@ -25,7 +39,9 @@
       "label": "01 — Research",
       "src": "../../../collection/Historical Posters/Research.jpg",
       "alt": "Research references for the poster series.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: what you looked at",
+      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
     },
     {
       "type": "story",
@@ -33,20 +49,25 @@
       "label": "02 — Sketches",
       "src": "../../../collection/Historical Posters/Sketches.jpg",
       "alt": "Sketches and early poster studies.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "story",
       "imageSide": "right",
       "label": "03 — Concept development",
       "src": "images/cs/concept.jpg",
-      "alt": "Concept development for the poster series."
+      "alt": "Concept development for the poster series.",
+      "heading": "Placeholder heading: how the idea developed",
+      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
     },
     {
       "type": "feature",
       "label": "04 — Final",
       "src": "images/cs/final.jpg",
-      "alt": "Final poster design."
+      "alt": "Final poster design.",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",

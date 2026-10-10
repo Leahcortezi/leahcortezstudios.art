@@ -5,6 +5,14 @@
   "summary": "This playing card deck celebrates the Scientific Revolution by honoring pioneering figures across Biology, Chemistry, Physics, and Technology.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2024"
     ],
@@ -14,7 +22,9 @@
     ]
   ],
   "overview": {
-    "challenge": "The challenge was to merge historical accuracy with engaging visual design—transforming educational content into a tangible artifact that respects intellectual legacy while maintaining the playful structure of traditional playing cards."
+    "challenge": "The challenge was to merge historical accuracy with engaging visual design—transforming educational content into a tangible artifact that respects intellectual legacy while maintaining the playful structure of traditional playing cards.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)"
   },
   "hero": {
     "layout": "split",
@@ -28,7 +38,9 @@
       "label": "01 — Sketches",
       "placeholder": "Sketches and early iterations: image coming soon",
       "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "gallery",
@@ -57,7 +69,8 @@
       "type": "feature",
       "label": "03 — Mockups",
       "placeholder": "Deck mockup: image coming soon",
-      "_todo": "Add the deck mockup image (src, alt)."
+      "_todo": "Add the deck mockup image (src, alt).",
+      "caption": "Placeholder caption: final design."
     }
   ]
 }

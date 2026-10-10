@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #000000; color: #ffffff; font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+  a { color: #f5c6d6; text-decoration: none; }
+  a:hover { color: #7e1c2e; }
+  ::selection { background: #f8c8d0; color: #000; }
+</style>
+</helmet>
+
+<div style="background:#000;min-height:100vh;overflow-x:hidden">
+
+  <nav style="display:flex;align-items:center;justify-content:space-between;height:80px;padding:0 2rem;background:#000;border-bottom:1px solid #e0b0b8;position:sticky;top:0;z-index:1000">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:0.16em;text-transform:uppercase;color:#f8c8d0">Leah Cortez</div>
+    <div style="display:flex;gap:2rem;font-family:'Cormorant Garamond',serif;font-size:1.02rem;letter-spacing:0.04em;text-transform:uppercase;color:#f5c6d6">
+      <a href="#" style="color:#f5c6d6">Home</a>
+      <a href="#" style="color:#f5c6d6">About</a>
+      <a href="#" style="color:#f5c6d6;border-bottom:2px solid #f5c6d6;padding-bottom:2px">Work</a>
+      <a href="#" style="color:#f5c6d6">Contact</a>
+    </div>
+  </nav>
+
+  <div style="background:rgba(248,200,208,0.05);padding:1rem 2rem;border-bottom:1px solid rgba(248,200,208,0.12)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;gap:0.5rem;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.6)">
+      <a href="#" style="color:#f5c6d6">Home</a><span>/</span>
+      <a href="#" style="color:#f5c6d6">Portfolio</a><span>/</span>
+      <a href="#" style="color:#f5c6d6">Design</a><span>/</span>
+      <span style="color:#fff;font-weight:600">Custom Typeface + Specimen Poster</span>
+    </div>
+  </div>
+
+  <header style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem 3rem;text-align:center">
+    <div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(248,200,208,0.65);margin-bottom:1.75rem">Case Study &nbsp;·&nbsp; Typography &nbsp;·&nbsp; 2026</div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.6rem,6vw,5rem);line-height:1.05;letter-spacing:0.01em;color:#f8c8d0;margin:0 0 1.5rem">Custom Typeface<br />+ Specimen Poster</h1>
+    <p style="max-width:620px;margin:0 auto;font-size:1.08rem;color:rgba(255,255,255,0.82);text-wrap:pretty">Surendra — a historical specimen redrawn as a low-contrast humanist type system, built for long-form reading and tested against accessibility standards.</p>
+    <div style="display:flex;justify-content:center;gap:1rem;margin-top:2.5rem;color:rgba(248,200,208,0.5);font-size:0.9rem;letter-spacing:0.4em">✦ ✧ ✦</div>
+  </header>
+
+  <figure style="margin:0 0 4.5rem;padding:0 2rem">
+    <div style="max-width:1400px;margin:0 auto;aspect-ratio:16/7;border:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:center;justify-content:center">
+      <span style="font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center;padding:1rem">hero shot — specimen poster in situ, 2400×1050</span>
+    </div>
+  </figure>
+
+  <section style="max-width:1200px;margin:0 auto 5.5rem;padding:0 2rem">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(248,200,208,0.28);border-bottom:1px solid rgba(248,200,208,0.28)">
+      <div style="padding:1.6rem 1.5rem 1.6rem 0">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.6rem">Role</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:#fff">Type designer, poster design</div>
+      </div>
+      <div style="padding:1.6rem 1.5rem;border-left:1px solid rgba(248,200,208,0.18)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.6rem">Year</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:#fff">2026</div>
+      </div>
+      <div style="padding:1.6rem 1.5rem;border-left:1px solid rgba(248,200,208,0.18)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.6rem">Tools</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:#fff">Glyphs, Illustrator, InDesign</div>
+      </div>
+      <div style="padding:1.6rem 0 1.6rem 1.5rem;border-left:1px solid rgba(248,200,208,0.18)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.6rem">Deliverables</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:#fff">Full character set + specimen poster</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;margin:0 auto 6rem;padding:0 2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:4rem;align-items:start">
+    <div style="position:sticky;top:120px">
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.9rem">01 / The Brief</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,3.2vw,2.9rem);line-height:1.12;color:#f8c8d0;margin:0 0 1.25rem">Make a dead specimen usable again</h2>
+      <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;margin:0">Translate a historical metal or wood type specimen into a functional contemporary digital typeface.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.4rem">
+      <p style="font-size:1.12rem;color:rgba(255,255,255,0.9);margin:0;text-wrap:pretty">The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use — with a strong focus on accessibility, readability, and consistency across a full character set.</p>
+      <p style="font-size:1.02rem;color:rgba(255,255,255,0.72);margin:0;text-wrap:pretty">That meant deciding early what in the specimen was <em style="color:#f8c8d0;font-style:italic">identity</em> and what was simply a limitation of how it was cut. Sharpness and rhythm were worth keeping. Extreme contrast and narrow apertures were not.</p>
+      <div style="border-left:2px solid #f8c8d0;padding:0.6rem 0 0.6rem 1.5rem;margin-top:0.6rem">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.35;color:#f8c8d0;margin:0;font-style:italic">Constraint: the family had to hold at 9pt body copy and at 300pt poster display.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1400px;margin:0 auto 6rem;padding:0 2rem">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;border-bottom:1px solid rgba(248,200,208,0.22);padding-bottom:1rem;margin-bottom:2.5rem">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.7rem,2.6vw,2.4rem);color:#f8c8d0;margin:0">02 / Research &amp; references</h2>
+      <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)">3 sources</span>
+    </div>
+    <p style="max-width:760px;font-size:1.05rem;color:rgba(255,255,255,0.78);margin:0 0 2.5rem">I analyzed the Surendra specimen for proportion, stroke behavior, and overall rhythm, then set it beside two humanist text faces to see where the historical forms would fight legibility.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+      <figure style="margin:0">
+        <div style="aspect-ratio:4/5;border:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:center;justify-content:center;padding:1rem">
+          <span style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center">original specimen scan</span>
+        </div>
+        <figcaption style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-top:0.75rem">Source specimen — stroke terminals and cap proportion.</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div style="aspect-ratio:4/5;border:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:center;justify-content:center;padding:1rem">
+          <span style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center">comparison setting</span>
+        </div>
+        <figcaption style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-top:0.75rem">Reference text faces set at the same size.</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div style="aspect-ratio:4/5;border:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:center;justify-content:center;padding:1rem">
+          <span style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center">annotated anatomy study</span>
+        </div>
+        <figcaption style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-top:0.75rem">My notes on what to keep and what to redraw.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section style="max-width:1400px;margin:0 auto 6rem;padding:0 2rem">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;border-bottom:1px solid rgba(248,200,208,0.22);padding-bottom:1rem;margin-bottom:2.5rem">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.7rem,2.6vw,2.4rem);color:#f8c8d0;margin:0">03 / Sketches &amp; early iterations</h2>
+      <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)">blackletter → humanist</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem">
+      <div style="aspect-ratio:1;border:1px solid rgba(248,200,208,0.16);background:repeating-linear-gradient(135deg,#0b0b0b 0 8px,#111 8px 16px);display:flex;align-items:flex-end;padding:0.85rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,200,208,0.5)">01 pencil sketch</span>
+      </div>
+      <div style="aspect-ratio:1;border:1px solid rgba(248,200,208,0.16);background:repeating-linear-gradient(135deg,#0b0b0b 0 8px,#111 8px 16px);display:flex;align-items:flex-end;padding:0.85rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,200,208,0.5)">02 first digital pass</span>
+      </div>
+      <div style="aspect-ratio:1;border:1px solid rgba(248,200,208,0.16);background:repeating-linear-gradient(135deg,#0b0b0b 0 8px,#111 8px 16px);display:flex;align-items:flex-end;padding:0.85rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,200,208,0.5)">03 contrast test</span>
+      </div>
+      <div style="aspect-ratio:1;border:1px solid rgba(248,200,208,0.16);background:repeating-linear-gradient(135deg,#0b0b0b 0 8px,#111 8px 16px);display:flex;align-items:flex-end;padding:0.85rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,200,208,0.5)">04 chosen direction</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:3rem;margin-top:2rem">
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.82);margin:0;text-wrap:pretty">My initial direction leaned toward blackletter-inspired sharpness. Set as a paragraph, it collapsed — counters filled in and the rhythm went spiky. I moved into a low-contrast humanist system to support long-form reading and practical everyday use.</p>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.62);margin:0;text-wrap:pretty">Each round was judged by printing a page of body copy rather than by looking at single letters. That kept decisions about spacing and weight honest.</p>
+    </div>
+  </section>
+
+  <section style="margin:0 0 6rem">
+    <div style="max-width:1200px;margin:0 auto 2.5rem;padding:0 2rem">
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(248,200,208,0.6);margin-bottom:0.9rem">04 / Concept development</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,3.2vw,2.9rem);line-height:1.12;color:#f8c8d0;margin:0 0 1.5rem;max-width:20ch">Personality without losing clarity</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem">
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.85);margin:0;text-wrap:pretty">The final structure balances open, legible forms with subtle angular serif details. I extended the historical reference into a complete set — lowercase, numerals, punctuation, and supporting marks — so cohesion held across every glyph category.</p>
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.7);margin:0;text-wrap:pretty">To make spacing scale, I built a rule-based kerning workflow that pairs manual refinement with shape-aware logic. It kept typographic color even across the family instead of pair-by-pair guesswork.</p>
+      </div>
+    </div>
+    <div style="padding:0 2rem">
+      <figure style="max-width:1400px;margin:0 auto">
+        <div style="aspect-ratio:21/9;border:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center;padding:1rem">full character set sheet — uppercase, lowercase, numerals, marks</span>
+        </div>
+        <figcaption style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:0.85rem;text-align:center">The complete Surendra glyph set.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section style="max-width:1400px;margin:0 auto 6rem;padding:0 2rem">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;border-bottom:1px solid rgba(248,200,208,0.22);padding-bottom:1rem;margin-bottom:3rem">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.7rem,2.6vw,2.4rem);color:#f8c8d0;margin:0">05 / Type &amp; color decisions</h2>
+      <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)">accessibility-led</span>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:3.5rem;align-items:start">
+      <div style="border:1px solid rgba(248,200,208,0.2);padding:2.5rem">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,11vw,9rem);line-height:0.9;color:#f8c8d0;margin-bottom:1.25rem">Aa</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:rgba(255,255,255,0.9);letter-spacing:0.02em;margin-bottom:1.5rem;word-break:break-word">ABCDEFGHIJKLM<br />abcdefghijklm 0123456789</div>
+        <div style="display:flex;flex-wrap:wrap;gap:1.75rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.5)">
+          <span>Low contrast</span><span>Humanist axis</span><span>9–300pt</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2rem">
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.85);margin:0;text-wrap:pretty">For the poster, I prioritized clarity of anatomy and usage while accounting for accessibility standards. A darker red fit the intended mood, but a lighter red was selected to pass contrast and stay legible at small sizes.</p>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;align-items:center;gap:1.25rem;padding:0.9rem 0;border-top:1px solid rgba(248,200,208,0.18)">
+            <div style="width:56px;height:56px;background:#7e1c2e;flex:none"></div>
+            <div><div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;color:#fff">#7E1C2E</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.5)">Rejected — failed contrast on black</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.25rem;padding:0.9rem 0;border-top:1px solid rgba(248,200,208,0.18)">
+            <div style="width:56px;height:56px;background:#f8c8d0;flex:none"></div>
+            <div><div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;color:#fff">#F8C8D0</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.5)">Selected — display + interface accent</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.25rem;padding:0.9rem 0;border-top:1px solid rgba(248,200,208,0.18);border-bottom:1px solid rgba(248,200,208,0.18)">
+            <div style="width:56px;height:56px;background:#000;border:1px solid rgba(255,255,255,0.25);flex:none"></div>
+            <div><div style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;color:#fff">#000000</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.5)">Ground — full-bleed poster field</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin:0 0 6rem">
+    <figure style="margin:0">
+      <div style="width:100%;aspect-ratio:16/9;border-top:1px solid rgba(248,200,208,0.2);border-bottom:1px solid rgba(248,200,208,0.2);background:repeating-linear-gradient(135deg,#080808 0 12px,#101010 12px 24px);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,200,208,0.55);text-align:center;padding:1rem">full-bleed final — specimen poster, straight-on, 2880×1620</span>
+      </div>
+      <figcaption style="max-width:1200px;margin:1.25rem auto 0;padding:0 2rem;font-size:0.9rem;color:rgba(255,255,255,0.55)">Final specimen poster — anatomy, usage, and accessibility notes in one hierarchy.</figcaption>
+    </figure>
+  </section>
+
+  <section style="max-width:1400px;margin:0 auto 6rem;padding:0 2rem">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;border-bottom:1px solid rgba(248,200,208,0.22);padding-bottom:1rem;margin-bottom:2.5rem">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.7rem,2.6vw,2.4rem);color:#f8c8d0;margin:0">06 / Details &amp; application</h2>
+      <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)">in use</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:1.25rem">
+      <div style="grid-column:span 2;grid-row:span 2;border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">editorial spread mockup</span>
+      </div>
+      <div style="border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">kerning detail</span>
+      </div>
+      <div style="border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">poster close-up</span>
+      </div>
+      <div style="border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">9pt body proof</span>
+      </div>
+      <div style="border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">magazine mockup</span>
+      </div>
+      <div style="border:1px solid rgba(248,200,208,0.18);background:repeating-linear-gradient(135deg,#0b0b0b 0 10px,#121212 10px 20px);display:flex;align-items:flex-end;padding:1.1rem">
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,200,208,0.5)">print detail</span>
+      </div>
+    </div>
+  </section>
+
+  <nav style="max-width:1400px;margin:0 auto;padding:0 2rem 5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;border-top:1px solid rgba(248,200,208,0.28);padding-top:2rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;letter-spacing:0.08em;text-transform:uppercase">
+      <a href="#" style="color:#f5c6d6">← Space Age Wine Packaging</a>
+      <a href="#" style="color:#f5c6d6">Back to Portfolio</a>
+      <a href="#" style="color:#f5c6d6">Reliquary Heart →</a>
+    </div>
+  </nav>
+
+  <footer style="border-top:1px solid #e0b0b8;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:0.2em;color:#f8c8d0">LC</div>
+    <p style="margin:0;font-size:0.9rem;color:rgba(255,255,255,0.7)">Leah Cortez © 2026</p>
+  </footer>
+
+</div>
+
+</x-dc>
+</body>
+</html>

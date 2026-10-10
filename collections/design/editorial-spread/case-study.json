@@ -5,6 +5,10 @@
   "summary": "This editorial spread was created for a project selecting an article and designing a magazine layout around it.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
       "Tools",
       "InDesign"
     ],
@@ -18,9 +22,15 @@
     ]
   ],
   "hero": {
-    "layout": "wide",
+    "layout": "split",
     "src": "../../../collection/Editorial Spreads/Hero.mp4",
     "alt": "Looping preview of the editorial spread."
+  },
+  "overview": {
+    "challenge": "A project selecting an article and designing a magazine layout around it. I chose \"Alien Invasion or Sleep Paralysis?\" to explore the visual confusion between two surreal experiences.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)",
+    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
   },
   "blocks": [
     {
@@ -30,7 +40,8 @@
       "body": "I chose \"Alien Invasion or Sleep Paralysis?\" because the topic fascinated me and offered a chance to explore the visual confusion between two surreal experiences.",
       "src": "../../../collection/Editorial Spreads/Research.jpg",
       "alt": "Research references for the editorial spread.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: what you looked at"
     },
     {
       "type": "story",
@@ -38,7 +49,9 @@
       "label": "02 — Sketches",
       "src": "../../../collection/Editorial Spreads/Sketches.jpg",
       "alt": "Sketches and early layout studies for the editorial spread.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "story",
@@ -46,14 +59,17 @@
       "label": "03 — Concept development",
       "src": "../../../collection/Editorial Spreads/ConceptDevelopment.jpg",
       "alt": "Concept development for the editorial spread.",
-      "ratio": "1366/768"
+      "ratio": "1366/768",
+      "heading": "Placeholder heading: how the idea developed",
+      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
     },
     {
       "type": "feature",
       "label": "04 — Final",
       "src": "images/cs/final.jpg",
       "alt": "The finished two-page editorial spread.",
-      "fit": "contain"
+      "fit": "contain",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",

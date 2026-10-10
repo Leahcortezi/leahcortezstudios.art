@@ -4,10 +4,22 @@
   "year": "2025",
   "summary": "A rebrand for Insane Grain, a sorghum-based health snack whose packaging was far quieter than its name. The new pouch is built to grab younger, trend-conscious snackers without losing the health story.",
   "meta": [
-    ["Role", "Brand & packaging design"],
-    ["Tools", "Photoshop, Illustrator"],
-    ["Year", "2025"],
-    ["Deliverables", "Pouch, pattern, mockups"]
+    [
+      "Role",
+      "Brand & packaging design"
+    ],
+    [
+      "Tools",
+      "Photoshop, Illustrator"
+    ],
+    [
+      "Year",
+      "2025"
+    ],
+    [
+      "Deliverables",
+      "Pouch, pattern, mockups"
+    ]
   ],
   "hero": {
     "layout": "split",
@@ -55,8 +67,18 @@
       "label": "04 — In context",
       "heading": "Out in the world",
       "items": [
-        { "src": "images/cs/handheld.jpg", "alt": "Two hands holding Insane Grain pouches up against a blue sky.", "ratio": "736/979", "caption": "Handheld mockup, against open sky." },
-        { "src": "images/cs/basket.jpg", "alt": "Two Insane Grain pouches in a green shopping basket in a grocery aisle.", "ratio": "1/1", "caption": "Retail mockup: the pouch in a shopping basket." }
+        {
+          "src": "images/cs/handheld.jpg",
+          "alt": "Two hands holding Insane Grain pouches up against a blue sky.",
+          "ratio": "736/979",
+          "caption": "Handheld mockup, against open sky."
+        },
+        {
+          "src": "images/cs/basket.jpg",
+          "alt": "Two Insane Grain pouches in a green shopping basket in a grocery aisle.",
+          "ratio": "1/1",
+          "caption": "Retail mockup: the pouch in a shopping basket."
+        }
       ]
     }
   ]

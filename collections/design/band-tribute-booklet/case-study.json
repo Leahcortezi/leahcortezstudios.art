@@ -5,6 +5,10 @@
   "summary": "A typographic editorial booklet celebrating the visual identity of a selected band. The project focused on creating a cohesive publication system that translated the band's music and personality into print through hierarchy, pacing, imagery, and expressive typography.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
       "Tools",
       "InDesign"
     ],
@@ -18,10 +22,12 @@
     ]
   ],
   "overview": {
-    "challenge": "Rather than simply documenting the band, the goal was to balance readability with a strong visual atmosphere while maintaining consistency across every spread."
+    "challenge": "Rather than simply documenting the band, the goal was to balance readability with a strong visual atmosphere while maintaining consistency across every spread.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)"
   },
   "hero": {
-    "layout": "wide",
+    "layout": "split",
     "src": "images/cs/hero.jpg",
     "alt": "Band Tribute Booklet mockup."
   },
@@ -32,7 +38,9 @@
       "label": "01 — Sketches",
       "placeholder": "Sketches and early iterations: image coming soon",
       "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "gallery",
@@ -58,7 +66,8 @@
       "type": "feature",
       "label": "03 — Mockups",
       "placeholder": "Booklet mockup: image coming soon",
-      "_todo": "Add the booklet mockup image (src, alt)."
+      "_todo": "Add the booklet mockup image (src, alt).",
+      "caption": "Placeholder caption: final design."
     }
   ]
 }

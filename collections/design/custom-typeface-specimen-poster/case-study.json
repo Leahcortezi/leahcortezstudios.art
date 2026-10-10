@@ -5,6 +5,14 @@
   "summary": "The goal of this project was to translate a historical metal or wood type specimen into a functional contemporary digital typeface.",
   "meta": [
     [
+      "Role",
+      "Role — add here"
+    ],
+    [
+      "Tools",
+      "Tools — add here"
+    ],
+    [
       "Year",
       "2026"
     ],
@@ -14,10 +22,12 @@
     ]
   ],
   "overview": {
-    "challenge": "The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use, with a strong focus on accessibility, readability, and consistency across a full character set."
+    "challenge": "The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use, with a strong focus on accessibility, readability, and consistency across a full character set.",
+    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
+    "outcome": "Placeholder: what was the result? (1–2 sentences)"
   },
   "hero": {
-    "layout": "wide",
+    "layout": "split",
     "src": "../../../collection/Custom Typeface + Specimen Poster/Hero.mp4",
     "alt": "Looping preview of the Surendra typeface."
   },
@@ -28,13 +38,16 @@
       "label": "01 — Sketches",
       "placeholder": "Sketches and early iterations: image coming soon",
       "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md."
+      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
+      "heading": "Placeholder heading: early directions",
+      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final.jpg",
-      "alt": "Surendra typeface mockup."
+      "alt": "Surendra typeface mockup.",
+      "caption": "Placeholder caption: final design."
     },
     {
       "type": "gallery",
