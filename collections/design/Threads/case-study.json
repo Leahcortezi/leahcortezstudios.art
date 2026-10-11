@@ -6,11 +6,11 @@
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Logotype and motion design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, After Effects"
     ],
     [
       "Year",
@@ -22,9 +22,9 @@
     ]
   ],
   "overview": {
-    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
+    "challenge": "The brief was to reinterpret the Threads logotype for a clothing retailer, making the name feel connected to the physical act of exchanging and wearing garments.",
     "solution": "Rather than treating the name as purely metaphorical, the concept centers on the physical behavior of thread itself, how it loops, pulls, overlaps, and binds garments together.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "outcome": "The final identity pairs a continuous-stroke logotype with a motion piece in which a line travels between bags, suggesting an ongoing cycle of clothing exchange."
   },
   "hero": {
     "layout": "split",
@@ -36,18 +36,15 @@
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Drawing with one continuous thread",
+      "body": "I explored how a single continuous stroke could form the letters while staying legible. Secondary strokes test the idea of threads crossing and weaving, adding movement without obscuring the core wordmark."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final-signage.jpg",
       "alt": "Threads logotype on signage.",
-      "caption": "Placeholder caption: final design."
+      "caption": "The final Threads logotype applied to retail signage."
     },
     {
       "type": "gallery",
