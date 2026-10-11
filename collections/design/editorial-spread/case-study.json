@@ -1,12 +1,12 @@
 {
-  "title": "Editorial Spreads",
+  "title": "Alien Invasion or Sleep Paralysis?",
   "category": "Editorial",
   "year": "2025",
-  "summary": "This editorial spread was created for a project selecting an article and designing a magazine layout around it.",
+  "summary": "Editorial design exploring the liminal space between dreams and waking life through distorted typography, monochromatic imagery, and unsettling visual composition.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Graphic Designer"
     ],
     [
       "Tools",
@@ -18,7 +18,7 @@
     ],
     [
       "Deliverables",
-      "2-page editorial"
+      "Editorial spreads, display typography, black-and-white imagery"
     ]
   ],
   "hero": {
@@ -27,10 +27,20 @@
     "alt": "Looping preview of the editorial spread."
   },
   "overview": {
-    "challenge": "A project selecting an article and designing a magazine layout around it. I chose \"Alien Invasion or Sleep Paralysis?\" to explore the visual confusion between two surreal experiences.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "items": [
+      {
+        "label": "Project",
+        "text": "Alien Invasion or Sleep Paralysis? explores the uneasy boundary between waking life and dreams. The editorial spreads translate the uncertainty of a liminal experience into a visual system that contrasts distorted typography, monochromatic imagery, and structured text."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The visual language balances psychological tension with editorial clarity. Distorted display typography introduces instability, while more structured text establishes a readable framework. Black-and-white imagery reinforces the ambiguous atmosphere, and an obscured alien-like shadow becomes a focal point that leaves the viewer questioning what is real."
+      },
+      {
+        "label": "Design approach",
+        "text": "The layouts use contrast, hierarchy, image placement, and typographic distortion to communicate uncertainty without sacrificing readability. The tension between ordered information and unsettling imagery reflects the experience of being caught between a dream and reality."
+      }
+    ]
   },
   "blocks": [
     {

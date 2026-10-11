@@ -1,16 +1,12 @@
 {
-  "title": "Historical Posters",
+  "title": "Historical Poster Styles",
   "category": "Poster",
   "year": "2026",
-  "summary": "A collection of poster designs inspired by historical design movements and visual traditions.",
+  "summary": "A nine-week poster series studying historical design movements through research, iterative thumbnail exploration, and contemporary interpretations of influential visual languages.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,7 +14,7 @@
     ],
     [
       "Deliverables",
-      "Poster designs"
+      "Nine-poster series, thumbnail explorations, final posters"
     ]
   ],
   "hero": {
@@ -27,10 +23,20 @@
     "alt": "Looping preview of the historical posters."
   },
   "overview": {
-    "challenge": "A collection of poster designs inspired by historical design movements and visual traditions.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "items": [
+      {
+        "label": "Project",
+        "text": "Historical Poster Styles is a nine-week poster series exploring how distinct design movements and historical practitioners use typography, composition, imagery, and visual symbolism. The project combines research with iterative experimentation to develop a collection of posters informed by different approaches to graphic communication."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The series examines historical visual languages as systems that can be studied, interpreted, and reworked. Dada, the Stenberg Brothers, and Modernism are among the strongest directions represented. Rather than treating references as decorative styles, the work explores how their underlying approaches to composition and communication can inform new designs."
+      },
+      {
+        "label": "Design approach",
+        "text": "The process begins with research and thumbnail exploration before moving into refined compositions, including 25 thumbnail compositions for selected movements. Each poster interprets its chosen reference through a distinct composition while contributing to a broader study of historical graphic design."
+      }
+    ]
   },
   "blocks": [
     {

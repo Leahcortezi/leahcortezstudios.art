@@ -1,16 +1,12 @@
 {
-  "title": "Designer Tribute Zine + Poster",
+  "title": "Designer Tribute Zine and Poster",
   "category": "Editorial",
   "year": "2025",
-  "summary": "This zine was created for a project researching a contemporary artist and designing a publication inspired by their style.",
+  "summary": "An experimental designer tribute combining an eight-page folded zine and quote poster to explore emotional energy, visual layering, and creative process.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,7 +14,7 @@
     ],
     [
       "Deliverables",
-      "Zine + poster"
+      "Eight-page folded zine, quote poster"
     ]
   ],
   "hero": {
@@ -27,10 +23,20 @@
     "alt": "Looping preview of the tribute zine."
   },
   "overview": {
-    "challenge": "A project researching a contemporary artist and designing a publication inspired by their style. I chose Jonathan Castro for his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "items": [
+      {
+        "label": "Project",
+        "text": "This project celebrates designer Jonathan Castro through an experimental editorial zine and accompanying poster. The work responds to an approach to design centered on emotional energy, layered visual references, and process-driven experimentation, interpreting a creative philosophy through visual form rather than presenting biographical information."
+      },
+      {
+        "label": "Creative direction",
+        "text": "Layering, expressive composition, and experimental visual treatments create an energetic editorial language. The zine format lets the work unfold across multiple pages, while the poster distills the central idea into a single statement. The poster features the quote: “Design is the accumulation of energy in an object.”"
+      },
+      {
+        "label": "Design approach",
+        "text": "The eight-page folded zine uses sequencing and visual variation to build a compact editorial experience. The poster creates a separate but related expression of the tribute, emphasizing the relationship between design, process, and accumulated meaning."
+      }
+    ]
   },
   "blocks": [
     {

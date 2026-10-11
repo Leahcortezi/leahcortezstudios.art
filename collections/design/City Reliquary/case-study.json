@@ -1,16 +1,12 @@
 {
-  "title": "Brand Identity",
+  "title": "City Reliquary",
   "category": "Branding",
   "year": "2026",
-  "summary": "City Reliquary is a community-driven museum devoted to preserving New York City's history through everyday objects and personal collections. Unlike traditional museums that focus on grand historical narratives, City Reliquary highlights overlooked artifacts, neighborhood stories, and urban ephemera.",
+  "summary": "A visual identity for a community museum celebrating everyday artifacts, featuring a negative-space CR mark and a system of promotional and environmental applications.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,7 +14,7 @@
     ],
     [
       "Deliverables",
-      "Logo & guidelines"
+      "CR logo mark, brand identity system, posters, signage"
     ]
   ],
   "hero": {
@@ -27,10 +23,20 @@
     "alt": "City Reliquary t-shirt mockup."
   },
   "overview": {
-    "challenge": "City Reliquary is a community-driven museum devoted to preserving New York City's history through everyday objects and personal collections. Unlike traditional museums that focus on grand historical narratives, City Reliquary highlights overlooked artifacts, neighborhood stories, and urban ephemera.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "items": [
+      {
+        "label": "Project",
+        "text": "City Reliquary is a conceptual brand identity for a community museum in New York City dedicated to everyday artifacts and the stories they preserve. The identity explores how ordinary objects can become meaningful records of personal memory, neighborhood history, and shared culture."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The visual identity centers on a CR mark that uses negative space to create a distinctive, compact symbol. The mark provides a recognizable foundation for a broader identity system intended to work across promotional materials and environmental applications, reflecting the museum’s interest in preserving objects that might otherwise be overlooked."
+      },
+      {
+        "label": "Design approach",
+        "text": "The identity balances recognition with flexibility. The core mark is supported by applications that show how the system can operate across different formats while maintaining a consistent visual language. Posters, signage, and promotional materials extend the identity beyond the logo and into public-facing contexts."
+      }
+    ]
   },
   "blocks": [
     {

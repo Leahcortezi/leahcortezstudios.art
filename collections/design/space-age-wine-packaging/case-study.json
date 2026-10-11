@@ -2,15 +2,11 @@
   "title": "Space Age Wine Packaging",
   "category": "Packaging",
   "year": "2026",
-  "summary": "This project redesigns the label for Space Age Rosé by Grounded Wine Co., reinterpreting the brand through a more expressive and concept driven visual system.",
+  "summary": "A futuristic wine packaging concept featuring an astronaut, a vineyard reflected in the visor, and a coordinated label system.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,13 +14,24 @@
     ],
     [
       "Deliverables",
-      "Packaging assets"
+      "Front and back labels, astronaut illustration, bottle capsule, prototype mockups"
     ]
   ],
   "overview": {
-    "challenge": "The original packaging was harder to understand conceptually and looked too serious.",
-    "solution": "The redesign shifts the focus toward exploration and possibility.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "Space Age is a conceptual wine packaging project that combines celestial imagery with the traditional world of winemaking. An astronaut illustration, with a vineyard reflected in the helmet visor, connects the exploration of outer space with the origins and atmosphere of the wine itself."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The concept creates a meeting point between futuristic exploration and an established agricultural tradition. The astronaut provides an unexpected focal point, while the vineyard reflection connects the imaginative theme back to the product. The packaging is designed as a coordinated system rather than an isolated front label."
+      },
+      {
+        "label": "Design approach",
+        "text": "Illustration, typography, and label composition work together to establish the product’s personality. The concept is extended across front and back labels and the bottle capsule, and printed prototypes and bottle mockups show how the artwork translates from a flat design into a physical object."
+      }
+    ]
   },
   "hero": {
     "layout": "split",

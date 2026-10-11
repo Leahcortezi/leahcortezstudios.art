@@ -1,16 +1,12 @@
 {
-  "title": "Static + Animated Logotype",
+  "title": "Threads — Static and Animated Logotype",
   "category": "Branding",
   "year": "2026",
-  "summary": "Threads is a contemporary clothing retail brand targeting young, fashion conscious shoppers and local trendsetters.",
+  "summary": "A logotype redesign for a youth clothing retailer, translating the idea of thread and weaving into a continuous graphic mark and animated identity.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer and Motion Designer"
     ],
     [
       "Year",
@@ -18,13 +14,24 @@
     ],
     [
       "Deliverables",
-      "Logotype & motion"
+      "Static logotype, woven graphic elements, animated logotype"
     ]
   ],
   "overview": {
-    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
-    "solution": "Rather than treating the name as purely metaphorical, the concept centers on the physical behavior of thread itself, how it loops, pulls, overlaps, and binds garments together.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "This project redesigns the logotype for Threads, a youth-oriented clothing retailer. The identity explores the idea of connection through continuous, thread-like strokes that reference the brand name and the physical process of weaving. The project extends the static logo into motion, showing how an identity can develop across still and animated applications."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The primary mark uses continuous strokes to suggest a connected thread. Secondary woven strokes reinforce the textile reference and give the identity a more distinctive visual character, connecting the name, the clothing context, and the graphic form without relying on an overly literal illustration."
+      },
+      {
+        "label": "Design approach",
+        "text": "The static logotype establishes the identity’s core shape and proportions. The animated version develops the same concept through movement, using the continuous-thread idea as the foundation for the motion treatment and keeping the identity recognizable across both versions."
+      }
+    ]
   },
   "hero": {
     "layout": "split",

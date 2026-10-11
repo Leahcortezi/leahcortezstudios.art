@@ -1,12 +1,12 @@
 {
-  "title": "Snack Packaging",
+  "title": "Insane Grain",
   "category": "Packaging",
   "year": "2025",
-  "summary": "A rebrand for Insane Grain, a sorghum-based health snack whose packaging was far quieter than its name. The new pouch is built to grab younger, trend-conscious snackers without losing the health story.",
+  "summary": "A bold snack packaging concept combining health-conscious positioning with rebellious typography, high-contrast color, and skater-inspired energy.",
   "meta": [
     [
       "Role",
-      "Brand & packaging design"
+      "Graphic Designer"
     ],
     [
       "Tools",
@@ -18,7 +18,7 @@
     ],
     [
       "Deliverables",
-      "Pouch, pattern, mockups"
+      "Insane Grain packaging, Strikin’ Hot flavor packaging, graphic system, mockups"
     ]
   ],
   "hero": {
@@ -27,9 +27,20 @@
     "alt": "Insane Grain pouch: a halftone mouth, red chili and flame linework in red, black and white, with tall condensed type."
   },
   "overview": {
-    "challenge": "The old packaging didn’t carry the energy or boldness the name promised, and it wasn’t speaking to the younger, trend-conscious audience the brand wanted.",
-    "solution": "A loud collage system: a halftone mouth, real chilies and inky flame linework, locked into hard red, black and white blocks with tall condensed type.",
-    "outcome": "A pouch that sells heat first. The health claims (sorghum, gut health, 47% less fat) get their own black band, so they still read at a glance."
+    "items": [
+      {
+        "label": "Project",
+        "text": "Insane Grain is a conceptual snack packaging project designed to give a health-conscious product a louder, more unconventional personality. The visual identity combines youthful energy, skater-inspired references, and an intentionally chaotic aesthetic while maintaining a clear information hierarchy."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The packaging uses a red, black, and white palette to establish a bold visual presence. Expressive typography and energetic compositions challenge the restrained, wellness-focused conventions often associated with healthier snacks. The goal is to make the packaging feel rebellious and approachable without allowing its personality to overwhelm essential product information."
+      },
+      {
+        "label": "Design approach",
+        "text": "The system balances visual disruption with practical communication. Strong typography, contrasting colors, and expressive graphic elements create shelf presence, while a deliberate hierarchy keeps the product identity and supporting information legible. The related Strikin’ Hot variant extends the concept through a distinct flavor expression."
+      }
+    ]
   },
   "blocks": [
     {

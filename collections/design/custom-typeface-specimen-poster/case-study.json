@@ -1,16 +1,12 @@
 {
-  "title": "Custom Typeface + Specimen Poster",
+  "title": "Surendra — Typeface Design",
   "category": "Typography",
   "year": "2026",
-  "summary": "The goal of this project was to translate a historical metal or wood type specimen into a functional contemporary digital typeface.",
+  "summary": "A digital typeface inspired by historical wood and metal type, developed through glyph design and presented in a custom specimen poster.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Typeface Designer and Graphic Designer"
     ],
     [
       "Year",
@@ -18,13 +14,24 @@
     ],
     [
       "Deliverables",
-      "Typeface + specimen"
+      "Original digital typeface, glyph set, specimen poster"
     ]
   ],
   "overview": {
-    "challenge": "The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use, with a strong focus on accessibility, readability, and consistency across a full character set.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "Surendra is a type-design project that reinterprets the visual character of historical wood and metal type specimens through a digitally developed typeface and specimen poster. The project connects the physical traditions of historical typography with the possibilities of contemporary digital type design."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The project draws inspiration from the visual character of historical printing and display type. Rather than simply reproducing an archival specimen, it explores how historical typographic references can inform a new digital design. The specimen poster presents the typeface as both a functional typographic system and a visual subject in its own right."
+      },
+      {
+        "label": "Design approach",
+        "text": "The process includes developing the glyph set and considering spacing, kerning, and consistency across the characters. The specimen poster then demonstrates the typeface through a structured presentation of its forms and visual characteristics."
+      }
+    ]
   },
   "hero": {
     "layout": "split",

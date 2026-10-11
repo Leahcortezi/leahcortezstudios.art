@@ -1,16 +1,12 @@
 {
-  "title": "Paperback Full Cover",
+  "title": "Gulliver’s Travels — Paperback Cover",
   "category": "Editorial",
   "year": "2026",
-  "summary": "A full-wrap paperback book cover designed as a complete print package including the front cover, spine, and back cover. The project explored how typography, imagery, and composition work together across an uninterrupted surface to create a cohesive reading experience before the book is even opened.",
+  "summary": "A satirical paperback cover for Jonathan Swift’s Gulliver’s Travels, using a conceptual rooster-and-egg illustration to interpret the novel’s absurd political conflict.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,13 +14,24 @@
     ],
     [
       "Deliverables",
-      "Full-wrap cover files"
+      "Front cover, spine, back cover, conceptual illustration"
     ]
   ],
   "overview": {
-    "challenge": "Most covers treat the front, spine, and back as independent design problems.",
-    "solution": "Instead, I approached the wrap as one unified narrative—where the spine becomes an integral part of the story, not an afterthought.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "This paperback cover redesign interprets Jonathan Swift’s Gulliver’s Travels through the satirical conflict between the Big-Endians and Little-Endians. The design draws from the novel’s absurd dispute over which end of an egg should be broken, using the conflict as a visual metaphor for the disproportionate nature of ideological division."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The central illustration features a rooster crushing eggs, transforming a seemingly trivial disagreement into a dramatic image of destruction. The concept reflects Swift’s use of satire to expose the irrationality of political and cultural conflict, communicated through illustration and symbolism rather than a literal depiction of characters."
+      },
+      {
+        "label": "Design approach",
+        "text": "The illustration anchors a complete paperback cover system. Typography, image placement, and the relationship between the front cover, spine, and back cover are treated as parts of one continuous design, connecting the novel’s historical themes with a clear contemporary visual interpretation."
+      }
+    ]
   },
   "hero": {
     "layout": "split",

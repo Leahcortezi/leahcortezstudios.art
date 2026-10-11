@@ -2,15 +2,11 @@
   "title": "Disappearing Species",
   "category": "Poster",
   "year": "2025",
-  "summary": "This WWF poster addresses the impact of climate change on koalas, an endangered species threatened by habitat destruction and rising temperatures.",
+  "summary": "An environmental-awareness poster using a koala silhouette, industrial imagery, and negative space to communicate habitat loss and the disappearance of wildlife.",
   "meta": [
     [
       "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
+      "Graphic Designer"
     ],
     [
       "Year",
@@ -18,13 +14,24 @@
     ],
     [
       "Deliverables",
-      "Poster files"
+      "Awareness poster, koala silhouette illustration, industrial imagery"
     ]
   ],
   "overview": {
-    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
-    "solution": "The design creates a symbolic visual representation merging the koala with the cause of their decline.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "Disappearing Species is a public-awareness poster inspired by wildlife conservation and the environmental impact of industrial activity. The composition uses a koala silhouette containing cooling towers and smoke to connect habitat loss, pollution, and the disappearance of vulnerable species."
+      },
+      {
+        "label": "Creative direction",
+        "text": "The poster uses a recognizable animal silhouette as a visual container for a more unsettling industrial landscape. The contrast between wildlife and infrastructure makes environmental damage visible through a single, direct image. Negative space suggests absence, loss, and the gradual disappearance of natural habitats."
+      },
+      {
+        "label": "Design approach",
+        "text": "Rather than relying on a crowded collection of statistics or illustrations, the poster communicates through symbolism and visual contrast. The simplified composition gives the central image room to work, encouraging viewers to consider the relationship between human activity and the natural world. The project draws inspiration from public-awareness and conservation campaign design, including WWF-style visual communication."
+      }
+    ]
   },
   "hero": {
     "layout": "split",

@@ -217,7 +217,11 @@ function renderHero(ctx, d) {
 
 function renderOverview(d) {
   const o = d.overview || {};
-  const items = [['Challenge', o.challenge], ['Solution', o.solution], ['Outcome', o.outcome]].filter(([, t]) => has(t));
+  // optional custom labels: overview.items = [{ label, text }]
+  const items = (Array.isArray(o.items)
+    ? o.items.map((i) => [i.label, i.text])
+    : [['Challenge', o.challenge], ['Solution', o.solution], ['Outcome', o.outcome]]
+  ).filter(([, t]) => has(t));
   if (!items.length) return '';
   return [
     '  <!-- Overview -->',

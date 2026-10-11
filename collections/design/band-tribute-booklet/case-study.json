@@ -1,12 +1,12 @@
 {
-  "title": "Band Tribute Booklet",
+  "title": "Billy Joel Tribute Booklet",
   "category": "Editorial",
   "year": "2026",
-  "summary": "A typographic editorial booklet celebrating the visual identity of a selected band. The project focused on creating a cohesive publication system that translated the band's music and personality into print through hierarchy, pacing, imagery, and expressive typography.",
+  "summary": "A 16-page editorial tribute to Billy Joel, combining introspective songwriting, archival-inspired references, and a restrained late-1970s visual palette.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Graphic Designer"
     ],
     [
       "Tools",
@@ -18,13 +18,24 @@
     ],
     [
       "Deliverables",
-      "Booklet"
+      "16-page editorial booklet, typography and layout, color system"
     ]
   ],
   "overview": {
-    "challenge": "Rather than simply documenting the band, the goal was to balance readability with a strong visual atmosphere while maintaining consistency across every spread.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "items": [
+      {
+        "label": "Project",
+        "text": "This editorial booklet pays tribute to Billy Joel’s songwriting, with particular attention to the introspective themes of Vienna. The design draws from the visual atmosphere of the late 1970s and early 1980s, translating the music’s reflective quality into a printed editorial experience."
+      },
+      {
+        "label": "Creative direction",
+        "text": "A restrained palette of cream, charcoal, and burgundy establishes a nostalgic, understated tone. Archival-inspired visual references support the historical atmosphere, while the editorial structure gives the music and its themes room to breathe. The design prioritizes mood and pacing over unnecessary decoration."
+      },
+      {
+        "label": "Design approach",
+        "text": "The 16-page booklet uses typography, image selection, and page sequencing to create a cohesive reading experience. The design connects the music’s cultural context with its more personal themes, treating the booklet as both a tribute and an editorial interpretation."
+      }
+    ]
   },
   "hero": {
     "layout": "split",
