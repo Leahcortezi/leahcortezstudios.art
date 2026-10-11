@@ -2,15 +2,15 @@
   "title": "Designer Tribute Zine + Poster",
   "category": "Editorial",
   "year": "2025",
-  "summary": "This zine was created for a project researching a contemporary artist and designing a publication inspired by their style.",
+  "summary": "An eight-page tribute to designer Jonathan Castro, translating his layered visual energy into a zine and reverse-side quote poster.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Editorial and poster design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "InDesign, Illustrator, Photoshop"
     ],
     [
       "Year",
@@ -28,9 +28,9 @@
   },
   "overview": {
     "challenge": "A project researching a contemporary artist and designing a publication inspired by their style. I chose Jonathan Castro for his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "solution": "I built an image-driven visual system with layered textures, distortion, repetition, and shifts in scale to echo Castro’s energetic approach while retaining my own authorship.",
+    "outcome": "The final folded zine prioritizes rhythm and immersion over conventional hierarchy, with a quote poster on the reverse: ‘Design is the accumulation of energy in an object.’",
+    "_notes": "Copy refined to reflect the documented project concept."
   },
   "blocks": [
     {
@@ -41,7 +41,7 @@
       "src": "../../../collection/Designer Tribute Zine + Poster/Research.jpg",
       "alt": "Research on Jonathan Castro's work.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at"
+      "heading": "Studying Jonathan Castro’s visual language"
     },
     {
       "type": "story",
@@ -50,8 +50,8 @@
       "src": "../../../collection/Designer Tribute Zine + Poster/Sketches.jpg",
       "alt": "Sketches and early zine layouts.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Finding the right kind of chaos",
+      "body": "The early layouts tested how far the imagery and type could be pushed while keeping the publication readable. I explored layered compositions, changes in scale, and repeated elements, then refined the pacing across the folded eight-page format."
     },
     {
       "type": "story",
@@ -60,8 +60,8 @@
       "src": "../../../collection/Designer Tribute Zine + Poster/Concept Development.jpg",
       "alt": "Concept development for the zine and poster.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
+      "heading": "From research to an immersive zine",
+      "body": "Rather than copying individual visuals, I translated the energy behind Castro’s work into a system of image manipulation, texture, repetition, and contrast. The poster extends the publication’s idea outward, using a concise quote as its central message."
     },
     {
       "type": "feature",
@@ -69,7 +69,7 @@
       "src": "images/cs/final-poster.jpg",
       "alt": "The finished tribute poster.",
       "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "caption": "Reverse-side quote poster: ‘Design is the accumulation of energy in an object.’"
     },
     {
       "type": "gallery",
