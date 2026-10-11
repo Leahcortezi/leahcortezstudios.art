@@ -77,9 +77,9 @@
           "_notes": "Additional mockup omitted until a confirmed asset is available."
         },
         {
-          "placeholder": "Mockup: image coming soon",
           "ratio": "4/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "src": "images/cs/final.jpg",
+          "alt": "Selected final poster from the historical design series"
         }
       ],
       "layout": "justified"
