@@ -2,11 +2,11 @@
   "title": "Editorial Spreads",
   "category": "Editorial",
   "year": "2025",
-  "summary": "This editorial spread was created for a project selecting an article and designing a magazine layout around it.",
+  "summary": "A black-and-white editorial interpretation of “Alien Invasion or Sleep Paralysis?” exploring the uneasy overlap between waking life, dreams, and perceived encounters.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Editorial design"
     ],
     [
       "Tools",
@@ -27,10 +27,10 @@
     "alt": "Looping preview of the editorial spread."
   },
   "overview": {
-    "challenge": "A project selecting an article and designing a magazine layout around it. I chose \"Alien Invasion or Sleep Paralysis?\" to explore the visual confusion between two surreal experiences.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "challenge": "How can a magazine spread make the uncertain state between waking and dreaming feel tangible? The article ‘Alien Invasion or Sleep Paralysis?’ offered a way to explore the unsettling overlap between sleep paralysis and stories of alien abduction.",
+    "solution": "I used stark black-and-white contrast, distorted display type, and tightly controlled body copy to balance hallucination-like disruption with editorial clarity.",
+    "outcome": "The finished spreads keep the imagined presence partly obscured, using scale, alignment, and negative space to sustain tension while keeping the article readable.",
+    "_notes": "Copy refined to reflect the documented project concept."
   },
   "blocks": [
     {
@@ -41,7 +41,7 @@
       "src": "../../../collection/Editorial Spreads/Research.jpg",
       "alt": "Research references for the editorial spread.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at"
+      "heading": "Between waking and dreaming"
     },
     {
       "type": "story",
@@ -50,8 +50,8 @@
       "src": "../../../collection/Editorial Spreads/Sketches.jpg",
       "alt": "Sketches and early layout studies for the editorial spread.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Testing tension and hierarchy",
+      "body": "Early layout studies tested the balance between disrupted typography and a stable reading path. I explored scale, cropping, and the placement of shadowy imagery, refining the composition so the spread feels psychologically unstable without becoming difficult to follow."
     },
     {
       "type": "story",
@@ -60,8 +60,8 @@
       "src": "../../../collection/Editorial Spreads/ConceptDevelopment.jpg",
       "alt": "Concept development for the editorial spread.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
+      "heading": "Keeping the threat unresolved",
+      "body": "The concept developed through contrast: chaotic, distorted display type evokes the half-conscious experience, while the body text remains structured. The alien form and shadow are never fully revealed, allowing the reader to feel uncertainty rather than receive a literal explanation."
     },
     {
       "type": "feature",
@@ -69,7 +69,7 @@
       "src": "images/cs/final.jpg",
       "alt": "The finished two-page editorial spread.",
       "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "caption": "Final editorial spread: distortion and structure share the page."
     },
     {
       "type": "gallery",
