@@ -1,16 +1,16 @@
 {
   "title": "Custom Typeface + Specimen Poster",
-  "category": "Typography",
+  "category": "Editorial",
   "year": "2026",
   "summary": "The goal of this project was to translate a historical metal or wood type specimen into a functional contemporary digital typeface.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Typeface and poster design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, InDesign"
     ],
     [
       "Year",
@@ -23,8 +23,8 @@
   ],
   "overview": {
     "challenge": "The challenge was to preserve the character and visual identity of the original reference while adapting it for modern use, with a strong focus on accessibility, readability, and consistency across a full character set.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "solution": "I translated the character of historical wood and metal type into Surendra, a contemporary digital typeface with consistent stroke weight, open counters, and carefully balanced spacing.",
+    "outcome": "The completed glyph set and specimen poster demonstrate how a historically informed display face can retain expressive character while remaining functional and legible."
   },
   "hero": {
     "layout": "split",
@@ -36,18 +36,15 @@
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "From historical specimen to digital type",
+      "body": "I studied the original letterforms, traced their defining features, and refined the digital characters through repeated spacing and kerning checks. The goal was to preserve the source’s personality while making the full character set feel consistent."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final.jpg",
       "alt": "Surendra typeface mockup.",
-      "caption": "Placeholder caption: final design."
+      "caption": "Surendra typeface and specimen poster."
     },
     {
       "type": "gallery",
