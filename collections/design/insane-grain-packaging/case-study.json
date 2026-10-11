@@ -79,16 +79,22 @@
       "heading": "Out in the world",
       "items": [
         {
-          "src": "images/cs/handheld.jpg",
-          "alt": "Two hands holding Insane Grain pouches up against a blue sky.",
-          "ratio": "736/979",
-          "caption": "Handheld mockup, against open sky."
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Insane Grain packaging mockup 1.",
+          "ratio": "2000/1390",
+          "caption": "Mockup 1."
         },
         {
-          "src": "images/cs/basket.jpg",
-          "alt": "Two Insane Grain pouches in a green shopping basket in a grocery aisle.",
-          "ratio": "1/1",
-          "caption": "Retail mockup: the pouch in a shopping basket."
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Insane Grain packaging mockup 2.",
+          "ratio": "2000/1555",
+          "caption": "Mockup 2."
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Insane Grain packaging mockup 3.",
+          "ratio": "2000/1493",
+          "caption": "Mockup 3."
         }
       ]
     }
