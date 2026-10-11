@@ -1,16 +1,16 @@
 {
   "title": "Historical Posters",
-  "category": "Poster",
+  "category": "Posters",
   "year": "2026",
-  "summary": "A collection of poster designs inspired by historical design movements and visual traditions.",
+  "summary": "A nine-week poster series translating historical design movements into contemporary compositions through research, thumbnail studies, and visual experimentation.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Research and poster design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, InDesign, Photoshop"
     ],
     [
       "Year",
@@ -28,9 +28,9 @@
   },
   "overview": {
     "challenge": "A collection of poster designs inspired by historical design movements and visual traditions.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "solution": "Each poster translates a researched design movement into a contemporary composition, moving between strict grids, dynamic geometry, collage, and minimal symbolism.",
+    "outcome": "The nine-week series resulted in nine finished posters and written reflections, with Dada, the Stenberg Brothers, and Modernism among the strongest directions.",
+    "_notes": "Copy refined to reflect the documented project process."
   },
   "blocks": [
     {
@@ -40,8 +40,8 @@
       "src": "../../../collection/Historical Posters/Research.jpg",
       "alt": "Research references for the poster series.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at",
-      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
+      "heading": "Nine movements, nine visual systems",
+      "body": "Each movement began with research into its context, visual conventions, and influential designers. Comparing these references helped identify which formal ideas—such as collage, geometry, grids, or reduction—could be reinterpreted rather than copied."
     },
     {
       "type": "story",
@@ -50,8 +50,8 @@
       "src": "../../../collection/Historical Posters/Sketches.jpg",
       "alt": "Sketches and early poster studies.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "From thumbnail to final poster",
+      "body": "I developed thumbnail compositions before moving into digital drafts, testing hierarchy, contrast, and movement. The final series preserves the character of each movement while making every poster work as a distinct contemporary piece."
     },
     {
       "type": "story",
@@ -59,29 +59,27 @@
       "label": "03 — Concept development",
       "src": "images/cs/concept.jpg",
       "alt": "Concept development for the poster series.",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
+      "heading": "Translating history into contemporary work",
+      "body": "Rather than applying one style across the entire series, I adapted the visual logic of each movement to the subject. The changing compositions show how research can guide design decisions while still leaving room for interpretation."
     },
     {
       "type": "feature",
       "label": "04 — Final",
       "src": "images/cs/final.jpg",
       "alt": "Final poster design.",
-      "caption": "Placeholder caption: final design."
+      "caption": "Selected final posters from the historical design series."
     },
     {
       "type": "gallery",
       "label": "05 — Mockups",
       "items": [
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "4/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "_notes": "Additional mockup omitted until a confirmed asset is available."
         },
         {
-          "placeholder": "Mockup: image coming soon",
           "ratio": "4/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "src": "images/cs/final.jpg",
+          "alt": "Selected final poster from the historical design series"
         }
       ],
       "layout": "justified"

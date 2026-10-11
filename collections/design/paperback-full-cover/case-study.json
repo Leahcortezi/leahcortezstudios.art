@@ -6,11 +6,11 @@
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Book cover design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, InDesign, Photoshop"
     ],
     [
       "Year",
@@ -24,7 +24,7 @@
   "overview": {
     "challenge": "Most covers treat the front, spine, and back as independent design problems.",
     "solution": "Instead, I approached the wrap as one unified narrative—where the spine becomes an integral part of the story, not an afterthought.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "outcome": "The finished full-wrap cover uses an exaggerated satirical metaphor to connect Swift’s fictional egg dispute to the real consequences of political power, extending the narrative across front, spine, and back."
   },
   "hero": {
     "layout": "split",
@@ -36,11 +36,8 @@
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Turning satire into a visual metaphor",
+      "body": "Research into Gulliver’s Travels and its political satire informed the central image. Thumbnail studies explored scale and symbolism before the illustration and title were integrated into one continuous cover, with the spine and back treated as part of the same composition."
     },
     {
       "type": "feature",
@@ -48,7 +45,7 @@
       "src": "images/cs/final.jpg",
       "alt": "The full wrap: front cover, spine and back cover.",
       "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "caption": "Full-wrap Gulliver’s Travels cover: front, spine, and back designed as one surface."
     },
     {
       "type": "gallery",
@@ -59,9 +56,7 @@
           "alt": "Paperback cover mockup."
         },
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "3/2",
-          "_todo": "Add a mockup image (src, alt)."
+          "_notes": "Second mockup omitted until a confirmed asset is available."
         }
       ],
       "layout": "justified"

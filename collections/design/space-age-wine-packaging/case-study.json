@@ -6,11 +6,11 @@
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Packaging design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, Photoshop"
     ],
     [
       "Year",
@@ -24,7 +24,7 @@
   "overview": {
     "challenge": "The original packaging was harder to understand conceptually and looked too serious.",
     "solution": "The redesign shifts the focus toward exploration and possibility.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "outcome": "The finished label system pairs a hand-drawn astronaut with a vineyard reflected in the visor, giving the rosé packaging a cohesive, exploratory character across the bottle, back label, and capsule."
   },
   "hero": {
     "layout": "split",
@@ -36,11 +36,8 @@
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "A wine label with a sense of exploration",
+      "body": "Early concepts explored space-age imagery and how it could connect to the wine’s identity. The astronaut illustration became the central device, with the vineyard reflected in the visor to link the cosmic theme back to the place and product."
     },
     {
       "type": "feature",
@@ -48,7 +45,7 @@
       "src": "images/cs/final.jpg",
       "alt": "The final Space Age Rosé label.",
       "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "caption": "The final Space Age Rosé label, built around an illustrated astronaut and vineyard reflection."
     },
     {
       "type": "gallery",
@@ -59,9 +56,7 @@
           "alt": "Space Age Rosé packaging in context."
         },
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "5/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "_notes": "Second mockup omitted until a confirmed asset is available."
         }
       ],
       "layout": "justified"

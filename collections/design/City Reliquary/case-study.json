@@ -6,11 +6,11 @@
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Brand identity design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, Photoshop"
     ],
     [
       "Year",
@@ -28,27 +28,24 @@
   },
   "overview": {
     "challenge": "City Reliquary is a community-driven museum devoted to preserving New York City's history through everyday objects and personal collections. Unlike traditional museums that focus on grand historical narratives, City Reliquary highlights overlooked artifacts, neighborhood stories, and urban ephemera.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)",
-    "_todo": "Add solution and outcome in your own words (see docs/CASE-STUDY-GUIDE.md)."
+    "solution": "I developed a compact CR mark that uses negative space to suggest a curated fragment, then extended the identity across posters, signage, and merchandise.",
+    "outcome": "The identity gives the museum a flexible visual system rooted in everyday artifacts and neighborhood history, with applications that can work across print, display, and apparel.",
+    "_notes": "Copy refined to reflect the documented identity concept."
   },
   "blocks": [
     {
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "A mark built around overlooked fragments",
+      "body": "The identity began with the museum’s focus on everyday objects and personal collections. I explored a compact CR symbol and negative-space relationships, then tested how the mark could carry across different scales and applications."
     },
     {
       "type": "feature",
       "label": "02 — Final",
       "src": "images/cs/final.jpg",
       "alt": "City Reliquary signage mockup.",
-      "caption": "Placeholder caption: final design."
+      "caption": "The City Reliquary identity applied to signage."
     },
     {
       "type": "gallery",
