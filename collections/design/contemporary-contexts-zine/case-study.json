@@ -72,22 +72,29 @@
     {
       "type": "feature",
       "label": "04 — Final",
-      "src": "images/cs/final-poster.jpg",
-      "alt": "The finished tribute poster.",
-      "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "src": "images/cs/final.jpg",
+      "alt": "Grid of the final tribute zine pages and poster.",
+      "caption": "The final zine and poster, side by side.",
+      "ratio": "2400/1600"
     },
     {
       "type": "gallery",
       "label": "05 — Mockups",
       "items": [
         {
-          "src": "images/cs/mockup-zine.jpg",
-          "alt": "Tribute zine mockup."
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Tribute zine mockup 1.",
+          "ratio": "2000/1333"
         },
         {
-          "src": "images/cs/mockup-context.jpg",
-          "alt": "Tribute zine and poster in context."
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Tribute zine mockup 2.",
+          "ratio": "2000/1333"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Tribute zine mockup 3.",
+          "ratio": "2000/1333"
         }
       ],
       "layout": "justified"
