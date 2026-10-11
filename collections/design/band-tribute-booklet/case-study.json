@@ -6,7 +6,7 @@
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Editorial design"
     ],
     [
       "Tools",
@@ -23,8 +23,8 @@
   ],
   "overview": {
     "challenge": "Rather than simply documenting the band, the goal was to balance readability with a strong visual atmosphere while maintaining consistency across every spread.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "solution": "I built a restrained editorial system around cream, charcoal, and burgundy, pairing serif typography with archival imagery, handwritten textures, and a clear grid.",
+    "outcome": "The 16-page booklet celebrates Billy Joel’s introspective songwriting through a cinematic sequence of spreads, lyrics, discography, and archival references rather than a conventional commercial portrait."
   },
   "hero": {
     "layout": "split",
@@ -36,11 +36,8 @@
       "type": "story",
       "imageSide": "right",
       "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Setting the editorial tone",
+      "body": "Early studies explored serif type, archival album packaging, and music journalism from the 1970s and early 1980s. I tested grid structures and spread pacing to make room for lyrics and imagery without losing the intimacy of the subject."
     },
     {
       "type": "gallery",
@@ -67,7 +64,7 @@
       "label": "03 — Mockups",
       "placeholder": "Booklet mockup: image coming soon",
       "_todo": "Add the booklet mockup image (src, alt).",
-      "caption": "Placeholder caption: final design."
+      "caption": "A restrained editorial system across the cover and selected booklet spreads."
     }
   ]
 }
