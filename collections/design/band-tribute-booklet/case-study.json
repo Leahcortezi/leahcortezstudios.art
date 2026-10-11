@@ -58,13 +58,6 @@
         }
       ],
       "layout": "justified"
-    },
-    {
-      "type": "feature",
-      "label": "03 — Mockups",
-      "placeholder": "Booklet mockup: image coming soon",
-      "_todo": "Add the booklet mockup image (src, alt).",
-      "caption": "A restrained editorial system across the cover and selected booklet spreads."
     }
   ]
 }
