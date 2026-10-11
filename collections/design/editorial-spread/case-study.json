@@ -77,25 +77,28 @@
       "type": "feature",
       "label": "04 — Final",
       "src": "images/cs/final.jpg",
-      "alt": "The finished two-page editorial spread.",
-      "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "alt": "Grid of the final editorial spread deliverables.",
+      "caption": "The final spreads, side by side.",
+      "ratio": "2400/1440"
     },
     {
       "type": "gallery",
       "label": "05 — Mockups",
       "items": [
         {
-          "src": "images/cs/mockup-flash.jpg",
-          "alt": "Editorial spread mockup."
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Editorial spread mockup 1.",
+          "ratio": "2000/1333"
         },
         {
-          "src": "images/cs/mockup-flip.jpg",
-          "alt": "Editorial spread flip-through mockup."
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Editorial spread mockup 2.",
+          "ratio": "2000/1390"
         },
         {
-          "src": "images/cs/spread-2.jpg",
-          "alt": "Second editorial spread."
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Editorial spread mockup 3.",
+          "ratio": "2000/1333"
         }
       ],
       "layout": "justified"
