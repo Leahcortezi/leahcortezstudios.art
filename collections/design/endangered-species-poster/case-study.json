@@ -1,16 +1,16 @@
 {
   "title": "Disappearing Species",
-  "category": "Poster",
+  "category": "Posters",
   "year": "2025",
   "summary": "This WWF poster addresses the impact of climate change on koalas, an endangered species threatened by habitat destruction and rising temperatures.",
   "meta": [
     [
       "Role",
-      "Role — add here"
+      "Poster design"
     ],
     [
       "Tools",
-      "Tools — add here"
+      "Illustrator, Photoshop"
     ],
     [
       "Year",
@@ -22,9 +22,9 @@
     ]
   ],
   "overview": {
-    "challenge": "Placeholder: what was the brief or problem? (1–2 sentences)",
+    "challenge": "Inspired by a WWF awareness brief, the poster needed to communicate the threat of habitat destruction and environmental change without relying on a literal or sensational image.",
     "solution": "The design creates a symbolic visual representation merging the koala with the cause of their decline.",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
+    "outcome": "The final image uses negative space as a metaphor for loss, connecting the koala’s disappearance to the industrial forces contributing to its decline."
   },
   "hero": {
     "layout": "split",
@@ -39,8 +39,8 @@
       "src": "../../../collection/Disappearing Species/Research.jpg",
       "alt": "Research references for the poster.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at",
-      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
+      "heading": "Researching loss and habitat pressure",
+      "body": "Research focused on endangered species, habitat loss, pollution, and the visual language of environmental awareness campaigns. I looked for a way to connect the animal to the cause of its decline through one memorable image rather than a crowded list of facts."
     },
     {
       "type": "story",
@@ -49,8 +49,8 @@
       "src": "../../../collection/Disappearing Species/Sketches.jpg",
       "alt": "Sketches and early poster studies.",
       "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
+      "heading": "Building the image through negative space",
+      "body": "Early studies tested figure-ground relationships and how much detail the silhouette could hold. The final direction places industrial forms inside the koala shape, letting the animal and its environment read as one image."
     },
     {
       "type": "feature",
@@ -58,7 +58,7 @@
       "src": "images/cs/final.jpg",
       "alt": "The finished Disappearing Species poster.",
       "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "caption": "A koala silhouette filled with the industrial forms contributing to habitat loss."
     },
     {
       "type": "gallery",
@@ -69,9 +69,7 @@
           "alt": "Disappearing Species poster mockup."
         },
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "5/4",
-          "_todo": "Add a mockup image (src, alt)."
+          "_notes": "Additional mockup not included because no confirmed asset was identified."
         }
       ],
       "layout": "justified"
