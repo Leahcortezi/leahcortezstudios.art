@@ -40,29 +40,37 @@
       "text": "I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture. That is something I deeply connect with."
     },
     {
-      "type": "process",
-      "label": "Process",
-      "heading": "Research, sketches, concept",
-      "steps": [
-        {
-          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Research.jpg",
-          "alt": "Research on Jonathan Castro's work.",
-          "title": "Research",
-          "ratio": "1366/768"
-        },
-        {
-          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Sketches.jpg",
-          "alt": "Sketches and early zine layouts.",
-          "title": "Sketches",
-          "ratio": "1366/768"
-        },
-        {
-          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Concept%20Development.jpg",
-          "alt": "Concept development for the zine and poster.",
-          "title": "Concept",
-          "ratio": "1366/768"
-        }
-      ]
+      "type": "story",
+      "label": "Research",
+      "heading": "Looking closely at Jonathan Castro.",
+      "body": "I studied his work to see what makes it his: vibrant color, chaotic compositions, and references pulled from his Latin culture.",
+      "src": "images/cs/research.jpg",
+      "ratio": "1366/768",
+      "imageSide": "right",
+      "alt": "Research on Jonathan Castro's work.",
+      "caption": "Research."
+    },
+    {
+      "type": "story",
+      "label": "Sketches",
+      "heading": "Working out the layout.",
+      "body": "Early sketches tested how the zine could unfold across eight folded pages, with each spread layering a little more than the last.",
+      "src": "images/cs/sketches.jpg",
+      "ratio": "1366/768",
+      "imageSide": "left",
+      "alt": "Sketches and early zine layouts.",
+      "caption": "Sketches and early layouts."
+    },
+    {
+      "type": "story",
+      "label": "Concept",
+      "heading": "Piles of process and meaning.",
+      "body": "The concept came together as layers building on layers. The zine builds page by page, and the poster boils the same idea down to one statement.",
+      "src": "images/cs/concept.jpg",
+      "ratio": "1366/768",
+      "imageSide": "right",
+      "alt": "Concept development for the zine and poster.",
+      "caption": "Concept development."
     },
     {
       "type": "feature",
