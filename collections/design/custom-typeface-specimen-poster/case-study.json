@@ -40,8 +40,13 @@
   },
   "blocks": [
     {
-      "type": "gallery",
+      "type": "story",
       "label": "Research",
+      "text": "I collected references from historical wood and metal type specimens, looking for forms and details that felt distinctive."
+    },
+    {
+      "type": "gallery",
+      "label": "",
       "items": [
         {
           "src": "images/cs/research.jpg",
@@ -51,8 +56,13 @@
       ]
     },
     {
-      "type": "gallery",
+      "type": "story",
       "label": "Sketches",
+      "text": "I worked through spacing, kerning, and consistency across every character, balancing historical forms with digital clarity."
+    },
+    {
+      "type": "gallery",
+      "label": "",
       "items": [
         {
           "src": "images/cs/sketches.jpg",
