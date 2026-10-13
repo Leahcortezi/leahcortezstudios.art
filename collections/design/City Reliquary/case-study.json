@@ -23,10 +23,11 @@
     ]
   ],
   "hero": {
-    "src": "images/cs/hero.jpg",
+    "src": "../../../collection/City%20Reliquary/images/cs/Hero.mp4",
     "alt": "A red t-shirt printed with the white City Reliquary mark, worn against a graffitied wall.",
     "pos": "52% 45%",
-    "ratio": "1800/1200"
+    "ratio": "1800/1200",
+    "poster": "images/cs/hero.jpg"
   },
   "overview": {
     "challenge": "City Reliquary is a community museum in New York City for everyday artifacts and the stories they hold. The identity had to make ordinary objects feel worth keeping.",
