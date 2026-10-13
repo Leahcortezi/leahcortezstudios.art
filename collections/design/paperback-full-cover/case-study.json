@@ -35,21 +35,58 @@
   },
   "blocks": [
     {
+      "type": "story",
+      "label": "Research",
+      "heading": "Eggs, roosters and a very silly war.",
+      "body": "I gathered references for Swift's satire and for the imagery I could use to stand in for it, from eggs to roosters to old book covers.",
+      "src": "images/cs/research.jpg",
+      "ratio": "2400/1575",
+      "imageSide": "right",
+      "alt": "Research and references for the Gulliver's Travels cover.",
+      "caption": "References."
+    },
+    {
+      "type": "story",
+      "label": "Sketches",
+      "heading": "One image for the whole argument.",
+      "body": "Sketches tested how a rooster crushing eggs could carry the whole war between the Big-Endians and Little-Endians in a single cover image.",
+      "src": "images/cs/sketches.jpg",
+      "ratio": "3200/739",
+      "imageSide": "left",
+      "alt": "Sketches for the Gulliver's Travels cover.",
+      "caption": "Cover sketches."
+    },
+    {
       "type": "feature",
       "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "The full wrap: front cover, spine and back cover.",
-      "caption": "The full wrap: front, spine and back.",
-      "ratio": "2400/1458"
+      "alt": "Gulliver's Travels final cover design.",
+      "caption": "The final cover design.",
+      "ratio": "2400/1668"
     },
     {
       "type": "gallery",
       "label": "In hand",
       "items": [
         {
-          "src": "images/cs/mockup-cover.jpg",
-          "alt": "Paperback cover mockup.",
-          "ratio": "1600/1066"
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Gulliver's Travels book cover mockup.",
+          "ratio": "2400/1760"
+        },
+        {
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Gulliver's Travels book cover mockup, second view.",
+          "ratio": "2400/1600"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Gulliver's Travels paperback cover mockup.",
+          "ratio": "2400/1600"
+        },
+        {
+          "src": "images/cs/mockup-fullcover.jpg",
+          "alt": "The full Gulliver's Travels wrap: front, spine and back.",
+          "ratio": "2400/1458"
         }
       ]
     }
