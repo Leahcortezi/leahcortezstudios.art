@@ -40,26 +40,26 @@
   },
   "blocks": [
     {
-      "type": "gallery",
+      "type": "story",
       "label": "Research",
-      "items": [
-        {
-          "src": "images/cs/research.jpg",
-          "alt": "Research and references for Surendra.",
-          "ratio": "1543/2305"
-        }
-      ]
+      "heading": "Starting from old type.",
+      "body": "I collected wood and metal type specimens and studied what made their letters feel so physical: uneven weight, soft corners, and the way ink spreads at the edges. The goal was to borrow that character without copying any one archival face.",
+      "src": "images/cs/research.jpg",
+      "ratio": "1543/2305",
+      "imageSide": "right",
+      "alt": "Research and references for Surendra.",
+      "caption": "Specimen references."
     },
     {
-      "type": "gallery",
+      "type": "story",
       "label": "Sketches",
-      "items": [
-        {
-          "src": "images/cs/sketches.jpg",
-          "alt": "Hand sketches and digital iterations for Surendra glyphs.",
-          "ratio": "3300/2248"
-        }
-      ]
+      "heading": "Drawing the glyph set.",
+      "body": "I sketched the letterforms by hand first, then rebuilt them digitally. From there it was spacing, kerning and consistency, checking that every character belonged to the same family.",
+      "src": "images/cs/sketches.jpg",
+      "ratio": "3300/2248",
+      "imageSide": "left",
+      "alt": "Hand sketches and digital iterations for Surendra glyphs.",
+      "caption": "Glyph sketches."
     },
     {
       "type": "feature",
