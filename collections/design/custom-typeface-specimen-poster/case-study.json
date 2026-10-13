@@ -27,7 +27,7 @@
     ]
   ],
   "hero": {
-    "src": "../../../collection/Custom%20Typeface%20%2B%20Specimen%20Poster/Hero.mp4",
+    "src": "../../../collection/Custom%20Typeface%20%2B%20Specimen%20Poster/Hero1.mp4",
     "poster": "images/cs/mockup-mag.jpg",
     "alt": "An open magazine with the headline \"It was raining inside\" set in Surendra.",
     "ratio": "1600/1112",
@@ -45,7 +45,7 @@
       "src": "images/cs/final.jpg",
       "alt": "Surendra typeface specimen poster mockup.",
       "caption": "The specimen poster.",
-      "ratio": "2400/1600"
+      "ratio": "2400/1811"
     },
     {
       "type": "gallery",
@@ -54,7 +54,7 @@
         {
           "src": "images/cs/mockup-2.jpg",
           "alt": "Surendra specimen mockup.",
-          "ratio": "1600/1200"
+          "ratio": "2000/1333"
         }
       ]
     }
