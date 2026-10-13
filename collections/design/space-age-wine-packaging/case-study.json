@@ -58,12 +58,16 @@
       "caption": "Label sketches."
     },
     {
-      "type": "feature",
+      "type": "gallery",
       "label": "Final",
-      "src": "images/cs/flat-final.jpg",
-      "alt": "The flat Space Age wine label design.",
-      "caption": "The flat label design.",
-      "ratio": "2400/1850"
+      "items": [
+        {
+          "src": "images/cs/flat-final.jpg",
+          "alt": "The flat Space Age wine label design.",
+          "caption": "The flat label design.",
+          "ratio": "2400/1850"
+        }
+      ]
     },
     {
       "type": "gallery",
@@ -73,6 +77,11 @@
           "src": "images/cs/mockup-1.jpg",
           "alt": "Space Age wine packaging mockup.",
           "ratio": "2400/1848"
+        },
+        {
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Space Age wine packaging mockup, second view.",
+          "ratio": "1600/2400"
         },
         {
           "src": "images/cs/mockup-context.jpg",
