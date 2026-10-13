@@ -40,6 +40,28 @@
   },
   "blocks": [
     {
+      "type": "gallery",
+      "label": "Research",
+      "items": [
+        {
+          "src": "images/cs/research.jpg",
+          "alt": "Research and references for Surendra.",
+          "ratio": "1543/2305"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Sketches",
+      "items": [
+        {
+          "src": "images/cs/sketches.jpg",
+          "alt": "Hand sketches and digital iterations for Surendra glyphs.",
+          "ratio": "3300/2248"
+        }
+      ]
+    },
+    {
       "type": "feature",
       "label": "Final",
       "src": "images/cs/final.jpg",
