@@ -35,26 +35,53 @@
   },
   "blocks": [
     {
+      "type": "story",
+      "label": "Research",
+      "heading": "Objects worth keeping.",
+      "body": "City Reliquary collects everyday artifacts and the stories attached to them. I started by looking at the objects, signs and handmade ephemera the museum is built around.",
+      "src": "images/cs/research.jpg",
+      "ratio": "2400/1537",
+      "imageSide": "right",
+      "alt": "Research and references for the City Reliquary identity.",
+      "caption": "Research."
+    },
+    {
+      "type": "story",
+      "label": "Sketches",
+      "heading": "Finding the mark.",
+      "body": "I sketched the C and R together until they shared one shape, with the negative space doing the work of the second letter.",
+      "src": "images/cs/sketches.jpg",
+      "ratio": "2400/2202",
+      "imageSide": "left",
+      "alt": "Sketches of the City Reliquary CR mark.",
+      "caption": "Mark sketches."
+    },
+    {
       "type": "feature",
-      "label": "Signage",
+      "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "City Reliquary signage mockup.",
-      "caption": "The mark at building scale.",
+      "alt": "City Reliquary identity system grid.",
+      "caption": "The identity system.",
       "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "Posters",
+      "label": "In use",
       "items": [
         {
-          "src": "images/cs/mockup-poster-1.jpg",
-          "alt": "City Reliquary poster mockup.",
-          "ratio": "1600/1173"
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "City Reliquary identity mockup 1.",
+          "ratio": "2400/1709"
         },
         {
-          "src": "images/cs/mockup-poster-2.jpg",
-          "alt": "A second City Reliquary poster mockup.",
-          "ratio": "1600/1110"
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "City Reliquary identity mockup 2.",
+          "ratio": "2400/1600"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "City Reliquary identity mockup 3.",
+          "ratio": "2400/1600"
         }
       ]
     }

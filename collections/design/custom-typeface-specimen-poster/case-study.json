@@ -62,6 +62,33 @@
       "caption": "Glyph sketches."
     },
     {
+      "type": "gallery",
+      "label": "Type anatomy",
+      "heading": "The parts of the letters.",
+      "items": [
+        {
+          "src": "images/cs/anatomy-1.jpg",
+          "alt": "Surendra type anatomy diagram 1.",
+          "ratio": "2000/1125"
+        },
+        {
+          "src": "images/cs/anatomy-2.jpg",
+          "alt": "Surendra type anatomy diagram 2.",
+          "ratio": "2000/1125"
+        },
+        {
+          "src": "images/cs/anatomy-3.jpg",
+          "alt": "Surendra type anatomy diagram 3.",
+          "ratio": "2000/1125"
+        },
+        {
+          "src": "images/cs/anatomy-4.jpg",
+          "alt": "Surendra type anatomy diagram 4.",
+          "ratio": "2000/1125"
+        }
+      ]
+    },
+    {
       "type": "feature",
       "label": "Final",
       "src": "images/cs/final.jpg",
@@ -74,9 +101,19 @@
       "label": "In use",
       "items": [
         {
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Surendra specimen mockup 1.",
+          "ratio": "2400/1600"
+        },
+        {
           "src": "images/cs/mockup-2.jpg",
-          "alt": "Surendra specimen mockup.",
-          "ratio": "2000/1333"
+          "alt": "Surendra specimen mockup 2.",
+          "ratio": "2400/1685"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Surendra specimen mockup 3.",
+          "ratio": "2400/1745"
         }
       ]
     }
