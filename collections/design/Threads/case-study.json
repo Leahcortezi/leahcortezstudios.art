@@ -40,22 +40,77 @@
   },
   "blocks": [
     {
+      "type": "story",
+      "label": "Research",
+      "heading": "Looking at how clothes get made.",
+      "body": "Threads is a youth clothing retailer, so I started with stitching, labels and woven goods, and the idea of a single line that connects everything.",
+      "src": "images/cs/research.jpg",
+      "ratio": "2400/1310",
+      "imageSide": "right",
+      "alt": "Research and references for the Threads logotype.",
+      "caption": "Research."
+    },
+    {
+      "type": "story",
+      "label": "Sketches",
+      "heading": "One continuous line.",
+      "body": "I sketched the letters as a single thread that loops and crosses itself, testing how far a stroke could bend before the word stopped reading.",
+      "src": "images/cs/sketches.jpg",
+      "ratio": "2400/1854",
+      "imageSide": "left",
+      "alt": "Sketches of the Threads logotype.",
+      "caption": "Logotype sketches."
+    },
+    {
       "type": "feature",
-      "label": "Signage",
-      "src": "images/cs/final-signage.jpg",
-      "alt": "Threads logotype on signage.",
-      "caption": "The logotype on a storefront.",
+      "label": "Storyboards",
+      "src": "images/cs/storyboards.jpg",
+      "alt": "Storyboards for the Threads logotype animation.",
+      "caption": "Storyboards for the animation.",
+      "ratio": "2400/1040"
+    },
+    {
+      "type": "gallery",
+      "label": "Logotype",
+      "items": [
+        {
+          "src": "images/cs/logo-bw.jpg",
+          "alt": "Threads logotype in black and white.",
+          "ratio": "2400/887"
+        },
+        {
+          "src": "images/cs/logo-color.jpg",
+          "alt": "Threads logotype in color.",
+          "ratio": "2400/1828"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "label": "Final",
+      "src": "images/cs/final.jpg",
+      "alt": "Threads final identity presentation.",
+      "caption": "The final identity.",
       "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "Details",
+      "label": "In use",
       "items": [
         {
-          "src": "images/cs/mockup-tag.jpg",
-          "alt": "Threads logotype on a clothing tag.",
-          "caption": "Clothing tag.",
-          "ratio": "1600/1600"
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Threads mockup 1.",
+          "ratio": "2400/2400"
+        },
+        {
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Threads mockup 2.",
+          "ratio": "2400/1668"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Threads mockup 3.",
+          "ratio": "1920/2400"
         }
       ]
     }
