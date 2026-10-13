@@ -62,12 +62,16 @@
       "caption": "Logotype sketches."
     },
     {
-      "type": "feature",
+      "type": "gallery",
       "label": "Storyboards",
-      "src": "images/cs/storyboards.jpg",
-      "alt": "Storyboards for the Threads logotype animation.",
-      "caption": "Storyboards for the animation.",
-      "ratio": "2400/1040"
+      "items": [
+        {
+          "src": "images/cs/storyboards.jpg",
+          "alt": "Storyboards for the Threads logotype animation.",
+          "caption": "Storyboards for the animation.",
+          "ratio": "2400/1040"
+        }
+      ]
     },
     {
       "type": "gallery",
