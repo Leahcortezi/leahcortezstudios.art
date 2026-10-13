@@ -2,106 +2,96 @@
   "title": "Alien Invasion or Sleep Paralysis?",
   "category": "Editorial",
   "year": "2025",
-  "summary": "Editorial design exploring the liminal space between dreams and waking life through distorted typography, monochromatic imagery, and unsettling visual composition.",
+  "tags": [
+    "Editorial"
+  ],
+  "card": {
+    "src": "images/cs/mockup-flash.jpg",
+    "pos": "50% 50%",
+    "disc": "Editorial",
+    "teaser": "Spreads about the space between dreaming and waking: distorted type, held in place by a strict grid."
+  },
+  "summary": "Spreads about the uneasy space between dreaming and waking, with distorted type, black-and-white imagery and a strict grid.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
-    [
-      "Tools",
-      "InDesign"
-    ],
     [
       "Year",
       "2025"
     ],
     [
       "Deliverables",
-      "Editorial spreads, display typography, black-and-white imagery"
+      "Editorial spreads, display type, black-and-white imagery"
     ]
   ],
   "hero": {
-    "layout": "split",
-    "src": "../../../collection/Editorial Spreads/Hero.mp4",
-    "alt": "Looping preview of the editorial spread."
+    "src": "../../../collection/Editorial%20Spreads/Hero.mp4",
+    "poster": "images/cs/mockup-flash.jpg",
+    "alt": "Black and white magazine spreads with distorted display type.",
+    "ratio": "1600/1066"
   },
   "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "Alien Invasion or Sleep Paralysis? explores the uneasy boundary between waking life and dreams. The editorial spreads translate the uncertainty of a liminal experience into a visual system that contrasts distorted typography, monochromatic imagery, and structured text."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The visual language balances psychological tension with editorial clarity. Distorted display typography introduces instability, while more structured text establishes a readable framework. Black-and-white imagery reinforces the ambiguous atmosphere, and an obscured alien-like shadow becomes a focal point that leaves the viewer questioning what is real."
-      },
-      {
-        "label": "Design approach",
-        "text": "The layouts use contrast, hierarchy, image placement, and typographic distortion to communicate uncertainty without sacrificing readability. The tension between ordered information and unsettling imagery reflects the experience of being caught between a dream and reality."
-      }
-    ]
+    "challenge": "Make a half-asleep, liminal experience feel uneasy on the page without making the text hard to read.",
+    "solution": "Distorted display type for the instability, a structured text grid for clarity, and monochrome imagery for the atmosphere.",
+    "outcome": "Spreads that hold tension and order at once, like being caught between a dream and waking up."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Research",
-      "body": "I chose \"Alien Invasion or Sleep Paralysis?\" because the topic fascinated me and offered a chance to explore the visual confusion between two surreal experiences.",
-      "src": "../../../collection/Editorial Spreads/Research.jpg",
-      "alt": "Research references for the editorial spread.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at"
+      "type": "quote",
+      "label": "Why this topic",
+      "text": "The topic fascinated me, and it gave me a chance to explore the visual confusion between two surreal experiences."
     },
     {
-      "type": "story",
-      "imageSide": "left",
-      "label": "02 — Sketches",
-      "src": "../../../collection/Editorial Spreads/Sketches.jpg",
-      "alt": "Sketches and early layout studies for the editorial spread.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
-      "type": "story",
-      "imageSide": "right",
-      "label": "03 — Concept development",
-      "src": "../../../collection/Editorial Spreads/ConceptDevelopment.jpg",
-      "alt": "Concept development for the editorial spread.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
+      "type": "process",
+      "label": "Process",
+      "heading": "From references to layouts",
+      "steps": [
+        {
+          "src": "../../../collection/Editorial%20Spreads/Research.jpg",
+          "alt": "Research references for the editorial spread.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Editorial%20Spreads/Sketches.jpg",
+          "alt": "Sketches and early layout studies.",
+          "title": "Sketches",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Editorial%20Spreads/ConceptDevelopment.jpg",
+          "alt": "Concept development for the spreads.",
+          "title": "Concept",
+          "ratio": "1366/768"
+        }
+      ]
     },
     {
       "type": "feature",
-      "label": "04 — Final",
+      "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "Grid of the final editorial spread deliverables.",
+      "alt": "Grid of the final editorial spreads.",
       "caption": "The final spreads, side by side.",
       "ratio": "2400/1440"
     },
     {
       "type": "gallery",
-      "label": "05 — Mockups",
+      "label": "In context",
       "items": [
         {
           "src": "images/cs/mockup-1.jpg",
-          "alt": "Editorial spread mockup 1.",
+          "alt": "Editorial spread mockup.",
           "ratio": "2000/1333"
         },
         {
           "src": "images/cs/mockup-2.jpg",
-          "alt": "Editorial spread mockup 2.",
+          "alt": "Editorial spread mockup, second view.",
           "ratio": "2000/1390"
         },
         {
           "src": "images/cs/mockup-3.jpg",
-          "alt": "Editorial spread mockup 3.",
+          "alt": "Editorial spread mockup, third view.",
           "ratio": "2000/1333"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

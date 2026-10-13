@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Project · Leah Cortez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..500&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+@font-face{font-family:'Surendra';src:url('assets/Surendra-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@keyframes lcPulse{0%,100%{opacity:1}50%{opacity:.2}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#000}
+body{margin:0;background:#000;color:#fff;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,video{display:block;max-width:100%}
+a{color:#f8c8d0;text-decoration:none}
+a:hover{color:#fff}
+::selection{background:#f8c8d0;color:#000}
+button{font:inherit}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div id="top" style="background:#000;color:#fff;min-height:100vh;font-family:'DM Sans',system-ui,sans-serif">
+
+<header style="position:sticky;top:0;z-index:40;background:#000;border-bottom:1px solid rgba(248,200,208,.24)">
+<div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+<a href="Home.dc.html" aria-label="Leah Cortez, home" style="display:flex;align-items:center;gap:12px;flex:none">
+<span aria-hidden="true" style="width:28px;height:36px;background:#f8c8d0;-webkit-mask:url('images/logo/logo3.png') center/contain no-repeat;mask:url('images/logo/logo3.png') center/contain no-repeat"></span>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span style="font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#f8c8d0">Leah Cortez Studios</span></sc-if>
+</a>
+<nav aria-label="Main" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,34px)">
+<a href="Home.dc.html" style="font:400 clamp(13px,1.2vw,17px)/1 'Surendra','DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#f8c8d0;text-underline-offset:6px;text-decoration-thickness:2px;border-style:solid;border-color:rgba(248,200,208,.85);border-width:0 1.5px;border-radius:999px;padding:{{ lpad }}" style-hover="text-decoration:underline">Home</a>
+<a href="About.dc.html" style="font:400 clamp(13px,1.2vw,17px)/1 'Surendra','DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#f8c8d0;text-underline-offset:6px;text-decoration-thickness:2px;border-style:solid;border-color:rgba(248,200,208,.85);border-width:0 1.5px;border-radius:999px;padding:{{ lpad }}" style-hover="text-decoration:underline">About</a>
+<a href="Work.dc.html" aria-current="page" style="font:400 clamp(13px,1.2vw,17px)/1 'Surendra','DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#000;background:#f8c8d0;border-radius:999px;padding:{{ lpad }}">Work</a>
+<a href="#contact" style="font:400 clamp(13px,1.2vw,17px)/1 'Surendra','DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#f8c8d0;text-underline-offset:6px;text-decoration-thickness:2px;border-style:solid;border-color:rgba(248,200,208,.85);border-width:0 1.5px;border-radius:999px;padding:{{ lpad }}" style-hover="text-decoration:underline">Contact</a>
+<sc-if value="{{ statusOn }}" hint-placeholder-val="{{ true }}">
+<span style="display:flex;align-items:center;gap:9px;margin-left:clamp(0px,1vw,10px);padding:9px 14px;border:1px solid rgba(248,200,208,.45);border-radius:999px;font:600 11px/1 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f8c8d0;white-space:nowrap">{{ pulse }}Open to internships</span>
+</sc-if>
+</nav>
+</div>
+</header>
+
+<main data-screen-label="Project" style="min-height:80vh;background:#000;color:#fff">
+
+<sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+<article>
+<header style="max-width:1360px;margin:0 auto;padding:clamp(20px,2.4vw,32px) clamp(20px,4vw,56px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:12px 0;border-top:2px solid rgba(248,200,208,.55);border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+<a href="Work.dc.html" style="color:#f8c8d0;text-decoration:underline;text-underline-offset:4px" style-hover="color:#fff">[ ← All work ]</a>
+<span>Case study No. {{ no }}</span>
+<span>{{ category }}</span>
+</div>
+<h1 style="margin:clamp(28px,4vw,56px) 0 0;font:400 clamp(60px,11vw,176px)/.86 'Surendra','DM Sans',sans-serif;letter-spacing:-.01em;text-wrap:balance;color:#f8c8d0">{{ title }}</h1>
+<figure style="margin:clamp(28px,3.4vw,48px) 0 0">
+<div style="position:relative;overflow:hidden;aspect-ratio:{{ heroRatio }};background:#000">
+<sc-if value="{{ heroIsVideo }}" hint-placeholder-val="{{ false }}">{{ heroVideo }}</sc-if>
+<sc-if value="{{ heroIsImage }}" hint-placeholder-val="{{ true }}"><img src="{{ heroSrc }}" alt="{{ heroAlt }}" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ heroFit }};object-position:{{ heroPos }}"></sc-if>
+</div>
+</figure>
+<div style="display:grid;grid-template-columns:{{ g12 }};gap:32px clamp(16px,2vw,28px);margin-top:clamp(36px,4vw,56px)">
+<p style="grid-column:{{ colDeck }};margin:0;font:400 clamp(28px,3vw,44px)/1.12 'Surendra','DM Sans',sans-serif;text-wrap:pretty">{{ summary }}</p>
+<dl style="grid-column:{{ colCredits }};margin:0;display:flex;flex-direction:column;border-bottom:1px solid rgba(248,200,208,.24)">
+<sc-for list="{{ meta }}" as="m" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:5px;padding:12px 0;border-top:1px solid rgba(248,200,208,.24)"><dt style="font:500 11.5px/1.2 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#f8c8d0">{{ m.k }}</dt><dd style="margin:0;font:400 15px/1.45 'DM Sans',sans-serif">{{ m.v }}</dd></div>
+</sc-for>
+</dl>
+</div>
+</header>
+
+<sc-if value="{{ hasStory }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1360px;margin:0 auto;padding:clamp(88px,10vw,152px) clamp(20px,4vw,56px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span>01 — The story</span><span style="color:rgba(255,255,255,.6)">{{ title }}</span></div>
+<div style="display:grid;grid-template-columns:{{ g12 }};gap:40px clamp(16px,2vw,28px);margin-top:clamp(28px,3vw,44px)">
+<div style="grid-column:{{ colBody }};column-count:{{ bodyCols }};column-gap:clamp(28px,3vw,48px)">
+<sc-for list="{{ paras }}" as="pa" hint-placeholder-count="3">
+<div style="break-inside:avoid;display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
+<span style="font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#f8c8d0">{{ pa.head }}</span>
+<sc-if value="{{ pa.first }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font:400 17px/1.7 'DM Sans',sans-serif;text-wrap:pretty"><span style="float:left;margin:.06em .1em 0 0;font:400 4.4em/.74 'Surendra','DM Sans',sans-serif;color:#f8c8d0">{{ pa.cap }}</span>{{ pa.rest }}</p></sc-if>
+<sc-if value="{{ pa.notFirst }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font:400 17px/1.7 'DM Sans',sans-serif;text-wrap:pretty">{{ pa.text }}</p></sc-if>
+</div>
+</sc-for>
+</div>
+<aside style="grid-column:{{ colSide }};align-self:start;display:flex;flex-direction:column;gap:14px;padding-top:18px;border-top:2px solid #f8c8d0">
+<p style="margin:0;font:400 clamp(26px,2.4vw,36px)/1.08 'Surendra','DM Sans',sans-serif;color:#f8c8d0;text-wrap:balance">"{{ pull }}"</p>
+<sc-if value="{{ hasPullBy }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font:500 11.5px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.64)">{{ pullBy }}</p></sc-if>
+</aside>
+</div>
+</section>
+</sc-if>
+
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="0">
+
+<sc-if value="{{ b.isStory }}" hint-placeholder-val="{{ false }}">
+<section style="max-width:1360px;margin:0 auto;padding:clamp(88px,10vw,152px) clamp(20px,4vw,56px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span>{{ b.no }} — {{ b.label }}</span><span style="color:rgba(255,255,255,.6)">{{ runTitle }}</span></div>
+<div style="display:grid;grid-template-columns:{{ g12 }};gap:28px clamp(16px,2vw,28px);margin-top:clamp(28px,3vw,44px)">
+<div style="grid-column:{{ b.colText }};grid-row:{{ b.row }};align-self:{{ b.alignText }};display:flex;flex-direction:column;gap:16px">
+<sc-if value="{{ b.hasHeading }}" hint-placeholder-val="{{ true }}"><h2 style="margin:0;font:400 clamp(32px,3.4vw,52px)/1 'Surendra','DM Sans',sans-serif;text-wrap:balance;color:#f8c8d0">{{ b.heading }}</h2></sc-if>
+<sc-if value="{{ b.hasBody }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font:400 17px/1.7 'DM Sans',sans-serif;text-wrap:pretty">{{ b.body }}</p></sc-if>
+</div>
+<figure style="grid-column:{{ b.colFig }};grid-row:{{ b.row }};margin:0;display:flex;flex-direction:column;gap:10px">
+<div style="position:relative;overflow:hidden;aspect-ratio:{{ b.ratio }};background:#111"><img src="{{ b.src }}" alt="{{ b.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<figcaption style="font:500 11.5px/1.5 'DM Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.64)">{{ b.cap }}</figcaption>
+</figure>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ b.isProcess }}" hint-placeholder-val="{{ false }}">
+<section style="max-width:1360px;margin:0 auto;padding:clamp(88px,10vw,152px) clamp(20px,4vw,56px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span>{{ b.no }} — {{ b.label }}</span><span style="color:rgba(255,255,255,.6)">{{ runTitle }}</span></div>
+<sc-if value="{{ b.hasHeading }}" hint-placeholder-val="{{ true }}"><h2 style="margin:clamp(20px,2.4vw,32px) 0 0;max-width:18ch;font:400 clamp(36px,4.4vw,68px)/.95 'Surendra','DM Sans',sans-serif;text-wrap:balance;color:#f8c8d0">{{ b.heading }}</h2></sc-if>
+<div style="display:grid;grid-template-columns:{{ g12 }};gap:clamp(16px,2vw,28px);margin-top:clamp(28px,3vw,44px)">
+<sc-for list="{{ b.steps }}" as="st" hint-placeholder-count="3">
+<figure style="grid-column:{{ st.gc }};grid-row:{{ st.gr }};margin:0;display:flex;flex-direction:column;gap:10px">
+<div style="position:relative;overflow:hidden;flex:{{ st.flex }};min-height:{{ st.minH }};aspect-ratio:{{ st.ar }};background:#111"><img src="{{ st.src }}" alt="{{ st.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<figcaption style="font:500 11.5px/1.5 'DM Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.64)">{{ st.cap }}</figcaption>
+</figure>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ b.isFeature }}" hint-placeholder-val="{{ false }}">
+<section style="padding-top:clamp(88px,10vw,152px)">
+<div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,56px)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span>{{ b.no }} — {{ b.label }}</span><span style="color:rgba(255,255,255,.6)">{{ runTitle }}</span></div></div>
+<div style="position:relative;width:100%;aspect-ratio:2/1;min-height:320px;margin-top:clamp(20px,2.4vw,32px);overflow:hidden;background:#000"><img src="{{ b.src }}" alt="{{ b.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="max-width:1360px;margin:0 auto;padding:12px clamp(20px,4vw,56px) 0;font:500 11.5px/1.5 'DM Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.64)">{{ b.cap }}</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ b.isGallery }}" hint-placeholder-val="{{ false }}">
+<section style="max-width:1360px;margin:0 auto;padding:clamp(88px,10vw,152px) clamp(20px,4vw,56px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span>{{ b.no }} — {{ b.label }}</span><span style="color:rgba(255,255,255,.6)">{{ runTitle }}</span></div>
+<sc-if value="{{ b.hasHeading }}" hint-placeholder-val="{{ false }}"><h2 style="margin:clamp(20px,2.4vw,32px) 0 0;max-width:18ch;font:400 clamp(36px,4.4vw,68px)/.95 'Surendra','DM Sans',sans-serif;text-wrap:balance;color:#f8c8d0">{{ b.heading }}</h2></sc-if>
+<div style="display:flex;flex-wrap:wrap;gap:clamp(16px,2vw,28px);margin-top:clamp(28px,3vw,44px)">
+<sc-for list="{{ b.items }}" as="it" hint-placeholder-count="2">
+<figure style="flex:{{ it.grow }} 1 0%;min-width:min(100%,{{ it.minW }});max-width:{{ it.maxW }};margin:0;display:flex;flex-direction:column;gap:10px">
+<div style="position:relative;overflow:hidden;aspect-ratio:{{ it.ratio }};background:#111"><img src="{{ it.src }}" alt="{{ it.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<figcaption style="font:500 11.5px/1.5 'DM Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.64)">{{ it.cap }}</figcaption>
+</figure>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+</sc-for>
+
+<nav aria-label="More work" style="max-width:1360px;margin:0 auto;padding:clamp(104px,11vw,168px) clamp(20px,4vw,56px) clamp(80px,8vw,120px)">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:10px;border-bottom:1px solid rgba(248,200,208,.55);font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+<a href="{{ prevHref }}" style="color:#f8c8d0;text-decoration:underline;text-underline-offset:4px" style-hover="color:#fff">[ ← {{ prevTitle }} ]</a>
+<a href="Work.dc.html" style="color:#f8c8d0;text-decoration:underline;text-underline-offset:4px" style-hover="color:#fff">[ All work ]</a>
+</div>
+<a href="{{ nextHref }}" style="display:flex;flex-direction:column;gap:14px;margin-top:clamp(24px,3vw,40px);color:#f8c8d0" style-hover="color:#fff">
+<span style="font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase">Next story →</span>
+<span style="font:400 clamp(56px,9vw,150px)/.88 'Surendra','DM Sans',sans-serif;letter-spacing:-.01em;text-wrap:balance">{{ nextTitle }}</span>
+</a>
+</nav>
+</article>
+</sc-if>
+
+<sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+<section style="max-width:1360px;margin:0 auto;padding:clamp(80px,10vw,160px) clamp(20px,4vw,56px);display:flex;flex-direction:column;align-items:flex-start;gap:28px">
+<h1 style="margin:0;font:400 clamp(48px,7vw,104px)/.95 'Surendra','DM Sans',sans-serif">This project isn't here.</h1>
+<a href="Work.dc.html" style="font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#f8c8d0;text-decoration:underline;text-underline-offset:5px" style-hover="color:#fff">[ ← All work ]</a>
+</section>
+</sc-if>
+
+</main>
+
+<section id="contact" style="scroll-margin-top:72px;max-width:1360px;margin:0 auto;border-top:1px solid rgba(248,200,208,.24);padding:clamp(96px,10vw,152px) clamp(20px,4vw,56px) clamp(64px,7vw,104px)">
+<p style="margin:0;font:500 12px/1.3 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#f8c8d0">Open to internships + freelance</p>
+<h2 style="margin:20px 0 0;font:400 clamp(48px,7.2vw,120px)/.92 'Surendra','DM Sans',sans-serif;color:#f8c8d0;text-wrap:balance">Hiring a design intern?</h2>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,3.4vw,48px)">
+<a href="mailto:contact@leahcortezstudios.art" style="font:500 clamp(18px,2vw,26px)/1.3 'DM Mono',monospace;color:#fff;text-decoration:underline;text-underline-offset:5px;overflow-wrap:anywhere" style-hover="color:#f8c8d0">contact@leahcortezstudios.art</a>
+<p style="margin:0;max-width:36ch;font:400 16px/1.6 'DM Sans',sans-serif;color:rgba(255,255,255,.76)">Or have a project in mind? Tell me a little about it. I usually reply within 2–4 days.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(32px,4vw,56px);padding-top:24px;border-top:1px solid rgba(248,200,208,.28)">
+<a href="https://www.instagram.com/leahcortez.art" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:999px;border:1.5px solid #f8c8d0;color:#f8c8d0;font:500 12.5px/1 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;transition:background-color .3s ease,border-color .3s ease,transform .3s ease" style-hover="background:#7e1c2e;border-color:#7e1c2e;color:#f8c8d0;transform:translateY(-2px)">Instagram</a>
+<a href="https://www.behance.net/leahcortez1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:999px;border:1.5px solid #f8c8d0;color:#f8c8d0;font:500 12.5px/1 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;transition:background-color .3s ease,border-color .3s ease,transform .3s ease" style-hover="background:#7e1c2e;border-color:#7e1c2e;color:#f8c8d0;transform:translateY(-2px)">Behance</a>
+<a href="https://leahcortezstudios.art/cv/index.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:999px;border:1.5px solid #f8c8d0;background:#f8c8d0;color:#000;font:500 12.5px/1 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;transition:background-color .3s ease,border-color .3s ease,color .3s ease,transform .3s ease" style-hover="background:#7e1c2e;border-color:#7e1c2e;color:#f8c8d0;transform:translateY(-2px)">Resume ↗</a>
+</div>
+</section>
+
+<footer style="border-top:1px solid rgba(248,200,208,.24)">
+<div style="max-width:1360px;margin:0 auto;padding:26px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px">
+<div style="display:flex;align-items:center;gap:14px">
+<span aria-hidden="true" style="width:24px;height:32px;background:#f8c8d0;-webkit-mask:url('images/logo/logo3.png') center/contain no-repeat;mask:url('images/logo/logo3.png') center/contain no-repeat"></span>
+<span style="font:400 14px/1.4 'DM Sans',sans-serif;color:rgba(255,255,255,.64)">Leah Cortez © 2026</span>
+</div>
+<span style="font:400 14px/1.4 'DM Sans',sans-serif;color:rgba(255,255,255,.64)">Headings set in Surendra, a typeface I designed.</span>
+<a href="#top" style="font:600 12px/1 'DM Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#f8c8d0" style-hover="color:#fff">Back to top</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Each project's content lives in collections/design/<folder>/case-study.json.
+// The order (and prev/next links) comes from scripts/gallery-order.json.
+// A hero whose src ends in .mp4 / .webm / .mov plays as a looping video; "poster" is its still.
+const BASE = 'collections/design/';
+const resolve = (slug, src) => {
+  if (!src) return '';
+  if (/^(https?:)?\/\//.test(src)) return src;
+  const parts = (BASE + slug).split('/');
+  src.split('/').forEach((s) => { if (s === '..') parts.pop(); else if (s && s !== '.') parts.push(s); });
+  return encodeURI(decodeURIComponent(parts.join('/')));
+};
+const getJSON = (u) => fetch(encodeURI(u)).then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); });
+const href = (slug) => 'Project.dc.html?p=' + encodeURIComponent(slug);
+const isVid = (u) => /\.(mp4|webm|mov)([?#]|$)/i.test(u || '');
+const pad = (n) => String(n).padStart(2, '0');
+const strip = (t) => (t || '').replace(/^\s*\d+\s*[—–-]\s*/, '');
+const HEADS = { challenge: 'The brief', solution: 'The idea', outcome: 'The result' };
+const DEF = { story: 'Story', feature: 'Final', gallery: 'Gallery', process: 'Process' };
+
+class Component extends DCLogic {
+  state = { data: null, slug: null, no: '01', prev: null, next: null, missing: false, w: 1440, vr: null };
+
+  componentDidMount() {
+    this.still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.sync = () => { const nw = window.innerWidth; if (nw && nw !== this.state.w) this.setState({ w: nw }); };
+    this.sync();
+    window.addEventListener('resize', this.sync);
+    if (window.ResizeObserver) { this.ro = new ResizeObserver(this.sync); this.ro.observe(document.documentElement); }
+    this.load();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.sync);
+    if (this.ro) this.ro.disconnect();
+  }
+
+  async load() {
+    try {
+      const order = await getJSON('scripts/gallery-order.json');
+      const slug = new URLSearchParams(window.location.search).get('p') || order[0];
+      const n = order.length, i = Math.max(0, order.indexOf(slug));
+      const ps = order[(i - 1 + n) % n], ns = order[(i + 1) % n];
+      const [data, pd, nd] = await Promise.all([
+        getJSON(BASE + slug + '/case-study.json'),
+        getJSON(BASE + ps + '/case-study.json').catch(() => null),
+        getJSON(BASE + ns + '/case-study.json').catch(() => null)
+      ]);
+      document.title = data.title + ' · Leah Cortez';
+      this.setState({ data, slug, no: pad(i + 1), vr: null, prev: { slug: ps, title: pd ? pd.title : 'Previous' }, next: { slug: ns, title: nd ? nd.title : 'Next project' } });
+    } catch (e) {
+      this.setState({ missing: true });
+    }
+  }
+
+  videoRef = (el) => {
+    if (!el || el.__lc) return;
+    el.__lc = true;
+    el.muted = true; el.defaultMuted = true;
+    el.setAttribute('muted', ''); el.setAttribute('playsinline', '');
+    if (!this.still) { const p = el.play(); if (p && p.catch) p.catch(() => {}); }
+  };
+
+  onMeta = (e) => {
+    const v = e.currentTarget;
+    if (v.videoWidth && v.videoHeight) this.setState({ vr: v.videoWidth / v.videoHeight });
+  };
+
+  renderVals() {
+    const h = React.createElement, s = this.state, w = s.w;
+    const pulse = h('span', { 'aria-hidden': true, style: { flex: 'none', width: 7, height: 7, borderRadius: '50%', background: '#f8c8d0', animation: 'lcPulse 2.4s ease-in-out infinite' } });
+    const base = { pulse, wide: w >= 760, statusOn: w >= 980, lpad: w < 760 ? '6px 8px' : '8px 14px', missing: s.missing, loaded: !!s.data };
+    const d = s.data;
+    if (!d) return base;
+    const slug = s.slug, grid = w >= 760;
+    const col = (c) => (grid ? c : '1 / -1');
+    let fig = 0;
+    const F = (c) => 'Fig. ' + pad(++fig) + (c ? ' — ' + c : '');
+
+    const hero = d.hero || {};
+    const heroIsVideo = isVid(hero.src);
+    const [hw, hh] = String(hero.ratio || '16/9').split('/').map(Number);
+    const r = heroIsVideo ? (s.vr || 16 / 9) : (hw / hh || 16 / 9);
+    const wideEnough = r >= 1.45;
+    const heroFit = wideEnough ? 'cover' : 'contain';
+    const heroVideo = heroIsVideo ? h('video', {
+      key: hero.src, ref: this.videoRef, src: hero.src, poster: resolve(slug, hero.poster), muted: true, loop: true, playsInline: true, autoPlay: !this.still,
+      preload: 'metadata', 'aria-label': hero.alt || '', onLoadedMetadata: this.onMeta,
+      style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: heroFit, objectPosition: hero.pos || '50% 50%' }
+    }) : null;
+
+    const ov = d.overview || {};
+    const keys = ['challenge', 'solution', 'outcome'].filter((k) => ov[k]);
+    const paras = keys.map((k, i) => ({ head: HEADS[k], text: ov[k], first: i === 0, notFirst: i !== 0, cap: i === 0 ? ov[k].charAt(0) : '', rest: i === 0 ? ov[k].slice(1) : '' }));
+    const qb = (d.blocks || []).find((b) => b.type === 'quote');
+    const pull = qb ? qb.text : (ov.outcome || d.summary || '');
+
+    let sec = paras.length ? 1 : 0, side = 'right';
+    const blocks = (d.blocks || []).filter((b) => b.type !== 'quote').map((b) => {
+      sec += 1;
+      const v = {
+        isStory: b.type === 'story', isFeature: b.type === 'feature', isGallery: b.type === 'gallery', isProcess: b.type === 'process',
+        no: pad(sec), label: strip(b.label) || DEF[b.type] || '', heading: b.heading || '', body: b.body || '',
+        hasHeading: !!b.heading, hasBody: !!b.body, src: resolve(slug, b.src), alt: b.alt || '', ratio: b.ratio || '3/2', items: [], steps: []
+      };
+      if (v.isStory) {
+        const sd = b.imageSide || side;
+        side = sd === 'right' ? 'left' : 'right';
+        v.colText = col(sd === 'right' ? '1 / span 4' : '9 / span 4');
+        v.colFig = col(sd === 'right' ? '6 / span 7' : '1 / span 7');
+        v.row = grid ? '1' : 'auto';
+        v.alignText = sd === 'right' ? 'start' : 'end';
+        v.cap = F(b.caption);
+      }
+      if (v.isFeature) v.cap = F(b.caption);
+      if (v.isProcess) {
+        const st = b.steps || [], k = st.length;
+        v.steps = st.map((x, j) => {
+          let gc = '1 / -1', gr = 'auto', big = false;
+          if (grid) {
+            if (k === 3) { if (j === 0) { gc = '1 / span 7'; gr = '1 / span 2'; big = true; } else { gc = '8 / span 5'; gr = String(j); } }
+            else if (k === 2) { gc = j === 0 ? '1 / span 6' : '7 / span 6'; gr = '1'; }
+            else if (k > 3) { gc = 'span ' + (k === 4 ? 3 : 4); }
+          }
+          return { src: resolve(slug, x.src), alt: x.alt || '', gc, gr, ar: big ? 'auto' : '4/3', flex: big ? '1 1 auto' : 'none', minH: big ? '320px' : '0px', cap: F([x.title, x.caption].filter(Boolean).join(', ')) };
+        });
+      }
+      if (v.isGallery) {
+        const items = b.items || [];
+        v.items = items.map((it) => {
+          const [iw, ih] = String(it.ratio || '3/2').split('/').map(Number);
+          return { src: resolve(slug, it.src), alt: it.alt || '', ratio: iw + '/' + ih, grow: +(iw / ih).toFixed(3), minW: '240px', maxW: items.length === 1 ? '960px' : 'none', cap: F(it.caption) };
+        });
+      }
+      return v;
+    });
+
+    return {
+      ...base,
+      no: s.no, category: [d.category, d.year].filter(Boolean).join(' · '), title: d.title, runTitle: d.title, summary: d.summary || '',
+      meta: (d.meta || []).filter(([k]) => k !== 'Year').map(([k, v]) => ({ k, v })),
+      heroIsVideo, heroIsImage: !heroIsVideo, heroVideo, heroSrc: resolve(slug, hero.src), heroAlt: hero.alt || '', heroPos: hero.pos || '50% 50%',
+      heroRatio: wideEnough ? String(+r.toFixed(4)) : '16/9', heroFit,
+      g12: grid ? 'repeat(12,minmax(0,1fr))' : 'minmax(0,1fr)',
+      colDeck: col('1 / span 8'), colCredits: col('10 / span 3'), colBody: col('1 / span 8'), colSide: col('10 / span 3'),
+      bodyCols: w >= 1000 ? 2 : 1,
+      hasStory: paras.length > 0, paras, pull, pullBy: qb ? (qb.label || '') : '', hasPullBy: !!(qb && qb.label),
+      blocks,
+      prevHref: href(s.prev.slug), prevTitle: s.prev.title, nextHref: href(s.next.slug), nextTitle: s.next.title
+    };
+  }
+}
+</script>
+</body>
+</html>

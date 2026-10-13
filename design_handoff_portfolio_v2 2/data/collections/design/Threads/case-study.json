@@ -1,0 +1,63 @@
+{
+  "title": "Threads",
+  "category": "Identity",
+  "year": "2026",
+  "tags": [
+    "Identity"
+  ],
+  "card": {
+    "src": "images/cs/mockup-bag.jpg",
+    "pos": "42% 50%",
+    "disc": "Logotype + motion",
+    "teaser": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated."
+  },
+  "summary": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated.",
+  "meta": [
+    [
+      "Role",
+      "Graphic design, motion design"
+    ],
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Static logotype, woven graphic elements, animated logotype"
+    ]
+  ],
+  "hero": {
+    "src": "2304_Cort_P1_TypeAnimationFinal.mp4",
+    "poster": "images/cs/mockup-bag.jpg",
+    "alt": "A copper shopping bag printed with the Threads logotype.",
+    "ratio": "1600/1066",
+    "pos": "42% 50%"
+  },
+  "overview": {
+    "challenge": "Redesign the logotype for Threads, a clothing retailer for young people, so the name, the clothes and the mark all connect.",
+    "solution": "Continuous, thread-like strokes for the main mark, with woven secondary strokes that point to the textile without spelling it out.",
+    "outcome": "A static logotype that sets the shape, and an animated version that keeps it recognizable in motion."
+  },
+  "blocks": [
+    {
+      "type": "feature",
+      "label": "Signage",
+      "src": "images/cs/final-signage.jpg",
+      "alt": "Threads logotype on signage.",
+      "caption": "The logotype on a storefront.",
+      "ratio": "2400/1600"
+    },
+    {
+      "type": "gallery",
+      "label": "Details",
+      "items": [
+        {
+          "src": "images/cs/mockup-tag.jpg",
+          "alt": "Threads logotype on a clothing tag.",
+          "caption": "Clothing tag.",
+          "ratio": "1600/1600"
+        }
+      ]
+    }
+  ]
+}

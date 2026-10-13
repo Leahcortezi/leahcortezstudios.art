@@ -1,0 +1,67 @@
+{
+  "title": "Disappearing Species",
+  "category": "Poster",
+  "year": "2025",
+  "tags": [
+    "Type & posters"
+  ],
+  "card": {
+    "src": "images/cs/final.jpg",
+    "pos": "50% 50%",
+    "disc": "Poster",
+    "teaser": "A koala silhouette filled with cooling towers. One image instead of a page of statistics."
+  },
+  "summary": "A koala silhouette filled with cooling towers. One image instead of a page of statistics.",
+  "meta": [
+    [
+      "Year",
+      "2025"
+    ],
+    [
+      "Deliverables",
+      "Awareness poster, illustration"
+    ]
+  ],
+  "hero": {
+    "src": "images/cs/final.jpg",
+    "alt": "A poster of a koala silhouette containing cooling towers and smoke.",
+    "ratio": "2400/1800"
+  },
+  "overview": {
+    "challenge": "Make habitat loss and industrial damage visible to someone walking past a poster.",
+    "solution": "A koala silhouette with cooling towers and smoke inside it, and negative space to suggest what's already gone.",
+    "outcome": "One direct image that does the work of a page of statistics."
+  },
+  "blocks": [
+    {
+      "type": "process",
+      "label": "Process",
+      "heading": "Research and sketches",
+      "steps": [
+        {
+          "src": "../../../collection/Disappearing%20Species/Research.jpg",
+          "alt": "Research references for the poster.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Disappearing%20Species/Sketches.jpg",
+          "alt": "Sketches and early poster studies.",
+          "title": "Sketches",
+          "ratio": "1366/768"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "In context",
+      "items": [
+        {
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Disappearing Species poster mockup.",
+          "ratio": "1600/1251"
+        }
+      ]
+    }
+  ]
+}

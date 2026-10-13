@@ -2,83 +2,61 @@
   "title": "Billy Joel Tribute Booklet",
   "category": "Editorial",
   "year": "2026",
-  "summary": "A 16-page editorial tribute to Billy Joel, combining introspective songwriting, archival-inspired references, and a restrained late-1970s visual palette.",
+  "tags": [
+    "Editorial"
+  ],
+  "card": {
+    "src": "images/cs/hero.jpg",
+    "pos": "50% 50%",
+    "disc": "Editorial",
+    "teaser": "Sixteen pages on Billy Joel and Vienna, in cream, charcoal and burgundy."
+  },
+  "summary": "Sixteen pages on Billy Joel's songwriting, especially Vienna, in cream, charcoal and burgundy.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
-    [
-      "Tools",
-      "InDesign"
-    ],
     [
       "Year",
       "2026"
     ],
     [
       "Deliverables",
-      "16-page editorial booklet, typography and layout, color system"
+      "16-page booklet, typography and layout, colour system"
     ]
   ],
-  "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "This editorial booklet pays tribute to Billy Joel’s songwriting, with particular attention to the introspective themes of Vienna. The design draws from the visual atmosphere of the late 1970s and early 1980s, translating the music’s reflective quality into a printed editorial experience."
-      },
-      {
-        "label": "Creative direction",
-        "text": "A restrained palette of cream, charcoal, and burgundy establishes a nostalgic, understated tone. Archival-inspired visual references support the historical atmosphere, while the editorial structure gives the music and its themes room to breathe. The design prioritizes mood and pacing over unnecessary decoration."
-      },
-      {
-        "label": "Design approach",
-        "text": "The 16-page booklet uses typography, image selection, and page sequencing to create a cohesive reading experience. The design connects the music’s cultural context with its more personal themes, treating the booklet as both a tribute and an editorial interpretation."
-      }
-    ]
-  },
   "hero": {
-    "layout": "split",
     "src": "images/cs/hero.jpg",
-    "alt": "Band Tribute Booklet mockup."
+    "alt": "A Billy Joel tribute booklet lying on dark wooden slats.",
+    "ratio": "2400/1600"
+  },
+  "overview": {
+    "challenge": "Capture the reflective feel of Billy Joel's songwriting, especially Vienna, in print.",
+    "solution": "A late-1970s palette of cream, charcoal and burgundy, archival-feeling references, and a structure that gives the music room to breathe.",
+    "outcome": "A 16-page booklet that works as both a tribute and an editorial reading of the songs."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "gallery",
-      "label": "02 — Final",
+      "label": "Pages",
+      "heading": "Cover and spreads",
       "items": [
         {
           "src": "images/cs/final-cover.jpg",
-          "alt": "Band Tribute Booklet cover.",
-          "fit": "contain"
+          "alt": "Billy Joel tribute booklet cover.",
+          "caption": "Cover.",
+          "ratio": "2400/1795"
         },
         {
           "src": "images/cs/spread-1.jpg",
-          "alt": "Band Tribute Booklet spread 1."
+          "alt": "Billy Joel tribute booklet spread.",
+          "caption": "Spread.",
+          "ratio": "1600/1112"
         },
         {
           "src": "images/cs/spread-2.jpg",
-          "alt": "Band Tribute Booklet spread 2."
+          "alt": "A second Billy Joel tribute booklet spread.",
+          "caption": "Spread.",
+          "ratio": "1600/1112"
         }
-      ],
-      "layout": "justified"
-    },
-    {
-      "type": "feature",
-      "label": "03 — Mockups",
-      "placeholder": "Booklet mockup: image coming soon",
-      "_todo": "Add the booklet mockup image (src, alt).",
-      "caption": "Placeholder caption: final design."
+      ]
     }
   ]
 }

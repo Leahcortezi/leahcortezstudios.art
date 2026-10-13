@@ -1,96 +1,63 @@
 {
   "title": "Historical Poster Styles",
-  "category": "Poster",
+  "category": "Posters",
   "year": "2026",
-  "summary": "A nine-week poster series studying historical design movements through research, iterative thumbnail exploration, and contemporary interpretations of influential visual languages.",
+  "tags": [
+    "Type & posters"
+  ],
+  "card": {
+    "src": "images/cs/final.jpg",
+    "pos": "50% 50%",
+    "disc": "Poster series",
+    "teaser": "Nine weeks, nine posters: Dada, the Stenberg brothers, Modernism and more."
+  },
+  "summary": "Nine weeks, nine posters: Dada, the Stenberg brothers, Modernism and more.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
     [
       "Year",
       "2026"
     ],
     [
       "Deliverables",
-      "Nine-poster series, thumbnail explorations, final posters"
+      "Nine posters, thumbnail studies"
     ]
   ],
   "hero": {
-    "layout": "split",
-    "src": "../../../collection/Historical Posters/Hero.mp4",
-    "alt": "Looping preview of the historical posters."
+    "src": "../../../collection/Historical%20Posters/Hero.mp4",
+    "poster": "images/cs/final.jpg",
+    "alt": "A grid of posters in historical design styles.",
+    "ratio": "2400/1760"
   },
   "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "Historical Poster Styles is a nine-week poster series exploring how distinct design movements and historical practitioners use typography, composition, imagery, and visual symbolism. The project combines research with iterative experimentation to develop a collection of posters informed by different approaches to graphic communication."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The series examines historical visual languages as systems that can be studied, interpreted, and reworked. Dada, the Stenberg Brothers, and Modernism are among the strongest directions represented. Rather than treating references as decorative styles, the work explores how their underlying approaches to composition and communication can inform new designs."
-      },
-      {
-        "label": "Design approach",
-        "text": "The process begins with research and thumbnail exploration before moving into refined compositions, including 25 thumbnail compositions for selected movements. Each poster interprets its chosen reference through a distinct composition while contributing to a broader study of historical graphic design."
-      }
-    ]
+    "challenge": "Study historical design movements as systems to understand, not styles to copy.",
+    "solution": "Research and thumbnails first (25 for some movements), then refined compositions that reinterpret each reference.",
+    "outcome": "A nine-poster series. Dada, the Stenberg brothers and Modernism are the strongest directions."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Research",
-      "src": "../../../collection/Historical Posters/Research.jpg",
-      "alt": "Research references for the poster series.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at",
-      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
-    },
-    {
-      "type": "story",
-      "imageSide": "left",
-      "label": "02 — Sketches",
-      "src": "../../../collection/Historical Posters/Sketches.jpg",
-      "alt": "Sketches and early poster studies.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
-      "type": "story",
-      "imageSide": "right",
-      "label": "03 — Concept development",
-      "src": "images/cs/concept.jpg",
-      "alt": "Concept development for the poster series.",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
-    },
-    {
-      "type": "feature",
-      "label": "04 — Final",
-      "src": "images/cs/final.jpg",
-      "alt": "Final poster design.",
-      "caption": "Placeholder caption: final design."
-    },
-    {
-      "type": "gallery",
-      "label": "05 — Mockups",
-      "items": [
+      "type": "process",
+      "label": "Process",
+      "heading": "Research, thumbnails, concept",
+      "steps": [
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "4/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "src": "../../../collection/Historical%20Posters/Research.jpg",
+          "alt": "Research references for the poster series.",
+          "title": "Research",
+          "ratio": "1366/768"
         },
         {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "4/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "src": "../../../collection/Historical%20Posters/Sketches.jpg",
+          "alt": "Thumbnail sketches and early poster studies.",
+          "title": "Thumbnails",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "images/cs/concept.jpg",
+          "alt": "Concept development for the poster series.",
+          "title": "Concept",
+          "ratio": "2400/1714"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

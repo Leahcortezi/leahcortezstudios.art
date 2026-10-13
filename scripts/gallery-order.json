@@ -1,14 +1,14 @@
 [
-  "collections/design/insane-grain-packaging/index.html",
-  "collections/design/editorial-spread/index.html",
-  "collections/design/contemporary-contexts-zine/index.html",
-  "collections/design/Threads/index.html",
-  "collections/design/space-age-wine-packaging/index.html",
-  "collections/design/band-tribute-booklet/index.html",
-  "collections/design/custom-typeface-specimen-poster/index.html",
-  "collections/design/paperback-full-cover/index.html",
-  "collections/design/City Reliquary/index.html",
-  "collections/design/themed-playing-card-design/index.html",
-  "collections/design/endangered-species-poster/index.html",
-  "collections/design/historical-posters/index.html"
+  "insane-grain-packaging",
+  "custom-typeface-specimen-poster",
+  "City Reliquary",
+  "editorial-spread",
+  "Threads",
+  "space-age-wine-packaging",
+  "contemporary-contexts-zine",
+  "paperback-full-cover",
+  "band-tribute-booklet",
+  "historical-posters",
+  "endangered-species-poster",
+  "themed-playing-card-design"
 ]

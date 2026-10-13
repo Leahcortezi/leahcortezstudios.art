@@ -1,13 +1,18 @@
 {
-  "title": "Designer Tribute Zine and Poster",
+  "title": "Designer Tribute Zine",
   "category": "Editorial",
   "year": "2025",
-  "summary": "An experimental designer tribute combining an eight-page folded zine and quote poster to explore emotional energy, visual layering, and creative process.",
+  "tags": [
+    "Editorial"
+  ],
+  "card": {
+    "src": "images/cs/mockup-zine.jpg",
+    "pos": "50% 50%",
+    "disc": "Editorial",
+    "teaser": "An eight-page folded zine and a quote poster for designer Jonathan Castro."
+  },
+  "summary": "An eight-page folded zine and a quote poster celebrating designer Jonathan Castro.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
     [
       "Year",
       "2025"
@@ -18,86 +23,75 @@
     ]
   ],
   "hero": {
-    "layout": "split",
-    "src": "../../../collection/Designer Tribute Zine + Poster/Hero.mp4",
-    "alt": "Looping preview of the tribute zine."
+    "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Hero.mp4",
+    "poster": "images/cs/mockup-zine.jpg",
+    "alt": "A folded, brightly coloured zine about Jonathan Castro.",
+    "ratio": "1600/1066"
   },
   "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "This project celebrates designer Jonathan Castro through an experimental editorial zine and accompanying poster. The work responds to an approach to design centered on emotional energy, layered visual references, and process-driven experimentation, interpreting a creative philosophy through visual form rather than presenting biographical information."
-      },
-      {
-        "label": "Creative direction",
-        "text": "Layering, expressive composition, and experimental visual treatments create an energetic editorial language. The zine format lets the work unfold across multiple pages, while the poster distills the central idea into a single statement. The poster features the quote: “Design is the accumulation of energy in an object.”"
-      },
-      {
-        "label": "Design approach",
-        "text": "The eight-page folded zine uses sequencing and visual variation to build a compact editorial experience. The poster creates a separate but related expression of the tribute, emphasizing the relationship between design, process, and accumulated meaning."
-      }
-    ]
+    "challenge": "Celebrate Jonathan Castro's way of working: emotional energy, layered references and a lot of experimenting.",
+    "solution": "Layered, expressive spreads that unfold across eight folded pages, plus a poster that boils the idea down to one statement.",
+    "outcome": "Two related pieces: a compact zine that builds page by page, and a poster about design, process and meaning piling up."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Research",
-      "body": "I chose Jonathan Castro because I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture—something I deeply connect with as well.",
-      "src": "../../../collection/Designer Tribute Zine + Poster/Research.jpg",
-      "alt": "Research on Jonathan Castro's work.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at"
+      "type": "quote",
+      "label": "Why Jonathan Castro",
+      "text": "I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture. That is something I deeply connect with."
     },
     {
-      "type": "story",
-      "imageSide": "left",
-      "label": "02 — Sketches",
-      "src": "../../../collection/Designer Tribute Zine + Poster/Sketches.jpg",
-      "alt": "Sketches and early zine layouts.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
-      "type": "story",
-      "imageSide": "right",
-      "label": "03 — Concept development",
-      "src": "../../../collection/Designer Tribute Zine + Poster/Concept Development.jpg",
-      "alt": "Concept development for the zine and poster.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: how the idea developed",
-      "body": "Placeholder text: describe how the concept developed from sketch to final. 40–80 words."
+      "type": "process",
+      "label": "Process",
+      "heading": "Research, sketches, concept",
+      "steps": [
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Research.jpg",
+          "alt": "Research on Jonathan Castro's work.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Sketches.jpg",
+          "alt": "Sketches and early zine layouts.",
+          "title": "Sketches",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Concept%20Development.jpg",
+          "alt": "Concept development for the zine and poster.",
+          "title": "Concept",
+          "ratio": "1366/768"
+        }
+      ]
     },
     {
       "type": "feature",
-      "label": "04 — Final",
+      "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "Grid of the final tribute zine pages and poster.",
+      "alt": "Grid of the final zine pages and poster.",
       "caption": "The final zine and poster, side by side.",
       "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "05 — Mockups",
+      "label": "In context",
       "items": [
         {
           "src": "images/cs/mockup-1.jpg",
-          "alt": "Tribute zine mockup 1.",
+          "alt": "Tribute zine mockup.",
           "ratio": "2000/1333"
         },
         {
           "src": "images/cs/mockup-2.jpg",
-          "alt": "Tribute zine mockup 2.",
+          "alt": "Tribute zine mockup, second view.",
           "ratio": "2000/1333"
         },
         {
           "src": "images/cs/mockup-3.jpg",
-          "alt": "Tribute zine mockup 3.",
+          "alt": "Tribute zine mockup, third view.",
           "ratio": "2000/1333"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

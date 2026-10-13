@@ -1,77 +1,58 @@
 {
-  "title": "Space Age Wine Packaging",
+  "title": "Space Age",
   "category": "Packaging",
   "year": "2026",
-  "summary": "A futuristic wine packaging concept featuring an astronaut, a vineyard reflected in the visor, and a coordinated label system.",
+  "tags": [
+    "Packaging",
+    "Illustration"
+  ],
+  "card": {
+    "src": "images/cs/hero.jpg",
+    "pos": "44% 50%",
+    "disc": "Packaging",
+    "teaser": "A rosé label with an astronaut, and a vineyard reflected in the visor."
+  },
+  "summary": "A rosé label with an astronaut, and a vineyard reflected in the visor.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
     [
       "Year",
       "2026"
     ],
     [
       "Deliverables",
-      "Front and back labels, astronaut illustration, bottle capsule, prototype mockups"
+      "Front and back labels, astronaut illustration, bottle capsule, prototypes"
     ]
   ],
-  "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "Space Age is a conceptual wine packaging project that combines celestial imagery with the traditional world of winemaking. An astronaut illustration, with a vineyard reflected in the helmet visor, connects the exploration of outer space with the origins and atmosphere of the wine itself."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The concept creates a meeting point between futuristic exploration and an established agricultural tradition. The astronaut provides an unexpected focal point, while the vineyard reflection connects the imaginative theme back to the product. The packaging is designed as a coordinated system rather than an isolated front label."
-      },
-      {
-        "label": "Design approach",
-        "text": "Illustration, typography, and label composition work together to establish the product’s personality. The concept is extended across front and back labels and the bottle capsule, and printed prototypes and bottle mockups show how the artwork translates from a flat design into a physical object."
-      }
-    ]
-  },
   "hero": {
-    "layout": "split",
     "src": "images/cs/hero.jpg",
-    "alt": "Space Age Rosé label redesign mockup."
+    "alt": "A hand holding a Space Age rosé bottle with an astronaut on the label.",
+    "pos": "44% 50%",
+    "ratio": "1800/1350"
+  },
+  "overview": {
+    "challenge": "Bring something unexpected to wine packaging without losing the product inside the concept.",
+    "solution": "An astronaut as the focal point, with a vineyard reflected in the visor to tie outer space back to where wine comes from.",
+    "outcome": "A label system across the front, back and capsule, tested as printed prototypes and bottle mockups."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "feature",
-      "label": "02 — Final",
+      "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "The final Space Age Rosé label.",
-      "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "alt": "The final Space Age rosé label.",
+      "caption": "The final label.",
+      "ratio": "2400/1848"
     },
     {
       "type": "gallery",
-      "label": "03 — Mockups",
+      "label": "In context",
       "items": [
         {
           "src": "images/cs/mockup-context.jpg",
-          "alt": "Space Age Rosé packaging in context."
-        },
-        {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "5/3",
-          "_todo": "Add a mockup image (src, alt)."
+          "alt": "Space Age rosé packaging in context.",
+          "ratio": "1600/960"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

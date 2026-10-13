@@ -1,76 +1,67 @@
 {
-  "title": "Themed Playing Card Design",
+  "title": "Scientific Revolution Deck",
   "category": "Illustration",
   "year": "2024",
-  "summary": "This playing card deck celebrates the Scientific Revolution by honoring pioneering figures across Biology, Chemistry, Physics, and Technology.",
+  "tags": [
+    "Illustration"
+  ],
+  "card": {
+    "src": "images/cs/hero.jpg",
+    "pos": "50% 50%",
+    "disc": "Card design",
+    "teaser": "A playing card deck where Darwin, Lavoisier, Newton and Tesla are the kings."
+  },
+  "summary": "A playing card deck celebrating the Scientific Revolution, with Darwin, Lavoisier, Newton and Tesla as the kings.",
   "meta": [
-    [
-      "Role",
-      "Role — add here"
-    ],
-    [
-      "Tools",
-      "Tools — add here"
-    ],
     [
       "Year",
       "2024"
     ],
     [
       "Deliverables",
-      "Assets & print files"
+      "Card designs, print files"
     ]
   ],
-  "overview": {
-    "challenge": "The challenge was to merge historical accuracy with engaging visual design—transforming educational content into a tangible artifact that respects intellectual legacy while maintaining the playful structure of traditional playing cards.",
-    "solution": "Placeholder: what did you make or decide to solve it? (1–2 sentences)",
-    "outcome": "Placeholder: what was the result? (1–2 sentences)"
-  },
   "hero": {
-    "layout": "split",
     "src": "images/cs/hero.jpg",
-    "alt": "Scientific Revolution playing card deck mockup."
+    "alt": "Four illustrated king cards from a Scientific Revolution playing card deck.",
+    "ratio": "1800/1692"
+  },
+  "overview": {
+    "challenge": "Merge historical accuracy with engaging visual design, turning educational content into a real deck that respects these legacies and still plays like normal cards.",
+    "solution": "Each suit is a field (biology, chemistry, physics and technology), with one of its pioneers as the king."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "gallery",
       "layout": "grid",
-      "label": "02 — Final",
+      "label": "The kings",
       "items": [
         {
           "src": "images/cs/card-bio.jpg",
-          "alt": "Biology King card: Charles Darwin."
+          "alt": "Biology king card: Charles Darwin.",
+          "caption": "Biology: Charles Darwin.",
+          "ratio": "857/1200"
         },
         {
           "src": "images/cs/card-chem.jpg",
-          "alt": "Chemistry King card: Antoine Lavoisier."
+          "alt": "Chemistry king card: Antoine Lavoisier.",
+          "caption": "Chemistry: Antoine Lavoisier.",
+          "ratio": "857/1200"
         },
         {
           "src": "images/cs/card-physics.jpg",
-          "alt": "Physics King card: Isaac Newton."
+          "alt": "Physics king card: Isaac Newton.",
+          "caption": "Physics: Isaac Newton.",
+          "ratio": "857/1200"
         },
         {
           "src": "images/cs/card-tech.jpg",
-          "alt": "Technology King card: Nikola Tesla."
+          "alt": "Technology king card: Nikola Tesla.",
+          "caption": "Technology: Nikola Tesla.",
+          "ratio": "857/1200"
         }
       ]
-    },
-    {
-      "type": "feature",
-      "label": "03 — Mockups",
-      "placeholder": "Deck mockup: image coming soon",
-      "_todo": "Add the deck mockup image (src, alt).",
-      "caption": "Placeholder caption: final design."
     }
   ]
 }

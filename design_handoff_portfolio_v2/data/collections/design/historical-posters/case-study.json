@@ -1,0 +1,63 @@
+{
+  "title": "Historical Poster Styles",
+  "category": "Posters",
+  "year": "2026",
+  "tags": [
+    "Type & posters"
+  ],
+  "card": {
+    "src": "images/cs/final.jpg",
+    "pos": "50% 50%",
+    "disc": "Poster series",
+    "teaser": "Nine weeks, nine posters: Dada, the Stenberg brothers, Modernism and more."
+  },
+  "summary": "Nine weeks, nine posters: Dada, the Stenberg brothers, Modernism and more.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "Nine posters, thumbnail studies"
+    ]
+  ],
+  "hero": {
+    "src": "../../../collection/Historical%20Posters/Hero.mp4",
+    "poster": "images/cs/final.jpg",
+    "alt": "A grid of posters in historical design styles.",
+    "ratio": "2400/1760"
+  },
+  "overview": {
+    "challenge": "Study historical design movements as systems to understand, not styles to copy.",
+    "solution": "Research and thumbnails first (25 for some movements), then refined compositions that reinterpret each reference.",
+    "outcome": "A nine-poster series. Dada, the Stenberg brothers and Modernism are the strongest directions."
+  },
+  "blocks": [
+    {
+      "type": "process",
+      "label": "Process",
+      "heading": "Research, thumbnails, concept",
+      "steps": [
+        {
+          "src": "../../../collection/Historical%20Posters/Research.jpg",
+          "alt": "Research references for the poster series.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Historical%20Posters/Sketches.jpg",
+          "alt": "Thumbnail sketches and early poster studies.",
+          "title": "Thumbnails",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "images/cs/concept.jpg",
+          "alt": "Concept development for the poster series.",
+          "title": "Concept",
+          "ratio": "2400/1714"
+        }
+      ]
+    }
+  ]
+}

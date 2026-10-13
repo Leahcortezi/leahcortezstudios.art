@@ -597,6 +597,7 @@ function throttle(func, limit) {
 
 // Generate random floating icon animations on page load
 function generateRandomFloatingIcons() {
+  if (document.body && document.body.classList.contains('v2')) return; // v2 pages have their own look
   console.log('Generating random floating icons...');
   
   const icons = ['flower.svg', 'star.svg', 'starburst.svg'];

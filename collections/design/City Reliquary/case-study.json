@@ -1,75 +1,62 @@
 {
   "title": "City Reliquary",
-  "category": "Branding",
+  "category": "Identity",
   "year": "2026",
-  "summary": "A visual identity for a community museum celebrating everyday artifacts, featuring a negative-space CR mark and a system of promotional and environmental applications.",
+  "tags": [
+    "Identity"
+  ],
+  "card": {
+    "src": "images/cs/hero.jpg",
+    "pos": "52% 45%",
+    "disc": "Identity",
+    "teaser": "An identity for a museum of everyday objects, built on a negative-space CR mark."
+  },
+  "summary": "An identity for a community museum of everyday objects, built on a negative-space CR mark.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
     [
       "Year",
       "2026"
     ],
     [
       "Deliverables",
-      "CR logo mark, brand identity system, posters, signage"
+      "CR mark, identity system, posters, signage"
     ]
   ],
   "hero": {
-    "layout": "split",
     "src": "images/cs/hero.jpg",
-    "alt": "City Reliquary t-shirt mockup."
+    "alt": "A red t-shirt printed with the white City Reliquary mark, worn against a graffitied wall.",
+    "pos": "52% 45%",
+    "ratio": "1800/1200"
   },
   "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "City Reliquary is a conceptual brand identity for a community museum in New York City dedicated to everyday artifacts and the stories they preserve. The identity explores how ordinary objects can become meaningful records of personal memory, neighborhood history, and shared culture."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The visual identity centers on a CR mark that uses negative space to create a distinctive, compact symbol. The mark provides a recognizable foundation for a broader identity system intended to work across promotional materials and environmental applications, reflecting the museum’s interest in preserving objects that might otherwise be overlooked."
-      },
-      {
-        "label": "Design approach",
-        "text": "The identity balances recognition with flexibility. The core mark is supported by applications that show how the system can operate across different formats while maintaining a consistent visual language. Posters, signage, and promotional materials extend the identity beyond the logo and into public-facing contexts."
-      }
-    ]
+    "challenge": "City Reliquary is a community museum in New York City for everyday artifacts and the stories they hold. The identity had to make ordinary objects feel worth keeping.",
+    "solution": "A compact CR mark built from negative space, as the anchor for a system that stretches across posters, signage and promotional pieces.",
+    "outcome": "One recognizable mark, flexible enough to move between formats without losing its voice."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "feature",
-      "label": "02 — Final",
+      "label": "Signage",
       "src": "images/cs/final.jpg",
       "alt": "City Reliquary signage mockup.",
-      "caption": "Placeholder caption: final design."
+      "caption": "The mark at building scale.",
+      "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "03 — Mockups",
+      "label": "Posters",
       "items": [
         {
           "src": "images/cs/mockup-poster-1.jpg",
-          "alt": "City Reliquary poster mockup."
+          "alt": "City Reliquary poster mockup.",
+          "ratio": "1600/1173"
         },
         {
           "src": "images/cs/mockup-poster-2.jpg",
-          "alt": "City Reliquary second poster mockup."
+          "alt": "A second City Reliquary poster mockup.",
+          "ratio": "1600/1110"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

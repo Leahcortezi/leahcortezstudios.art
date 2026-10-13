@@ -1,0 +1,97 @@
+{
+  "title": "Designer Tribute Zine",
+  "category": "Editorial",
+  "year": "2025",
+  "tags": [
+    "Editorial"
+  ],
+  "card": {
+    "src": "images/cs/mockup-zine.jpg",
+    "pos": "50% 50%",
+    "disc": "Editorial",
+    "teaser": "An eight-page folded zine and a quote poster for designer Jonathan Castro."
+  },
+  "summary": "An eight-page folded zine and a quote poster celebrating designer Jonathan Castro.",
+  "meta": [
+    [
+      "Year",
+      "2025"
+    ],
+    [
+      "Deliverables",
+      "Eight-page folded zine, quote poster"
+    ]
+  ],
+  "hero": {
+    "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Hero.mp4",
+    "poster": "images/cs/mockup-zine.jpg",
+    "alt": "A folded, brightly coloured zine about Jonathan Castro.",
+    "ratio": "1600/1066"
+  },
+  "overview": {
+    "challenge": "Celebrate Jonathan Castro's way of working: emotional energy, layered references and a lot of experimenting.",
+    "solution": "Layered, expressive spreads that unfold across eight folded pages, plus a poster that boils the idea down to one statement.",
+    "outcome": "Two related pieces: a compact zine that builds page by page, and a poster about design, process and meaning piling up."
+  },
+  "blocks": [
+    {
+      "type": "quote",
+      "label": "Why Jonathan Castro",
+      "text": "I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture. That is something I deeply connect with."
+    },
+    {
+      "type": "process",
+      "label": "Process",
+      "heading": "Research, sketches, concept",
+      "steps": [
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Research.jpg",
+          "alt": "Research on Jonathan Castro's work.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Sketches.jpg",
+          "alt": "Sketches and early zine layouts.",
+          "title": "Sketches",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Designer%20Tribute%20Zine%20%2B%20Poster/Concept%20Development.jpg",
+          "alt": "Concept development for the zine and poster.",
+          "title": "Concept",
+          "ratio": "1366/768"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "label": "Final",
+      "src": "images/cs/final.jpg",
+      "alt": "Grid of the final zine pages and poster.",
+      "caption": "The final zine and poster, side by side.",
+      "ratio": "2400/1600"
+    },
+    {
+      "type": "gallery",
+      "label": "In context",
+      "items": [
+        {
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Tribute zine mockup.",
+          "ratio": "2000/1333"
+        },
+        {
+          "src": "images/cs/mockup-2.jpg",
+          "alt": "Tribute zine mockup, second view.",
+          "ratio": "2000/1333"
+        },
+        {
+          "src": "images/cs/mockup-3.jpg",
+          "alt": "Tribute zine mockup, third view.",
+          "ratio": "2000/1333"
+        }
+      ]
+    }
+  ]
+}

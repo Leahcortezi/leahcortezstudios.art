@@ -1,12 +1,21 @@
 {
-  "title": "Surendra — Typeface Design",
-  "category": "Typography",
+  "title": "Surendra",
+  "category": "Type",
   "year": "2026",
-  "summary": "A digital typeface inspired by historical wood and metal type, developed through glyph design and presented in a custom specimen poster.",
+  "tags": [
+    "Type & posters"
+  ],
+  "card": {
+    "src": "images/cs/mockup-mag.jpg",
+    "pos": "34% 50%",
+    "disc": "Typeface",
+    "teaser": "A typeface drawn from old wood and metal type specimens. Every heading on this site is set in it."
+  },
+  "summary": "A digital typeface drawn from historical wood and metal type, shown in a specimen poster. Every heading on this site is set in it.",
   "meta": [
     [
       "Role",
-      "Typeface Designer and Graphic Designer"
+      "Typeface design, graphic design"
     ],
     [
       "Year",
@@ -14,62 +23,40 @@
     ],
     [
       "Deliverables",
-      "Original digital typeface, glyph set, specimen poster"
+      "Typeface, glyph set, specimen poster"
     ]
   ],
-  "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "Surendra is a type-design project that reinterprets the visual character of historical wood and metal type specimens through a digitally developed typeface and specimen poster. The project connects the physical traditions of historical typography with the possibilities of contemporary digital type design."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The project draws inspiration from the visual character of historical printing and display type. Rather than simply reproducing an archival specimen, it explores how historical typographic references can inform a new digital design. The specimen poster presents the typeface as both a functional typographic system and a visual subject in its own right."
-      },
-      {
-        "label": "Design approach",
-        "text": "The process includes developing the glyph set and considering spacing, kerning, and consistency across the characters. The specimen poster then demonstrates the typeface through a structured presentation of its forms and visual characteristics."
-      }
-    ]
-  },
   "hero": {
-    "layout": "split",
-    "src": "../../../collection/Custom Typeface + Specimen Poster/Hero.mp4",
-    "alt": "Looping preview of the Surendra typeface."
+    "src": "../../../collection/Custom%20Typeface%20%2B%20Specimen%20Poster/Hero.mp4",
+    "poster": "images/cs/mockup-mag.jpg",
+    "alt": "An open magazine with the headline \"It was raining inside\" set in Surendra.",
+    "ratio": "1600/1112",
+    "pos": "34% 50%"
+  },
+  "overview": {
+    "challenge": "Reinterpret old wood and metal type specimens as a new digital typeface, instead of just copying an archival one.",
+    "solution": "I drew the glyph set from those references, then worked through spacing, kerning and consistency across every character.",
+    "outcome": "A working display face and a specimen poster that shows off its forms. It is also the voice of this whole site."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "feature",
-      "label": "02 — Final",
+      "label": "Final",
       "src": "images/cs/final.jpg",
-      "alt": "Surendra typeface mockup.",
-      "caption": "Placeholder caption: final design."
+      "alt": "Surendra typeface specimen poster mockup.",
+      "caption": "The specimen poster.",
+      "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "03 — Mockups",
+      "label": "In use",
       "items": [
         {
-          "src": "images/cs/mockup-mag.jpg",
-          "alt": "Surendra magazine mockup."
-        },
-        {
           "src": "images/cs/mockup-2.jpg",
-          "alt": "Surendra specimen mockup."
+          "alt": "Surendra specimen mockup.",
+          "ratio": "1600/1200"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

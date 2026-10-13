@@ -1,0 +1,62 @@
+{
+  "title": "Billy Joel Tribute Booklet",
+  "category": "Editorial",
+  "year": "2026",
+  "tags": [
+    "Editorial"
+  ],
+  "card": {
+    "src": "images/cs/hero.jpg",
+    "pos": "50% 50%",
+    "disc": "Editorial",
+    "teaser": "Sixteen pages on Billy Joel and Vienna, in cream, charcoal and burgundy."
+  },
+  "summary": "Sixteen pages on Billy Joel's songwriting, especially Vienna, in cream, charcoal and burgundy.",
+  "meta": [
+    [
+      "Year",
+      "2026"
+    ],
+    [
+      "Deliverables",
+      "16-page booklet, typography and layout, colour system"
+    ]
+  ],
+  "hero": {
+    "src": "images/cs/hero.jpg",
+    "alt": "A Billy Joel tribute booklet lying on dark wooden slats.",
+    "ratio": "2400/1600"
+  },
+  "overview": {
+    "challenge": "Capture the reflective feel of Billy Joel's songwriting, especially Vienna, in print.",
+    "solution": "A late-1970s palette of cream, charcoal and burgundy, archival-feeling references, and a structure that gives the music room to breathe.",
+    "outcome": "A 16-page booklet that works as both a tribute and an editorial reading of the songs."
+  },
+  "blocks": [
+    {
+      "type": "gallery",
+      "label": "Pages",
+      "heading": "Cover and spreads",
+      "items": [
+        {
+          "src": "images/cs/final-cover.jpg",
+          "alt": "Billy Joel tribute booklet cover.",
+          "caption": "Cover.",
+          "ratio": "2400/1795"
+        },
+        {
+          "src": "images/cs/spread-1.jpg",
+          "alt": "Billy Joel tribute booklet spread.",
+          "caption": "Spread.",
+          "ratio": "1600/1112"
+        },
+        {
+          "src": "images/cs/spread-2.jpg",
+          "alt": "A second Billy Joel tribute booklet spread.",
+          "caption": "Spread.",
+          "ratio": "1600/1112"
+        }
+      ]
+    }
+  ]
+}

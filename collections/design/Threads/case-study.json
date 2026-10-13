@@ -1,12 +1,21 @@
 {
-  "title": "Threads — Static and Animated Logotype",
-  "category": "Branding",
+  "title": "Threads",
+  "category": "Identity",
   "year": "2026",
-  "summary": "A logotype redesign for a youth clothing retailer, translating the idea of thread and weaving into a continuous graphic mark and animated identity.",
+  "tags": [
+    "Identity"
+  ],
+  "card": {
+    "src": "images/cs/mockup-bag.jpg",
+    "pos": "42% 50%",
+    "disc": "Logotype + motion",
+    "teaser": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated."
+  },
+  "summary": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated.",
   "meta": [
     [
       "Role",
-      "Graphic Designer and Motion Designer"
+      "Graphic design, motion design"
     ],
     [
       "Year",
@@ -17,59 +26,38 @@
       "Static logotype, woven graphic elements, animated logotype"
     ]
   ],
-  "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "This project redesigns the logotype for Threads, a youth-oriented clothing retailer. The identity explores the idea of connection through continuous, thread-like strokes that reference the brand name and the physical process of weaving. The project extends the static logo into motion, showing how an identity can develop across still and animated applications."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The primary mark uses continuous strokes to suggest a connected thread. Secondary woven strokes reinforce the textile reference and give the identity a more distinctive visual character, connecting the name, the clothing context, and the graphic form without relying on an overly literal illustration."
-      },
-      {
-        "label": "Design approach",
-        "text": "The static logotype establishes the identity’s core shape and proportions. The animated version develops the same concept through movement, using the continuous-thread idea as the foundation for the motion treatment and keeping the identity recognizable across both versions."
-      }
-    ]
-  },
   "hero": {
-    "layout": "split",
     "src": "2304_Cort_P1_TypeAnimationFinal.mp4",
-    "alt": "The animated Threads logotype."
+    "poster": "images/cs/mockup-bag.jpg",
+    "alt": "A copper shopping bag printed with the Threads logotype.",
+    "ratio": "1600/1066",
+    "pos": "42% 50%"
+  },
+  "overview": {
+    "challenge": "Redesign the logotype for Threads, a clothing retailer for young people, so the name, the clothes and the mark all connect.",
+    "solution": "Continuous, thread-like strokes for the main mark, with woven secondary strokes that point to the textile without spelling it out.",
+    "outcome": "A static logotype that sets the shape, and an animated version that keeps it recognizable in motion."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Sketches",
-      "placeholder": "Sketches and early iterations: image coming soon",
-      "ratio": "4/3",
-      "_todo": "Add the sketches image (src, alt, ratio) and 40–80 words on what changed between rounds. See docs/CASE-STUDY-GUIDE.md.",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
       "type": "feature",
-      "label": "02 — Final",
+      "label": "Signage",
       "src": "images/cs/final-signage.jpg",
       "alt": "Threads logotype on signage.",
-      "caption": "Placeholder caption: final design."
+      "caption": "The logotype on a storefront.",
+      "ratio": "2400/1600"
     },
     {
       "type": "gallery",
-      "label": "03 — Mockups",
+      "label": "Details",
       "items": [
         {
-          "src": "images/cs/mockup-bag.jpg",
-          "alt": "Threads logotype on a shopping bag."
-        },
-        {
           "src": "images/cs/mockup-tag.jpg",
-          "alt": "Threads logotype on a clothing tag."
+          "alt": "Threads logotype on a clothing tag.",
+          "caption": "Clothing tag.",
+          "ratio": "1600/1600"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }

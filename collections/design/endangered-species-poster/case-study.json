@@ -2,86 +2,66 @@
   "title": "Disappearing Species",
   "category": "Poster",
   "year": "2025",
-  "summary": "An environmental-awareness poster using a koala silhouette, industrial imagery, and negative space to communicate habitat loss and the disappearance of wildlife.",
+  "tags": [
+    "Type & posters"
+  ],
+  "card": {
+    "src": "images/cs/final.jpg",
+    "pos": "50% 50%",
+    "disc": "Poster",
+    "teaser": "A koala silhouette filled with cooling towers. One image instead of a page of statistics."
+  },
+  "summary": "A koala silhouette filled with cooling towers. One image instead of a page of statistics.",
   "meta": [
-    [
-      "Role",
-      "Graphic Designer"
-    ],
     [
       "Year",
       "2025"
     ],
     [
       "Deliverables",
-      "Awareness poster, koala silhouette illustration, industrial imagery"
+      "Awareness poster, illustration"
     ]
   ],
-  "overview": {
-    "items": [
-      {
-        "label": "Project",
-        "text": "Disappearing Species is a public-awareness poster inspired by wildlife conservation and the environmental impact of industrial activity. The composition uses a koala silhouette containing cooling towers and smoke to connect habitat loss, pollution, and the disappearance of vulnerable species."
-      },
-      {
-        "label": "Creative direction",
-        "text": "The poster uses a recognizable animal silhouette as a visual container for a more unsettling industrial landscape. The contrast between wildlife and infrastructure makes environmental damage visible through a single, direct image. Negative space suggests absence, loss, and the gradual disappearance of natural habitats."
-      },
-      {
-        "label": "Design approach",
-        "text": "Rather than relying on a crowded collection of statistics or illustrations, the poster communicates through symbolism and visual contrast. The simplified composition gives the central image room to work, encouraging viewers to consider the relationship between human activity and the natural world. The project draws inspiration from public-awareness and conservation campaign design, including WWF-style visual communication."
-      }
-    ]
-  },
   "hero": {
-    "layout": "split",
-    "src": "../../../collection/Disappearing Species/Hero.jpg",
-    "alt": "Disappearing Species WWF poster."
+    "src": "images/cs/final.jpg",
+    "alt": "A poster of a koala silhouette containing cooling towers and smoke.",
+    "ratio": "2400/1800"
+  },
+  "overview": {
+    "challenge": "Make habitat loss and industrial damage visible to someone walking past a poster.",
+    "solution": "A koala silhouette with cooling towers and smoke inside it, and negative space to suggest what's already gone.",
+    "outcome": "One direct image that does the work of a page of statistics."
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Research",
-      "src": "../../../collection/Disappearing Species/Research.jpg",
-      "alt": "Research references for the poster.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: what you looked at",
-      "body": "Placeholder text: describe the references, moodboards or artists you studied and what you took from them. 40–80 words."
-    },
-    {
-      "type": "story",
-      "imageSide": "left",
-      "label": "02 — Sketches",
-      "src": "../../../collection/Disappearing Species/Sketches.jpg",
-      "alt": "Sketches and early poster studies.",
-      "ratio": "1366/768",
-      "heading": "Placeholder heading: early directions",
-      "body": "Placeholder text: describe the sketches or early iterations and what changed between rounds. 40–80 words."
-    },
-    {
-      "type": "feature",
-      "label": "03 — Final",
-      "src": "images/cs/final.jpg",
-      "alt": "The finished Disappearing Species poster.",
-      "fit": "contain",
-      "caption": "Placeholder caption: final design."
+      "type": "process",
+      "label": "Process",
+      "heading": "Research and sketches",
+      "steps": [
+        {
+          "src": "../../../collection/Disappearing%20Species/Research.jpg",
+          "alt": "Research references for the poster.",
+          "title": "Research",
+          "ratio": "1366/768"
+        },
+        {
+          "src": "../../../collection/Disappearing%20Species/Sketches.jpg",
+          "alt": "Sketches and early poster studies.",
+          "title": "Sketches",
+          "ratio": "1366/768"
+        }
+      ]
     },
     {
       "type": "gallery",
-      "label": "04 — Mockups",
+      "label": "In context",
       "items": [
         {
           "src": "images/cs/mockup-1.jpg",
-          "alt": "Disappearing Species poster mockup."
-        },
-        {
-          "placeholder": "Mockup: image coming soon",
-          "ratio": "5/4",
-          "_todo": "Add a mockup image (src, alt)."
+          "alt": "Disappearing Species poster mockup.",
+          "ratio": "1600/1251"
         }
-      ],
-      "layout": "justified"
+      ]
     }
   ]
 }
