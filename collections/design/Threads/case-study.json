@@ -11,7 +11,7 @@
     "disc": "Logotype + motion",
     "teaser": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated."
   },
-  "summary": "A logotype for a youth clothing retailer, drawn as one continuous thread, then animated.",
+  "summary": "A logotype for a youth clothing retailer, drawn as a continuous looping line in copper brown and extended into an animated version.",
   "meta": [
     [
       "Role",
@@ -34,9 +34,10 @@
     "pos": "42% 50%"
   },
   "overview": {
-    "challenge": "Redesign the logotype for Threads, a clothing retailer for young people, so the name, the clothes and the mark all connect.",
-    "solution": "Continuous, thread-like strokes for the main mark, with woven secondary strokes that point to the textile without spelling it out.",
-    "outcome": "A static logotype that sets the shape, and an animated version that keeps it recognizable in motion."
+    "text": [
+      "For Threads, I wanted the wordmark to communicate the brand's connection to clothing through the construction of the lettering itself. Instead of adding a separate sewing or textile symbol, I explored whether the letters could behave like a single strand of thread.",
+      "The challenge was to create a connected form that felt expressive while keeping the name readable."
+    ]
   },
   "blocks": [
     {
@@ -118,5 +119,18 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Brand Identity and Motion",
+  "deliverables": [
+    "Existing logotype research and analysis",
+    "Letterform sketches",
+    "Vector logotype development",
+    "Supporting graphic elements",
+    "Animated logotype"
+  ],
+  "finalDesign": [
+    "The lowercase wordmark is drawn as one continuous line, with loops and crossings connecting the letters. These connections reference thread moving through fabric, making the concept part of the letterforms rather than an additional graphic.",
+    "The mark is presented in warm copper brown on a plain white paper shopping bag with matching twisted handles. Keeping the bag free of other graphics allows the line work to carry the identity and creates a direct relationship between the logo and its physical application.",
+    "The animated version extends the continuous line into motion. Both versions use the same underlying idea, allowing the identity to move between a static retail application and a digital format without losing its defining characteristic."
   ]
 }

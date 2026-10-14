@@ -12,7 +12,7 @@
     "disc": "Book cover",
     "teaser": "A full paperback wrap: a rooster crushing eggs, for a war over which end to crack."
   },
-  "summary": "A full paperback wrap for Jonathan Swift's satire: a rooster crushing eggs, for a war over which end to crack.",
+  "summary": "A full paperback sleeve for Jonathan Swift's *Gulliver's Travels*, using a crowned rooster, crushed eggs, and condensed typography to interpret the novel's political satire.",
   "meta": [
     [
       "Year",
@@ -29,9 +29,10 @@
     "ratio": "1800/1200"
   },
   "overview": {
-    "challenge": "Turn Swift's absurd war between the Big-Endians and Little-Endians into a single cover image.",
-    "solution": "A rooster crushing eggs: a silly argument blown up into real destruction, which is the whole point of the satire.",
-    "outcome": "Front, spine and back designed as one continuous wrap, with the illustration holding it together."
+    "text": [
+      "This cover focuses on the conflict between the Big-Endians and Little-Endians, who disagree over which end of an egg should be cracked. The project translates this seemingly minor dispute into a visual metaphor for authority, division, and the disproportionate consequences of political conflict.",
+      "The challenge was to create a cover that communicated the satirical concept through illustration while maintaining the character of a printed literary edition."
+    ]
   },
   "blocks": [
     {
@@ -90,5 +91,19 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Book Cover Design",
+  "deliverables": [
+    "Cover concept and illustration",
+    "Typography and layout",
+    "Front cover design",
+    "Spine and back cover",
+    "Full paperback sleeve"
+  ],
+  "finalDesign": [
+    "The central illustration depicts a rooster wearing a gold crown and flexing a human-like arm above a cluster of cracked grey eggs. The rooster's warm brown body and red comb contrast with the muted eggs and aged tan background. The exaggerated arm and crown transform the bird from an ordinary animal into a figure of authority, reinforcing the power dynamic behind the story's conflict.",
+    "The title, *Gulliver's Travels*, is set in tall, condensed dark-brown capitals across the illustration, with Jonathan Swift's name placed beneath. The typography is integrated into the image rather than separated into an independent title block, allowing the illustration and lettering to function as one composition.",
+    "The aged paper texture gives the cover a traditional printed quality, while the exaggerated illustration keeps the concept direct and contemporary. The cracked eggs anchor the lower portion of the design, visually connecting the rooster's dominance to the consequences of the conflict.",
+    "Across the full paperback sleeve, the illustration and typography establish a consistent visual direction that connects the book's literary context with its central satirical theme."
   ]
 }

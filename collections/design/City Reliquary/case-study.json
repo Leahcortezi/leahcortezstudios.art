@@ -11,7 +11,7 @@
     "disc": "Identity",
     "teaser": "An identity for a museum of everyday objects, built on a negative-space CR mark."
   },
-  "summary": "An identity for a community museum of everyday objects, built on a negative-space CR mark.",
+  "summary": "A visual identity for City Reliquary, a community-focused New York City museum, built around a collage-like CR mark formed from overlapping rectangular frames.",
   "meta": [
     [
       "Year",
@@ -30,9 +30,9 @@
     "poster": "images/cs/hero.jpg"
   },
   "overview": {
-    "challenge": "City Reliquary is a community museum in New York City for everyday artifacts and the stories they hold. The identity had to make ordinary objects feel worth keeping.",
-    "solution": "A compact CR mark built from negative space, as the anchor for a system that stretches across posters, signage and promotional pieces.",
-    "outcome": "One recognizable mark, flexible enough to move between formats without losing its voice."
+    "text": [
+      "City Reliquary celebrates New York City's history through everyday objects, personal collections, and overlooked artifacts. The identity draws on the idea of collecting and preserving fragments of history, using a collage of frames to create a distinctive mark that reflects the museum's approach."
+    ]
   },
   "blocks": [
     {
@@ -86,5 +86,18 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Brand Identity",
+  "deliverables": [
+    "Brand research and visual analysis",
+    "Logo exploration and development",
+    "Negative-space CR mark",
+    "Identity system",
+    "Supporting merchandise applications"
+  ],
+  "finalDesign": [
+    "The logo is constructed from a collage of outlined rectangular frames arranged in a compact, overlapping composition. The frames create a sense of layered images and collected fragments, while the negative space between them forms the initials C and R. This allows the mark to function as both a monogram and a visual reference to the museum's collection of objects and stories.",
+    "The identity uses a limited palette of rust red and white. The mark appears alongside a condensed *City Reliquary Museum* wordmark on a tote bag, while a larger, cropped version covers a red spiral notebook. The same elements carry across a mug, cap, and pens, adapting to different surfaces and scales.",
+    "The overlapping frames give the identity its structure and visual character. Keeping the palette and core mark consistent allows the applications to feel connected, while changes in scale and cropping introduce variation without losing recognition."
   ]
 }

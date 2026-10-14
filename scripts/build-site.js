@@ -39,6 +39,7 @@ const pad = (n) => String(n).padStart(2, '0');
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Surendra has no curly quotes, so text set in it uses straight ones.
+const md = (t) => esc(t).replace(/\*([^*]+)\*/g, '<em>$1</em>');
 const straight = (s) => String(s == null ? '' : s).replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"');
 const isVideo = (u) => /\.(mp4|webm|mov)([?#]|$)/i.test(u || '');
 const strip = (t) => String(t || '').replace(/^\s*\d+\s*[\u2014\u2013-]\s*/, '');
@@ -206,7 +207,7 @@ function renderProject(slug, d, order, all) {
       <div class="lc-runhead lc-label">
         <a class="all-work" href="${root}collections/index.html">[ \u2190 All work ]</a>
         <span>Case study No. ${pad(idx + 1)}</span>
-        <span>${esc([d.category, d.year].filter(has).join(' \u00B7 '))}</span>
+        <span>${esc([d.categoryFull || d.category, d.year].filter(has).join(' \u00B7 '))}</span>
       </div>
       <h1 class="lc-title">${esc(straight(d.title))}</h1>
       <figure class="lc-hero">
@@ -215,21 +216,29 @@ function renderProject(slug, d, order, all) {
         </div>
       </figure>
       <div class="lc-g12 lc-deck-grid">
-        <p class="lc-deck">${esc(straight(d.summary || ''))}</p>${metaHtml}
+        <p class="lc-deck">${md(straight(d.summary || ''))}</p>${metaHtml}
       </div>
     </header>`;
 
   // ----- 01 the story
   const ov = d.overview || {};
   const HEADS = { challenge: 'The brief', solution: 'The idea', outcome: 'The result' };
-  const keys = ['challenge', 'solution', 'outcome'].filter((k) => has(ov[k]));
+  const fd = Array.isArray(d.finalDesign) ? d.finalDesign.filter(has) : [];
+  const ovText = Array.isArray(ov.text) ? ov.text.filter(has) : [];
+  const dels = Array.isArray(d.deliverables) ? d.deliverables.filter(has) : [];
+  const newStyle = ovText.length > 0;
+  const keys = newStyle ? ['text'] : ['challenge', 'solution', 'outcome'].filter((k) => has(ov[k]));
   const qb = (d.blocks || []).find((b) => b.type === 'quote');
-  const pull = qb ? qb.text : (ov.outcome || d.summary || '');
+  const lastFd = fd.length ? fd[fd.length - 1] : '';
+  const pull = qb ? qb.text : (has(d.pull) ? d.pull : (newStyle ? (lastFd.split(/(?<=[.!?])\s+/)[0] || d.summary) : (ov.outcome || d.summary || '')));
   const secHead = (no, label) => `<div class="lc-sechead"><span>${no} \u2014 ${esc(label)}</span><span>${esc(straight(d.title))}</span></div>`;
 
   let storyHtml = '';
   if (keys.length) {
-    const paras = keys.map((k, i) => {
+    const paras = newStyle ? ([
+      `          <div class="lc-para">\n            <span class="lc-para-head">Overview</span>\n${ovText.map((t, i) => `            <p>${i === 0 ? `<span class="lc-dropcap">${esc(Array.from(t)[0])}</span>${md(Array.from(t).slice(1).join(''))}` : md(t)}</p>`).join('\n')}\n          </div>`,
+      dels.length ? `          <div class="lc-para">\n            <span class="lc-para-head">Deliverables</span>\n            <ul class="lc-list">\n${dels.map((t) => `              <li>${md(t)}</li>`).join('\n')}\n            </ul>\n          </div>` : ''
+    ].filter(Boolean).join('\n')) : keys.map((k, i) => {
       let body;
       if (i === 0) {
         const chars = Array.from(ov[k]);
@@ -334,6 +343,19 @@ ${figs}
     return '';
   }).filter(Boolean).join('\n\n');
 
+  let finalHtml = '';
+  if (fd.length) {
+    sec += 1;
+    finalHtml = `    <section class="lc-sec">
+      ${secHead(pad(sec), 'Final design')}
+      <div class="lc-g12">
+        <div class="lc-final">
+${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
+        </div>
+      </div>
+    </section>`;
+  }
+
   const nextHtml = `    <nav class="lc-next" aria-label="More work">
       <div class="lc-sechead">
         <a class="lc-textlink prev-work" href="${projHref(prevSlug)}">[ \u2190 ${esc(prevTitle)} ]</a>
@@ -348,7 +370,7 @@ ${figs}
   const ogImage = has(hero.poster) ? hero.poster : (!isVideo(hero.src) ? hero.src : '');
   const html = [
     pageHead({
-      title: `${d.title} \u00B7 Leah Cortez`, desc: d.summary, root,
+      title: `${d.title} \u00B7 Leah Cortez`, desc: String(d.summary || '').replace(/\*/g, ''), root,
       url: `${SITE}/collections/design/${enc(slug)}/`,
       image: ogImage && !/^\.\./.test(ogImage) ? `${SITE}/collections/design/${enc(slug)}/${enc(ogImage)}` : '',
     }),
@@ -361,6 +383,7 @@ ${figs}
     headerBlock,
     storyHtml,
     blockHtml,
+    finalHtml,
     nextHtml,
     '  </article>',
     '  </main>',

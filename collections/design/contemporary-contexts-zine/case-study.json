@@ -11,7 +11,7 @@
     "disc": "Editorial",
     "teaser": "An eight-page folded zine and a quote poster for designer Jonathan Castro."
   },
-  "summary": "An eight-page folded zine and a quote poster celebrating designer Jonathan Castro.",
+  "summary": "An eight-page zine and accompanying poster exploring designer Jonathan Castro's visual language through iridescent liquid artwork, expressive lettering, and restrained black typography.",
   "meta": [
     [
       "Year",
@@ -29,9 +29,10 @@
     "ratio": "1600/1066"
   },
   "overview": {
-    "challenge": "Celebrate Jonathan Castro's way of working: emotional energy, layered references and a lot of experimenting.",
-    "solution": "Layered, expressive spreads that unfold across eight folded pages, plus a poster that boils the idea down to one statement.",
-    "outcome": "Two related pieces: a compact zine that builds page by page, and a poster about design, process and meaning piling up."
+    "text": [
+      "This project examines Jonathan Castro's design practice and the visual qualities that make his work distinctive. I wanted the publication to reflect the energy of his imagery while maintaining a clear editorial structure for the written content.",
+      "The design balances fluid, colorful artwork with simpler typography, allowing the imagery to carry the atmosphere without making the information difficult to follow."
+    ]
   },
   "blocks": [
     {
@@ -101,5 +102,18 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Editorial Design",
+  "deliverables": [
+    "Research into Jonathan Castro's work",
+    "Written biographical and conceptual content",
+    "Visual references and layout studies",
+    "Eight-page folded zine",
+    "Quote poster"
+  ],
+  "finalDesign": [
+    "The interior pairs liquid, iridescent forms with gradients of blue, orange, pink, and green. These images occupy much of the open page space, giving the publication a fluid visual character.",
+    "The typography provides contrast. The word About appears in outlined, hand-drawn lettering angled across a corner, while a yellow highlight isolates a block of body text from the colorful image behind it. On the cover, chrome-style lettering spells Castro against a dark background, with the tagline beneath in smaller, lighter type.",
+    "The dark cover establishes a more restrained entry point before the reader encounters the brighter interior. Warped lettering connects the two treatments, so the change in color and imagery feels deliberate rather than disconnected. The accompanying quote poster extends the project into a second editorial format."
   ]
 }

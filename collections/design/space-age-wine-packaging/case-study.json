@@ -10,9 +10,9 @@
     "src": "images/cs/thumb.jpg",
     "pos": "50% 50%",
     "disc": "Packaging",
-    "teaser": "A ros\u00e9 label with an astronaut, and a vineyard reflected in the visor."
+    "teaser": "A rosé label with an astronaut, and a vineyard reflected in the visor."
   },
-  "summary": "A ros\u00e9 label with an astronaut, and a vineyard reflected in the visor.",
+  "summary": "A rosé wine label and bottle capsule combining retro space imagery, an astronaut illustration, and a vineyard reflected in the visor.",
   "meta": [
     [
       "Year",
@@ -25,14 +25,15 @@
   ],
   "hero": {
     "src": "images/cs/hero.jpg",
-    "alt": "A hand holding a Space Age ros\u00e9 bottle with an astronaut on the label.",
+    "alt": "A hand holding a Space Age rosé bottle with an astronaut on the label.",
     "pos": "44% 50%",
     "ratio": "1800/1350"
   },
   "overview": {
-    "challenge": "Bring something unexpected to wine packaging without losing the product inside the concept.",
-    "solution": "An astronaut as the focal point, with a vineyard reflected in the visor to tie outer space back to where wine comes from.",
-    "outcome": "A label system across the front, back and capsule, tested as printed prototypes and bottle mockups."
+    "text": [
+      "Space Age brings together the visual language of vintage science fiction and the agricultural origins of wine. The concept uses an astronaut as the main image, creating an unexpected direction for a rosé label while connecting the imagined setting of space with the vineyard through the reflection in the visor.",
+      "The packaging needed to establish a clear focal point, communicate the wine type, and carry the same visual idea from the label to the bottle capsule."
+    ]
   },
   "blocks": [
     {
@@ -90,5 +91,19 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Wine Packaging",
+  "deliverables": [
+    "Wine label design",
+    "Astronaut illustration",
+    "Front and back labels",
+    "Bottle capsule design",
+    "Bottle mockups"
+  ],
+  "finalDesign": [
+    "The front label uses a deep blue starfield as the setting for a central astronaut in a white suit. A vineyard appears reflected in the visor, connecting the space theme back to the wine's agricultural origins.",
+    "The product name, *Space Age*, runs vertically along the left side in white retro-inspired lettering. The smaller *Rosé* designation sits on the right, allowing the astronaut to remain the main focal point while keeping the wine type identifiable.",
+    "On the finished bottle, the deep blue label contrasts with the pink-orange wine visible through the clear glass. This creates a color relationship between the label and the product rather than treating the packaging as an isolated graphic. A matching navy capsule extends the blue onto the bottle neck, with the year printed in white.",
+    "The final design relies on a clear focal point, restrained supporting typography, and the contrast between the cool label and warm wine. These choices give the bottle a recognizable retro-futuristic character while keeping the product presentation cohesive."
   ]
 }

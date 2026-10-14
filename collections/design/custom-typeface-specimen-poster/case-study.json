@@ -11,7 +11,7 @@
     "disc": "Typeface",
     "teaser": "A typeface drawn from old wood and metal type specimens. Every heading on this site is set in it."
   },
-  "summary": "A digital typeface drawn from historical wood and metal type, shown in a specimen poster. Every heading on this site is set in it.",
+  "summary": "A custom serif typeface inspired by historical wood and metal type, developed through distinctive letterforms, wedge serifs, and expressive details.",
   "meta": [
     [
       "Role",
@@ -34,9 +34,10 @@
     "pos": "34% 50%"
   },
   "overview": {
-    "challenge": "Reinterpret old wood and metal type specimens as a new digital typeface, instead of just copying an archival one.",
-    "solution": "I drew the glyph set from those references, then worked through spacing, kerning and consistency across every character.",
-    "outcome": "A working display face and a specimen poster that shows off its forms. It is also the voice of this whole site."
+    "text": [
+      "Surendra explores how the character of historical type can be translated into a contemporary digital typeface. The focus is on the construction of the letterforms themselves: their proportions, terminals, contrast, and the small irregularities that give a typeface its personality.",
+      "The project combines type research, letterform development, and specimen design to explore how historical references can inform a contemporary typeface."
+    ]
   },
   "blocks": [
     {
@@ -117,5 +118,19 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Typography",
+  "deliverables": [
+    "Historical type research",
+    "Custom typeface design",
+    "Uppercase and lowercase characters",
+    "Numerals and punctuation",
+    "Typeface specimen poster"
+  ],
+  "finalDesign": [
+    "Surendra is a soft, low-contrast serif with wedge-shaped serifs and distinctive details that give the letterforms their character. The slanted *e* and the curled terminal of the *7* are examples of how individual shapes contribute to the personality of the typeface without making the overall character set feel inconsistent.",
+    "The typeface is designed to work at display sizes, where the shapes and spacing of individual letters can be appreciated. Its forms balance historical references with a more contemporary, expressive character rather than directly reproducing an existing historical typeface.",
+    "The specimen presents the name Surendra alongside the uppercase and lowercase alphabets, numerals, and punctuation. Generous spacing and a restrained cream background allow the letterforms to remain the focus. Thin dividing rules and compact font information organize the page without competing with the typography.",
+    "The typeface is also used for headings throughout my portfolio, allowing its character to extend beyond the specimen into a working digital environment."
   ]
 }

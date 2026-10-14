@@ -11,7 +11,7 @@
     "disc": "Editorial",
     "teaser": "Sixteen pages on Billy Joel and Vienna, in cream, charcoal and burgundy."
   },
-  "summary": "Sixteen pages on Billy Joel's songwriting, especially Vienna, in cream, charcoal and burgundy.",
+  "summary": "A sixteen-page tribute booklet exploring Billy Joel's music, with particular attention to *Vienna*, through archival photography, serif typography, and a cream, charcoal, and burgundy palette.",
   "meta": [
     [
       "Year",
@@ -29,9 +29,10 @@
     "ratio": "2400/1600"
   },
   "overview": {
-    "challenge": "Capture the reflective feel of Billy Joel's songwriting, especially Vienna, in print.",
-    "solution": "A late-1970s palette of cream, charcoal and burgundy, archival-feeling references, and a structure that gives the music room to breathe.",
-    "outcome": "A 16-page booklet that works as both a tribute and an editorial reading of the songs."
+    "text": [
+      "The project explores Billy Joel's music through its reflective themes and emotional atmosphere, rather than presenting a conventional biography. I wanted the publication to feel considered and personal, using the visual language of vintage print media to support the subject.",
+      "The design relies on pacing, image treatment, and typography to create variation across the pages while maintaining a consistent visual identity."
+    ]
   },
   "blocks": [
     {
@@ -70,5 +71,19 @@
         }
       ]
     }
+  ],
+  "categoryFull": "Editorial Design",
+  "deliverables": [
+    "Research into Billy Joel's music",
+    "Editorial moodboard and references",
+    "Typography and layout development",
+    "Color palette and image selection",
+    "Sixteen-page booklet",
+    "Front and back cover design"
+  ],
+  "finalDesign": [
+    "The booklet uses cream pages with photographs treated in black and white or burgundy duotone. Alternating between these treatments creates visual variation while keeping the imagery within a consistent palette.",
+    "The cover pairs Billy Joel with *Piano Man* in script lettering. Inside, headings such as *Finding His Voice* and *The Stranger* introduce sections set in narrow serif text columns alongside large photographs. A dedicated pull-quote page breaks up the reading sequence, while a script Billy Joel signature crosses one of the full-page images.",
+    "The combination of narrow text columns and larger photographs gives the pages a clear hierarchy. The restrained colors and recurring typography tie the different layouts together, creating the feel of a cohesive printed tribute rather than a collection of unrelated spreads."
   ]
 }

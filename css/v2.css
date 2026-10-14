@@ -941,3 +941,10 @@ html { scroll-behavior: smooth; background: #000; }
 @media (prefers-reduced-motion: reduce) {
   .lc-tags-track { animation: none; }
 }
+
+/* case study: deliverables list + final design text */
+.lc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font: 400 17px/1.5 var(--lc-sans); }
+.lc-list li { position: relative; padding-left: 18px; }
+.lc-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; background: var(--lc-pink); border-radius: 50%; }
+.lc-final { grid-column: 1 / span 8; display: flex; flex-direction: column; gap: 20px; max-width: 760px; }
+@media (max-width: 999px) { .lc-final { grid-column: 1 / -1; } }
