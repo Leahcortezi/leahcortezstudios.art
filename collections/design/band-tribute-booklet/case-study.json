@@ -23,7 +23,8 @@
     ]
   ],
   "hero": {
-    "src": "images/cs/hero.jpg",
+    "src": "../../../collection/billy%20joel/images/cs/booklet.mp4",
+    "poster": "images/cs/hero.jpg",
     "alt": "A Billy Joel tribute booklet lying on dark wooden slats.",
     "ratio": "2400/1600"
   },
@@ -55,6 +56,17 @@
           "alt": "A second Billy Joel tribute booklet spread.",
           "caption": "Spread.",
           "ratio": "1600/1112"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "In use",
+      "items": [
+        {
+          "src": "images/cs/mockup-1.jpg",
+          "alt": "Billy Joel tribute booklet mockup.",
+          "ratio": "2400/1692"
         }
       ]
     }
