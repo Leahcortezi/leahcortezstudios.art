@@ -19,12 +19,10 @@ The site is a design-focused portfolio, with a personal, scrapbook-style look.
 | Project pages | `/collections/design/<slug>/index.html` | Generated from `case-study.json` |
 | About | `/bio/index.html` | Built from the About handoff (hero, facts, story, how I work, professor quotes, "Outside the brief", contact) |
 | Contact | `/contact/index.html`, `thanks.html` | FormSubmit form to contact@leahcortezstudios.art |
-| Commissions | `/commissions/index.html` | Inquiry form |
-| Resources | `/resources/index.html` | Older page |
 | Card | `/card.html` | Link-in-bio (Portfolio, Behance, Instagram) |
 | 404 | `/404.html` | |
 
-The pages from the Home, Work, project and About redesign use `css/v2.css`, `scripts/v2.js` and `body.v2`. Home also loads `scripts/home.js`. Contact, Commissions, Card and Resources still use the older stylesheets.
+The pages from the Home, Work, project and About redesign use `css/v2.css`, `scripts/v2.js` and `body.v2`. Home also loads `scripts/home.js`. Contact and Card still use the older stylesheets.
 
 ## Design system (v2)
 - Colors: pink `#f8c8d0`, burgundy `#7e1c2e`, cream `#f3ece2`, rose `#f3b2bf`, black background
