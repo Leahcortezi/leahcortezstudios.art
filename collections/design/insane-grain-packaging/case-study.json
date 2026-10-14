@@ -6,7 +6,7 @@
     "Packaging"
   ],
   "card": {
-    "src": "images/cs/hero.jpg",
+    "src": "images/cs/thumb.jpg",
     "pos": "50% 50%",
     "disc": "Packaging",
     "teaser": "A health snack that refuses to look polite: a halftone mouth, real chilies and tall condensed type."
@@ -44,7 +44,7 @@
     {
       "type": "story",
       "imageSide": "right",
-      "label": "01 — Research",
+      "label": "01 \u2014 Research",
       "heading": "Borrowing from collage posters",
       "body": "I pulled collage portraits, halftone photography and loud poster typography: work that feels cut up, layered and a little unhinged, which is exactly what the name asks for.",
       "src": "images/cs/research.jpg",
@@ -55,7 +55,7 @@
     {
       "type": "story",
       "imageSide": "left",
-      "label": "02 — Sketches",
+      "label": "02 \u2014 Sketches",
       "heading": "Two early directions",
       "body": "A digital collage tested how photography, halftone and flat colour could share one surface. A marker sketch blocked out the grid underneath it.",
       "src": "images/cs/sketches.jpg",
@@ -65,7 +65,7 @@
     },
     {
       "type": "feature",
-      "label": "03 — Final",
+      "label": "03 \u2014 Final",
       "src": "images/cs/feature.jpg",
       "alt": "Rows of the finished Insane Grain pouch laid out at an angle on black.",
       "caption": "The final pouch, in repeat.",
@@ -73,7 +73,7 @@
     },
     {
       "type": "gallery",
-      "label": "04 — In context",
+      "label": "04 \u2014 In context",
       "heading": "Out in the world",
       "items": [
         {
