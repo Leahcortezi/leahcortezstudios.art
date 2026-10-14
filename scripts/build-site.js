@@ -135,7 +135,6 @@ function contactAndFooter() {
     <div class="lc-pills">
       <a class="lc-pill" href="https://www.instagram.com/leahcortez.art" target="_blank" rel="noopener">Instagram</a>
       <a class="lc-pill" href="https://www.behance.net/leahcortez1" target="_blank" rel="noopener">Behance</a>
-      <a class="lc-pill lc-pill--fill" href="https://leahcortezstudios.art/cv/index.html" target="_blank" rel="noopener">Resume \u2197</a>
     </div>
   </section>
 
