@@ -36,11 +36,6 @@
   },
   "blocks": [
     {
-      "type": "quote",
-      "label": "Why this topic",
-      "text": "The topic fascinated me, and it gave me a chance to explore the visual confusion between two surreal experiences."
-    },
-    {
       "type": "rs",
       "label": "Research & Sketches",
       "rows": [
@@ -116,8 +111,7 @@
     "Final two-page editorial spread"
   ],
   "finalDesign": [
-    "The opening uses stretched, warped capital letters that overlap and run beyond the page edges. The word REM sits vertically along the side, introducing a typographic interruption that reinforces the subject of sleep. Dark, high-contrast photographs sit among the oversized letters, adding to the uneasy atmosphere.",
-    "The body pages shift to narrow, dense text columns on white. Byline information and introductory copy follow a more conventional hierarchy, giving the reader a stable way into the article after the disruptive opening.",
-    "The contrast is intentional: the typography and photography express the disorientation of sleep paralysis, while the grid keeps the overall spread organized. The design uses that tension to connect the visual experience with the article's subject."
-  ]
+    "Keyholes and clocks were my first ideas, and they turned the spread into a horror poster. The article is about not knowing which explanation is true, so I let the type carry the unease and kept the photos dark and cropped. The headline breaks across the page, but the body text stays in narrow, ordered columns, so it still works as an article. Black and white only, because color would have picked a side."
+  ],
+  "pull": "The article never decides between aliens and sleep, so the design doesn't either."
 }

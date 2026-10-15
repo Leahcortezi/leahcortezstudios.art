@@ -36,11 +36,6 @@
   },
   "blocks": [
     {
-      "type": "quote",
-      "label": "Why Jonathan Castro",
-      "text": "I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture. That is something I deeply connect with."
-    },
-    {
       "type": "rs",
       "label": "Research & Sketches",
       "rows": [
@@ -114,8 +109,7 @@
     "Quote poster"
   ],
   "finalDesign": [
-    "The interior pairs liquid, iridescent forms with gradients of blue, orange, pink, and green. These images occupy much of the open page space, giving the publication a fluid visual character.",
-    "The typography provides contrast. The word About appears in outlined, hand-drawn lettering angled across a corner, while a yellow highlight isolates a block of body text from the colorful image behind it. On the cover, chrome-style lettering spells Castro against a dark background, with the tagline beneath in smaller, lighter type.",
-    "The dark cover establishes a more restrained entry point before the reader encounters the brighter interior. Warped lettering connects the two treatments, so the change in color and imagery feels deliberate rather than disconnected. The accompanying quote poster extends the project into a second editorial format."
-  ]
+    "My early sheets went all gradient, the way Castro's own work does, and it read as imitation. In the final, the liquid color lives inside the zine and the cover is black, with plain type so the words have somewhere to land. The yellow highlight is the one flat color in the layout, so the eye goes there first."
+  ],
+  "pull": "I wanted a tribute, not a copy."
 }
