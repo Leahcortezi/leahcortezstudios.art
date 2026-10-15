@@ -35,20 +35,25 @@
   },
   "blocks": [
     {
-      "type": "process",
-      "label": "Process",
-      "heading": "Research and sketches",
-      "steps": [
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
         {
+          "heading": "Words before pictures",
+          "body": "I wrote two wordlists, one for the koala and one for what threatens it: fire, oil, logging, power lines, roads, city blocks. Then I turned the words into small icons to see which ones were strong enough to share a shape with the animal.",
+          "caption": "Research.",
+          "imageSide": "right",
           "src": "../../../collection/Disappearing%20Species/Research.jpg",
           "alt": "Research references for the poster.",
-          "title": "Research",
           "ratio": "1366/768"
         },
         {
+          "heading": "Cutting into the koala",
+          "body": "I drew koala silhouettes in different poses and tried cutting different shapes out of their bodies. The cooling tower, with its plume of steam, was the one that read at a glance, so it stayed.",
+          "caption": "Sketches.",
+          "imageSide": "left",
           "src": "../../../collection/Disappearing%20Species/Sketches.jpg",
           "alt": "Sketches and early poster studies.",
-          "title": "Sketches",
           "ratio": "1366/768"
         }
       ]

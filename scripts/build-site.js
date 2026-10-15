@@ -291,6 +291,32 @@ ${copy}
     </section>`;
     }
 
+    if (b.type === 'rs') {
+      const rowsHtml = (b.rows || []).map((r, j) => {
+        const sd = r.imageSide || (j % 2 === 0 ? 'right' : 'left');
+        const copy = [has(r.heading) ? `          <h2 class="lc-h2">${esc(straight(r.heading))}</h2>` : '', has(r.body) ? `          <p class="lc-body">${esc(r.body)}</p>` : ''].filter(Boolean).join('\n');
+        if (!has(r.src)) {
+          return `      <div class="lc-g12 lc-block-grid lc-rs-row">\n        <div class="lc-block-copy" style="--col: 1 / span 6; --row: 1; --align: start">\n${copy}\n        </div>\n      </div>`;
+        }
+        const [w, h] = ratioOf(r);
+        const textCol = sd === 'right' ? '1 / span 4' : '9 / span 4';
+        const figCol = sd === 'right' ? '6 / span 7' : '1 / span 7';
+        return `      <div class="lc-g12 lc-block-grid lc-rs-row">
+        <div class="lc-block-copy" style="--col: ${textCol}; --row: 1; --align: center">
+${copy}
+        </div>
+        <figure class="lc-fig" style="--col: ${figCol}; --row: 1">
+          <div class="lc-fig-frame" style="--ar: ${w} / ${h}"><img src="${url(r.src)}" alt="${alt(r, 'row ' + (j + 1))}" loading="lazy"></div>
+          <figcaption class="lc-cap">${esc(F(r.caption))}</figcaption>
+        </figure>
+      </div>`;
+      }).join('\n');
+      return `    <section class="lc-sec lc-rs">
+      ${head}
+${rowsHtml}
+    </section>`;
+    }
+
     if (b.type === 'process') {
       const st = b.steps || [];
       const k = st.length;

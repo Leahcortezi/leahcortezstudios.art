@@ -36,6 +36,24 @@
   },
   "blocks": [
     {
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
+        {
+          "heading": "Listening first",
+          "body": "I started with the music and the era around it: album art, archival photographs and the printed look of vintage magazines. From those I pulled a palette of cream, charcoal and burgundy.",
+          "caption": "Moodboard and references.",
+          "imageSide": "right"
+        },
+        {
+          "heading": "Pacing sixteen pages",
+          "body": "Thumbnails mapped how the booklet would move from the cover to the back, alternating full-page photographs with pages of text so the rhythm stays steady.",
+          "caption": "Thumbnails and layout studies.",
+          "imageSide": "left"
+        }
+      ]
+    },
+    {
       "type": "gallery",
       "label": "Pages",
       "heading": "Cover and spreads",

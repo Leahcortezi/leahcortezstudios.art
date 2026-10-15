@@ -36,26 +36,28 @@
   },
   "blocks": [
     {
-      "type": "story",
-      "label": "Research",
-      "heading": "Eggs, roosters and a very silly war.",
-      "body": "I gathered references for Swift's satire and for the imagery I could use to stand in for it, from eggs to roosters to old book covers.",
-      "src": "images/cs/research.jpg",
-      "ratio": "2400/1575",
-      "imageSide": "right",
-      "alt": "Research and references for the Gulliver's Travels cover.",
-      "caption": "References."
-    },
-    {
-      "type": "story",
-      "label": "Sketches",
-      "heading": "One image for the whole argument.",
-      "body": "Sketches tested how a rooster crushing eggs could carry the whole war between the Big-Endians and Little-Endians in a single cover image.",
-      "src": "images/cs/sketches.jpg",
-      "ratio": "3200/739",
-      "imageSide": "left",
-      "alt": "Sketches for the Gulliver's Travels cover.",
-      "caption": "Cover sketches."
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
+        {
+          "heading": "Eggs, roosters and a very silly war",
+          "body": "I gathered references for Swift's satire and for the imagery I could use to stand in for it. The illustrations I pulled share a look: aged paper, muted yellows and browns, and bodies that don't add up, like zipped mouths, covered faces and mismatched heads.",
+          "caption": "References.",
+          "imageSide": "right",
+          "src": "images/cs/research.jpg",
+          "alt": "Research and references for the Gulliver's Travels cover.",
+          "ratio": "2400/1575"
+        },
+        {
+          "heading": "One image for the whole argument",
+          "body": "Each sketch lays out the full wrap, with an author portrait and text columns on the back. The fronts try different ideas, all aimed at the same question: could a rooster crushing eggs carry the whole war between the Big-Endians and the Little-Endians in a single image?",
+          "caption": "Cover sketches.",
+          "imageSide": "left",
+          "src": "images/cs/sketches.jpg",
+          "alt": "Sketches for the Gulliver's Travels cover.",
+          "ratio": "3200/739"
+        }
+      ]
     },
     {
       "type": "feature",

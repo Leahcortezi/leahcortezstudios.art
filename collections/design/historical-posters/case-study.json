@@ -36,22 +36,34 @@
   },
   "blocks": [
     {
-      "type": "process",
-      "label": "Process",
-      "heading": "Research, thumbnails, concept",
-      "steps": [
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
         {
+          "heading": "Reading the originals",
+          "body": "For each poster I started with the real thing: a Dada photomontage, a Stenberg brothers poster built on concentric circles, and mid-century book covers made from blocks of flat color and cut paper shapes. I looked at how each one uses type, color and structure to make its point, then chose what to borrow.",
+          "caption": "Historical references.",
+          "imageSide": "right",
           "src": "../../../collection/Historical%20Posters/Research.jpg",
           "alt": "Research references for the poster series.",
-          "title": "Research",
           "ratio": "1366/768"
         },
         {
+          "heading": "Thumbnails first",
+          "body": "Before any final art, I filled sheets with small black-and-white thumbnails to test where type and image would sit. Some are already close to the finished posters, like Harvest, and a later sheet starts bringing in red.",
+          "caption": "Thumbnails.",
+          "imageSide": "left",
           "src": "../../../collection/Historical%20Posters/Sketches.jpg",
           "alt": "Thumbnail sketches and early poster studies.",
-          "title": "Thumbnails",
           "ratio": "1366/768"
-        },
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "label": "Concept",
+      "heading": "Concept development",
+      "steps": [
         {
           "src": "images/cs/concept.jpg",
           "alt": "Concept development for the poster series.",

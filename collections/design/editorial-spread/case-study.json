@@ -41,22 +41,34 @@
       "text": "The topic fascinated me, and it gave me a chance to explore the visual confusion between two surreal experiences."
     },
     {
-      "type": "process",
-      "label": "Process",
-      "heading": "From references to layouts",
-      "steps": [
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
         {
+          "heading": "Type that comes apart",
+          "body": "I collected experimental editorial and poster work: chopped-up headlines, grainy black-and-white photos, pages packed with dark text. What they share is a sense that something is slightly off, which suits an article about waking up and not being able to move.",
+          "caption": "Moodboard: experimental editorial and type.",
+          "imageSide": "right",
           "src": "../../../collection/Editorial%20Spreads/Research.jpg",
           "alt": "Research references for the editorial spread.",
-          "title": "Research",
           "ratio": "1366/768"
         },
         {
+          "heading": "Where the headline lands",
+          "body": "Black marker thumbnails tested where the title would sit against the text columns. Keyholes, clocks and figures at the edge of the frame were early image ideas, and each version pushed the type a little further before I settled on how far it could break.",
+          "caption": "Sketches.",
+          "imageSide": "left",
           "src": "../../../collection/Editorial%20Spreads/Sketches.jpg",
           "alt": "Sketches and early layout studies.",
-          "title": "Sketches",
           "ratio": "1366/768"
-        },
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "label": "Concept",
+      "heading": "Concept development",
+      "steps": [
         {
           "src": "../../../collection/Editorial%20Spreads/ConceptDevelopment.jpg",
           "alt": "Concept development for the spreads.",

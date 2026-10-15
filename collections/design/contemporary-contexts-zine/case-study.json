@@ -41,26 +41,28 @@
       "text": "I was drawn to his vibrant colors, chaotic compositions, and the way he draws inspiration from his Latin culture. That is something I deeply connect with."
     },
     {
-      "type": "story",
-      "label": "Research",
-      "heading": "Looking closely at Jonathan Castro.",
-      "body": "I studied his work to see what makes it his: vibrant color, chaotic compositions, and references pulled from his Latin culture.",
-      "src": "images/cs/research.jpg",
-      "ratio": "1366/768",
-      "imageSide": "right",
-      "alt": "Research on Jonathan Castro's work.",
-      "caption": "Research."
-    },
-    {
-      "type": "story",
-      "label": "Sketches",
-      "heading": "Working out the layout.",
-      "body": "Early sketches tested how the zine could unfold across eight folded pages, with each spread layering a little more than the last.",
-      "src": "images/cs/sketches.jpg",
-      "ratio": "1366/768",
-      "imageSide": "left",
-      "alt": "Sketches and early zine layouts.",
-      "caption": "Sketches and early layouts."
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
+        {
+          "heading": "Looking closely at Jonathan Castro",
+          "body": "I studied his work to see what makes it his: vibrant color, chaotic compositions and references pulled from his Latin culture. Chrome-edged letters, gradient blends and layered pages kept showing up, so I used them as a starting point for the zine.",
+          "caption": "Research.",
+          "imageSide": "right",
+          "src": "images/cs/research.jpg",
+          "alt": "Research on Jonathan Castro's work.",
+          "ratio": "1366/768"
+        },
+        {
+          "heading": "Working out the layout",
+          "body": "Five sheets of sketches tested how the zine could unfold across eight folded pages. The color moved from violet and teal to orange and black to plain black and white, and each spread layered a little more than the last.",
+          "caption": "Sketches and early layouts.",
+          "imageSide": "left",
+          "src": "images/cs/sketches.jpg",
+          "alt": "Sketches and early zine layouts.",
+          "ratio": "1366/768"
+        }
+      ]
     },
     {
       "type": "story",

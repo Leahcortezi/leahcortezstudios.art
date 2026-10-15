@@ -36,26 +36,28 @@
   },
   "blocks": [
     {
-      "type": "story",
-      "label": "Research",
-      "heading": "Objects worth keeping.",
-      "body": "City Reliquary collects everyday artifacts and the stories attached to them. I started by looking at the objects, signs and handmade ephemera the museum is built around.",
-      "src": "images/cs/research.jpg",
-      "ratio": "2400/1537",
-      "imageSide": "right",
-      "alt": "Research and references for the City Reliquary identity.",
-      "caption": "Research."
-    },
-    {
-      "type": "story",
-      "label": "Sketches",
-      "heading": "Finding the mark.",
-      "body": "I sketched the C and R together until they shared one shape, with the negative space doing the work of the second letter.",
-      "src": "images/cs/sketches.jpg",
-      "ratio": "2400/2202",
-      "imageSide": "left",
-      "alt": "Sketches of the City Reliquary CR mark.",
-      "caption": "Mark sketches."
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
+        {
+          "heading": "Objects worth keeping",
+          "body": "City Reliquary collects everyday artifacts and the stories attached to them, so I started with the museum itself: the red storefront, the script sign, the cabinet-of-curiosities feel. Then I looked at how Cooper Hewitt, the American Folk Art Museum and the Museum of the City of New York hold a name inside a simple shape.",
+          "caption": "Museum notes and logo references.",
+          "imageSide": "right",
+          "src": "images/cs/research.jpg",
+          "alt": "Research and references for the City Reliquary identity.",
+          "ratio": "2400/1537"
+        },
+        {
+          "heading": "Finding the mark",
+          "body": "I started with nine small thumbnails, trying the C and R as blocks, circles, a stacked name and a half circle. Then I developed three: a tower, a skyline and a cluster of heavy boxes. The cluster won, because the negative space between the boxes could do the work of the second letter.",
+          "caption": "Mark sketches.",
+          "imageSide": "left",
+          "src": "images/cs/sketches.jpg",
+          "alt": "Sketches of the City Reliquary CR mark.",
+          "ratio": "2400/2202"
+        }
+      ]
     },
     {
       "type": "feature",

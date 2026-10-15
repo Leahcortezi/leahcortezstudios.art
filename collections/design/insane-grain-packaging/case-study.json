@@ -42,26 +42,28 @@
   },
   "blocks": [
     {
-      "type": "story",
-      "imageSide": "right",
-      "label": "01 — Research",
-      "heading": "Borrowing from collage posters",
-      "body": "I pulled collage portraits, halftone photography and loud poster typography: work that feels cut up, layered and a little unhinged, which is exactly what the name asks for.",
-      "src": "images/cs/research.jpg",
-      "alt": "Moodboard of collage portraits, halftone photography and bold poster typography.",
-      "caption": "Moodboard: collage, halftone and poster type references.",
-      "ratio": "864/604"
-    },
-    {
-      "type": "story",
-      "imageSide": "left",
-      "label": "02 — Sketches",
-      "heading": "Two early directions",
-      "body": "A digital collage tested how photography, halftone and flat colour could share one surface. A marker sketch blocked out the grid underneath it.",
-      "src": "images/cs/sketches.jpg",
-      "alt": "Two early pouch studies on black: a digital collage and a marker sketch.",
-      "caption": "Collage study (left) and marker sketch (right).",
-      "ratio": "891/768"
+      "type": "rs",
+      "label": "Research & Sketches",
+      "rows": [
+        {
+          "heading": "Borrowing from collage posters",
+          "body": "I pulled collage portraits, halftone photography and loud poster type, mostly in red, black and a hot orange. All of it is cut up, layered and a little unhinged, which is what a name like Insane Grain asks for.",
+          "caption": "Moodboard: collage, halftone and poster type references.",
+          "imageSide": "right",
+          "src": "images/cs/research.jpg",
+          "alt": "Moodboard of collage portraits, halftone photography and bold poster typography.",
+          "ratio": "864/604"
+        },
+        {
+          "heading": "Two early directions",
+          "body": "A digital collage tested how photography, halftone and flat color could share one surface. A marker sketch then blocked out the grid underneath it. The screaming mouth and the chili survived both and ended up on the pouch.",
+          "caption": "Collage study (left) and marker sketch (right).",
+          "imageSide": "left",
+          "src": "images/cs/sketches.jpg",
+          "alt": "Two early pouch studies on black: a digital collage and a marker sketch.",
+          "ratio": "891/768"
+        }
+      ]
     },
     {
       "type": "feature",
