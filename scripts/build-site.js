@@ -263,7 +263,24 @@ ${paras}
   let sec = keys.length ? 1 : 0;
   let side = 'right';
   const DEF = { story: 'Story', feature: 'Final', gallery: 'Gallery', process: 'Process' };
-  const blockHtml = (d.blocks || []).filter((b) => b.type !== 'quote').map((b) => {
+  const renderFinalDesign = () => {
+    sec += 1;
+    return `    <section class="lc-sec">
+      ${secHead(pad(sec), 'Final design')}
+      <div class="lc-g12">
+        <div class="lc-final">
+${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
+        </div>
+      </div>
+    </section>`;
+  };
+  const blockList = (d.blocks || []).filter((b) => b.type !== 'quote');
+  if (fd.length) {
+    const fi = blockList.findIndex((b) => strip(b.label) === 'Final');
+    blockList.splice(fi >= 0 ? fi : blockList.length, 0, { type: 'finaldesign' });
+  }
+  const blockHtml = blockList.map((b) => {
+    if (b.type === 'finaldesign') return renderFinalDesign();
     sec += 1;
     const no = pad(sec);
     const label = strip(b.label) || DEF[b.type] || '';
@@ -369,19 +386,6 @@ ${figs}
     return '';
   }).filter(Boolean).join('\n\n');
 
-  let finalHtml = '';
-  if (fd.length) {
-    sec += 1;
-    finalHtml = `    <section class="lc-sec">
-      ${secHead(pad(sec), 'Final design')}
-      <div class="lc-g12">
-        <div class="lc-final">
-${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
-        </div>
-      </div>
-    </section>`;
-  }
-
   const nextHtml = `    <nav class="lc-next" aria-label="More work">
       <div class="lc-sechead">
         <a class="lc-textlink prev-work" href="${projHref(prevSlug)}">[ \u2190 ${esc(prevTitle)} ]</a>
@@ -409,7 +413,6 @@ ${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
     headerBlock,
     storyHtml,
     blockHtml,
-    finalHtml,
     nextHtml,
     '  </article>',
     '  </main>',
