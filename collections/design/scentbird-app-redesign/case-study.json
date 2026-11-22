@@ -53,11 +53,11 @@
     "High-fidelity screens and interactive prototype"
   ],
   "finalDesign": [
-    "The quiz asks about feelings instead of fragrance jargon. Each question explains itself in one line, familiar notes like citrus and amber anchor each end of the scale, and a live result card updates as you drag to describe how that mix will smell. Eight segments fill in as you go so the quiz never feels endless, and answers save at every step.",
-    "The scent profile makes taste visible. A scent wheel plots eight fragrance families as one shape, results lead with a named scent family instead of a list of products, and any answer can be edited later, with matches refreshing to reflect it. Navigation stays to three tabs: Matches, Profile and Case.",
-    "Matches are ranked by how well each scent fits, with a ring showing the match score, notes as chips that reuse the quiz's language, and filters for price, season and stock. The fragrance detail adds context before commitment: a one-line reason it matches, vial size translated into about 30 days of wear, key notes and similar scents."
+    "The current app reads like a catalog, so I led with a quiz instead of a list. Each question asks about a feeling, not fragrance jargon, and explains itself in one line. Dragging between fresh and warm captures more than a single tap could, and a live result describes how that mix will smell.",
+    "A guess is hard to subscribe to, so every recommendation carries its reason. Matches show a score and a one-line explanation of why a scent fits, and the profile turns the answers into a scent wheel you can see and edit.",
+    "The plan is the part people said they couldn't find, so it sits in the case with the price, plain and up front. Subscribe & save and buying once are side by side, and skipping sits next to the price instead of in the fine print."
   ],
-  "pull": "I want to find scents that actually feel like me.",
+  "pull": "A guess is hard to subscribe to.",
   "blocks": [
     {
       "type": "rs",
@@ -65,20 +65,20 @@
       "rows": [
         {
           "heading": "Where the current app creates friction",
-          "body": "I analyzed the existing app alongside App Store and Google Play reviews and fragrance-community discussions, focusing on how users discover fragrances, evaluate recommendations, and manage their subscription. Three things kept coming up: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.",
+          "body": "I analyzed the existing app alongside App Store and Google Play reviews and fragrance-community discussions, focusing on how people discover fragrances, judge recommendations, and manage a subscription. Three things kept coming up: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.",
           "imageSide": "right",
           "src": "images/cs/before.jpg",
-          "alt": "The current Scentbird app screens beside three redesign motivations.",
-          "ratio": "2400/1716",
-          "caption": "The current app and the reasons to redesign it."
+          "alt": "Three screens of the current Scentbird app.",
+          "ratio": "1494/996",
+          "caption": "The current app."
         },
         {
           "heading": "Low-fi first",
-          "body": "Low-fidelity wireframes settled the structure of the quiz, profile, matches and case before I moved on to digital wireframes and the style guide.",
+          "body": "I sketched sixteen low-fidelity wireframes to settle the structure of the quiz, profile, matches and case before touching color or type.",
           "imageSide": "left",
           "src": "images/cs/lowfi.jpg",
-          "alt": "Low-fidelity wireframes for the Scentbird redesign.",
-          "ratio": "2400/1836",
+          "alt": "Hand-sketched low-fidelity wireframes for the redesign.",
+          "ratio": "2000/1040",
           "caption": "Low-fi wireframes."
         }
       ]
@@ -88,16 +88,34 @@
       "label": "Final",
       "items": [
         {
-          "src": "images/cs/screen-quiz.jpg",
-          "alt": "The scent quiz screens with design callouts.",
-          "ratio": "2400/2091",
-          "caption": "The scent quiz."
+          "src": "images/cs/quiz.jpg",
+          "alt": "The scent quiz screen in an iPhone mockup.",
+          "ratio": "1110/1574",
+          "caption": "Scent quiz."
         },
         {
-          "src": "images/cs/screen-matches.jpg",
-          "alt": "The matches screens with design callouts.",
-          "ratio": "2400/2092",
+          "src": "images/cs/profile.jpg",
+          "alt": "The scent profile screen in an iPhone mockup.",
+          "ratio": "1098/1557",
+          "caption": "Scent profile."
+        },
+        {
+          "src": "images/cs/matches.jpg",
+          "alt": "The matches screen in an iPhone mockup.",
+          "ratio": "1100/1558",
           "caption": "Your matches."
+        },
+        {
+          "src": "images/cs/detail.jpg",
+          "alt": "The fragrance detail screen in an iPhone mockup.",
+          "ratio": "840/2064",
+          "caption": "Fragrance detail."
+        },
+        {
+          "src": "images/cs/case.jpg",
+          "alt": "The case and plan screen in an iPhone mockup.",
+          "ratio": "1068/1513",
+          "caption": "Your case."
         }
       ]
     },
