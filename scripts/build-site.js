@@ -188,17 +188,20 @@ function renderProject(slug, d, order, all) {
 
   // ----- hero
   const hero = d.hero || {};
-  if (!has(hero.src)) warn(where, 'hero.src is missing');
+  if (!has(hero.src) && !has(hero.embed)) warn(where, 'hero.src is missing');
   const hp = ratioParts(hero.ratio) || [16, 9];
   const wide = hp[0] / hp[1] >= 1.45;
-  const heroStyle = `--ar: ${wide ? hp[0] + ' / ' + hp[1] : '16 / 9'}; --fit: ${wide ? 'cover' : 'contain'}; --pos: ${esc(hero.pos || '50% 50%')}`;
+  const heroStyle = has(hero.embed) ? '--ar: 16 / 9; --fit: contain' : `--ar: ${wide ? hp[0] + ' / ' + hp[1] : '16 / 9'}; --fit: ${wide ? 'cover' : 'contain'}; --pos: ${esc(hero.pos || '50% 50%')}`;
   let heroMedia = '';
-  if (has(hero.src)) {
+  if (has(hero.embed)) {
+    heroMedia = `<iframe src="${esc(hero.embed)}" title="${esc(hero.alt || 'Interactive prototype')}" allowfullscreen loading="lazy"></iframe>`;
+  } else if (has(hero.src)) {
     heroMedia = isVideo(hero.src)
       ? `<video src="${url(hero.src)}"${has(hero.poster) ? ` poster="${url(hero.poster)}"` : ''} autoplay muted loop playsinline preload="metadata" aria-label="${alt(hero, 'hero')}" data-lc-hero></video>`
       : `<img src="${url(hero.src)}" alt="${alt(hero, 'hero')}" fetchpriority="high">`;
   }
   const meta = (d.meta || []).filter(([k, v]) => k !== 'Year' && has(v));
+  const linksHtml = (d.links || []).filter((l) => has(l.href)).map((l) => `<a class="lc-pill" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} \u2197</a>`).join('');
   const metaHtml = meta.length
     ? `\n      <dl class="lc-credits">\n${meta.map(([k, v]) => `        <div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('\n')}\n      </dl>`
     : '';
@@ -216,7 +219,7 @@ function renderProject(slug, d, order, all) {
         </div>
       </figure>
       <div class="lc-g12 lc-deck-grid">
-        <p class="lc-deck">${md(straight(d.summary || ''))}</p>${metaHtml}
+        <p class="lc-deck">${md(straight(d.summary || ''))}${linksHtml ? `</p>\n        <div class="lc-deck-links">${linksHtml}</div>\n        <p hidden>` : ''}</p>${metaHtml}
       </div>
     </header>`;
 
@@ -305,6 +308,21 @@ ${copy}
           <figcaption class="lc-cap">${esc(F(b.caption))}</figcaption>
         </figure>
       </div>
+    </section>`;
+    }
+
+    if (b.type === 'points') {
+      const its = (b.items || []).map((it, j) => `        <li class="lc-point">
+          <span class="lc-point-n">${esc(it.n || pad(j + 1))}</span>
+          ${has(it.kicker) ? `<span class="lc-point-k">${esc(it.kicker)}</span>` : ''}
+          <h3 class="lc-point-t">${md(straight(it.title))}</h3>
+          <p class="lc-point-b">${md(straight(it.body))}</p>${has(it.source) ? `\n          <span class="lc-point-s">Source: ${esc(it.source)}</span>` : ''}${has(it.tag) ? `\n          <span class="lc-point-s">\u2192 ${esc(it.tag)}</span>` : ''}
+        </li>`).join('\n');
+      return `    <section class="lc-sec">
+      ${head}${has(b.heading) ? `\n      <h2 class="lc-h2 lc-h2--lg">${md(straight(b.heading))}</h2>` : ''}${has(b.body) ? `\n      <p class="lc-body lc-points-lede">${md(straight(b.body))}</p>` : ''}
+      <ol class="lc-points lc-points--${(b.items || []).length >= 6 ? 3 : (b.items || []).length === 4 ? 4 : 3}">
+${its}
+      </ol>
     </section>`;
     }
 

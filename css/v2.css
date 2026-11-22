@@ -950,3 +950,19 @@ html { scroll-behavior: smooth; background: #000; }
 @media (max-width: 999px) { .lc-final { grid-column: 1 / -1; } }
 
 .lc-rs .lc-rs-row + .lc-rs-row { margin-top: clamp(48px, 7vw, 96px); }
+
+/* interactive prototype embed in the hero */
+.lc-hero-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+.lc-deck-links { display: flex; flex-wrap: wrap; gap: 10px; grid-column: 1 / -1; margin-top: 4px; }
+
+/* numbered text grid (goals, insights, findings) */
+.lc-points-lede { max-width: 760px; margin: 0 0 clamp(28px, 4vw, 48px); }
+.lc-points { list-style: none; padding: 0; margin: clamp(24px, 3vw, 40px) 0 0; display: grid; gap: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 40px); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .lc-points { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .lc-points--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lc-points--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.lc-point { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(248, 200, 208, .45); padding-top: 18px; }
+.lc-point-n { font: 500 11px/1 var(--lc-mono); letter-spacing: .1em; color: var(--lc-pink); }
+.lc-point-k { font: 500 11px/1 var(--lc-mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
+.lc-point-t { font: 400 clamp(22px, 2.2vw, 30px)/1.05 var(--lc-display); color: var(--lc-pink); text-wrap: balance; margin: 0; }
+.lc-point-b { font: 400 16px/1.6 var(--lc-sans); color: rgba(255, 255, 255, .86); margin: 0; text-wrap: pretty; }
+.lc-point-s { font: 500 11px/1.4 var(--lc-mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 255, 255, .55); }
