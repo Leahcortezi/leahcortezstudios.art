@@ -330,7 +330,7 @@ ${its}
       const rowsHtml = (b.rows || []).map((r, j) => {
         const sd = r.imageSide || (j % 2 === 0 ? 'right' : 'left');
         const copy = [has(r.heading) ? `          <h2 class="lc-h2">${esc(straight(r.heading))}</h2>` : '', has(r.body) ? `          <p class="lc-body">${esc(r.body)}</p>` : ''].filter(Boolean).join('\n');
-        if (!has(r.src)) {
+        if (!has(r.src) && !has(r.placeholder)) {
           return `      <div class="lc-g12 lc-block-grid lc-rs-row">\n        <div class="lc-block-copy" style="--col: 1 / span 6; --row: 1; --align: start">\n${copy}\n        </div>\n      </div>`;
         }
         const [w, h] = ratioOf(r);
@@ -341,7 +341,7 @@ ${its}
 ${copy}
         </div>
         <figure class="lc-fig" style="--col: ${figCol}; --row: 1">
-          <div class="lc-fig-frame" style="--ar: ${w} / ${h}"><img src="${url(r.src)}" alt="${alt(r, 'row ' + (j + 1))}" loading="lazy"></div>
+          <div class="lc-fig-frame" style="--ar: ${w} / ${h}">${has(r.placeholder) ? `<div class="lc-ph" role="img" aria-label="${esc(r.placeholder)}"><span>${esc(r.placeholder)}</span></div>` : `<img src="${url(r.src)}" alt="${alt(r, 'row ' + (j + 1))}" loading="lazy">`}</div>
           <figcaption class="lc-cap">${esc(F(r.caption))}</figcaption>
         </figure>
       </div>`;
@@ -390,7 +390,7 @@ ${figs}
         const media = it.placeholder
           ? `<div class="lc-ph" role="img" aria-label="${esc(it.placeholder)}"><span>${esc(it.placeholder)}</span></div>`
           : `<img src="${url(it.src)}" alt="${alt(it, 'gallery item ' + (j + 1))}" loading="lazy">`;
-        return `        <figure class="lc-fig" style="--grow: ${grow}${items.length === 1 ? '; --max: 960px' : ''}">
+        return `        <figure class="lc-fig" style="--grow: ${grow}${items.length === 1 ? '; --max: 960px' : (b.cols ? `; --max: calc((100% - ${(b.cols - 1) * 28}px) / ${b.cols})` : '')}">
           <div class="lc-fig-frame" style="--ar: ${w} / ${h}">${media}</div>
           <figcaption class="lc-cap">${esc(F(it.caption))}</figcaption>
         </figure>`;

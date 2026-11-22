@@ -1,0 +1,107 @@
+{
+  "_how_to_use": "Copy this file to collections/design/<new-slug>/case-study.json, fill every [bracket], delete lines you don't need, add the slug to the TOP of scripts/gallery-order.json, then run: node scripts/build-site.js. Put images in <slug>/images/cs/. Use \"placeholder\" instead of \"src\" on any image you don't have yet.",
+  "title": "[Project name]",
+  "category": "Client work",
+  "categoryFull": "Client Work · [Type of work, e.g. Presentation Design]",
+  "year": "[2026]",
+  "tags": [
+    "Client work"
+  ],
+  "card": {
+    "src": "images/cs/thumb.jpg",
+    "pos": "50% 50%",
+    "disc": "Client work · [Client name]",
+    "teaser": "[One sentence: what you made, for whom.]"
+  },
+  "summary": "[One or two sentences: what it is and where it was used.]",
+  "meta": [
+    [
+      "Client",
+      "[Client / department]"
+    ],
+    [
+      "Role",
+      "[Your title]"
+    ],
+    [
+      "Tools",
+      "[Software]"
+    ],
+    [
+      "Year",
+      "[2026]"
+    ]
+  ],
+  "hero": {
+    "src": "images/cs/hero.jpg",
+    "alt": "[Describe the hero image]",
+    "ratio": "[width/height, e.g. 1800/1013]"
+  },
+  "overview": {
+    "text": [
+      "[The client and the ask: who it was for, what they needed, the audience, any deadline or brand rules.]",
+      "[What the piece includes, in plain terms.]"
+    ]
+  },
+  "deliverables": [
+    "[Deliverable 1]",
+    "[Deliverable 2]",
+    "[Deliverable 3]"
+  ],
+  "finalDesign": [
+    "[What you decided and why: the system, the layout choices, how it was made easy to use.]",
+    "[A second paragraph if needed: the hardest problem and how you solved it.]"
+  ],
+  "pull": "[One sentence you want pulled out as a quote.]",
+  "blocks": [
+    {
+      "type": "rs",
+      "label": "Process",
+      "rows": [
+        {
+          "heading": "[Step 1 headline]",
+          "body": "[Two sentences: brief, references or first draft.]",
+          "placeholder": "Image to come",
+          "ratio": "16/9",
+          "alt": "[Alt text]",
+          "caption": "[Caption]",
+          "imageSide": "right"
+        },
+        {
+          "heading": "[Step 2 headline]",
+          "body": "[Two sentences: feedback, revisions or the change that mattered.]",
+          "placeholder": "Image to come",
+          "ratio": "16/9",
+          "alt": "[Alt text]",
+          "caption": "[Caption]",
+          "imageSide": "left"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Final",
+      "cols": 3,
+      "items": [
+        {
+          "src": "images/cs/final-1.jpg",
+          "alt": "[Alt text]",
+          "ratio": "[w/h]",
+          "caption": "[Caption]"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "In use",
+      "items": [
+        {
+          "placeholder": "Photo or screenshot to come",
+          "ratio": "3/2",
+          "alt": "[Alt text]",
+          "caption": "[Where it was used]"
+        }
+      ]
+    }
+  ]
+}

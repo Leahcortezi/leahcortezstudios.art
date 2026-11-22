@@ -31,10 +31,11 @@ The pages from the Home, Work, project and About redesign use `css/v2.css`, `scr
 - Pre-colored brand assets: `images/logo/logo3-pink.png`, `icons/starburst-pink.svg`, `icons/starburst-rose.svg`, `icons/flower-pink.svg`
 - Home marquee: Surendra words (Identity, Packaging, Editorial, Type, Posters) with a starburst between each, scrolling left
 
-## Projects (12, in `scripts/gallery-order.json`)
+## Projects (13, in `scripts/gallery-order.json`)
 | Order | Project | Slug | Category |
 |---|---|---|---|
-| 1 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
+| 1 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
+| 2 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
 | 2 | Insane Grain | `insane-grain-packaging` | Packaging |
 | 2 | Surendra | `custom-typeface-specimen-poster` | Type |
 | 3 | City Reliquary | `City Reliquary` | Identity |
@@ -68,6 +69,9 @@ Home references thumbnails directly in `index.html` (hero polaroids, Selected wo
 - `scripts/v2.js` — shared behavior (nav, filters, reveal); `scripts/home.js` — Home hero and marquee
 - `scripts/main.js`, `scripts/page-enhancements.js` — older shared scripts (`main.js` skips floating icons on `.v2` pages)
 - `sitemap.xml`, `robots.txt`, `CNAME` — deployment and SEO
+
+## Client work
+Client projects are tagged `Client work` (a filter pill on the Work page) and show the client on the card. Start from `scripts/client-work-template.json`: fill the [brackets], add the slug to the top of `gallery-order.json`, and run the build. Check with the client before publishing their material.
 
 ## Fine-art pages
 The About page ("Outside the brief") links to older-style pages that are not in the Work grid: `collections/illustration/` (abuelas-altar, anointed-gaze, heaven-on-fire, inheritance), `collections/objects/` (feathers-along-the-bend, gnaw, unraveling) and `collections/printmaking/` (reliquary-heart, the-living-room, the-unholy-gaze, unbecoming). They use the older stylesheets and are hand-edited, not generated.
