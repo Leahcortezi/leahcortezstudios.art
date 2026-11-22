@@ -24,7 +24,7 @@
     ],
     [
       "Tools",
-      "PowerPoint"
+      "Canva"
     ],
     [
       "Year",
@@ -59,21 +59,21 @@
       "rows": [
         {
           "heading": "A template, voted in",
-          "body": "The conference needed a slideshow, so I designed a template for it. It was voted to be used for the Region IV conference.",
+          "body": "The conference needed a slideshow, so I designed a new template in Canva. It was voted to be used for the Region IV conference: dark navy, Montserrat, and spaced-out capitals for section labels.",
           "imageSide": "right",
-          "placeholder": "Template image to come",
-          "ratio": "16/9",
-          "alt": "Template image to come",
-          "caption": "The slide template."
+          "ratio": "2228/1266",
+          "alt": "Four slides from the new template: the title slide, a numbered section divider and two content slides, in dark navy with spaced-out capital section labels.",
+          "caption": "The new template: title, section divider and content slides.",
+          "src": "images/cs/template.jpg"
         },
         {
           "heading": "Moving the old slideshow into it",
-          "body": "Then I took the previous slideshow and adapted its information into the new template, rethinking each slide's layout rather than pasting content in.",
+          "body": "Then I took the previous slideshow and adapted its information into the new template, rethinking each slide's layout instead of pasting the content in.",
           "imageSide": "left",
-          "placeholder": "Before and after to come",
-          "ratio": "16/9",
-          "alt": "Before and after to come",
-          "caption": "The old slideshow beside the new one."
+          "ratio": "2228/1913",
+          "alt": "Three slides from the previous slideshow on the left, each beside the same information rebuilt in the new template on the right.",
+          "caption": "Before and after: the previous slideshow (left) and the new template (right).",
+          "src": "images/cs/before-after.jpg"
         }
       ]
     },
