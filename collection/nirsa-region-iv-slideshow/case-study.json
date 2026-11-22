@@ -1,0 +1,148 @@
+{
+  "title": "Region IV Conference Slideshow",
+  "category": "Client work",
+  "categoryFull": "Client Work · Presentation Design",
+  "year": "2026",
+  "tags": [
+    "Client work"
+  ],
+  "card": {
+    "src": "images/cs/thumb.jpg",
+    "pos": "50% 50%",
+    "disc": "Client work · TAMUCC Recreational Sports",
+    "teaser": "A 22-slide conference presentation, built on a template I designed and that was voted in."
+  },
+  "summary": "A 22-slide conference slideshow for the 2026 NIRSA Region IV Conference, built on a template I designed and that was voted to be used.",
+  "meta": [
+    [
+      "Client",
+      "TAMUCC Recreational Sports"
+    ],
+    [
+      "Role",
+      "Design intern, marketing"
+    ],
+    [
+      "Tools",
+      "Canva"
+    ],
+    [
+      "Year",
+      "2026"
+    ]
+  ],
+  "hero": {
+    "src": "images/cs/hero.jpg",
+    "alt": "The opening slide of the Region IV conference slideshow: Welcome, October 21 to 23, 2026, Corpus Christi, Texas.",
+    "ratio": "1800/1013"
+  },
+  "overview": {
+    "text": [
+      "As a design intern in the Recreational Sports marketing department at Texas A&M University–Corpus Christi, I designed the slideshow for the 2026 NIRSA Region IV Conference, held in Corpus Christi on October 21–23, 2026 and hosted by TAMUCC.",
+      "The slideshow runs through the opening session: a welcome, the Region IV network and its board, association highlights, the NIRSA Foundation, sponsors, the planning committee and the keynote speaker."
+    ]
+  },
+  "deliverables": [
+    "A slideshow template for the conference",
+    "A 22-slide conference presentation",
+    "The previous slideshow's information, adapted into the new template"
+  ],
+  "finalDesign": [
+    "The 22 slides share one system. Section labels are set in spaced-out capitals, a footer repeats the conference location and dates, and numbered divider slides split the deck into sections, so both the presenter and the audience can tell where they are.",
+    "Most of the work was making dense information easy to read from the back of a room: board lists, award counts, event dates, roundtable schedules and strategic priorities each got their own layout inside the same template."
+  ],
+  "pull": "I designed the template, and it was voted in.",
+  "blocks": [
+    {
+      "type": "rs",
+      "label": "Template & Adaptation",
+      "rows": [
+        {
+          "heading": "A template, voted in",
+          "body": "The conference needed a slideshow, so I designed a new template in Canva. It was voted to be used for the Region IV conference: dark navy, Montserrat, and spaced-out capitals for section labels.",
+          "imageSide": "right",
+          "ratio": "2228/1266",
+          "alt": "Four slides from the new template: the title slide, a numbered section divider and two content slides, in dark navy with spaced-out capital section labels.",
+          "caption": "The new template: title, section divider and content slides.",
+          "src": "images/cs/template.jpg"
+        },
+        {
+          "heading": "Moving the old slideshow into it",
+          "body": "Then I took the previous slideshow and adapted its information into the new template, rethinking each slide's layout instead of pasting the content in.",
+          "imageSide": "left",
+          "ratio": "2228/1913",
+          "alt": "Three slides from the previous slideshow on the left, each beside the same information rebuilt in the new template on the right.",
+          "caption": "Before and after: the previous slideshow (left) and the new template (right).",
+          "src": "images/cs/before-after.jpg"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Final",
+      "cols": 3,
+      "items": [
+        {
+          "src": "images/cs/s02.jpg",
+          "alt": "Welcome slide: Let's start with you, an icebreaker for first-time attendees.",
+          "ratio": "1800/1013",
+          "caption": "Welcome."
+        },
+        {
+          "src": "images/cs/s08.jpg",
+          "alt": "Slide celebrating Region IV: 60 volunteers, 12 award winners and 16 scholarship recipients.",
+          "ratio": "1800/1013",
+          "caption": "Celebrating Region IV."
+        },
+        {
+          "src": "images/cs/s09.jpg",
+          "alt": "Slide listing virtual and in-person professional development opportunities.",
+          "ratio": "1800/1013",
+          "caption": "Opportunities."
+        },
+        {
+          "src": "images/cs/s10.jpg",
+          "alt": "Slide for the NIRSA Championship Series with national tournament dates.",
+          "ratio": "1800/1013",
+          "caption": "Championship Series."
+        },
+        {
+          "src": "images/cs/s11.jpg",
+          "alt": "Slide listing upcoming Ideas in Motion virtual roundtables.",
+          "ratio": "1800/1013",
+          "caption": "Virtual roundtables."
+        },
+        {
+          "src": "images/cs/s17.jpg",
+          "alt": "Slide of NIRSA strategic priorities and focus areas.",
+          "ratio": "1800/1013",
+          "caption": "Strategic priorities."
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "In use",
+      "items": [
+        {
+          "placeholder": "Photo from the conference to come",
+          "ratio": "3/2",
+          "alt": "Photo from the conference to come",
+          "caption": "At the conference."
+        },
+        {
+          "placeholder": "Photo from the conference to come",
+          "ratio": "3/2",
+          "alt": "Photo from the conference to come",
+          "caption": "At the conference."
+        },
+        {
+          "placeholder": "Photo from the conference to come",
+          "ratio": "3/2",
+          "alt": "Photo from the conference to come",
+          "caption": "At the conference."
+        }
+      ]
+    }
+  ]
+}

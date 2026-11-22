@@ -266,6 +266,21 @@ ${paras}
   let sec = keys.length ? 1 : 0;
   let side = 'right';
   const DEF = { story: 'Story', feature: 'Final', gallery: 'Gallery', process: 'Process' };
+  const galleryFigs = (b) => {
+    const items = b.items || [];
+    return items.map((it, j) => {
+      const [w, h] = ratioOf(it);
+      const grow = parseFloat((w / h).toFixed(3));
+      const media = it.placeholder
+        ? `<div class="lc-ph" role="img" aria-label="${esc(it.placeholder)}"><span>${esc(it.placeholder)}</span></div>`
+        : `<img src="${url(it.src)}" alt="${alt(it, 'gallery item ' + (j + 1))}" loading="lazy">`;
+      return `        <figure class="lc-fig" style="--grow: ${grow}${items.length === 1 ? '; --max: 960px' : (b.cols ? `; --max: calc((100% - ${(b.cols - 1) * 28}px) / ${b.cols})` : '')}">
+          <div class="lc-fig-frame" style="--ar: ${w} / ${h}">${media}</div>
+          <figcaption class="lc-cap">${esc(F(it.caption))}</figcaption>
+        </figure>`;
+    }).join('\n');
+  };
+  const attached = (d.blocks || []).filter((b) => b.type === 'gallery' && b.attach === 'finalDesign');
   const renderFinalDesign = () => {
     sec += 1;
     return `    <section class="lc-sec">
@@ -274,10 +289,10 @@ ${paras}
         <div class="lc-final">
 ${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
         </div>
-      </div>
+      </div>${attached.map((b) => `\n      <div class="lc-gallery" style="margin-top: clamp(32px, 4vw, 56px)">\n${galleryFigs(b)}\n      </div>`).join('')}
     </section>`;
   };
-  const blockList = (d.blocks || []).filter((b) => b.type !== 'quote');
+  const blockList = (d.blocks || []).filter((b) => b.type !== 'quote' && !(fd.length && b.attach === 'finalDesign'));
   if (fd.length) {
     const fi = blockList.findIndex((b) => strip(b.label) === 'Final');
     blockList.splice(fi >= 0 ? fi : blockList.length, 0, { type: 'finaldesign' });
@@ -383,18 +398,7 @@ ${figs}
     }
 
     if (b.type === 'gallery') {
-      const items = b.items || [];
-      const figs = items.map((it, j) => {
-        const [w, h] = ratioOf(it);
-        const grow = parseFloat((w / h).toFixed(3));
-        const media = it.placeholder
-          ? `<div class="lc-ph" role="img" aria-label="${esc(it.placeholder)}"><span>${esc(it.placeholder)}</span></div>`
-          : `<img src="${url(it.src)}" alt="${alt(it, 'gallery item ' + (j + 1))}" loading="lazy">`;
-        return `        <figure class="lc-fig" style="--grow: ${grow}${items.length === 1 ? '; --max: 960px' : (b.cols ? `; --max: calc((100% - ${(b.cols - 1) * 28}px) / ${b.cols})` : '')}">
-          <div class="lc-fig-frame" style="--ar: ${w} / ${h}">${media}</div>
-          <figcaption class="lc-cap">${esc(F(it.caption))}</figcaption>
-        </figure>`;
-      }).join('\n');
+      const figs = galleryFigs(b);
       return `    <section class="lc-sec">
       ${head}${has(b.heading) ? `\n      <h2 class="lc-h2 lc-h2--lg">${esc(straight(b.heading))}</h2>` : ''}
       <div class="lc-gallery">

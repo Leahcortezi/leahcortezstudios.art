@@ -79,7 +79,6 @@
     },
     {
       "type": "gallery",
-      "label": "Final",
       "cols": 3,
       "items": [
         {
@@ -118,28 +117,31 @@
           "ratio": "1800/1013",
           "caption": "Strategic priorities."
         }
-      ]
+      ],
+      "attach": "finalDesign"
+    },
+    {
+      "type": "feature",
+      "label": "Final",
+      "src": "images/cs/grid.jpg",
+      "ratio": "2400/1600",
+      "alt": "The Region IV conference slideshow shown as a grid of slides in the new template.",
+      "caption": "The slideshow in the new template."
     },
     {
       "type": "gallery",
       "label": "In use",
       "items": [
         {
-          "placeholder": "Photo from the conference to come",
-          "ratio": "3/2",
-          "alt": "Photo from the conference to come",
-          "caption": "At the conference."
+          "src": "images/cs/laptop.jpg",
+          "ratio": "2400/1600",
+          "alt": "The Region IV conference slideshow open on a laptop.",
+          "caption": "The slideshow on screen."
         },
         {
-          "placeholder": "Photo from the conference to come",
-          "ratio": "3/2",
-          "alt": "Photo from the conference to come",
-          "caption": "At the conference."
-        },
-        {
-          "placeholder": "Photo from the conference to come",
-          "ratio": "3/2",
-          "alt": "Photo from the conference to come",
+          "src": "images/cs/conference.jpg",
+          "ratio": "2400/1955",
+          "alt": "The Region IV conference slideshow mocked up in a conference setting.",
           "caption": "At the conference."
         }
       ]
