@@ -387,8 +387,11 @@ ${figs}
       const figs = items.map((it, j) => {
         const [w, h] = ratioOf(it);
         const grow = parseFloat((w / h).toFixed(3));
+        const media = it.placeholder
+          ? `<div class="lc-ph" role="img" aria-label="${esc(it.placeholder)}"><span>${esc(it.placeholder)}</span></div>`
+          : `<img src="${url(it.src)}" alt="${alt(it, 'gallery item ' + (j + 1))}" loading="lazy">`;
         return `        <figure class="lc-fig" style="--grow: ${grow}${items.length === 1 ? '; --max: 960px' : ''}">
-          <div class="lc-fig-frame" style="--ar: ${w} / ${h}"><img src="${url(it.src)}" alt="${alt(it, 'gallery item ' + (j + 1))}" loading="lazy"></div>
+          <div class="lc-fig-frame" style="--ar: ${w} / ${h}">${media}</div>
           <figcaption class="lc-cap">${esc(F(it.caption))}</figcaption>
         </figure>`;
       }).join('\n');

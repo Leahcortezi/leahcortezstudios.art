@@ -966,3 +966,8 @@ html { scroll-behavior: smooth; background: #000; }
 .lc-point-t { font: 400 clamp(22px, 2.2vw, 30px)/1.05 var(--lc-display); color: var(--lc-pink); text-wrap: balance; margin: 0; }
 .lc-point-b { font: 400 16px/1.6 var(--lc-sans); color: rgba(255, 255, 255, .86); margin: 0; text-wrap: pretty; }
 .lc-point-s { font: 500 11px/1.4 var(--lc-mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 255, 255, .55); }
+
+/* placeholder frame for mockups still to come */
+.lc-ph { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center;
+  border: 1px dashed rgba(248, 200, 208, .6); background: rgba(248, 200, 208, .06); }
+.lc-ph span { font: 500 11px/1.5 var(--lc-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--lc-pink); }

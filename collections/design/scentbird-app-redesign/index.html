@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..500&family=DM+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="../../../css/v2.css?v=58c4e59c">
+  <link rel="stylesheet" href="../../../css/v2.css?v=a30a638b">
 </head>
 
 <body class="v2">
@@ -80,8 +80,7 @@
             <ul class="lc-list">
               <li>Problem statement and project goals</li>
               <li>Research and key insights</li>
-              <li>Persona, empathy map and customer journey map</li>
-              <li>Information architecture and user flow</li>
+              <li>Persona, journey map and user flow</li>
               <li>Low-fi and digital wireframes</li>
               <li>Style guide</li>
               <li>High-fidelity screens and interactive prototype</li>
@@ -99,17 +98,17 @@
       <div class="lc-g12 lc-block-grid lc-rs-row">
         <div class="lc-block-copy" style="--col: 1 / span 4; --row: 1; --align: center">
           <h2 class="lc-h2">Where the current app creates friction</h2>
-          <p class="lc-body">To understand where the current Scentbird experience creates friction, I analyzed the existing app experience alongside App Store and Google Play reviews and fragrance-community discussions. I focused on how users discover fragrances, evaluate recommendations, manage their queue, and understand their subscription.</p>
+          <p class="lc-body">I analyzed the existing app alongside App Store and Google Play reviews and fragrance-community discussions, focusing on how users discover fragrances, evaluate recommendations, and manage their subscription. Three things kept coming up: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.</p>
         </div>
         <figure class="lc-fig" style="--col: 6 / span 7; --row: 1">
-          <div class="lc-fig-frame" style="--ar: 2400 / 1716"><img src="images/cs/before.jpg" alt="The current Scentbird app screens beside three redesign motivations: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 01 — The current Scentbird app and the reasons to redesign it.</figcaption>
+          <div class="lc-fig-frame" style="--ar: 2400 / 1716"><img src="images/cs/before.jpg" alt="The current Scentbird app screens beside three redesign motivations." loading="lazy"></div>
+          <figcaption class="lc-cap">Fig. 01 — The current app and the reasons to redesign it.</figcaption>
         </figure>
       </div>
       <div class="lc-g12 lc-block-grid lc-rs-row">
         <div class="lc-block-copy" style="--col: 9 / span 4; --row: 1; --align: center">
           <h2 class="lc-h2">Low-fi first</h2>
-          <p class="lc-body">I started with low-fidelity wireframes to settle the structure of the quiz, profile, matches and case before moving to digital wireframes for the key moments.</p>
+          <p class="lc-body">Low-fidelity wireframes settled the structure of the quiz, profile, matches and case before I moved on to digital wireframes and the style guide.</p>
         </div>
         <figure class="lc-fig" style="--col: 1 / span 7; --row: 1">
           <div class="lc-fig-frame" style="--ar: 2400 / 1836"><img src="images/cs/lowfi.jpg" alt="Low-fidelity wireframes for the Scentbird redesign." loading="lazy"></div>
@@ -119,254 +118,44 @@
     </section>
 
     <section class="lc-sec">
-      <div class="lc-sechead"><span>03 — Problem &amp; goals</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">How might we help people find a scent that feels like theirs, and feel confident subscribing to it?</h2>
-      <p class="lc-body lc-points-lede">Fragrance is personal, but on a screen it's invisible. In the current app, a large catalog is hard to narrow down, recommendations don't say why they fit, and plan and billing details are hard to find. Users are left guessing, and a guess is hard to subscribe to.</p>
-      <ol class="lc-points lc-points--4">
-        <li class="lc-point">
-          <span class="lc-point-n">Goal 01</span>
-          
-          <h3 class="lc-point-t">Personalize discovery</h3>
-          <p class="lc-point-b">Help users discover fragrances based on their individual tastes and moods.</p>
-          <span class="lc-point-s">→ The scent quiz</span>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">Goal 02</span>
-          
-          <h3 class="lc-point-t">Create a sensory experience</h3>
-          <p class="lc-point-b">Make an invisible product feel tangible through visuals, language and the scent wheel.</p>
-          <span class="lc-point-s">→ Scent profile</span>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">Goal 03</span>
-          
-          <h3 class="lc-point-t">Improve product exploration</h3>
-          <p class="lc-point-b">Give every fragrance clear notes, a match score and a reason it fits.</p>
-          <span class="lc-point-s">→ Matches + detail</span>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">Goal 04</span>
-          
-          <h3 class="lc-point-t">Simplify subscription</h3>
-          <p class="lc-point-b">Show the plan, price and next shipment plainly, with skip and cancel close at hand.</p>
-          <span class="lc-point-s">→ Your case</span>
-        </li>
-      </ol>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>04 — Research findings</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">Three questions, three findings</h2>
-      <p class="lc-body lc-points-lede">The research centered around three questions: how easily can users discover and evaluate fragrances, how clearly does the app communicate personalized recommendations, and how easily can users understand and manage their subscription?</p>
-      <ol class="lc-points lc-points--3">
-        <li class="lc-point">
-          <span class="lc-point-n">01</span>
-          <span class="lc-point-k">Discovery</span>
-          <h3 class="lc-point-t">Search + organization</h3>
-          <p class="lc-point-b">Users reported difficulty finding or revisiting fragrances, including issues with search and accessing product information.</p>
-          <span class="lc-point-s">Source: Google Play reviews</span>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">02</span>
-          <span class="lc-point-k">Personalization</span>
-          <h3 class="lc-point-t">Recommendations need context</h3>
-          <p class="lc-point-b">Some users questioned whether recommendations accurately reflected their preferences, highlighting an opportunity to make personalization more transparent.</p>
-          <span class="lc-point-s">Source: Fragrance community feedback</span>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">03</span>
-          <span class="lc-point-k">Subscription</span>
-          <h3 class="lc-point-t">Clarity builds confidence</h3>
-          <p class="lc-point-b">Users reported confusion around cancellation, billing, and subscription management across the app and website.</p>
-          <span class="lc-point-s">Source: App Store reviews + Scentbird support</span>
-        </li>
-      </ol>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>05 — Key insights</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">What the research pointed to</h2>
-      <ol class="lc-points lc-points--3">
-        <li class="lc-point">
-          <span class="lc-point-n">01</span>
-          
-          <h3 class="lc-point-t">Clarity builds confidence</h3>
-          <p class="lc-point-b">Users want to understand a fragrance before committing to a subscription.</p>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">02</span>
-          
-          <h3 class="lc-point-t">Recommendations need context</h3>
-          <p class="lc-point-b">Users are more likely to trust recommendations when they understand why a scent fits them.</p>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">03</span>
-          
-          <h3 class="lc-point-t">Discovery can feel overwhelming</h3>
-          <p class="lc-point-b">A large fragrance library needs intuitive filtering and organization.</p>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">04</span>
-          
-          <h3 class="lc-point-t">Personalization should feel useful</h3>
-          <p class="lc-point-b">Users want their preferences to actively shape what they see.</p>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">05</span>
-          
-          <h3 class="lc-point-t">Search + organization</h3>
-          <p class="lc-point-b">Users need simple ways to find, save, and revisit fragrances.</p>
-        </li>
-        <li class="lc-point">
-          <span class="lc-point-n">06</span>
-          
-          <h3 class="lc-point-t">Subscriptions need transparency</h3>
-          <p class="lc-point-b">Clear information helps users feel confident about recurring orders.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>06 — Primary user persona</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">Designed for curious fragrance shoppers like Maya</h2>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.125; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2134"><img src="images/cs/persona.jpg" alt="Primary user persona: Maya Rodriguez, 24, marketing assistant in Dallas, with her personality, skills, motivations, core needs and frustrations." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 03 — Persona: Maya Rodriguez.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>07 — Empathy map</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.039; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2311"><img src="images/cs/empathy.jpg" alt="Empathy map for Maya covering what she says, thinks, does and feels." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 04 — Empathy map.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>08 — Customer journey</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.07; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2244"><img src="images/cs/journey.jpg" alt="Customer journey map from discover to subscribe, with actions, thoughts, feelings and opportunities." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 05 — Customer journey map.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>09 — Information architecture</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 0.861; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2787"><img src="images/cs/ia.jpg" alt="Information architecture diagram for the app: onboarding, home, search, fragrance, my scents, profile and subscription." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 06 — Information architecture.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>10 — User flow</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 0.516; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 4653"><img src="images/cs/flow.jpg" alt="User flow from opening the app through the scent quiz, matches, case, checkout and managing the plan." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 07 — User flow.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>11 — Digital wireframes</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.233; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 1947"><img src="images/cs/digital.jpg" alt="Digital wireframes for the quiz, results, matches, fragrance detail and the monthly case." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 08 — Digital wireframes.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>12 — Style guide</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 0.51; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 4710"><img src="images/cs/style.jpg" alt="Style guide: colors, type, buttons and brand elements including the scent wheel, match ring and note chips." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 09 — Style guide.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>13 — Final design</span><span>Scentbird App Redesign</span></div>
+      <div class="lc-sechead"><span>03 — Final design</span><span>Scentbird App Redesign</span></div>
       <div class="lc-g12">
         <div class="lc-final">
           <p class="lc-body">The quiz asks about feelings instead of fragrance jargon. Each question explains itself in one line, familiar notes like citrus and amber anchor each end of the scale, and a live result card updates as you drag to describe how that mix will smell. Eight segments fill in as you go so the quiz never feels endless, and answers save at every step.</p>
           <p class="lc-body">The scent profile makes taste visible. A scent wheel plots eight fragrance families as one shape, results lead with a named scent family instead of a list of products, and any answer can be edited later, with matches refreshing to reflect it. Navigation stays to three tabs: Matches, Profile and Case.</p>
           <p class="lc-body">Matches are ranked by how well each scent fits, with a ring showing the match score, notes as chips that reuse the quiz's language, and filters for price, season and stock. The fragrance detail adds context before commitment: a one-line reason it matches, vial size translated into about 30 days of wear, key notes and similar scents.</p>
-          <p class="lc-body">The subscription can be read at a glance. The case is named for its owner and shows exactly what ships next, vials can be swapped or removed in place, skipping sits next to the price instead of in the fine print, and Subscribe &amp; save and purchase once are shown side by side with prices up front.</p>
         </div>
       </div>
     </section>
 
     <section class="lc-sec">
-      <div class="lc-sechead"><span>14 — Final</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">Major screens, each tied to a project goal</h2>
+      <div class="lc-sechead"><span>04 — Final</span><span>Scentbird App Redesign</span></div>
       <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.148; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2091"><img src="images/cs/screen-quiz.jpg" alt="The scent quiz screens with callouts." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 10 — Goal 01: personalize discovery. The scent quiz.</figcaption>
+        <figure class="lc-fig" style="--grow: 1.148">
+          <div class="lc-fig-frame" style="--ar: 2400 / 2091"><img src="images/cs/screen-quiz.jpg" alt="The scent quiz screens with design callouts." loading="lazy"></div>
+          <figcaption class="lc-cap">Fig. 03 — The scent quiz.</figcaption>
+        </figure>
+        <figure class="lc-fig" style="--grow: 1.147">
+          <div class="lc-fig-frame" style="--ar: 2400 / 2092"><img src="images/cs/screen-matches.jpg" alt="The matches screens with design callouts." loading="lazy"></div>
+          <figcaption class="lc-cap">Fig. 04 — Your matches.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="lc-sec">
-      <div class="lc-sechead"><span>15 — Scent profile</span><span>Scentbird App Redesign</span></div>
+      <div class="lc-sechead"><span>05 — In use</span><span>Scentbird App Redesign</span></div>
       <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.148; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2091"><img src="images/cs/screen-profile.jpg" alt="The scent profile screens with callouts." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 11 — Goal 02: create a sensory experience. Scent profile.</figcaption>
+        <figure class="lc-fig" style="--grow: 1.5">
+          <div class="lc-fig-frame" style="--ar: 3 / 2"><div class="lc-ph" role="img" aria-label="Mockup placeholder"><span>Mockup placeholder</span></div></div>
+          <figcaption class="lc-cap">Fig. 05 — Mockup to come.</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>16 — Your matches</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.147; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2092"><img src="images/cs/screen-matches.jpg" alt="The matches screens with callouts." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 12 — Goal 03: improve product exploration. Your matches.</figcaption>
+        <figure class="lc-fig" style="--grow: 1.5">
+          <div class="lc-fig-frame" style="--ar: 3 / 2"><div class="lc-ph" role="img" aria-label="Mockup placeholder"><span>Mockup placeholder</span></div></div>
+          <figcaption class="lc-cap">Fig. 06 — Mockup to come.</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>17 — Fragrance detail</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 0.97; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2474"><img src="images/cs/screen-detail.jpg" alt="The fragrance detail screen with callouts." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 13 — Goal 03: improve product exploration. Fragrance detail.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>18 — Your case</span><span>Scentbird App Redesign</span></div>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 1.148; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 2091"><img src="images/cs/screen-case.jpg" alt="The case and plan screens with callouts." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 14 — Goal 04: simplify subscription. Your case.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="lc-sec">
-      <div class="lc-sechead"><span>19 — Every screen</span><span>Scentbird App Redesign</span></div>
-      <h2 class="lc-h2 lc-h2--lg">Every screen, grouped by flow, from first launch to checkout</h2>
-      <div class="lc-gallery">
-        <figure class="lc-fig" style="--grow: 0.307; --max: 960px">
-          <div class="lc-fig-frame" style="--ar: 2400 / 7822"><img src="images/cs/ui.jpg" alt="Every screen of the redesign grouped by flow: onboarding, scent quiz, scent profile, matches and detail, and case and checkout." loading="lazy"></div>
-          <figcaption class="lc-cap">Fig. 15 — All screens, grouped by flow.</figcaption>
+        <figure class="lc-fig" style="--grow: 1.5">
+          <div class="lc-fig-frame" style="--ar: 3 / 2"><div class="lc-ph" role="img" aria-label="Mockup placeholder"><span>Mockup placeholder</span></div></div>
+          <figcaption class="lc-cap">Fig. 07 — Mockup to come.</figcaption>
         </figure>
       </div>
     </section>

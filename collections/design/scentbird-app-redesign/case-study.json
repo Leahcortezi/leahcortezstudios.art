@@ -47,8 +47,7 @@
   "deliverables": [
     "Problem statement and project goals",
     "Research and key insights",
-    "Persona, empathy map and customer journey map",
-    "Information architecture and user flow",
+    "Persona, journey map and user flow",
     "Low-fi and digital wireframes",
     "Style guide",
     "High-fidelity screens and interactive prototype"
@@ -56,8 +55,7 @@
   "finalDesign": [
     "The quiz asks about feelings instead of fragrance jargon. Each question explains itself in one line, familiar notes like citrus and amber anchor each end of the scale, and a live result card updates as you drag to describe how that mix will smell. Eight segments fill in as you go so the quiz never feels endless, and answers save at every step.",
     "The scent profile makes taste visible. A scent wheel plots eight fragrance families as one shape, results lead with a named scent family instead of a list of products, and any answer can be edited later, with matches refreshing to reflect it. Navigation stays to three tabs: Matches, Profile and Case.",
-    "Matches are ranked by how well each scent fits, with a ring showing the match score, notes as chips that reuse the quiz's language, and filters for price, season and stock. The fragrance detail adds context before commitment: a one-line reason it matches, vial size translated into about 30 days of wear, key notes and similar scents.",
-    "The subscription can be read at a glance. The case is named for its owner and shows exactly what ships next, vials can be swapped or removed in place, skipping sits next to the price instead of in the fine print, and Subscribe & save and purchase once are shown side by side with prices up front."
+    "Matches are ranked by how well each scent fits, with a ring showing the match score, notes as chips that reuse the quiz's language, and filters for price, season and stock. The fragrance detail adds context before commitment: a one-line reason it matches, vial size translated into about 30 days of wear, key notes and similar scents."
   ],
   "pull": "I want to find scents that actually feel like me.",
   "blocks": [
@@ -67,272 +65,63 @@
       "rows": [
         {
           "heading": "Where the current app creates friction",
-          "body": "To understand where the current Scentbird experience creates friction, I analyzed the existing app experience alongside App Store and Google Play reviews and fragrance-community discussions. I focused on how users discover fragrances, evaluate recommendations, manage their queue, and understand their subscription.",
-          "caption": "The current Scentbird app and the reasons to redesign it.",
+          "body": "I analyzed the existing app alongside App Store and Google Play reviews and fragrance-community discussions, focusing on how users discover fragrances, evaluate recommendations, and manage their subscription. Three things kept coming up: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.",
           "imageSide": "right",
           "src": "images/cs/before.jpg",
-          "alt": "The current Scentbird app screens beside three redesign motivations: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.",
-          "ratio": "2400/1716"
+          "alt": "The current Scentbird app screens beside three redesign motivations.",
+          "ratio": "2400/1716",
+          "caption": "The current app and the reasons to redesign it."
         },
         {
           "heading": "Low-fi first",
-          "body": "I started with low-fidelity wireframes to settle the structure of the quiz, profile, matches and case before moving to digital wireframes for the key moments.",
-          "caption": "Low-fi wireframes.",
+          "body": "Low-fidelity wireframes settled the structure of the quiz, profile, matches and case before I moved on to digital wireframes and the style guide.",
           "imageSide": "left",
           "src": "images/cs/lowfi.jpg",
           "alt": "Low-fidelity wireframes for the Scentbird redesign.",
-          "ratio": "2400/1836"
-        }
-      ]
-    },
-    {
-      "type": "points",
-      "label": "Problem & goals",
-      "heading": "How might we help people find a scent that feels like theirs, and feel confident subscribing to it?",
-      "body": "Fragrance is personal, but on a screen it's invisible. In the current app, a large catalog is hard to narrow down, recommendations don't say why they fit, and plan and billing details are hard to find. Users are left guessing, and a guess is hard to subscribe to.",
-      "items": [
-        {
-          "n": "Goal 01",
-          "title": "Personalize discovery",
-          "body": "Help users discover fragrances based on their individual tastes and moods.",
-          "tag": "The scent quiz"
-        },
-        {
-          "n": "Goal 02",
-          "title": "Create a sensory experience",
-          "body": "Make an invisible product feel tangible through visuals, language and the scent wheel.",
-          "tag": "Scent profile"
-        },
-        {
-          "n": "Goal 03",
-          "title": "Improve product exploration",
-          "body": "Give every fragrance clear notes, a match score and a reason it fits.",
-          "tag": "Matches + detail"
-        },
-        {
-          "n": "Goal 04",
-          "title": "Simplify subscription",
-          "body": "Show the plan, price and next shipment plainly, with skip and cancel close at hand.",
-          "tag": "Your case"
-        }
-      ]
-    },
-    {
-      "type": "points",
-      "label": "Research findings",
-      "heading": "Three questions, three findings",
-      "body": "The research centered around three questions: how easily can users discover and evaluate fragrances, how clearly does the app communicate personalized recommendations, and how easily can users understand and manage their subscription?",
-      "items": [
-        {
-          "n": "01",
-          "kicker": "Discovery",
-          "title": "Search + organization",
-          "body": "Users reported difficulty finding or revisiting fragrances, including issues with search and accessing product information.",
-          "source": "Google Play reviews"
-        },
-        {
-          "n": "02",
-          "kicker": "Personalization",
-          "title": "Recommendations need context",
-          "body": "Some users questioned whether recommendations accurately reflected their preferences, highlighting an opportunity to make personalization more transparent.",
-          "source": "Fragrance community feedback"
-        },
-        {
-          "n": "03",
-          "kicker": "Subscription",
-          "title": "Clarity builds confidence",
-          "body": "Users reported confusion around cancellation, billing, and subscription management across the app and website.",
-          "source": "App Store reviews + Scentbird support"
-        }
-      ]
-    },
-    {
-      "type": "points",
-      "label": "Key insights",
-      "heading": "What the research pointed to",
-      "items": [
-        {
-          "title": "Clarity builds confidence",
-          "body": "Users want to understand a fragrance before committing to a subscription."
-        },
-        {
-          "title": "Recommendations need context",
-          "body": "Users are more likely to trust recommendations when they understand why a scent fits them."
-        },
-        {
-          "title": "Discovery can feel overwhelming",
-          "body": "A large fragrance library needs intuitive filtering and organization."
-        },
-        {
-          "title": "Personalization should feel useful",
-          "body": "Users want their preferences to actively shape what they see."
-        },
-        {
-          "title": "Search + organization",
-          "body": "Users need simple ways to find, save, and revisit fragrances."
-        },
-        {
-          "title": "Subscriptions need transparency",
-          "body": "Clear information helps users feel confident about recurring orders."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Primary user persona",
-      "heading": "Designed for curious fragrance shoppers like Maya",
-      "items": [
-        {
-          "src": "images/cs/persona.jpg",
-          "alt": "Primary user persona: Maya Rodriguez, 24, marketing assistant in Dallas, with her personality, skills, motivations, core needs and frustrations.",
-          "ratio": "2400/2134",
-          "caption": "Persona: Maya Rodriguez."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Empathy map",
-      "items": [
-        {
-          "src": "images/cs/empathy.jpg",
-          "alt": "Empathy map for Maya covering what she says, thinks, does and feels.",
-          "ratio": "2400/2311",
-          "caption": "Empathy map."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Customer journey",
-      "items": [
-        {
-          "src": "images/cs/journey.jpg",
-          "alt": "Customer journey map from discover to subscribe, with actions, thoughts, feelings and opportunities.",
-          "ratio": "2400/2244",
-          "caption": "Customer journey map."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Information architecture",
-      "items": [
-        {
-          "src": "images/cs/ia.jpg",
-          "alt": "Information architecture diagram for the app: onboarding, home, search, fragrance, my scents, profile and subscription.",
-          "ratio": "2400/2787",
-          "caption": "Information architecture."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "User flow",
-      "items": [
-        {
-          "src": "images/cs/flow.jpg",
-          "alt": "User flow from opening the app through the scent quiz, matches, case, checkout and managing the plan.",
-          "ratio": "2400/4653",
-          "caption": "User flow."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Digital wireframes",
-      "items": [
-        {
-          "src": "images/cs/digital.jpg",
-          "alt": "Digital wireframes for the quiz, results, matches, fragrance detail and the monthly case.",
-          "ratio": "2400/1947",
-          "caption": "Digital wireframes."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Style guide",
-      "items": [
-        {
-          "src": "images/cs/style.jpg",
-          "alt": "Style guide: colors, type, buttons and brand elements including the scent wheel, match ring and note chips.",
-          "ratio": "2400/4710",
-          "caption": "Style guide."
+          "ratio": "2400/1836",
+          "caption": "Low-fi wireframes."
         }
       ]
     },
     {
       "type": "gallery",
       "label": "Final",
-      "heading": "Major screens, each tied to a project goal",
       "items": [
         {
           "src": "images/cs/screen-quiz.jpg",
-          "alt": "The scent quiz screens with callouts.",
+          "alt": "The scent quiz screens with design callouts.",
           "ratio": "2400/2091",
-          "caption": "Goal 01: personalize discovery. The scent quiz."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Scent profile",
-      "items": [
-        {
-          "src": "images/cs/screen-profile.jpg",
-          "alt": "The scent profile screens with callouts.",
-          "ratio": "2400/2091",
-          "caption": "Goal 02: create a sensory experience. Scent profile."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Your matches",
-      "items": [
+          "caption": "The scent quiz."
+        },
         {
           "src": "images/cs/screen-matches.jpg",
-          "alt": "The matches screens with callouts.",
+          "alt": "The matches screens with design callouts.",
           "ratio": "2400/2092",
-          "caption": "Goal 03: improve product exploration. Your matches."
+          "caption": "Your matches."
         }
       ]
     },
     {
       "type": "gallery",
-      "label": "Fragrance detail",
+      "label": "In use",
       "items": [
         {
-          "src": "images/cs/screen-detail.jpg",
-          "alt": "The fragrance detail screen with callouts.",
-          "ratio": "2400/2474",
-          "caption": "Goal 03: improve product exploration. Fragrance detail."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Your case",
-      "items": [
+          "placeholder": "Mockup placeholder",
+          "ratio": "3/2",
+          "alt": "Mockup placeholder",
+          "caption": "Mockup to come."
+        },
         {
-          "src": "images/cs/screen-case.jpg",
-          "alt": "The case and plan screens with callouts.",
-          "ratio": "2400/2091",
-          "caption": "Goal 04: simplify subscription. Your case."
-        }
-      ]
-    },
-    {
-      "type": "gallery",
-      "label": "Every screen",
-      "heading": "Every screen, grouped by flow, from first launch to checkout",
-      "items": [
+          "placeholder": "Mockup placeholder",
+          "ratio": "3/2",
+          "alt": "Mockup placeholder",
+          "caption": "Mockup to come."
+        },
         {
-          "src": "images/cs/ui.jpg",
-          "alt": "Every screen of the redesign grouped by flow: onboarding, scent quiz, scent profile, matches and detail, and case and checkout.",
-          "ratio": "2400/7822",
-          "caption": "All screens, grouped by flow."
+          "placeholder": "Mockup placeholder",
+          "ratio": "3/2",
+          "alt": "Mockup placeholder",
+          "caption": "Mockup to come."
         }
       ]
     }
