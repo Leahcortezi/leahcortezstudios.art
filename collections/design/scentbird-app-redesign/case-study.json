@@ -85,7 +85,6 @@
     },
     {
       "type": "gallery",
-      "label": "Final",
       "items": [
         {
           "src": "images/cs/quiz.jpg",
@@ -111,29 +110,32 @@
           "ratio": "1068/1513",
           "caption": "Your case."
         }
-      ]
+      ],
+      "attach": "finalDesign"
+    },
+    {
+      "type": "feature",
+      "label": "Final",
+      "src": "images/cs/grid.jpg",
+      "ratio": "2048/1365",
+      "alt": "Grid of the redesigned Scentbird screens: quiz, scent profile, matches and case.",
+      "caption": "The redesigned screens."
     },
     {
       "type": "gallery",
       "label": "In use",
       "items": [
         {
-          "placeholder": "Mockup placeholder",
-          "ratio": "3/2",
-          "alt": "Mockup placeholder",
-          "caption": "Mockup to come."
+          "src": "images/cs/phone-mockup.jpg",
+          "ratio": "2400/1600",
+          "alt": "The redesigned Scentbird app on a phone.",
+          "caption": "The redesigned app on a phone."
         },
         {
-          "placeholder": "Mockup placeholder",
-          "ratio": "3/2",
-          "alt": "Mockup placeholder",
-          "caption": "Mockup to come."
-        },
-        {
-          "placeholder": "Mockup placeholder",
-          "ratio": "3/2",
-          "alt": "Mockup placeholder",
-          "caption": "Mockup to come."
+          "src": "images/cs/phone-real.jpg",
+          "ratio": "2400/1600",
+          "alt": "The redesigned Scentbird app held in a hand.",
+          "caption": "The redesigned app in use."
         }
       ]
     }
