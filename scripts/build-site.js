@@ -199,8 +199,8 @@ function renderProject(slug, d, order, all) {
       const u = new URL(hero.embed);
       u.searchParams.set('hide-ui', '1');
       u.searchParams.set('hotspot-hints', '0');
-      u.searchParams.set('scaling', 'scale-down');
-      u.searchParams.set('content-scaling', 'fixed');
+      if (!u.searchParams.has('scaling')) u.searchParams.set('scaling', 'scale-down');
+      if (!u.searchParams.has('content-scaling')) u.searchParams.set('content-scaling', 'fixed');
       u.searchParams.set('page-selector', '0');
       emb = u.toString();
     } catch (e) { /* keep as-is */ }
