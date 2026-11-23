@@ -38,7 +38,7 @@
     }
   ],
   "hero": {
-    "embed": "https://embed.figma.com/proto/842vJHtpJ8b7qniP3VaBV7/Leah-Cortez-Case-Study?node-id=4364-7197&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4364%3A7197&page-id=61%3A101&embed-host=share",
+    "embed": "https://embed.figma.com/proto/842vJHtpJ8b7qniP3VaBV7/Leah-Cortez-Case-Study?node-id=4364-7197&viewport=148%2C175%2C0.06&scaling=contain&content-scaling=responsive&starting-point-node-id=4364%3A7197&page-id=61%3A101&embed-host=share",
     "poster": "images/cs/poster.jpg",
     "alt": "Interactive Figma prototype of the Plant the Studio website redesign",
     "ratio": "16/9"
@@ -75,8 +75,8 @@
           "body": "The existing storefront presented an opportunity to improve the relationship between navigation, product organization, and product information.",
           "caption": "Auditing the current homepage, collection and product pages.",
           "imageSide": "right",
-          "src": "images/cs/audit.png",
-          "ratio": "991/1440",
+          "src": "images/cs/audit.jpg",
+          "ratio": "1047/1488",
           "alt": "Audit of the current Plant the Studio homepage, collection and product pages, with notes on the crowded promo bar, missing headline, misleading links, no filters and hidden care instructions."
         },
         {
@@ -95,8 +95,8 @@
       "attach": "finalDesign",
       "items": [
         {
-          "src": "images/cs/mobile.png",
-          "ratio": "2400/2432",
+          "src": "images/cs/mobile.jpg",
+          "ratio": "2400/2699",
           "alt": "Mobile layouts of the Plant the Studio homepage, plants page and filter sheet.",
           "caption": "The same shop on a smaller screen."
         }
