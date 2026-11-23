@@ -2,7 +2,7 @@
 **Last updated:** October 15, 2026
 
 ## About
-**Leah Cortez** — Chicana artist and designer from Corpus Christi, South Texas. BFA Communication Design student at Texas A&M University–Corpus Christi (graduating 2028).
+**Leah Cortez** — Chicana communication designer from Corpus Christi, South Texas, working across identity, packaging, editorial and type, with UI/UX and typeface design as range. BFA Communication Design student at Texas A&M University–Corpus Christi (graduating 2028).
 
 - Site: leahcortezstudios.art (GitHub Pages, repo `Leahcortezi/leahcortezstudios.art`, branch `main`, `CNAME` set)
 - Instagram: @leahcortez.art

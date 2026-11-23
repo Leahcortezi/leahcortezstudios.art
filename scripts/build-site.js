@@ -519,7 +519,7 @@ function renderWork(order, all) {
   const html = [
     pageHead({
       title: 'Work \u00B7 Leah Cortez',
-      desc: 'Selected work by Leah Cortez: identities, packaging, publications, posters and one typeface.',
+      desc: 'Work by Leah Cortez, a communication designer: identity, packaging, editorial, type and UI/UX.',
       root, url: `${SITE}/collections/`,
     }),
     '<body class="v2">',
