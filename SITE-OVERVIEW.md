@@ -20,7 +20,7 @@ The site is a design-focused portfolio, with a personal, scrapbook-style look.
 | About | `/bio/index.html` | Built from the About handoff (hero, facts, story, how I work, professor quotes, "Outside the brief", contact) |
 | Contact | `/contact/index.html`, `thanks.html` | FormSubmit form to contact@leahcortezstudios.art |
 | Card | `/card.html` | Link-in-bio (Portfolio, Behance, Instagram) |
-| 404 | `/404.html` | |
+| 1 | `/404.html` | |
 
 The pages from the Home, Work, project and About redesign use `css/v2.css`, `scripts/v2.js` and `body.v2`. Home also loads `scripts/home.js`. Contact and Card still use the older stylesheets.
 
@@ -31,22 +31,20 @@ The pages from the Home, Work, project and About redesign use `css/v2.css`, `scr
 - Pre-colored brand assets: `images/logo/logo3-pink.png`, `icons/starburst-pink.svg`, `icons/starburst-rose.svg`, `icons/flower-pink.svg`
 - Home marquee: Surendra words (Identity, Packaging, Editorial, Type, Posters) with a starburst between each, scrolling left
 
-## Projects (13, in `scripts/gallery-order.json`)
+## Projects (11, in `scripts/gallery-order.json`)
 | Order | Project | Slug | Category |
 |---|---|---|---|
-| 1 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
-| 2 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
-| 2 | Insane Grain | `insane-grain-packaging` | Packaging |
-| 2 | Surendra | `custom-typeface-specimen-poster` | Type |
-| 3 | City Reliquary | `City Reliquary` | Identity |
-| 4 | Alien Invasion or Sleep Paralysis? | `editorial-spread` | Editorial |
-| 5 | Threads | `Threads` | Identity |
-| 6 | Space Age | `space-age-wine-packaging` | Packaging |
-| 7 | Designer Tribute Zine | `contemporary-contexts-zine` | Editorial |
-| 8 | Gulliver's Travels | `paperback-full-cover` | Book cover |
-| 9 | Billy Joel Tribute Booklet | `band-tribute-booklet` | Editorial |
-| 10 | Historical Poster Styles | `historical-posters` | Posters |
-| 11 | Disappearing Species | `endangered-species-poster` | Poster |
+| 2 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
+| 3 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
+| 4 | Insane Grain | `insane-grain-packaging` | Packaging |
+| 5 | Surendra | `custom-typeface-specimen-poster` | Type |
+| 6 | City Reliquary | `City Reliquary` | Identity |
+| 7 | Alien Invasion or Sleep Paralysis? | `editorial-spread` | Editorial |
+| 8 | Threads | `Threads` | Identity |
+| 9 | Space Age | `space-age-wine-packaging` | Packaging |
+| 10 | Designer Tribute Zine | `contemporary-contexts-zine` | Editorial |
+| 11 | Gulliver's Travels | `paperback-full-cover` | Book cover |
+| 12 | Historical Poster Styles | `historical-posters` | Posters |
 
 The Work filters are Packaging, Type & posters, Identity, Editorial and Illustration. The nav links are Work, About and Contact.
 

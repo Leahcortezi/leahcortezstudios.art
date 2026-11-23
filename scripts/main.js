@@ -922,7 +922,6 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/contemporary-contexts-zine/': [
       { href: '/collections/design/editorial-spread/index.html', lens: 'Theme', reason: 'A close continuation of publication storytelling and hierarchy.' },
       { href: '/collections/design/themed-playing-card-design/index-case-study.html', lens: 'Symbol', reason: 'Repeating motif systems and information architecture.' },
-      { href: '/collections/design/endangered-species-poster/index.html', lens: 'Mood', reason: 'Urgent message-driven design with strong visual impact.' }
     ],
     '/collections/illustration/anointed-gaze/': [
       { href: '/collections/illustration/abuelas-altar/index.html', lens: 'Theme', reason: 'Devotional imagery and spiritual inheritance overlap deeply.' },
@@ -952,17 +951,11 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/themed-playing-card-design/': [
       { href: '/collections/design/editorial-spread/index.html', lens: 'Theme', reason: 'Structured visual systems and sequencing.' },
       { href: '/collections/design/contemporary-contexts-zine/index.html', lens: 'Symbol', reason: 'Publication logic and recurring motif language.' },
-      { href: '/collections/design/endangered-species-poster/index.html', lens: 'Mood', reason: 'Bold communication with clear conceptual framing.' }
     ],
     '/collections/objects/abyss-bloom/': [
       { href: '/collections/printmaking/the-living-room/index.html', lens: 'Theme', reason: 'Organic, speculative ecosystems and unfamiliar life forms.' },
       { href: '/collections/illustration/heaven-on-fire/index.html', lens: 'Mood', reason: 'Atmospheric intensity with surreal environmental charge.' },
       { href: '/collections/objects/remnants/index.html', lens: 'Symbol', reason: 'Material form used to hold time, pressure, and residue.' }
-    ],
-    '/collections/design/endangered-species-poster/': [
-      { href: '/collections/objects/abyss-bloom/index.html', lens: 'Theme', reason: 'Ecological concern translated into visceral visual form.' },
-      { href: '/collections/printmaking/the-living-room/index.html', lens: 'Symbol', reason: 'Environment treated as an active living body.' },
-      { href: '/collections/design/themed-playing-card-design/index-case-study.html', lens: 'Mood', reason: 'Systemic design language with strong concept-driven clarity.' }
     ],
     '/collections/printmaking/the-living-room/': [
       { href: '/collections/objects/abyss-bloom/index.html', lens: 'Theme', reason: 'A related world of biological surrealism and speculative nature.' },
@@ -999,13 +992,7 @@ function initializeCuratedRelatedWorks() {
       { href: '/collections/objects/gnaw/index.html', lens: 'Symbol', reason: 'A tactile vocabulary of compression and compulsion.' },
       { href: '/collections/objects/feathers-along-the-bend/index.html', lens: 'Mood', reason: 'Quiet traces of what lingers after a moment has passed.' }
     ],
-    '/collections/design/band-tribute-booklet/': [
-      { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Theme', reason: 'Editorial strategy with typographic systems at the core.' },
-      { href: '/collections/design/contemporary-contexts-zine/index.html', lens: 'Mood', reason: 'Multi-page narrative with grid-driven composition and visual flow.' },
-      { href: '/collections/design/custom-typeface-specimen-poster/index.html', lens: 'Symbol', reason: 'Typography as the primary design language and expressive tool.' }
-    ],
     '/collections/design/paperback-full-cover/': [
-      { href: '/collections/design/band-tribute-booklet/index.html', lens: 'Theme', reason: 'Publication design where composition spans multiple surfaces.' },
       { href: '/collections/design/space-age-wine-packaging/index.html', lens: 'Mood', reason: 'Complete package design balancing visual impact with functionality.' },
       { href: '/collections/design/City Reliquary/index.html', lens: 'Symbol', reason: 'Unified identity system with cohesive narrative and visual strategy.' }
     ]
@@ -1025,7 +1012,6 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/city reliquary/': '/collections/design/City%20Reliquary/MOCKUPSHIRT.jpg',
     '/collections/design/themed-playing-card-design/': '/collections/design/themed-playing-card-design/images/card-mockup.jpg',
     '/collections/objects/abyss-bloom/': '/collections/objects/abyss-bloom/images/JPEG/studio2.jpg',
-    '/collections/design/endangered-species-poster/': '/collections/design/endangered-species-poster/images/postermockup.jpg',
     '/collections/printmaking/the-living-room/': '/collections/printmaking/The%20Living%20Room.jpg',
     '/collections/illustration/heaven-on-fire/': '/collections/illustration/heaven-on-fire/images/JPEG/personal7.jpg',
     '/collections/objects/feathers-along-the-bend/': '/collections/objects/feathers-along-the-bend/images/JPEG/studio8.jpg',
@@ -1033,7 +1019,6 @@ function initializeCuratedRelatedWorks() {
     '/collections/objects/gnaw/': '/collections/objects/gnaw/images/JPEG/Studio6.jpg',
     '/collections/objects/unraveling/': '/collections/objects/unraveling/images/JPEG/Studio5.jpg',
     '/collections/objects/remnants/': '/collections/objects/remnants/images/JPEG/studio1.jpg',
-    '/collections/design/band-tribute-booklet/': '/collections/design/band-tribute-booklet/images/mockup.jpg',
     '/collections/design/paperback-full-cover/': '/collections/design/paperback-full-cover/images/thumb.jpg'
   };
 
@@ -1051,7 +1036,6 @@ function initializeCuratedRelatedWorks() {
     '/collections/design/city reliquary/': 'City Reliquary',
     '/collections/design/themed-playing-card-design/': 'Themed Playing Cards',
     '/collections/objects/abyss-bloom/': 'Abyss Bloom',
-    '/collections/design/endangered-species-poster/': 'Disappearing Species',
     '/collections/printmaking/the-living-room/': 'The Living Room',
     '/collections/illustration/heaven-on-fire/': 'Heaven on Fire',
     '/collections/objects/feathers-along-the-bend/': 'Feathers Along the Bend',
@@ -1059,7 +1043,6 @@ function initializeCuratedRelatedWorks() {
     '/collections/objects/gnaw/': 'Gnaw',
     '/collections/objects/unraveling/': 'Unraveling',
     '/collections/objects/remnants/': 'Remnants',
-    '/collections/design/band-tribute-booklet/': 'Band Tribute Booklet',
     '/collections/design/paperback-full-cover/': 'Paperback Full Cover'
   };
 
