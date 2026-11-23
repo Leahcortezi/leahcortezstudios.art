@@ -72,31 +72,33 @@
     },
     {
       "type": "feature",
-      "label": "03 — Final",
+      "label": "Final",
       "src": "images/cs/feature.jpg",
-      "alt": "Rows of the finished Insane Grain pouch laid out at an angle on black.",
-      "caption": "The final pouch, in repeat.",
+      "alt": "The Insane Grain pouches in a full grid, red, black and white, with the halftone mouth repeating across the pouches.",
+      "caption": "The final pouch, in a grid.",
       "ratio": "2400/1800"
     },
     {
       "type": "gallery",
-      "label": "04 — In context",
-      "heading": "Out in the world",
+      "label": "In use",
       "items": [
         {
-          "src": "images/cs/mockup-1.jpg",
-          "alt": "Insane Grain pouch mockup.",
-          "ratio": "2000/1390"
+          "src": "images/cs/hand.jpg",
+          "alt": "A hand holding the Insane Grain pouch.",
+          "ratio": "2400/1600",
+          "caption": "In hand."
         },
         {
-          "src": "images/cs/mockup-2.jpg",
-          "alt": "Insane Grain pouch mockup in a second setting.",
-          "ratio": "2000/1555"
+          "src": "images/cs/gym.jpg",
+          "alt": "The Insane Grain pouch in a gym setting.",
+          "ratio": "2400/2400",
+          "caption": "At the gym."
         },
         {
-          "src": "images/cs/mockup-3.jpg",
-          "alt": "Insane Grain pouch mockup in a third setting.",
-          "ratio": "2000/1493"
+          "src": "images/cs/flatlay.jpg",
+          "alt": "Three Insane Grain pouches in a flat lay.",
+          "ratio": "2400/1600",
+          "caption": "Flat lay."
         }
       ]
     },
