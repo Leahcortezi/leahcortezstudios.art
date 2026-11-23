@@ -51,13 +51,16 @@
     "text": [
       "Scentbird is a fragrance discovery and subscription service that allows users to explore perfumes, receive personalized recommendations, and build a monthly fragrance collection.",
       "Although the concept offers an engaging approach to fragrance discovery, the existing app experience leaves opportunities to make personalization, product exploration, and subscription management more intuitive.",
-      "I selected Scentbird for a mobile app redesign because of the potential of its concept and the opportunity to strengthen how users discover and experience fragrance through a digital interface."
+      "I selected Scentbird for a mobile app redesign because of the potential of its concept and the opportunity to strengthen how users discover and experience fragrance through a digital interface.",
+      "I wanted to move away from the conventional beauty-shopping experience, where advertisements and sponsored recommendations compete with what the customer actually needs."
     ]
   },
   "deliverables": [],
   "finalDesign": [
     "The scent quiz serves as the foundation of the redesigned experience.",
+    "I approached the app as a fragrance laboratory, a place where users build their own scent profile through the quiz and can revisit and adjust it at any time.",
     "Eight guided questions explore fragrance preferences through approachable prompts about scent notes, moods, and personal tastes. Rather than relying exclusively on technical fragrance terminology, the questions make preference-building feel more conversational and engaging.",
+    "Product listings show how closely each fragrance matches a profile as a compatibility percentage, so the discovery is transparent. Similar fragrances sit inside the product cards instead of unrelated promotions, so discovery grows out of what the user already likes.",
     "The resulting scent profile translates user responses into a signature fragrance family, preferred notes, and ranked recommendations.",
     "Users can review and edit their preferences, allowing them to refine their profile and better understand how their selections influence fragrance matches."
   ],
@@ -225,7 +228,8 @@
       "body": [
         "I developed a new visual direction using deep purple, electric lime, and soft lavender, supported by editorial typography and geometric scent-inspired graphics.",
         "The visual system creates a distinctive identity for the app while using color, contrast, and recurring graphic motifs to establish consistency across the redesigned experience.",
-        "The interface connects onboarding, personalized results, fragrance exploration, and subscription checkout through a cohesive visual language."
+        "The interface connects onboarding, personalized results, fragrance exploration, and subscription checkout through a cohesive visual language.",
+        "The laboratory concept is the foundation for both the visual and the functional direction. I wanted the app to feel like an environment for understanding and finding someone's ideal fragrance, not just a redesigned beauty app."
       ]
     },
     {
@@ -260,6 +264,13 @@
       "body": [
         "The redesigned primary user journey brings fragrance discovery, personalization, and subscription selection into a more connected mobile experience.",
         "By making fragrance preferences easier to express and recommendations easier to understand, the redesign reframes the experience from browsing a catalog to discovering scents that feel personal."
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "body": [
+        "Sensory experiences can be translated into digital interfaces through symbolism, visual storytelling and thoughtful interaction. It taught me to think beyond a product's usual visual language."
       ]
     }
   ],

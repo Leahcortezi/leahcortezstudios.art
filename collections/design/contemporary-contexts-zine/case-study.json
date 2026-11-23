@@ -42,8 +42,10 @@
   },
   "overview": {
     "text": [
+      "Jonathan Castro is a Lima-born designer working across graphic design, motion and music, with a visual language shaped by underground rave posters and Latin culture. I was drawn to his idea of design as an \"accumulation of energy in an object,\" a vehicle for emotional, ritual and sensory connection more than purely functional communication.",
       "This project examines Jonathan Castro's design practice and the visual qualities that make his work distinctive. I wanted the publication to reflect the energy of his imagery while maintaining a clear editorial structure for the written content.",
-      "The design balances fluid, colorful artwork with simpler typography, allowing the imagery to carry the atmosphere without making the information difficult to follow."
+      "The design balances fluid, colorful artwork with simpler typography, allowing the imagery to carry the atmosphere without making the information difficult to follow.",
+      "I used the project to try a different way of working: not starting from a problem to solve, but translating beliefs, emotion and energy into visual form, while letting my own visual language come through the interpretation."
     ]
   },
   "blocks": [
@@ -110,12 +112,20 @@
           "ratio": "2000/1333"
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "body": [
+        "Design can serve purposes beyond problem-solving. The project would be stronger if Castro's philosophy were tied to a more defined design challenge."
+      ]
     }
   ],
   "categoryFull": "Editorial Design",
   "deliverables": [],
   "finalDesign": [
-    "My early sheets went all gradient, the way Castro's own work does, and it read as imitation. In the final, the liquid color lives inside the zine and the cover is black, with plain type so the words have somewhere to land. The yellow highlight is the one flat color in the layout, so the eye goes there first."
+    "My early sheets went all gradient, the way Castro's own work does, and it read as imitation. In the final, the liquid color lives inside the zine and the cover is black, with plain type so the words have somewhere to land. The yellow highlight is the one flat color in the layout, so the eye goes there first.",
+    "With so few pages, I had to be selective about information and composition. I wanted it to feel like a tribute without losing my own design voice."
   ],
   "pull": "I wanted a tribute, not a copy."
 }

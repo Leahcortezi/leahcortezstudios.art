@@ -44,6 +44,7 @@
   "overview": {
     "text": [
       "Surendra explores how the character of historical type can be translated into a contemporary digital typeface. The focus is on the construction of the letterforms themselves: their proportions, terminals, contrast, and the small irregularities that give a typeface its personality.",
+      "It starts from a historical wood and metal specimen of the same name. I was drawn to its natural, almost humanist character, especially the serifs that balance sharp points with softer curves. I wanted to keep that character and reinterpret it for contemporary use, not just digitize it.",
       "The project combines type research, letterform development, and specimen design to explore how historical references can inform a contemporary typeface."
     ]
   },
@@ -127,12 +128,21 @@
           "ratio": "2400/1745"
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "body": [
+        "Developing it made me pay closer attention to how letterforms relate to each other, the shapes inside them, and their spacing."
+      ]
     }
   ],
   "categoryFull": "Typography",
   "deliverables": [],
   "finalDesign": [
-    "The specimens had heavy ink spread and uneven weight, which looks great in a headline and rough in a paragraph. I kept the soft corners and wedge serifs, evened out the weight and lowered the contrast so the face could still set text. The slanted *e* and the curled *7* are the two quirks I left in on purpose. Everything else stays quiet, so those two do the remembering."
+    "The specimens had heavy ink spread and uneven weight, which looks great in a headline and rough in a paragraph. I kept the soft corners and wedge serifs, evened out the weight and lowered the contrast so the face could still set text. The slanted *e* and the curled *7* are the two quirks I left in on purpose. Everything else stays quiet, so those two do the remembering.",
+    "The curled seven stayed because it is part of the face's identity. I redrew the single-story lowercase *a* as a double-story form for recognition and readability, and opened up the proportions and spacing so the letters feel more accessible.",
+    "Surendra also sets every heading on this website, which tests it in a real application instead of leaving it as a specimen."
   ],
   "pull": "Heavy ink looks great in a headline and rough in a paragraph."
 }

@@ -43,6 +43,7 @@
   },
   "overview": {
     "text": [
+      "City Reliquary is built on the idea that ordinary objects hold extraordinary histories. The museum celebrates the overlooked artifacts of everyday city life.",
       "City Reliquary celebrates New York City's history through everyday objects, personal collections, and overlooked artifacts. The identity draws on the idea of collecting and preserving fragments of history, using a collage of frames to create a distinctive mark that reflects the museum's approach."
     ]
   },
@@ -53,7 +54,7 @@
       "rows": [
         {
           "heading": "Objects worth keeping",
-          "body": "City Reliquary collects everyday artifacts and the stories attached to them, so I started with the museum itself: the red storefront, the script sign, the cabinet-of-curiosities feel. Then I looked at how Cooper Hewitt, the American Folk Art Museum and the Museum of the City of New York hold a name inside a simple shape.",
+          "body": "City Reliquary collects everyday artifacts and the stories attached to them, so I started with the museum itself: the red storefront, the script sign, the cabinet-of-curiosities feel. Then I looked at how Cooper Hewitt, the American Folk Art Museum and the Museum of the City of New York hold a name inside a simple shape. Its cramped, almost overwhelming interior became an unexpected source of inspiration for the mark.",
           "caption": "Museum notes and logo references.",
           "imageSide": "right",
           "src": "images/cs/research.jpg",
@@ -99,12 +100,20 @@
           "ratio": "2400/1600"
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "body": [
+        "A logo doesn't need to say everything at once. A direct visual idea, executed well, beats making every detail mean something."
+      ]
     }
   ],
   "categoryFull": "Brand Identity",
   "deliverables": [],
   "finalDesign": [
-    "The tower and skyline sketches were the obvious New York answers, and the museum isn't about landmarks. It's about small things people didn't want to lose. I also dropped the stacked CITY / RELIQUARY lockup, because the Museum of the City of New York already does that. The cluster of boxes stayed, in the red of the museum's own storefront. The C and R come from the gaps between the boxes, the way a shelf of objects makes a shape."
+    "The tower and skyline sketches were the obvious New York answers, and the museum isn't about landmarks. It's about small things people didn't want to lose. I also dropped the stacked CITY / RELIQUARY lockup, because the Museum of the City of New York already does that. The cluster of boxes stayed, in the red of the museum's own storefront. The C and R come from the gaps between the boxes, the way a shelf of objects makes a shape.",
+    "I leaned into the tension between density and recognition: a compressed structure of tightly arranged frames, with the C and R readable only through negative space. The mark invites interpretation instead of announcing itself, the way discovering the museum does."
   ],
   "pull": "The museum isn't about landmarks. It's about small things people didn't want to lose."
 }

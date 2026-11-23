@@ -42,8 +42,10 @@
   },
   "overview": {
     "text": [
+      "Alien Invasion or Sleep Paralysis? explores the space between dreaming and waking, when the mind is conscious but the body is still suspended in sleep. I was drawn to how the experience can read as psychological or supernatural.",
       "The article explores sleep paralysis and experiences that people may associate with alien encounters. I wanted the layout to reflect the uncertainty of the subject without making the article itself difficult to read.",
-      "The central design decision was to create a contrast between visual disorientation and editorial structure: the opening feels unstable, while the body text returns to a more controlled layout."
+      "The central design decision was to create a contrast between visual disorientation and editorial structure: the opening feels unstable, while the body text returns to a more controlled layout.",
+      "Experimental grunge typography, especially David Carson's, was the main influence. I wanted the layouts to feel chaotic without becoming uncontrolled."
     ]
   },
   "blocks": [
@@ -112,12 +114,20 @@
           "ratio": "2000/1333"
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Reflection",
+      "body": [
+        "I tested how far type and composition can bend before communication breaks. Experimentation works better when it still has a structure underneath."
+      ]
     }
   ],
   "categoryFull": "Editorial Design",
   "deliverables": [],
   "finalDesign": [
-    "Keyholes and clocks were my first ideas, and they turned the spread into a horror poster. The article is about not knowing which explanation is true, so I let the type carry the unease and kept the photos dark and cropped. The headline breaks across the page, but the body text stays in narrow, ordered columns, so it still works as an article. Black and white only, because color would have picked a side."
+    "Keyholes and clocks were my first ideas, and they turned the spread into a horror poster. The article is about not knowing which explanation is true, so I let the type carry the unease and kept the photos dark and cropped. The headline breaks across the page, but the body text stays in narrow, ordered columns, so it still works as an article. Black and white only, because color would have picked a side.",
+    "An underlying grid gives the compositions direction, so the distortion always has something to push against. The black-and-white palette points to the shift between sleep and waking and the uncertain line between them."
   ],
   "pull": "The article never decides between aliens and sleep, so the design doesn't either."
 }
