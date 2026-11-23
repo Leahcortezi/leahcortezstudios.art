@@ -64,11 +64,17 @@
       var cols = window.innerWidth >= 1000 ? 3 : window.innerWidth >= 640 ? 2 : 1;
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          if (e.isIntersecting) {
+            var el = e.target;
+            el.classList.add('is-in');
+            io.unobserve(el);
+            /* once revealed, drop the animation so hover stays instant */
+            setTimeout(function () { el.classList.remove('lc-reveal'); el.style.removeProperty('--lc-d'); }, 1700);
+          }
         });
       }, { threshold: 0.01, rootMargin: '0px 0px 12% 0px' });
       cards.forEach(function (c, i) {
-        c.style.setProperty('--lc-d', ((i % cols) * 0.06) + 's');
+        c.style.setProperty('--lc-d', ((i % cols) * 0.22) + 's');
         c.classList.add('lc-reveal');
         io.observe(c);
       });
