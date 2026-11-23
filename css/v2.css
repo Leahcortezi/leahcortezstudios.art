@@ -974,6 +974,13 @@ html { scroll-behavior: smooth; background: #000; }
 
 /* click-to-load prototype embed */
 .lc-hero-frame iframe { background: #000; }
+/* prototypes: taller frame on small screens so the embed stays usable */
+@media (max-width: 700px) {
+  .lc-hero-frame--embed { aspect-ratio: var(--ar-m, 4 / 5); }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .lc-hero-frame--embed { aspect-ratio: 16 / 9; }
+}
 .lc-embed-btn { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 55%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: clamp(20px, 4vw, 48px); color: var(--lc-pink); }
 .lc-embed-btn span { font: 500 12px/1 var(--lc-mono); letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--lc-pink); border-radius: 999px; padding: 14px 24px; background: rgba(0,0,0,.55); transition: background .2s, color .2s; }
 .lc-embed-btn:hover span, .lc-embed-btn:focus-visible span { background: var(--lc-pink); color: #000; }

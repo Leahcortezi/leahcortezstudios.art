@@ -191,7 +191,7 @@ function renderProject(slug, d, order, all) {
   if (!has(hero.src) && !has(hero.embed)) warn(where, 'hero.src is missing');
   const hp = ratioParts(hero.ratio) || [16, 9];
   const wide = hp[0] / hp[1] >= 1.45;
-  const heroStyle = has(hero.embed) ? '--ar: 16 / 9; --fit: contain' : `--ar: ${wide ? hp[0] + ' / ' + hp[1] : '16 / 9'}; --fit: ${wide ? 'cover' : 'contain'}; --pos: ${esc(hero.pos || '50% 50%')}`;
+  const heroStyle = has(hero.embed) ? `--ar: 16 / 9; --ar-m: ${esc(hero.mobileRatio || '4 / 5')}; --fit: cover` : `--ar: ${wide ? hp[0] + ' / ' + hp[1] : '16 / 9'}; --fit: ${wide ? 'cover' : 'contain'}; --pos: ${esc(hero.pos || '50% 50%')}`;
   let heroMedia = '';
   if (has(hero.embed)) {
     let emb = hero.embed;
@@ -227,7 +227,7 @@ function renderProject(slug, d, order, all) {
       </div>
       <h1 class="lc-title">${esc(straight(d.title))}</h1>
       <figure class="lc-hero">
-        <div class="lc-hero-frame" style="${heroStyle}">
+        <div class="lc-hero-frame${has(hero.embed) ? ' lc-hero-frame--embed' : ''}" style="${heroStyle}">
           ${heroMedia}
         </div>
       </figure>
