@@ -76,7 +76,7 @@
           "caption": "Auditing the current homepage, collection and product pages.",
           "imageSide": "right",
           "src": "images/cs/audit.png",
-          "ratio": "1047/1442",
+          "ratio": "1175/1570",
           "alt": "Audit of the current Plant the Studio homepage, collection and product pages, with notes on the crowded promo bar, missing headline, misleading links, no filters and hidden care instructions."
         },
         {
@@ -96,7 +96,7 @@
       "items": [
         {
           "src": "images/cs/mobile.png",
-          "ratio": "2400/2435",
+          "ratio": "2560/2595",
           "alt": "Mobile layouts of the Plant the Studio homepage, plants page and filter sheet.",
           "caption": "The same shop on a smaller screen."
         }
