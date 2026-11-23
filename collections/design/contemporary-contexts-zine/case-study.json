@@ -14,6 +14,18 @@
   "summary": "An eight-page zine and accompanying poster exploring designer Jonathan Castro's visual language through iridescent liquid artwork, expressive lettering, and restrained black typography.",
   "meta": [
     [
+      "Role",
+      "Editorial Designer, Publication Designer"
+    ],
+    [
+      "Context",
+      "Academic project; publication design"
+    ],
+    [
+      "Tools",
+      "InDesign, Photoshop"
+    ],
+    [
       "Year",
       "2025"
     ],
@@ -101,13 +113,7 @@
     }
   ],
   "categoryFull": "Editorial Design",
-  "deliverables": [
-    "Research into Jonathan Castro's work",
-    "Written biographical and conceptual content",
-    "Visual references and layout studies",
-    "Eight-page folded zine",
-    "Quote poster"
-  ],
+  "deliverables": [],
   "finalDesign": [
     "My early sheets went all gradient, the way Castro's own work does, and it read as imitation. In the final, the liquid color lives inside the zine and the cover is black, with plain type so the words have somewhere to land. The yellow highlight is the one flat color in the layout, so the eye goes there first."
   ],

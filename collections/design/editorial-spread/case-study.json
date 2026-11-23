@@ -14,12 +14,24 @@
   "summary": "A black-and-white editorial spread exploring sleep paralysis through distorted headline typography, dark photography, and a structured text grid.",
   "meta": [
     [
+      "Role",
+      "Editorial Designer, Typography Designer"
+    ],
+    [
+      "Context",
+      "Academic project; editorial design"
+    ],
+    [
+      "Tools",
+      "InDesign, Photoshop"
+    ],
+    [
       "Year",
       "2025"
     ],
     [
       "Deliverables",
-      "Editorial spreads, display type, black-and-white imagery"
+      "Editorial spreads, custom display typography, black-and-white imagery"
     ]
   ],
   "hero": {
@@ -103,13 +115,7 @@
     }
   ],
   "categoryFull": "Editorial Design",
-  "deliverables": [
-    "Article analysis and research",
-    "Thumbnail layouts",
-    "Typography and composition studies",
-    "Image selection and cropping",
-    "Final two-page editorial spread"
-  ],
+  "deliverables": [],
   "finalDesign": [
     "Keyholes and clocks were my first ideas, and they turned the spread into a horror poster. The article is about not knowing which explanation is true, so I let the type carry the unease and kept the photos dark and cropped. The headline breaks across the page, but the body text stays in narrow, ordered columns, so it still works as an article. Black and white only, because color would have picked a side."
   ],

@@ -15,7 +15,15 @@
   "meta": [
     [
       "Role",
-      "Typeface design, communication design"
+      "Typeface Designer, Communication Designer"
+    ],
+    [
+      "Context",
+      "Academic project; typeface development"
+    ],
+    [
+      "Tools",
+      "Glyphs, Illustrator"
     ],
     [
       "Year",
@@ -23,7 +31,7 @@
     ],
     [
       "Deliverables",
-      "Typeface, glyph set, specimen poster"
+      "Custom typeface, glyph set, type specimen poster"
     ]
   ],
   "hero": {
@@ -122,13 +130,7 @@
     }
   ],
   "categoryFull": "Typography",
-  "deliverables": [
-    "Historical type research",
-    "Custom typeface design",
-    "Uppercase and lowercase characters",
-    "Numerals and punctuation",
-    "Typeface specimen poster"
-  ],
+  "deliverables": [],
   "finalDesign": [
     "The specimens had heavy ink spread and uneven weight, which looks great in a headline and rough in a paragraph. I kept the soft corners and wedge serifs, evened out the weight and lowered the contrast so the face could still set text. The slanted *e* and the curled *7* are the two quirks I left in on purpose. Everything else stays quiet, so those two do the remembering."
   ],

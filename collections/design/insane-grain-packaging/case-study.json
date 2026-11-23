@@ -15,11 +15,15 @@
   "meta": [
     [
       "Role",
-      "Brand & packaging design"
+      "Brand & Packaging Designer"
+    ],
+    [
+      "Context",
+      "Academic project; snack brand development"
     ],
     [
       "Tools",
-      "Photoshop, Illustrator"
+      "Illustrator, Photoshop"
     ],
     [
       "Year",
@@ -27,7 +31,7 @@
     ],
     [
       "Deliverables",
-      "Pouch, Strikin' Hot flavor, graphic system, mockups"
+      "Brand identity, packaging pouch, Strikin' Hot flavor design, graphic system, packaging mockups"
     ]
   ],
   "hero": {
@@ -97,13 +101,7 @@
     }
   ],
   "categoryFull": "Brand Identity & Packaging Design",
-  "deliverables": [
-    "Brand identity and visual direction",
-    "Logo and typographic treatment",
-    "Packaging design",
-    "Product information and nutritional hierarchy",
-    "Final packaging mockups"
-  ],
+  "deliverables": [],
   "finalDesign": [
     "The marker sketch split the front into an even grid. It was tidy, and tidy is the wrong thing for a snack called Insane Grain, so I broke the grid into diagonal pieces and let the mouth run off the top. I cut the palette to red, black and white, with the pepper photo as the only green. The health claims stay together in one strip at the bottom, so the front can be loud without making anyone hunt for the calories."
   ],
