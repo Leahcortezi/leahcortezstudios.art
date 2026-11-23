@@ -75,8 +75,8 @@
           "body": "The existing storefront presented an opportunity to improve the relationship between navigation, product organization, and product information.",
           "caption": "Auditing the current homepage, collection and product pages.",
           "imageSide": "right",
-          "src": "images/cs/audit.jpg",
-          "ratio": "1047/1496",
+          "src": "images/cs/audit.png",
+          "ratio": "991/1440",
           "alt": "Audit of the current Plant the Studio homepage, collection and product pages, with notes on the crowded promo bar, missing headline, misleading links, no filters and hidden care instructions."
         },
         {
@@ -95,8 +95,8 @@
       "attach": "finalDesign",
       "items": [
         {
-          "src": "images/cs/mobile.jpg",
-          "ratio": "2400/1702",
+          "src": "images/cs/mobile.png",
+          "ratio": "2400/2432",
           "alt": "Mobile layouts of the Plant the Studio homepage, plants page and filter sheet.",
           "caption": "The same shop on a smaller screen."
         }
