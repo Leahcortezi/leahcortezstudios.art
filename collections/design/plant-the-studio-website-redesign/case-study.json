@@ -75,9 +75,9 @@
           "body": "The existing storefront presented an opportunity to improve the relationship between navigation, product organization, and product information.",
           "caption": "Auditing the current homepage, collection and product pages.",
           "imageSide": "right",
-          "src": "images/cs/audit.png",
-          "ratio": "1175/1570",
-          "alt": "Audit of the current Plant the Studio homepage, collection and product pages, with notes on the crowded promo bar, missing headline, misleading links, no filters and hidden care instructions."
+          "src": "images/cs/audit.jpg",
+          "ratio": "1600/3014",
+          "alt": "Screenshots of the current Plant the Studio homepage, collection page and product page."
         },
         {
           "heading": "Low-fi first",
@@ -95,12 +95,25 @@
       "attach": "finalDesign",
       "items": [
         {
-          "src": "images/cs/mobile.png",
-          "ratio": "2560/2595",
-          "alt": "Mobile layouts of the Plant the Studio homepage, plants page and filter sheet.",
-          "caption": "The same shop on a smaller screen."
+          "src": "images/cs/mobile-1.jpg",
+          "ratio": "888/1810",
+          "alt": "Mobile homepage.",
+          "caption": "Homepage."
+        },
+        {
+          "src": "images/cs/mobile-2.jpg",
+          "ratio": "888/1810",
+          "alt": "Mobile plants page.",
+          "caption": "Plants."
+        },
+        {
+          "src": "images/cs/mobile-3.jpg",
+          "ratio": "888/1810",
+          "alt": "Mobile filter sheet.",
+          "caption": "Filters."
         }
-      ]
+      ],
+      "cols": 3
     },
     {
       "type": "feature",
