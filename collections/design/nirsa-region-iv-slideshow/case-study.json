@@ -36,9 +36,10 @@
     ]
   ],
   "hero": {
-    "src": "images/cs/hero.jpg",
-    "alt": "The opening slide of the Region IV conference slideshow: Welcome, October 21 to 23, 2026, Corpus Christi, Texas.",
-    "ratio": "1800/1013"
+    "src": "images/cs/hero.mp4",
+    "poster": "images/cs/hero.jpg",
+    "alt": "The Region IV conference presentation system in motion, from the opening Welcome slide through the template layouts.",
+    "ratio": "16/9"
   },
   "overview": {
     "text": [
