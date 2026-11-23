@@ -20,7 +20,7 @@ The site is a design-focused portfolio, with a personal, scrapbook-style look.
 | About | `/bio/index.html` | Built from the About handoff (hero, facts, story, how I work, professor quotes, "Outside the brief", contact) |
 | Contact | `/contact/index.html`, `thanks.html` | FormSubmit form to contact@leahcortezstudios.art |
 | Card | `/card.html` | Link-in-bio (Portfolio, Behance, Instagram) |
-| 1 | Plant the Studio Website Redesign | `plant-the-studio-website-redesign` | UI/UX |
+| 1 | Plant the Studio | `plant-the-studio-website-redesign` | UI/UX |
 | 2 | `/404.html` | |
 
 The pages from the Home, Work, project and About redesign use `css/v2.css`, `scripts/v2.js` and `body.v2`. Home also loads `scripts/home.js`. Contact and Card still use the older stylesheets.

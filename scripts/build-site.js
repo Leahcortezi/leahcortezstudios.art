@@ -40,6 +40,15 @@ const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Surendra has no curly quotes, so text set in it uses straight ones.
 const md = (t) => esc(t).replace(/\*([^*]+)\*/g, '<em>$1</em>');
+// body: a string, or an array of paragraphs and { list: [...], ordered: bool }
+const richBody = (body, cls = 'lc-body', indent = '          ') => {
+  const arr = Array.isArray(body) ? body : [body];
+  return arr.filter((x) => x && (typeof x !== 'string' || has(x))).map((x) => {
+    if (typeof x === 'string') return `${indent}<p class="${cls}">${md(straight(x))}</p>`;
+    const tag = x.ordered ? 'ol' : 'ul';
+    return `${indent}<${tag} class="lc-list${x.ordered ? ' lc-list--ol' : ''}">\n${(x.list || []).map((t) => `${indent}  <li>${md(straight(t))}</li>`).join('\n')}\n${indent}</${tag}>`;
+  }).join('\n');
+};
 const straight = (s) => String(s == null ? '' : s).replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"');
 const isVideo = (u) => /\.(mp4|webm|mov)([?#]|$)/i.test(u || '');
 const strip = (t) => String(t || '').replace(/^\s*\d+\s*[\u2014\u2013-]\s*/, '');
@@ -297,7 +306,7 @@ ${paras}
   const renderFinalDesign = () => {
     sec += 1;
     return `    <section class="lc-sec">
-      ${secHead(pad(sec), 'Final design')}
+      ${secHead(pad(sec), d.finalDesignLabel || 'Final design')}
       <div class="lc-g12">
         <div class="lc-final">
 ${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
@@ -306,7 +315,7 @@ ${fd.map((t) => `          <p class="lc-body">${md(t)}</p>`).join('\n')}
     </section>`;
   };
   const blockList = (d.blocks || []).filter((b) => b.type !== 'quote' && !(fd.length && b.attach === 'finalDesign'));
-  if (fd.length) {
+  if (fd.length && !blockList.some((b) => b.type === 'finaldesign')) {
     const fi = blockList.findIndex((b) => strip(b.label) === 'Final');
     blockList.splice(fi >= 0 ? fi : blockList.length, 0, { type: 'finaldesign' });
   }
@@ -339,25 +348,36 @@ ${copy}
     </section>`;
     }
 
+    if (b.type === 'text') {
+      return `    <section class="lc-sec">
+      ${head}${has(b.heading) ? `\n      <h2 class="lc-h2 lc-h2--lg lc-text-h">${md(straight(b.heading))}</h2>` : ''}
+      <div class="lc-g12">
+        <div class="lc-final">
+${richBody(b.body, 'lc-body', '          ')}
+        </div>
+      </div>
+    </section>`;
+    }
+
     if (b.type === 'points') {
       const its = (b.items || []).map((it, j) => `        <li class="lc-point">
           <span class="lc-point-n">${esc(it.n || pad(j + 1))}</span>
           ${has(it.kicker) ? `<span class="lc-point-k">${esc(it.kicker)}</span>` : ''}
           <h3 class="lc-point-t">${md(straight(it.title))}</h3>
-          <p class="lc-point-b">${md(straight(it.body))}</p>${has(it.source) ? `\n          <span class="lc-point-s">Source: ${esc(it.source)}</span>` : ''}${has(it.tag) ? `\n          <span class="lc-point-s">\u2192 ${esc(it.tag)}</span>` : ''}
+          ${has(it.body) ? `<p class="lc-point-b">${md(straight(it.body))}</p>` : ''}${has(it.source) ? `\n          <span class="lc-point-s">Source: ${esc(it.source)}</span>` : ''}${has(it.tag) ? `\n          <span class="lc-point-s">\u2192 ${esc(it.tag)}</span>` : ''}
         </li>`).join('\n');
       return `    <section class="lc-sec">
-      ${head}${has(b.heading) ? `\n      <h2 class="lc-h2 lc-h2--lg">${md(straight(b.heading))}</h2>` : ''}${has(b.body) ? `\n      <p class="lc-body lc-points-lede">${md(straight(b.body))}</p>` : ''}
-      <ol class="lc-points lc-points--${(b.items || []).length >= 6 ? 3 : (b.items || []).length === 4 ? 4 : 3}">
+      ${head}${has(b.heading) ? `\n      <h2 class="lc-h2 lc-h2--lg">${md(straight(b.heading))}</h2>` : ''}${(Array.isArray(b.body) ? b.body.length : has(b.body)) ? `\n      <div class="lc-points-lede">\n${richBody(b.body, 'lc-body', '        ')}\n      </div>` : ''}
+      <ol class="lc-points lc-points--${(b.items || []).length >= 6 ? 3 : (b.items || []).length === 4 ? 4 : (b.items || []).length === 2 ? 2 : 3}">
 ${its}
-      </ol>
+      </ol>${has(b.foot) ? `\n      <p class="lc-body lc-points-foot">${md(straight(b.foot))}</p>` : ''}
     </section>`;
     }
 
     if (b.type === 'rs') {
       const rowsHtml = (b.rows || []).map((r, j) => {
         const sd = r.imageSide || (j % 2 === 0 ? 'right' : 'left');
-        const copy = [has(r.heading) ? `          <h2 class="lc-h2">${esc(straight(r.heading))}</h2>` : '', has(r.body) ? `          <p class="lc-body">${esc(r.body)}</p>` : ''].filter(Boolean).join('\n');
+        const copy = [has(r.heading) ? `          <h2 class="lc-h2">${esc(straight(r.heading))}</h2>` : '', (Array.isArray(r.body) ? r.body.length : has(r.body)) ? richBody(r.body) : ''].filter(Boolean).join('\n');
         if (!has(r.src) && !has(r.placeholder)) {
           return `      <div class="lc-g12 lc-block-grid lc-rs-row">\n        <div class="lc-block-copy" style="--col: 1 / span 6; --row: 1; --align: start">\n${copy}\n        </div>\n      </div>`;
         }
@@ -438,7 +458,7 @@ ${figs}
   const ogImage = has(hero.poster) ? hero.poster : (!isVideo(hero.src) ? hero.src : '');
   const html = [
     pageHead({
-      title: `${d.title} \u00B7 Leah Cortez`, desc: String(d.summary || '').replace(/\*/g, ''), root,
+      title: `${d.title} \u00B7 Leah Cortez`, desc: String(d.description || d.summary || '').replace(/\*/g, ''), root,
       url: `${SITE}/collections/design/${enc(slug)}/`,
       image: ogImage && !/^\.\./.test(ogImage) ? `${SITE}/collections/design/${enc(slug)}/${enc(ogImage)}` : '',
     }),

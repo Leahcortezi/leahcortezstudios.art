@@ -1,5 +1,5 @@
 {
-  "title": "Plant the Studio Website Redesign",
+  "title": "Plant the Studio",
   "category": "UI/UX",
   "categoryFull": "Website Redesign",
   "year": "2026",
@@ -12,7 +12,7 @@
     "disc": "Website redesign",
     "teaser": "An e-commerce redesign that puts plants before promotions."
   },
-  "summary": "An e-commerce UX/UI redesign exploring how clearer information architecture, more intuitive product discovery, and a plant-centered visual hierarchy can improve the online shopping experience.",
+  "summary": "A better way to discover.",
   "meta": [
     [
       "Role",
@@ -45,49 +45,111 @@
   },
   "overview": {
     "text": [
-      "Plant the Studio is an e-commerce redesign focused on making plant discovery more intuitive through clearer information and botanical visual storytelling",
-      "An e-commerce UX/UI redesign exploring how clearer information architecture, more intuitive product discovery, and a plant-centered visual hierarchy can improve the online shopping experience."
+      "Plant the Studio is an existing online plant retailer offering a variety of houseplants, botanical products, and growing supplies. This project explores how a more cohesive brand identity and intentional digital experience can make plant discovery more intuitive.",
+      "As a solo designer, I approached the project by evaluating the existing storefront, researching competing plant retailers, and testing the shopping experience. The findings informed both a complete visual identity redesign and a series of redesigned website pages.",
+      "The goal was to create a distinctive botanical identity while making the shopping experience clearer, more engaging, and easier to navigate."
     ]
   },
-  "deliverables": [
-    "User personas and journey map",
-    "Sitemap and pain points",
-    "Low-fidelity wireframes for five pages",
-    "Style guide",
-    "High-fidelity designs for five pages",
-    "Responsive mobile layouts",
-    "Interactive prototype"
-  ],
+  "deliverables": [],
   "finalDesign": [
-    "*Plants before promotions.* The old homepage opened on promo bars and a photo carousel. The redesign follows a single hero with four collections and a New This Week row, and every card shows its name, price, light and pot size. A visitor arriving from a restock post sees what's new within one scroll.",
-    "*One Plants page, in everyday words.* The old Plants menu split into insider labels like \"TC\" and \"See What You're Buying.\" The redesign gathers the collections into tabs on one Plants page, renames tissue culture to Plantlets, and adds a sidebar that filters by light, care, type and size.",
-    "*Size and care on every card.* Product details used to sit under \"More information.\" Each card now carries a spec line, such as BRIGHT INDIRECT · 6\" POT · EXPERT, beneath the common name, genus and price, so shoppers can compare plants without opening each one.",
-    "*One sign-up, in one place.* Three sign-up prompts and a floating reward button compete for attention on every visit."
+    "The redesigned website pages apply the new identity to a more intentional e-commerce experience.",
+    "The homepage gives available plants greater prominence, while collection pages introduce clearer product organization and more intuitive browsing pathways.",
+    "Product presentation emphasizes the information shoppers need to make informed decisions. Additional botanical imagery and interactive hover states reveal close-up details, encouraging exploration while giving individual plants greater visual presence."
   ],
   "pull": "I want something rare, but I need to know I won't kill it.",
   "blocks": [
     {
+      "type": "text",
+      "label": "The challenge",
+      "heading": "Shoppers have to work to find a plant.",
+      "body": [
+        "The existing storefront presented an opportunity to improve both its visual identity and shopping experience. Promotional content competed with product discovery, navigation lacked clear pathways, and important product information was not always easy to locate.",
+        "The challenge was twofold: establish a stronger brand presence and create a more cohesive shopping experience that supports exploration rather than competing with it."
+      ]
+    },
+    {
       "type": "rs",
-      "label": "Research & Wireframes",
+      "label": "Research & discovery",
       "rows": [
         {
-          "heading": "Where the current site creates friction",
-          "body": "The existing storefront presented an opportunity to improve the relationship between navigation, product organization, and product information.",
           "caption": "Auditing the current homepage, collection and product pages.",
           "imageSide": "right",
           "src": "images/cs/audit.jpg",
           "ratio": "1600/3014",
-          "alt": "Screenshots of the current Plant the Studio homepage, collection page and product page."
+          "alt": "Screenshots of the current Plant the Studio homepage, collection page and product page.",
+          "body": [
+            "I began with an audit of the existing website, examining its navigation, product organization, visual hierarchy, and purchasing experience.",
+            "Competitor analysis helped identify opportunities to differentiate the brand while evaluating how other plant retailers presented their products and organized their storefronts.",
+            "I also conducted usability testing to examine how shoppers interacted with the existing experience and identify areas of friction."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "points",
+      "label": "Priorities",
+      "heading": "The research informed four central priorities",
+      "items": [
+        {
+          "title": "Give in-stock plants and pricing greater visibility"
         },
         {
-          "heading": "Low-fi first",
-          "body": "Before developing the visual identity, I mapped out the core pages and user flows to establish a clear, intuitive browsing experience. The low-fidelity wireframes helped define the information hierarchy, navigation, and relationships between key sections before moving into high-fidelity design.",
+          "title": "Simplify navigation and product filtering"
+        },
+        {
+          "title": "Make product details and purchasing conditions easier to understand"
+        },
+        {
+          "title": "Establish a distinctive visual identity that reflects the botanical nature of the business"
+        }
+      ]
+    },
+    {
+      "type": "points",
+      "label": "Understanding the user",
+      "body": "I developed two primary user personas representing different shopping behaviors.",
+      "items": [
+        {
+          "kicker": "The New Plant Owner",
+          "title": "Maya Ortiz",
+          "body": "Maya wants to discover an uncommon plant within her budget but needs reassurance about its care requirements, appearance, and what will actually arrive."
+        },
+        {
+          "kicker": "The Experienced Collector",
+          "title": "Daniel Smith",
+          "body": "Daniel prioritizes discovering new stock, comparing prices, and finding specific varieties without unnecessary browsing."
+        }
+      ],
+      "foot": "Their different levels of experience informed an approach that balances approachable product information with efficient product discovery."
+    },
+    {
+      "type": "text",
+      "label": "Customer journey",
+      "body": [
+        "I mapped Maya's first purchase, beginning with an Instagram restock post and ending with checkout.",
+        "The journey highlighted friction across five stages: discovering available plants, navigating collections, evaluating product details, understanding shipping requirements, and completing checkout.",
+        "These findings informed opportunities to improve product visibility, simplify terminology, clarify purchasing information, and reduce unnecessary interruptions."
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Low-fi wireframes",
+      "items": [
+        {
           "caption": "Low-fidelity wireframes.",
-          "imageSide": "left",
           "src": "images/cs/lowfi.jpg",
           "ratio": "2400/2264",
           "alt": "Low-fidelity wireframes for the Plant the Studio homepage, plants, about, blog and wholesale pages."
         }
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Brand identity & art direction",
+      "body": [
+        "I developed a new visual identity inspired by botanical documentation, editorial publishing, and the organic character of plant collecting.",
+        "The identity combines forest green, sage, warm neutrals, and muted terracotta with expressive typography and a structured graphic language.",
+        "The visual system establishes a more recognizable brand presence while creating a flexible foundation for digital applications."
       ]
     },
     {
@@ -140,6 +202,16 @@
           "caption": "In use."
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Outcome",
+      "body": [
+        "The project brings brand identity and digital experience together through a cohesive botanical direction and a more intentional approach to online shopping.",
+        "By addressing visual identity, product hierarchy, navigation, and information clarity, the redesign explores how branding and UX can work together to create a more engaging and recognizable retail experience."
+      ]
     }
-  ]
+  ],
+  "description": "Plant the Studio is an existing online plant retailer. This project explores how a more cohesive brand identity and intentional digital experience can make plant discovery more intuitive.",
+  "finalDesignLabel": "Digital experience"
 }

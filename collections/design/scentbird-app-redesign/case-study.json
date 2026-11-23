@@ -1,5 +1,5 @@
 {
-  "title": "Scentbird App Redesign",
+  "title": "Scentbird",
   "category": "UI/UX",
   "categoryFull": "Mobile App Redesign",
   "year": "2026",
@@ -12,7 +12,7 @@
     "disc": "Mobile app redesign",
     "teaser": "Rethinking how people discover fragrance in the Scentbird iOS app."
   },
-  "summary": "A redesign of the Scentbird iOS app that helps people find a scent that feels like theirs, and feel confident subscribing to it.",
+  "summary": "Making the invisible tangible.",
   "meta": [
     [
       "Role",
@@ -41,48 +41,145 @@
   },
   "overview": {
     "text": [
-      "Scentbird is a fragrance discovery and subscription service that allows users to explore a large collection of perfumes, receive personalized recommendations, and select fragrances for monthly delivery. The iOS app combines fragrance discovery, personalization, product browsing, and subscription management into one experience.",
-      "I chose Scentbird because its concept has a lot of potential as a discovery experience, but the current app does not fully capture what makes fragrance distinctive and personal. Fragrance is strongly connected to memory, identity, beauty, mood, and specific moments, yet it is an invisible medium that is difficult to communicate through a screen. My redesign explores how Scentbird could turn fragrance discovery into a more immersive and personalized experience, allowing users to explore different scents, understand their preferences, and curate a scent identity that feels uniquely theirs."
+      "Scentbird is a fragrance discovery and subscription service that allows users to explore perfumes, receive personalized recommendations, and build a monthly fragrance collection.",
+      "Although the concept offers an engaging approach to fragrance discovery, the existing app experience leaves opportunities to make personalization, product exploration, and subscription management more intuitive.",
+      "I selected Scentbird for a mobile app redesign because of the potential of its concept and the opportunity to strengthen how users discover and experience fragrance through a digital interface."
     ]
   },
-  "deliverables": [
-    "Problem statement and project goals",
-    "Research and key insights",
-    "Persona, journey map and user flow",
-    "Low-fi and digital wireframes",
-    "Style guide",
-    "High-fidelity screens and interactive prototype"
-  ],
+  "deliverables": [],
   "finalDesign": [
-    "The current app reads like a catalog, so I led with a quiz instead of a list. Each question asks about a feeling, not fragrance jargon, and explains itself in one line. Dragging between fresh and warm captures more than a single tap could, and a live result describes how that mix will smell.",
-    "A guess is hard to subscribe to, so every recommendation carries its reason. Matches show a score and a one-line explanation of why a scent fits, and the profile turns the answers into a scent wheel you can see and edit.",
-    "The plan is the part people said they couldn't find, so it sits in the case with the price, plain and up front. Subscribe & save and buying once are side by side, and skipping sits next to the price instead of in the fine print."
+    "The scent quiz serves as the foundation of the redesigned experience.",
+    "Eight guided questions explore fragrance preferences through approachable prompts about scent notes, moods, and personal tastes. Rather than relying exclusively on technical fragrance terminology, the questions make preference-building feel more conversational and engaging.",
+    "The resulting scent profile translates user responses into a signature fragrance family, preferred notes, and ranked recommendations.",
+    "Users can review and edit their preferences, allowing them to refine their profile and better understand how their selections influence fragrance matches."
   ],
-  "pull": "A guess is hard to subscribe to.",
+  "pull": "I want to find scents that actually feel like me.",
   "blocks": [
     {
+      "type": "points",
+      "label": "The challenge",
+      "heading": "Fragrance is personal, but on a screen, it is invisible.",
+      "body": [
+        "Users rely on descriptions, fragrance notes, and recommendations to imagine how a scent might smell. Without enough context, navigating a large fragrance catalog can feel overwhelming.",
+        "My evaluation identified three primary areas of friction:"
+      ],
+      "items": [
+        {
+          "title": "Discovery feels like a catalog",
+          "body": "A large fragrance library makes it difficult to narrow down options."
+        },
+        {
+          "title": "Recommendations lack context",
+          "body": "Suggested fragrances do not clearly communicate why they match individual preferences."
+        },
+        {
+          "title": "Subscription management lacks clarity",
+          "body": "Billing, delivery, and plan management are difficult to navigate."
+        }
+      ],
+      "foot": "The opportunity was to make fragrance discovery more personal while creating a clearer path from initial exploration to subscription."
+    },
+    {
       "type": "rs",
-      "label": "Research & Wireframes",
+      "label": "Research & discovery",
       "rows": [
         {
-          "heading": "Where the current app creates friction",
-          "body": "I analyzed the existing app alongside App Store and Google Play reviews and fragrance-community discussions, focusing on how people discover fragrances, judge recommendations, and manage a subscription. Three things kept coming up: discovery feels like a catalog, picks don't explain themselves, and the plan is hard to read.",
           "imageSide": "right",
           "src": "images/cs/before.jpg",
           "alt": "Three screens of the current Scentbird app.",
           "ratio": "1494/996",
-          "caption": "The current app."
+          "caption": "The current app.",
+          "body": [
+            "I evaluated the existing Scentbird app, conducted competitor research, and analyzed App Store reviews, Google Play reviews, and fragrance-community discussions.",
+            "My research focused on three questions:",
+            {
+              "ordered": true,
+              "list": [
+                "How easily can users discover and evaluate fragrances?",
+                "How clearly does the app communicate personalized recommendations?",
+                "How easily can users understand and manage their subscription?"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "points",
+      "label": "Findings",
+      "heading": "Three recurring themes emerged",
+      "items": [
+        {
+          "title": "Difficulty organizing and revisiting fragrances"
         },
         {
-          "heading": "Low-fi first",
-          "body": "I sketched sixteen low-fidelity wireframes to settle the structure of the quiz, profile, matches and case before touching color or type.",
-          "imageSide": "left",
+          "title": "A lack of transparency behind recommendations"
+        },
+        {
+          "title": "Confusion surrounding subscription management"
+        }
+      ],
+      "foot": "These findings informed a redesign centered on guided discovery, meaningful personalization, and greater subscription transparency."
+    },
+    {
+      "type": "text",
+      "label": "Understanding the user",
+      "body": [
+        "I developed a primary user persona, empathy map, and customer journey to better understand the motivations and frustrations behind fragrance shopping.",
+        "Maya represents a curious fragrance shopper interested in finding a signature scent and exploring unfamiliar fragrances without feeling overwhelmed by technical terminology or endless options.",
+        "Mapping her experience revealed opportunities to support users throughout the discovery process, from initial exploration and evaluation to selecting a fragrance and committing to a subscription."
+      ]
+    },
+    {
+      "type": "points",
+      "label": "Design strategy",
+      "heading": "The redesign follows four central goals",
+      "items": [
+        {
+          "n": "Goal 01",
+          "title": "Personalize discovery",
+          "body": "Introduce a guided scent quiz that translates individual preferences into a personalized fragrance profile."
+        },
+        {
+          "n": "Goal 02",
+          "title": "Create a sensory experience",
+          "body": "Make an invisible product more tangible through visualizations, descriptive language, and scent profiling."
+        },
+        {
+          "n": "Goal 03",
+          "title": "Improve product exploration",
+          "body": "Provide clearer fragrance notes, match scores, and explanations behind recommendations."
+        },
+        {
+          "n": "Goal 04",
+          "title": "Simplify subscriptions",
+          "body": "Make pricing, delivery schedules, and subscription management easier to understand."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Information architecture & user flow",
+      "body": [
+        "I reorganized the experience around six primary destinations: Discover, Search, Fragrance, My Scents, Profile, and Subscription.",
+        "The revised information architecture establishes clearer pathways for browsing collections, filtering fragrances, revisiting saved scents, managing preferences, and accessing account information.",
+        "I then mapped the primary user journey, from opening the app and completing the scent quiz to exploring personalized matches, selecting fragrances, building a monthly case, and completing checkout."
+      ]
+    },
+    {
+      "type": "gallery",
+      "label": "Low-fi wireframes",
+      "items": [
+        {
           "src": "images/cs/lowfi.jpg",
           "alt": "Hand-sketched low-fidelity wireframes for the redesign.",
           "ratio": "2000/1040",
           "caption": "Low-fi wireframes."
         }
       ]
+    },
+    {
+      "type": "finaldesign"
     },
     {
       "type": "gallery",
@@ -115,6 +212,15 @@
       "attach": "finalDesign"
     },
     {
+      "type": "text",
+      "label": "Visual identity & interface design",
+      "body": [
+        "I developed a new visual direction using deep purple, electric lime, and soft lavender, supported by editorial typography and geometric scent-inspired graphics.",
+        "The visual system creates a distinctive identity for the app while using color, contrast, and recurring graphic motifs to establish consistency across the redesigned experience.",
+        "The interface connects onboarding, personalized results, fragrance exploration, and subscription checkout through a cohesive visual language."
+      ]
+    },
+    {
       "type": "feature",
       "label": "Final",
       "src": "images/cs/grid.jpg",
@@ -139,6 +245,16 @@
           "caption": "The redesigned app in use."
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Outcome",
+      "body": [
+        "The redesigned primary user journey brings fragrance discovery, personalization, and subscription selection into a more connected mobile experience.",
+        "By making fragrance preferences easier to express and recommendations easier to understand, the redesign reframes the experience from browsing a catalog to discovering scents that feel personal."
+      ]
     }
-  ]
+  ],
+  "description": "Scentbird is a fragrance discovery and subscription service. This mobile app redesign makes personalization, product exploration, and subscription management more intuitive.",
+  "finalDesignLabel": "Interaction design"
 }
