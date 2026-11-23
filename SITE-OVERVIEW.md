@@ -20,7 +20,8 @@ The site is a design-focused portfolio, with a personal, scrapbook-style look.
 | About | `/bio/index.html` | Built from the About handoff (hero, facts, story, how I work, professor quotes, "Outside the brief", contact) |
 | Contact | `/contact/index.html`, `thanks.html` | FormSubmit form to contact@leahcortezstudios.art |
 | Card | `/card.html` | Link-in-bio (Portfolio, Behance, Instagram) |
-| 1 | `/404.html` | |
+| 1 | Plant the Studio Website Redesign | `plant-the-studio-website-redesign` | UI/UX |
+| 2 | `/404.html` | |
 
 The pages from the Home, Work, project and About redesign use `css/v2.css`, `scripts/v2.js` and `body.v2`. Home also loads `scripts/home.js`. Contact and Card still use the older stylesheets.
 
@@ -34,17 +35,16 @@ The pages from the Home, Work, project and About redesign use `css/v2.css`, `scr
 ## Projects (11, in `scripts/gallery-order.json`)
 | Order | Project | Slug | Category |
 |---|---|---|---|
-| 2 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
-| 3 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
-| 4 | Insane Grain | `insane-grain-packaging` | Packaging |
-| 5 | Surendra | `custom-typeface-specimen-poster` | Type |
-| 6 | City Reliquary | `City Reliquary` | Identity |
-| 7 | Alien Invasion or Sleep Paralysis? | `editorial-spread` | Editorial |
-| 8 | Threads | `Threads` | Identity |
-| 9 | Space Age | `space-age-wine-packaging` | Packaging |
-| 10 | Designer Tribute Zine | `contemporary-contexts-zine` | Editorial |
-| 11 | Gulliver's Travels | `paperback-full-cover` | Book cover |
-| 12 | Historical Poster Styles | `historical-posters` | Posters |
+| 3 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
+| 4 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
+| 5 | Insane Grain | `insane-grain-packaging` | Packaging |
+| 6 | Surendra | `custom-typeface-specimen-poster` | Type |
+| 7 | City Reliquary | `City Reliquary` | Identity |
+| 8 | Alien Invasion or Sleep Paralysis? | `editorial-spread` | Editorial |
+| 9 | Threads | `Threads` | Identity |
+| 10 | Space Age | `space-age-wine-packaging` | Packaging |
+| 11 | Designer Tribute Zine | `contemporary-contexts-zine` | Editorial |
+| 12 | Gulliver's Travels | `paperback-full-cover` | Book cover |
 
 The Work filters are Packaging, Type & posters, Identity, Editorial and Illustration. The nav links are Work, About and Contact.
 

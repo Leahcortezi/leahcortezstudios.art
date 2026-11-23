@@ -1,0 +1,132 @@
+{
+  "title": "Plant the Studio Website Redesign",
+  "category": "UI/UX",
+  "categoryFull": "Website Redesign",
+  "year": "2026",
+  "tags": [
+    "UI/UX"
+  ],
+  "card": {
+    "src": "images/cs/thumb.jpg",
+    "pos": "50% 50%",
+    "disc": "Website redesign",
+    "teaser": "An e-commerce redesign that puts plants before promotions."
+  },
+  "summary": "An e-commerce UX/UI redesign exploring how clearer information architecture, more intuitive product discovery, and a plant-centered visual hierarchy can improve the online shopping experience.",
+  "meta": [
+    [
+      "Role",
+      "Solo UX/UI designer"
+    ],
+    [
+      "Tools",
+      "Figma"
+    ],
+    [
+      "Platform",
+      "Responsive web"
+    ],
+    [
+      "Year",
+      "2026"
+    ]
+  ],
+  "links": [
+    {
+      "label": "Full case study in Figma",
+      "href": "https://www.figma.com/design/842vJHtpJ8b7qniP3VaBV7/Leah-Cortez-Case-Study?node-id=61-101&t=SxO8zsJfTRu0nRWU-1"
+    }
+  ],
+  "hero": {
+    "embed": "https://embed.figma.com/proto/842vJHtpJ8b7qniP3VaBV7/Leah-Cortez-Case-Study?node-id=4364-7197&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4364%3A7197&page-id=61%3A101&embed-host=share",
+    "poster": "images/cs/poster.jpg",
+    "alt": "Interactive Figma prototype of the Plant the Studio website redesign",
+    "ratio": "16/9"
+  },
+  "overview": {
+    "text": [
+      "Plant the Studio is an e-commerce redesign focused on making plant discovery more intuitive through clearer information and botanical visual storytelling",
+      "An e-commerce UX/UI redesign exploring how clearer information architecture, more intuitive product discovery, and a plant-centered visual hierarchy can improve the online shopping experience."
+    ]
+  },
+  "deliverables": [
+    "User personas and journey map",
+    "Sitemap and pain points",
+    "Low-fidelity wireframes for five pages",
+    "Style guide",
+    "High-fidelity designs for five pages",
+    "Responsive mobile layouts",
+    "Interactive prototype"
+  ],
+  "finalDesign": [
+    "*Plants before promotions.* The old homepage opened on promo bars and a photo carousel. The redesign follows a single hero with four collections and a New This Week row, and every card shows its name, price, light and pot size. A visitor arriving from a restock post sees what's new within one scroll.",
+    "*One Plants page, in everyday words.* The old Plants menu split into insider labels like \"TC\" and \"See What You're Buying.\" The redesign gathers the collections into tabs on one Plants page, renames tissue culture to Plantlets, and adds a sidebar that filters by light, care, type and size.",
+    "*Size and care on every card.* Product details used to sit under \"More information.\" Each card now carries a spec line, such as BRIGHT INDIRECT · 6\" POT · EXPERT, beneath the common name, genus and price, so shoppers can compare plants without opening each one.",
+    "*One sign-up, in one place.* Three sign-up prompts and a floating reward button compete for attention on every visit."
+  ],
+  "pull": "I want something rare, but I need to know I won't kill it.",
+  "blocks": [
+    {
+      "type": "rs",
+      "label": "Research & Wireframes",
+      "rows": [
+        {
+          "heading": "Where the current site creates friction",
+          "body": "The existing storefront presented an opportunity to improve the relationship between navigation, product organization, and product information.",
+          "caption": "Auditing the current homepage, collection and product pages.",
+          "imageSide": "right",
+          "src": "images/cs/audit.jpg",
+          "ratio": "1047/1496",
+          "alt": "Audit of the current Plant the Studio homepage, collection and product pages, with notes on the crowded promo bar, missing headline, misleading links, no filters and hidden care instructions."
+        },
+        {
+          "heading": "Low-fi first",
+          "body": "Before developing the visual identity, I mapped out the core pages and user flows to establish a clear, intuitive browsing experience. The low-fidelity wireframes helped define the information hierarchy, navigation, and relationships between key sections before moving into high-fidelity design.",
+          "caption": "Low-fidelity wireframes.",
+          "imageSide": "left",
+          "src": "images/cs/lowfi.jpg",
+          "ratio": "2400/2264",
+          "alt": "Low-fidelity wireframes for the Plant the Studio homepage, plants, about, blog and wholesale pages."
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "attach": "finalDesign",
+      "items": [
+        {
+          "src": "images/cs/mobile.jpg",
+          "ratio": "2400/1702",
+          "alt": "Mobile layouts of the Plant the Studio homepage, plants page and filter sheet.",
+          "caption": "The same shop on a smaller screen."
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "label": "Final",
+      "src": "images/cs/hifi.jpg",
+      "ratio": "2400/1447",
+      "alt": "Full-page high-fidelity designs of the Plant the Studio homepage, plants, about, blog and wholesale pages.",
+      "caption": "The five finished pages."
+    },
+    {
+      "type": "gallery",
+      "label": "In use",
+      "items": [
+        {
+          "placeholder": "Mockup to come",
+          "ratio": "3/2",
+          "alt": "Mockup to come",
+          "caption": "Mockup."
+        },
+        {
+          "placeholder": "Mockup to come",
+          "ratio": "3/2",
+          "alt": "Mockup to come",
+          "caption": "Mockup."
+        }
+      ]
+    }
+  ]
+}
