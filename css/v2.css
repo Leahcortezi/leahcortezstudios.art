@@ -971,3 +971,10 @@ html { scroll-behavior: smooth; background: #000; }
 .lc-ph { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center;
   border: 1px dashed rgba(248, 200, 208, .6); background: rgba(248, 200, 208, .06); }
 .lc-ph span { font: 500 11px/1.5 var(--lc-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--lc-pink); }
+
+/* click-to-load prototype embed */
+.lc-hero-frame iframe { background: #000; }
+.lc-embed-btn { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 55%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: clamp(20px, 4vw, 48px); color: var(--lc-pink); }
+.lc-embed-btn span { font: 500 12px/1 var(--lc-mono); letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--lc-pink); border-radius: 999px; padding: 14px 24px; background: rgba(0,0,0,.55); transition: background .2s, color .2s; }
+.lc-embed-btn:hover span, .lc-embed-btn:focus-visible span { background: var(--lc-pink); color: #000; }
+.lc-embed-btn:focus-visible { outline: 2px solid var(--lc-pink); outline-offset: -4px; }

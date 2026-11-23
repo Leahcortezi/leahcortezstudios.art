@@ -194,7 +194,20 @@ function renderProject(slug, d, order, all) {
   const heroStyle = has(hero.embed) ? '--ar: 16 / 9; --fit: contain' : `--ar: ${wide ? hp[0] + ' / ' + hp[1] : '16 / 9'}; --fit: ${wide ? 'cover' : 'contain'}; --pos: ${esc(hero.pos || '50% 50%')}`;
   let heroMedia = '';
   if (has(hero.embed)) {
-    heroMedia = `<iframe src="${esc(hero.embed)}" title="${esc(hero.alt || 'Interactive prototype')}" allowfullscreen loading="lazy"></iframe>`;
+    let emb = hero.embed;
+    try {
+      const u = new URL(hero.embed);
+      u.searchParams.set('hide-ui', '1');
+      u.searchParams.set('hotspot-hints', '0');
+      u.searchParams.set('scaling', 'scale-down');
+      u.searchParams.set('content-scaling', 'fixed');
+      u.searchParams.set('page-selector', '0');
+      emb = u.toString();
+    } catch (e) { /* keep as-is */ }
+    const title = esc(hero.alt || 'Interactive prototype');
+    heroMedia = has(hero.poster)
+      ? `<img src="${url(hero.poster)}" alt="" loading="eager" fetchpriority="high"><button type="button" class="lc-embed-btn" data-src="${esc(emb)}" data-title="${title}" onclick="var f=document.createElement('iframe');f.src=this.dataset.src;f.title=this.dataset.title;f.allowFullscreen=true;f.setAttribute('allow','fullscreen');this.parentNode.replaceChild(f,this);"><span>Play prototype</span></button>`
+      : `<iframe src="${esc(emb)}" title="${title}" allowfullscreen loading="lazy"></iframe>`;
   } else if (has(hero.src)) {
     heroMedia = isVideo(hero.src)
       ? `<video src="${url(hero.src)}"${has(hero.poster) ? ` poster="${url(hero.poster)}"` : ''} autoplay muted loop playsinline preload="metadata" aria-label="${alt(hero, 'hero')}" data-lc-hero></video>`

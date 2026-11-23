@@ -36,7 +36,8 @@
   "hero": {
     "embed": "https://embed.figma.com/proto/FWznOvPfzXUZjVZ1xCQWDR/Leah-Cortez-P1-App-Redesign?node-id=6318-5591&starting-point-node-id=6319%3A8092&embed-host=share",
     "alt": "Interactive Figma prototype of the Scentbird app redesign",
-    "ratio": "16/9"
+    "ratio": "16/9",
+    "poster": "images/cs/poster.jpg"
   },
   "overview": {
     "text": [
