@@ -54,9 +54,25 @@
         cards.forEach(function (c) {
           var tags = (c.getAttribute('data-tags') || '').split('|');
           c.hidden = !(f === 'All' || tags.indexOf(f) !== -1);
+          if (!c.hidden) c.classList.add('is-in');
         });
       });
     });
+
+    /* scroll reveal: cards rise in as they enter the viewport */
+    if (!reduce && 'IntersectionObserver' in window) {
+      var cols = window.innerWidth >= 1000 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      cards.forEach(function (c, i) {
+        c.style.setProperty('--lc-d', ((i % cols) * 0.12) + 's');
+        c.classList.add('lc-reveal');
+        io.observe(c);
+      });
+    }
   }
 
   /* 3. hamburger state */
