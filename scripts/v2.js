@@ -66,9 +66,9 @@
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0.01, rootMargin: '0px 0px 12% 0px' });
       cards.forEach(function (c, i) {
-        c.style.setProperty('--lc-d', ((i % cols) * 0.12) + 's');
+        c.style.setProperty('--lc-d', ((i % cols) * 0.06) + 's');
         c.classList.add('lc-reveal');
         io.observe(c);
       });
