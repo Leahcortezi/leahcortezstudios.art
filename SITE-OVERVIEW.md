@@ -35,7 +35,7 @@ The pages from the Home, Work, project and About redesign use `css/v2.css`, `scr
 ## Projects (11, in `scripts/gallery-order.json`)
 | Order | Project | Slug | Category |
 |---|---|---|---|
-| 3 | Region IV Conference Slideshow | `nirsa-region-iv-slideshow` | Client work |
+| 3 | NIRSA Region IV Conference | `nirsa-region-iv-slideshow` | Client work |
 | 4 | ScentBird App Redesign | `scentbird-app-redesign` | UI/UX |
 | 5 | Insane Grain | `insane-grain-packaging` | Packaging |
 | 6 | Surendra | `custom-typeface-specimen-poster` | Type |

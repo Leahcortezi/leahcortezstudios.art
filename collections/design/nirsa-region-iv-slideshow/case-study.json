@@ -1,5 +1,5 @@
 {
-  "title": "Region IV Conference Slideshow",
+  "title": "NIRSA Region IV Conference",
   "category": "Client work",
   "categoryFull": "Client Work · Presentation Design",
   "year": "2026",
@@ -10,9 +10,9 @@
     "src": "images/cs/thumb.jpg",
     "pos": "50% 50%",
     "disc": "Client work · TAMUCC Recreational Sports",
-    "teaser": "A 22-slide conference presentation, built on a template I designed and that was voted in."
+    "teaser": "A cohesive, reusable presentation system for the 2026 conference."
   },
-  "summary": "A 22-slide conference slideshow for the 2026 NIRSA Region IV Conference, built on a template I designed and that was voted to be used.",
+  "summary": "Bringing information into focus.",
   "meta": [
     [
       "Client",
@@ -38,43 +38,83 @@
   },
   "overview": {
     "text": [
-      "As a design intern in the Recreational Sports marketing department at Texas A&M University–Corpus Christi, I designed the slideshow for the 2026 NIRSA Region IV Conference, held in Corpus Christi on October 21–23, 2026 and hosted by TAMUCC.",
-      "The slideshow runs through the opening session: a welcome, the Region IV network and its board, association highlights, the NIRSA Foundation, sponsors, the planning committee and the keynote speaker."
+      "The NIRSA Region IV Conference is a professional gathering for campus recreation and university recreation professionals. Hosted by Texas A&M University–Corpus Christi, the 2026 conference brought together regional attendees for educational sessions, keynote presentations, networking, and campus programming.",
+      "I was assigned to redesign the conference presentation, transforming an existing text-heavy slideshow into a cohesive and flexible visual communication system.",
+      "My proposed direction was selected over the original presentation and developed into a complete conference presentation and reusable slide template."
     ]
   },
-  "deliverables": [
-    "A slideshow template for the conference",
-    "A 22-slide conference presentation",
-    "The previous slideshow's information, adapted into the new template"
-  ],
+  "deliverables": [],
   "finalDesign": [
-    "The 22 slides share one system. Section labels are set in spaced-out capitals, a footer repeats the conference location and dates, and numbered divider slides split the deck into sections, so both the presenter and the audience can tell where they are.",
-    "Most of the work was making dense information easy to read from the back of a room: board lists, award counts, event dates, roundtable schedules and strategic priorities each got their own layout inside the same template."
+    "The selected direction was developed into a complete presentation for the NIRSA Region IV Conference.",
+    "The final system brings together consistent typography, structured information hierarchy, institutional color references, and varied layouts to create a cohesive visual experience across the conference materials.",
+    "The opening and closing slides establish a recognizable visual identity, while the interior layouts provide flexibility for agendas, schedules, speakers, programming, and other conference information."
   ],
-  "pull": "I designed the template, and it was voted in.",
+  "pull": "Rather than approaching each slide as an individual composition, I wanted to establish a unified visual language.",
   "blocks": [
     {
       "type": "rs",
-      "label": "Template & Adaptation",
+      "label": "The challenge",
       "rows": [
         {
-          "heading": "A template, voted in",
-          "body": "The conference needed a slideshow, so I designed a new template in Canva. It was voted to be used for the Region IV conference: dark navy, Montserrat, and spaced-out capitals for section labels.",
-          "imageSide": "right",
-          "ratio": "2228/1266",
-          "alt": "Four slides from the new template: the title slide, a numbered section divider and two content slides, in dark navy with spaced-out capital section labels.",
-          "caption": "The new template: title, section divider and content slides.",
-          "src": "images/cs/template.jpg"
-        },
-        {
-          "heading": "Moving the old slideshow into it",
-          "body": "Then I took the previous slideshow and adapted its information into the new template, rethinking each slide's layout instead of pasting the content in.",
-          "imageSide": "left",
           "ratio": "2228/1913",
           "alt": "Three slides from the previous slideshow on the left, each beside the same information rebuilt in the new template on the right.",
           "caption": "Before and after: the previous slideshow (left) and the new template (right).",
-          "src": "images/cs/before-after.jpg"
+          "src": "images/cs/before-after.jpg",
+          "imageSide": "right",
+          "body": [
+            "The original presentation lacked the visual hierarchy and consistency needed to communicate information effectively. Dense text, limited visual variation, and basic layouts made the slides feel disconnected and difficult to navigate.",
+            "The challenge was to create a presentation that could accommodate different types of conference information while remaining visually engaging, professional, and easy to follow.",
+            "Rather than approaching each slide as an individual composition, I wanted to establish a unified visual language that could support the entire conference experience."
+          ]
         }
+      ]
+    },
+    {
+      "type": "rs",
+      "label": "Design direction",
+      "rows": [
+        {
+          "ratio": "2228/1266",
+          "alt": "Four slides from the new template: the title slide, a numbered section divider and two content slides, in dark navy with spaced-out capital section labels.",
+          "caption": "The new template: title, section divider and content slides.",
+          "src": "images/cs/template.jpg",
+          "imageSide": "left",
+          "body": [
+            "I developed a visual direction inspired by Texas A&M University–Corpus Christi's colors, using a deep navy foundation with warm gold and blue accents.",
+            "With creative freedom to establish the presentation's visual identity, I introduced recurring graphic elements, structured typography, and campus photography to create a recognizable connection to the host institution.",
+            "The direction balances institutional familiarity with a more contemporary editorial approach to presentation design."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Building a presentation system",
+      "body": [
+        "The redesign was developed as a flexible collection of slide layouts rather than a series of isolated designs.",
+        "Different compositions accommodate the presentation's varied information needs, including:",
+        {
+          "list": [
+            "Opening and closing slides",
+            "Conference agendas and daily schedules",
+            "Section dividers and session introductions",
+            "Conference highlights and program comparisons",
+            "Campus tours and host information",
+            "Regional statistics and keynote presentations",
+            "Speaker and committee profiles",
+            "Q&A, session feedback, and sponsor recognition"
+          ]
+        },
+        "Each layout follows consistent typographic, color, and spacing principles while allowing the content to determine its composition."
+      ]
+    },
+    {
+      "type": "text",
+      "label": "Designing for adaptability",
+      "body": [
+        "An important part of the project was making the presentation practical to maintain and reuse.",
+        "I developed editable layouts with clear content areas and guidance for updating photography, dates, speaker information, session details, and other conference-specific elements.",
+        "This approach allows the presentation to accommodate changing information without requiring an entirely new design for every slide."
       ]
     },
     {
@@ -145,6 +185,17 @@
           "caption": "At the conference."
         }
       ]
+    },
+    {
+      "type": "text",
+      "label": "Outcome",
+      "body": [
+        "The redesigned presentation was selected over the original direction, implemented for the conference, and received positive feedback.",
+        "Beyond improving the visual presentation of information, the project demonstrates how a flexible design system can support real-world communication needs.",
+        "It reflects my ability to translate an organization's requirements into a cohesive visual direction and develop that direction into a practical, reusable design deliverable."
+      ]
     }
-  ]
+  ],
+  "description": "A redesigned presentation and reusable slide template for the 2026 NIRSA Region IV Conference, hosted by Texas A&M University–Corpus Christi.",
+  "finalDesignLabel": "The final presentation"
 }
